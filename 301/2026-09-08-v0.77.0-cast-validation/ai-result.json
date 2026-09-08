@@ -1,0 +1,130 @@
+{
+  "server": {
+    "server_version": "0.77.0",
+    "build_commit": "61715b5",
+    "protocol_version": 67,
+    "mode": "Full",
+    "lobby_protocol_version": 7,
+    "wire_formats": [
+      "GzipEnvelopeV1"
+    ]
+  },
+  "rejection": {
+    "type": "ActionRejected",
+    "data": {
+      "rejection": {
+        "code": "action_not_allowed",
+        "disposition": "unavailable",
+        "message": "That action is not allowed right now.",
+        "related_object_ids": []
+      }
+    }
+  },
+  "waiting_for": {
+    "data": {
+      "pending_cast": {
+        "ability": {
+          "condition": null,
+          "context": {
+            "additional_cost_paid": false,
+            "alternative_mana_cost_paid": false,
+            "optional_effect_performed": false
+          },
+          "controller": 0,
+          "description": "~ deals 3 damage to any target.",
+          "detached_remainder": "NoProducer",
+          "duration": null,
+          "effect": {
+            "amount": {
+              "type": "Fixed",
+              "value": 3
+            },
+            "target": {
+              "type": "Any"
+            },
+            "type": "DealDamage"
+          },
+          "forward_result": false,
+          "kind": "Spell",
+          "optional": false,
+          "optional_targeting": false,
+          "source_id": 120,
+          "sub_ability": null,
+          "targets": []
+        },
+        "activation_cost_committed": false,
+        "additional_cost_decided": false,
+        "additional_cost_source": "Other",
+        "assist_state": "NotOffered",
+        "base_cost": {
+          "type": "NoCost"
+        },
+        "card_id": 120,
+        "casting_permission_index": 0,
+        "casting_variant": "Normal",
+        "cost": {
+          "type": "NoCost"
+        },
+        "crime_candidate": false,
+        "deferred_target_selection": false,
+        "object_id": 120,
+        "origin_zone": "Exile",
+        "payment_mode": {
+          "type": "Auto"
+        }
+      },
+      "player": 0,
+      "selection": {
+        "current_legal_targets": [
+          {
+            "Player": 0
+          },
+          {
+            "Player": 1
+          }
+        ],
+        "current_slot": 0
+      },
+      "target_slots": [
+        {
+          "effect_detail": {
+            "type": "None"
+          },
+          "effect_kind": "DealDamage",
+          "legal_targets": [
+            {
+              "Player": 0
+            },
+            {
+              "Player": 1
+            }
+          ],
+          "optional": false
+        }
+      ]
+    },
+    "type": "TargetSelection"
+  },
+  "life": [
+    20,
+    20
+  ],
+  "library": 42,
+  "exile": [],
+  "stack": [
+    {
+      "controller": 0,
+      "id": 120,
+      "kind": {
+        "data": {
+          "actual_mana_spent": 0,
+          "card_id": 120,
+          "casting_variant": "Normal"
+        },
+        "type": "Spell"
+      },
+      "source_id": 120
+    }
+  ],
+  "spells_cast_this_turn": 0
+}
