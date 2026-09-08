@@ -1,0 +1,138 @@
+{
+  "server": {
+    "server_version": "0.77.0",
+    "build_commit": "61715b5",
+    "protocol_version": 67,
+    "mode": "Full",
+    "lobby_protocol_version": 7,
+    "wire_formats": [
+      "GzipEnvelopeV1"
+    ]
+  },
+  "state_revision": 5,
+  "viewer_interaction": {
+    "waitingForKind": {
+      "simultaneous": null,
+      "terminal": false,
+      "code": "sequence"
+    },
+    "authorizedSubmitters": [
+      0
+    ],
+    "canSubmit": true,
+    "autoPassRecommended": false,
+    "opportunities": [
+      {
+        "interactionId": "CWPRE1.0.5",
+        "response": {
+          "type": "schema",
+          "data": {
+            "spec": {
+              "type": "sequence",
+              "data": {
+                "min": 1,
+                "max": 1,
+                "unique": true,
+                "includeAll": false,
+                "engineValidated": false,
+                "escape": null,
+                "confirm": "explicit"
+              }
+            },
+            "candidates": [
+              {
+                "id": "CWPRE1.0.5.t0",
+                "surfaces": [
+                  {
+                    "type": "summary",
+                    "data": {
+                      "code": "candidate"
+                    }
+                  },
+                  {
+                    "type": "player",
+                    "data": {
+                      "role": "candidate",
+                      "index": null,
+                      "seat": 0
+                    }
+                  }
+                ],
+                "status": {
+                  "type": "available"
+                }
+              },
+              {
+                "id": "CWPRE1.0.5.t1",
+                "surfaces": [
+                  {
+                    "type": "summary",
+                    "data": {
+                      "code": "candidate"
+                    }
+                  },
+                  {
+                    "type": "player",
+                    "data": {
+                      "role": "candidate",
+                      "index": null,
+                      "seat": 1
+                    }
+                  }
+                ],
+                "status": {
+                  "type": "available"
+                }
+              }
+            ]
+          }
+        },
+        "surfaces": [
+          {
+            "type": "summary",
+            "data": {
+              "code": "decision"
+            }
+          },
+          {
+            "type": "selection",
+            "data": {
+              "intent": "damage",
+              "constraint": {
+                "type": "count",
+                "data": {
+                  "min": 1,
+                  "max": 1
+                }
+              },
+              "confirm": "explicit"
+            }
+          }
+        ],
+        "progress": {
+          "selected": 0,
+          "minimum": 1,
+          "maximum": 1,
+          "aggregate": null,
+          "confirmable": false
+        }
+      }
+    ],
+    "attachmentFans": {},
+    "attachmentViews": {},
+    "availability": {
+      "type": "inputRequired"
+    }
+  },
+  "submission": {
+    "interactionId": "CWPRE1.0.5",
+    "response": {
+      "type": "sequence",
+      "data": {
+        "choiceIds": [
+          "CWPRE1.0.5.t1"
+        ]
+      }
+    }
+  }
+}
