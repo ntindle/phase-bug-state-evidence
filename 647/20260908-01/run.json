@@ -1,0 +1,68 @@
+{
+ "issue": 647,
+ "run_id": "20260908-01",
+ "started_at": "2026-09-08T23:52:45",
+ "duration_s": 47.0,
+ "server": {
+  "server_version": "0.77.0",
+  "build_commit": "61715b5",
+  "protocol_version": 67,
+  "mode": "Full",
+  "binary_sha256": "a52293b754605baa63e4d987a5208902ec394868d49c4bfd86b3fd57f3267c6a",
+  "card_data_sha256": "698350d9b6323011a5b86a74a4d2ea54d13b4ed26a520579be7d044f0a3692e5",
+  "draft_pools_sha256": "56e030fdc74b2385759310de8564a58b8716035b2dccc0da709f37250cc2d3c7",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-08",
+  "source": "ServerHello + minisign verification against repo-pinned key (client/src-tauri/src/native_engine.rs SERVER_ARTIFACT_PUBLIC_KEY)"
+ },
+ "driver": {
+  "protocol_advertised": 67,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "67de186f23bcb0a3b42517166a0758f8227adb9f594fd778e88e747b6a4d7dd9",
+ "decks": {
+  "P0": [
+   [
+    "Asmoranomardicadaistinaculdacar",
+    4
+   ],
+   [
+    "Mountain",
+    28
+   ],
+   [
+    "Swamp",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "mulligans": "both kept 7",
+ "discards_this_game": 0,
+ "stats": {
+  "states_seen": 458,
+  "trigger_observations": 6,
+  "max_turn": 16,
+  "pre_turn": 14
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_observed": "passed",
+  "A3_no_cast_offered": "passed",
+  "A4_no_viewer_cast": "passed"
+ },
+ "notes": [],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Positive control (discard, then cast for {B/R}) not exercised in this run; verdict covers only the reported over-permissiveness.",
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 4x Asmoranomardicadaistinaculdacar + 28 Mountain + 28 Swamp | P1: 60 Island (draw-go) | both keep 7, no discards all game",
+ "contract_line": "With Asmo in hand at own main-phase priority and zero discards, CastSpell(Asmo) must never be offered (conditional {B/R} alt-cost gate)."
+}
