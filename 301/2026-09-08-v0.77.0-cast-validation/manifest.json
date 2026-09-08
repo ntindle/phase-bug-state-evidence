@@ -1,0 +1,69 @@
+{
+  "issue": 301,
+  "validated_at": "2026-09-08",
+  "verdict": "reproduced",
+  "server_version": "0.77.0",
+  "build_commit": "61715b5",
+  "protocol_version": 67,
+  "binary_sha256": "a52293b754605baa63e4d987a5208902ec394868d49c4bfd86b3fd57f3267c6a",
+  "card_data_sha256": "698350d9b6323011a5b86a74a4d2ea54d13b4ed26a520579be7d044f0a3692e5",
+  "draft_pools_sha256": "56e030fdc74b2385759310de8564a58b8716035b2dccc0da709f37250cc2d3c7",
+  "binary_signature_verified": true,
+  "setup": "Restore the published authoritative pre-activation envelope through v0.77.0 persisted-session restoration into an isolated temporary database, retaining the original game state; session interaction identity is rebound and RNG reseeded by the release restore path.",
+  "actions": [
+    "P0 ActivateAbility source_id=5 ability_index=0",
+    "P0 PassPriority",
+    "P1 PassPriority",
+    "P0 DecideOptionalEffect accept=true",
+    "P0 submits the exact available P1 candidate from the engine-issued sequence interaction"
+  ],
+  "ai_control": "Repeated from the published cast-offer snapshot with native seat 1 Medium AI; same target rejection and inconsistent Bolt zone.",
+  "negative_control": "Decline branch returns both cards to the bottom; no spell cast.",
+  "limitations": [
+    "Browser UI not exercised",
+    "Restoration uses release card-data rehydration and RNG reseeding",
+    "One decline trial does not establish statistical randomization quality"
+  ],
+  "files": [
+    {
+      "name": "pre-activation.json",
+      "sha256": "d049d28648a916a031bfc8d3080ed9700bf3614ebc4dad2bcd4cf004e2fac8e5",
+      "bytes": 778303
+    },
+    {
+      "name": "cast-offer.json",
+      "sha256": "a29b10d4f19e59ced318288ac8a2ee4495c29fce3dd52b1272ccc1565e7e0334",
+      "bytes": 850392
+    },
+    {
+      "name": "after-accept.json",
+      "sha256": "bbcda9e65d3f53420f2ffb70aa1928b1a7e6856b6d558996824f91682d5e86c8",
+      "bytes": 869348
+    },
+    {
+      "name": "after-target-rejection.json",
+      "sha256": "bbcda9e65d3f53420f2ffb70aa1928b1a7e6856b6d558996824f91682d5e86c8",
+      "bytes": 869348
+    },
+    {
+      "name": "target-submission.json",
+      "sha256": "abd964b002e48a94d2a61a2f92d6feb32f74b275f929b0621c5a71599742efa1",
+      "bytes": 3253
+    },
+    {
+      "name": "result.json",
+      "sha256": "f37751dc2bdad5728b481ca8261960c41ad123c94d47c13a55b9130c73f2a78c",
+      "bytes": 2935
+    },
+    {
+      "name": "ai-result.json",
+      "sha256": "f37751dc2bdad5728b481ca8261960c41ad123c94d47c13a55b9130c73f2a78c",
+      "bytes": 2935
+    },
+    {
+      "name": "evidence.zip",
+      "sha256": "1f1453fc62ebf83f4ad641c94ba786b09c422055331e041b4de8f6e69bd210fa",
+      "bytes": 989698
+    }
+  ]
+}
