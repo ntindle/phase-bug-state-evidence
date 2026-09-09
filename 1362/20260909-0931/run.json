@@ -1,0 +1,109 @@
+{
+ "issue": 1362,
+ "run_id": "20260909-0931",
+ "started_at": "2026-09-09T14:34:38",
+ "duration_s": 133.7,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + minisign-verify (repo-pinned key) of binary + signed data manifest; binary sha256 matches GitHub asset digest; data files sha256-verified against manifest; fresh pinned v0.78.0 server on 127.0.0.1:9374 (runs/20260909-0931)"
+ },
+ "server_run_dir": "runs/20260909-0931",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d5de66ba9a651cbd87a8e6a20b2243d943e2132860a45d85e7e767241bafc337",
+ "format_config": "CommanderDraft (canonical FormatConfig::commander_draft(); CR 903.13f: >=60 cards, no singleton; commander placed in command zone)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "kediss, emberclaw familiar",
+     4
+    ],
+    [
+     "forest",
+     28
+    ],
+    [
+     "mountain",
+     28
+    ]
+   ],
+   "commander": [
+    "zilortha, strength incarnate"
+   ]
+  },
+  "P1": [
+   [
+    "llanowar elves",
+    4
+   ],
+   [
+    "forest",
+    56
+   ]
+  ],
+  "P2": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trample_damage": "passed",
+  "A3_kediss_triggered": "passed",
+  "A4_fanout_correct": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre: zil_is_commander=True, life=[40, 40, 40]",
+  "P1 life 40 -> 34 (trample 6 = Zilortha power 7 - 1); blocking Elves left the battlefield",
+  "Kediss trigger observed on stack (source=Kediss, DamageEachPlayer effect; see wire log / mid_trigger_pending.json)",
+  "P2 life 40 -> 34 (fan-out 6); P0 unchanged at 40",
+  "post.json: stack empty, Zilortha+Kediss on P0 BF, phase=PostCombatMain",
+  "Attempt 1 (run 20260909-1362, v0.77.0/proto 67) died: P2's websocket hit keepalive ping timeouts and P1 never fielded an Elves blocker, so the DeclareAttackers setup gate never opened (turn 50, all life 40). Partial artifacts remain in evidence/1362/20260909-1362/ (not published).",
+  "Attempt 2 (this run, v0.78.0/proto 68): fresh scenario run; v0.78.0 released 2026-09-09, so the pin was advanced per the playbook (minisign-verify + signed data manifest + GitHub asset digest match)."
+ ],
+ "observations": {
+  "trigger_entry": "{\"id\": 182, \"source_id\": 57, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 57, \"ability\": {\"effect\": {\"type\": \"DamageEachPlayer\", \"amount\": {\"type\": \"Ref\", \"qty\": {\"type\": \"EventContextAmount\"}}, \"player_filter\": {\"type\": \"OpponentOtherThanTriggering\"}}, \"targets\": [], \"source_id\": 57, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 57, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Kediss, Emberclaw Familiar\", \"power\": 1, \"toughness\": 1, \"base_power\": 1, \"base_toughness\": 1, \"mana_value\": 2, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Creature\"], \"subtypes\": [\"Elemental\", \"Lizard\"], \"supertypes\": [\"Legendary\"], \"keywords\": [{\"Partner\": {\"type\": \"Generic\"}}], \"colors\": [\"Red\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 57, \"printed_ref\": {\"oracle_id\": \"d9c87cc2-943e-49b6-becc-748857549617\", \"face_name\": \"Kediss, Emberclaw Familiar\"}, \"is_token\": false, \"face_down\": false, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"DamageDone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"DamageEachPlayer\", \"amount\": {\"type\": \"Ref\", \"qty\": {\"type\": \"EventContextAmount\"}}, \"player_filter\": {\"type\": \"OpponentOtherThanTriggering\"}}, \"cost\": null, \"sub_ability\": null, \"duration\": null, \"descri",
+  "trigger_seen": true,
+  "pre_life": [
+   40,
+   40,
+   40
+  ],
+  "post_life": [
+   40,
+   34,
+   34
+  ],
+  "zil_power": 7,
+  "expected_trample": 6,
+  "p0_cmdr_act_types": [
+   "PassPriority",
+   "PlayLand"
+  ],
+  "cmdr_zone_seen": true,
+  "combat_done": false
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "4x Kediss deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Pinned card data prices Zilortha at {3}{R}{G} as a 7/3 (no P/T-setting ability parsed); the trample contract under test is unaffected."
+ ],
+ "setup_line": "P0: Zilortha (7/3 trample) commander + 4x Kediss + 28x Forest + 28x Mountain; P1: 4x Llanowar Elves + 56x Forest; P2: 60x Forest",
+ "contract_line": "Blocked commander with trample deals excess combat damage to a player -> Kediss triggers -> each other opponent takes that much"
+}
