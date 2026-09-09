@@ -1,0 +1,39 @@
+game TTT9IC; P0 seat=0 P1 seat=1
+P0 keeps (titania=True, looting=True, lands=3)
+P1 keeps 7
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 looting=0 titania_cast=False mesa_gy=False mesa_bf=False repl_waits=0
+[P1] interaction rtype=exactChoices spec=None n_choices=1 choices=[]
+[P0] interaction rtype=exactChoices spec=None n_choices=1 choices=[]
+[P1] interaction rtype=exactChoices spec=None n_choices=8 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=2 choices=[ // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=5 choices=[ // Forest // Forest // Forest // Mountain]
+[P0] interaction rtype=exactChoices spec=None n_choices=2 choices=[ // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=6 choices=[ // Forest // Forest // Mountain // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=10 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=7 choices=[ // Forest // Mountain // Mirage Mesa // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=11 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=5 choices=[ // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=8 choices=[ // Mountain // Mirage Mesa // Mirage Mesa // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=7 choices=[ // Faithless Looting // Faithless Looting // Forest // Forest // Forest // Mountain]
+P0 casts Faithless Looting (#1)
+[P0] interaction rtype=schema spec=select n_choices=8 choices=[Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argoth // Forest // Mirage Mesa // Mirage Mesa // Titania, Protector of Argoth // Mirage Mesa]
+P0 discards ['mirage mesa', 'mirage mesa']
+P1 discards ['forest', 'forest']
+[P0] Titania in hand, Mesa binned, waiting on mana: untapped_lands=3 forests=3
+[P1] interaction rtype=exactChoices spec=None n_choices=6 choices=[ // Forest // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=10 choices=[ // Mirage Mesa // Forest // Mountain // Faithless Looting // Faithless Looting // Forest // Forest // Forest // Mountain]
+[P0] interaction rtype=exactChoices spec=None n_choices=16 choices=[ // Faithless Looting // Faithless Looting // Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argo]
+P0 casts Titania, Protector of Argoth
+[P0] interaction rtype=schema spec=sequence n_choices=2 choices=[Mirage Mesa // Mirage Mesa]
+[P0] ETB target: selecting Mirage Mesa
+PRE exported: Titania BF, Mesa gy=True
+P0 NamedChoice wait rev=152 actionable=True n_legal=5 n_vi_choices=5
+[P0] interaction rtype=schema spec=text n_choices=5 choices=[White // Blue // Black // Red // Green]
+[P0] color choice: answering White (candidates=5)
+POST exported (Mesa on battlefield, stack settled)
+post exported; finishing
