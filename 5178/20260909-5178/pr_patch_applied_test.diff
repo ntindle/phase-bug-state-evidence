@@ -1,0 +1,24 @@
+diff --git a/client/src/services/__tests__/serverDetection.test.ts b/client/src/services/__tests__/serverDetection.test.ts
+index e67230f..e78432e 100644
+--- a/client/src/services/__tests__/serverDetection.test.ts
++++ b/client/src/services/__tests__/serverDetection.test.ts
+@@ -251,3 +251,19 @@ it("exempts only a confirmed native LAN route from HTTPS mixed content", () => {
+     Object.defineProperty(window, "location", { configurable: true, value: originalLocation });
+   }
+ });
++
++describe("parseJoinCode — bracketed IPv6 host", () => {
++  it("does not corrupt a bracketed IPv6 host that has no port", () => {
++    // `[::1]` ends in `]`; its last colon is inside the address. Splitting there
++    // produced a broken host `[:` and a malformed `wss://[::1/ws`.
++    const r = parseJoinCode("ABC123@[::1]");
++    expect(r.code).toBe("ABC123");
++    expect(r.serverAddress).toBe("wss://[::1]/ws");
++  });
++
++  it("still splits a bracketed IPv6 host that DOES carry a port", () => {
++    expect(parseJoinCode("ABC123@[::1]:9000").serverAddress).toBe(
++      "wss://[::1]:9000/ws",
++    );
++  });
++});
