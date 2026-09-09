@@ -1,0 +1,31 @@
+game LMU506; P0 seat=0 P1 seat=1
+P0 keeps (kaalia=True, angel=True, lands=5)
+P1 keeps 7
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 kaalia_cast=False attacked=False trigger=False may=None sel=False entered=False repl_waits=0
+[P0] interaction rtype=exactChoices spec=None n_choices=2 choices=[keep // mulligan]
+[P0] interaction rtype=exactChoices spec=None n_choices=1 choices=[]
+[P0] interaction rtype=exactChoices spec=None n_choices=6 choices=[ // Mountain // Plains // Swamp // Mountain // Swamp]
+[P0] Kaalia in hand, waiting on mana: untapped=0 M=False P=False S=False
+[P0] interaction rtype=exactChoices spec=None n_choices=2 choices=[ // Mountain]
+[P0] interaction rtype=exactChoices spec=None n_choices=7 choices=[ // Plains // Swamp // Mountain // Plains // Swamp // Mountain]
+[P0] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Mountain // Plains]
+[P0] interaction rtype=exactChoices spec=None n_choices=8 choices=[ // Plains // Swamp // Mountain // Plains // Swamp // Mountain // Plains]
+[P0] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Mountain // Plains // Plains]
+[P0] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Swamp // Mountain // Plains // Swamp // Swamp // Mountain // Plains // Plains]
+[P0] interaction rtype=exactChoices spec=None n_choices=7 choices=[ // Kaalia of the Vast // Kaalia of the Vast // Mountain // Plains // Plains // Swamp]
+P0 casts Kaalia of the Vast
+[P0] interaction rtype=exactChoices spec=None n_choices=5 choices=[ // Mountain // Plains // Plains // Swamp]
+[P0] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Mountain // Plains // Swamp // Swamp // Mountain // Plains // Plains // Swamp]
+[P0] interaction rtype=exactChoices spec=None n_choices=10 choices=[ // Serra Angel // Serra Angel // Serra Angel // Serra Angel // Mountain // Plains // Plains // Swamp // Mountain]
+[P0] interaction rtype=exactChoices spec=None n_choices=6 choices=[ // Mountain // Plains // Plains // Swamp // Mountain]
+[P0] interaction rtype=schema spec=relations n_choices=2 choices=[Kaalia of the Vast // ]
+PRE exported: Kaalia BF ready, Angel in hand=True, P1 life=20
+P0 attacks with Kaalia (oid 36)
+Kaalia attack trigger observed on stack
+[P0] interaction rtype=exactChoices spec=None n_choices=2 choices=[false // true]
+[P0] Kaalia may-choice: answering YES ('true')
+[P0] interaction rtype=schema spec=select n_choices=2 choices=[Serra Angel // Serra Angel]
+[P0] Kaalia put-choice: selecting Serra Angel
+Serra Angel entered the battlefield (tapped=True)
+POST exported (Angel on battlefield, stack settled)
+post exported; finishing
