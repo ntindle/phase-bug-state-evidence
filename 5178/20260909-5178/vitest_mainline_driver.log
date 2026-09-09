@@ -1,0 +1,79 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-mainline/client[39m
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mdoes not corrupt a bracketed IPv6 host that has no port
+[22m[39mOBSERVED mainline-case-no-port {"code":"ABC123","serverAddress":"wss://[::1/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mstill splits a bracketed IPv6 host that DOES carry a port
+[22m[39mOBSERVED mainline-case-with-port {"code":"ABC123","serverAddress":"wss://[::1]:9000/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mfull IPv6 literal without port is not corrupted
+[22m[39mOBSERVED mainline-case-full-ipv6 {"code":"ABC123","serverAddress":"wss://[2001:db8::1/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: plain hostname with port still works
+[22m[39mOBSERVED control-hostname-port {"code":"ABC123","serverAddress":"wss://play.example.com:9374/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: localhost with port still works
+[22m[39mOBSERVED control-localhost-port {"code":"ABC123","serverAddress":"ws://localhost:9374/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: plain hostname without port still works
+[22m[39mOBSERVED control-hostname-noport {"code":"ABC123","serverAddress":"wss://play.example.com/ws"}
+
+ [31m❯[39m src/services/__tests__/joincode-5178.driver.test.ts [2m([22m[2m6 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 17[2mms[22m[39m
+[31m     [31m×[31m does not corrupt a bracketed IPv6 host that has no port[39m[32m 11[2mms[22m[39m
+     [32m✓[39m still splits a bracketed IPv6 host that DOES carry a port[32m 1[2mms[22m[39m
+[31m     [31m×[31m full IPv6 literal without port is not corrupted[39m[32m 1[2mms[22m[39m
+     [32m✓[39m control: plain hostname with port still works[32m 1[2mms[22m[39m
+     [32m✓[39m control: localhost with port still works[32m 0[2mms[22m[39m
+     [32m✓[39m control: plain hostname without port still works[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/joincode-5178.driver.test.ts[2m > [22mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22mdoes not corrupt a bracketed IPv6 host that has no port
+[31m[1mAssertionError[22m: expected 'wss://[::1/ws' to be 'wss://[::1]/ws' // Object.is equality[39m
+
+Expected: [32m"wss://[::1[7m][27m/ws"[39m
+Received: [31m"wss://[::1/ws"[39m
+
+[36m [2m❯[22m src/services/__tests__/joincode-5178.driver.test.ts:[2m11:29[22m[39m
+    [90m  9|[39m     console[33m.[39m[34mlog[39m([32m"OBSERVED mainline-case-no-port"[39m[33m,[39m [33mJSON[39m[33m.[39m[34mstringify[39m(r))[33m;[39m
+    [90m 10|[39m     [34mexpect[39m(r[33m.[39mcode)[33m.[39m[34mtoBe[39m([32m"ABC123"[39m)[33m;[39m
+    [90m 11|[39m     [34mexpect[39m(r[33m.[39mserverAddress)[33m.[39m[34mtoBe[39m([32m"wss://[::1]/ws"[39m)[33m;[39m
+    [90m   |[39m                             [31m^[39m
+    [90m 12|[39m   })[33m;[39m
+    [90m 13|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/joincode-5178.driver.test.ts[2m > [22mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22mfull IPv6 literal without port is not corrupted
+[31m[1mAssertionError[22m: expected 'wss://[2001:db8::1/ws' to be 'wss://[2001:db8::1]/ws' // Object.is equality[39m
+
+Expected: [32m"wss://[2001:db8::1[7m][27m/ws"[39m
+Received: [31m"wss://[2001:db8::1/ws"[39m
+
+[36m [2m❯[22m src/services/__tests__/joincode-5178.driver.test.ts:[2m23:29[22m[39m
+    [90m 21|[39m     [35mconst[39m r [33m=[39m [34mparseJoinCode[39m([32m"ABC123@[2001:db8::1]"[39m)[33m;[39m
+    [90m 22|[39m     console[33m.[39m[34mlog[39m([32m"OBSERVED mainline-case-full-ipv6"[39m[33m,[39m [33mJSON[39m[33m.[39m[34mstringify[39m(r))[33m;[39m
+    [90m 23|[39m     [34mexpect[39m(r[33m.[39mserverAddress)[33m.[39m[34mtoBe[39m([32m"wss://[2001:db8::1]/ws"[39m)[33m;[39m
+    [90m   |[39m                             [31m^[39m
+    [90m 24|[39m   })[33m;[39m
+    [90m 25|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 23:44:54
+[2m   Duration [22m 1.67s[2m (transform 843ms, setup 203ms, import 977ms, tests 17ms, environment 266ms)[22m
+
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-mainline/client[39m
+
+ [32m✓[39m src/services/__tests__/serverDetection.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m26 passed[39m[22m[90m (26)[39m
+[2m   Start at [22m 23:44:56
+[2m   Duration [22m 1.83s[2m (transform 961ms, setup 205ms, import 1.14s, tests 15ms, environment 270ms)[22m
+
