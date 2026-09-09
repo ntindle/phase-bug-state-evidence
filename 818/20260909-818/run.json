@@ -1,0 +1,96 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sac_offered": "passed",
+  "A3_sac_resolves": "passed",
+  "A4_triggers": "failed",
+  "A5_no_strand": "not-run"
+ },
+ "contract_line": "P1 attacks with all three; P0 blocks Chrysalis->Rootwalla, Infiltrator->Bushwhacker, Spawn->Percussionist; P0 saccing Spawn for {C} during DeclareBlockers",
+ "decks": {
+  "P0": [
+   [
+    "Writhing Chrysalis",
+    4
+   ],
+   [
+    "Gixian Infiltrator",
+    4
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Forest",
+    16
+   ],
+   [
+    "Mountain",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Clockwork Percussionist",
+    4
+   ],
+   [
+    "Goblin Bushwhacker",
+    4
+   ],
+   [
+    "Blazing Rootwalla",
+    4
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "driver": {
+  "client": "driver/client.py",
+  "protocol_advertised": 67
+ },
+ "duration_s": 264.2,
+ "issue": 818,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Report's 'Human Soldier' attacker represented by Blazing Rootwalla (no such card in pinned card-data.json)."
+ ],
+ "notes": [
+  "setup complete at turn 50; game TM6YDM",
+  "A1 recomputed from authoritative pre.json combat.blocker_to_attacker: {Chrysalis->Rootwalla, Infiltrator->Bushwhacker, Spawn->Percussionist} exactly as reported (live check read wrong fields; driver fixed post-run)",
+  "A2: engine advertised ActivateAbility on the blocking Eldrazi Spawn (object 134) during DeclareBlockers with P0 priority",
+  "A3: activation accepted (server log ActivateAbility event_count=4); spawn left the battlefield (2->1), {C} added to pool (0->1)",
+  "A4 FAILED as a SEPARATE observation, not the reported bug: the sac created 6 triggers (4x Infiltrator + 2x Chrysalis) which were ordered via OrderTriggers and placed on the stack, but the game then stalled - P1 passed priority and the engine emitted no further state updates for 120s; post.json shows the 6 triggers still on the stack with P0 holding priority. Candidate for a separate issue; it did not affect the reported sac action itself.",
+  "A5 not reached due to the post-sac stall"
+ ],
+ "restoration": {
+  "method": "No persisted-session restore was used or tested. pre.json and post.json are authoritative state exports obtained through Player 0's session in single-user mode (ExportAuthoritativeState, PlayerId(0)). Export envelopes were preserved verbatim (data.state is a JSON string parsed once to the {state, precast_shortcut_runtime} envelope). No WebSocket import path exists or was attempted; reproducibility is via the recorded decks and the driver actions in scenario_818.py, not via state import.",
+  "post_export_revision": "DeclareBlockers, post-sac, 6 triggers on stack, P0 priority",
+  "pre_export_revision": "DeclareBlockers, blockers declared, P0 priority, pre-sac"
+ },
+ "run_id": "20260909-818",
+ "scenario_note": "sha256 above is the exact driver that executed. A1 was recomputed offline from pre.json after the run because the live A1 check read object-level 'blocking' fields (always empty) instead of state.combat.blocker_to_attacker; scenario_818.py in evidence carries the fixed check.",
+ "scenario_sha256": "04dcfd175866a589fe9a33cf98cbf7e8b4b938d438c524d1d0f278bb452117e7",
+ "server": {
+  "binary_sha256": "a52293b754605baa63e4d987a5208902ec394868d49c4bfd86b3fd57f3267c6a",
+  "build_commit": "61715b5",
+  "card_data_sha256": "698350d9b6323011a5b86a74a4d2ea54d13b4ed26a520579be7d044f0a3692e5",
+  "draft_pools_sha256": "56e030fdc74b2385759310de8564a58b8716035b2dccc0da709f37250cc2d3c7",
+  "mode": "Full",
+  "observed_at": "2026-09-09",
+  "protocol_version": 67,
+  "server_version": "0.77.0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "source": "ServerHello + sha256 match of pinned verified artifacts; server process shared with run 20260909-10 (already listening on 9374)"
+ },
+ "server_run_dir": "runs/20260909-10",
+ "setup_line": "P0: 4x Writhing Chrysalis + 4x Gixian Infiltrator + lands; P1: 4x Clockwork Percussionist + 4x Goblin Bushwhacker + 4x Blazing Rootwalla + 48x Mountain",
+ "started_at": "2026-09-09T07:30:41",
+ "stats": {},
+ "verdict": "not-reproduced"
+}
