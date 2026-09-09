@@ -1,0 +1,298 @@
+{
+ "issue": 5230,
+ "run_id": "20260909-5230b",
+ "started_at": "2026-09-09T21:55:22",
+ "duration_s": 35.7,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9375 for run 20260909-5230b (re-run: first attempt 20260909-5230 reached turn 12 with 6 untapped Forests vs {6} tax, so the can't-pay branch was not genuine; this run adds a PreCombatMain mana drain)"
+ },
+ "server_run_dir": "runs/20260909-5230b",
+ "server_port": 9375,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0b2bd952e6aeed47ed4e8b601eb6a7b9bbe28e1c6e9fa6d26ac1afbb04a3f682",
+ "decks": {
+  "P0": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Ghostly Prison",
+    8
+   ],
+   [
+    "Disrupt Decorum",
+    12
+   ],
+   [
+    "Plains",
+    20
+   ],
+   [
+    "Mountain",
+    20
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_tax_prompted": "passed",
+  "A3_only_decline": "passed",
+  "A4_decline_resolves": "passed",
+  "A5_undeclare": "passed",
+  "A6_control_pay": "passed",
+  "A7_no_softlock": "passed",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "pre: P1 prison=1, P0 ready bears=3, goad markers on P0 objects=[12, 19, 35], P1 life=20",
+  "undeclare after decline: ACCEPTED (game advanced past DeclareAttackers)",
+  "control tax resolved (attack turn 11); P1 life now 18",
+  "2 CombatTaxPayment wait(s) for P0, all with actionable submissions",
+  "can't-pay: 1 tax wait(s), accept=true never offered (untapped Forests [5])",
+  "decline submitted on turn(s) [9]; decision left (no orphaned CombatTaxPayment)",
+  "empty DeclareAttackers after decline: ACCEPTED (undeclare works; #4893 signature absent)",
+  "control: paid {2} for goaded attacker; P1 life 20 -> 18",
+  "post.json: stack empty, wf=Priority, game proceeding (turn=11, phase=PostCombatMain)",
+  "2 CombatTaxPayment waits; acting player had an actionable submission every time; no loop",
+  "verdict blocked: report has no testable premise (no board, tax card, mana situation, or branch; reporter never answered the maintainer's 2026-07-19 questions). Generic goaded-attacker CombatTaxPayment path on v0.78.0 exercised."
+ ],
+ "observations": {
+  "tax_waits": [
+   {
+    "turn": 9,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "wf_data": {
+     "player": 0,
+     "context": {
+      "type": "Attacking"
+     },
+     "total_cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 6
+     },
+     "per_creature": [
+      [
+       12,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ],
+      [
+       19,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ],
+      [
+       35,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ]
+     ],
+     "pending": {
+      "type": "Attack",
+      "data": {
+       "attacks": [
+        [
+         {
+          "object_id": 12,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ],
+        [
+         {
+          "object_id": 19,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ],
+        [
+         {
+          "object_id": 35,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ]
+       ],
+       "bands": []
+      }
+     }
+    },
+    "action_types": [
+     "PayCombatTax"
+    ],
+    "n_actions": 1,
+    "accept_true_offered": false,
+    "accept_false_offered": true,
+    "mode": "cantpay",
+    "untapped_forests": 5
+   },
+   {
+    "turn": 11,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "wf_data": {
+     "player": 0,
+     "context": {
+      "type": "Attacking"
+     },
+     "total_cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "per_creature": [
+      [
+       12,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ]
+     ],
+     "pending": {
+      "type": "Attack",
+      "data": {
+       "attacks": [
+        [
+         {
+          "object_id": 12,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ]
+       ],
+       "bands": []
+      }
+     }
+    },
+    "action_types": [
+     "PayCombatTax"
+    ],
+    "n_actions": 2,
+    "accept_true_offered": true,
+    "accept_false_offered": true,
+    "mode": "control",
+    "untapped_forests": 6
+   }
+  ],
+  "declare_waits": [
+   {
+    "turn": 5,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true,
+    "rejected": false
+   },
+   {
+    "turn": 7,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true,
+    "rejected": false
+   },
+   {
+    "turn": 9,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     12,
+     19,
+     35
+    ],
+    "submitted": true,
+    "rejected": false
+   },
+   {
+    "turn": 9,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true,
+    "rejected": false
+   },
+   {
+    "turn": 11,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     12
+    ],
+    "submitted": true,
+    "rejected": false
+   }
+  ],
+  "rejections": [],
+  "stall_observed": false,
+  "loop_observed": false,
+  "declines_this_turn": {
+   "9": 1
+  },
+  "undeclare_attempts": 1,
+  "undeclare_pending": null,
+  "life_pre": 20,
+  "life_post": 18,
+  "life_after_control": 18,
+  "goad_markers_at_pre": [
+   12,
+   19,
+   35
+  ],
+  "phase": "control"
+ },
+ "verdict": "blocked",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grizzly Bears / 8x Ghostly Prison / 8x Disrupt Decorum deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The report names no tax card and no goad source; Ghostly Prison ({2} per attacker) and Disrupt Decorum are the driver's chosen representatives for the #4893 goad/no-mana axis.",
+  "Not tested on the original 2026-07-07 build v0.17.0; verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 lands, cast Bears; PreCombatMain mana drain on the can't-pay turn so untapped < {4}); P1: 8x Ghostly Prison + 12x Disrupt Decorum + 20x Plains + 20x Mountain (Prison ~T4, Decorum goads P0's Bears, never attacks)",
+ "contract_line": "CombatTaxPayment surfaces when attacking a Prison controller; a goaded attacker that cannot pay is offered only decline; declining does not strand the game; undeclare outcome recorded; a goaded attacker that can pay pays and the attack proceeds"
+}
