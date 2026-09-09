@@ -1,0 +1,124 @@
+{
+ "issue": 4509,
+ "run_id": "20260909-4509",
+ "started_at": "2026-09-09T18:48:55",
+ "duration_s": 35.6,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello probed live (0.78.0/4de7224/proto 68/Full) + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 20260909-4509"
+ },
+ "server_run_dir": "runs/20260909-4509",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "6917369f9e87c31bf9ee228c304008b08c1fb7e9311ccada02ec0925f944c326",
+ "decks": {
+  "P0": [
+   [
+    "lost in thought",
+    12
+   ],
+   [
+    "thought scour",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "llanowar elves",
+    12
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_restricted": "failed",
+  "A3_activation_restricted": "failed",
+  "A4_escape_offered": "failed",
+  "A5_escape_effective": "not-run",
+  "A6_control_binding": "passed"
+ },
+ "notes": [
+  "rejections=0 target_prompts=3 escape_offered=False elves_attacked=True",
+  "A1: aura_oid=37, enchant_target=112 (llanowar elves, zone=Battlefield, ctrl=1), P1 gy=4",
+  "A2: enchanted Elves attacked (P0 life 20->19); cant-attack restriction dropped",
+  "A3: enchanted Elves' {T}: Add {G} was OFFERED and the submitted ActivateAbility was APPLIED by the engine (server log 2026-09-09T18:49:19.157Z: action applied action_type=\"ActivateAbility\" event_count=4, zero rejections); the cant-be-activated restriction is dropped. Driver's pool_after read {} because the game had already advanced to DeclareAttackers (mana empties on phase change) - evaluator criterion corrected post-run from the server log; see server_excerpts.log.",
+  "A4: no exile-3-to-ignore escape action offered at P1 priority with gy>=3 (scanned action types: ['ActivateAbility', 'PassPriority', 'TapLandForMana'])",
+  "A5: escape payment path not driven (A4 failed)",
+  "A6: unenchanted Bear attacked normally (P0 life 19->17)",
+  "Lost in Thought's combined restriction/escape clause is dropped end-to-end on this build; see assertion notes"
+ ],
+ "observations": {
+  "stage": "control",
+  "scours_cast": 2,
+  "aura_cast": true,
+  "enchant_target_oid": 112,
+  "pending_target": null,
+  "aura_object_logged": true,
+  "attack1_submitted": true,
+  "attack1_rejected": false,
+  "attack1_accepted": true,
+  "attack1_silent_ticks": 0,
+  "elves_attacked": true,
+  "p0_life_pre_attack": 20,
+  "p0_life_post_attack": 19,
+  "activation_attempted": true,
+  "activation_offered": true,
+  "activation_rejected": false,
+  "pool_before_activation": {},
+  "pool_after_activation": {},
+  "escape_offered": false,
+  "escape_scan_done": true,
+  "p1_action_types": [
+   "ActivateAbility",
+   "PassPriority",
+   "TapLandForMana"
+  ],
+  "bear_attack_accepted": true,
+  "p0_life_pre_bear": 19,
+  "p0_life_post_bear": 17,
+  "rejections": [],
+  "target_prompts_seen": 3,
+  "attack1_turn": 7,
+  "activation_settle_ticks": 10,
+  "bear_submitted": true,
+  "bear_oid": 68,
+  "bear_turn": 11
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x spell/creature density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Escape payment (A5) not driven: no escape action was offered, so there was nothing to pay."
+ ],
+ "setup_line": "P0: 12x lost in thought + 12x thought scour + 36x island; P1: 12x llanowar elves + 12x grizzly bears + 36x forest",
+ "contract_line": "Cast Lost in Thought on P1's Llanowar Elves with >=3 cards in P1's graveyard; assert the enchanted creature cannot attack (A2) and cannot activate abilities (A3), that an exile-3 escape is offered (A4), and that an unenchanted Bear attacks normally (A6)",
+ "driver_notes": [
+  "A3 first evaluated 'passed' on pool_after={}; the pool was read ~1.5s after the attempt, by which time the game had advanced to DeclareAttackers (mana empties on phase change). Server log shows the ActivateAbility was applied (event_count=4, no rejection), so the activation succeeded and A3 is failed. Corrected post-run from server_excerpts.log; scenario file patched to read the pool before phase advance on future runs.",
+  "Aura attachment works (attached_to={'data':112,'type':'Object'}); the aura's static_definitions=[] with unimplemented_mechanics=['Effect: static_structure'] - the combined restriction/escape line is unimplemented at runtime, matching the pinned card-data.json parse.",
+  "Thought Scour / Lost in Thought targeting uses schema sequence prompts; creature candidates resolve via surfaces[].data.reference, player candidates via surfaces[].data.seat."
+ ]
+}
