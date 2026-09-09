@@ -1,1 +1,60 @@
-{"browser":{"binary":"/opt/meta-chromium/chrome","mode":"not used; pure viewmodel-function test (no DOM)","version":"Chrome/152.0.7977.64"},"client":{"mainline_commit":"2ce96cb96551051fffa97caf3085cb19d8d2daf0","mainline_commit_date":"2026-09-09T22:50:44Z","pr_base":"main","pr_branch_deleted_from_remote":false,"pr_head":"39b86ba50e28d365a9732e223c7622c5293e269e","pr_head_note":"full sha 39b86ba50e28d365a9732e223c7622c5293e269e, jeffrey701/phase fix/costlabel-choice-guard","pr_merged":false,"pr_review_state":"deferred by maintainer intake policy (pr-review-deferred, 2026-07-19/2026-07-23/2026-07-30)"},"description":"UI-subsystem test: client additionalCostChoices Choice branch crash on a short/malformed engine payload (phase-rs/phase#5175, unmerged fix PR). Real additionalCostChoices from current mainline and from a mainline+PR-diff variant, driven by the PR's own new vitest block in headless node (no DOM involved).","driver_notes":["No engine test applies: the defect is pure client deserialization of an engine payload. The engine side of this issue (whether a short payload can occur) is out of scope; the client must degrade, not crash.","Mainline reset --hard to 2ce96cb (fetched this run, 2026-09-09 22:50:44 UTC); the unguarded `case \"Choice\"` is still present there.","The PR's published diff is byte-identical in the applied lines: `git apply` failed on context drift against the current tree (test hunk anchored at old line 277), so the guard and test block were inserted manually; pr_patch_applied_*.diff preserve exactly what ran.","Repo pins pnpm@9.15.9; invoked the repo-pinned vitest 4.1.0 binary directly (node_modules/.bin/vitest), coverage disabled (--coverage.enabled=false) so the filtered runs pass the coverage gate.","Mainline full-file run: 33/34 pass, the only failure is the new short-payload test — no pre-existing failures in costLabel.test.ts."],"limitations":["Client-subsystem test only: no engine game session; whether the engine can actually emit a short Choice payload was not exercised.","Only the Choice branch exercised; other additionalCostChoices branches (Kicker guard) were not re-driven beyond the existing suite.","No DOM/browser involved: the crash is in a pure viewmodel function, and the PR's own verification is vitest.","The PR-head variant applies the PR's published patch to current mainline rather than the literal PR head commit (git fetch of the fork head infeasible from the VM); the applied lines are byte-identical to the published diff, preserved as pr_patch_applied_*.diff."],"publication":{},"release_check":{"advanced":false,"engine_exercised":false,"latest_stable":"v0.78.0","note":"No release advance since the v0.78.0 pin. phase-server was not started for this client-only run; pinned v0.78.0 artifacts verified present under server/releases/."},"result":"reproduced on current mainline (2ce96cb): additionalCostChoices throws TypeError: Cannot read properties of undefined (reading 'type') on a 1-length Choice payload; well-formed 2-cost payload labels both options. The PR variant (guard applied) does not throw, falls back to \"Decline\", and passes the full costLabel suite 34/34 (mainline: 33/34, only the new bug test failing).","run_id":"20260909-5175","scope":"phase-rs/phase#5175 (open, unmerged): guard additionalCostChoices Choice branch against a short engine payload. Real additionalCostChoices from current mainline vs the PR's guard applied to a mainline copy, driven by the PR's own new vitest describe block (well-formed 2-cost Choice labels both options; 1-cost Choice payload).","underlying_pr":{"base":"05a4c9f6a0d93ac5c0b283a002869db7c00574ea","head":"39b86ba50e28d365a9732e223c7622c5293e269e","merged":false,"number":5175,"state":"open","title":"fix(client): guard additionalCostChoices Choice branch against a short payload"},"validated_at":"2026-09-09","validated_version":"client-mainline@2ce96cb","verdict":"reproduced"}
+{
+ "browser": {
+  "binary": "/opt/meta-chromium/chrome",
+  "mode": "not used; pure viewmodel-function test (no DOM)",
+  "version": "Chrome/152.0.7977.64"
+ },
+ "client": {
+  "mainline_commit": "2ce96cb96551051fffa97caf3085cb19d8d2daf0",
+  "mainline_commit_date": "2026-09-09T22:50:44Z",
+  "pr_base": "main",
+  "pr_branch_deleted_from_remote": false,
+  "pr_head": "39b86ba50e28d365a9732e223c7622c5293e269e",
+  "pr_head_note": "full sha 39b86ba50e28d365a9732e223c7622c5293e269e, jeffrey701/phase fix/costlabel-choice-guard",
+  "pr_merged": false,
+  "pr_review_state": "deferred by maintainer intake policy (pr-review-deferred, 2026-07-19/2026-07-23/2026-07-30)"
+ },
+ "description": "UI-subsystem test: client additionalCostChoices Choice branch crash on a short/malformed engine payload (phase-rs/phase#5175, unmerged fix PR). Real additionalCostChoices from current mainline and from a mainline+PR-diff variant, driven by the PR's own new vitest block in headless node (no DOM involved).",
+ "driver_notes": [
+  "No engine test applies: the defect is pure client deserialization of an engine payload. The engine side of this issue (whether a short payload can occur) is out of scope; the client must degrade, not crash.",
+  "Mainline reset --hard to 2ce96cb (fetched this run, 2026-09-09 22:50:44 UTC); the unguarded `case \"Choice\"` is still present there.",
+  "The PR's published diff is byte-identical in the applied lines: `git apply` failed on context drift against the current tree (test hunk anchored at old line 277), so the guard and test block were inserted manually; pr_patch_applied_*.diff preserve exactly what ran.",
+  "Repo pins pnpm@9.15.9; invoked the repo-pinned vitest 4.1.0 binary directly (node_modules/.bin/vitest), coverage disabled (--coverage.enabled=false) so the filtered runs pass the coverage gate.",
+  "Mainline full-file run: 33/34 pass, the only failure is the new short-payload test \u2014 no pre-existing failures in costLabel.test.ts."
+ ],
+ "limitations": [
+  "Client-subsystem test only: no engine game session; whether the engine can actually emit a short Choice payload was not exercised.",
+  "Only the Choice branch exercised; other additionalCostChoices branches (Kicker guard) were not re-driven beyond the existing suite.",
+  "No DOM/browser involved: the crash is in a pure viewmodel function, and the PR's own verification is vitest.",
+  "The PR-head variant applies the PR's published patch to current mainline rather than the literal PR head commit (git fetch of the fork head infeasible from the VM); the applied lines are byte-identical to the published diff, preserved as pr_patch_applied_*.diff."
+ ],
+ "publication": {
+  "status": "published",
+  "comment_url": "https://github.com/phase-rs/phase/pull/5175#issuecomment-5610054092",
+  "comment_id": 5610054092,
+  "evidence_commit": "4124e1c3f3e733cbd2aee4d5ea390ad5597bf8c0",
+  "evidence_dir": "5175/20260909-5175",
+  "verified_at": "2026-09-09",
+  "verification_notes": "2026-09-09 remote verification complete: all 10 files in manifest downloaded from commit-pinned raw URLs (commit 4124e1c3f3e733cbd2aee4d5ea390ad5597bf8c0), SHA-256 matched the signed manifest for every file; run.json and client_observations.json parsed; PNG readable (1100x980). Comment re-fetched: contains evidence marker, verdict, and 9 commit-pinned links."
+ },
+ "release_check": {
+  "advanced": false,
+  "engine_exercised": false,
+  "latest_stable": "v0.78.0",
+  "note": "No release advance since the v0.78.0 pin. phase-server was not started for this client-only run; pinned v0.78.0 artifacts verified present under server/releases/."
+ },
+ "result": "reproduced on current mainline (2ce96cb): additionalCostChoices throws TypeError: Cannot read properties of undefined (reading 'type') on a 1-length Choice payload; well-formed 2-cost payload labels both options. The PR variant (guard applied) does not throw, falls back to \"Decline\", and passes the full costLabel suite 34/34 (mainline: 33/34, only the new bug test failing).",
+ "run_id": "20260909-5175",
+ "scope": "phase-rs/phase#5175 (open, unmerged): guard additionalCostChoices Choice branch against a short engine payload. Real additionalCostChoices from current mainline vs the PR's guard applied to a mainline copy, driven by the PR's own new vitest describe block (well-formed 2-cost Choice labels both options; 1-cost Choice payload).",
+ "underlying_pr": {
+  "base": "05a4c9f6a0d93ac5c0b283a002869db7c00574ea",
+  "head": "39b86ba50e28d365a9732e223c7622c5293e269e",
+  "merged": false,
+  "number": 5175,
+  "state": "open",
+  "title": "fix(client): guard additionalCostChoices Choice branch against a short payload"
+ },
+ "validated_at": "2026-09-09",
+ "validated_version": "client-mainline@2ce96cb",
+ "verdict": "reproduced"
+}
