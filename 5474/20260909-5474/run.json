@@ -1,0 +1,296 @@
+{
+ "issue": 5474,
+ "sibling_issue": 5487,
+ "run_id": "20260909-5474",
+ "started_at": "2026-09-09T22:21:48",
+ "duration_s": 48.1,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello probed live (0.78.0/4de7224/proto 68/Full) + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9375 for run 20260909-5474"
+ },
+ "server_run_dir": "runs/20260909-5474",
+ "server_port": 9375,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "6431d757d2df384c3de6546a8f5695c7f5c077d920dc163c90a503e5ec90b483",
+ "decks": {
+  "G1P0": [
+   [
+    "tony stark",
+    12
+   ],
+   [
+    "island",
+    24
+   ],
+   [
+    "mountain",
+    24
+   ]
+  ],
+  "G1P1": [
+   [
+    "forest",
+    60
+   ]
+  ],
+  "G2P0": [
+   [
+    "tergrid, god of fright",
+    12
+   ],
+   [
+    "swamp",
+    48
+   ]
+  ],
+  "G2P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_modal_offered": "passed",
+  "A3_choice_accepted": "passed",
+  "A4_front_completes": "passed",
+  "A5_back_reachable": "failed",
+  "A6_cleanup": "passed",
+  "B1_tergrid_setup": "passed",
+  "B2_tergrid_offered": "passed",
+  "B3_tergrid_accepted": "passed",
+  "B4_tergrid_completes": "passed"
+ },
+ "notes": [
+  "rejections=1 face1_opps=1 face2_opps=2 g2_opps=1 back_probe_accepted=False",
+  "A1: active=0 phase=PreCombatMain tony_in_hand=True untapped_islands=1",
+  "A2: ModalFaceChoice wait seen; faces advertised=['front']; canSubmit=True; chooseModalFace actions=[{'back_face': False}]; actionable=True",
+  "A3: front-face choice accepted; cast resolved to Tony Stark on the battlefield",
+  "A4: tony on P0 BF=[38]; stack_empty=True; life=20/20; turn=5 phase=PreCombatMain",
+  "A5: back face NEVER offered at any ModalFaceChoice (offered faces=['front']); exploratory back_face=true submission rejected; per CR 712.8a the caster chooses which face to cast, so Iron Man, Tony Stark ({3}{R}{R}) is unreachable",
+  "A6: post.json stack_empty=True wf=Priority turn=9 phase=PreCombatMain",
+  "B2: Tergrid ModalFaceChoice faces=['front', 'back'] actionable=True",
+  "B4: tergrid on P0 BF=[31]; turn=9 phase=PreCombatMain",
+  "RELATED FAILURE: the v0.20.0 hard stall is gone, but the ModalFaceChoice offers only the front face - the back face is never selectable, so the 'select which side' decision remains broken on this build"
+ ],
+ "observations": {
+  "game": 2,
+  "stage": "g2_face",
+  "kept": {
+   "P0_g2": true,
+   "P1_g2": true
+  },
+  "cast1_submitted": true,
+  "cast1_oid": 38,
+  "cast1_turn": 5,
+  "face1_opps": [
+   {
+    "tag": "g1_cast1",
+    "interaction_ids": [
+     "N6HNIT.0.70"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "N6HNIT.0.70.c0",
+      "face": "front",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     }
+    ]
+   }
+  ],
+  "face1_choice_id": "N6HNIT.0.70.c0",
+  "face1_submitted": true,
+  "face1_rejected": false,
+  "face1_stall": false,
+  "face1_wait_start": 1788992519.5085895,
+  "tony1_on_bf": true,
+  "cast2_submitted": true,
+  "cast2_oid": 25,
+  "face2_opps": [
+   {
+    "tag": "g1_cast2",
+    "interaction_ids": [
+     "N6HNIT.0.135"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "N6HNIT.0.135.c0",
+      "face": "front",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     }
+    ]
+   },
+   {
+    "tag": "g1_cast2",
+    "interaction_ids": [
+     "N6HNIT.0.135"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "N6HNIT.0.135.c0",
+      "face": "front",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     }
+    ]
+   }
+  ],
+  "face2_choice_id": "N6HNIT.0.135.c0",
+  "face2_submitted": true,
+  "face2_rejected": false,
+  "back_probe_sent": true,
+  "back_probe_accepted": false,
+  "back_probe_rejection": {
+   "rejection": {
+    "code": "action_not_allowed",
+    "disposition": "unavailable",
+    "message": "That action is not allowed right now.",
+    "related_object_ids": []
+   }
+  },
+  "ironman_on_bf": false,
+  "tony2_on_bf": true,
+  "g1_cast_spells_seen": [
+   {
+    "object_id": 25,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 38,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 38,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 25,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   }
+  ],
+  "g2_cast_submitted": true,
+  "g2_cast_oid": 31,
+  "g2_opps": [
+   {
+    "tag": "g2_cast1",
+    "interaction_ids": [
+     "8WC089.0.128"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "8WC089.0.128.c0",
+      "face": "front",
+      "status": "available"
+     },
+     {
+      "id": "8WC089.0.128.c1",
+      "face": "back",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     },
+     {
+      "back_face": true
+     }
+    ]
+   }
+  ],
+  "g2_choice_id": "8WC089.0.128.c0",
+  "g2_submitted": true,
+  "g2_rejected": false,
+  "g2_wait_start": 1788992556.0222397,
+  "g2_stall": false,
+  "tergrid_on_bf": true,
+  "rejections": [
+   {
+    "who": "P0",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "action_not_allowed",
+      "disposition": "unavailable",
+      "message": "That action is not allowed right now.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ],
+  "cast_spell_ads": []
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x MDFC / high land density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The reporter cast Tony Stark as a commander; the scenario casts it from the main deck. The ModalFaceChoice decision type is identical.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The back_face=true probe submission was constructed (not engine-advertised) and is logged as exploratory."
+ ],
+ "setup_line": "G1 P0: 12x tony stark + 24x island + 24x mountain; G1 P1: 60x forest. G2 P0: 12x tergrid, god of fright + 48x swamp; G2 P1: 60x forest.",
+ "contract_line": "Cast the MDFC at main-phase priority; the ModalFaceChoice must offer an actionable face selection, the selection must be accepted, the cast must resolve, and (per CR 712.8a) the back face must be selectable."
+}
