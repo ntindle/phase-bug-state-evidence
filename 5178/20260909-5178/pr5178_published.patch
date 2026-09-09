@@ -1,0 +1,61 @@
+From bfc031af83f695a586d47c7f52472ff7ba82a071 Mon Sep 17 00:00:00 2001
+From: jeffrey701 <jeffreyconradtucker@gmail.com>
+Date: Mon, 6 Jul 2026 00:48:07 -0400
+Subject: [PATCH] fix(client): parse a port-less bracketed IPv6 host in
+ parseJoinCode
+
+parseJoinCode splits host:port on the LAST colon. For a bracketed IPv6 literal
+with no port (e.g. `[::1]`), that colon is inside the address, so the host
+became `[:` and the join code resolved to a malformed `wss://[::1/ws`.
+Treat a host ending in `]` as bracketed-with-no-port and skip the split; a
+bracketed host that does carry a port (`[::1]:9000`) still splits correctly.
+---
+ .../services/__tests__/serverDetection.test.ts   | 16 ++++++++++++++++
+ client/src/services/serverDetection.ts           |  9 ++++++++-
+ 2 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/client/src/services/__tests__/serverDetection.test.ts b/client/src/services/__tests__/serverDetection.test.ts
+index 8d61bdce17..7029a06a36 100644
+--- a/client/src/services/__tests__/serverDetection.test.ts
++++ b/client/src/services/__tests__/serverDetection.test.ts
+@@ -165,3 +165,19 @@ describe("mixedContentBlockReason", () => {
+     expect(mixedContentBlockReason("wss://play.example.com/ws")).toBeNull();
+   });
+ });
++
++describe("parseJoinCode — bracketed IPv6 host", () => {
++  it("does not corrupt a bracketed IPv6 host that has no port", () => {
++    // `[::1]` ends in `]`; its last colon is inside the address. Splitting there
++    // produced a broken host `[:` and a malformed `wss://[::1/ws`.
++    const r = parseJoinCode("ABC123@[::1]");
++    expect(r.code).toBe("ABC123");
++    expect(r.serverAddress).toBe("wss://[::1]/ws");
++  });
++
++  it("still splits a bracketed IPv6 host that DOES carry a port", () => {
++    expect(parseJoinCode("ABC123@[::1]:9000").serverAddress).toBe(
++      "wss://[::1]:9000/ws",
++    );
++  });
++});
+diff --git a/client/src/services/serverDetection.ts b/client/src/services/serverDetection.ts
+index 27177fbf20..35198cbcdc 100644
+--- a/client/src/services/serverDetection.ts
++++ b/client/src/services/serverDetection.ts
+@@ -133,8 +133,15 @@ export function parseJoinCode(input: string): { code: string; serverAddress?: st
+   }
+ 
+   // Split host:port on the last colon so a host:port pair splits correctly.
++  // A bracketed IPv6 literal with no port (e.g. `[::1]`) ends in `]`, and its
++  // last colon is INSIDE the address — splitting there yields a broken host like
++  // `[:`. When the host is a bracketed literal with no trailing `:port`, there
++  // is no port to split off.
+   const colonIndex = hostPort.lastIndexOf(":");
+-  const hasPort = colonIndex !== -1 && colonIndex < hostPort.length - 1;
++  const hasPort =
++    colonIndex !== -1 &&
++    colonIndex < hostPort.length - 1 &&
++    !hostPort.endsWith("]");
+   const host = hasPort ? hostPort.slice(0, colonIndex) : hostPort;
+ 
+   const isLocal = host === "localhost" || host === "127.0.0.1";
