@@ -1,0 +1,28 @@
+game UCBDOY; P0 seat=0 P1 seat=1
+P0 keeps (lost=True, lands=3, mulls=0)
+P1 keeps (lands=5, mulls=0)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision stage=setup elves_bf=[] aura=None gy1=0 p0hand=['island', 'island', 'thought scour', 'lost in thought', 'lost in thought'] p1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] atk1=False/False/False act=False/False esc=False
+P0 casts Thought Scour #1 targeting P1
+[P0] targets player via candidate UCBDOY.0.23.t1 (ref=None)
+P1 casts Llanowar Elves
+P0 casts Thought Scour #2 targeting P1
+[P0] targets player via candidate UCBDOY.0.60.t1 (ref=None)
+P1 casts Grizzly Bears
+P0 casts Lost in Thought targeting Elves 112
+[P0] targets creature via candidate UCBDOY.0.98.t0 (ref=112)
+exported pre.json
+STAGE -> attack_test
+aura on BF oid=37 fields=['abilities', 'assigns_damage_as_though_unblocked', 'assigns_damage_from_toughness', 'assigns_no_combat_damage', 'attached_to', 'attachments', 'available_mana_pips', 'back_face', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_defense', 'base_keywords', 'base_loyalty', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_replacement_definitions', 'base_static_definitions', 'base_toughness', 'base_trigger_definitions', 'card_id', 'card_types', 'cast_controller', 'cast_face_committed', 'cast_from_zone', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'display_visible_to_viewer', 'echo_due', 'entered_battlefield_turn', 'face_down', 'flipped', 'foretold', 'harnessed', 'has_mana_ability', 'has_summoning_sickness', 'id', 'in_attraction_deck', 'in_contraption_deck', 'incarnation', 'intensity', 'is_commander', 'is_emblem', 'is_renowned', 'is_saddled', 'is_suspected', 'is_token', 'keywords', 'loyalty', 'loyalty_activations_this_turn', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast', 'mana_spent_to_cast_amount', 'modal_back_face', 'monstrous', 'name', 'next_trigger_base_set_instance', 'owner', 'phase_status', 'power', 'printed_ref', 'replacement_definitions', 'saddled_by', 'static_definitions', 'summoning_sick', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_base_set_instance', 'trigger_definitions', 'trigger_occurrence_state', 'unimplemented_mechanics', 'zone']
+P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+P1 declares attack with enchanted Elves 112
+Elves 112 IS in combat.attackers
+attack1 ACCEPTED (Elves in attackers)
+exported post_attack.json
+STAGE -> activation_test
+P1 attempts ActivateAbility on enchanted Elves 112
+STAGE -> control_prep
+STAGE -> control
+P1 declares control attack with Bear 68
+Bear 68 IS in combat.attackers
+exported post_control.json
+control combat done; finishing
