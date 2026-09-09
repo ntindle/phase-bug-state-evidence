@@ -1,0 +1,18 @@
+game 5HBSW0; P0 seat=0 P1 seat=1
+P0 keeps opening hand (hero=True, lands=4)
+P1 keeps opening hand
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=['Silvercoat Lion', 'Silvercoat Lion', 'Plains', 'Hero of Bladehold', 'Plains', 'Plains', 'Plains'] hero=0 lion=0 P0acts=['MulliganDecision', 'MulliganDecision', 'MulliganDecision', 'MulliganDecision'] declared=False ordered=False first=None post=False
+P0 casts Silvercoat Lion
+creature object sample: {"id": 31, "card_id": 31, "owner": 0, "base_controller": 0, "controller": 0, "zone": "Battlefield", "display_visible_to_viewer": true, "tapped": false, "face_down": false, "flipped": false, "transformed": false, "modal_back_face": false, "cast_face_committed": false, "damage_marked": 0, "dealt_deathtouch_damage": false, "attached_to": null, "attachments": [], "counters": {}, "intensity": 0, "name": "Silvercoat Lion", "power": 2, "toughness": 2, "layer_base_power": 2, "layer_base_toughness": 2, "loyalty": null, "card_types": {"supertypes": [], "core_types": ["Creature"], "subtypes": ["Cat"]}, "in_attraction_deck": false, "in_contraption_deck": false, "mana_cost": {"type": "Cost", "shards": ["
+P0 holds attackers (hero=0 lion=1)
+P0 casts Hero of Bladehold
+P0 holds attackers (hero=0 lion=1)
+SETUP READY; exporting PRE
+P0 attacks with ['Hero of Bladehold', 'Silvercoat Lion']
+OrderTriggers options: {"order": [0, 1]}
+P0 submits trigger order as advertised
+FIRST RESOLVED: battle cry (Lion 3/2, stack still 1)
+exported MID (battle cry resolved first)
+both triggers resolved: tokens=2 lion=3 hero=3/4 stack=0 phase=DeclareAttackers
+exported POST (both triggers resolved)
+all assertions resolved; finishing
