@@ -1,0 +1,39 @@
+game 0FEAMN; seats P0=0 P1=1 P2=2
+P0 mulligans #1
+P1 mulligans #1
+P2 keeps (key=n/a)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['forest', 'forest', 'forest', 'mountain', 'mountain', 'mountain', 'mountain'] zil=[] ked=[] elves=[] life=[40, 40, 40] stack=0 pre=False attacked=False post=False trig=False
+P0 keeps (key=True)
+P1 mulligans #2
+P1 mulligans #3
+P1 mulligans #4
+P1 mulligans #5
+P1 mulligans #6
+P1 keeps (key=True)
+P1 bottoms 5: ['forest', 'forest', 'forest', 'forest', 'forest']
+P0 PreCombatMain action types: ['PassPriority', 'PlayLand']
+Zilortha objects: [('Zilortha, Strength Incarnate', True, 'Command')]
+P0 casts Kediss via CastSpell
+P0 declares no attackers (waiting: zil=None ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=None ked=57 elves_p1=0)
+P0 casts Zilortha (commander) via CastSpell
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+DIAG turn=16 active=0 phase=PreCombatMain wf=Priority pp=0 P0hand=['mountain', 'mountain', 'forest', 'mountain', 'forest', 'mountain'] zil=[181] ked=[57] elves=[] life=[40, 40, 40] stack=0 pre=False attacked=False post=False trig=False
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+P0 declares no attackers (waiting: zil=181 ked=57 elves_p1=0)
+DIAG turn=31 active=0 phase=End wf=Priority pp=2 P0hand=['mountain', 'mountain', 'forest', 'mountain', 'forest', 'kediss, emberclaw familiar'] zil=[181] ked=[57] elves=[] life=[40, 40, 40] stack=0 pre=False attacked=False post=False trig=False
+P1 casts Llanowar Elves
+PRE: exporting at DeclareAttackers (Zilortha+Kediss ready, P1 has 1 blocker(s))
+P0 attacks P1 with Zilortha (oid 181)
+P1 blocks Zilortha (oid 181) with Elves (oid 77)
+AssignCombatDamage advertised: {"mode": "Normal", "assignments": [[77, 1]], "trample_damage": 6, "controller_damage": 0}
+P0 assigns combat damage (advertised default): blockers=[[77, 1]] trample_damage=6
+KEDISS TRIGGER observed on stack
+exported MID (Kediss trigger pending)
+post-combat reached; exporting POST
+exported POST
+post exported; finishing
