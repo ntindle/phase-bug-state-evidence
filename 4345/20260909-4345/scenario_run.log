@@ -1,0 +1,28 @@
+game ZK90M7; P0 seat=0 P1 seat=1
+P0 mulligans #1 (Grizzly Bears=0, lands=7)
+P1 mulligans #1 (Ghostly Prison=0, lands=7)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0bears=0 P1prison=0 life0=20 life1=20 taxwaits=0 mode=pay
+P0 keeps (Grizzly Bears=2, lands=5)
+P1 mulligans #2 (Ghostly Prison=0, lands=7)
+P1 mulligans #3 (Ghostly Prison=0, lands=7)
+P0 bottoms 1: ['forest']
+P1 keeps (Ghostly Prison=1, lands=6)
+P1 bottoms 3: ['plains', 'plains', 'plains']
+P0 casts Grizzly Bears
+P1 casts Ghostly Prison
+P0 casts Grizzly Bears
+P0 DeclareAttackers vs Ghostly Prison with attack-ready Bear; exporting PRE
+P0 submits DeclareAttackers attacks=[]
+P0 holds attack: only 1 untapped Forests
+P0 submits DeclareAttackers attacks=[7]
+P0 CombatTaxPayment wait (mode=pay): 2 actions: ['PayCombatTax']
+exported mid_tax.json
+P0 submits PayCombatTax accept=True (pay)
+switched to DECLINE mode
+P0 submits DeclareAttackers attacks=[7]
+P0 CombatTaxPayment wait (mode=decline): 2 actions: ['PayCombatTax']
+P0 submits PayCombatTax accept=False (decline)
+P0 submits DeclareAttackers attacks=[]
+P0 declares no attackers (decline test complete)
+exported POST
+post exported; finishing
