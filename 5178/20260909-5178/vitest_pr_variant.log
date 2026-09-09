@@ -1,0 +1,29 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-pr/client[39m
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mdoes not corrupt a bracketed IPv6 host that has no port
+[22m[39mOBSERVED mainline-case-no-port {"code":"ABC123","serverAddress":"wss://[::1]/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mstill splits a bracketed IPv6 host that DOES carry a port
+[22m[39mOBSERVED mainline-case-with-port {"code":"ABC123","serverAddress":"wss://[::1]:9000/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mfull IPv6 literal without port is not corrupted
+[22m[39mOBSERVED mainline-case-full-ipv6 {"code":"ABC123","serverAddress":"wss://[2001:db8::1]/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: plain hostname with port still works
+[22m[39mOBSERVED control-hostname-port {"code":"ABC123","serverAddress":"wss://play.example.com:9374/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: localhost with port still works
+[22m[39mOBSERVED control-localhost-port {"code":"ABC123","serverAddress":"ws://localhost:9374/ws"}
+
+[90mstdout[2m | src/services/__tests__/joincode-5178.driver.test.ts[2m > [22m[2mparseJoinCode — bracketed IPv6 host (#5178)[2m > [22m[2mcontrol: plain hostname without port still works
+[22m[39mOBSERVED control-hostname-noport {"code":"ABC123","serverAddress":"wss://play.example.com/ws"}
+
+ [32m✓[39m src/services/__tests__/joincode-5178.driver.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/serverDetection.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m34 passed[39m[22m[90m (34)[39m
+[2m   Start at [22m 23:44:58
+[2m   Duration [22m 2.53s[2m (transform 888ms, setup 315ms, import 1.22s, tests 21ms, environment 576ms)[22m
+
