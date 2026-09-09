@@ -1,0 +1,25 @@
+game ZU6FP0; seats P0=0 P1=1 P2=2
+P0 keeps (The Mindskinner=1, lands=5)
+P1 mulligans #1 (any=0, lands=0)
+P2 mulligans #1 (any=0, lands=0)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0mind=0 life1=20 P1lib=53 P2lib=53 mind_cast=False atk_turn=None bolt_cast=None bolt_done=False
+P1 mulligans #2 (any=0, lands=0)
+P2 mulligans #2 (any=0, lands=0)
+P1 mulligans #3 (any=0, lands=0)
+P2 mulligans #3 (any=0, lands=0)
+P1 keeps (any=0, lands=0)
+P2 keeps (any=0, lands=0)
+P1 bottoms 2: ['forest', 'forest']
+P2 bottoms 2: ['plains', 'plains']
+P0 casts The Mindskinner
+DIAG turn=16 active=1 phase=BeginCombat wf=Priority pp=1 P0mind=1 life1=20 P1lib=49 P2lib=50 mind_cast=True atk_turn=None bolt_cast=None bolt_done=False
+P0 DeclareAttackers with attack-ready Mindskinner; exporting PRE
+P0 submits DeclareAttackers attacks=[4] vs P1
+exported mid_attack.json (attacker oid 4, tapped=True)
+exported mid_combat.json: P1 life=20, P1 lib=39 gy=10, P2 lib=39 gy=10
+P0 casts Lightning Bolt (non-combat damage branch)
+target opportunity shape: {"interactionId": "ZU6FP0.0.418", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 1, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "ZU6FP0.0.418.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": 
+P0 answers Bolt target prompt -> P1 (choice ZU6FP0.0.418.t1)
+exported mid_bolt.json: P1 life=20, P1 lib=36 gy=13, P2 lib=36 gy=13
+exported POST
+post exported; finishing
