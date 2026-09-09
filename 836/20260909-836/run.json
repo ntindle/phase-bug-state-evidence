@@ -1,0 +1,72 @@
+{
+ "issue": 836,
+ "run_id": "20260909-836",
+ "started_at": "2026-09-09T09:22:05",
+ "duration_s": 24.6,
+ "server": {
+  "server_version": "0.77.0",
+  "build_commit": "61715b5",
+  "protocol_version": 67,
+  "mode": "Full",
+  "binary_sha256": "a52293b754605baa63e4d987a5208902ec394868d49c4bfd86b3fd57f3267c6a",
+  "card_data_sha256": "698350d9b6323011a5b86a74a4d2ea54d13b4ed26a520579be7d044f0a3692e5",
+  "draft_pools_sha256": "56e030fdc74b2385759310de8564a58b8716035b2dccc0da709f37250cc2d3c7",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 match of pinned verified artifacts; server started fresh this run (runs/20260909-836)"
+ },
+ "server_run_dir": "runs/20260909-836",
+ "driver": {
+  "protocol_advertised": 67,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "378e93ff4bb75c9a0271a62aa81e1d31458883dc9ffab19435353dc4627151e9",
+ "decks": {
+  "P0": [
+   [
+    "Hero of Bladehold",
+    8
+   ],
+   [
+    "Silvercoat Lion",
+    4
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_two_triggers": "passed",
+  "A3_battlecry_pumps_attacker": "passed",
+  "A4_tokens_order_aware": "passed",
+  "A5_hero_unpumped": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre-attack setup: hero+lion on BF, untapped plains=4",
+  "trigger order submitted as advertised: {'order': [0, 1]}",
+  "both Attacks triggers fired: 2 Soldier tokens created, Lion pumped 2/2->3/2",
+  "battle cry pumped declared co-attacker Lion 2/2->3/2",
+  "battle cry resolved first; tokens 1/1 (ruling-correct, they were not attacking when it resolved)",
+  "Hero stays 3/4 (battle cry Another excludes self)",
+  "both triggers resolved; tokens remain on BF; stack empty; game proceeding (wf=Priority, phase=DeclareAttackers)",
+  "A6_cleanup=passed (advisory, not verdict-driving)"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 8x Hero of Bladehold + 4x Silvercoat Lion + 48x Plains (8x density so Hero lands in the opener; mulligan-to-hero); P1: 60x Forest dummy",
+ "contract_line": "P0 attacks with Hero + Silvercoat Lion; both Attacks triggers must fire (2 Soldier tokens + battle cry +1/+0 on other attackers); Hero stays 3/4; token pump depends on observed resolution order per the card ruling",
+ "stats": {}
+}
