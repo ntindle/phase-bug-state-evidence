@@ -1,0 +1,162 @@
+{
+ "issue": 4823,
+ "run_id": "20260909-4823",
+ "started_at": "2026-09-09T21:03:23",
+ "duration_s": 24.0,
+ "server": {
+  "server_version": "v0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "sha256 match of pinned verified release artifacts (ledger, 2026-09-09); fresh isolated server on 127.0.0.1:9374 from this run's run dir; ServerHello v0.78.0/4de7224/protocol 68 observed"
+ },
+ "server_run_dir": "runs/20260909-4823",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3121dfb98b7e26b3fd037c2361cc3857619668f3808530995f6a3f300c963a55",
+ "decks": {
+  "P0": [
+   [
+    "Stinkweed Imp",
+    8
+   ],
+   [
+    "Golgari Grave-Troll",
+    8
+   ],
+   [
+    "Faithless Looting",
+    8
+   ],
+   [
+    "Mountain",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parked_choice": "passed",
+  "A2_concede_eliminates": "passed",
+  "A3_game_continues": "passed",
+  "A4_next_draw_skipped": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pre.json shows WaitingFor::ReplacementChoice with chooser=0 at P0's Draw phase (turn 6); ChooseReplacement advertised; opportunity choices=['0', '1']; pending_team_draw_step=[0]",
+  "A2 passed: Concede accepted (no rejection); eliminated_players=[0]; P0's parked choice gone (mid waiting_for=Priority); P0 never the active player again; P0 player record flag=no explicit flag field; pending_team_draw_step(mid)=None",
+  "A3 passed: P1's turn 7 began after the concede and advanced past the Draw phase; no >60s actionless wait",
+  "A4 failed (no bug on this build): P1 drew normally - hand 7->8->8, library 51->50->50. pending_team_draw_step: pre=[0] mid=None post=None",
+  "A5 passed: game proceeding (active P1, turn=7, phase=PreCombatMain, stack=0, wf=Priority)",
+  "verdict=not-reproduced: P1 drew normally after P0's mid-choice elimination; the team-draw slot was cleaned on v0.78.0"
+ ],
+ "observations": {
+  "parked_choice": {
+   "turn": 6,
+   "revision": 125,
+   "chooser": 0,
+   "choose_replacement_advertised": true,
+   "opportunity": {
+    "rtype": "exactChoices",
+    "spec": null,
+    "n_choices": 2,
+    "choices": [
+     "0",
+     "1"
+    ],
+    "interactionId": "UQS6W7.0.124"
+   }
+  },
+  "concede_sent": true,
+  "concede_accepted": true,
+  "concede_rejections": [],
+  "concede_at": 1788987824.1506548,
+  "p0_player_record": {
+   "attraction_deck": [],
+   "bending_types_this_turn": [],
+   "can_look_at_top_of_library": false,
+   "cards_drawn_this_step": 0,
+   "cards_drawn_this_turn": 0,
+   "commander_color_identity": [],
+   "contraption_crank_sprocket": 3,
+   "contraption_deck": [],
+   "crimes_committed_this_turn": 0,
+   "descended_this_turn": false,
+   "drew_from_empty_library": false,
+   "energy": 0,
+   "has_drawn_this_turn": false,
+   "id": 0,
+   "is_eliminated": true,
+   "lands_played_this_turn": 0,
+   "life": 20,
+   "life_gained_this_turn": 0,
+   "life_lost_last_turn": 0,
+   "life_lost_this_turn": 0,
+   "mana_pool": {
+    "mana": []
+   },
+   "poison_counters": 0,
+   "speed_trigger_used_this_turn": false,
+   "status": {
+    "type": "Active"
+   },
+   "turns_taken": 2
+  },
+  "eliminated_players_mid": [
+   0
+  ],
+  "team_draw_slot_pre": [
+   0
+  ],
+  "team_draw_slot_mid": null,
+  "team_draw_slot_post": null,
+  "p0_active_after": false,
+  "saw_nonzero_active_post_concede": true,
+  "stall_observed": false,
+  "p1_turn": 7,
+  "p1_upkeep_counts": [
+   7,
+   51
+  ],
+  "p1_draw_counts": [
+   8,
+   50
+  ],
+  "p1_postdraw_counts": [
+   8,
+   50
+  ],
+  "rejections": [],
+  "choice_opportunity": null
+ },
+ "verdict": "not-reproduced",
+ "setup_line": "3-player standard game. P0: 8x Stinkweed Imp (dredge 5) + 8x Golgari Grave-Troll (dredge 6) + 8x Faithless Looting + 36x Mountain (mulligan to Mountain+Looting+Imp+Troll; turn 1 Mountain, Looting, discard Imp+Troll). P1/P2: 60x Forest, do-nothing. At P0's 2nd-turn Draw phase the turn-based draw parks on the CR 616.1 competing-dredge choice (ReplacementChoice{0}); P0 concedes instead of answering.",
+ "contract_line": "Facet 2 of #4823: after the chooser's mid-choice elimination, the next living player's turn-based draw must still happen (CR 504.1); a silent skip means pending_team_draw_step was stranded on the dead player.",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "Only facet 2 (pending_team_draw_step -> next player's draw skipped) is tested. Facet 1 (pending_phase_transition_progress -> phase-advance freeze via a step-end empty-mana CR 616.1 choice) and facet 3 (pending_continuation -> deferred-trigger drain freeze) are not exercised: no parsed card in the pinned dataset offers the required competing empty-mana or deferred-drain replacement choices.",
+  "The parked choice is the CR 616.1 ordering of two dredge replacements (the report's 'competing-draw replacement'); engine behavior for other 616.1 pairs may differ.",
+  "8x dredge-card / 8x looting deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-07-01 build; verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ]
+}
