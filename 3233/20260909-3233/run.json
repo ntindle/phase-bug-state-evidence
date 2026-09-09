@@ -1,0 +1,100 @@
+{
+ "issue": 3233,
+ "run_id": "20260909-3233",
+ "started_at": "2026-09-09T15:44:56",
+ "duration_s": 17.1,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "sha256 match of pinned verified release artifacts (verified 2026-09-09 run, ledger); fresh isolated server on 127.0.0.1:9374 from this run's run dir"
+ },
+ "server_run_dir": "runs/20260909-3233",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "03484feba70c9377fab1c79dd1a88fd8682d347f65b94ddca0c79852f28c3fd6",
+ "decks": {
+  "P0": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_declared": "passed",
+  "A3_combat_completes": "passed",
+  "A4_empty_declares": "passed",
+  "A5_no_softlock": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: P0 bears=1, attack-ready=1, P1 life=20",
+  "P0 attacked with Bear oid 5; P1 life 20 -> 18 (unblocked 2/2); combat completed",
+  "P1 empty DeclareAttackers submitted and game advanced (post wf=Priority, phase=PostCombatMain)",
+  "post.json: stack empty, game proceeding (turn=6, phase=PostCombatMain, active=P1)",
+  "2 DeclareAttackers waits; action offered to the acting player every time, all decisions advanced",
+  "verdict blocked: report has no testable premise (no board, steps, or save; reporter never answered the maintainer's 2026-07-19 questions). Generic DeclareAttackers path on v0.78.0 completes normally."
+ ],
+ "observations": {
+  "declare_waits": [
+   {
+    "turn": 5,
+    "active": 0,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     5
+    ],
+    "submitted": true
+   },
+   {
+    "turn": 6,
+    "active": 1,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   }
+  ],
+  "stall_observed": false,
+  "rejections": [],
+  "life_pre": 20,
+  "life_post": 18,
+  "p0_attack_oid": 5,
+  "p1_empty_done": true
+ },
+ "verdict": "blocked",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "No goad/tax/restriction or attack-requirement effects on the board; the report names none, so the generic path is the only attempt.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 lands, cast Bear, attack when ready); P1: same but declares no attackers",
+ "contract_line": "DeclareAttackers always offers a submittable action; an attack declaration and an empty declaration both complete; combat damage resolves normally"
+}
