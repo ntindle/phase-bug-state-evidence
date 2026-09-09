@@ -1,0 +1,33 @@
+game LWVE0V; P0 seat=0 P1 seat=1
+P0 keeps (Grizzly Bears=3, lands=4)
+P1 mulligans #1 (Ghostly Prison=0, lands=4)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0bears=0 P1prison=0 life1=20 taxwaits=0 phase=setup
+P1 keeps (Ghostly Prison=1, lands=4)
+P1 bottoms 1: ['plains']
+P0 casts Grizzly Bears (setup)
+P0 casts Grizzly Bears (setup)
+P0 submits DeclareAttackers attacks=[] rejected=False
+P0 holds attack: Prison not yet on P1 BF
+P1 casts Ghostly Prison
+P0 casts Grizzly Bears (setup)
+P0 submits DeclareAttackers attacks=[] rejected=False
+P0 holds attack: waiting for goad setup (ready=2)
+P1 casts Disrupt Decorum (#1) on turn 8
+phase -> cantpay
+P0 can't-pay attack turn = 9 with 3 ready Bears
+P0 DeclareAttackers vs Ghostly Prison with goaded Bears; exporting PRE
+P0 submits DeclareAttackers attacks=[12, 19, 35] rejected=False
+P0 CombatTaxPayment wait (mode=cantpay): 1 actions; accept=true offered=False, accept=false offered=True, untapped Forests=5
+exported mid_tax.json
+P0 submits PayCombatTax accept=false (decline #1 on turn 9)
+P0 submits DeclareAttackers attacks=[] rejected=False
+undeclare submitted; awaiting settle
+undeclare ACCEPTED; phase -> control
+P1 casts Disrupt Decorum (#2) on turn 10
+P0 control attack turn = 11
+P0 submits DeclareAttackers attacks=[12] rejected=False
+P0 CombatTaxPayment wait (mode=control): 2 actions; accept=true offered=True, accept=false offered=True, untapped Forests=6
+P0 submits PayCombatTax accept=true (control)
+control attack resolved
+exported POST
+post exported; finishing
