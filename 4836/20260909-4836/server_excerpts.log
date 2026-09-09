@@ -1,0 +1,17 @@
+=== server identity (startup) ===
+2026-09-09T21:13:03.143072Z  INFO phase_server: server mode selected mode=Full
+2026-09-09T21:13:07.478186Z  INFO phase_server: card database loaded cards=35805
+2026-09-09T21:13:08.029934Z  INFO phase_server: draft pools loaded sets=173
+2026-09-09T21:13:08.030450Z  INFO phase_server: phase-server listening bind=127.0.0.1 port=9374
+
+=== game session (created/disconnected) ===
+2026-09-09T21:13:14.065187Z  INFO phase_server: client disconnected game=None player=None
+2026-09-09T21:13:20.776150Z  INFO phase_server: client disconnected game=None player=None
+2026-09-09T21:17:01.568774Z  INFO ws_message: server_core::session: game session created game=SU1ELR player_count=3
+2026-09-09T21:17:01.589786Z  INFO ws_message: phase_server: game created via lobby game=SU1ELR host=P0 players=3
+2026-09-09T21:17:01.696413Z  INFO ws_message: server_core::session: player joined session game=SU1ELR player=PlayerId(1) seat=1
+2026-09-09T21:17:01.727838Z  INFO ws_message: server_core::session: player joined session game=SU1ELR player=PlayerId(2) seat=2
+2026-09-09T21:17:02.135040Z  INFO ws_message:game_session{game=SU1ELR player=PlayerId(0)}: server_core::session: action applied game=SU1ELR player=PlayerId(0) action_type="MulliganDecision" event_count=0
+2026-09-09T21:17:02.146378Z  INFO ws_message:game_session{game=SU1ELR player=PlayerId(0)}: phase_server: game submission processed (lock held) game=SU1ELR kind="action" lock_ms=11 ai_actions=0
+2026-09-09T21:17:02.218948Z  INFO ws_message:game_session{game=SU1ELR player=PlayerId(1)}: server_core::session: action applied game=SU1ELR player=PlayerId(1) action_type="MulliganDecision" event_count=15
+2026-09-09T21:17:02.236310Z  INFO ws_message:game_session{game=SU1ELR player=PlayerId(1)}: phase_server: game submission processed (lock held) game=SU1ELR kind="action" lock_ms=33 ai_actions=0
