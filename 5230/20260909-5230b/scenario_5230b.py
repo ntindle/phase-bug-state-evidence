@@ -70,9 +70,11 @@ scenario_run.log
 
 Re-run note: run 20260909-5230 (same scenario family) reached turn 12 with 6
 untapped Forests against a {6} tax, so its can't-pay branch was not genuine
-(A3 failed as a harness artifact, not an engine defect). This run adds a
-PreCombatMain mana drain and a denser Decorum package (12x) so the can't-pay
-branch is actually exercised. The 20260909-5230 artifacts are kept local-only.
+(A3 failed as a harness artifact, not an engine defect). This run uses a
+denser Decorum package (12x) and reached three attackers at tax {6} with only
+5 untapped Forests. The optional PreCombatMain mana-drain code below never
+fired (P0 held only Forests in hand on the can't-pay turn), so the unpayable
+state arose naturally. The 20260909-5230 artifacts are kept local-only.
 """
 import asyncio
 import copy
@@ -123,7 +125,9 @@ SERVER_IDENTITY = {
               "fresh isolated server on 127.0.0.1:9375 for run 20260909-5230b "
               "(re-run: first attempt 20260909-5230 reached turn 12 with 6 "
               "untapped Forests vs {6} tax, so the can't-pay branch was not "
-              "genuine; this run adds a PreCombatMain mana drain)",
+              "genuine; the optional PreCombatMain mana-drain code never fired "
+              "(P0 held only Forests) and the can't-pay arose naturally with "
+              "5 untapped Forests vs {6} tax)",
 }
 
 
@@ -575,6 +579,8 @@ async def main():
         phase = state.get("phase")
         # Can't-pay turn mana drain: the attack will use >=2 Bears (tax >= {4});
         # tap down to untapped < 4 so accept=true is genuinely unofferable.
+        # (In run 20260909-5230b this never fired: P0 held only Forests in
+        # hand on the can't-pay turn; the can't-pay arose naturally.)
         if (phase == "PreCombatMain" and obs["phase"] == "cantpay"
                 and not cantpay_done
                 and BEAR.lower() in hand_lnames(state, 0)
@@ -882,8 +888,10 @@ async def main():
                 "authoritative exports (restorable only via full game replay).",
             ],
             "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 "
-                          "lands, cast Bears; PreCombatMain mana drain on the "
-                          "can't-pay turn so untapped < {4}); P1: 8x Ghostly "
+                          "lands, cast Bears; optional PreCombatMain mana-drain "
+                          "code present but unused - P0 held only Forests on "
+                          "the can't-pay turn, so the can't-pay arose naturally "
+                          "with 5 untapped Forests vs {6} tax); P1: 8x Ghostly "
                           "Prison + 12x Disrupt Decorum + 20x Plains + 20x "
                           "Mountain (Prison ~T4, Decorum goads P0's Bears, "
                           "never attacks)",
