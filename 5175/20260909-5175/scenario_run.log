@@ -1,0 +1,26 @@
+run 20260909-5175 — phase-rs/phase#5175 (open, unmerged fix PR)
+client-subsystem reproduction: additionalCostChoices Choice branch crash on short engine payload
+
+release check: latest stable phase-rs/phase release = v0.78.0 (2026-09-09T14:28:24Z),
+matches pinned artifacts under server/releases/ — no advance. phase-server not started
+for this client-only run.
+
+1. Fetched phase mainline; reset client-test/phase-main to 2ce96cb96551051fffa97caf3085cb19d8d2daf0
+   (2026-09-09T22:50:44Z). The unguarded `case "Choice"` at client/src/viewmodel/costLabel.ts:768
+   is still present: formatAbilityCost(cost.data[0]) / cost.data[1] indexed straight from
+   the engine-deserialized tuple.
+2. Copied phase-main -> client-test/phase-5175-main (+ PR test block only) and
+   -> client-test/phase-5175-pr (+ PR guard code + test block). The PR's published diff
+   could not `git apply` cleanly against the current tree (context drift: test hunk anchored
+   at old line 277, current file 581 lines with the block boundary at 539/541); the guard
+   and test block were applied manually, byte-identical to the published + lines.
+   pr_patch_applied_costLabel.diff and pr_patch_applied_test.diff preserve the exact changes.
+   node_modules symlinked from the phase-main tree (identical install).
+3. Ran the PR's new describe block + full costLabel.test.ts on both variants:
+   - mainline: 33/34 pass; the new short-payload test FAILS with
+     TypeError: Cannot read properties of undefined (reading 'type')  <- bug reproduced
+   - PR variant: 34/34 pass; short payload degrades to "Decline", no throw
+4. Evidence: run.json, client_observations.json, pr_patch_applied_*.diff,
+   vitest_mainline_full.log, vitest_pr_full.log, summary.png, manifest.sha256.
+
+verdict: reproduced (on current mainline client 2ce96cb).

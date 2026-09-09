@@ -1,0 +1,67 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5175-main/client[39m
+
+ [31m❯[39m src/viewmodel/__tests__/costLabel.test.ts [2m([22m[2m34 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 32[2mms[22m[39m
+     [32m✓[39m labels CrewVehicle with the keyword N extracted from engine keywords[32m 4[2mms[22m[39m
+     [32m✓[39m falls back to 'Crew' when no Crew keyword is present (defensive)[32m 1[2mms[22m[39m
+     [32m✓[39m labels SaddleMount with Saddle N extracted from keywords[32m 1[2mms[22m[39m
+     [32m✓[39m labels ActivateStation with a fixed label and rules-text description[32m 1[2mms[22m[39m
+     [32m✓[39m labels Equip with a fixed label and rules-text description[32m 0[2mms[22m[39m
+     [32m✓[39m labels ReturnToHand costs from ability description (Quirion Ranger)[32m 1[2mms[22m[39m
+     [32m✓[39m labels an ActivateAbility with its serialized cost[32m 0[2mms[22m[39m
+     [32m✓[39m labels an ActivateAbility that adds one mana of any color[32m 0[2mms[22m[39m
+     [32m✓[39m labels an ActivateAbility that adds multiple mana of any one color[32m 0[2mms[22m[39m
+     [32m✓[39m labels a non-mana ActivateAbility with its formatted cost[32m 1[2mms[22m[39m
+     [32m✓[39m attaches the engine's activation cost as a mana option's description (CR 602.1a)[32m 0[2mms[22m[39m
+     [32m✓[39m does not attach a cost line to a loyalty ability that adds mana (CR 605.1a — Chandra, Torch of Defiance)[32m 1[2mms[22m[39m
+     [32m✓[39m treats an absent is_mana_ability flag as not a mana ability[32m 1[2mms[22m[39m
+     [32m✓[39m attaches no cost line to a mana ability the engine gave no description (no synthesized "Activate")[32m 1[2mms[22m[39m
+     [32m✓[39m substitutes ~ on the non-mana activated-ability path, in both label and description (CR 201.5)[32m 1[2mms[22m[39m
+     [32m✓[39m first prompt (timesKicked 0) offers a non-cancel 'cast without kicking' decline[32m 1[2mms[22m[39m
+     [32m✓[39m re-prompt (timesKicked 2) shows the kick count and a 'finish casting' decline[32m 1[2mms[22m[39m
+     [32m✓[39m first prompt offers a non-cancel decline[32m 0[2mms[22m[39m
+     [32m✓[39m re-prompt shows the payment count and finish-casting decline[32m 0[2mms[22m[39m
+     [32m✓[39m formats a chosen-number cost for the Max fold[32m 3[2mms[22m[39m
+     [32m✓[39m formats a chosen-number cost for the Min fold[32m 0[2mms[22m[39m
+     [32m✓[39m falls back to the bare noun for a scoped chosen number[32m 0[2mms[22m[39m
+     [32m✓[39m formats disjunctive activation cost branches[32m 0[2mms[22m[39m
+     [32m✓[39m formats the external-tag mana wire shape[32m 0[2mms[22m[39m
+     [32m✓[39m formats typed discard filters from the server wire shape[32m 1[2mms[22m[39m
+     [32m✓[39m formats exile filters and zones from the server wire shape[32m 1[2mms[22m[39m
+     [32m✓[39m routes exile templates through the active locale with engine values as interpolation[32m 1[2mms[22m[39m
+     [32m✓[39m labels both options for a well-formed two-cost Choice[32m 0[2mms[22m[39m
+[31m     [31m×[31m does not throw when a Choice payload is missing its second cost[39m[32m 9[2mms[22m[39m
+     [32m✓[39m shows the printed cost, not reduced, when the engine reports no override[32m 0[2mms[22m[39m
+     [32m✓[39m flags a smaller effective Cost as reduced[32m 0[2mms[22m[39m
+     [32m✓[39m flags a NoCost effective cost against a real printed cost as reduced (Omniscience)[32m 0[2mms[22m[39m
+     [32m✓[39m does not flag a naturally-free card (no printed cost) as reduced[32m 0[2mms[22m[39m
+     [32m✓[39m does not flag an unchanged effective cost as reduced[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/viewmodel/__tests__/costLabel.test.ts[2m > [22madditionalCostChoices — Choice with a malformed (short) engine payload[2m > [22mdoes not throw when a Choice payload is missing its second cost
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"TypeError: Cannot read properties of undefined (reading 'type')"
+
+[36m [2m❯[22m src/viewmodel/__tests__/costLabel.test.ts:[2m557:51[22m[39m
+    [90m555|[39m     // engine — a short array must degrade to a fallback label, not cr…
+    [90m556|[39m     const cost = { type: "Choice", data: [manaCost] } as unknown as Ad…
+    [90m557|[39m     [34mexpect[39m(() [33m=>[39m [34madditionalCostChoices[39m(cost))[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   |[39m                                                   [31m^[39m
+    [90m558|[39m     [35mconst[39m decline [33m=[39m [34madditionalCostChoices[39m(cost)[33m.[39moptions[33m.[39m[34mfind[39m(
+    [90m559|[39m       (o) [33m=>[39m o[33m.[39mid [33m===[39m [32m"decline"[39m[33m,[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m33 passed[39m[22m[90m (34)[39m
+[2m   Start at [22m 23:15:07
+[2m   Duration [22m 1.44s[2m (transform 574ms, setup 204ms, import 681ms, tests 32ms, environment 269ms)[22m
+
+mainline exit=1
