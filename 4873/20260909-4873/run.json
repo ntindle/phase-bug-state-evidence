@@ -1,0 +1,116 @@
+{
+ "assertions": {
+  "A1_filter_offered": {
+   "expected": "filter input shown for 384-option creature-type list",
+   "observed": "filter input present, 384 pills rendered, title 'Choose a Creature Type' (both variants)",
+   "status": "passed"
+  },
+  "A2_stagger_sanity": {
+   "expected": "staggered entrance delays present on mainline (early pill visible, late pill hidden at 0.6s)",
+   "observed": "mainline: first pill opacity=1, last pill opacity=0 at 0.6s after mount; pr: last pill opacity=0.12 (PR caps unfiltered stagger at 0.3s)",
+   "status": "passed"
+  },
+  "A3_filtered_latency_mainline": {
+   "expected": "'Sliver' pill visible within ~1s of typing 'sliver' at 1.0s after mount",
+   "observed": "BUG: Sliver stayed opacity=0 for 8.53s after typing; visible at 9.53s after mount ~= its original stagger slot 0.05+306*0.03=9.23s + 0.25s duration",
+   "status": "failed"
+  },
+  "A4_fix_control_pr_variant": {
+   "expected": "PR variant shows filtered 'Sliver' immediately",
+   "observed": "0.47s after typing (first poll already opacity=1); fix eliminates the delay",
+   "status": "passed"
+  },
+  "A5_select_confirm_payload": {
+   "expected": "clicking Sliver + Confirm dispatches ChooseOption {choice: 'Sliver'}",
+   "observed": "both variants dispatched {\"type\":\"ChooseOption\",\"data\":{\"choice\":\"Sliver\"}}",
+   "status": "passed"
+  }
+ },
+ "browser": {
+  "binary": "/opt/meta-chromium/chrome",
+  "mode": "headless=new, driven via CDP (Input.insertText keystroke-equivalent + computed-opacity polling)",
+  "version": "Chrome/152.0.7977.64"
+ },
+ "client": {
+  "mainline_commit": "f3870960b948bef68338a392ca59dd1d7c0c28bd",
+  "mainline_commit_date": "2026-09-09T22:04:54Z",
+  "pr_base": "main",
+  "pr_head": "2d259878e7a0f632268802e2ecea2eff5c195433",
+  "pr_head_date": "2026-08-16T00:16:18Z",
+  "pr_merged": false,
+  "pr_review_state": "deferred by maintainer intake policy (pr-review-deferred, 2026-07-19 / 2026-07-30 / 2026-08-16 maintainer port)",
+  "pr_variant_note": "PR head unreachable via git fetch from this VM (slow transfer); PR variant = origin/main f387096 + the PR's published NamedChoiceModal.tsx diff (+8/-2) applied verbatim; local diff recorded as pr_patch_applied.diff"
+ },
+ "contract": "Creature-type picker (NamedChoiceModal, CreatureType, 384 options, 'Sliver' at index 306): typing 'sliver' 1.0s after mount must show the filtered 'Sliver' pill promptly, not after its original stagger slot. Tested on (a) current mainline (bug expected) and (b) PR #4873's isFiltering variant (fix control).",
+ "driver_notes": [
+  "Harness renders the real NamedChoiceModal from each tree with real framer-motion; mocked per the PR's own vitest strategy: ChoiceOverlay chrome, useGameDispatch (captured to window.__payloads), useSeatColor/usePlayerId/usePlayerAvatarImage, cardNames, multiplayerStore. i18n uses the real en/game.json.",
+  "Options are the 384 creature subtypes from the pinned v0.78.0 card-data.json, alphabetically sorted as the engine publishes them; 'Sliver' is the only 'sliver' match, index 306.",
+  "Timing: modal mount detected via overlay-title; filter text entered via CDP Input.insertText after focus (faithful beforeinput/input); visibility = computed opacity of the Sliver pill >= 0.99, polled every ~50ms.",
+  "Mainline: 157 opacity samples, pill count stayed 1 (filtered) the whole wait; opacity 0 until 9.53s after mount vs code-predicted 0.05+306*0.03+0.25=9.48s.",
+  "PR variant: first poll (0.47s incl. 0.3s settle) already opacity 1.",
+  "pnpm install required (repo pins pnpm@9.15.9); npm 10.9.4 fails with 'Cannot read properties of null (reading edgesOut)'. node_modules symlinked into both worktree clients.",
+  "Managed browser.spawn_task not used; direct CDP control of the VM's Chromium as in #4589."
+ ],
+ "evidence_files": [
+  "run.json",
+  "ui_observations.json",
+  "t_mainline_result.json",
+  "t_pr_result.json",
+  "summary.png",
+  "screenshots/ml_typed.png",
+  "screenshots/ml_visible.png",
+  "screenshots/ml_final.png",
+  "screenshots/pr_typed.png",
+  "screenshots/pr_visible.png",
+  "screenshots/pr_final.png",
+  "harness/main.tsx",
+  "harness/index.html",
+  "harness/options.ts",
+  "harness/vite.harness.config.ts",
+  "harness/mocks/ChoiceOverlay.tsx",
+  "harness/mocks/useGameDispatch.ts",
+  "harness/mocks/useSeatColor.ts",
+  "harness/mocks/usePlayerId.ts",
+  "harness/mocks/usePlayerAvatarImage.ts",
+  "harness/mocks/cardNames.ts",
+  "harness/mocks/multiplayerStore.ts",
+  "harness/cdp_test.py",
+  "harness/cdp_probe.py",
+  "pr_patch_applied.diff",
+  "manifest.sha256"
+ ],
+ "issue": 4873,
+ "limitations": [
+  "UI-subsystem test only: game store, card images, and overlay chrome mocked; no full game session against phase-server. No engine behavior is under test (the delay is pure client animation).",
+  "Only the CreatureType filter path exercised; the filter input also serves other long option lists (keywords etc.).",
+  "The PR-head variant applies the PR's published NamedChoiceModal diff to current mainline rather than the literal PR head commit (fetch infeasible); the applied diff is byte-identical to the PR's published patch and its local diff is preserved as pr_patch_applied.diff.",
+  "Opacity polling cadence ~50ms + 0.3s post-type settle; reported latencies have ~0.1s granularity.",
+  "Typing simulated via CDP Input.insertText, not physical keystrokes."
+ ],
+ "release_check": {
+  "advanced": false,
+  "engine_exercised": false,
+  "latest_stable": "v0.78.0",
+  "note": "No release advance since the v0.78.0 pin. phase-server was not started for this UI-only run; pinned v0.78.0 binary hash 02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0 verified present on disk."
+ },
+ "result": "A1 passed (filter offered, 384 pills); A2 passed (stagger present on mainline); A3 FAILED = bug reproduced (Sliver pill invisible 8.53s after typing 'sliver', visible at 9.53s after mount ~= its original stagger slot 9.23s+0.25s); A4 passed (PR variant: 0.47s, fix works); A5 passed (ChooseOption Sliver dispatched on both).",
+ "run_id": "20260909-4873",
+ "scope": "Client UI filter-latency path for NamedChoiceModal creature-type search (phase-rs/phase#4873, the fix PR for #4832): real NamedChoiceModal from current mainline vs the PR's isFiltering variant, each rendered in a temporary Vite harness and driven in headless Chromium via CDP.",
+ "started_at": "2026-09-09T22:42:14Z",
+ "underlying_issue": {
+  "labels": [
+   "status:confirmed",
+   "area:frontend",
+   "mechanic:ui-selection",
+   "priority:p4-ui-polish",
+   "source:discord",
+   "classifier:supported-aspect-defect"
+  ],
+  "number": 4832,
+  "state": "open",
+  "title": "Creature-type search waits for every filtered choice animation before showing results"
+ },
+ "validated_at": "2026-09-09",
+ "validated_version": "client-mainline@f387096",
+ "verdict": "reproduced"
+}
