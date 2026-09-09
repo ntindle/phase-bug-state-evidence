@@ -1,0 +1,28 @@
+game FVF2K3; P0 seat=0 P1 seat=1
+P0 keeps (strike=True, lands=4, mulls=0)
+[vi wf-MulliganDecision/P0] canSubmit=True rtype=exactChoices n=2 choices=[('', 'available'), ('', 'available')]
+P1 keeps
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 hand=['mountain', 'strike it rich', 'mountain', 'mountain', 'mountain', 'strike it rich'] treasures=0 goldspan=False pool={} t1=False t2=False color_seen=False
+P0 casts Strike It Rich
+test1: treasure 121 ability candidates [0], want_mana=1 -> index 0
+exported pre_plain.json
+test1: activating treasure 121 ability_index=0 via ActivateAbility
+[vi midflight/P0] canSubmit=True rtype=exactChoices n=4 choices=[('', 'available'), ('Strike It Rich', 'available'), ('Strike It Rich', 'available'), ('Treasure', 'available')]
+COLOR-CHOICE opportunity rtype=schema avail=5 texts=['white', 'blue', 'black', 'red', 'green']
+[P0] answers color choice with RED (choice FVF2K3.0.26.m3, rtype=schema)
+[vi midflight/P0] canSubmit=True rtype=schema n=5 choices=[('white', 'available'), ('blue', 'available'), ('black', 'available'), ('red', 'available'), ('green', 'available')]
+exported post_plain.json
+TEST1 done: red_delta=1 treasure 1->0
+P0 casts Strike It Rich
+P0 casts Strike It Rich
+P0 casts Goldspan Dragon
+test2: treasure 122 ability candidates [0, 1], want_mana=2 -> index 1
+exported pre_gold.json
+test2: activating treasure 122 ability_index=1 via ActivateAbility
+[vi midflight/P0] canSubmit=True rtype=exactChoices n=5 choices=[('', 'available'), ('Treasure', 'available'), ('Treasure', 'available'), ('Treasure', 'available'), ('Treasure', 'available')]
+COLOR-CHOICE opportunity rtype=schema avail=5 texts=['white', 'blue', 'black', 'red', 'green']
+[P0] answers color choice with RED (choice FVF2K3.0.157.m3, rtype=schema)
+[vi midflight/P0] canSubmit=True rtype=schema n=5 choices=[('white', 'available'), ('blue', 'available'), ('black', 'available'), ('red', 'available'), ('green', 'available')]
+exported post_gold.json
+TEST2 done: red_delta=2 treasure 2->1
+both tests complete; finishing
