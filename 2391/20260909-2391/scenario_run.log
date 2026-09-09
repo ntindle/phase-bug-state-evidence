@@ -1,0 +1,33 @@
+game 62LMFQ; P0 seat=0 P1 seat=1
+P0 keeps (omnath=True, lands=5, mulls=0)
+P1 keeps opening hand
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['plains', 'explosive vegetation', 'omnath, locus of creation', 'forest', 'island', 'mountain', 'forest'] P0untapped=0 omnath=False life=20/20 stack=0 cast=False mid=False land3=False post=False
+[P0] interaction rtype=exactChoices search_like=False choices=[]
+[P1] interaction rtype=exactChoices search_like=False choices=[]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Plains // Island // Forest // Forest // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Forest]
+[P1] interaction rtype=exactChoices search_like=False choices=[ // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain]
+[P1] interaction rtype=exactChoices search_like=False choices=[ // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Plains // Island // Island // Forest // Mountain // Forest]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Island // Forest]
+[P1] interaction rtype=exactChoices search_like=False choices=[ // Mountain // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Plains // Island // Forest // Forest // Mountain // Island // Forest]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Island // Forest // Mountain]
+[P1] interaction rtype=exactChoices search_like=False choices=[ // Mountain // Mountain // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Plains // Island // Forest // Forest // Mountain // Island // Forest // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Explosive Vegetation // Explosive Vegetation // Omnath, Locus of Creation // Omnath, Locus of Creation // Plains // Island // Forest // Mountain]
+P0 casts Omnath (turn 7)
+[P1] interaction rtype=exactChoices search_like=False choices=[ // Mountain // Mountain // Mountain // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Plains // Island // Forest // Mountain]
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Island // Mountain // Forest // Forest // Mountain // Explosive Vegetation // Explosive Vegetation // Explosive Vegetation // Explosive Vegetation // Plains // Island // Forest // Mountain]
+proof turn: exporting PRE, casting Explosive Vegetation
+P0 casts Explosive Vegetation (turn 9)
+[P0] interaction rtype=schema search_like=True choices=[Plains // Mountain // Plains // Plains // Forest // Island // Forest // Plains // Mountain // Mountain // Island // Forest // Forest // Mountain // Island // Island // Plains // Plains // Island // Forest // Plains // Fo]
+[P0] vegetation search: fetching ['Plains', 'Mountain']
+OrderTriggers: submitting advertised default order
+MID: veg resolved, stack empty; life=24/20 pool=['Red', 'Green', 'White', 'Blue']
+P0 plays land #3: forest
+[P0] interaction rtype=exactChoices search_like=False choices=[ // Explosive Vegetation // Explosive Vegetation // Forest]
+POST: land3 trigger resolved; life=24/16 pool=['Red', 'Green', 'White', 'Blue']
+exported POST
+post exported; finishing
