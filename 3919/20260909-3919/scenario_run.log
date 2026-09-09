@@ -1,0 +1,44 @@
+game HVZYDE; P0 seat=0 P1 seat=1
+P0 mulligans #1
+P1 keeps 7
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 looting=0 titania_cast=False mesa_gy=False mesa_bf=False repl_waits=0
+P0 keeps (titania=True, looting=True, lands=3)
+[P1] interaction rtype=exactChoices spec=None n_choices=2 choices=[keep // mulligan]
+P0 bottoms 1: ['mountain']
+[P0] interaction rtype=exactChoices spec=None n_choices=1 choices=[]
+[P1] interaction rtype=exactChoices spec=None n_choices=1 choices=[]
+[P0] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=2 choices=[ // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=2 choices=[ // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Mountain // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Forest]
+P0 casts Faithless Looting (#1)
+[P0] interaction rtype=schema spec=select n_choices=6 choices=[Forest // Faithless Looting // Faithless Looting // Titania, Protector of Argoth // Titania, Protector of Argoth // Mirage Mesa]
+P0 discards ['mirage mesa', 'forest']
+P1 discards ['forest', 'forest']
+[P0] Titania in hand, Mesa binned, waiting on mana: untapped_lands=1 forests=1
+[P1] interaction rtype=exactChoices spec=None n_choices=10 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=3 choices=[ // Mountain // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=8 choices=[ // Mirage Mesa // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=11 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=9 choices=[ // Mountain // Mirage Mesa // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=4 choices=[ // Mountain // Mountain // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=5 choices=[ // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=12 choices=[ // Mirage Mesa // Mirage Mesa // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Mountain // Forest]
+[P1] interaction rtype=exactChoices spec=None n_choices=6 choices=[ // Forest // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=13 choices=[ // Mountain // Mirage Mesa // Mirage Mesa // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Mountain // Fore]
+[P0] interaction rtype=exactChoices spec=None n_choices=5 choices=[ // Mountain // Mountain // Forest // Mountain]
+[P1] interaction rtype=exactChoices spec=None n_choices=7 choices=[ // Forest // Forest // Forest // Forest // Forest // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=14 choices=[ // Forest // Mirage Mesa // Mirage Mesa // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Faithless Looting // Mountain // Mountain // Forest]
+[P0] interaction rtype=exactChoices spec=None n_choices=16 choices=[ // Faithless Looting // Faithless Looting // Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argoth // Titania, Protector of Argoth // Faithless Looting // Faith]
+P0 casts Titania, Protector of Argoth
+[P0] interaction rtype=schema spec=sequence n_choices=2 choices=[Mirage Mesa // Forest]
+[P0] ETB target: selecting Mirage Mesa
+PRE exported: Titania BF, Mesa gy=True
+[P0] interaction rtype=schema spec=text n_choices=5 choices=[White // Blue // Black // Red // Green]
+[P0] color choice: answering White (candidates=5)
+POST exported (Mesa on battlefield, stack settled)
+post exported; finishing
