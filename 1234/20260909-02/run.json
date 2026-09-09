@@ -1,0 +1,225 @@
+{
+ "issue": 1234,
+ "run_id": "20260909-02",
+ "started_at": "2026-09-09T10:36:56",
+ "duration_s": 165.7,
+ "server": {
+  "server_version": "0.77.0",
+  "build_commit": "61715b5",
+  "protocol_version": 67,
+  "mode": "Full",
+  "binary_sha256": "a52293b754605baa63e4d987a5208902ec394868d49c4bfd86b3fd57f3267c6a",
+  "card_data_sha256": "698350d9b6323011a5b86a74a4d2ea54d13b4ed26a520579be7d044f0a3692e5",
+  "draft_pools_sha256": "56e030fdc74b2385759310de8564a58b8716035b2dccc0da709f37250cc2d3c7",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 of /proc/<pid>/exe of the listening server (started by today's earlier backfill run, same pinned release); reused per task body since 127.0.0.1:9374 was already listening"
+ },
+ "driver": {
+  "protocol_advertised": 67,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "f6d36ac0bc07add021261ba93357ded0addf9b92bac0bfb0007c5d18a489806f",
+ "games": {
+  "A": {
+   "spell": "Cabal Ritual",
+   "cost": "{1}{B}",
+   "deck": [
+    [
+     "Cabal Ritual",
+     12
+    ],
+    [
+     "Phyrexian Altar",
+     4
+    ],
+    [
+     "Diregraf Ghoul",
+     8
+    ],
+    [
+     "Swamp",
+     36
+    ]
+   ],
+   "game_code": "43UISK",
+   "duration_s": 35.9,
+   "assertions": {
+    "A1_setup_ok_A": "passed",
+    "A2a_gate_offers_1B": "passed",
+    "A2b_cast_completes": "passed"
+   },
+   "resolution_B": "not-run",
+   "offered_seen": true,
+   "obs": 4
+  },
+  "B": {
+   "spell": "Sign in Blood",
+   "cost": "{B}{B}",
+   "deck": [
+    [
+     "Sign in Blood",
+     12
+    ],
+    [
+     "Phyrexian Altar",
+     4
+    ],
+    [
+     "Memnite",
+     12
+    ],
+    [
+     "Forest",
+     32
+    ]
+   ],
+   "game_code": "HRC2NW",
+   "duration_s": 73.0,
+   "assertions": {
+    "A1_setup_ok_B": "passed",
+    "A3a_gate_offers_BB": "failed",
+    "A3b_manual_proof": "passed"
+   },
+   "resolution_B": "passed",
+   "offered_seen": false,
+   "obs": 4
+  },
+  "C": {
+   "spell": "Dark Ritual",
+   "cost": "{B}",
+   "deck": [
+    [
+     "Dark Ritual",
+     12
+    ],
+    [
+     "Phyrexian Altar",
+     4
+    ],
+    [
+     "Forest",
+     44
+    ]
+   ],
+   "game_code": "ED3VHL",
+   "duration_s": 18.9,
+   "assertions": {
+    "A1_setup_ok_C": "passed",
+    "A4_gate_rejects_B": "passed"
+   },
+   "resolution_B": "not-run",
+   "offered_seen": false,
+   "obs": 4
+  },
+  "D": {
+   "spell": "Steel Overseer",
+   "cost": "{2}",
+   "deck": [
+    [
+     "Steel Overseer",
+     12
+    ],
+    [
+     "Krark-Clan Ironworks",
+     4
+    ],
+    [
+     "Memnite",
+     12
+    ],
+    [
+     "Forest",
+     32
+    ]
+   ],
+   "game_code": "TB4GI1",
+   "duration_s": 37.9,
+   "assertions": {
+    "A1_setup_ok_D": "passed",
+    "A5a_gate_offers_2": "passed",
+    "A5b_cast_completes": "passed"
+   },
+   "resolution_B": "not-run",
+   "offered_seen": true,
+   "obs": 4
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2a_gate_offers_1B": "passed",
+  "A2b_cast_completes": "passed",
+  "A3a_gate_offers_BB": "failed",
+  "A3b_manual_proof": "passed",
+  "A4_gate_rejects_B": "passed",
+  "A5a_gate_offers_2": "passed",
+  "A5b_cast_completes": "passed"
+ },
+ "notes": [
+  "--- game A (Cabal Ritual {1}{B}) duration 35.9s ---",
+  "P0 keeps (spell in hand=True, mulls=0)",
+  "P0 casts Diregraf Ghoul",
+  "P0 casts Phyrexian Altar",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 7)",
+  "gate assertion A2a_gate_offers_1B: offered_seen=True want_offered=True -> passed (obs=4)",
+  "-> act phase",
+  "activating Phyrexian Altar",
+  "sacrificed for Phyrexian Altar (#1): candidate | Diregraf Ghoul",
+  "chose mana color: candidate",
+  "casting Cabal Ritual",
+  "A2b: ritual resolved; ghoul in gy=True; black pool=3 (want 3) -> passed",
+  "POST exported",
+  "--- game B (Sign in Blood {B}{B}) duration 73.0s ---",
+  "P0 keeps (spell in hand=True, mulls=0)",
+  "P0 casts Memnite",
+  "P0 casts Memnite",
+  "P0 casts Phyrexian Altar",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 17)",
+  "gate assertion A3a_gate_offers_BB: offered_seen=False want_offered=True -> failed (obs=4)",
+  "-> act phase",
+  "activating Phyrexian Altar",
+  "sacrificed for Phyrexian Altar (#1): candidate | Memnite",
+  "chose mana color: candidate",
+  "activating Phyrexian Altar",
+  "sacrificed for Phyrexian Altar (#2): candidate | Memnite",
+  "chose mana color: candidate",
+  "both activations done; pool={'black': 2}",
+  "MID exported; pool={'black': 2}",
+  "A3b: with {B}{B} floating, gate now offers Sign in Blood -> passed (bug confirmed: feasibility analysis, not resources, blocked the offer)",
+  "casting Sign in Blood",
+  "targeted P1 for Sign in Blood",
+  "Sign in Blood resolved: P1 life=18 (want 18) -> passed",
+  "POST exported",
+  "--- game C (Dark Ritual {B}) duration 18.9s ---",
+  "P0 keeps (spell in hand=True, mulls=0)",
+  "P0 casts Phyrexian Altar",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 6)",
+  "gate assertion A4_gate_rejects_B: offered_seen=False want_offered=False -> passed (obs=4)",
+  "POST exported (observe-only)",
+  "--- game D (Steel Overseer {2}) duration 37.9s ---",
+  "P0 keeps (spell in hand=True, mulls=0)",
+  "P0 casts Memnite",
+  "P0 casts Krark-Clan Ironworks",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 8)",
+  "gate assertion A5a_gate_offers_2: offered_seen=True want_offered=True -> passed (obs=4)",
+  "-> act phase",
+  "activating Krark-Clan Ironworks",
+  "sacrificed for Krark-Clan Ironworks (#1): candidate | Memnite",
+  "casting Steel Overseer",
+  "A5b: Overseer on battlefield; Memnite in gy=True -> passed",
+  "POST exported"
+ ],
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2a gate_offers_{1}{B}: passed; A2b cast_completes: passed; A3a gate_offers_{B}{B}: failed; A3b manual_proof: passed; A4 gate_rejects_{B}: passed; A5a gate_offers_{2}: passed; A5b cast_completes: passed",
+ "scope": "feasible_mana_capacity colored-shard feasibility under non-tap mana sources (Phyrexian Altar / Krark-Clan Ironworks); native engine, two human-client seats; four games covering {1}{B}, {B}{B}, {B} (negative), {2} (KCI regression)",
+ "limitations": [
+  "Browser UI not exercised.",
+  "12x spell density is a test-harness convenience (engine accepts >4-of for custom games)."
+ ],
+ "contract": "Game A ({1}{B} Cabal Ritual, Swamp+Altar+Ghoul): gate must offer; then real cast. Game B ({B}{B} Sign in Blood, Forests+Altar+2 Memnites): gate must offer (bug: does not); manual double activation floats {B}{B} as proof, then real cast at P1. Game C ({B} Dark Ritual, Altar+0 creatures): gate must NOT offer. Game D ({2} Steel Overseer, KCI+Memnite): gate must offer; then real cast via KCI activation."
+}
