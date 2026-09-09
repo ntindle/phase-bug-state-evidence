@@ -1,0 +1,202 @@
+{
+ "issue": 1488,
+ "run_id": "20260909-1488",
+ "started_at": "2026-09-09T14:45:51",
+ "duration_s": 13.3,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 20260909-1488"
+ },
+ "server_run_dir": "runs/20260909-1488",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "309ca0302196b4cca58344bd38b616004bd40d54c15a7bd5d7ac67c5303a22e1",
+ "decks": {
+  "P0": [
+   [
+    "fateful tempest",
+    12
+   ],
+   [
+    "mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_vote_prompted": "failed",
+  "A3_mill": "failed",
+  "A4_damage": "failed",
+  "A5_exile": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 main phase, Tempest in hand, 3 untapped Mountains, life 20/20",
+  "NO past/present vote opportunity was advertised to any player during the Tempest cast/resolution (REPORTED BUG: council's dilemma vote never happens)",
+  "P1 damage=0 vs milled-MV-sum=3 (inconsistent)",
+  "exiled during resolution: 0 card(s) [] (Oracle: 1 per present vote)",
+  "post.json: Tempest in P0 graveyard, stack empty, game advanced (turn 6, phase BeginCombat)",
+  "mill during resolution: 0 cards (P0 library 50->50, graveyard +1 = the cast spell only; Oracle: 1 per past vote; even the parse's Fixed-1 Mill produced no observable change)",
+  "CORRECTION 2026-09-09: the run's first A3 evaluation wrongly counted the cast Tempest (oid 33, hand->graveyard) as milled because the oid-exclusion used the other Tempest copy in hand (oid 53). Re-verified from pre/post: library unchanged 50->50, graveyard 0->1 (cast spell only), exile 0->0, life 20/20. Resolution produced no game-state change beyond the spell leaving the stack."
+ ],
+ "observations": {
+  "vote_seen": false,
+  "vote_opportunities": [],
+  "interaction_shapes": [
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   }
+  ],
+  "cast_submitted": true,
+  "cast_turn": 6,
+  "cast_phase": "PreCombatMain",
+  "milled": [],
+  "exiled": [],
+  "life_pre": [
+   20,
+   20
+  ],
+  "life_post": [
+   20,
+   20
+  ],
+  "damage_to_p1": 0,
+  "mv_sum_milled": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Fateful Tempest deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "If a vote prompt had appeared, the driver would have voted 'past' for both seats (deterministic test policy); no vote prompt appeared."
+ ],
+ "setup_line": "P0: 12x fateful tempest + 48x mountain (mulligan to tempest + 2 lands); P1: 60x mountain dummy",
+ "contract_line": "Cast Fateful Tempest: council's-dilemma vote (past/present) offered to each player, then mill 1 per past vote, damage each opponent = total MV milled, exile top 1 per present vote, may play exiled cards until end of next turn",
+ "driver_notes": [
+  "A3 first evaluated 'passed' by counting the cast spell (oid 33) as milled; the exclusion had used the uncast copy's oid (53). Corrected post-run from pre/post zone counts: no mill occurred."
+ ]
+}
