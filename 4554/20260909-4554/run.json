@@ -1,0 +1,302 @@
+{
+ "issue": 4554,
+ "run_id": "20260909-4554",
+ "started_at": "2026-09-09T19:15:10",
+ "duration_s": 58.1,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 20260909-4554"
+ },
+ "server_run_dir": "runs/20260909-4554",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0546dadbc5aefc12d3fa2e02f14fb13265e75084bef0e6b2407d2aab6faf889b",
+ "decks": {
+  "P0": [
+   [
+    "Krang, Utrom Warlord",
+    8
+   ],
+   [
+    "Forest",
+    52
+   ]
+  ],
+  "P1": [
+   [
+    "Windborn Muse",
+    8
+   ],
+   [
+    "Plains",
+    52
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_tax_prompted": "passed",
+  "A3_pay_completes": "passed",
+  "A4_decline_resolves": "passed",
+  "A5_no_softlock": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: P1 muse=1, P0 ready krang=1, P1 life=20",
+  "pay-mode tax resolved (attack turn 20); P1 life now 11; switching to decline mode",
+  "decline-mode tax wait resolved (turn 22)",
+  "2 CombatTaxPayment wait(s) for P0, all with actionable submissions (e.g. ['PayCombatTax']); mirrors the report's 'Waiting for: CombatTaxPayment'",
+  "paid attack: P1 life 20 -> 11 (unblocked 9/9 hasty Krang, tax {2} paid)",
+  "haste path: Krang cast turn 18, attacked turn 20, summoning_sick_at_attack=False, keywords=['Flying', 'Haste', 'Indestructible', 'Trample']",
+  "decline resolved: no damage from declined attack (P1 life 11), game advanced to turn 22",
+  "post.json: stack empty, wf=Priority, game proceeding (turn=22, phase=PostCombatMain, active=P0)",
+  "2 CombatTaxPayment waits; acting player had an actionable submission every time",
+  "verdict not-reproduced on v0.78.0: the reported pay-branch path completes (tax paid, attack proceeds, no stall). Not tested on the report's build v0.9.0; not a fix claim."
+ ],
+ "observations": {
+  "tax_waits": [
+   {
+    "turn": 20,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "wf_type": "CombatTaxPayment",
+    "wf_data_keys": [
+     "player",
+     "context",
+     "total_cost",
+     "per_creature",
+     "pending"
+    ],
+    "wf_data": {
+     "player": 0,
+     "context": {
+      "type": "Attacking"
+     },
+     "total_cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "per_creature": [
+      [
+       5,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ]
+     ],
+     "pending": {
+      "type": "Attack",
+      "data": {
+       "attacks": [
+        [
+         {
+          "object_id": 5,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ]
+       ],
+       "bands": []
+      }
+     }
+    },
+    "action_types": [
+     "PayCombatTax"
+    ],
+    "n_actions": 2,
+    "vi_present": false,
+    "mode": "pay"
+   },
+   {
+    "turn": 22,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "wf_type": "CombatTaxPayment",
+    "wf_data_keys": [
+     "player",
+     "context",
+     "total_cost",
+     "per_creature",
+     "pending"
+    ],
+    "wf_data": {
+     "player": 0,
+     "context": {
+      "type": "Attacking"
+     },
+     "total_cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "per_creature": [
+      [
+       5,
+       {
+        "type": "Cost",
+        "shards": [],
+        "generic": 2
+       }
+      ]
+     ],
+     "pending": {
+      "type": "Attack",
+      "data": {
+       "attacks": [
+        [
+         {
+          "object_id": 5,
+          "incarnation": 3
+         },
+         {
+          "type": "Player",
+          "data": 1
+         }
+        ]
+       ],
+       "bands": []
+      }
+     }
+    },
+    "action_types": [
+     "PayCombatTax"
+    ],
+    "n_actions": 2,
+    "vi_present": false,
+    "mode": "decline"
+   }
+  ],
+  "declare_waits": [
+   {
+    "turn": 9,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 11,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 13,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 15,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 17,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 18,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 19,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 20,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     5
+    ],
+    "submitted": true
+   },
+   {
+    "turn": 21,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   },
+   {
+    "turn": 22,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     5
+    ],
+    "submitted": true
+   },
+   {
+    "turn": 22,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   }
+  ],
+  "stall_observed": false,
+  "rejections": [],
+  "life_pre": 20,
+  "life_post": 11,
+  "life_after_pay": 11,
+  "paid_attack_turn": 20,
+  "decline_turn": 22,
+  "krang_cast_turn": 18,
+  "krang_attack_turn": 20,
+  "krang_summoning_sick_at_attack": false,
+  "pay_mode": false,
+  "krang_keywords_at_attack": [
+   "Flying",
+   "Haste",
+   "Indestructible",
+   "Trample"
+  ],
+  "last_tax_submit": {
+   "at": 1788981367.7738788,
+   "turn": 22,
+   "mode": "decline"
+  }
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Krang, Utrom Warlord / 8x Windborn Muse deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-06-28 build v0.9.0 (6bd7432); verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Krang, Utrom Warlord + 52x Forest (mulligan to Krang + lands, cast Krang {9}, attack P1 with haste); P1: 8x Windborn Muse + 52x Plains (mulligan to Muse + Plains, cast Muse, never attacks)",
+ "contract_line": "CombatTaxPayment surfaces when the hasty Krang attacks the Muse controller; choosing to pay {2} lets the attack proceed (P1 20->11); choosing to decline does not strand the game; every wait offers an actionable submission"
+}
