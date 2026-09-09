@@ -1,0 +1,94 @@
+{
+ "issue": 3919,
+ "run_id": "20260909-3919",
+ "started_at": "2026-09-09T17:08:57",
+ "duration_s": 33.2,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "sha256 match of pinned verified release artifacts (verified 2026-09-09 run, ledger); fresh isolated server on 127.0.0.1:9374 from this run's run dir"
+ },
+ "server_run_dir": "runs/20260909-3919",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a107b74e41ab5f1b59c9061ff6d2b10d27422939f655ee17b7a02b5b7057ffb0",
+ "decks": {
+  "P0": [
+   [
+    "Titania, Protector of Argoth",
+    8
+   ],
+   [
+    "Mirage Mesa",
+    8
+   ],
+   [
+    "Faithless Looting",
+    8
+   ],
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Mountain",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_etb_targets_mesa": "passed",
+  "A3_no_stall": "passed",
+  "A4_color_choice": "passed",
+  "A5_mesa_battlefield": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pre.json shows Titania on P0 battlefield and Mirage Mesa in P0 graveyard with the ETB trigger pending",
+  "A2 passed: ETB target = Mirage Mesa (path=prompt)",
+  "A3 passed: no ReplacementChoice wait ever needed a stall watchdog (entry replacements resolved without parking)",
+  "A4 passed: color choice offered with 5 candidates; answered White",
+  "A5 passed: Mesa oid 43 on P0 battlefield, tapped=True, color fields={'chosen_attributes': [{'type': 'Color', 'value': 'White'}]}",
+  "A6 passed: post.json stack empty, game proceeding (turn=13, phase=BeginCombat, wf=Priority)",
+  "verdict=not-reproduced: Mesa's entry replacements resolved per Oracle and the game proceeded; the reported freeze does not occur on v0.78.0"
+ ],
+ "observations": {
+  "target_submitted": "mesa",
+  "target_path": "prompt",
+  "color_offered": true,
+  "color_candidates": 5,
+  "color_chosen": "White",
+  "stall_observed": false,
+  "replacement_waits": [],
+  "rejections": [],
+  "mesa_entry_turn": 13,
+  "last_mana_dbg": 1788973744.1788373,
+  "target_submitted_at": 1788973769.2657225
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Titania / 8x Mirage Mesa / 8x Faithless Looting deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-06-20 build v0.2.1; verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Titania + 8x Mirage Mesa + 8x Faithless Looting + 20x Forest + 16x Mountain (mulligan to Titania+Looting+2 lands; Looting bins Mesa; Titania cast with 5 mana/2 green; ETB targets Mesa); P1: 60x Forest, do-nothing",
+ "contract_line": "Titania ETB targets Mirage Mesa; Mesa enters tapped; its controller is offered a real color choice; no ReplacementChoice stall; game proceeds"
+}
