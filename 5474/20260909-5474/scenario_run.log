@@ -1,0 +1,38 @@
+G1 game N6HNIT; P0 seat=0 P1 seat=1
+[P0] mulligans #1
+[P1] keeps (want_ok=True, lands=7, mulls=0)
+DIAG g1 turn=1 active=0 phase=Untap wf=MulliganDecision stage=g1_setup p0hand=['island', 'island', 'island', 'island', 'mountain', 'mountain'] tony_bf=[] stack=[]
+[P0] keeps (want_ok=True, lands=6, mulls=1)
+[P0] bottoms 1
+P0 casts Tony Stark oid=38 (castspell variants seen: 2)
+exported pre.json
+STAGE -> g1_face1
+ModalFaceChoice [g1_cast1]: faces=[{'id': 'N6HNIT.0.70.c0', 'face': 'front', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': False}]
+[P0] submits face choice front (N6HNIT.0.70.c0) via Interaction
+exported post_front.json
+STAGE -> g1_face2_prep (Tony Stark #1 on BF)
+P0 casts second Tony Stark oid=25 with 5 untapped lands (4 mountains)
+exported pre_cast2.json
+STAGE -> g1_face2
+ModalFaceChoice [g1_cast2]: faces=[{'id': 'N6HNIT.0.135.c0', 'face': 'front', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': False}]
+[P0] exploratory: ChooseModalFace back_face=true
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+back_face=true REJECTED: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+ModalFaceChoice [g1_cast2]: faces=[{'id': 'N6HNIT.0.135.c0', 'face': 'front', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': False}]
+[P0] submits face choice front (N6HNIT.0.135.c0) via Interaction
+[P0] legend rule: keep N6HNIT.0.138.c0
+exported post.json
+g1 cast2 resolved; game 1 done
+game 1 loop ended ok=True
+G2 game 8WC089; P0 seat=0 P1 seat=1
+[P0] keeps (want_ok=True, lands=6, mulls=0)
+[P1] keeps (want_ok=True, lands=7, mulls=0)
+DIAG g2 turn=1 active=0 phase=Untap wf=MulliganDecision stage=g2_setup p0hand=['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'tergrid, god of fright'] tony_bf=[] stack=[]
+P0 casts Tergrid oid=31
+exported g2_pre.json
+STAGE -> g2_face
+ModalFaceChoice [g2_cast1]: faces=[{'id': '8WC089.0.128.c0', 'face': 'front', 'status': 'available'}, {'id': '8WC089.0.128.c1', 'face': 'back', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': False}, {'back_face': True}]
+[P0] submits face choice front (8WC089.0.128.c0) via Interaction
+exported g2_post.json
+game 2 done (Tergrid on BF)
+game 2 loop ended ok=True
