@@ -1,0 +1,122 @@
+{
+ "issue": 4836,
+ "run_id": "20260909-4836",
+ "started_at": "2026-09-09T21:19:05",
+ "duration_s": 83.6,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + digests re-verified against pinned v0.78.0 release artifacts (binary+manifest match GitHub asset digests; data files match the signed manifest); fresh isolated server on 127.0.0.1:9374 for run 20260909-4836. Latest stable release re-checked this run: v0.78.0 still newest; no pin advance."
+ },
+ "server_run_dir": "runs/20260909-4836",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3e117449e2c2398602037c3d9bc9f55cb391c65f3081691acf7f937fbbcfe2b6",
+ "decks": {
+  "P0": [
+   [
+    "The Mindskinner",
+    8
+   ],
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Island",
+    22
+   ],
+   [
+    "Mountain",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "issue_title": "The Mindskinner taps on attack but does not mill",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_taps": "passed",
+  "A3_damage_prevented": "passed",
+  "A4_mill_combat": "passed",
+  "A5_bolt_branch": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: P0 Mindskinner=1 ready, P1 life=20, P1 lib=49, P2 lib=49",
+  "A2 passed: Mindskinner oid 4 in combat.attackers, tapped=True, power=10",
+  "A3 passed: P1 life 20 -> 20 (10 combat damage prevented)",
+  "A4 passed: P1 lib-10/gy+10, P2 lib-10/gy+10 (expected lib-10/gy+10 each)",
+  "A5 passed: P1 lib-3/gy+3, P2 lib-3/gy+3; P1 life 20 -> 20 (expected lib-3/gy+3 each, life unchanged)",
+  "A6 passed: post.json stack empty, wf=Priority, turn=19, phase=Upkeep",
+  "verdict not-reproduced on v0.78.0: the full reported path completes (combat damage prevented, each opponent mills 10; Bolt damage prevented, each opponent mills 3). Not tested on the report's original build; not a fix claim."
+ ],
+ "observations": {
+  "attack_turn": 18,
+  "mindskinner_oid": 4,
+  "rejections": [],
+  "vi_shapes_seen": [
+   "{\"interactionId\": \"ZU6FP0.0.418\", \"response\": {\"type\": \"schema\", \"data\": {\"spec\": {\"type\": \"sequence\", \"data\": {\"min\": 1, \"max\": 1, \"unique\": true, \"includeAll\": false, \"engineValidated\": false, \"escape\": null, \"confirm\": \"explicit\"}}, \"candidates\": [{\"id\": \"ZU6FP0.0.418.t0\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"player\", \"data\": {\"role\": \"candidate\", \"index\": null, \"seat\": 0}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"ZU6FP0.0.418.t1\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"player\", \"data\": {\"role\": \"candidate\", \"index\": null, \"seat\": 1}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"ZU6FP0.0.418.t2\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"player\", \"data\": {\"role\": \"candidate\", \"index\": null, \"seat\": 2}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"ZU6FP0.0.418.t3\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"object\", \"data\": {\"role\": \"candidate\", \"index\": null, \"reference\": \"4\", \"name\": \"The Mindskinner\", \"zone\": \"battlefield\", \"controller\": 0, \"power\": 10, \"tapped\": true}}], \"status\": {\"type\": \"available\"}}]}}, \"surfaces\": [{\"type\": \"summary\""
+  ],
+  "bolt_target_prompts": 1,
+  "life_pre": 20,
+  "lib_pre": {
+   "1": 49,
+   "2": 49
+  },
+  "gy_pre": {
+   "1": 0,
+   "2": 0
+  },
+  "life_midc": 20,
+  "lib_midc": {
+   "1": 39,
+   "2": 39
+  },
+  "gy_midc": {
+   "1": 10,
+   "2": 10
+  },
+  "life_midb": 20,
+  "lib_midb": {
+   "1": 36,
+   "2": 36
+  },
+  "gy_midb": {
+   "1": 13,
+   "2": 13
+  },
+  "bolt_cast": true
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "8x Mindskinner / 12x Lightning Bolt deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the report's original 2026-07-01 build; verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x The Mindskinner + 12x Lightning Bolt + 22x Island + 18x Mountain (mulligan to Mindskinner + lands, cast Mindskinner {U}{U}{U}, attack P1); P1/P2: 60x land each, passive (never attack)",
+ "contract_line": "The Mindskinner attacks as a 10/1: it taps, its 10 combat damage to P1 is prevented, and EACH opponent (P1, P2) mills 10; then Lightning Bolt at P1 is prevented and each opponent mills 3"
+}
