@@ -1,0 +1,101 @@
+{
+ "issue": 4192,
+ "run_id": "20260909-4192",
+ "started_at": "2026-09-09T17:26:30",
+ "duration_s": 23.6,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello on 127.0.0.1:9374 matched the pinned verified release; fresh isolated server for this run"
+ },
+ "server_run_dir": "runs/20260909-4192",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "driver_notes": [
+  "First attempt aborted: generic_decision's empty-DeclareAttackers branch ran before the custom attack block, so Kaalia never attacked; also the trigger-on-stack detector fired spuriously on the Kaalia cast (spell names Kaalia as source). Fixed: custom DeclareAttackers block moved before generic_decision; trigger detection gated on an actual attack declaration.",
+  "The A4 attacking check first read non-existent object fields (attacking/is_attacking); the engine records attackers in state.combat.attackers. Fixed the evaluator; re-ran the full scenario for a consistent evidence bundle."
+ ],
+ "scenario_sha256": "f6d080b441aa22ae1a8e006a70071d606fce1d71d7170a4fc85dc66486dc65f9",
+ "decks": {
+  "P0": [
+   [
+    "Kaalia of the Vast",
+    8
+   ],
+   [
+    "Serra Angel",
+    8
+   ],
+   [
+    "Mountain",
+    12
+   ],
+   [
+    "Plains",
+    12
+   ],
+   [
+    "Swamp",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_offered": "passed",
+  "A3_no_stall": "passed",
+  "A4_angel_enters": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: Kaalia cast and declared attacking; pre.json exported (P1 life pre=20)",
+  "A2 passed: Kaalia attack trigger seen on stack=True; may-choice offers=1",
+  "A3 passed: no ReplacementChoice wait ever needed the stall watchdog",
+  "A4 passed: Serra Angel oid 10 on P0 battlefield, tapped=True, listed in combat.attackers vs P1=True, entered_via_ability_source=True",
+  "A5 passed: post.json stack empty, game proceeding (turn=9, phase=DeclareBlockers, wf=Priority)",
+  "verdict=not-reproduced: Kaalia's attack trigger completes per Oracle (Angel enters tapped and attacking) and the game proceeds; the reported ReplacementChoice freeze does not occur on v0.78.0"
+ ],
+ "observations": {
+  "kaalia_attack_declared": true,
+  "kaalia_trigger_seen": true,
+  "trigger_seen_at": 1788974812.7123294,
+  "may_answered": "yes",
+  "may_answered_at": 1788974813.0180717,
+  "angel_selected": true,
+  "angel_selected_at": 1788974813.1701655,
+  "angel_entered_at": 1788974813.3220963,
+  "life_pre": 20,
+  "stall_observed": false,
+  "entry_stall": false,
+  "replacement_waits": [],
+  "rejections": [],
+  "may_choices_seen": 1,
+  "last_mana_dbg": 1788974791.9865475
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Kaalia / 8x Serra Angel deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The entering card (Serra Angel) carries no replacement effects; the test targets the zero-action ReplacementChoice softlock signature during the tapped-and-attacking zone change.",
+  "Not tested on the original 2026-06-23 build v0.3.0; verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Kaalia of the Vast + 8x Serra Angel + 12x Mountain + 12x Plains + 12x Swamp (mulligan to Kaalia+Angel+3 lands; cast Kaalia with {1}{R}{W}{B}; attack with her); P1: 60x Forest, do-nothing",
+ "contract_line": "Kaalia attacks -> trigger offers the may-choice -> yes -> Serra Angel selected -> Angel enters tapped and attacking; no ReplacementChoice stall; game proceeds"
+}
