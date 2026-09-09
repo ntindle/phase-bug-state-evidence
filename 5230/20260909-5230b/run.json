@@ -14,7 +14,7 @@
   "signature_key_id": "436711b6a2d36828",
   "signature_verified": true,
   "observed_at": "2026-09-09",
-  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9375 for run 20260909-5230b (re-run: first attempt 20260909-5230 reached turn 12 with 6 untapped Forests vs {6} tax, so the can't-pay branch was not genuine; this run adds a PreCombatMain mana drain)"
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9375 for run 20260909-5230b (re-run: first attempt 20260909-5230 reached turn 12 with 6 untapped Forests vs {6} tax, so the can't-pay branch was not genuine; the optional PreCombatMain mana-drain code never fired (P0 held only Forests) and the can't-pay arose naturally with 5 untapped Forests vs {6} tax)"
  },
  "server_run_dir": "runs/20260909-5230b",
  "server_port": 9375,
@@ -293,6 +293,6 @@
   "Not tested on the original 2026-07-07 build v0.17.0; verdict is scoped to v0.78.0, not a fix claim.",
   "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
  ],
- "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 lands, cast Bears; PreCombatMain mana drain on the can't-pay turn so untapped < {4}); P1: 8x Ghostly Prison + 12x Disrupt Decorum + 20x Plains + 20x Mountain (Prison ~T4, Decorum goads P0's Bears, never attacks)",
+ "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 lands, cast Bears; optional PreCombatMain mana-drain code present but unused - P0 held only Forests on the can't-pay turn, so the can't-pay arose naturally with 5 untapped Forests vs {6} tax); P1: 8x Ghostly Prison + 12x Disrupt Decorum + 20x Plains + 20x Mountain (Prison ~T4, Decorum goads P0's Bears, never attacks)",
  "contract_line": "CombatTaxPayment surfaces when attacking a Prison controller; a goaded attacker that cannot pay is offered only decline; declining does not strand the game; undeclare outcome recorded; a goaded attacker that can pay pays and the attack proceeds"
 }
