@@ -1,0 +1,25 @@
+===== issue #6761 run =====
+game J3TAZE; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+status: turn=1 phase=Untap active=0 waiting_for={"type": "MulliganDecision", "data": {"pending": [{"player": 0, "mulligan_count": 0, "phase": {"type": "Declare"}}, {"player": 1, "mulligan_count": 0, "phase": 
+P1 keeps opening hand
+[P1] REJECTION ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P0 casts Esix, Fractal Bloom (turn 11)
+P0 casts Llanowar Elves (turn 27)
+A1 setup: Esix on BF=True Elves=1 -> passed
+P0 casts Saproling Migration #1 (turn 27)
+P0 declines kicker (choice J3TAZE.0.408.c1)
+ESIX OFFER observed as waiting_for=ReplacementChoice
+P0 ACCEPTS Esix replacement (choice J3TAZE.0.411.c0)
+copy-target choice: valid_targets={'3': 'Llanowar Elves'}
+P0 chooses copy target (choice J3TAZE.0.412.c0, targets={'3': 'Llanowar Elves'})
+Esix offer: could not identify accept choice
+accept path: elf_delta=2 sap_delta=0 -> A3 passed
+accept path done; attempting second-Migration control
+copy-target prompt: 2 candidates
+  candidate J3TAZE.0.417.r0: Esix, Fractal Bloom (zone=Battlefield)
+  candidate J3TAZE.0.417.d0: candidate (zone=None)
+Esix offer: could not identify accept choice
+assertions: {"A1_setup_ok": "passed", "A2_choice_offered": "passed", "A3_accept_path": "passed", "A4_second_no_offer": "not-run", "A5_cleanup": "passed"}
+DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_choice_offered": "passed", "A3_accept_path": "passed", "A4_second_no_offer": "not-run", "A5_cleanup": "passed"}

@@ -1,0 +1,93 @@
+{
+ "issue": 6761,
+ "run_id": "20260910-1942",
+ "started_at": "2026-09-10T20:07:47",
+ "duration_s": 57.5,
+ "server": {
+  "server_version": "0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "release manifest + sha256 match of pinned verified artifacts; ServerHello mode=Full"
+ },
+ "driver": {
+  "protocol_advertised": 69,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "61a73f3a24be31fc667800dd668a890982aba0dda4abf4670f1fcc467f7d148a",
+ "decks": {
+  "P0": [
+   [
+    "Esix, Fractal Bloom",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Saproling Migration",
+    12
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Island",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_accept_path": "passed",
+  "A4_second_no_offer": "not-run",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "Esix correctly excluded from valid copy targets",
+  "Esix offer seen (iid J3TAZE.0.413) but no accept choice identifiable; leaving pending",
+  "Esix itself IS among the copy candidates (acceptance criterion says it must not be)",
+  "no Llanowar Elves candidate at copy-target prompt; leaving pending",
+  "Esix offer seen (iid J3TAZE.0.420) but no accept choice identifiable; leaving pending",
+  "second-Migration control not attempted (turn 28 vs cast turn 27)",
+  "protocol-69 driver (v0.79.0): Esix cast via CastSpell; Saproling Migration cast with kicker declined at OptionalCostChoice (decideOptionalCost + (pay,false)); Esix offer detected via viewer_interaction exactChoices/schema prompts or waiting_for=ReplacementChoice; copy target chosen via schema {type:<spec.type>, data:{choiceIds:[...]}}.",
+  "P0 deck 12x Esix, Fractal Bloom + 12x Llanowar Elves + 12x Saproling Migration + 12x Forest + 12x Island; P1 60x Island draw-go (engine accepts >4-of for custom games).",
+  "Pinned card-data.json prices Esix at {4}{G}{U} (generic 4); printed cost is {3}{G}{U}. Driver pays whatever the engine asks."
+ ],
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "at": 1789070868.6093767,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.79.0, not a fix claim.",
+  "Discord thread (report source) is login-gated; scenario is built from the issue's triage summary and acceptance criteria."
+ ],
+ "setup_line": "P0: 12x Esix, Fractal Bloom + 12x Llanowar Elves + 12x Saproling Migration + 12x Forest + 12x Island; P1: 60x Island",
+ "contract_line": "First token creation of P0's turn with Esix on the battlefield offers the optional replacement: choose a creature other than Esix, create that many tokens as copies of it",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
