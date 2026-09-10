@@ -1,0 +1,182 @@
+[
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/draft-abc12345",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 400,
+   "body": "Invalid draft code",
+   "elapsed_s": 0.04
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/Q7KX2P",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 404,
+   "body": "No backup found",
+   "elapsed_s": 0.002
+  }
+ },
+ {
+  "request": {
+   "method": "POST",
+   "path": "/p2p-draft-backup",
+   "query": "",
+   "body": {
+    "draft_code": "draft-abc12345",
+    "host_peer_id": "host-peer-1",
+    "snapshot_json": "{\"draftCode\": \"draft-abc12345\", \"seatCount\": 8, \"pick\": 5, \"picksSinceLastBackup\": 5}"
+   },
+   "body_sha256": "605f5af9f7f94025d8cbbb7983c408674c47a458ba6752f25cb1a91a6ea848a7"
+  },
+  "response": {
+   "status": 400,
+   "body": "Invalid draft code",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/draft-abc12345",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 400,
+   "body": "Invalid draft code",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "POST",
+   "path": "/p2p-draft-backup",
+   "query": "",
+   "body": {
+    "draft_code": "Q7KX2P",
+    "host_peer_id": "host-peer-1",
+    "snapshot_json": "{\"draftCode\": \"draft-abc12345\", \"seatCount\": 8, \"pick\": 5, \"picksSinceLastBackup\": 5}"
+   },
+   "body_sha256": "d7b55958dcb42632a3cb69867ab357d8c889b7fe8044143762aa073e33d75e2c"
+  },
+  "response": {
+   "status": 200,
+   "body": "Stored",
+   "elapsed_s": 0.019
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/Q7KX2P",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 200,
+   "body": "{\"host_peer_id\":\"host-peer-1\",\"snapshot_json\":\"{\\\"draftCode\\\":\\\"draft-abc12345\\\",\\\"pick\\\":5,\\\"picksSinceLastBackup\\\":5,\\\"seatCount\\\":8}\",\"updated_at\":1789048887}",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "POST",
+   "path": "/p2p-draft-backup",
+   "query": "",
+   "body": {
+    "draft_code": "Q7KX2P",
+    "host_peer_id": "host-peer-1",
+    "snapshot_json": "{\"draftCode\": \"draft-abc12345\", \"seatCount\": 8, \"pick\": 10, \"picksSinceLastBackup\": 5}"
+   },
+   "body_sha256": "99fb1dbbd690aea8a77e62f76a1578e11e08f864ca19d8a920811b16a979da29"
+  },
+  "response": {
+   "status": 200,
+   "body": "Stored",
+   "elapsed_s": 0.018
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/Q7KX2P",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 200,
+   "body": "{\"host_peer_id\":\"host-peer-1\",\"snapshot_json\":\"{\\\"draftCode\\\":\\\"draft-abc12345\\\",\\\"pick\\\":10,\\\"picksSinceLastBackup\\\":5,\\\"seatCount\\\":8}\",\"updated_at\":1789048887}",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "DELETE",
+   "path": "/p2p-draft-backup/Q7KX2P",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 200,
+   "body": "Deleted",
+   "elapsed_s": 0.018
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/Q7KX2P",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 404,
+   "body": "No backup found",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "GET",
+   "path": "/p2p-draft-backup/draft-abc12345",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 400,
+   "body": "Invalid draft code",
+   "elapsed_s": 0.001
+  }
+ },
+ {
+  "request": {
+   "method": "DELETE",
+   "path": "/p2p-draft-backup/draft-abc12345",
+   "query": "?host_peer_id=host-peer-1",
+   "body": null,
+   "body_sha256": null
+  },
+  "response": {
+   "status": 400,
+   "body": "Invalid draft code",
+   "elapsed_s": 0.001
+  }
+ }
+]

@@ -1,0 +1,82 @@
+[
+ {
+  "id": "A1",
+  "title": "client-shaped upload rejected with 400 Invalid draft code",
+  "expected": 400,
+  "observed": 400,
+  "detail": "Invalid draft code",
+  "status": "passed"
+ },
+ {
+  "id": "A2",
+  "title": "no row created by the rejected client-shaped upload",
+  "expected": 400,
+  "observed": 400,
+  "detail": "Invalid draft code",
+  "status": "passed"
+ },
+ {
+  "id": "A3",
+  "title": "contract-valid upload creates a row",
+  "expected": 200,
+  "observed": 200,
+  "detail": "Stored",
+  "status": "passed"
+ },
+ {
+  "id": "A4",
+  "title": "stored row retrievable with original snapshot",
+  "expected": 200,
+  "observed": 200,
+  "detail": "snapshot round-trip",
+  "status": "passed"
+ },
+ {
+  "id": "A5",
+  "title": "re-upload updates the same row",
+  "expected": 200,
+  "observed": 200,
+  "detail": "Stored",
+  "status": "passed"
+ },
+ {
+  "id": "A5b",
+  "title": "retrieved row reflects the update",
+  "expected": 10,
+  "observed": 10,
+  "detail": "{\"host_peer_id\":\"host-peer-1\",\"snapshot_json\":\"{\\\"draftCode\\\":\\\"draft-abc12345\\\",\\\"pick\\\":10,\\\"picksSinceLastBackup\\\":5,",
+  "status": "passed"
+ },
+ {
+  "id": "A6",
+  "title": "delete removes the row",
+  "expected": 200,
+  "observed": 200,
+  "detail": "Deleted",
+  "status": "passed"
+ },
+ {
+  "id": "A6b",
+  "title": "row gone after delete",
+  "expected": 404,
+  "observed": 404,
+  "detail": "No backup found",
+  "status": "passed"
+ },
+ {
+  "id": "A7",
+  "title": "GET with client-shaped code rejected with 400",
+  "expected": 400,
+  "observed": 400,
+  "detail": "Invalid draft code",
+  "status": "passed"
+ },
+ {
+  "id": "A8",
+  "title": "DELETE with client-shaped code rejected with 400",
+  "expected": 400,
+  "observed": 400,
+  "detail": "Invalid draft code",
+  "status": "passed"
+ }
+]

@@ -1,0 +1,48 @@
+{
+ "issue_commit": "9da919f61039068cfe50fb219207f36e81dd57e5",
+ "checked": {
+  "draftPodHostAdapter.ts": {
+   "sha256": "49d30bdd2a84737764301867eba2c80a5ddeb267bde3fa3525710943b0cbddb3"
+  },
+  "p2p-draft-host.ts": {
+   "sha256": "07dcb84ecde721d0210d27f94dd2507e6ebe91f183850ab9cbb2963fafb975c2"
+  },
+  "admin.rs": {
+   "sha256": "353716c892a236649e0c067cbd3223d07b85a182f5c4c1220fb430d728cf7a99"
+  }
+ },
+ "findings": {
+  "C1_production_constructor_omits_backupEndpoint": {
+   "file": "client/src/adapter/draftPodHostAdapter.ts:211-222",
+   "claim": "production new P2PDraftHost(...) passes roomCode as the last positional arg; backupEndpoint (12th ctor param) is not passed, so this.backupEndpoint stays null",
+   "verbatim": "210:       // 4. Create P2PDraftHost\n211:       const host = new P2PDraftHost(\n212:         hostResult.peer,\n213:         hostResult.onGuestConnected,\n214:         config.poolInput,\n215:         config.kind,\n216:         config.podSize,\n217:         config.hostDisplayName,\n218:         config.tournamentFormat,\n219:         config.podPolicy,\n220:         undefined, // default grace period\n221:         config.persistenceId,\n222:         hostResult.roomCode,\n223:       );"
+  },
+  "C2_generator_emits_draft_xxxxxxxx": {
+   "file": "client/src/adapter/p2p-draft-host.ts:467 (issue commit) / :1070 (main)",
+   "claim": "startDraft assigns draft-${seed.toString(16).padStart(8,\"0\")}",
+   "verbatim": "465:     const seed = Math.floor(Math.random() * 0xffffffff);\n466:     this.draftSeed = seed;\n467:     const draftCode = `draft-${seed.toString(16).padStart(8, \"0\")}`;\n468:     const seats: MultiplayerSeatDescriptor[] = [];\n469:     for (let i = 0; i < this.podSize; i++) {"
+  },
+  "C3_upload_ignores_http_status": {
+   "file": "client/src/adapter/p2p-draft-host.ts:1401-1414 (issue commit) / :3082-3096 (main)",
+   "claim": "uploadBackupSnapshot awaits fetch without checking response.ok; only network-level throws are caught",
+   "verbatim": "1401:   private async uploadBackupSnapshot(snapshot: PersistedDraftHostSession): Promise<void> {\n1402:     if (!this.backupEndpoint || !this.draftCode) return;\n1403:     try {\n1404:       await fetch(`${this.backupEndpoint}/p2p-draft-backup`, {\n1405:         method: \"POST\",\n1406:         headers: { \"Content-Type\": \"application/json\" },\n1407:         body: JSON.stringify({\n1408:           draft_code: this.draftCode,\n1409:           host_peer_id: this.hostPeer.id,\n1410:           snapshot_json: JSON.stringify(snapshot),\n1411:         }),\n1412:       });\n1413:     } catch (err) {\n1414:       console.warn(\"[P2PDraftHost] server backup upload failed:\", err);\n1415:     }"
+  },
+  "C4_upload_gate_null_endpoint": {
+   "file": "client/src/adapter/p2p-draft-host.ts:175,195,200,1387",
+   "claim": "backupEndpoint defaults to null; persistSession gates the upload branch on it",
+   "verbatim": "1386:         this.picksSinceLastBackup++;\n1387:         if (this.backupEndpoint && this.picksSinceLastBackup >= P2PDraftHost.BACKUP_INTERVAL_PICKS) {\n1388:           this.picksSinceLastBackup = 0;\n1389:           void this.uploadBackupSnapshot(snapshot);\n1390:         }\n1391:       } catch (err) {"
+  },
+  "C5_server_validator": {
+   "file": "crates/phase-server/src/admin.rs:16-22",
+   "claim": "is_valid_draft_code requires exactly 6 uppercase alphanumeric chars",
+   "verbatim": "16: /// Validate draft code format: exactly 6 alphanumeric uppercase chars.\n17: fn is_valid_draft_code(code: &str) -> bool {\n18:     code.len() == 6\n19:         && code\n20:             .chars()\n21:             .all(|c| c.is_ascii_uppercase() || c.is_ascii_digit())\n22: }\n23: "
+  }
+ },
+ "main_branch_status": {
+  "checked_at": "2026-09-10",
+  "C1": "PARTIALLY ADDRESSED on main: constructor now passes config.backupEndpoint (draftPodHostAdapter.ts:301), but it is an optional config field (line 134) with no demonstrated production wiring",
+  "C2": "STILL PRESENT on main (p2p-draft-host.ts:1070)",
+  "C3": "STILL PRESENT on main (p2p-draft-host.ts:3082-3096: fetch awaited, no response.ok check)",
+  "C5": "STILL PRESENT on main (admin.rs:17-22)"
+ }
+}
