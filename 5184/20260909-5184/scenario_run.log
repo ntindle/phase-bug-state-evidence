@@ -1,0 +1,48 @@
+scenario_run.log — phase-rs/phase #5184 backfill run 20260909-5184
+===============================================================
+Issue: phase-rs/phase#5184 "fix(client): fall back to defaults when preset
+storage is corrupt" (open fix PR, unmerged, defer-fe). The PR claims
+loadPresets (client/src/services/presets.ts) calls JSON.parse without
+try/catch, so corrupt localStorage crashes loadPresets/savePreset/deletePreset.
+
+Run contract (client subsystem): drive the REAL loadPresets/savePreset/
+deletePreset from current mainline with corrupt storage and assert they throw
+(bug reproduced); then apply the PR's published guard hunk + test file to a
+copy and assert all PR tests pass (fix resolves, no regression).
+
+Steps taken:
+1. Release check: latest stable engine release is v0.78.0 (2026-09-09); no
+   advance since the v0.78.0 pin. No engine exercised in this client-only run.
+2. Fetched origin/main in ~/workspace/dev/phase-backfill/client-test/phase-main;
+   reset --hard to aa1fb24ad08863eedf6a00493f1e2865050ccc2d (2026-09-10).
+   Confirmed the unguarded `JSON.parse(raw)` still at line 39 of
+   client/src/services/presets.ts — bug site present on current mainline.
+3. Added driver test client/src/services/__tests__/presets-5184.driver.test.ts
+   (content identical to the PR's own presets.test.ts cases, renamed):
+   D1 empty storage -> defaults; D2 corrupt "{oops" -> no throw + defaults;
+   D3 corrupt "not json" -> savePreset/deletePreset no throw;
+   D4 valid storage round-trips a saved preset.
+4. Ran on mainline: vitest run --coverage.enabled=false
+   src/services/__tests__/presets-5184.driver.test.ts
+   -> 2 passed (D1, D4 controls), 2 failed (D2, D3): both throw SyntaxError.
+   BUG REPRODUCED on mainline. Log: vitest_mainline_driver.log.
+5. Built PR variant: rsync copy of the checkout (node_modules symlinked),
+   applied the PR's published presets.ts guard hunk (verified byte-identical
+   by re-applying the published hunk to a pristine copy and diffing) and the
+   PR's published presets.test.ts (57 lines, byte-identical).
+6. Ran on PR variant: vitest run --coverage.enabled=false
+   src/services/__tests__/presets.test.ts -> 4/4 passed.
+   FIX RESOLVES the bug with the published patch. Log: vitest_pr_variant.log.
+7. Regression context: full src/services/__tests__ on mainline shows 14
+   failed tests across 4 files; all 12 non-driver failures are in
+   scryfall.test.ts (shell-script env tests). Re-ran scryfall.test.ts on the
+   PR variant: identical 12 failures -> pre-existing, unrelated to #5184.
+   No other source file imports presets.ts (grep confirmed); the PR's own
+   test is the only presets test, so there is no other suite to regress.
+8. Rendered summary.png from client_observations.json via
+   driver/render_summary_5184.py; wrote manifest.sha256 over the bundle.
+
+Verdict: reproduced (bug present on current mainline; the open PR's patch
+fixes it). Not a fix claim for the repo — the PR is unmerged; review deferred
+by maintainer intake policy (pr-review-deferred labels, 2026-07-19/2026-07-30
+seen on sibling PRs).
