@@ -1,0 +1,86 @@
+diff --git a/client/src/services/__tests__/presets.test.ts b/client/src/services/__tests__/presets.test.ts
+new file mode 100644
+index 0000000000..579d497e92
+--- /dev/null
++++ b/client/src/services/__tests__/presets.test.ts
+@@ -0,0 +1,57 @@
++import { afterEach, describe, expect, it } from "vitest";
++
++import { deletePreset, loadPresets, savePreset } from "../presets";
++
++const STORAGE_KEY = "phase-game-presets";
++
++afterEach(() => {
++  localStorage.clear();
++});
++
++describe("loadPresets", () => {
++  it("returns the defaults when storage is empty", () => {
++    const presets = loadPresets();
++    expect(presets.length).toBeGreaterThan(0);
++    expect(presets.some((p) => p.id.startsWith("default-"))).toBe(true);
++  });
++
++  it("falls back to the defaults on corrupt storage instead of throwing", () => {
++    localStorage.setItem(STORAGE_KEY, "{oops");
++    expect(() => loadPresets()).not.toThrow();
++    expect(loadPresets()).toEqual(
++      expect.arrayContaining([
++        expect.objectContaining({ id: expect.stringMatching(/^default-/) }),
++      ]),
++    );
++  });
++
++  it("does not let corrupt storage crash savePreset/deletePreset", () => {
++    localStorage.setItem(STORAGE_KEY, "not json");
++    expect(() =>
++      savePreset({
++        id: "custom-1",
++        name: "My Preset",
++        format: "Standard",
++        formatConfig: {},
++        deckId: null,
++        aiDifficulty: "Medium",
++        playerCount: 2,
++      }),
++    ).not.toThrow();
++    expect(() => deletePreset("custom-1")).not.toThrow();
++  });
++
++  it("returns saved presets when storage holds a valid non-empty array", () => {
++    savePreset({
++      id: "custom-2",
++      name: "Saved",
++      format: "Commander",
++      formatConfig: {},
++      deckId: null,
++      aiDifficulty: "Hard",
++      playerCount: 4,
++    });
++    const presets = loadPresets();
++    expect(presets.some((p) => p.id === "custom-2")).toBe(true);
++  });
++});
+diff --git a/client/src/services/presets.ts b/client/src/services/presets.ts
+index fbf9bf5e5d..95b2fcd129 100644
+--- a/client/src/services/presets.ts
++++ b/client/src/services/presets.ts
+@@ -36,8 +36,16 @@ const DEFAULT_PRESETS: GamePreset[] = [
+ export function loadPresets(): GamePreset[] {
+   const raw = localStorage.getItem(STORAGE_KEY);
+   if (!raw) return DEFAULT_PRESETS;
+-  const saved = JSON.parse(raw) as GamePreset[];
+-  return saved.length > 0 ? saved : DEFAULT_PRESETS;
++  // Corrupt/partial storage must not throw — every sibling loader falls back to
++  // a default. Without this guard, a malformed value crashes loadPresets and,
++  // through it, savePreset/deletePreset (both call it first), taking down the
++  // game-setup preset UI.
++  try {
++    const saved = JSON.parse(raw) as GamePreset[];
++    return saved.length > 0 ? saved : DEFAULT_PRESETS;
++  } catch {
++    return DEFAULT_PRESETS;
++  }
+ }
+ 
+ export function savePreset(preset: GamePreset): void {
