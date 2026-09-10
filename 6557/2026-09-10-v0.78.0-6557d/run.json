@@ -1,0 +1,102 @@
+{
+ "issue": 6557,
+ "run_id": "2026-09-10-v0.78.0-6557d",
+ "started_at": "2026-09-10T10:13:53",
+ "duration_s": 36.8,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+  "signature_verified": true,
+  "signature_note": "minisign-verify (prehashed BLAKE2b-512, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data files match manifest SHA-256 (re-verified this session, 2026-09-10)",
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + signature re-verification against pinned v0.78.0 release artifacts (server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 2026-09-10-v0.78.0-6557"
+ },
+ "server_run_dir": "runs/2026-09-10-v0.78.0-6557d",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a2ad4510497a31b333fa8b96a5ac1bde6de93b18abae471f29af80e0db5332ba",
+ "decks": {
+  "P0": [
+   [
+    "tamiyo, inquisitive student",
+    12
+   ],
+   [
+    "divination",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    20
+   ],
+   [
+    "forest",
+    40
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_plus2": "passed",
+  "A3_weakened": "failed",
+  "A4_wears_off": "passed",
+  "A5_expired": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 PreCombatMain turn 6, Tamiyo PW loyalty 2, 2 bear(s) on P1 BF, life 20/20",
+  "mid.json: +2 resolved, Tamiyo loyalty 2->4, stack empty (turn 6)",
+  "post.json: attacking Bear oid 62 power == 2 (expected 1) -- REPORTED BUG: -1/-0 not applied",
+  "p0next.json (P0 turn 8): bears back to 2 power [2, 2, 2] (-1/-0 wore off)",
+  "post2.json: second attack (after P0's next turn began) Bear oid 62 power == 2 (watching effect expired)",
+  "final: stack empty, Tamiyo PW on BF (turn 9, phase EndCombat), game proceeding",
+  "at least one required outcome failed while the setup was valid"
+ ],
+ "observations": {
+  "tamiyo_cast": true,
+  "div_cast": true,
+  "plus2_submitted": true,
+  "plus2_turn": 6,
+  "plus2_phase": "PreCombatMain",
+  "attack1": true,
+  "attack1_turn": 7,
+  "attack2": true,
+  "attack2_turn": 9,
+  "loyalty_pre": 2,
+  "loyalty_mid": 4,
+  "bear1_power_post": 2,
+  "bear_power_p0next": [
+   2,
+   2,
+   2
+  ],
+  "bear2_power_post2": 2,
+  "delayed_trigger_seen": null,
+  "attack1_bear": 62,
+  "stack_after_attack1": true,
+  "attack2_bear": 62
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Tamiyo / 12x Divination / 12x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Transform is produced by the printed Tamiyo, Inquisitive Student trigger (draw 3rd card in a turn via Divination), not by a debug fixture.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x tamiyo inquisitive student + 12x divination + 36x island (mulligan to Tamiyo + 2 islands; T1 Tamiyo; Divination -> transform; +2 on main phase); P1: 12x grizzly bears + 48x forest (attacks P0 with one bear after +2)",
+ "contract_line": "Tamiyo +2: until P0's next turn, each creature attacking P0 gets -1/-0 until end of turn (incl. on P1's turn)"
+}
