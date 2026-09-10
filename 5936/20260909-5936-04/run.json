@@ -1,0 +1,1204 @@
+{
+ "issue": 5936,
+ "run_id": "20260909-5936-04",
+ "started_at": "2026-09-10T05:18:11",
+ "duration_s": 35.9,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 20260909-5936-04"
+ },
+ "server_run_dir": "runs/20260909-5936-04",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "85906c455f69943507417ef4dbcc846bb8cfee69767ebc831c241a474c0ae671",
+ "decks": {
+  "P0": [
+   [
+    "slinza, the spiked stampede",
+    12
+   ],
+   [
+    "leatherback baloth",
+    12
+   ],
+   [
+    "forest",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cannot_pay": "passed",
+  "A3_can_pay": "passed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A trigger seen: 1 trigger-like stack entries",
+  "decisions=47 A_trigger_seen=True A_declined=False B_trigger_seen=True B_paid=False B_fight_resolved=True rejections=0",
+  "A1: slinza_on_bf=True, trigger_stack_entries=1, untapped_forests=0",
+  "A2: payment_offered=False, declined=False (engine auto-skipped the unaffordable payment: no prompt appeared), slinza_damage=0, gy P0=[] P1=[], stack_empty=True, wf=Priority, rejections=0, life=20/20",
+  "A3: payment auto-paid by engine (no explicit prompt; tapped Forests delta=2, want >=2), target_chosen=bears, bears_in_gy=True, slinza_damage=2 (want 2), stack_empty=True, life=20/20",
+  "A4: stack_empty=True, wf=Priority, stuck_watch=False"
+ ],
+ "observations": {
+  "phase": "B",
+  "answered_ids": [
+   "1WQDIU.0.156",
+   "1WQDIU.0.196",
+   "1WQDIU.0.197"
+  ],
+  "rejections": [],
+  "A_trigger_seen": true,
+  "A_payment_offered": false,
+  "A_declined": false,
+  "A_done": true,
+  "B_trigger_seen": true,
+  "B_payment_offered": false,
+  "B_paid": false,
+  "B_target_chosen": "bears",
+  "B_fight_resolved": true,
+  "B_done": true,
+  "stuck_watch_fired": false
+ },
+ "trigger_decisions": [
+  {
+   "interactionId": "1WQDIU.0.155",
+   "phase": "A",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.155.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.155.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.155.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.155.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.155.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.155.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.156",
+   "phase": "A",
+   "policy": "accept_trigger",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.156.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.156.c1",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.157",
+   "phase": "A",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.157.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.157",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.157.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.158",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.158.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.158.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.158.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.158.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.158.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.158.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.159",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.159.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.160",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.160.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.160.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.160.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.160.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.160.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.160.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.161",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.161.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.162",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.162.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.162.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.162.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.162.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.162.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.162.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.163",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.163.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.164",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.164.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.164.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.164.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.164.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.164.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.164.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.165",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.165.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.166",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.166.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.166.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.166.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.166.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.166.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.166.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.167",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.167.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.167.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.167.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.167.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.167.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.167.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.168",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.168.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.169",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.169.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.169.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.169.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.169.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.169.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.169.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.170",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.170.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.171",
+   "phase": "B",
+   "policy": "priority_menu_not_payment",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.171.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.171.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.171.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.171.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.171.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.171.c5",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.171.c6",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.171.c7",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.172",
+   "phase": "B",
+   "policy": "priority_menu_not_payment",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.172.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.172.c1",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.172.c2",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.172.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.172.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.172.c5",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.172.c6",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.172.c7",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.173",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.173.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.173.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.173.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.173.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.173.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.174",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.174.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.175",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.175.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.175.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.175.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.175.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.175.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.176",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.176.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.177",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.177.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.177.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.177.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.177.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.177.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.178",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.178.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.179",
+   "phase": "B",
+   "policy": "schema_not_sequence",
+   "rtype": "schema",
+   "choices": [
+    [
+     "1WQDIU.0.179.r0",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.179.r1",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.179.d0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.180",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.180.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.180.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.180.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.180.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.180.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.181",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.181.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.182",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.182.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.182.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.182.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.182.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.182.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.183",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.183.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.184",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.184.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.184.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.184.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.184.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.184.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.185",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.185.c0",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.186",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.186.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.186.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.186.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.186.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.186.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.186.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.187",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.187.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.187.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.187.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.187.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.187.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.188",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.188.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.188.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.188.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.188.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.188.c4",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.188.c5",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.189",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.189.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.189.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.189.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.189.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.189.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.190",
+   "phase": "B",
+   "policy": "priority_menu_not_payment",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.190.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.190.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.190.c2",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.190.c3",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.190.c4",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.190.c5",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.190.c6",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.190.c7",
+     "leatherback baloth"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.191",
+   "phase": "B",
+   "policy": "priority_menu_not_payment",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.191.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.191.c1",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c2",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c3",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c4",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c5",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c6",
+     "leatherback baloth"
+    ],
+    [
+     "1WQDIU.0.191.c7",
+     "slinza, the spiked stampede"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.192",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.192.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.192.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.192.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.192.c3",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.193",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.193.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.193.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.193.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.193.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.193.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.194",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.194.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.194.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.194.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.194.c3",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.195",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.195.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.195.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.195.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.195.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.195.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.196",
+   "phase": "B",
+   "policy": "accept_trigger",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.196.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.196.c1",
+     ""
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.197",
+   "phase": "B",
+   "policy": "fight_target_bears",
+   "rtype": "schema",
+   "choices": [
+    [
+     "1WQDIU.0.197.t0",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.197.t1",
+     "grizzly bears"
+    ],
+    [
+     "1WQDIU.0.197.t2",
+     "grizzly bears"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.198",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.198.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.198.c1",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.199",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.199.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.199.c1",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.199.c2",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.199.c3",
+     "forest"
+    ],
+    [
+     "1WQDIU.0.199.c4",
+     "forest"
+    ]
+   ]
+  },
+  {
+   "interactionId": "1WQDIU.0.200",
+   "phase": "B",
+   "policy": "unrecognized_exact",
+   "rtype": "exactChoices",
+   "choices": [
+    [
+     "1WQDIU.0.200.c0",
+     ""
+    ],
+    [
+     "1WQDIU.0.200.c1",
+     "forest"
+    ]
+   ]
+  }
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The cannot-pay branch is exercised with zero available mana (all Forests tapped casting Slinza); the original report's exact mana position is unknown (Discord images expired).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Slinza, the Spiked Stampede + 12x Leatherback Baloth + 24x Forest; P1: 12x Grizzly Bears + 36x Forest",
+ "contract_line": "Slinza optional enters trigger: (A) payment declined with zero mana available must resolve with no fight and no stall; (B) payment accepted with mana available must produce the conditional fight vs the chosen opposing creature"
+}
