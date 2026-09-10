@@ -1,0 +1,117 @@
+{
+  "issue": 6666,
+  "run_id": "20260910-6666",
+  "server": {
+    "server_version": "0.78.0",
+    "build_commit": "4de7224",
+    "protocol_version": 68,
+    "mode": "Full",
+    "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+    "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+    "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+    "signature_verified": true,
+    "observed_at": "2026-09-10",
+    "source": "ServerHello (v0.78.0/build 4de7224/protocol 68/mode Full) on 127.0.0.1:9376; pinned v0.78.0 release = latest stable (published 2026-09-09); minisign-verified binary + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY"
+  },
+  "decks": {
+    "P0": [
+      [
+        "hidetsugu and kairi",
+        12
+      ],
+      [
+        "<desired: shock|divination>",
+        24
+      ],
+      [
+        "island",
+        12
+      ],
+      [
+        "swamp",
+        12
+      ]
+    ],
+    "P1": [
+      [
+        "murder",
+        12
+      ],
+      [
+        "swamp",
+        48
+      ]
+    ]
+  },
+  "games": [
+    {
+      "tag": "A",
+      "desc": "instant (Shock), accept the free cast",
+      "verdict": "reproduced",
+      "assertions": {
+        "A1_setup_ok": "passed",
+        "A2_trigger_resolves": "passed",
+        "A3_cast_offered": "failed",
+        "A4_free_cast": "not-run",
+        "A5_cleanup": "passed"
+      },
+      "notes": [
+        "[A] unrecognized post-trigger waiting_for=None; scan did not answer",
+        "[A] A1: pre_kill hk_on_bf=True, life=[20, 20], murder_cast=True",
+        "[A] A2: hk_in_gy=1, exile=['shock'], P1 life 20->19 (expected 19)",
+        "[A] A3: may_prompt_seen=False, waiting_for at resolution=Priority",
+        "[A] A4: not-run (no may-choice answered)",
+        "[A] A5: stack=0, turn 22->26, phase=EndCombat"
+      ],
+      "may_wf_type": "Priority",
+      "kill_turn": 22
+    },
+    {
+      "tag": "B",
+      "desc": "sorcery (Divination), accept the free cast",
+      "verdict": "reproduced",
+      "assertions": {
+        "A1_setup_ok": "passed",
+        "A2_trigger_resolves": "passed",
+        "A3_cast_offered": "failed",
+        "A4_free_cast": "not-run",
+        "A5_cleanup": "passed"
+      },
+      "notes": [
+        "[B] unrecognized post-trigger waiting_for=None; scan did not answer",
+        "[B] A1: pre_kill hk_on_bf=True, life=[20, 20], murder_cast=True",
+        "[B] A2: hk_in_gy=1, exile=['divination'], P1 life 20->17 (expected 17)",
+        "[B] A3: may_prompt_seen=False, waiting_for at resolution=Priority",
+        "[B] A4: not-run (no may-choice answered)",
+        "[B] A5: stack=0, turn 10->16, phase=PostCombatMain"
+      ],
+      "may_wf_type": "Priority",
+      "kill_turn": 10
+    },
+    {
+      "tag": "C",
+      "desc": "instant (Shock), decline control",
+      "verdict": "reproduced",
+      "assertions": {
+        "A1_setup_ok": "passed",
+        "A2_trigger_resolves": "passed",
+        "A3_cast_offered": "failed",
+        "A4_free_cast": "not-run",
+        "A5_cleanup": "passed"
+      },
+      "notes": [
+        "[C] unrecognized post-trigger waiting_for=None; scan did not answer",
+        "[C] A1: pre_kill hk_on_bf=True, life=[20, 20], murder_cast=True",
+        "[C] A2: hk_in_gy=1, exile=['shock'], P1 life 20->19 (expected 19)",
+        "[C] A3: may_prompt_seen=False, waiting_for at resolution=Priority",
+        "[C] A4: not-run (no may-choice answered)",
+        "[C] A5: stack=0, turn 9->15, phase=Upkeep"
+      ],
+      "may_wf_type": "Priority",
+      "kill_turn": 9
+    }
+  ],
+  "verdict": "reproduced",
+  "evidence_dir": "evidence/6666/20260910-6666",
+  "duration_s": 161.2
+}
