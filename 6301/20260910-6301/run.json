@@ -1,0 +1,108 @@
+{
+ "issue": 6301,
+ "run_id": "20260910-6301",
+ "started_at": "2026-09-10T08:07:59",
+ "duration_s": 10.4,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 match of pinned verified artifacts; server started fresh this run (runs/20260910-6301) on 127.0.0.1:9374"
+ },
+ "server_run_dir": "runs/20260910-6301",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "ae40f2340791becaf8ef35e20559160f3511ebed8c11518eeddc816130c913b2",
+ "decks": {
+  "P0": [
+   [
+    "lightning bolt",
+    12
+   ],
+   [
+    "mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "force of will",
+    12
+   ],
+   [
+    "opt",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_offered": "passed",
+  "A3_exile_answered": "passed",
+  "A4_fow_resolves": "passed",
+  "A5_no_stall": "passed"
+ },
+ "notes": [
+  "pre.json exported (Bolt on stack, P1 priority)",
+  "post.json exported (stack settled)",
+  "pre.json: bolt_on_stack=True, pp=1, P1hand_fow=True, P1hand_opt=True, life=20/20",
+  "CastSpell(FoW) advertised to P1 with Bolt on stack (1 sighting(s))",
+  "exile-from-hand choice presented; exactly one Opt chosen",
+  "post.json: FoW and Bolt in graveyards, P1 life 19 (paid 1, no Bolt damage), 1 Opt exiled, P0 life 20 -- Bolt countered as printed",
+  "post.json: stack empty, waiting_for=Priority; game proceeded past the FoW response"
+ ],
+ "observations": {
+  "alt_cost_choice_seen": true,
+  "exile_choice_seen": true,
+  "exile_choices": [
+   "force of will",
+   "opt"
+  ],
+  "fow_target_choice": null,
+  "bolt_targeted_p1": true,
+  "cast_advertised_shapes": [
+   "{\"object_id\": 64, \"card_id\": 64, \"targets\": [], \"payment_mode\": {\"type\": \"Auto\"}}"
+  ],
+  "interaction_shapes": [
+   "P0/exactChoices/['passPriority']/",
+   "P1/exactChoices/['passPriority']/",
+   "P0/exactChoices/['passPriority', 'playLand']/ // Mountain // Mountain // Mountain // Mountain // Mountain",
+   "P0/exactChoices/['castSpell', 'passPriority', 'tapLandForMana']/ // Lightning Bolt // Lightning Bolt // Lightning Bolt // Lightning Bolt // Mountain",
+   "P0/schema/[]/ // ",
+   "P1/exactChoices/['castSpell', 'passPriority']/ // Force of Will // Force of Will // Force of Will // Force of Will",
+   "P1/exactChoices/['cancelCast', 'decideOptionalCost']/ // ",
+   "P1/schema/[]/Opt // Opt // Opt // Force of Will",
+   "P1/exactChoices/['castSpell', 'passPriority']/ // Force of Will // Force of Will"
+  ],
+  "waiting_for_tail": "Priority",
+  "exile_answered_opt": true
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x copies per card is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "The reported symptom is a UI hang ('Casting...'); this run tests the engine casting flow only. A passing engine path locates the bug in the frontend; a failing engine path reproduces it in the engine.",
+  "Lightning Bolt stands in for the reported Fatal Push (any opponent spell to respond to); the bug is in FoW's cost flow, not the responded-to spell.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x lightning bolt + 48x mountain; P1: 12x force of will + 12x opt + 36x island. Turn 1: P0 plays a Mountain and casts Lightning Bolt targeting P1; P1 responds with Force of Will for its alternative cost.",
+ "contract_line": "P1 casts Force of Will for 1 life + exiling one Opt: expect alt-cost choice, answerable exile choice, FoW on the stack targeting Bolt, Bolt countered (P1 at 19 life, one Opt exiled, FoW and Bolt in graveyards), game proceeds.",
+ "stats": {
+  "states_seen": 2,
+  "trigger_observations": "decideOptionalCost(pay=true) answered; exile-a-blue-card choice answered with 1 Opt; FoW auto-targeted Bolt (single legal spell target); Bolt countered, no damage"
+ }
+}

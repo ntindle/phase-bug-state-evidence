@@ -1,0 +1,25 @@
+game 2HLKYT; P0 seat=0 P1 seat=1
+P0 keeps (fow=False, opt=False, bolt=True, lands=5, mulls=0)
+P1 mulligans #1
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['mountain', 'mountain', 'lightning bolt', 'mountain', 'mountain', 'lightning bolt'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] life=20/20 stack=[] bolt_cast=False fow_attempted=False fow_seen=False pre=False post=False
+P1 keeps (fow=True, opt=True, bolt=False, lands=2, mulls=1)
+P1 bottoms 1: ['island']
+P1 hand verified: FoW + Opt present (7 cards)
+[P0] interaction rtype=exactChoices n=1 codes=['passPriority'] choices=[]
+[P1] interaction rtype=exactChoices n=1 codes=['passPriority'] choices=[]
+[P0] interaction rtype=exactChoices n=6 codes=['passPriority', 'playLand'] choices=[ // Mountain // Mountain // Mountain // Mountain // Mountain]
+[P0] interaction rtype=exactChoices n=6 codes=['castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Lightning Bolt // Lightning Bolt // Lightning Bolt // Lightning Bolt // Mountain]
+P0 casts Lightning Bolt targeting P1
+[P0] interaction rtype=schema n=2 codes=[] choices=[ // ]
+[P0] bolt target -> P1
+[P1] interaction rtype=exactChoices n=5 codes=['castSpell', 'passPriority'] choices=[ // Force of Will // Force of Will // Force of Will // Force of Will]
+PRE: Bolt on stack, P1 priority; exporting pre.json
+stall watchdog armed (300s)
+P1 casts Force of Will in response to Bolt
+[P1] interaction rtype=exactChoices n=2 codes=['cancelCast', 'decideOptionalCost'] choices=[ // ]
+[P1] alternative cost -> PAY (decideOptionalCost pay=true)
+[P1] interaction rtype=schema n=4 codes=[] choices=[Opt // Opt // Opt // Force of Will]
+[P1] exile choice -> Opt (of 3 opt candidates)
+[P1] interaction rtype=exactChoices n=3 codes=['castSpell', 'passPriority'] choices=[ // Force of Will // Force of Will]
+POST: stack settled; exporting post.json (fow_seen=True)
+post exported; finishing
