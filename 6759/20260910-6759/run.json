@@ -1,0 +1,88 @@
+{
+ "issue": 6759,
+ "run_id": "20260910-6759",
+ "validated_at": "2026-09-10",
+ "server": {
+  "version": "v0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "binary": "phase-server-slim-x86_64-unknown-linux-musl",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "mode": "Full",
+  "endpoint": "127.0.0.1:9374 (pre-existing backfill server)"
+ },
+ "plan": {
+  "g1": {
+   "cast": [
+    "Nalia de'Arnise"
+   ],
+   "want": {
+    "Nalia de'Arnise": 1
+   }
+  },
+  "g2": {
+   "cast": [
+    "Nalia de'Arnise",
+    "Acolyte of Xathrid",
+    "Aven Skirmisher",
+    "Augur of Skulls"
+   ],
+   "want": {
+    "Nalia de'Arnise": 1,
+    "Acolyte of Xathrid": 1,
+    "Aven Skirmisher": 1,
+    "Augur of Skulls": 1
+   }
+  }
+ },
+ "decks": {
+  "g1_P0": {
+   "Plains": 20,
+   "Swamp": 20,
+   "Nalia de'Arnise": 8
+  },
+  "g2_P0": {
+   "Plains": 20,
+   "Swamp": 20,
+   "Nalia de'Arnise": 4,
+   "Acolyte of Xathrid": 8,
+   "Aven Skirmisher": 8,
+   "Augur of Skulls": 8
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_no_counters": "passed",
+  "A3_no_deathtouch": "passed",
+  "A4_cleanup": "passed",
+  "A5_counters": "passed",
+  "A6_deathtouch": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "g1: pre BF=[('Plains', 0), ('Swamp', 0), (\"Nalia de'Arnise\", 0), ('Plains', 0), ('Plains', 0), ('Plains', 0)] post BF=[('Plains', 0, False), ('Plains', 0, False), ('Swamp', 0, False), (\"Nalia de'Arnise\", 0, False), ('Plains', 0, False), ('Plains', 0, False), ('Plains', 0, False)] gained_counters=none deathtouch_on=none life=20/20",
+  "g2 attempt 1 (scenario_6759.py): control game stalled at P0 mulligan-bottom; aborted after 120s without progress",
+  "g2 attempt 2 (scenario_6759_g2.py, keep-always mulligans): driver cast loop serialized on Nalia (break after first plan item) so party creatures in hand were never cast; process killed by VM service restart mid-run",
+  "g2 attempt 3 (scenario_6759_g2.py, cast loop fixed + DeclareAttackers empty-declaration handling): completed. Per-creature (delta_p1p1, deathtouch)={'Acolyte of Xathrid': [(1, True)], \"Nalia de'Arnise\": [(1, True)], 'Aven Skirmisher': [(1, True)], 'Augur of Skulls': [(1, True)]}. BeginCombat stack showed the trigger with effect PutCounterAll before resolution."
+ ],
+ "verdict": "not-reproduced",
+ "verdict_reason": "trigger correctly withheld with party=1 (no counters, no deathtouch) and correctly fired with party=4 (+1/+1 and deathtouch on all four creatures)",
+ "elapsed_s": 133.0,
+ "scenario": {
+  "file": "scenario_6759.py",
+  "sha256": "7d9fe1e3319cb62f874f704427cfb56731a312e5d14113d4e4636dc598a02257",
+  "covers": "game 1 (no-full-party branch)"
+ },
+ "scenario_g2": {
+  "file": "scenario_6759_g2.py",
+  "sha256": "92fcdbe31ab51b2d2f89814e7ec90cf3f4a23bb3fe08f9561ca62e3929c06c35",
+  "covers": "game 2 (full-party control branch), final successful attempt"
+ }
+}

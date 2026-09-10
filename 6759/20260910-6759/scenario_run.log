@@ -1,0 +1,125 @@
+=== Game 1: Nalia only (no full party) ===
+P0 mulligan decision: Keep
+P1 mulligan decision: Mulligan
+P1 mulligan decision: Keep
+P1 bottoms 1: ['Island']
+P0 plays Plains
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Swamp
+P0 casts Nalia de'Arnise
+[g1_noparty] exported pre.json (turn 9)
+[g1_noparty] BeginCombat: stack=[]
+P1 discards 1
+P0 plays Plains
+[g1_noparty] exported post.json
+A1_setup_ok: passed
+A2_no_counters: passed
+A3_no_deathtouch: passed
+A4_cleanup: passed
+=== Game 2: full party (Nalia+Cleric+Warrior+Wizard) ===
+P0 mulligan decision: Mulligan
+P1 mulligan decision: Keep
+P0 mulligan decision: Keep
+P0 bottoms 1: ['Plains']
+[g2_fullparty] 120s without progress; aborting
+A5_counters: not-run
+A6_deathtouch: not-run
+A7_cleanup: not-run
+VERDICT: blocked — control branch inconclusive; bug-branch withholding observed but the positive control did not complete
+run.json written; evidence in /home/hatch/workspace/dev/phase-backfill/evidence/6759/20260910-6759
+=== Game 2 retry: full party (Nalia+Cleric+Warrior+Wizard), keep-always ===
+P0 keeps
+P1 keeps
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Plains
+P1 discards 1
+P0 plays Swamp
+P1 discards 1
+P0 plays Plains
+=== Game 2 retry: full party (Nalia+Cleric+Warrior+Wizard), keep-always ===
+P0 keeps
+P1 keeps
+P0 plays Plains
+P0 casts Aven Skirmisher
+P1 discards 1
+P0 plays Plains
+WATCHDOG idle=26.3s wf=DeclareAttackers phase=DeclareAttackers turn=4 active=0 prio=0 n_acts=2 act_types=['DeclareAttackers']
+WATCHDOG idle=46.4s wf=DeclareAttackers phase=DeclareAttackers turn=4 active=0 prio=0 n_acts=2 act_types=['DeclareAttackers']
+WATCHDOG idle=66.4s wf=DeclareAttackers phase=DeclareAttackers turn=4 active=0 prio=0 n_acts=2 act_types=['DeclareAttackers']
+WATCHDOG idle=86.5s wf=DeclareAttackers phase=DeclareAttackers turn=4 active=0 prio=0 n_acts=2 act_types=['DeclareAttackers']
+WATCHDOG idle=106.5s wf=DeclareAttackers phase=DeclareAttackers turn=4 active=0 prio=0 n_acts=2 act_types=['DeclareAttackers']
+120s without progress; aborting
+VERDICT: blocked — control branch did not complete on retry
+=== Game 2 retry: full party (Nalia+Cleric+Warrior+Wizard), keep-always ===
+P0 keeps
+P1 keeps
+P0 plays Plains
+P0 casts Aven Skirmisher
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 casts Nalia de'Arnise
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 casts Acolyte of Xathrid
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Plains
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 plays Swamp
+P0 declares no attackers
+P1 discards 1
+P0 casts Augur of Skulls
+exported g2 pre.json (turn 33)
+BeginCombat: stack=[{'id': 129, 'effects': ['PutCounterAll']}]
+exported g2 post.json at DeclareAttackers decision
+A5_counters: passed
+A6_deathtouch: passed
+A7_cleanup: passed
+VERDICT: not-reproduced — trigger correctly withheld with party=1 (no counters, no deathtouch) and correctly fired with party=4 (+1/+1 and deathtouch on all four creatures)
