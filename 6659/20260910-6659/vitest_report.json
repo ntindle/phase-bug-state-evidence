@@ -1,0 +1,94 @@
+{
+ "numTotalTestSuites": 2,
+ "numPassedTestSuites": 0,
+ "numFailedTestSuites": 2,
+ "numPendingTestSuites": 0,
+ "numTotalTests": 4,
+ "numPassedTests": 1,
+ "numFailedTests": 3,
+ "numPendingTests": 0,
+ "numTodoTests": 0,
+ "snapshot": {
+  "added": 0,
+  "failure": false,
+  "filesAdded": 0,
+  "filesRemoved": 0,
+  "filesRemovedList": [],
+  "filesUnmatched": 0,
+  "filesUpdated": 0,
+  "matched": 0,
+  "total": 0,
+  "unchecked": 0,
+  "uncheckedKeysByFile": [],
+  "unmatched": 0,
+  "updated": 0,
+  "didUpdate": false
+ },
+ "startTime": 1789042599271,
+ "success": false,
+ "testResults": [
+  {
+   "assertionResults": [
+    {
+     "ancestorTitles": [
+      "useDeckBuilder \u2014 #6659 copy-limit affordance gaps"
+     ],
+     "fullName": "useDeckBuilder \u2014 #6659 copy-limit affordance gaps text import preserves both alias spellings as separate entries (reachable path)",
+     "status": "passed",
+     "title": "text import preserves both alias spellings as separate entries (reachable path)",
+     "duration": 7.150850999999875,
+     "failureMessages": [],
+     "meta": {},
+     "tags": []
+    },
+    {
+     "ancestorTitles": [
+      "useDeckBuilder \u2014 #6659 copy-limit affordance gaps"
+     ],
+     "fullName": "useDeckBuilder \u2014 #6659 copy-limit affordance gaps gap 1: alias spellings are counted separately, leaving the + affordance live past the real ceiling",
+     "status": "failed",
+     "title": "gap 1: alias spellings are counted separately, leaving the + affordance live past the real ceiling",
+     "duration": 45.45909100000017,
+     "failureMessages": [
+      "AssertionError: expected true to be false // Object.is equality\n    at /home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:155:24\n    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/.pnpm/@vitest+runner@4.1.0/node_modules/@vitest/runner/dist/index.js:1258:20"
+     ],
+     "meta": {},
+     "tags": []
+    },
+    {
+     "ancestorTitles": [
+      "useDeckBuilder \u2014 #6659 copy-limit affordance gaps"
+     ],
+     "fullName": "useDeckBuilder \u2014 #6659 copy-limit affordance gaps gap 1: each spelling can climb to nine, blowing the real ceiling",
+     "status": "failed",
+     "title": "gap 1: each spelling can climb to nine, blowing the real ceiling",
+     "duration": 8.507346999999754,
+     "failureMessages": [
+      "AssertionError: expected 14 to be less than or equal to 9\n    at /home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:182:22\n    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/.pnpm/@vitest+runner@4.1.0/node_modules/@vitest/runner/dist/index.js:1258:20"
+     ],
+     "meta": {},
+     "tags": []
+    },
+    {
+     "ancestorTitles": [
+      "useDeckBuilder \u2014 #6659 copy-limit affordance gaps"
+     ],
+     "fullName": "useDeckBuilder \u2014 #6659 copy-limit affordance gaps gap 2: the search-result add path walks past the ceiling",
+     "status": "failed",
+     "title": "gap 2: the search-result add path walks past the ceiling",
+     "duration": 8.906285000000025,
+     "failureMessages": [
+      "AssertionError: expected 7 to be 4 // Object.is equality\n    at /home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:209:19\n    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/.pnpm/@vitest+runner@4.1.0/node_modules/@vitest/runner/dist/index.js:1258:20"
+     ],
+     "meta": {},
+     "tags": []
+    }
+   ],
+   "startTime": 1789042600867,
+   "endTime": 1789042600936.9062,
+   "status": "failed",
+   "message": "",
+   "name": "/home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx"
+  }
+ ]
+}
