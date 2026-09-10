@@ -1,0 +1,68 @@
+game GIEW48 phase=attack
+P0 keeps opening hand
+P1 keeps opening hand
+P0 plays land Swamp
+P1 plays land Forest
+P0 plays land Swamp
+P0 casts Diregraf Ghoul
+P1 plays land Forest
+P1 casts Grizzly Bears
+P0 plays land Swamp
+P0 casts Manalith
+P1 plays land Forest
+P1 casts Grizzly Bears
+P0 plays land Forest
+P0 casts Wand of Orcus
+P0 casts Wand of Orcus
+P1 plays land Forest
+P1 casts Grizzly Bears
+P0 plays land Swamp
+P0 activating equip (wand 14 -> creature 3 Diregraf Ghoul)
+P0 casts Grizzly Bears
+EQUIP RESOLVED: wand attached to Diregraf Ghoul (oid 3)
+P1 plays land Forest
+P0 casts Grizzly Bears
+P0 casts Manalith
+P0 declares attackers: Diregraf Ghoul -> P1
+TRIGGER ON STACK: {"id": 122, "source_id": 14, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 14, "ability": {"effect": {"type": "Unimplemented", "name": "unbound_subject", "description": "it and Zombies you control gain deathtouch until end of turn"}, "targets": [], "source_id": 14, "sou
+P1 declares no blockers
+exporting PRE_COMBAT state
+exporting POST_COMBAT state
+game BCO403 phase=block
+P0 keeps opening hand
+P1 keeps opening hand
+P1 keeps opening hand
+P1 plays land Forest
+P0 plays land Swamp
+P0 casts Diregraf Ghoul
+P1 plays land Forest
+P1 casts Grizzly Bears
+P0 plays land Forest
+P0 casts Diregraf Ghoul
+P0 casts Diregraf Ghoul
+P1 plays land Forest
+P0 plays land Swamp
+P0 casts Wand of Orcus
+P1 plays land Forest
+P1 casts Grizzly Bears
+P0 activating equip (wand 18 -> creature 34 Diregraf Ghoul)
+P0 equip target -> Diregraf Ghoul (candidate BCO403.0.131.t0)
+EQUIP RESOLVED: wand attached to Diregraf Ghoul (oid 34)
+P1 plays land Forest
+P0 plays land Swamp
+P0 casts Grizzly Bears
+P0 casts Grizzly Bears
+P1 plays land Forest
+P0 plays land Forest
+[watchdog] P0 t+30s rev=203 turn=12 phase=BeginCombat wf=Priority prio=0 acts=['PassPriority']
+[watchdog] P1 t+30s rev=203 turn=12 phase=BeginCombat wf=Priority prio=0 acts=[]
+P0 casts Manalith
+P1 plays land Forest
+P1 declares attackers: Grizzly Bears -> P0
+P0 DeclareBlockers advertised: {"type": "DeclareBlockers", "data": {"assignments": []}}
+P0 blocks Grizzly Bears with Diregraf Ghoul
+exporting PRE_COMBAT state
+TRIGGER ON STACK: {"id": 122, "source_id": 18, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 18, "ability": {"effect": {"type": "Unimplemented", "name": "unbound_subject", "description": "it and Zombies you control gain deathtouch until end of turn"}, "targets": [], "source_id": 18, "sou
+P1 casts Grizzly Bears
+exporting POST_COMBAT state
+DONE verdict=not-reproduced assertions={"setup_started": "passed", "A1_setup_ok": "passed", "A2_attack_declared": "passed", "A3_trigger_seen": "passed", "A4_no_overbroad_grant": "passed", "A5_cleanup": "passed", "B1_setup_ok": "passed", "B2_block_declared": "passed", "B3_trigger_seen": "passed", "B4_no_overbroad_grant": "passed", "B5_cleanup": "passed"}

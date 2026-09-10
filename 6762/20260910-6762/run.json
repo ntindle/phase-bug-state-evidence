@@ -1,0 +1,96 @@
+{
+ "issue": 6762,
+ "run_id": "20260910-6762",
+ "started_at": "2026-09-10T20:26:17",
+ "duration_s": 65.8,
+ "server": {
+  "server_version": "0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 match of pinned verified artifacts"
+ },
+ "server_run_dir": "runs/20260910-6762",
+ "driver": {
+  "protocol_advertised": 69,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c73499a7a63a836142b93ebda32d66d3904ba6bd17188709f2d3335a44f5a24a",
+ "decks": {
+  "P0": [
+   [
+    "Wand of Orcus",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Diregraf Ghoul",
+    8
+   ],
+   [
+    "Manalith",
+    8
+   ],
+   [
+    "Forest",
+    10
+   ],
+   [
+    "Swamp",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "setup_started": "passed",
+  "A1_setup_ok": "passed",
+  "A2_attack_declared": "passed",
+  "A3_trigger_seen": "passed",
+  "A4_no_overbroad_grant": "passed",
+  "A5_cleanup": "passed",
+  "B1_setup_ok": "passed",
+  "B2_block_declared": "passed",
+  "B3_trigger_seen": "passed",
+  "B4_no_overbroad_grant": "passed",
+  "B5_cleanup": "passed"
+ },
+ "notes": [
+  "[attack] attack: equipped=True zombie=True artifact=True opp_creature=True",
+  "[attack] attack: wand trigger on stack observed=True ['{\"id\": 122, \"source_id\": 14, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 14, \"ability\": {\"effect\": {\"type\": \"Unimplemented\", \"name\": \"unbound_subject\", \"description\": \"it and Zombies you control gain deathtouch until end of turn\"}, \"targets\": [], \"source_id\": 14, \"sou']",
+  "[attack] attack: post-combat deathtouch hits=[]",
+  "[attack] attack: post phase=PostCombatMain waiting=Priority stack=0",
+  "[block] block: equipped=True zombie=True artifact=True opp_creature=True",
+  "[block] block: wand trigger on stack observed=True ['{\"id\": 122, \"source_id\": 18, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 18, \"ability\": {\"effect\": {\"type\": \"Unimplemented\", \"name\": \"unbound_subject\", \"description\": \"it and Zombies you control gain deathtouch until end of turn\"}, \"targets\": [], \"source_id\": 18, \"sou']",
+  "[block] block: post-combat deathtouch hits=[]",
+  "[block] block: post phase=PostCombatMain waiting=Priority stack=1",
+  "Pinned v0.79.0 card data parses Wand of Orcus' first trigger effect as Unimplemented (name=unbound_subject); the engine therefore performs no deathtouch grant at all on this build. The classifier's 'typed grant child with any target' AST is not present in the pinned dataset."
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The reported grant effect is Unimplemented in the pinned card data; if it is re-implemented the overbroad-grant claim needs re-testing.",
+  "Not tested on the original 2026-07-28 build; verdict scoped to v0.79.0.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Wand of Orcus + 12x Grizzly Bears + 8x Diregraf Ghoul + 8x Manalith + 20 lands; P1: 12x Bears + 48x Forest",
+ "contract_line": "Equipped creature attacks (game A) / blocks (game B): only equipped creature + controller's Zombies may gain deathtouch; lands/artifacts/other creatures must not."
+}
