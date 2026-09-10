@@ -1,0 +1,52 @@
+game PQWCWW; P0 seat=0 P1 seat=1
+P0 keeps (hand=['shock', 'ornithopter', 'grizzly bears', 'swamp', 'island', 'ornithopter', 'nethergoyf'], mulls=0)
+[vi wf-MulliganDecision/P0] rtype=exactChoices spec=None prompt='' choices=[('', 'available'), ('', 'available')]
+P1 keeps (hand=['mountain', 'mountain', 'mountain', 'lightning bolt', 'mountain', 'mountain', 'lightning bolt'], mulls=0)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 hand=['shock', 'ornithopter', 'grizzly bears', 'swamp', 'island', 'ornithopter'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 plays land swamp
+P0 casts Ornithopter
+P1 plays land mountain
+[P1] bolt diag: target=ornithopter oid=13 untapped_mtn=1 bolt_in_hand=True
+P1 bolts ornithopter (oid 13)
+[P1] target_p1_bolt_pending: submit sequence ids=['PQWCWW.0.26.t2'] (rtype=schema spec=sequence)
+[P1] bolt diag: target=ornithopter oid=13 untapped_mtn=0 bolt_in_hand=True
+P0 plays land island
+P0 casts Nethergoyf
+P1 plays land mountain
+[P1] bolt diag: target=nethergoyf oid=52 untapped_mtn=2 bolt_in_hand=True
+P1 bolts nethergoyf (oid 52)
+[P1] target_p1_bolt_pending: submit sequence ids=['PQWCWW.0.63.t2'] (rtype=schema spec=sequence)
+[P1] bolt diag: target=nethergoyf oid=52 untapped_mtn=1 bolt_in_hand=False
+P1 plays land mountain
+P0 plays land island
+P0 casts Divination
+P1 plays land mountain
+P0 casts Divination
+[P0] discard_to_hand_size: submit select ids=['PQWCWW.0.155.s0'] (rtype=schema spec=select)
+[vi wf-DiscardToHandSize/P0] rtype=schema spec=select prompt='' choices=[('Shock', 'available'), ('Grizzly Bears', 'available'), ('Ornithopter', 'available'), ('Ornithopter', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available'), ('Divination', 'available'), ('Rancor', 'available')]
+P1 plays land mountain
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 52)
+[vi esc/P0] rtype=exactChoices spec=None prompt='' choices=[('', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Ornithopter', 'available'), ('Ornithopter', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Ornithopter', 'available')]
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=4
+[P0] exile prompt spec='select' rtype='schema'
+[P0] invalid_subset_1card: submit select ids=['PQWCWW.0.176.s3'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select prompt='' choices=[('Ornithopter', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Shock', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None prompt='' choices=[('', 'available')]
+[P0] exile prompt spec=None rtype='exactChoices'
+[P0] exile prompt already probed; leaving unanswered
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
