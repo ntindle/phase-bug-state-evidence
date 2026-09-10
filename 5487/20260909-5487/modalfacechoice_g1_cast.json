@@ -1,0 +1,141 @@
+{
+ "waiting_for": {
+  "type": "ModalFaceChoice",
+  "data": {
+   "player": 0,
+   "object_id": 35,
+   "card_id": 35,
+   "payment_mode": {
+    "type": "Auto"
+   }
+  }
+ },
+ "viewer_interaction": {
+  "waitingForKind": {
+   "simultaneous": null,
+   "terminal": false,
+   "code": "choose"
+  },
+  "authorizedSubmitters": [
+   0
+  ],
+  "canSubmit": true,
+  "autoPassRecommended": false,
+  "opportunities": [
+   {
+    "interactionId": "Y5V174.0.145",
+    "response": {
+     "type": "exactChoices",
+     "data": {
+      "choices": [
+       {
+        "id": "Y5V174.0.145.c0",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "action",
+          "data": {
+           "code": "chooseModalFace",
+           "actionId": "a8c3b89790b8e5085d248405dc46b4653df49034651b4e6d77063a3b7bf8aafd4"
+          }
+         },
+         {
+          "type": "value",
+          "data": {
+           "role": "face",
+           "index": null,
+           "value": "front"
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       },
+       {
+        "id": "Y5V174.0.145.c1",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "action",
+          "data": {
+           "code": "chooseModalFace",
+           "actionId": "aefa353224c6ce3e10532e8e6d7d6745496f2faaf546560382391bbc372d974bf"
+          }
+         },
+         {
+          "type": "value",
+          "data": {
+           "role": "face",
+           "index": null,
+           "value": "back"
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       }
+      ]
+     }
+    },
+    "surfaces": [
+     {
+      "type": "summary",
+      "data": {
+       "code": "decision"
+      }
+     }
+    ],
+    "progress": {
+     "selected": 0,
+     "minimum": 0,
+     "maximum": null,
+     "aggregate": null,
+     "confirmable": false
+    }
+   }
+  ],
+  "attachmentFans": {},
+  "attachmentViews": {},
+  "availability": {
+   "type": "progressAvailable",
+   "data": {
+    "witness": {
+     "interactionId": "Y5V174.0.145",
+     "response": {
+      "type": "choose",
+      "data": {
+       "choiceId": "Y5V174.0.145.c0"
+      }
+     }
+    }
+   }
+  }
+ },
+ "legal_actions": [
+  {
+   "type": "ChooseModalFace",
+   "data": {
+    "back_face": false
+   }
+  },
+  {
+   "type": "ChooseModalFace",
+   "data": {
+    "back_face": true
+   }
+  }
+ ],
+ "legal_actions_by_object": null
+}
