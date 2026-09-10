@@ -1,0 +1,11 @@
+2026-09-10T03:12:10Z  run 20260909-5189 start; backfill.lock written
+2026-09-10T03:12:30Z  deps installed (websockets, pillow, pynacl); release check: latest stable v0.78.0, no advance since pin
+2026-09-10T03:13:00Z  issue selection: #5189 oldest unvalidated (fix PR, labels bug+defer-fe); PR open/unmerged, review deferred
+2026-09-10T03:13:30Z  git fetch origin main -> a0f9c55; old gesture logic confirmed verbatim in mainline useKeyboardShortcuts.ts
+2026-09-10T03:14:00Z  VM/service restart mid-run: pip site-packages lost, git fetch of PR head interrupted; lock file survived; deps reinstalled; fetch retry of pull/5189/head stalled >3min and was killed
+2026-09-10T03:16:00Z  fallback: published patch fetched from https://github.com/phase-rs/phase/pull/5189.patch (180 lines, head 8e1803eea18486eb18900013d3de5da943129922)
+2026-09-10T03:17:00Z  trees: worktree phase-5189-main @ a0f9c55 (node_modules symlinked); rsync copy -> phase-5189-pr; new files git-applied cleanly; useKeyboardShortcuts.ts hunk context-drifted (exportGameStateDebugZip -> exportAuthoritativeGameStateZip), + lines applied manually and verified byte-identical
+2026-09-10T03:20:11Z  mainline driver: 3/3 pass (D1 0 toggles on real-hardware triple-tap; D2 1 toggle on double-tap; D1-control accumulates) -> bug reproduced
+2026-09-10T03:20:27Z  PR variant: PR's own 5 tests 5/5 pass; wiring driver 3/3 pass (real-hardware triple-tap toggles exactly once; double-tap silent) -> fix works
+2026-09-10T03:20:39Z  full hooks/__tests__ dir on variant: 26 files, 180 tests, all pass -> no regressions
+2026-09-10T03:21:23Z  logs re-captured; observations/run.json written; summary.png rendered (1100x1000, readable)
