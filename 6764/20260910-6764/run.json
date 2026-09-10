@@ -1,0 +1,72 @@
+{
+ "issue": 6764,
+ "run_id": "20260910-6764",
+ "started_at": "2026-09-10T23:16:53",
+ "duration_s": 35.9,
+ "server": {
+  "server_version": "0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 match of pinned verified artifacts"
+ },
+ "server_run_dir": "runs/20260910-6764",
+ "driver": {
+  "protocol_advertised": 69,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "aa9376f0d44d0170be85f2b2efc759219b536f5e1a98990f71bbf1c84ac49ae2",
+ "decks": {
+  "P0": [
+   [
+    "Mountain",
+    36
+   ],
+   [
+    "Knowledge Pool",
+    12
+   ],
+   [
+    "Shock",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger1_fires": "passed",
+  "A2b_decline_control": "passed",
+  "A2_trigger2_fires": "passed",
+  "A3_choice_scope": "failed",
+  "A4_free_cast_executes": "not-run",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "imprint: exile=6 (['Mountain', 'Mountain', 'Knowledge Pool', 'Mountain', 'Mountain', 'Mountain']); libs 47->44, 48->45",
+  "trig1: {\"tag\": \"trig1\", \"shock_oid\": \"49\", \"pre_untapped\": 6, \"cast_submitted\": true, \"trigger_exiled\": true, \"may_kind\": \"decide\", \"may_answered\": false, \"decline_settled\": true}",
+  "trig2: {\"tag\": \"trig2\", \"shock_oid\": \"51\", \"pre_untapped\": 6, \"cast_submitted\": true, \"trigger_exiled\": true, \"may_kind\": \"decide\", \"may_answered\": true, \"choice_names\": [\"<id LT8F4A.0.217.c0>\", \"Mountain\", \"Mountain\", \"Mountain\", \"Mountain\", \"Mountain\"], \"choice_rtype\": \"exactChoices\"}",
+  "A3 trig2 detail: {\"n_candidates\": 6, \"n_resolved\": 5, \"n_unresolved\": 1, \"foreign\": [[\"32\", \"Mountain\"], [\"42\", \"Mountain\"], [\"17\", \"Mountain\"], [\"39\", \"Mountain\"], [\"7\", \"Mountain\"]], \"trigger_offered\": false}",
+  "Shock#1 not among card-choice candidates; free-cast path not testable"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Cards exiled by a *different* effect or a second Knowledge Pool were not present in this fixture; A3 covers the triggering-spell exclusion and the imprint-set boundary only.",
+  "Dense playsets (12x) are a test-harness convenience (engine accepts >4-of for custom games)."
+ ],
+ "setup_line": "P0: 36x Mountain + 12x Knowledge Pool + 12x Shock; P1: 60x Mountain (draw-go)",
+ "contract_line": "Decline trig#1 (control); accept trig#2 choosing Shock#1: free cast must resolve for 2 damage with no mana paid"
+}
