@@ -1,0 +1,42 @@
+game 0WSQFY; P0 seat=0 P1 seat=1
+P0 mulligans #1
+P1 keeps opening hand
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=7 P1hand=7 chains=False stack=0 cast=False discards=0
+P0 keeps (chains=True, lands=5)
+[P1] interaction rtype=exactChoices spec=None choices=[ // ]
+P0 bottoms 1
+[P1] interaction rtype=exactChoices spec=None choices=[]
+[P0] interaction rtype=exactChoices spec=None choices=[]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island // Island // Island]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp // Swamp // Island // Swamp]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp // Swamp // Island // Swamp // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Swamp // Swamp // Swamp // Island // Swamp // Island // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Chains of Mephistopheles // Chains of Mephistopheles // Island // Island // Swamp]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Swamp]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Swamp // Swamp // Swamp // Island // Swamp // Chains of Mephistopheles // Chains of Mephistopheles // Island // Island // Swamp]
+P0 casts Chains (turn 8)
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp]
+[P1] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Swamp // Swamp]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp // Swamp // Island // Swamp // Island // Island // Swamp // Swamp]
+[P0] interaction rtype=exactChoices spec=None choices=[ // Blue Sun's Zenith // Blue Sun's Zenith // Island // Island // Island // Swamp // Swamp]
+P0 main phase: exporting PRE, then casting Zenith X=1 @P1
+P0 casts Blue Sun's Zenith (turn 10)
+[P0] interaction rtype=schema spec=sequence choices=[ // ]
+[P0] targets P1 with Zenith (choice 0WSQFY.0.148.t1)
+[P0] interaction rtype=schema spec=number choices=[]
+[P0] chooses X=1 for Blue Sun's Zenith
+[P0] interaction rtype=exactChoices spec=None choices=[ // Swamp]
+[P1] interaction rtype=schema spec=select choices=[Island // Island // Island // Island // Island // Island]
+P1 discards ['island'] to Chains
+exported MID (resolution underway)
+Zenith resolved; exporting POST
+exported POST
+post exported; finishing
+resolution deltas: H=6 discards=1 mills=0 hand_after=5 lib 49->49
