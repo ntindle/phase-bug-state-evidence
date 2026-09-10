@@ -1,0 +1,199 @@
+{
+ "issue": 5487,
+ "run_id": "20260909-5487",
+ "started_at": "2026-09-10T00:18:10",
+ "duration_s": 40.7,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-09",
+  "source": "ServerHello probed live (0.78.0/4de7224/proto 68/Full) + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9376 for run 20260909-5487"
+ },
+ "server_run_dir": "runs/20260909-5487",
+ "server_port": 9376,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0d0ae6f643372662fd8f8e2737ec9c0b86ae49a136fdf46444824fb0db9c9ea1",
+ "decks": {
+  "P0": [
+   [
+    "tergrid, god of fright",
+    12
+   ],
+   [
+    "swamp",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_modal_offered": "passed",
+  "A3_choice_accepted": "passed",
+  "A4_front_completes": "passed",
+  "A5_back_completes": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "rejections=0 face_opps_g1=1 face_opps_g2=1 stall=False rejected=False",
+  "A1: active=0 phase=PreCombatMain tergrid_in_hand=True untapped_swamps=5",
+  "A2: ModalFaceChoice wait seen; faces advertised=['front', 'back']; canSubmit=True; chooseModalFace actions=[{'back_face': False}, {'back_face': True}]; actionable=True",
+  "A3: front-face choice accepted; cast resolved to Tergrid, God of Fright on the battlefield",
+  "A4: tergrid on P0 BF=[35]; stack_empty=True; life=20/20; turn=10 phase=PreCombatMain",
+  "A5: lantern on P0 BF=[19] (card_type=None); stack_empty=True; life=20/20; turn=7 phase=PreCombatMain; g2 ModalFaceChoice advertised faces=['back'] (only 4 untapped Swamps at cast time, so the {3}{B}{B} front face was unpayable - consistent with payment-feasibility filtering, not the reported defect)",
+  "A6: post.json stack_empty=True wf=Priority turn=7 phase=PreCombatMain"
+ ],
+ "observations": {
+  "game": 2,
+  "stage": "g1_setup",
+  "kept": {
+   "P0_g2": true,
+   "P1_g2": true
+  },
+  "cast_submitted": true,
+  "cast_oid": 19,
+  "want_face": "back",
+  "opps": [
+   {
+    "tag": "g1_cast",
+    "interaction_ids": [
+     "Y5V174.0.145"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "Y5V174.0.145.c0",
+      "face": "front",
+      "status": "available"
+     },
+     {
+      "id": "Y5V174.0.145.c1",
+      "face": "back",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     },
+     {
+      "back_face": true
+     }
+    ]
+   },
+   {
+    "tag": "g2_cast",
+    "interaction_ids": [
+     "0GVUMG.0.98"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "0GVUMG.0.98.c0",
+      "face": "back",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": true
+     }
+    ]
+   }
+  ],
+  "choice_id": "0GVUMG.0.98.c0",
+  "choice_submitted": true,
+  "rejected": false,
+  "stall": false,
+  "wait_start": 1788999530.9284236,
+  "tergrid_on_bf": true,
+  "lantern_on_bf": true,
+  "rejections": [],
+  "cast_spell_ads": [
+   {
+    "object_id": 15,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 19,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 51,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 51,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 15,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   },
+   {
+    "object_id": 19,
+    "data_keys": [
+     "card_id",
+     "object_id",
+     "payment_mode",
+     "targets"
+    ]
+   }
+  ]
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Tergrid / high land density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-07-10 build v0.20.0 (7b5b324); verdict is scoped to v0.78.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Tergrid, God of Fright + 48x Swamp; P1: 60x Forest. Both games.",
+ "contract_line": "Cast Tergrid at main-phase priority; the ModalFaceChoice must offer both faces as actionable selections; each selection must be accepted and resolve (front face -> Tergrid on the battlefield; back face -> Tergrid's Lantern on the battlefield)."
+}
