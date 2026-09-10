@@ -1,0 +1,37 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-mainline/client[39m
+
+ [31m❯[39m src/components/deck-builder/__tests__/commanderUtils.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 15[2mms[22m[39m
+[31m     [31m×[31m flags off-color cards for a genuinely colorless commander (CR 903.5c)[39m[32m 12[2mms[22m[39m
+     [32m✓[39m does not flag on-identity cards for a colored commander[32m 1[2mms[22m[39m
+     [32m✓[39m returns no violations while commander data is still loading[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/components/deck-builder/__tests__/commanderUtils.test.ts[2m > [22mgetColorIdentityViolations[2m > [22mflags off-color cards for a genuinely colorless commander (CR 903.5c)
+[31m[1mAssertionError[22m: expected [] to deeply equal [ 'Lightning Bolt' ][39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- [[39m
+[32m-   "Lightning Bolt",[39m
+[32m- ][39m
+[31m+ [][39m
+
+[36m [2m❯[22m src/components/deck-builder/__tests__/commanderUtils.test.ts:[2m28:24[22m[39m
+    [90m 26|[39m     )[33m;[39m
+    [90m 27|[39m
+    [90m 28|[39m     [34mexpect[39m(violations)[33m.[39m[34mtoEqual[39m([[32m"Lightning Bolt"[39m])[33m;[39m
+    [90m   |[39m                        [31m^[39m
+    [90m 29|[39m   })[33m;[39m
+    [90m 30|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (3)[39m
+[2m   Start at [22m 01:14:15
+[2m   Duration [22m 1.63s[2m (transform 193ms, setup 495ms, import 43ms, tests 15ms, environment 795ms)[22m
+

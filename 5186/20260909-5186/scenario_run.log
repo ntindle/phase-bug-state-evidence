@@ -1,0 +1,55 @@
+scenario_run.log -- phase-rs/phase #5186 (client colorless-commander color-identity bug)
+run_id 20260909-5186 | 2026-09-09 (America/Chicago) | operator: backfill cron worker
+
+1. Release check: latest stable phase-rs/phase release matching ^v0\. is v0.78.0
+   (published 2026-09-09T14:28:24Z, unchanged from the pin). No re-pin needed.
+   Client-only run: phase-server not started.
+
+2. Issue selection: #5186 is the next unvalidated entry oldest->newest
+   (report-inventory.json). It is an open, unmerged client fix PR (defer-fe),
+   handled per the established client-PR pattern from #5184.
+
+3. Fetched the PR: head f82c5bf18b6a19ac0ffabec2c2d4396ee7efe7f0, base main.
+   Two files: client/src/components/deck-builder/__tests__/commanderUtils.test.ts
+   (new, 58 lines, 3 cases) and client/src/components/deck-builder/commanderUtils.ts
+   (+8/-1: drop the `identity.length === 0 -> true` short-circuit in
+   isInColorIdentity; add an all-commanders-cached guard to
+   getColorIdentityViolations). Published patch saved as pr5186_published.patch.
+
+4. Mainline checkout ~/workspace/dev/phase-mainline fetched this run, checked out
+   at aa1fb24 (origin/main tip, 2026-09-10T00:07:23Z). The buggy short-circuit
+   is still present at commanderUtils.ts line 26. The PR's test file was copied
+   verbatim into the checkout (removed after the run).
+
+5. Ran on mainline: npx vitest run --coverage.enabled=false
+   src/components/deck-builder/__tests__/commanderUtils.test.ts
+   BUG REPRODUCED on mainline. Log: vitest_mainline_driver.log.
+   - M1 flags-off-color-for-colorless-commander FAILED:
+     AssertionError: expected [] to deeply equal [ 'Lightning Bolt' ]
+     (Kozilek, Butcher of Truth with color_identity [] let a red card through,
+     violating CR 903.5c exactly as the PR describes.)
+   - M2 colored-commander control passed. M3 loading-window control passed.
+
+6. Applied only the published commanderUtils.ts source hunk to the checkout
+   (content lines verified byte-identical to the PR patch), kept the test file.
+   Diff saved as pr_patch_applied_source.diff; test file diff as
+   pr_patch_applied_test.diff.
+
+7. Ran on PR variant: same vitest command.
+   FIX RESOLVES the bug with the published patch. Log: vitest_pr_variant.log.
+   - P1 colorless commander now flags Lightning Bolt only (Wastes clean).
+   - P2 colored-commander behavior unchanged. P3 uncached commander still
+     yields no violations (loading guard works).
+   - R1 CommanderPanel.test.tsx (sole other consumer of commanderUtils):
+     4/4 passed on the PR-fixed variant -- no regression.
+
+8. Checkout restored pristine (git checkout -- commanderUtils.ts, test file
+   removed); git status shows only pre-existing untracked dirs
+   (client/harness-4873/, client/node_modules).
+
+9. Rendered summary.png from run.json + client_observations.json
+   (render_summary_5186.py), wrote manifest.sha256, then uploaded to the
+   evidence repo and byte-verified. Evidence comment posted/updated on the PR.
+   Ledger updated atomically.
+
+Verdict: reproduced (client subsystem, current mainline aa1fb24).
