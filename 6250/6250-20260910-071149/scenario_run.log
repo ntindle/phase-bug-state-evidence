@@ -1,0 +1,37 @@
+game WEV9AO; P0 seat=0 P1 seat=1
+P0 keeps (ardenn=True, lands=3, mulls=0)
+P1 keeps opening hand
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=['ardenn, intrepid archaeologist', 'ardenn, intrepid archaeologist', 'holy strength', 'plains', 'colossus hammer', 'plains', 'plains'] P0untapped=0 ardenn=False atts=[] life=20/20 stack=[] accepted=False setup=False post=False
+[P1] interaction rtype=exactChoices n=1 codes=['passPriority'] choices=[]
+[P0] interaction rtype=exactChoices n=1 codes=['passPriority'] choices=[]
+[P1] interaction rtype=exactChoices n=8 codes=['passPriority', 'playLand'] choices=[ // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain]
+[P1] interaction rtype=exactChoices n=2 codes=['passPriority', 'tapLandForMana'] choices=[ // Mountain]
+[P0] interaction rtype=exactChoices n=4 codes=['passPriority', 'playLand'] choices=[ // Plains // Plains // Plains]
+[P0] interaction rtype=exactChoices n=4 codes=['castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Colossus Hammer // Colossus Hammer // Plains]
+[P0] interaction rtype=exactChoices n=2 codes=['passPriority', 'tapLandForMana'] choices=[ // Plains]
+[P1] interaction rtype=exactChoices n=9 codes=['passPriority', 'playLand', 'tapLandForMana'] choices=[ // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain]
+[P1] interaction rtype=exactChoices n=3 codes=['passPriority', 'tapLandForMana'] choices=[ // Mountain // Mountain]
+[P0] interaction rtype=exactChoices n=7 codes=['castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Plains // Plains // Plains // Colossus Hammer // Colossus Hammer // Plains]
+[P0] interaction rtype=exactChoices n=5 codes=['castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Colossus Hammer // Colossus Hammer // Plains // Plains]
+[P0] interaction rtype=exactChoices n=3 codes=['passPriority', 'tapLandForMana'] choices=[ // Plains // Plains]
+[P1] interaction rtype=exactChoices n=10 codes=['passPriority', 'playLand', 'tapLandForMana'] choices=[ // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain // Mountain]
+[P1] interaction rtype=exactChoices n=4 codes=['passPriority', 'tapLandForMana'] choices=[ // Mountain // Mountain // Mountain]
+[P0] interaction rtype=exactChoices n=8 codes=['castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Plains // Plains // Plains // Colossus Hammer // Colossus Hammer // Plains // Plains]
+[P0] interaction rtype=exactChoices n=12 codes=['castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Ardenn, Intrepid Archaeologist // Ardenn, Intrepid Archaeologist // Colossus Hammer // Colossus Hammer // Plate Armor // Plate Armor // Ardenn, Intrepid Archaeologist // Ardenn, Intrepid Archaeologist // Plains // Pl]
+P0 casts Ardenn (turn 6)
+[P1] interaction rtype=exactChoices n=5 codes=['passPriority', 'tapLandForMana'] choices=[ // Mountain // Mountain // Mountain // Mountain]
+[P0] interaction rtype=exactChoices n=4 codes=['passPriority', 'tapLandForMana'] choices=[ // Plains // Plains // Plains]
+[P0] interaction rtype=exactChoices n=15 codes=['castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Plains // Plains // Plains // Colossus Hammer // Colossus Hammer // Plate Armor // Plate Armor // Ardenn, Intrepid Archaeologist // Ardenn, Intrepid Archaeologist // Holy Strength // Holy Strength // Plains // Plains]
+P0 casts Holy Strength (turn 8)
+P0 casts Colossus Hammer (turn 8)
+[P0] interaction rtype=exactChoices n=5 codes=['passPriority', 'playLand', 'tapLandForMana'] choices=[ // Plains // Plains // Plains // Plains]
+[P0] interaction rtype=schema n=2 codes=[] choices=[Holy Strength // Colossus Hammer]
+[P0] attachment prompt: spec max=1, 2 attachments available (['Holy Strength', 'Colossus Hammer'])
+[P0] attachment choice -> ['Colossus Hammer']
+[P0] interaction rtype=schema n=13 codes=[] choices=[Mountain // Plains // Mountain // Plains // Mountain // Plains // Ardenn, Intrepid Archaeologist // Mountain // Holy Strength // Colossus Hammer // Plains //  // ]
+[P0] target selection -> 'Ardenn, Intrepid Archaeologist' (ardenn found: True)
+[P0] interaction rtype=exactChoices n=2 codes=['decideOptionalEffect'] choices=[ // ]
+[P0] optional 'you may' -> ACCEPT
+POST: trigger resolved; on_ardenn=['colossus hammer', 'holy strength'] phase=BeginCombat turn=8
+exported POST
+post exported; finishing
