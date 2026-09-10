@@ -1,0 +1,113 @@
+{
+ "issue": 6250,
+ "run_id": "6250-20260910-071149",
+ "started_at": "2026-09-10T07:21:15",
+ "duration_s": 20.7,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/); fresh isolated server on 127.0.0.1:9374 for run 6250-20260910-071149"
+ },
+ "server_run_dir": "runs/6250-20260910-071149",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b2032dfc974b7bf384e3acc90f351fbcd411c72a3e01950eb088ea9187f9c353",
+ "decks": {
+  "P0": [
+   [
+    "ardenn, intrepid archaeologist",
+    8
+   ],
+   [
+    "holy strength",
+    8
+   ],
+   [
+    "plate armor",
+    8
+   ],
+   [
+    "colossus hammer",
+    8
+   ],
+   [
+    "plains",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_target_chosen": "passed",
+  "A3_optional_accepted": "passed",
+  "A4_all_attached": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "attachment prompt caps selection at max=1 with 2 attachments available -- the 'any number' choice is already restricted here",
+  "pre.json: Ardenn on BF, 3 attachments controlled by P0 (holy strength attached to Ardenn; 2x colossus hammer unattached -- a single CastSpell produced two hammer permanents, see anomaly note), PreCombatMain, life 20/20",
+  "trigger target selection: chose Ardenn, Intrepid Archaeologist as the target permanent",
+  "accepted the trigger's optional 'you may'",
+  "post.json: attachments on Ardenn = ['colossus hammer', 'holy strength'] (expected all of ['holy strength', 'plate armor', 'colossus hammer']); only 1 of the 2 unattached equipment moved -- REPORTED BUG: trigger attached a single Aura/Equipment",
+  "post.json: stack empty, life 20/20 (phase=BeginCombat)",
+  "setup valid but fewer than all 3 attachments ended on Ardenn -- matches the reported single-attachment collapse",
+  "ANOMALY (out of scope for #6250, flagged not investigated): the server log shows exactly 3 CastSpell actions for this game (Ardenn, Holy Strength, Colossus Hammer x1), yet pre.json has TWO Colossus Hammer permanents on the battlefield (game timestamps 11 and 12). After trigger resolution, post.json has ONE hammer on the battlefield (timestamp 13, attached to Ardenn) and 7 in library (vs 6 in pre) -- i.e. one hammer left the battlefield for the library during resolution. Possible separate engine bug around Equipment ETB duplication / attach resolution; does not affect the #6250 verdict (prompt spec max=1 and exactly one attachment moved)."
+ ],
+ "observations": {
+  "trigger_target": "ardenn",
+  "accepted": true,
+  "attachment_prompt_shapes": [
+   "schema/sequence max=1 n_avail=2"
+  ],
+  "attach_choices_made": [
+   "Colossus Hammer"
+  ],
+  "target_prompt_shapes": [
+   "Mountain // Plains // Mountain // Plains // Mountain // Plains // Ardenn, Intrepid Archaeologist // Mountain // Holy Strength // Colossus Hammer // Plains //  // "
+  ],
+  "optional_prompt_shapes": [
+   " // "
+  ],
+  "pre_attached_to_ardenn": [
+   "holy strength"
+  ],
+  "post_attached_to_ardenn": [
+   "colossus hammer",
+   "holy strength"
+  ],
+  "hammer_anomaly": {
+   "castspell_actions_total": 3,
+   "pre_battlefield_hammers": 2,
+   "post_battlefield_hammers": 1,
+   "post_library_hammers": 7,
+   "pre_library_hammers": 6
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x copies per card is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Only the accept branch of the optional trigger is exercised; the decline control is not run in this scenario.",
+  "Second card in the same class (e.g. Brass Squire) not exercised; acceptance criterion noted for the fix, not the repro.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x ardenn + 8x holy strength + 8x plate armor + 8x colossus hammer + 28x plains; P1: 60x mountain dummy. Mulligan to Ardenn + lands; cast Ardenn, then holy strength (targeting Ardenn), plate armor, colossus hammer; move to combat with all three attachments controlled by P0.",
+ "contract_line": "Beginning-of-combat trigger: choose Ardenn as target permanent, accept 'you may', select all 3 attachments; expect all 3 attached to Ardenn after resolution."
+}
