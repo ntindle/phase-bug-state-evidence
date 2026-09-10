@@ -1,0 +1,43 @@
+{
+ "issue": 6337,
+ "run_id": "20260910-6337",
+ "verdict": "reproduced",
+ "source": {
+  "repo": "phase-rs/phase",
+  "release_tag": "v0.78.0",
+  "files": {
+   "crates/draft-wasm/src/bot_ai.rs": {
+    "sha256": "7ec8f94c682ab65541fa73a79947fa7c44d044707abab48eaff61135ff49e356",
+    "defect_line": 237
+   },
+   "crates/draft-wasm/src/suggest.rs": {
+    "sha256": "beb99f8cde48825514d3130f01d689c4e4d547d3ab830a2686881de53a20369e",
+    "defect_line": 367,
+    "house_style_tiebreak_line": 713
+   }
+  },
+  "fetched_from": "https://raw.githubusercontent.com/phase-rs/phase/v0.78.0/crates/draft-wasm/src/"
+ },
+ "harness": {
+  "toolchain": "rustc 1.98.1 (stable, installed this run)",
+  "binary": "target/release/issue6337",
+  "substitutions": [
+   "DraftCardInstance -> local DraftCard stub (same colors field shape; sorting logic untouched)",
+   "score_card -> constant 1.0 per card (produces the issue's exact tie condition: one card of each of W/U/B/R/G)",
+   "CardDatabase -> ()"
+  ],
+  "control": "find_best_colors_fixed: identical function + .then_with(|| a.0.cmp(b.0)) house-style tie-break"
+ },
+ "scope": "draft-wasm color-selection helpers (color_preference in bot_ai.rs; find_best_colors in suggest.rs); 30 separate OS processes over the issue's tied repro pool; no game states exist for a deckbuilder report",
+ "limitations": [
+  "Browser/UI 'Suggest deck' click path not exercised; the helper function it calls is exercised verbatim.",
+  "Real score_card gives per-card quality scores; constant score reproduces the reported tie condition only.",
+  "No engine game states apply to this subsystem (per playbook deckbuilder rule)."
+ ],
+ "assertions": [
+  "A1",
+  "A2",
+  "A3",
+  "A4"
+ ]
+}

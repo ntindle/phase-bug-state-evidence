@@ -1,0 +1,15 @@
+[2026-09-10T08:16:45.846268+00:00] step 1: building harness (verbatim copies of the v0.78.0 functions)
+[2026-09-10T08:16:45.883409+00:00] build ok
+[2026-09-10T08:16:45.883474+00:00] step 2: running 30 separate processes (fresh SipHash seed each)
+[2026-09-10T08:16:45.886238+00:00] run 00: color_preference=R,B find_best_colors=R,W control_fixed=B,G
+[2026-09-10T08:16:45.888875+00:00] run 01: color_preference=B,R find_best_colors=W,R control_fixed=B,G
+[2026-09-10T08:16:45.892122+00:00] run 02: color_preference=U,B find_best_colors=U,W control_fixed=B,G
+[2026-09-10T08:16:45.943813+00:00] run 29: color_preference=R,B find_best_colors=W,B control_fixed=B,G
+[2026-09-10T08:16:45.943958+00:00] color_preference distinct top-2: 16 -> {'R,B': 6, 'B,R': 2, 'U,B': 3, 'G,B': 2, 'W,B': 2, 'U,G': 1, 'G,R': 2, 'G,U': 2, 'B,G': 1, 'B,W': 1, 'W,R': 2, 'U,W': 2, 'W,G': 1, 'W,U': 1, 'B,U': 1, 'R,W': 1}
+[2026-09-10T08:16:45.943979+00:00] find_best_colors distinct top-2: 14 -> {'R,W': 3, 'W,R': 3, 'U,W': 3, 'W,G': 2, 'U,R': 5, 'W,U': 1, 'B,W': 2, 'G,W': 1, 'B,U': 2, 'R,G': 1, 'G,R': 2, 'U,B': 3, 'G,U': 1, 'W,B': 1}
+[2026-09-10T08:16:45.943992+00:00] control_fixed distinct top-2: 1 -> {'B,G': 30}
+[2026-09-10T08:16:45.944008+00:00] A1 passed: source_audit: both defective sorts present at v0.78.0; tie-break house style present in distribute_lands (suggest.rs:713)
+[2026-09-10T08:16:45.944019+00:00] A2 passed: color_preference top-2 varies across 30 runs (bug: 16 distinct orderings)
+[2026-09-10T08:16:45.944030+00:00] A3 passed: find_best_colors top-2 varies across 30 runs (bug: 14 distinct orderings)
+[2026-09-10T08:16:45.944039+00:00] A4 passed: control (house-style tie-break) stable across all 30 runs
+[2026-09-10T08:16:45.944053+00:00] verdict: reproduced
