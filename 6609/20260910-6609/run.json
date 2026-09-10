@@ -1,0 +1,174 @@
+{
+ "issue": 6609,
+ "run_id": "20260910-6609",
+ "started_at": "2026-09-10T11:29:37",
+ "duration_s": 30.3,
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 re-verified against pinned v0.78.0 release artifacts (binary+data+sigs under server/releases/v0.78.0/)"
+ },
+ "server_run_dir": "runs/20260910-6609",
+ "driver": {
+  "protocol_advertised": 68,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b6f365065944e031b2b661364f5a96a96bec776aec2f0050afe9d469ce1e1aed",
+ "decks": {
+  "P0": [
+   [
+    "nethergoyf",
+    8
+   ],
+   [
+    "ornithopter",
+    8
+   ],
+   [
+    "rancor",
+    8
+   ],
+   [
+    "shock",
+    8
+   ],
+   [
+    "divination",
+    8
+   ],
+   [
+    "grizzly bears",
+    8
+   ],
+   [
+    "swamp",
+    8
+   ],
+   [
+    "island",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    12
+   ],
+   [
+    "mountain",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_escape_accepted": "passed",
+  "A3_choice_offered": "passed",
+  "A4_subset_accepted": "failed",
+  "A5_unchosen_remain": "passed",
+  "A6_pt_recomputed": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "escape_initiated=True escape_cast_accepted=True exile_prompt_seen=True (vi) invalid_tried=True invalid_rejected=None invalid_accepted=True valid_submitted=False valid_accepted=None auto_exile=False rejections=0",
+  "A1: goyf_in_gy=True, types_among_others=['artifact', 'creature', 'instant', 'sorcery'] (4), untapped_lands=3, swamp_untapped=True",
+  "A2: goyf_on_bf=True, goyf_in_gy=False",
+  "A3: per-card exile choice offered via vi",
+  "A4: RELATED FAILURE - a 1-card subset (<4 types) was ACCEPTED; the 4-type aggregate constraint is not enforced",
+  "A5: unchosen remaining in gy=['ornithopter', 'divination', 'divination']",
+  "A6: goyf P/T=3/4, types in remaining gy=['artifact', 'creature', 'sorcery'] (want 3/4)",
+  "A7: stack_empty=True, wf=Priority, stuck_watch=False",
+  "the Nethergoyf escape exile-cost path did not behave per the oracle text on this build"
+ ],
+ "observations": {
+  "phase": "done",
+  "answered_ids": [
+   "PQWCWW.0.26",
+   "PQWCWW.0.63",
+   "PQWCWW.0.155",
+   "PQWCWW.0.176"
+  ],
+  "rejections": [],
+  "goyf_cast": true,
+  "div_cast": false,
+  "ornithopter_cast": true,
+  "shock_cast": false,
+  "bears_cast": false,
+  "escape_initiated": true,
+  "escape_cast_accepted": true,
+  "exile_prompt_seen": true,
+  "exile_prompt_kind": "vi",
+  "invalid_subset_tried": true,
+  "invalid_subset_rejected": null,
+  "valid_subset_submitted": false,
+  "valid_subset_accepted": null,
+  "chosen_names": [],
+  "unchosen_names": [],
+  "auto_exile_observed": false,
+  "stuck_watch_fired": false,
+  "done": true,
+  "escape_live": false,
+  "playland_logged": true,
+  "p1_bolt_pending": false,
+  "p1_bolt_target": 52,
+  "_discard_ids": [
+   "PQWCWW.0.155.s0"
+  ],
+  "_rej_mark": 0,
+  "invalid_subset_ids": [
+   "PQWCWW.0.176.s3"
+  ],
+  "invalid_subset_accepted": true
+ },
+ "escape_decisions": [
+  {
+   "interactionId": "PQWCWW.0.26",
+   "why": "target_p1_bolt_pending",
+   "sub_type": "sequence",
+   "choice_ids": [
+    "PQWCWW.0.26.t2"
+   ]
+  },
+  {
+   "interactionId": "PQWCWW.0.63",
+   "why": "target_p1_bolt_pending",
+   "sub_type": "sequence",
+   "choice_ids": [
+    "PQWCWW.0.63.t2"
+   ]
+  },
+  {
+   "interactionId": "PQWCWW.0.155",
+   "why": "discard_to_hand_size",
+   "sub_type": "select",
+   "choice_ids": [
+    "PQWCWW.0.155.s0"
+   ]
+  },
+  {
+   "interactionId": "PQWCWW.0.176",
+   "why": "invalid_subset_1card",
+   "sub_type": "select",
+   "choice_ids": [
+    "PQWCWW.0.176.s3"
+   ]
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The escape fixture is reconstructed (cast + Bolt), not the reporter's attached game state; card in graveyard via discard would be an equivalent path.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Nethergoyf/Ornithopter/Rancor/Shock/Divination/Grizzly Bears + 8x Swamp + 8x Island; P1: 12x Lightning Bolt + 36x Mountain",
+ "contract_line": "Escape Nethergoyf ({2}{B}): engine must offer a per-card exile choice; a 1-card (<4 types) subset must be rejected; a 4-type subset must be accepted; unchosen cards remain; P/T recomputes from the remaining graveyard"
+}
