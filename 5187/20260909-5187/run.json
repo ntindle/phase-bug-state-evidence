@@ -1,0 +1,149 @@
+{
+ "assertions": {
+  "A1_control_seat0_alive": {
+   "expected": 2,
+   "fixture": [
+    {
+     "id": 0,
+     "is_eliminated": false
+    },
+    {
+     "id": 1,
+     "is_eliminated": false
+    },
+    {
+     "id": 2,
+     "is_eliminated": false
+    }
+   ],
+   "note": "control: seat 0 alive, 2 live opponents",
+   "observed": 2,
+   "status": "passed"
+  },
+  "A2_issue_example_seat0_eliminated": {
+   "expected": 2,
+   "fixture": [
+    {
+     "id": 0,
+     "is_eliminated": true
+    },
+    {
+     "id": 1,
+     "is_eliminated": false
+    },
+    {
+     "id": 2,
+     "is_eliminated": false
+    }
+   ],
+   "note": "THE REPORTED BUG: seat 0 eliminated; eliminated seat is not in liveCount, so the -1 undercounts opponents 2 -> 1",
+   "observed": 1,
+   "status": "failed"
+  },
+  "A3_eliminated_opponent_excluded": {
+   "expected": 1,
+   "fixture": [
+    {
+     "id": 0,
+     "is_eliminated": false
+    },
+    {
+     "id": 1,
+     "is_eliminated": false
+    },
+    {
+     "id": 2,
+     "is_eliminated": true
+    }
+   ],
+   "note": "seat 0 alive; eliminated opponent must not count",
+   "observed": 1,
+   "status": "passed"
+  },
+  "A4_all_eliminated": {
+   "expected": 0,
+   "fixture": [
+    {
+     "id": 0,
+     "is_eliminated": true
+    },
+    {
+     "id": 1,
+     "is_eliminated": true
+    },
+    {
+     "id": 2,
+     "is_eliminated": true
+    }
+   ],
+   "note": "degenerate: nobody alive",
+   "observed": 0,
+   "status": "passed"
+  },
+  "A5_lone_survivor": {
+   "expected": 0,
+   "fixture": [
+    {
+     "id": 0,
+     "is_eliminated": false
+    },
+    {
+     "id": 1,
+     "is_eliminated": true
+    },
+    {
+     "id": 2,
+     "is_eliminated": true
+    }
+   ],
+   "note": "degenerate: seat 0 the only live player",
+   "observed": 0,
+   "status": "passed"
+  }
+ },
+ "client": {
+  "file": "client/src/hooks/useResumables.ts",
+  "file_lines": "110-118 (counting lines 112, 117)",
+  "file_sha256": "bcfb97cd34df3d37fad274ccce3f3307bc214f3f3a3048d15709cd3bb743c714",
+  "liveOpponents_ts_present_on_mainline": false,
+  "mainline_commit": "a0f9c55d7aef13e4875ac8137c016948e5f66e12",
+  "mainline_commit_date": "2026-09-10T01:02:52Z",
+  "pr_base": "main",
+  "pr_head": "e318893388f2099a16363b5d41fccbd9e9d88a25",
+  "pr_head_message": "merge(PR-5187): port resumable opponent count to persisted view",
+  "pr_merged": false,
+  "pr_relationship_to_mainline": "diverged: mainline is 1419 commits ahead of and 2 behind the PR head; the fix is NOT on mainline",
+  "pr_review_state": "deferred by maintainer intake policy (pr-review-deferred, 2026-07-19, 2026-07-29, 2026-07-30)"
+ },
+ "contract": "Resumable-match summary (client/src/hooks/useResumables.ts): opponentCount must equal the number of live opponents of the local human (seat 0). The shipped formula `liveCount = players.filter(p => !p.is_eliminated).length; opponentCount = Math.max(0, liveCount - 1)` assumes seat 0 is always alive. Discriminating case from the issue: players [{id:0, eliminated}, {id:1, live}, {id:2, live}] must report 2 opponents, not 1. Tested by evaluating the exact shipped expressions (extracted verbatim from the mainline source file) against fixtures \u2014 no re-implementation of the logic.",
+ "evidence_files": [
+  "run.json",
+  "assertions.json",
+  "harness/scenario_5187.js",
+  "harness/source_useResumables.ts",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "issue": 5187,
+ "issue_title": "fix(client): count opponents correctly when the local seat is eliminated",
+ "limitations": [
+  "UI-subsystem test only: the exact shipped counting expressions were evaluated against fixtures in node; the full React hook (useResumables, IndexedDB resume path, persistedGameStateView) was not executed in a browser.",
+  "phase-server not started for this UI-only run (release check still performed: latest stable v0.78.0, pinned v0.78.0 binary 02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0 verified present on disk).",
+  "Fixtures assume seat 0 is the local human, per the code comment in useResumables.ts ('Seat 0 is the local human in AI/host matches') and the issue."
+ ],
+ "release_check": {
+  "advanced": false,
+  "engine_exercised": false,
+  "latest_stable": "v0.78.0",
+  "note": "No release advance since the v0.78.0 pin. This is a client-only run; phase-server was not started."
+ },
+ "result": "The reported bug reproduces on current mainline (a0f9c55d, 2026-09-10): the shipped counting expressions return opponentCount=1 for the issue's discriminating case (seat 0 eliminated, 2 live opponents) instead of 2. The proposed fix (liveOpponents.ts countLiveOpponents helper, PR head e3188933) is not on mainline; mainline still carries the buggy formula.",
+ "run_completed_at": "2026-09-10T02:16:24Z",
+ "run_id": "20260909-5187",
+ "run_started_at": "2026-09-10T02:14:13Z",
+ "shipped_lines_tested": [
+  "const liveCount = publicState.players.filter((p) => !p.is_eliminated).length;",
+  "opponentCount: Math.max(0, liveCount - 1),"
+ ],
+ "verdict": "reproduced"
+}

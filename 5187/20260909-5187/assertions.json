@@ -1,0 +1,102 @@
+{
+  "A1_control_seat0_alive": {
+    "status": "passed",
+    "expected": 2,
+    "observed": 2,
+    "fixture": [
+      {
+        "id": 0,
+        "is_eliminated": false
+      },
+      {
+        "id": 1,
+        "is_eliminated": false
+      },
+      {
+        "id": 2,
+        "is_eliminated": false
+      }
+    ],
+    "note": "control: seat 0 alive, 2 live opponents"
+  },
+  "A2_issue_example_seat0_eliminated": {
+    "status": "failed",
+    "expected": 2,
+    "observed": 1,
+    "fixture": [
+      {
+        "id": 0,
+        "is_eliminated": true
+      },
+      {
+        "id": 1,
+        "is_eliminated": false
+      },
+      {
+        "id": 2,
+        "is_eliminated": false
+      }
+    ],
+    "note": "the issue's discriminating case: seat 0 eliminated, 2 live opponents"
+  },
+  "A3_eliminated_opponent_excluded": {
+    "status": "passed",
+    "expected": 1,
+    "observed": 1,
+    "fixture": [
+      {
+        "id": 0,
+        "is_eliminated": false
+      },
+      {
+        "id": 1,
+        "is_eliminated": false
+      },
+      {
+        "id": 2,
+        "is_eliminated": true
+      }
+    ],
+    "note": "seat 0 alive; eliminated opponent must not count"
+  },
+  "A4_all_eliminated": {
+    "status": "passed",
+    "expected": 0,
+    "observed": 0,
+    "fixture": [
+      {
+        "id": 0,
+        "is_eliminated": true
+      },
+      {
+        "id": 1,
+        "is_eliminated": true
+      },
+      {
+        "id": 2,
+        "is_eliminated": true
+      }
+    ],
+    "note": "degenerate: nobody alive"
+  },
+  "A5_lone_survivor": {
+    "status": "passed",
+    "expected": 0,
+    "observed": 0,
+    "fixture": [
+      {
+        "id": 0,
+        "is_eliminated": false
+      },
+      {
+        "id": 1,
+        "is_eliminated": true
+      },
+      {
+        "id": 2,
+        "is_eliminated": true
+      }
+    ],
+    "note": "degenerate: seat 0 the only live player"
+  }
+}

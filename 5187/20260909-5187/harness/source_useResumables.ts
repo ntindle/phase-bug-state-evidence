@@ -1,0 +1,149 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
+
+import { persistedGameStateView } from "../adapter/types";
+import { loadP2PSession } from "../services/p2pSession";
+import { loadWsSession } from "../services/multiplayerSession";
+import {
+  canAttemptNativeEngine,
+  nativeEngineKeyForCurrentOrigin,
+} from "../services/nativeEngine";
+import { usePreferencesStore } from "../stores/preferencesStore";
+import {
+  loadActiveQuickDraft,
+  type ActiveQuickDraftMeta,
+} from "../services/quickDraftPersistence";
+import {
+  loadActiveDraftPod,
+  type ActiveDraftPodMeta,
+} from "../services/draftPersistence";
+import {
+  clearActiveGame,
+  loadActiveGame,
+  loadGame,
+  useGameStore,
+  type ActiveGameMeta,
+} from "../stores/gameStore";
+
+/** Live state of the saved local/AI match, read from its persisted GameState.
+ *  Absent for online/P2P-guest matches (their state isn't held locally).
+ *  Carries human-readable context for the resume hero, not raw board data. */
+export interface MatchSummary {
+  turn: number;
+  /** True when the local human (seat 0) has the active turn. */
+  isYourTurn: boolean;
+  /** Life of the local human (seat 0); null when eliminated or absent. */
+  yourLife: number | null;
+  /** Non-eliminated opponents (every live seat except the human). */
+  opponentCount: number;
+}
+
+export interface Resumables {
+  /** The saved in-progress match, validated against its persisted session. */
+  match: ActiveGameMeta | null;
+  /** Turn/life snapshot of the saved match (local/AI only). */
+  matchSummary: MatchSummary | null;
+  quickDraft: ActiveQuickDraftMeta | null;
+  pod: ActiveDraftPodMeta | null;
+  /** Resume the saved match (mirrors the menu's resume routing). */
+  resumeMatch: () => void;
+}
+
+/**
+ * Single source of truth for "what can I resume?" — the saved AI/online/P2P
+ * match (validated against its persisted session, clearing stale entries) plus
+ * any in-progress quick draft or draft pod. Shared by the home dashboard and the
+ * draft landing page so the detection logic lives in one place.
+ */
+export function useResumables(): Resumables {
+  const navigate = useNavigate();
+  const [match, setMatch] = useState<ActiveGameMeta | null>(null);
+  const [matchSummary, setMatchSummary] = useState<MatchSummary | null>(null);
+  const [quickDraft, setQuickDraft] = useState<ActiveQuickDraftMeta | null>(null);
+  const [pod, setPod] = useState<ActiveDraftPodMeta | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    setQuickDraft(loadActiveQuickDraft());
+    setPod(loadActiveDraftPod());
+
+    const saved = loadActiveGame();
+    if (!saved) return;
+
+    // Validate the saved match against the session/state that actually backs it,
+    // clearing the pointer when the backing data is gone so we never offer a
+    // resume that would fail. The session/state lookups are async, so guard their
+    // setState against a mid-flight unmount (the cancelled pattern the other
+    // async hooks already use).
+    if (saved.mode === "online") {
+      if (loadWsSession() !== null) setMatch(saved);
+      else clearActiveGame();
+    } else if (saved.mode === "p2p-join" && saved.p2pRoomCode) {
+      loadP2PSession(`phase-${saved.p2pRoomCode}`).then((session) => {
+        if (cancelled) return;
+        if (session) setMatch(saved);
+        else clearActiveGame();
+      });
+    } else if (saved.nativeSession) {
+      // Native solo (AI) games are server-authoritative: their state lives in
+      // the local phase-server, not IndexedDB, so there is no snapshot to
+      // validate against here. The reconnect on resume is the real validation.
+      // No matchSummary — turn/life aren't available client-side until we
+      // reconnect, so the resume hero shows the match without a board snapshot.
+      //
+      // Only offer it when the native engine can actually be attached
+      // (enabled + available for this origin). Resuming routes back through the
+      // native path, which needs the engine; if it is unavailable the resume
+      // would dead-end at a fresh in-browser game. Keep the pointer silently so
+      // the resume reappears once native is available again — don't clear it.
+      const nativeAvailable =
+        canAttemptNativeEngine(usePreferencesStore.getState().nativeEngineEnabled)
+        && nativeEngineKeyForCurrentOrigin() !== null;
+      if (nativeAvailable) setMatch(saved);
+    } else {
+      loadGame(saved.id).then((state) => {
+        if (cancelled) return;
+        if (state) {
+          const publicState = persistedGameStateView(state);
+          setMatch(saved);
+          // CR 800.4: eliminated players are out — only live seats count as
+          // opponents. Seat 0 is the local human in AI/host matches.
+          const you = publicState.players.find((p) => p.id === 0);
+          const liveCount = publicState.players.filter((p) => !p.is_eliminated).length;
+          setMatchSummary({
+            turn: publicState.turn_number,
+            isYourTurn: publicState.active_player === 0,
+            yourLife: you && !you.is_eliminated ? you.life : null,
+            opponentCount: Math.max(0, liveCount - 1),
+          });
+        } else {
+          clearActiveGame();
+        }
+      });
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const resumeMatch = () => {
+    if (!match) return;
+    useGameStore.setState({ gameId: match.id });
+    if (match.mode === "online") {
+      navigate(`/game/${match.id}?mode=host`);
+    } else if (match.mode === "p2p-host") {
+      navigate(`/game/${match.id}?mode=p2p-host`);
+    } else if (match.mode === "p2p-join" && match.p2pRoomCode) {
+      navigate(`/game/${match.id}?mode=p2p-join&code=${match.p2pRoomCode}`);
+    } else {
+      // Multi-AI resume needs `players` so every AI seat respawns (one entry per
+      // AI seat → +1 for the human). Older saves fall back to the 2-player default.
+      const seatCount = match.aiSeats?.length;
+      const playersParam = seatCount && seatCount > 1 ? `&players=${seatCount + 1}` : "";
+      navigate(`/game/${match.id}?mode=${match.mode}&difficulty=${match.difficulty}${playersParam}`);
+    }
+  };
+
+  return { match, matchSummary, quickDraft, pod, resumeMatch };
+}
