@@ -1,0 +1,168 @@
+{
+ "notion thief": {
+  "replacements": [
+   {
+    "event": "Draw",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unbound_subject",
+      "description": "that player skips that draw"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Draw",
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "target": {
+        "type": "Controller"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "mode": {
+     "type": "Mandatory"
+    },
+    "valid_card": null,
+    "description": "If an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card.",
+    "condition": {
+     "type": "ExceptFirstDrawInDrawStep"
+    },
+    "draw_scope": "IndividualDraw",
+    "valid_player": "Opponent"
+   }
+  ],
+  "oracle_text": "Flash\nIf an opponent would draw a card except the first one they draw in each of their draw steps, instead that player skips that draw and you draw a card."
+ },
+ "plagiarize": {
+  "replacements": [
+   {
+    "event": "Draw",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "instead",
+      "description": "instead that player skips that draw"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Draw",
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "target": {
+        "type": "Controller"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "mode": {
+     "type": "Mandatory"
+    },
+    "valid_card": null,
+    "description": "Until end of turn, if target player would draw a card, instead that player skips that draw and you draw a card.",
+    "condition": null,
+    "draw_scope": "IndividualDraw"
+   }
+  ],
+  "oracle_text": "Until end of turn, if target player would draw a card, instead that player skips that draw and you draw a card."
+ },
+ "hullbreacher": {
+  "replacements": [
+   {
+    "event": "Draw",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Treasure",
+      "power": {
+       "type": "Fixed",
+       "value": 0
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 0
+      },
+      "types": [
+       "Artifact",
+       "Treasure"
+      ],
+      "colors": [],
+      "keywords": [],
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "mode": {
+     "type": "Mandatory"
+    },
+    "valid_card": null,
+    "description": "If an opponent would draw a card except the first one they draw in each of their draw steps, instead you create a Treasure token.",
+    "condition": {
+     "type": "ExceptFirstDrawInDrawStep"
+    },
+    "draw_scope": "IndividualDraw",
+    "valid_player": "Opponent"
+   }
+  ],
+  "oracle_text": "Flash\nIf an opponent would draw a card except the first one they draw in each of their draw steps, instead you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this token: Add one mana of any color.\")"
+ }
+}

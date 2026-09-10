@@ -1,0 +1,54 @@
+starting issue #5654 run 20260909-5654
+parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Unimplemented", "execute_desc": "that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[A] game 7DQBKN P0seat=0 P1seat=1
+[A] P0 keeps (mulls=0)
+[A] P1 keeps (mulls=0)
+[A] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=7 P1hand=7 stack=0
+[A] interaction rtype=exactChoices spec=None choices=[]
+[A] interaction rtype=exactChoices spec=None choices=[]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Swamp // Swamp // Island // Island // Swamp]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Divination // Divination // Island // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Swamp // Island // Swamp // Swamp // Island // Island // Swamp // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Divination // Divination // Island // Island // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Swamp // Swamp // Island // Island // Swamp // Swamp // Island // Swamp // Island]
+[A] interaction rtype=exactChoices spec=None choices=[ // Notion Thief // Notion Thief // Island // Swamp // Island // Island]
+[A] P0 casts Notion Thief (turn 8)
+[A] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island // Divination // Divination // Divination // Divination // Island // Island // Island // Island]
+[A] P1 main phase: exporting PRE_A, then casting Divination
+[A] P1 casts Divination (turn 9)
+[A] Divination resolved; exporting POST_A
+[A] exported POST_A
+[A] post exported and contract complete; finishing game
+game A finished ok=True
+[B] game Y4H231 P0seat=0 P1seat=1
+[B] P0 keeps (mulls=0)
+[B] P1 keeps (mulls=0)
+[B] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=7 P1hand=7 stack=0
+[B] interaction rtype=exactChoices spec=None choices=[]
+[B] interaction rtype=exactChoices spec=None choices=[]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island // Island // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Island // Island // Island // Island]
+[B] interaction rtype=exactChoices spec=None choices=[ // Plagiarize // Plagiarize // Plagiarize // Plagiarize // Island // Island // Island // Island]
+[B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[B] P0 casts Plagiarize targeting P1 (turn 9)
+[B] P1 past draw step; exporting POST_B
+[B] exported POST_B
+[B] post exported and contract complete; finishing game
+game B finished ok=True
+[A] deltas P0 hand 6->8 lib 49->47; P1 hand 7->6 lib 49->49
+[B] deltas P0 hand 7->6 lib 49->49; P1 hand 6->7 lib 50->49

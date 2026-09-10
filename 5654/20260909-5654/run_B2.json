@@ -1,0 +1,129 @@
+{
+ "issue": 5654,
+ "run_id": "20260909-5654",
+ "sub_run": "B2",
+ "duration_s": 18.1,
+ "assertions": {
+  "A1B2_setup": "passed",
+  "A_target_prompt": "failed",
+  "A4B2_skip_holds": "failed",
+  "A5B2_ctrl_draws": "failed",
+  "A6B2_cleanup": "passed"
+ },
+ "notes": [
+  "pre_B2: plag in hand, P1 upkeep: ok",
+  "target prompt surfaced and answered via: None",
+  "skip: P1 hand 7->8 lib 50->49 (BROKEN)",
+  "controller draw: P0 hand 6->5 lib 50->50 (BROKEN)"
+ ],
+ "observations": {
+  "cast_submitted": true,
+  "cast_rev": 108,
+  "target_via": null,
+  "ticks_after_cast": 7,
+  "snapshots": [
+   {
+    "tag": "after_cast",
+    "rev": 109,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 0}",
+    "priority_player": 0,
+    "active_player": 1,
+    "phase": "Upkeep",
+    "turn": 8,
+    "stack": [
+     {
+      "id": 2,
+      "controller": 0
+     }
+    ]
+   },
+   {
+    "tag": "after_cast",
+    "rev": 110,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 1}",
+    "priority_player": 1,
+    "active_player": 1,
+    "phase": "Upkeep",
+    "turn": 8,
+    "stack": [
+     {
+      "id": 2,
+      "controller": 0
+     }
+    ]
+   },
+   {
+    "tag": "after_cast",
+    "rev": 111,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 1}",
+    "priority_player": 1,
+    "active_player": 1,
+    "phase": "Upkeep",
+    "turn": 8,
+    "stack": []
+   },
+   {
+    "tag": "after_cast",
+    "rev": 112,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 0}",
+    "priority_player": 0,
+    "active_player": 1,
+    "phase": "Upkeep",
+    "turn": 8,
+    "stack": []
+   },
+   {
+    "tag": "after_cast",
+    "rev": 113,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 1}",
+    "priority_player": 1,
+    "active_player": 1,
+    "phase": "Draw",
+    "turn": 8,
+    "stack": []
+   },
+   {
+    "tag": "after_cast",
+    "rev": 114,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 0}",
+    "priority_player": 0,
+    "active_player": 1,
+    "phase": "Draw",
+    "turn": 8,
+    "stack": []
+   },
+   {
+    "tag": "after_cast",
+    "rev": 115,
+    "waiting_for_type": "Priority",
+    "waiting_for_data": "{'player': 1}",
+    "priority_player": 1,
+    "active_player": 1,
+    "phase": "PreCombatMain",
+    "turn": 8,
+    "stack": []
+   }
+  ],
+  "deltas": {
+   "P0": [
+    6,
+    5,
+    50,
+    50
+   ],
+   "P1": [
+    7,
+    8,
+    50,
+    49
+   ]
+  }
+ },
+ "purpose": "instrumented rerun of game B target handling"
+}
