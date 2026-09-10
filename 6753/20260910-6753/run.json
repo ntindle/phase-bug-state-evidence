@@ -1,0 +1,225 @@
+{
+  "run_id": "20260910-6753",
+  "issue": 6753,
+  "started_at": "2026-09-10T15:00:13Z",
+  "server": {
+    "server_version": "0.78.0",
+    "build_commit": "4de7224",
+    "protocol_version": 68,
+    "mode": "Full",
+    "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+    "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+    "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+    "signature_verified": true,
+    "signature_note": "minisign-verify (prehashed BLAKE2b-512, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data files match manifest SHA-256 (verified 2026-09-09, digests re-checked this run)",
+    "observed_at": "2026-09-10",
+    "source": "ServerHello handshake vs pinned v0.78.0 release artifacts (server/releases/v0.78.0/); isolated server on 127.0.0.1:9377 (started by this run, verified live before driving)"
+  },
+  "verdict": "not-reproduced",
+  "assertions": {
+    "A1_swap_cast": "passed",
+    "A2_target_chosen": "passed",
+    "A3_no_target_loop": "passed",
+    "A4_swap_resolves": "failed",
+    "A5_cleanup": "passed"
+  },
+  "observations": {
+    "rejections": [
+      {
+        "who": "P0",
+        "type": "ActionRejected",
+        "data": {
+          "rejection": {
+            "code": "action_not_allowed",
+            "disposition": "unavailable",
+            "message": "That action is not allowed right now.",
+            "related_object_ids": [
+              33
+            ]
+          }
+        }
+      },
+      {
+        "who": "P0",
+        "type": "ActionRejected",
+        "data": {
+          "rejection": {
+            "code": "action_not_allowed",
+            "disposition": "unavailable",
+            "message": "That action is not allowed right now.",
+            "related_object_ids": [
+              1
+            ]
+          }
+        }
+      }
+    ],
+    "p0_acts": 677,
+    "casts": [
+      {
+        "oid": 112,
+        "cast_t": 1789052428.8531795,
+        "cast_rev": 123,
+        "cast_turn": 8,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052429.1040335,
+        "resolve_s": 0.25
+      },
+      {
+        "oid": 81,
+        "cast_t": 1789052436.1471844,
+        "cast_rev": 180,
+        "cast_turn": 12,
+        "target_wait_seen": true,
+        "resolved": true,
+        "resolve_t": 1789052436.4467921,
+        "resolve_s": 0.3
+      },
+      {
+        "oid": 114,
+        "cast_t": 1789052445.0328145,
+        "cast_rev": 247,
+        "cast_turn": 16,
+        "target_wait_seen": true,
+        "resolved": true,
+        "resolve_t": 1789052445.618841,
+        "resolve_s": 0.59
+      },
+      {
+        "oid": 99,
+        "cast_t": 1789052473.2676454,
+        "cast_rev": 442,
+        "cast_turn": 28,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052473.5217695,
+        "resolve_s": 0.25
+      },
+      {
+        "oid": 68,
+        "cast_t": 1789052486.187822,
+        "cast_rev": 526,
+        "cast_turn": 34,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052486.4437327,
+        "resolve_s": 0.26
+      },
+      {
+        "oid": 63,
+        "cast_t": 1789052508.3753223,
+        "cast_rev": 654,
+        "cast_turn": 42,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052508.6353867,
+        "resolve_s": 0.26
+      },
+      {
+        "oid": 102,
+        "cast_t": 1789052538.0672135,
+        "cast_rev": 834,
+        "cast_turn": 54,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052538.3723235,
+        "resolve_s": 0.31
+      },
+      {
+        "oid": 92,
+        "cast_t": 1789052582.1550288,
+        "cast_rev": 1078,
+        "cast_turn": 70,
+        "target_wait_seen": true,
+        "resolved": true,
+        "resolve_t": 1789052582.410885,
+        "resolve_s": 0.26
+      },
+      {
+        "oid": 77,
+        "cast_t": 1789052626.46084,
+        "cast_rev": 1293,
+        "cast_turn": 84,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052626.866466,
+        "resolve_s": 0.41
+      },
+      {
+        "oid": 72,
+        "cast_t": 1789052643.6344984,
+        "cast_rev": 1355,
+        "cast_turn": 88,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789052643.9905891,
+        "resolve_s": 0.36
+      }
+    ],
+    "ws_target_wait_seen": true
+  },
+  "notes": [
+    "10 AI cast(s): #1 turn 8 resolved=True (0.25s), #2 turn 12 resolved=True (0.3s), #3 turn 16 resolved=True (0.59s), #4 turn 28 resolved=True (0.25s), #5 turn 34 resolved=True (0.26s), #6 turn 42 resolved=True (0.26s), #7 turn 54 resolved=True (0.31s), #8 turn 70 resolved=True (0.26s), #9 turn 84 resolved=True (0.41s), #10 turn 88 resolved=True (0.36s)",
+    "all casts resolved within 0.59s (window 150s); ws-visible AI target wait caught: True",
+    "pre->post: battlefield->library [('8', 'island', 0, 0)]; swap in AI gy: 1; swap stuck on stack: 0",
+    "game state after resolution: turn 8 phase EndCombat waiting_for=Priority",
+    "A4 corrected post-run from saved states (cf. #4345 precedent): the targeted permanent WAS shuffled into its owner's library ({'oid': '8', 'name': 'Island', 'controller': 0, 'owner': 0}), but the exile/land-drop step used the spell controller's library ({'oid': '88', 'name': 'Mountain', 'controller': 1, 'owner': 1}) instead of the targeted permanent's owner's library. P0 library 50->51 (only +1 from the shuffled target; nothing exiled from it); P1 library 52->51 (-1: the exiled Mountain entered P1's battlefield). Per Oracle ('exiles the top card of their library', their = the owner) the exiled card should have come from P0's library.",
+    "Verdict reasoning: the REPORTED bug is the AI getting stuck 'trying to select a target for this spell endlessly'. The AI cast Audacious Swap 10 times; every cast's target selection completed and the spell resolved within 0.6s (worst observed). No target-selection stall occurred, so the reported loop is not-reproduced on v0.78.0. The wrong-library defect above is a separate finding, documented here and in the issue comment.",
+    "P0 ActionRejected entries in the wire log (2) are driver-side races (action submitted from a superseded revision, disposition 'unavailable'), not engine defects; the game advanced normally throughout."
+  ],
+  "setup_line": "P0: 60x island (human driver, passive). P1: AI Medium, 12x Audacious Swap + 24x island + 24x mountain.",
+  "contract_line": "AI casts Audacious Swap -> target selection must complete (spell leaves the stack) within the stall window; the spell resolves per Oracle and the game continues. Repeat casts watched for the same loop.",
+  "limitations": [
+    "Browser/UI not exercised; server-side AI (phase-ai) policy tested, not any browser/client AI driver path",
+    "Casualty 2 not exercised (AI deck has no creatures to sacrifice)",
+    "Not tested on the original 2026-07-29 build; verdict is scoped to v0.78.0, not a fix claim",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)"
+  ],
+  "stats": {
+    "states_seen": 8600,
+    "casts_observed": 10
+  },
+  "scenario": {
+    "file": "scenario_6753.py",
+    "sha256": "f13b7f9dcbef3a9e5d1d2ae66457d585f5d9cf1d848b7633da57fb292a43c7f4"
+  },
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "island",
+          60
+        ]
+      ]
+    },
+    "P1_AI": {
+      "main": [
+        [
+          "audacious swap",
+          12
+        ],
+        [
+          "island",
+          24
+        ],
+        [
+          "mountain",
+          24
+        ]
+      ]
+    }
+  },
+  "secondary_finding": {
+    "title": "Audacious Swap exiles the top card of the caster's library instead of the targeted permanent's owner's library",
+    "oracle": "The owner of target nonenchantment permanent shuffles it into their library, then exiles the top card of their library. If it's a land card, they put it onto the battlefield. Otherwise, they may cast it without paying its mana cost.",
+    "observed": "Target P0 Island -> P0 library (correct); then the top card of P1's (caster's) library was exiled and the Mountain put onto P1's battlefield (wrong player).",
+    "parse": "Pinned card-data parse is correct: ExileTop player = {\"type\": \"ParentTarget\"} (Shuffle step uses ParentTargetOwner and behaved); the engine resolved the player reference to the spell's controller.",
+    "relation_to_report": "Distinct defect from the reported AI target-selection loop. Fails triage acceptance criterion 3 ('resolves its later owner decisions through the correct player').",
+    "evidence": {
+      "pre": "pre.json (swap on stack, oid 112)",
+      "post": "post.json (oid 8 Island BF->Library, oid 88 Mountain Library->Battlefield under P1, oid 112 Swap Stack->P1 graveyard)",
+      "casts_observed": 10
+    }
+  }
+}

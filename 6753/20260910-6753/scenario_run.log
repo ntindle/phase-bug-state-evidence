@@ -1,0 +1,31 @@
+game GOGZEN; P0 seat=0; P1 = AI Medium seat
+P0 mulligan: Keep
+OBSERVED cast #1: AI Audacious Swap on stack (oid 112, turn 8, rev 123)
+exported pre.json
+OBSERVED cast #1 resolved in 0.25s (rev 125)
+exported post.json
+OBSERVED cast #2: AI Audacious Swap on stack (oid 81, turn 12, rev 180)
+OBSERVED: WS-visible target wait for AI (cast #2, wf=Priority, rev 180)
+exported mid_target.json
+OBSERVED cast #2 resolved in 0.3s (rev 183)
+OBSERVED cast #3: AI Audacious Swap on stack (oid 114, turn 16, rev 247)
+OBSERVED: WS-visible target wait for AI (cast #3, wf=Priority, rev 247)
+OBSERVED cast #3 resolved in 0.59s (rev 251)
+OBSERVED cast #4: AI Audacious Swap on stack (oid 99, turn 28, rev 442)
+OBSERVED cast #4 resolved in 0.25s (rev 444)
+OBSERVED cast #5: AI Audacious Swap on stack (oid 68, turn 34, rev 526)
+OBSERVED cast #5 resolved in 0.26s (rev 528)
+OBSERVED cast #6: AI Audacious Swap on stack (oid 63, turn 42, rev 654)
+OBSERVED cast #6 resolved in 0.26s (rev 656)
+OBSERVED cast #7: AI Audacious Swap on stack (oid 102, turn 54, rev 834)
+OBSERVED cast #7 resolved in 0.31s (rev 836)
+OBSERVED cast #8: AI Audacious Swap on stack (oid 92, turn 70, rev 1078)
+OBSERVED: WS-visible target wait for AI (cast #8, wf=Priority, rev 1079)
+OBSERVED cast #8 resolved in 0.26s (rev 1079)
+OBSERVED cast #9: AI Audacious Swap on stack (oid 77, turn 84, rev 1293)
+OBSERVED cast #9 resolved in 0.41s (rev 1295)
+OBSERVED cast #10: AI Audacious Swap on stack (oid 72, turn 88, rev 1355)
+OBSERVED cast #10 resolved in 0.36s (rev 1357)
+watch window complete (420s after first resolution); 10 cast(s) observed
+VERDICT: not-reproduced
+assertions: {"A1_swap_cast": "passed", "A2_target_chosen": "passed", "A3_no_target_loop": "passed", "A4_swap_resolves": "passed", "A5_cleanup": "passed"}
