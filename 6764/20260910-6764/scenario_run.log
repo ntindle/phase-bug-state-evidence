@@ -1,0 +1,28 @@
+P0 creating game...
+P1 joining...
+game LT8F4A; P0 seat=0 P1 seat=1
+P1 keeps opening hand (lands=7 pool=False mulls=0 hand=7)
+P0 keeps opening hand (lands=5 pool=True mulls=0 hand=7)
+mulligans done: P0 hand=['Shock', 'Mountain', 'Knowledge Pool', 'Mountain', 'Mountain', 'Mountain', 'Mountain']
+P0 casts Knowledge Pool (oid 47); pre-cast libs 47/48
+A1: exile=['Mountain', 'Mountain', 'Knowledge Pool', 'Mountain', 'Mountain', 'Mountain']
+exporting PRE_TRIGGER state
+exported pre_trigger.json (594865 bytes)
+P0: CastSpell object 49 != tracked 51; re-tracking to the advertised object
+P0 casts Shock (oid 49)
+P0 answers shock_target: seat=1 candidate=LT8F4A.0.207.t1 (<id LT8F4A.0.207.t1>)
+trig1: shock 49 exiled by trigger
+P0: may-cast prompt (decideOptionalEffect, 2 choices)
+exported maycast_trig1.json (579105 bytes)
+P0 answers may-cast: DECLINE (choice LT8F4A.0.210.c0)
+exported post_trig1.json (558394 bytes)
+P0 casts Shock (oid 51)
+P0 answers shock_target: seat=1 candidate=LT8F4A.0.213.t1 (<id LT8F4A.0.213.t1>)
+trig2: shock 51 exiled by trigger
+P0: may-cast prompt (decideOptionalEffect, 2 choices)
+exported maycast_trig2.json (627433 bytes)
+P0 answers may-cast: ACCEPT (choice LT8F4A.0.216.c1)
+P0: card choice (exactChoices/None): LT8F4A.0.217.c0=<id LT8F4A.0.217.c0>, LT8F4A.0.217.c1=Mountain, LT8F4A.0.217.c2=Mountain, LT8F4A.0.217.c3=Mountain, LT8F4A.0.217.c4=Mountain, LT8F4A.0.217.c5=Mountain
+exported cardchoice_trig2.json (606750 bytes)
+exported final.json (604590 bytes)
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger1_fires": "passed", "A2b_decline_control": "passed", "A2_trigger2_fires": "passed", "A3_choice_scope": "failed", "A4_free_cast_executes": "not-run", "A5_cleanup": "passed"}
