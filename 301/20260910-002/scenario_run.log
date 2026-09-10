@@ -1,0 +1,41 @@
+connecting P1...
+game 92BMTA mode=accept; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P1 keeps opening hand
+P0 casts Chaos Wand
+exporting PRE_ACTIVATION state
+ACTIVATING CHAOS WAND (id 58) via protocol-69 interaction choice
+submitting activateAbility choice 92BMTA.0.342.c1 on 92BMTA.0.342
+[spy:accept] rev=343 turn=23 phase=BeginCombat wf=Priority prio=0 stack=['121'] exile=[] p1lib=42
+[spy:accept] rev=344 turn=23 phase=BeginCombat wf=Priority prio=1 stack=['121'] exile=[] p1lib=42
+[spy:accept] rev=345 turn=23 phase=BeginCombat wf=OptionalEffectChoice prio=0 stack=[] exile=[(61, 'Island'), (62, 'Island'), (64, 'Island'), (65, 'Island'), (66, 'Island'), (67, 'Island')] p1lib=4
+exporting POST_EXILE checkpoint
+may-cast opportunity on P0; interaction= {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "choose"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "92BMTA.0.345", "response": {"type": "exactChoices", "data": {"choices": [{"id": "92BMTA.0.345.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "a21597a222451f334797f81dca5f18326bda34e8410993aa92644113a12ae7ea4"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "false"}}], "status": {"type": "available"}}, {"id": "92BMTA.0.345.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "afe7ffdd7a65ab9fb0fe13fbfa5dadb0892a0da13e1b40a0ed0cbadc8c58d9b12"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "true"}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "progressAvailable", "data": {"witness": {"interactionId": "92BMTA.0.345", "response": {"type": "choose", "data": {"choiceId": "92BMTA.0.345.c0"}}}}}}
+P0 submitting accept: choice id=92BMTA.0.345.c1
+[spy:accept] rev=346 turn=23 phase=BeginCombat wf=TargetSelection prio=0 stack=['107'] exile=[] p1lib=42
+TargetSelection pending; exporting PRE_TARGET checkpoint
+target interaction= {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "sequence"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "92BMTA.0.346", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 1, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "92BMTA.0.346.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "92BMTA.0.346.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "damage", "constraint": {"type": "count", "data": {"min": 1, "max": 1}}, "confirm": "explicit"}}], "progress": {"selected": 0, "minimum": 1, "maximum": 1, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "inputRequired"}}
+candidate lists found: [["vi/opportunities[0]/response/data/candidates", [{"id": "92BMTA.0.346.t0", "label": "None"}, {"id": "92BMTA.0.346.t1", "label": "None"}]]]
+submitting advertised target: id=92BMTA.0.346.t1
+REJECTION: {"type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}}
+exporting POST_FAILURE state
+connecting P1...
+game H8UMFT mode=decline; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P1 keeps opening hand
+P0 casts Chaos Wand
+exporting PRE_ACTIVATION state
+ACTIVATING CHAOS WAND (id 34) via protocol-69 interaction choice
+submitting activateAbility choice H8UMFT.0.342.c1 on H8UMFT.0.342
+[spy:decline] rev=343 turn=23 phase=BeginCombat wf=Priority prio=0 stack=['121'] exile=[] p1lib=42
+[spy:decline] rev=344 turn=23 phase=BeginCombat wf=Priority prio=1 stack=['121'] exile=[] p1lib=42
+[spy:decline] rev=345 turn=23 phase=BeginCombat wf=OptionalEffectChoice prio=0 stack=[] exile=[(62, 'Island'), (63, 'Island'), (64, 'Island'), (65, 'Island'), (67, 'Island'), (72, 'Island')] p1lib=12
+exporting POST_EXILE checkpoint
+may-cast opportunity on P0; interaction= {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "choose"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "H8UMFT.0.345", "response": {"type": "exactChoices", "data": {"choices": [{"id": "H8UMFT.0.345.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "a21597a222451f334797f81dca5f18326bda34e8410993aa92644113a12ae7ea4"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "false"}}], "status": {"type": "available"}}, {"id": "H8UMFT.0.345.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "afe7ffdd7a65ab9fb0fe13fbfa5dadb0892a0da13e1b40a0ed0cbadc8c58d9b12"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "true"}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "progressAvailable", "data": {"witness": {"interactionId": "H8UMFT.0.345", "response": {"type": "choose", "data": {"choiceId": "H8UMFT.0.345.c0"}}}}}}
+P0 submitting decline: choice id=H8UMFT.0.345.c0
+[spy:decline] rev=346 turn=23 phase=BeginCombat wf=Priority prio=0 stack=[] exile=[] p1lib=42
+exporting DECLINE_POST state
+[spy:decline] rev=347 turn=23 phase=BeginCombat wf=Priority prio=1 stack=[] exile=[] p1lib=42
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_activation_paid": "passed", "A3_exile_observed": "passed", "A4_accept_target_pending": "passed", "A5_exile_returned_early": "passed", "A6_advertised_target_rejected": "passed", "A7_no_damage_no_cast": "passed", "A8_decline_control_ok": "passed"}

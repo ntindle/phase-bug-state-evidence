@@ -1,0 +1,12 @@
+2026-09-10T16:42:51.783078Z  INFO phase_server: server mode selected mode=Full
+2026-09-10T16:42:51.783121Z  INFO phase_server: admission limits resolved max_connections=200 max_games=100 replica_ordinal=None
+2026-09-10T16:42:55.488525Z  INFO phase_server: card database loaded cards=35845
+2026-09-10T16:42:55.489524Z  INFO phase_server::persistence: Game database opened at runs/20260910-002/games.db
+2026-09-10T16:42:55.719048Z  INFO phase_server: draft pools loaded sets=173
+2026-09-10T16:42:55.719301Z  INFO phase_server: admin HTTP endpoints disabled (set PHASE_ADMIN_TOKEN to enable)
+2026-09-10T16:42:55.719549Z  INFO phase_server: phase-server listening bind=127.0.0.1 port=9378
+
+NOTE: this release's slim server binary logs only session/ws-message events at
+INFO; no engine event lines are emitted for the Wand activation, exile, or the
+action_not_allowed rejection. Those are captured instead in wire_log.jsonl
+(target_rejection event) and scenario_run.log (REJECTION line).

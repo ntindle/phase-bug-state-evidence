@@ -1,0 +1,74 @@
+{
+ "issue": 301,
+ "run_id": "20260910-002",
+ "started_at": "2026-09-10T16:43:24",
+ "duration_s": 89.5,
+ "server": {
+  "server_version": "0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 match of pinned verified artifacts"
+ },
+ "server_run_dir": "runs/20260910-002",
+ "driver": {
+  "protocol_advertised": 69,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "426d1f15a24bd7e9f22254aa741ac6069d1eb8cab63f16cde9987bcd48501c9b",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Chaos Wand",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    59
+   ],
+   [
+    "Lightning Bolt",
+    1
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_paid": "passed",
+  "A3_exile_observed": "passed",
+  "A4_accept_target_pending": "passed",
+  "A5_exile_returned_early": "passed",
+  "A6_advertised_target_rejected": "passed",
+  "A7_no_damage_no_cast": "passed",
+  "A8_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] interaction activation ok=True; wand tapped=True untapped islands 12->8",
+  "[accept] P1 library 42->4; bolt zone=Exile",
+  "[accept] pre-target: P1 lib=42 (pre-exile 42); bolt zone=Library in-library-membership=True",
+  "[accept] rejection={\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}}; still_pending=True",
+  "[accept] post: life=20/20 bolt zone=missing",
+  "[decline] interaction activation ok=True; wand tapped=True untapped islands 12->8",
+  "[decline] P1 library 42->12; bolt zone=Exile",
+  "[decline] decline: visible bolts=[] life=20/20 waiting={\"type\": \"Priority\", \"data\": {\"player\": 0}}",
+  "protocol-69 driver adaptation (v0.79.0): activated abilities driven via viewer_interaction exactChoices 'activateAbility' choice; the legacy ActivateAbility Action is rejected wrong_player on this release. OptionalEffectChoice accept/decline read from surfaces role/value."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 56x Island + 4x Chaos Wand; P1: 59x Island + 1x Lightning Bolt (draw-go)",
+ "contract_line": "Accept: free Bolt cast must finish targeting/resolve for 3 dmg; Decline: no cast, cards to bottom"
+}
