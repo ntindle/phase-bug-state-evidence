@@ -1,0 +1,763 @@
+{
+  "issue": 6643,
+  "run_id": "20260910-6643",
+  "server": {
+    "server_version": "0.78.0",
+    "build_commit": "4de7224",
+    "protocol_version": 68,
+    "mode": "Full",
+    "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+    "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+    "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c42699207c1e892483c7ab0",
+    "signature_verified": true,
+    "observed_at": "2026-09-10",
+    "source": "ServerHello + minisign-verify (repo-pinned key) of binary + signed data manifest; pinned v0.78.0 server on 127.0.0.1:9375 (runs/20260910-6643), verified live before driving"
+  },
+  "decks": {
+    "P0": [
+      [
+        "party dude",
+        8
+      ],
+      [
+        "grizzly bears",
+        12
+      ],
+      [
+        "forest",
+        40
+      ]
+    ],
+    "P1": [
+      [
+        "island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_target_prompted": "passed",
+    "A4_pump_correct": "passed",
+    "A5_cleanup": "passed"
+  },
+  "verdict": "not-reproduced",
+  "observations": {
+    "dude_expected_level": 3,
+    "dude_oid": 29,
+    "level_keys_seen": [
+      "class_level"
+    ],
+    "attack_turn": 10,
+    "attacker_oid": 15,
+    "trigger_seen": true,
+    "trigger_entry": "{\"id\": 126, \"source_id\": 29, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 29, \"ability\": {\"effect\": {\"type\": \"Pump\", \"power\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"toughness\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Creature\"], \"controller\": null, \"properties\": [{\"type\": \"Attacking\"}]}}, \"targets\": [], \"source_id\": 29, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 29, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Party Dude\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 1, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Enchantment\"], \"subtypes\": [\"Class\"], \"supertypes\": [], \"keywords\": [], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 29, \"printed_ref\": {\"oracle_id\": \"8df7a58c-053f-4ead-a778-2747718e5f10\", \"face_name\": \"Party Dude\"}, \"is_token\": false, \"face_down\": false, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"class_level\": 3, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"ChangesZone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"Token\", \"name\": \"Food\", \"power\": {\"type\": \"Fixed\", \"value\": 0}, \"toughness\": {\"type\": \"Fixed\", \"value\": 0}, \"types\": [\"Artifact\", \"Food\"], \"colors\": [], \"keywords\": [], \"tapped\": false, \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"owner\": {\"type\": \"Controller\"}, \"enters_attacking\": false}, \"cost\": null, \"sub_ability\": null, \"duration\": null, \"description\": null, \"target_prompt\": null, \"condition\": null, \"optional_targeting\": false, \"optional\": false, \"forward_result\": false, \"player_scope\": {\"type\": \"All\"}}, \"valid_card\": {\"type\"",
+    "target_prompted": true,
+    "target_answered": true,
+    "hand_at_target": 4,
+    "interaction_shapes": [
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P1",
+        "rtype": "exactChoices",
+        "spec": null,
+        "choices": [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "schema",
+        "spec": "relations",
+        "choices": [
+          "",
+          ""
+        ]
+      },
+      {
+        "who": "P0",
+        "rtype": "schema",
+        "spec": "sequence",
+        "choices": [
+          ""
+        ]
+      }
+    ],
+    "rejections": [],
+    "no_trigger_deadline_turn": 16
+  },
+  "notes": [
+    "pre: dude_oid=29 expected_lvl=3 field_lvl=3 bears=[15] life=[20, 20]",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // ",
+    "target prompt had no candidate for the attacking Bear (oid 15); candidates: ",
+    "A4: P1 life 20->14 (damage 6), expected 6 (2+X, X=hand 4); mid_pump bear P/T=6/6",
+    "A5: stack=0 entries, party-dude leftovers=0, phase=PostCombatMain turn=10"
+  ],
+  "rejections": [],
+  "interaction_shapes": [
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P1",
+      "rtype": "exactChoices",
+      "spec": null,
+      "choices": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "schema",
+      "spec": "relations",
+      "choices": [
+        "",
+        ""
+      ]
+    },
+    {
+      "who": "P0",
+      "rtype": "schema",
+      "spec": "sequence",
+      "choices": [
+        ""
+      ]
+    }
+  ],
+  "evidence_dir": "evidence/6643/20260910-6643",
+  "duration_s": 33.0
+}
