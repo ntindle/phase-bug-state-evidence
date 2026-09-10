@@ -1,0 +1,55 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client[39m
+
+ [31m❯[39m src/services/__tests__/presets-5184.driver.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 14[2mms[22m[39m
+     [32m✓[39m D1 returns the defaults when storage is empty[32m 3[2mms[22m[39m
+[31m     [31m×[31m D2 falls back to the defaults on corrupt storage instead of throwing[39m[32m 7[2mms[22m[39m
+[31m     [31m×[31m D3 does not let corrupt storage crash savePreset/deletePreset[39m[32m 1[2mms[22m[39m
+     [32m✓[39m D4 returns saved presets when storage holds a valid non-empty array[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/presets-5184.driver.test.ts[2m > [22mloadPresets (driver, #5184)[2m > [22mD2 falls back to the defaults on corrupt storage instead of throwing
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'SyntaxError: Expected property name o…' was thrown[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+
+[36m [2m❯[22m src/services/__tests__/presets-5184.driver.test.ts:[2m23:37[22m[39m
+    [90m 21|[39m   it("D2 falls back to the defaults on corrupt storage instead of thro…
+    [90m 22|[39m     localStorage[33m.[39m[34msetItem[39m([33mSTORAGE_KEY[39m[33m,[39m [32m"{oops"[39m)[33m;[39m
+    [90m 23|[39m     [34mexpect[39m(() [33m=>[39m [34mloadPresets[39m())[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   |[39m                                     [31m^[39m
+    [90m 24|[39m     [34mexpect[39m([34mloadPresets[39m())[33m.[39m[34mtoEqual[39m(
+    [90m 25|[39m       expect[33m.[39m[34marrayContaining[39m([
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/presets-5184.driver.test.ts[2m > [22mloadPresets (driver, #5184)[2m > [22mD3 does not let corrupt storage crash savePreset/deletePreset
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'SyntaxError: Unexpected token \'o\', …' was thrown[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"SyntaxError: Unexpected token 'o', \"not json\" is not valid JSON"
+
+[36m [2m❯[22m src/services/__tests__/presets-5184.driver.test.ts:[2m43:11[22m[39m
+    [90m 41|[39m         playerCount[33m:[39m [34m2[39m[33m,[39m
+    [90m 42|[39m       })[33m,[39m
+    [90m 43|[39m     )[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   |[39m           [31m^[39m
+    [90m 44|[39m     [34mexpect[39m(() [33m=>[39m [34mdeletePreset[39m([32m"custom-1"[39m))[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m 45|[39m   })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m2 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 00:46:17
+[2m   Duration [22m 776ms[2m (transform 111ms, setup 205ms, import 25ms, tests 14ms, environment 308ms)[22m
+
