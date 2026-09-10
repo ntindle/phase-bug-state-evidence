@@ -1,0 +1,180 @@
+From 8e1803eea18486eb18900013d3de5da943129922 Mon Sep 17 00:00:00 2001
+From: jeffrey701 <jeffreyconradtucker@gmail.com>
+Date: Mon, 6 Jul 2026 01:35:32 -0400
+Subject: [PATCH] fix(client): make the debug triple-tap gesture actually
+ recognize three taps
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The touch gesture documented as 'Triple-tap: Toggle debug panel' fired at tapCount >= 2 (a double-tap), and — worse — reset tapCount to 0 on every touchstart whose e.touches.length !== 3. Because a 3-finger tap always arrives as separate 1-, 2-, then 3-finger touchstarts (fingers never land on the same millisecond), those intermediate events zeroed the counter, so it never climbed past 1 and the panel never opened on real hardware. Extract a pure, unit-tested recognizer that ignores (does not reset on) non-3-finger touchstarts and requires three 3-finger taps within the window.
+---
+ client/src/hooks/__tests__/tripleTap.test.ts | 53 ++++++++++++++++++++
+ client/src/hooks/tripleTap.ts                | 52 +++++++++++++++++++
+ client/src/hooks/useKeyboardShortcuts.ts     | 25 ++++-----
+ 3 files changed, 114 insertions(+), 16 deletions(-)
+ create mode 100644 client/src/hooks/__tests__/tripleTap.test.ts
+ create mode 100644 client/src/hooks/tripleTap.ts
+
+diff --git a/client/src/hooks/__tests__/tripleTap.test.ts b/client/src/hooks/__tests__/tripleTap.test.ts
+new file mode 100644
+index 0000000000..2c0470af48
+--- /dev/null
++++ b/client/src/hooks/__tests__/tripleTap.test.ts
+@@ -0,0 +1,53 @@
++import { describe, expect, it } from "vitest";
++
++import {
++  advanceTripleTap,
++  initialTripleTapState,
++  type TripleTapState,
++} from "../tripleTap";
++
++/** Feed a sequence of (touchCount, now) touchstarts; return the tap index that triggered, or -1. */
++function run(events: Array<[number, number]>): number {
++  let state: TripleTapState = initialTripleTapState();
++  for (let i = 0; i < events.length; i++) {
++    const [count, now] = events[i];
++    const result = advanceTripleTap(state, count, now);
++    state = result.state;
++    if (result.triggered) return i;
++  }
++  return -1;
++}
++
++describe("advanceTripleTap", () => {
++  it("triggers only on the third 3-finger tap, not the second", () => {
++    // Three 3-finger taps within the window.
++    expect(run([[3, 0], [3, 100], [3, 200]])).toBe(2);
++  });
++
++  it("does not let the 1- and 2-finger touchstarts of a gesture reset progress", () => {
++    // Each real 3-finger tap arrives as 1-, then 2-, then 3-finger touchstarts.
++    const events: Array<[number, number]> = [
++      [1, 0], [2, 5], [3, 10], // tap 1
++      [1, 100], [2, 105], [3, 110], // tap 2
++      [1, 200], [2, 205], [3, 210], // tap 3 -> trigger
++    ];
++    expect(run(events)).toBe(8);
++  });
++
++  it("does not trigger on only two 3-finger taps", () => {
++    expect(run([[3, 0], [3, 100]])).toBe(-1);
++  });
++
++  it("restarts the sequence when a tap falls outside the window", () => {
++    // 3rd tap is >500ms after the 2nd, so it counts as a fresh first tap.
++    expect(run([[3, 0], [3, 100], [3, 700]])).toBe(-1);
++  });
++
++  it("resets after a successful trigger so the next gesture starts fresh", () => {
++    let state = initialTripleTapState();
++    for (const now of [0, 100, 200]) {
++      state = advanceTripleTap(state, 3, now).state;
++    }
++    expect(state.count).toBe(0);
++  });
++});
+diff --git a/client/src/hooks/tripleTap.ts b/client/src/hooks/tripleTap.ts
+new file mode 100644
+index 0000000000..55011c5bbd
+--- /dev/null
++++ b/client/src/hooks/tripleTap.ts
+@@ -0,0 +1,52 @@
++/** Recognizer for the "N-finger tap, repeated K times within a window" gesture. */
++
++export const TRIPLE_TAP_WINDOW_MS = 500;
++export const TRIPLE_TAP_FINGERS = 3;
++export const TRIPLE_TAP_COUNT = 3;
++
++export interface TripleTapState {
++  count: number;
++  lastTap: number;
++}
++
++export function initialTripleTapState(): TripleTapState {
++  return { count: 0, lastTap: 0 };
++}
++
++export interface TripleTapOptions {
++  fingers?: number;
++  taps?: number;
++  windowMs?: number;
++}
++
++/**
++ * Advance the recognizer for a single `touchstart`.
++ *
++ * Only a touchstart that reaches exactly `fingers` simultaneous touches counts
++ * as a tap. The 1- and 2-finger touchstarts that necessarily precede every
++ * 3-finger gesture (fingers never land on the exact same millisecond) are
++ * *ignored* — crucially, they must NOT reset progress, or the count can never
++ * climb past 1 on real hardware. A tap more than `windowMs` after the previous
++ * one starts a fresh sequence. Returns the next state and whether the full
++ * gesture (`fingers`-finger tap performed `taps` times) just completed.
++ */
++export function advanceTripleTap(
++  state: TripleTapState,
++  touchCount: number,
++  now: number,
++  opts: TripleTapOptions = {},
++): { state: TripleTapState; triggered: boolean } {
++  const fingers = opts.fingers ?? TRIPLE_TAP_FINGERS;
++  const taps = opts.taps ?? TRIPLE_TAP_COUNT;
++  const windowMs = opts.windowMs ?? TRIPLE_TAP_WINDOW_MS;
++
++  if (touchCount !== fingers) return { state, triggered: false };
++
++  const withinWindow = now - state.lastTap <= windowMs;
++  const count = (withinWindow ? state.count : 0) + 1;
++
++  if (count >= taps) {
++    return { state: { count: 0, lastTap: now }, triggered: true };
++  }
++  return { state: { count, lastTap: now }, triggered: false };
++}
+diff --git a/client/src/hooks/useKeyboardShortcuts.ts b/client/src/hooks/useKeyboardShortcuts.ts
+index 74a770d0d5..feae034e9f 100644
+--- a/client/src/hooks/useKeyboardShortcuts.ts
++++ b/client/src/hooks/useKeyboardShortcuts.ts
+@@ -10,6 +10,7 @@ import {
+   copyGameStateDebugSnapshot,
+   exportGameStateDebugZip,
+ } from "../services/gameStateExport";
++import { advanceTripleTap, initialTripleTapState } from "./tripleTap";
+ 
+ /**
+  * Registers global keyboard shortcuts for the game.
+@@ -34,24 +35,16 @@ export function useKeyboardShortcuts(): void {
+ 
+   // Triple-tap gesture for debug panel on touch devices (no keyboard)
+   useEffect(() => {
+-    let tapCount = 0;
+-    let lastTap = 0;
+-    const TAP_WINDOW = 500; // ms between taps
+-    const REQUIRED_FINGERS = 3;
++    let tapState = initialTripleTapState();
+ 
+     const handler = (e: TouchEvent) => {
+-      if (e.touches.length !== REQUIRED_FINGERS) {
+-        tapCount = 0;
+-        return;
+-      }
+-      const now = Date.now();
+-      if (now - lastTap > TAP_WINDOW) tapCount = 0;
+-      tapCount++;
+-      lastTap = now;
+-      if (tapCount >= 2) {
+-        tapCount = 0;
+-        useUiStore.getState().toggleDebugPanel();
+-      }
++      const { state, triggered } = advanceTripleTap(
++        tapState,
++        e.touches.length,
++        Date.now(),
++      );
++      tapState = state;
++      if (triggered) useUiStore.getState().toggleDebugPanel();
+     };
+ 
+     window.addEventListener("touchstart", handler);
