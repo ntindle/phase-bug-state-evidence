@@ -1,0 +1,32 @@
+game ZZ569N; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P1 keeps opening hand
+P1 plays Island
+P0 plays Plains
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Plains
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Forest
+P1 plays Island
+P0 plays Island
+P0 casts Jackal, Genius Geneticist
+P0 casts Bofur, Reliable Guardian (id 14)
+P0 answers CastOffer: creature face
+exporting PRE_TRIGGER checkpoint
+Jackal trigger observed on stack: [{"id": 14, "kind": "Spell", "source_id": 14, "controller": 0}, {"id": 121, "kind": "TriggeredAbility", "source_id": 59, "controller": 0}]
+copy on stack; exporting PRE_RESOLUTION checkpoint
+Bofur stack objects: [(122, True, []), (14, False, ['Legendary'])]
+exporting POST_RESOLUTION state
+Bofur permanents on P0 BF: [(122, True, []), (14, False, ['Legendary'])]
+DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_copy_created": "passed", "A4_copy_nonlegendary": "passed", "A5_both_resolve": "passed", "A6_no_legend_rule": "passed", "A7_jackal_counter": "passed", "A8_cleanup": "passed"}
