@@ -1,0 +1,72 @@
+{
+ "issue": 6758,
+ "run_id": "20260910-6758",
+ "validated_at": "2026-09-10",
+ "server": {
+  "version": "v0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "binary": "phase-server-slim-x86_64-unknown-linux-musl",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828"
+ },
+ "plan": {
+  "g1": {
+   "x": 2,
+   "kick": true,
+   "targets": [
+    1,
+    0
+   ]
+  },
+  "g2": {
+   "x": 1,
+   "kick": false,
+   "targets": [
+    1
+   ]
+  }
+ },
+ "decks": {
+  "P0": {
+   "Mountain": 16,
+   "Forest": 32,
+   "Comet Storm": 12
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_decisions": "passed",
+  "A3_two_targets": "failed",
+  "A4_damage_each": "failed",
+  "A5_control_path": "passed"
+ },
+ "notes": [
+  "g1: x=2 kick_paid=True kick_subs=1 tapped_lands=4 (mountains=2); engine auto-tapped only the 4-mana base cost {2}{R}{R} \u2014 the {1} kicker was never collected",
+  "g1: target_prompts=1 choices=[1] iids=['75DRZT.0.142'] waiting_for_seq=['MulliganDecision', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'TargetSelection', 'OptionalCostChoice', 'ChooseXValue', 'Priority']",
+  "g1: life0=20 life1=20 storm_in_gy=True",
+  "g2: prompts=1 choices=[1] x=1 life0=20 life1=20 (damage dealt: 0 \u2014 corroborates A4 independently of kicker)"
+ ],
+ "verdict": "reproduced",
+ "verdict_reason": "kicked-once cast offered 1 target prompt(s) (expected 2); resolution dealt 0 damage (P1 20->20, P0 20->20); control X=1 no-kick also dealt 0 (P1 20->20)",
+ "elapsed_s": 74.9,
+ "scenario": {
+  "file": "scenario_6758.py",
+  "sha256": "c81ed8dac059e45339568d5b743c17bbf07fceaea0e6ea152cdddd1f22e3416d"
+ },
+ "g1_target_prompts": 1,
+ "g1_target_choices": [
+  1
+ ],
+ "g2_target_prompts": 1,
+ "wire_target_iids": [
+  "75DRZT.0.142",
+  "647ADX.0.142"
+ ]
+}

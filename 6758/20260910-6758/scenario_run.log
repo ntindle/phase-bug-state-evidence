@@ -1,0 +1,81 @@
+=== Game 1: Comet Storm X=2 kicked once, targets P1, P0 ===
+P0 keeps
+P1 keeps
+[P0] SHAPE rtype=exactChoices spec=None n=1 choices=[]
+[P0] SHAPE rtype=exactChoices spec=None n=8 choices=[ //  //  //  //  //  //  // ]
+P0 plays Mountain
+[P0] SHAPE rtype=exactChoices spec=None n=2 choices=[ // ]
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=9 choices=[ //  //  //  //  //  //  //  // ]
+P0 plays Forest
+[P0] SHAPE rtype=exactChoices spec=None n=3 choices=[ //  // ]
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+[P0] SHAPE rtype=exactChoices spec=None n=4 choices=[ //  //  // ]
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=10 choices=[ //  //  //  //  //  //  //  //  // ]
+P0 plays Mountain
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=15 choices=[ //  //  //  //  //  //  //  //  //  //  //  //  //  // ]
+P0 plays Mountain
+P0 exported pre-cast state
+P0 casts Comet Storm (id 51)
+[P0] SHAPE rtype=schema spec=sequence n=7 choices=[ //  //  //  //  //  // ]
+[P0] TARGET #1 -> seat 1 (iid 75DRZT.0.142)
+[P0] OptionalCostChoice Kicker times=0 choices={"75DRZT.0.143.c0": {"text": "", "action_codes": ["cancelCast"], "values": []}, "75DRZT.0.143.c1": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "false"]]}, "75DRZT.0.143.c2": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "true"]]}}
+[P0] KICKER -> pay (times=0)
+[P0] OptionalCostChoice Kicker times=1 choices={"75DRZT.0.144.c0": {"text": "", "action_codes": ["cancelCast"], "values": []}, "75DRZT.0.144.c1": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "false"]]}, "75DRZT.0.144.c2": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "true"]]}}
+[P0] KICKER -> stop/decline (times=1)
+[P0] SHAPE rtype=schema spec=number n=0 choices=[]
+[P0] X-choice -> X=2 (iid 75DRZT.0.145)
+[g1_kicked] storm on stack; targets chosen so far: [1]
+[g1_kicked] exported g1_kicked_on_stack.json (targets=[1], prompts=1)
+[g1_kicked] exported g1_kicked_post.json (targets=[1], prompts=1, x=2, kick=True)
+A1_setup_ok: passed
+A2_cast_decisions: passed
+A3_two_targets: failed
+A4_damage_each: failed
+=== Game 2 (control): Comet Storm X=1, no kicker, target P1 ===
+P0 keeps
+P1 keeps
+[P0] SHAPE rtype=exactChoices spec=None n=1 choices=[]
+[P0] SHAPE rtype=exactChoices spec=None n=6 choices=[ //  //  //  //  // ]
+P0 plays Mountain
+[P0] SHAPE rtype=exactChoices spec=None n=2 choices=[ // ]
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+[P0] SHAPE rtype=exactChoices spec=None n=3 choices=[ //  // ]
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=7 choices=[ //  //  //  //  //  // ]
+P0 plays Mountain
+[P0] SHAPE rtype=exactChoices spec=None n=12 choices=[ //  //  //  //  //  //  //  //  //  //  // ]
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=16 choices=[ //  //  //  //  //  //  //  //  //  //  //  //  //  //  // ]
+P0 plays Mountain
+[P0] SHAPE rtype=exactChoices spec=None n=13 choices=[ //  //  //  //  //  //  //  //  //  //  //  // ]
+P0 discards 1
+P1 discards 1
+[P0] SHAPE rtype=exactChoices spec=None n=17 choices=[ //  //  //  //  //  //  //  //  //  //  //  //  //  //  //  // ]
+P0 plays Forest
+[P0] SHAPE rtype=exactChoices spec=None n=14 choices=[ //  //  //  //  //  //  //  //  //  //  //  //  // ]
+P0 exported pre-cast state
+P0 casts Comet Storm (id 22)
+[P0] SHAPE rtype=schema spec=sequence n=7 choices=[ //  //  //  //  //  // ]
+[P0] TARGET #1 -> seat 1 (iid 647ADX.0.142)
+[P0] OptionalCostChoice Kicker times=0 choices={"647ADX.0.143.c0": {"text": "", "action_codes": ["cancelCast"], "values": []}, "647ADX.0.143.c1": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "false"]]}, "647ADX.0.143.c2": {"text": "", "action_codes": ["decideOptionalCost"], "values": [["pay", "true"]]}}
+[P0] KICKER -> stop/decline (times=0)
+[P0] SHAPE rtype=schema spec=number n=0 choices=[]
+[P0] X-choice -> X=1 (iid 647ADX.0.144)
+[g2_control] storm on stack; targets chosen so far: [1]
+[g2_control] exported g2_control_on_stack.json (targets=[1], prompts=1)
+[g2_control] exported g2_control_post.json (targets=[1], prompts=1, x=1, kick=False)
+A5_control_path: passed
+VERDICT: reproduced — kicked-once cast offered 1 target prompt(s) (expected 2); resolution dealt 0 damage (P1 20->20, P0 20->20); control X=1 no-kick also dealt 0 (P1 20->20)
+run.json written; evidence in /home/hatch/workspace/dev/phase-backfill/evidence/6758/20260910-6758
