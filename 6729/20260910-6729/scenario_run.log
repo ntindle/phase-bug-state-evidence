@@ -1,0 +1,68 @@
+game 952UPU; P0 seat=0 P1 seat=1
+P0 keeps (mulls=0, hand=['arboreal grazer', 'forest', 'arboreal grazer', 'forest', "green sun's zenith", "green sun's zenith", 'forest'])
+P1 keeps (mulls=0, hand=['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[tick] turn=1 phase=Untap wait=MulliganDecision stage=setup
+[P1] interaction rtype=exactChoices spec=None n=1 codes=['passPriority'] choices=[]
+[tick] turn=1 phase=Upkeep wait=Priority stage=setup
+[P0] interaction rtype=exactChoices spec=None n=1 codes=['passPriority'] choices=[]
+[P1] interaction rtype=exactChoices spec=None n=8 codes=['passPriority', 'playLand'] choices=[ // Island // Island // Island // Island // Island // Island // Island]
+[tick] turn=1 phase=PreCombatMain wait=Priority stage=setup
+[P1] interaction rtype=exactChoices spec=None n=2 codes=['passPriority', 'tapLandForMana'] choices=[ // Island]
+[tick] turn=1 phase=BeginCombat wait=Priority stage=setup
+[tick] turn=1 phase=EndCombat wait=Priority stage=setup
+[tick] turn=1 phase=PostCombatMain wait=Priority stage=setup
+[tick] turn=1 phase=End wait=Priority stage=setup
+[tick] turn=2 phase=Upkeep wait=Priority stage=setup
+[tick] turn=2 phase=Draw wait=Priority stage=setup
+[P0] interaction rtype=exactChoices spec=None n=5 codes=['passPriority', 'playLand'] choices=[ // Forest // Forest // Forest // Forest]
+P0 plays Forest t2
+[tick] turn=2 phase=PreCombatMain wait=Priority stage=setup
+[P0] interaction rtype=exactChoices spec=None n=10 codes=['castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Forest]
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['passPriority', 'tapLandForMana'] choices=[ // Forest]
+[tick] turn=2 phase=BeginCombat wait=Priority stage=setup
+[tick] turn=2 phase=EndCombat wait=Priority stage=setup
+[tick] turn=2 phase=PostCombatMain wait=Priority stage=setup
+[tick] turn=2 phase=End wait=Priority stage=setup
+[tick] turn=3 phase=Upkeep wait=Priority stage=setup
+[tick] turn=3 phase=Draw wait=Priority stage=setup
+[P1] interaction rtype=exactChoices spec=None n=9 codes=['passPriority', 'playLand', 'tapLandForMana'] choices=[ // Island // Island // Island // Island // Island // Island // Island // Island]
+[tick] turn=3 phase=PreCombatMain wait=Priority stage=setup
+[P1] interaction rtype=exactChoices spec=None n=3 codes=['passPriority', 'tapLandForMana'] choices=[ // Island // Island]
+[tick] turn=3 phase=BeginCombat wait=Priority stage=setup
+[tick] turn=3 phase=EndCombat wait=Priority stage=setup
+[tick] turn=3 phase=PostCombatMain wait=Priority stage=setup
+[tick] turn=3 phase=End wait=Priority stage=setup
+[tick] turn=4 phase=Upkeep wait=Priority stage=setup
+[tick] turn=4 phase=Draw wait=Priority stage=setup
+[P0] interaction rtype=exactChoices spec=None n=14 codes=['castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Forest // Forest // Forest // Forest // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Forest]
+P0 plays Forest t4
+[tick] turn=4 phase=PreCombatMain wait=Priority stage=setup
+P0 casts Green Sun's Zenith t4
+[P0] interaction rtype=schema spec=number n=0 codes=[] choices=[]
+[P0] Zenith X-choice -> X=1
+[tick] turn=4 phase=PreCombatMain wait=ChooseXValue stage=zenith_cast
+exported pre.json (523358 bytes)
+pre: bf_forest=2 hand_forest=3
+[tick] turn=4 phase=PreCombatMain wait=Priority stage=pre
+[P0] interaction rtype=schema spec=select n=10 codes=[] choices=[Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer]
+[P0] Zenith search -> Arboreal Grazer
+[tick] turn=4 phase=PreCombatMain wait=SearchChoice stage=pre
+Grazer on battlefield: oid 13
+GRAZER ETB TRIGGER observed on stack
+exported mid_trigger.json (569049 bytes)
+[tick] turn=4 phase=PreCombatMain wait=Priority stage=grazer_on_bf
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['decideOptionalEffect'] choices=[false // true]
+[P0] Grazer ETB optional 'you may' -> ACCEPT
+[tick] turn=4 phase=PreCombatMain wait=OptionalEffectChoice stage=grazer_on_bf
+[P0] interaction rtype=schema spec=select n=3 codes=[] choices=[Forest // Forest // Forest]
+[P0] Grazer ETB land target -> Forest (ref=47)
+[tick] turn=4 phase=PreCombatMain wait=EffectZoneChoice stage=grazer_on_bf
+exported post.json (584242 bytes)
+post: turn=4 phase=PreCombatMain; resolution complete
+[tick] turn=4 phase=PreCombatMain wait=Priority stage=grazer_on_bf
+assertions: {"A1_setup_ok": "passed", "A2_grazer_bf": "passed", "A3_etb_triggered": "passed", "A4_zenith_library": "passed", "A5_shuffle_exactly2": "failed", "A6_cleanup": "passed"}
+verdict: reproduced
+note: A5: 3 LibraryShuffle commands during the Zenith resolution (pre=0, post=3, rng word ranges [(75, 86), (86, 95), (95, 106)]); expected 2
+note: verdict=reproduced (secondary observation from the report): the ETB itself fired and resolved, but the Zenith resolution deviates from the report's expected behavior (wrong destination and/or extra shuffles)
+wrote parse_evidence.json
+server excerpts: 124 lines for 952UPU

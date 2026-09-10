@@ -1,0 +1,191 @@
+{
+ "zenith_key": "green sun's zenith",
+ "zenith_oracle": "Search your library for a green creature card with mana value X or less, put it onto the battlefield, then shuffle. Shuffle Green Sun's Zenith into its owner's library.",
+ "zenith_abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "SearchLibrary",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": [
+      {
+       "type": "Cmc",
+       "comparator": "LE",
+       "value": {
+        "type": "Ref",
+        "qty": {
+         "type": "Variable",
+         "name": "X"
+        }
+       }
+      },
+      {
+       "type": "HasColor",
+       "color": "Green"
+      }
+     ]
+    },
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "reveal": false
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Library",
+     "destination": "Battlefield",
+     "target": {
+      "type": "Any"
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Shuffle",
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Library",
+       "target": {
+        "type": "SelfRef"
+       },
+       "owner_library": true,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "Shuffle",
+        "target": {
+         "type": "ParentTargetOwner"
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": true
+   },
+   "duration": null,
+   "description": "Search your library for a green creature card with mana value X or less, put it onto the battlefield, then shuffle. Shuffle ~ into its owner's library.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "grazer_oracle": "Reach\nWhen this creature enters, you may put a land card from your hand onto the battlefield tapped.",
+ "grazer_triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Hand",
+     "destination": "Battlefield",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Land"
+      ],
+      "controller": "You",
+      "properties": [
+       {
+        "type": "InZone",
+        "zone": "Hand"
+       }
+      ]
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": true,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "target_choice_timing": "Resolution",
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": true,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, you may put a land card from your hand onto the battlefield tapped.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "observation": "The search-following ChangeZone carries target Any (not the found card); Grazer's ChangesZone trigger is typed faithfully with SelfRef."
+}

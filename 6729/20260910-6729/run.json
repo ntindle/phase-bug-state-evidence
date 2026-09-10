@@ -1,0 +1,76 @@
+{
+ "issue": 6729,
+ "run_id": "20260910-6729",
+ "server": {
+  "server_version": "0.78.0",
+  "build_commit": "4de7224",
+  "protocol_version": 68,
+  "mode": "Full",
+  "binary_sha256": "02c40235ea1e9d9f0b30f4d7e47e68f8787dd6830fa6f0cfba64dfd20dffc3e0",
+  "card_data_sha256": "038a49c554606eadcb25c23ce98c944c5385424e0970facc7d9d0fb0a6954df6",
+  "draft_pools_sha256": "70e323a23cbd1d0b6bf72fc18cf9fe66ccbc090c4c426992083c7ab0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello probed live (0.78.0/4de7224/proto 68/Full) on 127.0.0.1:9377; pinned v0.78.0 release = latest stable (published 2026-09-09); minisign-verified binary + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; fresh isolated server owned by this run on 127.0.0.1:9377"
+ },
+ "decks": {
+  "P0": [
+   [
+    "green sun's zenith",
+    12
+   ],
+   [
+    "arboreal grazer",
+    12
+   ],
+   [
+    "forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "games": [
+  {
+   "tag": "A",
+   "desc": "Green Sun's Zenith X=0 tutors Arboreal Grazer; the Grazer ETB ('you may put a land card from your hand onto the battlefield tapped') is accepted and a Forest is put tapped; Zenith destination and shuffle counts asserted",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_grazer_bf": "passed",
+    "A3_etb_triggered": "passed",
+    "A4_zenith_library": "passed",
+    "A5_shuffle_exactly2": "failed",
+    "A6_cleanup": "passed"
+   },
+   "observations": {
+    "zenith_cast": true,
+    "x_chosen": 1,
+    "search_submitted": true,
+    "grazer_oid": 13,
+    "trigger_seen": true,
+    "trigger_entry": "{\"id\": 121, \"source_id\": 13, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 13, \"ability\": {\"effect\": {\"type\": \"ChangeZone\", \"origin\": \"Hand\", \"destination\": \"Battlefield\", \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Land\"], \"controller\": \"You\", \"properties\": [{\"type\": \"InZone\", \"zone\": \"Hand\"}]}, \"owner_library\": false, \"enter_transformed\": false, \"enter_tapped\": true, \"enters_attacking\": false}, \"targets\": [], \"source_id\": 13, \"source_incarnation\": 1, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 13, \"incarnation\": 1}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Arboreal Grazer\", \"power\": 0, \"toughness\": 3, \"base_power\": 0, \"base_toughness\": 3, \"mana_value\": 1, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Creature\"], \"subtypes\": [\"Sloth\", \"Beast\"], \"supertypes\": [], \"keywords\": [\"Reach\"], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 13, \"printed_ref\": {\"oracle_id\": \"d18a0815-59d3-4667-b52b-9acda741215e\", \"face_name\": \"Arboreal Grazer\"}, \"is_token\": false, \"face_down\": false, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"ChangesZone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"ChangeZone\", \"origin\": \"Hand\", \"destination\": \"Battlefield\", \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Land\"], \"c",
+    "optional_accepted": true,
+    "land_put_oid": "47",
+    "pre_bf_forest": 2,
+    "pre_hand_forest": 3,
+    "shuffles_pre": 0,
+    "shuffles_post": 3,
+    "rejections": []
+   },
+   "notes": [
+    "A5: 3 LibraryShuffle commands during the Zenith resolution (pre=0, post=3, rng word ranges [(75, 86), (86, 95), (95, 106)]); expected 2",
+    "verdict=reproduced (secondary observation from the report): the ETB itself fired and resolved, but the Zenith resolution deviates from the report's expected behavior (wrong destination and/or extra shuffles)"
+   ]
+  }
+ ],
+ "verdict": "reproduced",
+ "evidence_dir": "6729/20260910-6729",
+ "duration_s": 11.3,
+ "started_at": "2026-09-10T14:34:39Z"
+}
