@@ -1,0 +1,25 @@
+G1 game Y5V174; P0 seat=0 P1 seat=1
+[P0] mulligans #1
+[P1] keeps (want_ok=True, lands=7, mulls=0)
+DIAG g1 turn=1 active=1 phase=Untap wf=MulliganDecision p0hand=['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'] tergrid_bf=[] stack=[]
+[P0] keeps (want_ok=True, lands=5, mulls=1)
+[P0] bottoms 1
+P0 casts Tergrid oid=35 (face=front)
+exported pre.json
+ModalFaceChoice [g1_cast]: faces=[{'id': 'Y5V174.0.145.c0', 'face': 'front', 'status': 'available'}, {'id': 'Y5V174.0.145.c1', 'face': 'back', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': False}, {'back_face': True}]
+[P0] submits face choice front (Y5V174.0.145.c0) via Interaction
+exported post_front.json
+game 1 done: Tergrid on BF; exporting post_front
+game 1 loop ended ok=True
+G2 game 0GVUMG; P0 seat=0 P1 seat=1
+[P0] keeps (want_ok=True, lands=6, mulls=0)
+[P1] keeps (want_ok=True, lands=7, mulls=0)
+DIAG g2 turn=1 active=0 phase=Untap wf=MulliganDecision p0hand=['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'tergrid, god of fright'] tergrid_bf=[] stack=[]
+P0 casts Tergrid oid=19 (face=back)
+exported g2_pre.json
+ModalFaceChoice [g2_cast]: faces=[{'id': '0GVUMG.0.98.c0', 'face': 'back', 'status': 'available'}] canSubmit=True legalChooseModalFace=[{'back_face': True}]
+[P0] submits face choice back (0GVUMG.0.98.c0) via Interaction
+exported post_back.json
+exported post.json
+game 2 done: Lantern on BF; exporting post_back/post
+game 2 loop ended ok=True
