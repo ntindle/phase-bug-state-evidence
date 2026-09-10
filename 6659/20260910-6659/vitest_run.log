@@ -1,0 +1,81 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+[90mstdout[2m | src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22m[2museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22m[2mtext import preserves both alias spellings as separate entries (reachable path)
+[22m[39m[6659] text-import entries: ["5x Nazgul","4x Nazgûl"]
+
+[90mstdout[2m | src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22m[2museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22m[2mgap 1: alias spellings are counted separately, leaving the + affordance live past the real ceiling
+[22m[39m[6659] gap1 canIncrement at 5x Nazgul + 4x Nazgûl (combined 9, ceiling 9): Nazgul=true, Nazgûl=true (expected false/false)
+
+[90mstdout[2m | src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22m[2museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22m[2mgap 1: each spelling can climb to nine, blowing the real ceiling
+[22m[39m[6659] gap1 after 5 row increments: Nazgul=5, Nazgûl=9, combined=14 (ceiling 9; expected combined <= 9)
+
+[90mstdout[2m | src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22m[2museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22m[2mgap 2: the search-result add path walks past the ceiling
+[22m[39m[6659] gap2 Lightning Bolt count after 3 search-adds at ceiling 4: 7 (expected 4)
+
+ [31m❯[39m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx [2m([22m[2m4 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 73[2mms[22m[39m
+     [32m✓[39m text import preserves both alias spellings as separate entries (reachable path)[32m 7[2mms[22m[39m
+[31m     [31m×[31m gap 1: alias spellings are counted separately, leaving the + affordance live past the real ceiling[39m[32m 45[2mms[22m[39m
+[31m     [31m×[31m gap 1: each spelling can climb to nine, blowing the real ceiling[39m[32m 9[2mms[22m[39m
+[31m     [31m×[31m gap 2: the search-result add path walks past the ceiling[39m[32m 9[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22mgap 1: alias spellings are counted separately, leaving the + affordance live past the real ceiling
+[31m[1mAssertionError[22m: expected true to be false // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- false[39m
+[31m+ true[39m
+
+[36m [2m❯[22m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:[2m155:24[22m[39m
+    [90m153|[39m         `Nazgul=${nazgulGate}, Nazgûl=${nazgulAccentGate} (expected fa…
+    [90m154|[39m     )[33m;[39m
+    [90m155|[39m     [34mexpect[39m(nazgulGate)[33m.[39m[34mtoBe[39m([35mfalse[39m)[33m;[39m
+    [90m   |[39m                        [31m^[39m
+    [90m156|[39m     [34mexpect[39m(nazgulAccentGate)[33m.[39m[34mtoBe[39m([35mfalse[39m)[33m;[39m
+    [90m157|[39m   })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22mgap 1: each spelling can climb to nine, blowing the real ceiling
+[31m[1mAssertionError[22m: expected 14 to be less than or equal to 9[39m
+[36m [2m❯[22m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:[2m182:22[22m[39m
+    [90m180|[39m         [32m`combined=[39m[36m${[39mcombined[36m}[39m[32m (ceiling 9; expected combined <= 9)`[39m[33m,[39m
+    [90m181|[39m     )[33m;[39m
+    [90m182|[39m     [34mexpect[39m(combined)[33m.[39m[34mtoBeLessThanOrEqual[39m([34m9[39m)[33m;[39m
+    [90m   |[39m                      [31m^[39m
+    [90m183|[39m   })[33m;[39m
+    [90m184|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx[2m > [22museDeckBuilder — #6659 copy-limit affordance gaps[2m > [22mgap 2: the search-result add path walks past the ceiling
+[31m[1mAssertionError[22m: expected 7 to be 4 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 4[39m
+[31m+ 7[39m
+
+[36m [2m❯[22m src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx:[2m209:19[22m[39m
+    [90m207|[39m       `[6659] gap2 Lightning Bolt count after 3 search-adds at ceiling…
+    [90m208|[39m     )[33m;[39m
+    [90m209|[39m     [34mexpect[39m(final)[33m.[39m[34mtoBe[39m([34m4[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m210|[39m   })[33m;[39m
+    [90m211|[39m })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 12:16:39
+[2m   Duration [22m 11.98s[2m (transform 522ms, setup 237ms, import 747ms, tests 73ms, environment 324ms)[22m
+
+JSON report written to /home/hatch/workspace/dev/phase-backfill/evidence/6659/20260910-6659/vitest_report.json
