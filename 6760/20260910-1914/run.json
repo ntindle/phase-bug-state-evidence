@@ -1,0 +1,80 @@
+{
+ "issue": 6760,
+ "run_id": "20260910-1914",
+ "started_at": "2026-09-10T19:23:47",
+ "duration_s": 39.8,
+ "server": {
+  "server_version": "0.79.0",
+  "build_commit": "1cde7a2",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+  "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+  "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-10",
+  "source": "ServerHello + sha256 match of pinned verified artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 69,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b7fee9b295e2be94a93f24bc13ba015c4cdb1f560d3a650545fc55a5b0d5a4a5",
+ "decks": {
+  "P0": [
+   [
+    "Ojer Kaslem, Deepest Growth",
+    4
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Llanowar Elves",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A4_both_categories": "passed",
+  "A2_damage_and_reveal": "passed",
+  "A5_two_cards_enter": "failed",
+  "A6_rest_to_bottom": "passed",
+  "A7_cleanup": "passed",
+  "A3_may_accepted": "passed"
+ },
+ "notes": [
+  "2-card submission rejected ({\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\",); single-card fallback entered=True; the land 'Forest' ended in zone Library (never put onto the battlefield)",
+  "protocol-69 driver (v0.79.0): Ojer cast via CastSpell action; attack via DeclareAttackers attacks=[[oid,{type:Player,data:1}]]; may-choice via exactChoices decideOptionalEffect accept=true; revealed-card selection via schema prompt submitted as {type:<spec.type>, data:{choiceIds:[...]}}.",
+  "P0 deck 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1 60x Island draw-go, never blocks (engine accepts >4-of for custom games)."
+ ],
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "at": 1789068264.635656,
+   "data": "{\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.79.0, not a fix claim."
+ ],
+ "setup_line": "P0: 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1: 60x Island (never blocks)",
+ "contract_line": "Ojer deals 6 combat damage -> reveal 6 -> may put a creature AND a land onto the battlefield",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}

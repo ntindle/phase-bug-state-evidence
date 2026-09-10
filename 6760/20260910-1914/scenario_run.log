@@ -1,0 +1,24 @@
+===== attempt 1 =====
+game G17E07 attempt=1; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P0 discards ['Llanowar Elves'] (DiscardToHandSize)
+P0 discards ['Llanowar Elves'] (DiscardToHandSize)
+P0 discards ['Llanowar Elves'] (DiscardToHandSize)
+P0 casts Ojer Kaslem, Deepest Growth
+Ojer Kaslem on battlefield at turn 16
+P0 attacks P1 with Ojer Kaslem (turn 18)
+select prompt: spec={"type": "select", "data": {"constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}} n_candidates=6
+  candidate G17E07.0.276.s0: Forest (Land) ref=31
+  candidate G17E07.0.276.s1: Llanowar Elves (Creature) ref=33
+  candidate G17E07.0.276.s2: Llanowar Elves (Creature) ref=3
+  candidate G17E07.0.276.s3: Llanowar Elves (Creature) ref=52
+  candidate G17E07.0.276.s4: Llanowar Elves (Creature) ref=51
+  candidate G17E07.0.276.s5: Forest (Land) ref=56
+submitted 2-card selection (creature G17E07.0.276.s1 + land G17E07.0.276.s0)
+[P0] REJECTION ActionRejected: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+submitted 1-card fallback selection (creature G17E07.0.276.s1)
+select outcome path=one_accepted: entered=['Llanowar Elves'] bottomed=5/6
+attempt 1 assertions: {"A1_setup_ok": "passed", "A4_both_categories": "passed", "A2_damage_and_reveal": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A4_both_categories": "passed", "A2_damage_and_reveal": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
