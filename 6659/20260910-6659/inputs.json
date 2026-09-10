@@ -1,0 +1,48 @@
+{
+  "issue": 6659,
+  "issue_title": "Deck builder copy-limit affordance: alias spellings counted separately, search-add ungated",
+  "subsystem": "deckbuilder (React client, no game-state pair per playbook step 2)",
+  "text_import_input": "5 Nazgul\n4 Nazgûl\n",
+  "gap1_deck": [
+    {
+      "count": 5,
+      "name": "Nazgul"
+    },
+    {
+      "count": 4,
+      "name": "Nazgûl"
+    }
+  ],
+  "gap2_deck": [
+    {
+      "count": 4,
+      "name": "Lightning Bolt"
+    }
+  ],
+  "mocked_engine_ceilings": {
+    "Nazgul": {
+      "type": "Limited",
+      "data": 9
+    },
+    "Nazgûl": {
+      "type": "Limited",
+      "data": 9
+    },
+    "Lightning Bolt": {
+      "type": "Limited",
+      "data": 4
+    }
+  },
+  "ceiling_grounding": [
+    "Nazgûl oracle text in pinned card-data.json (v0.78.0): 'A deck can have up to nine cards named Nazgûl.'; canonical card-data key is lowercase 'nazgûl'.",
+    "Issue triage: per-name ceilings are unaffected by the bug — maxDeckCopies(name, format) canonicalizes engine-side via canonical_deck_count_key.",
+    "Lightning Bolt: no printed override; the format default (4) applies.",
+    "The WASM engine cannot be built on this host (no Rust toolchain; client-only sparse checkout), so maxDeckCopies is mocked to return exactly the engine-resolved values above. Ceiling resolution is explicitly not the component under test."
+  ],
+  "code_under_test": {
+    "useDeckBuilder.ts": "client/src/components/deck-builder/useDeckBuilder.ts @ aa1fb24 (combinedCopyCounts L341-352, canIncrement L400-407, handleAddCard L287-306, handleIncrementCard L409-424)",
+    "CardGrid.tsx": "client/src/components/deck-builder/CardGrid.tsx @ aa1fb24 (search-result tile: disabled = format-legality only, no copy-limit eligibility prop)",
+    "DeckBuilder.tsx": "client/src/components/deck-builder/DeckBuilder.tsx @ aa1fb24 (CardGrid gets onAddCard={handleAddCard} with no canAddCard prop; DeckStack gets canAddCard={canIncrement})",
+    "deduplicateEntries": "client/src/services/deckParser.ts @ aa1fb24 L422-433 (merges exact name matches only)"
+  }
+}
