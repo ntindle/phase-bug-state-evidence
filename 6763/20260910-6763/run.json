@@ -1,0 +1,94 @@
+{
+  "issue": 6763,
+  "run_id": "20260910-6763",
+  "started_at": "2026-09-10T21:01:18",
+  "duration_s": 15.1,
+  "server": {
+    "server_version": "0.79.0",
+    "build_commit": "1cde7a2",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+    "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+    "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-10",
+    "source": "ServerHello + sha256 match of pinned verified artifacts"
+  },
+  "server_run_dir": "runs/20260910-6763",
+  "driver": {
+    "protocol_advertised": 69,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "8f617053f6fe172f44031b5bee3f533cfcfa0a69a654171406af9e0421e23083",
+  "decks": {
+    "P0": [
+      [
+        "Walking Ballista",
+        12
+      ],
+      [
+        "Forest",
+        48
+      ]
+    ],
+    "P1": [
+      [
+        "Emperor of Bones",
+        4
+      ],
+      [
+        "Swamp",
+        56
+      ]
+    ]
+  },
+  "assertions": {
+    "setup_started": "passed",
+    "E1_setup_ok": "passed",
+    "E2_trigger_targeted": "passed",
+    "E3_identity_distinct": "passed",
+    "E4_snapshot_captured": "passed",
+    "E5_cleanup": "passed",
+    "U1_rendered_setup": "passed",
+    "U2_target_identity_ui": "passed",
+    "U3_label_indistinguishable": "passed",
+    "U4_arc_indistinguishable": "passed",
+    "U5_viewer_indistinguishable": "passed"
+  },
+  "notes": [
+    "E1: gy_ballistas=[42, 50, 35] emperor_bf=108 trigger_entry=121",
+    "E2: entry targets=[35] chosen=35",
+    "E3: chosen=35 other=42 names={'Walking Ballista'}",
+    "E4: viewer target=[35] A->35 B->42",
+    "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat",
+    "U2: variant A targets 35, variant B targets 42",
+    "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+    "U4: arc endpoints identical (43.34375, 60.6875); start-point jitter ['M 124.45675849914551 661.1874694824219 Q 163.18027292774013 350.22867349115 43.34375 60.6875'] vs ['M 124.34759330749512 661.1875 Q 163.1276010635392 350.2428439017042 43.34375 60.6875'] is <0.1px noise",
+    "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '42 50 35', 'rect': {'x': 0, 'y': 0, 'w': 86.7, 'h': 121.4}} arcs_A=['M 124.45675849914551 661.1874694824219 Q 163.18027292774013 350.22867349115 43.34375 60.6875']"
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "12x Walking Ballista deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "UI harness mocks: multiplayerStore, useCardImage, useEngineCardData, useGameDispatch (payload capture), wasmStub. The real StackDisplay + GraveyardPile + ZoneViewer components from the mainline client tree were rendered (real framer-motion stack arcs), driven in headless Chromium via CDP.",
+    "Variant B snapshot is token-replaced from variant A (same engine state, target swapped 35->42); the engine input really differed (U2 confirms the two oids).",
+    "Not tested on the report's 2026-07-29 build; verdict scoped to v0.79.0 engine + current mainline client, not a fix claim.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "setup_line": "P0: 12x Walking Ballista + 48x Forest; P1: 4x Emperor of Bones + 56x Swamp. P1's Emperor trigger targets one of >=2 Walking Ballistas in P0's graveyard.",
+  "contract_line": "Every player must be able to identify the exact graveyard object targeted by the trigger before responding: the two Ballista oids are distinct objects with the same name, so a name-only label cannot disambiguate them.",
+  "browser": {
+    "binary": "/opt/meta-chromium/chrome",
+    "version": "Chromium 152.0.7977.64",
+    "mode": "headless, driven via CDP (harness manages vite + chrome)"
+  },
+  "client": {
+    "mainline_commit": "aa1fb24",
+    "tested_components": [
+      "StackDisplay",
+      "GraveyardPile",
+      "ZoneViewer"
+    ]
+  }
+}
