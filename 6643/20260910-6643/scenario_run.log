@@ -1,0 +1,65 @@
+game G9MMMJ; seats P0=0 P1=1
+P0 mulligans (no key cards)
+P1 keeps
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=['forest', 'forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest'] dude=[] exp_lvl=1 bears=[] life=[20, 20] stack=0 attacked=False trig=False
+P0 keeps after 1 mulligan(s)
+P0 bottoms 1: ['grizzly bears']
+[P1] interaction rtype=exactChoices spec=None n_cands=1 choices=[]
+[P0] interaction rtype=exactChoices spec=None n_cands=1 choices=[]
+[P1] interaction rtype=exactChoices spec=None n_cands=8 choices=[ //  //  //  //  //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=2 choices=[ // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=6 choices=[ //  //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=2 choices=[ // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=9 choices=[ //  //  //  //  //  //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=3 choices=[ //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=8 choices=[ //  //  //  //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=9 choices=[ //  //  //  //  //  //  //  // ]
+P0 casts Party Dude
+Party Dude on BF (oid 29)
+Dude object level-ish keys: ['class_level']; level read=1
+[P1] interaction rtype=exactChoices spec=None n_cands=4 choices=[ //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=11 choices=[ //  //  //  //  //  //  //  //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=5 choices=[ //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=4 choices=[ //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=13 choices=[ //  //  //  //  //  //  //  //  //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=10 choices=[ //  //  //  //  //  //  //  //  // ]
+P0 activates Party Dude level-up idx=0 (-> level 2)
+[P1] interaction rtype=exactChoices spec=None n_cands=12 choices=[ //  //  //  //  //  //  //  //  //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=6 choices=[ //  //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=5 choices=[ //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=14 choices=[ //  //  //  //  //  //  //  //  //  //  //  //  // ]
+[P0] interaction rtype=exactChoices spec=None n_cands=12 choices=[ //  //  //  //  //  //  //  //  //  //  // ]
+P0 casts Grizzly Bears
+[P1] interaction rtype=exactChoices spec=None n_cands=13 choices=[ //  //  //  //  //  //  //  //  //  //  //  // ]
+[P1] interaction rtype=exactChoices spec=None n_cands=7 choices=[ //  //  //  //  //  // ]
+P0 activates Party Dude level-up idx=1 (-> level 3)
+[P0] interaction rtype=schema spec=relations n_cands=2 choices=[ // ]
+PRE: exporting (dude lvl expected=3 field=3, bear 15 ready, P1 life=20)
+exported pre.json
+P0 attacks P1 with Bear (oid 15) on turn 10
+*** PARTY DUDE TRIGGER OBSERVED ON STACK ***
+exported mid_trigger.json
+[P0] interaction rtype=schema spec=sequence n_cands=1 choices=[]
+[P0] answers Party Dude target prompt with Bear (choice G9MMMJ.0.163.t0)
+[P0] P0 hand size at target time: 4
+exported mid_target.json
+exported mid_pump.json
+mid_pump: bear P/T=6/6 phase=DeclareBlockers
+exported post.json
+ASSERTIONS: A1_setup_ok: passed; A2_trigger_fires: passed; A3_target_prompted: passed; A4_pump_correct: passed; A5_cleanup: passed;
+NOTE: pre: dude_oid=29 expected_lvl=3 field_lvl=3 bears=[15] life=[20, 20]
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates:  //  //  //  //  //  // 
+NOTE: target prompt had no candidate for the attacking Bear (oid 15); candidates: 
+NOTE: A4: P1 life 20->14 (damage 6), expected 6 (2+X, X=hand 4); mid_pump bear P/T=6/6
+NOTE: A5: stack=0 entries, party-dude leftovers=0, phase=PostCombatMain turn=10
+VERDICT: not-reproduced
+run.json written (verdict=not-reproduced)
