@@ -1,0 +1,32 @@
+{
+  "A0_text_import_reachability": {
+    "description": "parseDeckFile('5 Nazgul\\n4 Nazgûl\\n') preserves both alias spellings as separate entries (deduplicateEntries merges exact matches only)",
+    "expected": "2 entries: 5x Nazgul, 4x Nazgûl",
+    "observed": "2 entries: 5x Nazgul, 4x Nazgûl",
+    "status": "passed"
+  },
+  "A1_gap1_gate_at_combined_ceiling": {
+    "description": "canIncrement for both spellings with 5x Nazgul + 4x Nazgûl (combined 9 = engine ceiling 9)",
+    "expected": "false / false (increment affordance dead at the real ceiling)",
+    "observed": "true / true — each spelling bucketed separately (5<9, 4<9), so the + stays live past the real ceiling",
+    "status": "failed"
+  },
+  "A2_gap1_climb_to_nine": {
+    "description": "five row-+ increments on Nazgûl from 5x Nazgul + 4x Nazgûl; combined count must stay <= 9",
+    "expected": "combined <= 9 (increments refused once combined hits the ceiling)",
+    "observed": "Nazgul=5, Nazgûl=9, combined=14 — every increment permitted; each spelling climbed to nine",
+    "status": "failed"
+  },
+  "A3_gap2_row_gate_control": {
+    "description": "CONTROL: handleIncrementCard (deck-list row +, gated by #6654) at 4x Lightning Bolt / ceiling 4",
+    "expected": "count stays 4",
+    "observed": "count stays 4; canIncrement=false",
+    "status": "passed"
+  },
+  "A4_gap2_search_add_ungated": {
+    "description": "three handleAddCard calls (search-result add path) at 4x Lightning Bolt / ceiling 4",
+    "expected": "count stays 4",
+    "observed": "count 7 — handleAddCard never consults canIncrement; repeated clicks walk past the ceiling",
+    "status": "failed"
+  }
+}
