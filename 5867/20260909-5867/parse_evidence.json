@@ -1,0 +1,65 @@
+{
+ "alms collector": {
+  "replacements": [],
+  "oracle_text": "Flash\nIf an opponent would draw two or more cards, instead you and that player each draw a card."
+ },
+ "quantum riddler": {
+  "replacements": [
+   {
+    "event": "Draw",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Offset",
+       "inner": {
+        "type": "Ref",
+        "qty": {
+         "type": "EventContextAmount"
+        }
+       },
+       "offset": 1
+      },
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "mode": {
+     "type": "Mandatory"
+    },
+    "valid_card": null,
+    "description": "As long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.",
+    "condition": {
+     "type": "OnlyIfQuantity",
+     "lhs": {
+      "type": "Ref",
+      "qty": {
+       "type": "HandSize",
+       "player": {
+        "type": "Controller"
+       }
+      }
+     },
+     "comparator": "LE",
+     "rhs": {
+      "type": "Fixed",
+      "value": 1
+     }
+    },
+    "draw_scope": "InstructionCount"
+   }
+  ],
+  "oracle_text": "Flying\nWhen this creature enters, draw a card.\nAs long as you have one or fewer cards in hand, if you would draw one or more cards, you draw that many cards plus one instead.\nWarp {1}{U}"
+ }
+}
