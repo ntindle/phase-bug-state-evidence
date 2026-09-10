@@ -1,0 +1,34 @@
+{
+  "run_id": "20260910-6659",
+  "issue": 6659,
+  "date": "2026-09-10",
+  "verdict": "reproduced",
+  "client": {
+    "repo": "phase-rs/phase (sparse checkout, client/ only)",
+    "commit": "aa1fb24ad08863eedf6a00493f1e2865050ccc2d",
+    "version": "0.78.0",
+    "node": "v24.20.0",
+    "test_framework": "vitest (repo-pinned)",
+    "test_file": "client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.test.tsx",
+    "test_file_sha256": "bb1e584482decc10d935d32d6ddfb6708c51cbf578f3b2fd2a463ba22ab52657"
+  },
+  "release_check": {
+    "latest_stable": "v0.78.0",
+    "advanced": false,
+    "note": "No release advance since the v0.78.0 pin. phase-server was not started for this UI-only run (no game-state pair; deckbuilder subsystem per playbook step 2), following the #4589 precedent."
+  },
+  "result": "A0 passed (text import preserves both alias spellings as separate entries); A1 failed (canIncrement true/true at combined 9 = ceiling 9); A2 failed (row increments drove combined to 14); A3 passed (row + gated at ceiling, control); A4 failed (3 search-adds at ceiling 4 -> count 7).",
+  "scope": "Client-side copy-limit affordance in the deck builder: alias-spelling aggregation in combinedCopyCounts and the ungated search-result add path (handleAddCard). Real useDeckBuilder hook (renderHook) with mocked engine ceiling surface only.",
+  "limitations": [
+    "maxDeckCopies (engine WASM surface) mocked to return engine-resolved ceilings; the WASM engine cannot be built on this host (no Rust toolchain, client-only sparse checkout). Ceiling resolution is not the component under test.",
+    "Browser UI not exercised (vitest + renderHook, no browser); the CardGrid disabled-affordance rendering was verified by code inspection only.",
+    "Only the Modern format and the two reported card cases (Nazgûl alias spellings, Lightning Bolt) were driven; case variants (Plains/plains) and DFC combined-vs-front-face spellings named in triage were not separately driven.",
+    "No game-state pair: deckbuilder-subsystem report per playbook step 2; evidence is hook behavior + inputs, not engine states.",
+    "Not tested on the original 2026-07-26 build; verdict is reproduced on the current client (0.78.0/aa1fb24), not a fix claim."
+  ],
+  "publication": {
+    "status": "pending",
+    "evidence_commit": null,
+    "verified_at": null
+  }
+}
