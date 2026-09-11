@@ -1,0 +1,25 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_cast_completes": "passed",
+    "A3_resolves_clean": "passed",
+    "A4_no_stuck": "passed",
+    "A5_retry_identical": "passed",
+    "A6_activation_ok": "passed"
+  },
+  "notes": [
+    "pre_cast1: turn=1 phase=PreCombatMain petal_in_hand=True priority_player=0",
+    "cast1 submitted; rejections=0 (pay-related=0); spell_on_stack_at_mid={'controller': 0, 'id': 28, 'kind': {'data': {'actual_mana_spent': 0, 'card_id': 28, 'casting_variant': 'Normal'}, 'type': 'Spell'}, 'source_id': 28}; has_pending_cast_at_mid=False",
+    "post_cast1: petal_on_P0_BF=1 stack_empty=True waiting_for=Priority",
+    "post1 turn=1 -> post2 turn=5 (advance=True); dangling_stack_spell_with_priority=False",
+    "post_cast2: petal_on_P0_BF=2 (expected >=2); total rejections=0",
+    "post_activation: petal_on_P0_BF=1 (sacrificed: True); pool_at_capture={'red': 1}"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "ChooseManaColor",
+    "Priority"
+  ],
+  "rejections": []
+}
