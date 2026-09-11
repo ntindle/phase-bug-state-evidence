@@ -1,0 +1,22 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_death_observed": "passed",
+    "A3_triggers_doubled": "failed",
+    "A4_slugs_created": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "pre_death: turn=19 phase=PreCombatMain toxrill_bf=True masamune_attached=True elves_bf=True slime_counters_zero=True",
+    "post: elves_in_p1_gy=True; mid: toxrill slug triggers on stack=1",
+    "mid: 1 Toxrill slug triggers on stack (expected 2 with doubling)",
+    "post: 1 Slug tokens on P0 battlefield (expected 2 with doubling)",
+    "post: stack_empty=True turn=20 phase=Upkeep"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ]
+}
