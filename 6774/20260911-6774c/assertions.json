@@ -1,0 +1,28 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_single_landfall": "passed",
+    "A3_power_once": "passed",
+    "A4_trigger_count": "passed",
+    "A5_temp_expires": "passed"
+  },
+  "notes": [
+    "pre_landfall: turn=5 phase=PreCombatMain tifa_bf=True power=1 toughness=2 forest_in_hand=True",
+    "forest_bf pre->post: 2 -> 3 (delta=1); tifa_trigger_seen_on_stack=True",
+    "post: Tifa power=2 (expected 2), toughness=2 (expected 2)",
+    "mid: 1 Tifa landfall trigger entries on stack (expected 1)",
+    "cleanup: turn 7 Tifa power=1 (expected 1)"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "observations": {
+    "post_power": 2,
+    "cleanup_power": 1,
+    "mid_trigger_count": 1,
+    "post_toughness": 2
+  }
+}
