@@ -1,0 +1,93 @@
+P0 creating game...
+P1 joining...
+game 6G19QF; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=1
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=9
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=4
+P0 casts Memnite
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=2
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=5
+P0 casts Memnite
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=3
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=6
+P0 casts Memnite
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=7
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=8
+P1 discards 1 to hand size
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=14
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=17
+P0 casts Goblin Bombardment
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=10
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=11
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=18
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=12
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=20
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=22
+P0 casts Memnite
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=21
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=13
+P1 discards 1 to hand size
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=24
+P0 casts Memnite
+P1 discards 1 to hand size
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=25
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=15
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=27
+P0 casts Memnite
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=26
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=16
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=28
+P1 discards 1 to hand size
+[P0] new interaction shape rtype=exactChoices spec=None wf=Priority n=29
+exported pre.json
+=== stage -> MAIN ===
+MAIN step0: ActivateAbility not advertised; waiting
+P0 activates Bombardment (sac Memnite 6)
+[P0] new interaction shape rtype=schema spec=sequence wf=TargetSelection n=8
+[P0] Bombardment targets P1
+[P0] new interaction shape rtype=schema spec=select wf=PayCost n=6
+[P0] Bombardment sacrifices Memnite
+P0 passes (bombardment activation resolving)
+=== bombardment activation done -> step 1 (LEG1 cast) ===
+P0 casts LEG1 (Dargo oid 4); untapped_before=15
+[P0] new interaction shape rtype=exactChoices spec=None wf=OptionalCostChoice n=3
+[P0] OptionalCostChoice during LEG1: {"type": "Optional", "data": {"cost": {"type": "Sacrifice", "target": {"type": "Or", "filters": [{"type": "Typed", "type_filters": ["Artifact"], "controller": null, "properties": []}, {"type": "Typed"
+[P0] LEG1: additional cost -> DECLINE
+P0 passes (LEG1 on stack)
+exported post_leg1.json
+LEG1 resolved: spent=7 (before=15 after=8)
+=== -> step 2 (LEG2 cast) ===
+P0 casts LEG2 (Dargo oid 10); untapped_before=8
+[P0] OptionalCostChoice during LEG2: {"type": "Optional", "data": {"cost": {"type": "Sacrifice", "target": {"type": "Or", "filters": [{"type": "Typed", "type_filters": ["Artifact"], "controller": null, "properties": []}, {"type": "Typed"
+[P0] LEG2: additional cost -> PAY
+[P0] new interaction shape rtype=schema spec=number wf=ChooseXValue n=0
+[P0] LEG2: sacrifice count -> 2
+[P0] LEG2: sacrificed 2 permanents
+P0 passes (LEG2 on stack)
+P0 answers ChooseLegend (keep first)
+exported post_leg2.json
+LEG2 resolved: spent=3 (before=8 after=5)
+=== LEG2 done; finishing ===
+A1_setup_ok: passed
+A2_additional_offered: passed
+A3_prior_discount: failed
+A4_additional_discount: failed
+A5_cleanup: passed
