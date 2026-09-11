@@ -1,0 +1,83 @@
+P0 creating game...
+P1 joining...
+game HAQH9Q; seats 0/1
+P0 keeps
+P1 keeps
+P0 plays Forest
+P0 casts Llanowar Elves
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 casts Llanowar Elves
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 casts Llanowar Elves
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 casts Llanowar Elves
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 casts Llanowar Elves
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+P0 discards 1
+P1 discards 1
+P0 plays Forest
+=== stage -> EXPLOIT1 ===
+[P0] exported pre.json
+[P0] EXPLOIT1: casts Sprout Swarm
+[P0] OptionalCostChoice buyback (stage EXPLOIT1)
+[P0] buyback -> pay
+[P0] tapped Llanowar Elves (oid 9) for convoke (Green)
+exported mid_exploit1_tapped.json
+[P0] EXPLOIT1: CancelCast at ManaPayment (dismiss analog)
+exported post_cancel1.json
+[P0] cancel1: CancelCast not offered after cancel (no pending cast)
+=== stage -> EXPLOIT2 ===
+[P0] EXPLOIT2: casts Sprout Swarm
+[P0] OptionalCostChoice buyback (stage EXPLOIT2)
+[P0] buyback -> pay
+[P0] tapped Llanowar Elves (oid 9) for convoke (Green)
+exported mid_exploit2_tapped.json
+[P0] EXPLOIT2: CancelCast at ManaPayment (dismiss analog)
+exported post_cancel2.json
+[P0] cancel2: CancelCast not offered after cancel (no pending cast)
+=== stage -> VARIANT ===
+P0 discards 1
+P1 discards 1
+[P0] VARIANT: casts Sprout Swarm
+[P0] OptionalCostChoice buyback (stage VARIANT)
+[P0] VARIANT: CancelCast at OptionalCostChoice
+exported post_cancel3.json
+[P0] cancel3: CancelCast not offered after cancel (no pending cast)
+=== stage -> CONTROL ===
+P0 plays Forest
+[P0] CONTROL: casts Sprout Swarm
+[P0] OptionalCostChoice buyback (stage CONTROL)
+[P0] buyback -> pay
+[P0] tapped Llanowar Elves (oid 9) for convoke (Green)
+exported post_resolve.json
+CONTROL resolved; finishing
+A1_setup_ok: passed
+A2_buyback_prompted: passed
+A3_convoke_tapped: passed
+A4_cast_aborted: passed
+A5_no_token: passed
+A6_cancel_idempotent: passed
+A7_loop_no_advantage: passed
+A8_dismiss_at_buyback: passed
+A9_control_completes: passed
+WF sequence: ['MulliganDecision', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'OptionalCostChoice', 'ManaPayment', 'Priority', 'DeclareAttackers', 'Priority', 'OptionalCostChoice', 'ManaPayment', 'Priority', 'DiscardToHandSize', 'Priority', 'OptionalCostChoice', 'Priority', 'DeclareAttackers', 'Priority', 'OptionalCostChoice', 'ManaPayment', 'Priority']

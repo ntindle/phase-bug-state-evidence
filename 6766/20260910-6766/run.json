@@ -1,0 +1,70 @@
+{
+  "issue": 6766,
+  "run_id": "20260910-6766",
+  "started_at": "2026-09-11T05:05:09Z",
+  "server": {
+    "server_version": "0.79.0",
+    "build_commit": "1cde7a2",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+    "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+    "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "server_run_dir": "runs/20260910-6766",
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6766.py"
+  },
+  "scenario_sha256": "459b19fc9ca1f481a8edacf40f4f0e862343a56c1c2ec7afafb24980f8631e30",
+  "decks": {
+    "P0": [
+      [
+        "Sprout Swarm",
+        12
+      ],
+      [
+        "Llanowar Elves",
+        12
+      ],
+      [
+        "Forest",
+        36
+      ]
+    ],
+    "P1": [
+      [
+        "Forest",
+        60
+      ]
+    ]
+  },
+  "mulligans": "P0 and P1 kept 7",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_buyback_prompted": "passed",
+    "A3_convoke_tapped": "passed",
+    "A4_cast_aborted": "passed",
+    "A5_no_token": "passed",
+    "A6_cancel_idempotent": "passed",
+    "A7_loop_no_advantage": "passed",
+    "A8_dismiss_at_buyback": "passed",
+    "A9_control_completes": "passed"
+  },
+  "verdict": "not-reproduced",
+  "notes": [
+    "CancelCast is the engine-advertised analog of the reported 'click outside the dialog' dismiss (OptionalCostModal maps outside dismissal to CancelCast; ManaPaymentUI dispatches it).",
+    "Exploit 1+2: pay buyback, tap one Llanowar Elves for convoke, then CancelCast at ManaPayment.",
+    "Variant: CancelCast directly at the buyback OptionalCostChoice.",
+    "Control: full cast through resolution (buyback paid, convoke tap, auto-pay rest) creates exactly one Saproling and returns Sprout Swarm to hand.",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games)."
+  ],
+  "limitations": [
+    "Authoritative exports are point-in-time snapshots; the cancel itself is observed via wire_log.jsonl event sequence (convoke_tap -> CancelCast -> Priority, no token, swarm back in hand)."
+  ]
+}
