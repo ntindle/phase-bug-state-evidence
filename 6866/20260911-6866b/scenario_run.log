@@ -1,0 +1,68 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game JR1ZPS; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+[P1] casts Elf
+[P1] casts Elf
+[P1] casts Elf
+[P1] casts Elf
+[P0] casts Bear
+P1 discards 1: ['Llanowar Elves']
+P1 discards 1: ['Llanowar Elves']
+P1 discards 1: ['Llanowar Elves']
+[P0] casts Delina
+Delina on BF at turn 36
+exported pre.json
+=== stage -> ATTACK (bear_bf=True) ===
+exported pre_attack_36.json
+--- attack turn 36 (#1) ---
+P1 discards 1: ['Llanowar Elves']
+exported pre_attack_38.json
+--- attack turn 38 (#2) ---
+[P0] attacks with Delina 37 (turn 38)
+[P0] Delina trigger targets Grizzly Bears (turn 38)
+turn 38: token delta = 1 (new oids ['122'])
+turn 38: classified LOW (initial_delta=1)
+[P1] blocks: [[88, 122], [92, 37]]
+exported mid_low.json
+=== mid_low exported (turn 38, phase=DeclareBlockers) ===
+exported post_low.json
+turn 38: low-turn token exiled by PostCombatMain: False
+[P1] casts Elf
+[P1] casts Elf
+exported pre_attack_40.json
+--- attack turn 40 (#3) ---
+[P0] attacks with Delina 37 (turn 40)
+[P0] Delina trigger targets Grizzly Bears (turn 40)
+[P0] OptionalEffectChoice (turn 40, is_reroll=False): [('JR1ZPS.0.662.c0', 'false', ''), ('JR1ZPS.0.662.c1', 'true', '')]
+[P0] OptionalEffectChoice ACCEPTED (turn 40, is_reroll=False, choice JR1ZPS.0.662.c1)
+turn 40: token delta = 0 (new oids [])
+turn 40: classified HIGH (initial_delta=0, prompt=no)
+exported mid_high.json
+=== mid_high exported (turn 40, wf=OptionalEffectChoice, phase=DeclareAttackers) ===
+[P1] blocks: [[64, 37]]
+exported post_high.json
+=== both branches observed; DONE ===
+copied pre_low.json (turn 38)
+copied pre_high.json (turn 40)
+NOTE: attack turns: [36, 38, 40]
+NOTE: target answers: [(38, 'Grizzly Bears'), (40, 'Grizzly Bears')]
+NOTE: token deltas: {38: 1, 40: 0}
+NOTE: low_turn=38 high_turn=40
+NOTE: reroll prompts: []
+NOTE: reroll answers: [(40, '', 'true')]
+NOTE: tokens_at_reroll: {}
+NOTE: exile_check={38: False}
+NOTE: WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'DeclareBlockers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'OptionalEffectChoice', 'Priority', 'DeclareBlockers', 'Priority']
+NOTE: P0 casts: [(4, 'Grizzly Bears'), (36, 'Delina, Wild Mage')]
+NOTE: stage at end: DONE
+assertions: {"A1_setup_ok": "passed", "A2_trigger_fires": "passed", "A3_low_branch_token": "passed", "A4_high_branch_observed": "passed", "A5_reroll_offered": "failed", "A6_reroll_works": "not-run", "A7_exile_ok": "failed"}
+ANOTE: A1: phase=PreCombatMain active=0 delina_bf=True bear_bf=True life=[(0, 20), (1, 20)]
+ANOTE: A2: target answers=[[38, 'Grizzly Bears'], [40, 'Grizzly Bears']]
+ANOTE: A3: low_turn=38 new_oids=['122'] token={'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'supertypes': [], 'zone': 'Battlefield'} checks=[True, True, True, True, True]
+ANOTE: A4: high_turn=40 trigger_seen=True tokens_at_reroll={} final_deltas={38: 1, 40: 0}
+ANOTE: A5: reroll prompts on high turn 40: [] (all prompts: [])
+ANOTE: A6: reroll answers on high turn: [[40, '', 'true']]; final token delta=0; prompts on turn=0
+ANOTE: A7: exile_check={'38': False} (token gone by PostCombatMain on low turns)

@@ -1,0 +1,45 @@
+2026-09-11T20:13:30.726254Z phase_server: server mode selected mode=Full
+2026-09-11T20:13:30.726404Z phase_server: admission limits resolved max_connections=200 max_games=100 replica_ordinal=None
+2026-09-11T20:13:42.398362Z phase_server: card database loaded cards=35849
+2026-09-11T20:13:42.674921Z phase_server::persistence: Game database opened at /home/hatch/workspace/dev/phase-backfill/runs/run-20260911-6866b/games.db
+2026-09-11T20:13:43.063032Z phase_server: draft pools loaded sets=173
+2026-09-11T20:13:43.063344Z phase_server: admin HTTP endpoints disabled (set PHASE_ADMIN_TOKEN to enable)
+2026-09-11T20:13:43.063679Z phase_server: phase-server listening bind=127.0.0.1 port=9374
+
+## game JR1ZPS session
+2026-09-11T20:14:13.959534Z ws_message: server_core::session: game session created game=JR1ZPS player_count=2
+2026-09-11T20:14:13.978781Z ws_message: phase_server: game created via lobby game=JR1ZPS host=P0 players=2
+2026-09-11T20:14:14.067592Z ws_message: phase_server: JoinGameWithPassword game=JR1ZPS joiner=P1
+2026-09-11T20:14:14.067781Z ws_message: server_core::session: player joined session game=JR1ZPS player=PlayerId(1) seat=1
+
+## Delina attack turn 38: DeclareAttackers, ChooseTarget (trigger target = Grizzly Bears), resolution
+2026-09-11T20:16:49.360004Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=36 ai_actions=0
+2026-09-11T20:16:49.580838Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: server_core::session: action applied game=JR1ZPS player=PlayerId(1) action_type="PassPriority" event_count=1
+2026-09-11T20:16:49.618236Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=41 ai_actions=0
+2026-09-11T20:16:49.839961Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="DeclareAttackers" event_count=3
+2026-09-11T20:16:49.846049Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=16 ai_actions=0
+2026-09-11T20:16:50.101406Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: interaction applied game=JR1ZPS player=PlayerId(0) action_type="ChooseTarget" event_count=1
+2026-09-11T20:16:50.104491Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="interaction" lock_ms=22 ai_actions=0
+2026-09-11T20:16:50.341871Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="PassPriority" event_count=1
+
+## Delina attack turn 40: DeclareAttackers, ChooseTarget, then empty-texted DecideOptionalEffect (answered 'true'; no reroll followed)
+2026-09-11T20:17:02.883130Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="PassPriority" event_count=1
+2026-09-11T20:17:02.908067Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=33 ai_actions=0
+2026-09-11T20:17:03.130638Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: server_core::session: action applied game=JR1ZPS player=PlayerId(1) action_type="PassPriority" event_count=1
+2026-09-11T20:17:03.179178Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=52 ai_actions=0
+2026-09-11T20:17:03.390710Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="DeclareAttackers" event_count=3
+2026-09-11T20:17:03.391277Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=11 ai_actions=0
+2026-09-11T20:17:03.653779Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: interaction applied game=JR1ZPS player=PlayerId(0) action_type="ChooseTarget" event_count=1
+2026-09-11T20:17:03.656832Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="interaction" lock_ms=24 ai_actions=0
+2026-09-11T20:17:03.893742Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="PassPriority" event_count=1
+2026-09-11T20:17:03.919687Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=34 ai_actions=0
+2026-09-11T20:17:04.141167Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: server_core::session: action applied game=JR1ZPS player=PlayerId(1) action_type="PassPriority" event_count=2
+2026-09-11T20:17:04.157726Z ws_message:game_session{game=JR1ZPS player=PlayerId(1)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=20 ai_actions=0
+2026-09-11T20:17:04.425204Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: interaction applied game=JR1ZPS player=PlayerId(0) action_type="DecideOptionalEffect" event_count=1
+2026-09-11T20:17:04.468447Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="interaction" lock_ms=78 ai_actions=0
+2026-09-11T20:17:04.908787Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: server_core::session: action applied game=JR1ZPS player=PlayerId(0) action_type="PassPriority" event_count=1
+2026-09-11T20:17:04.936341Z ws_message:game_session{game=JR1ZPS player=PlayerId(0)}: phase_server: game submission processed (lock held) game=JR1ZPS kind="action" lock_ms=36 ai_actions=0
+
+## end of run
+2026-09-11T20:17:07.386284Z phase_server: client disconnected game=Some("JR1ZPS") player=Some(PlayerId(1))
+2026-09-11T20:17:07.386318Z server_core::session: player disconnected game=JR1ZPS player=PlayerId(1)

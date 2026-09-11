@@ -1,0 +1,20 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_low_branch_token": "passed",
+    "A4_high_branch_observed": "passed",
+    "A5_reroll_offered": "failed",
+    "A6_reroll_works": "not-run",
+    "A7_exile_ok": "failed"
+  },
+  "notes": [
+    "A1: phase=PreCombatMain active=0 delina_bf=True bear_bf=True life=[(0, 20), (1, 20)]",
+    "A2: target answers=[[38, 'Grizzly Bears'], [40, 'Grizzly Bears']]",
+    "A3: low_turn=38 new_oids=['122'] token={'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'supertypes': [], 'zone': 'Battlefield'} checks=[True, True, True, True, True]",
+    "A4: high_turn=40 trigger_seen=True tokens_at_reroll={} final_deltas={38: 1, 40: 0}",
+    "A5: reroll prompts on high turn 40: [] (all prompts: [])",
+    "A6: reroll answers on high turn: [[40, '', 'true']]; final token delta=0; prompts on turn=0",
+    "A7: exile_check={'38': False} (token gone by PostCombatMain on low turns)"
+  ]
+}
