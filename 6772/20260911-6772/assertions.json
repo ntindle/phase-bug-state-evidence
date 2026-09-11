@@ -1,0 +1,116 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_transform_resolved": "passed",
+    "A3_extra_turn_next": "failed",
+    "A4_extra_turn_taken": "failed",
+    "A5_single_extra": "failed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "pre_transform: end_phase=True frontface_bf=True gy=11 (need>=8) islands=4 swamps=4 (need>=4 each) turn=15",
+    "Omnipotent face observed on battlefield: True",
+    "turn sequence: [(1, 0), (2, 1), (3, 0), (4, 1), (5, 0), (6, 1), (7, 0), (8, 1), (9, 0), (10, 1), (11, 0), (12, 1), (13, 0), (14, 1), (15, 0), (16, 1), (17, 0)]; active(T+1)=1",
+    "P0 main phase observed on turn T+1: False",
+    "active(T+2)=0 (expect 1)",
+    "post_extra_turn: turn=17 active=0 phase=Upkeep stack_empty=True"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "SurveilChoice",
+    "Priority",
+    "SurveilChoice",
+    "Priority",
+    "OptionalEffectChoice",
+    "Priority",
+    "SurveilChoice",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "OptionalEffectChoice",
+    "Priority",
+    "SurveilChoice",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "OptionalEffectChoice",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "OptionalEffectChoice",
+    "EffectZoneChoice",
+    "Priority"
+  ],
+  "turn_sequence": [
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      5,
+      0
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      7,
+      0
+    ],
+    [
+      8,
+      1
+    ],
+    [
+      9,
+      0
+    ],
+    [
+      10,
+      1
+    ],
+    [
+      11,
+      0
+    ],
+    [
+      12,
+      1
+    ],
+    [
+      13,
+      0
+    ],
+    [
+      14,
+      1
+    ],
+    [
+      15,
+      0
+    ],
+    [
+      16,
+      1
+    ],
+    [
+      17,
+      0
+    ]
+  ],
+  "transform_turn": 15
+}

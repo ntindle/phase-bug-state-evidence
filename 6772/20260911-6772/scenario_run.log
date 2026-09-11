@@ -1,0 +1,31 @@
+P0 creating game...
+P1 joining...
+game T9QWTI; seats 0/1
+[P0] keeps
+[P0] surveil -> mill 3
+[P0] casts Ultimecia, Time Sorceress
+[P0] surveil -> mill 2
+[P0] optional transform -> DECLINE (T9QWTI.0.147.c0)
+[P0] declined transform (not ready yet)
+[P0] surveil -> mill 3
+[P0] optional transform -> DECLINE (T9QWTI.0.185.c0)
+[P0] declined transform (not ready yet)
+[P0] surveil -> keep on top
+[P0] optional transform -> DECLINE (T9QWTI.0.223.c0)
+[P0] declined transform (not ready yet)
+exported pre_transform.json
+[pre] exported turn 15 gy=11
+[P0] optional transform -> ACCEPT (T9QWTI.0.257.c1)
+[P0] exile 8 from graveyard (schema select)
+[observed] Ultimecia, Omnipotent on battlefield (turn 15)
+exported post_extra_turn.json
+[post] exported turn 17 active=0
+A1_setup_ok: passed
+A2_transform_resolved: passed
+A3_extra_turn_next: failed
+A4_extra_turn_taken: failed
+A5_single_extra: failed
+A6_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'SurveilChoice', 'Priority', 'SurveilChoice', 'Priority', 'OptionalEffectChoice', 'Priority', 'SurveilChoice', 'Priority', 'DeclareAttackers', 'Priority', 'OptionalEffectChoice', 'Priority', 'SurveilChoice', 'Priority', 'DeclareAttackers', 'Priority', 'OptionalEffectChoice', 'Priority', 'DeclareAttackers', 'Priority', 'OptionalEffectChoice', 'EffectZoneChoice', 'Priority']
+Turn sequence: [(1, 0), (2, 1), (3, 0), (4, 1), (5, 0), (6, 1), (7, 0), (8, 1), (9, 0), (10, 1), (11, 0), (12, 1), (13, 0), (14, 1), (15, 0), (16, 1), (17, 0)]
+verdict: reproduced
