@@ -1,0 +1,33 @@
+{
+  "prefix_gate_step": {
+    "cmd": "(touch gate_ran.marker; echo '{\"win_rate\":0.9}') > target/ai-gate-report.md",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "bash: line 1: target/ai-gate-report.md: No such file or directory\n",
+    "note": "pre-fix step semantics (no mkdir first)"
+  },
+  "prefix_drift_step": {
+    "cmd": "body=\"$(cat target/ai-gate-report.md)\"; echo \"$body\"",
+    "exit": 1,
+    "stdout": "",
+    "stderr": "cat: target/ai-gate-report.md: No such file or directory\n",
+    "note": "pre-fix drift-issue step semantics"
+  },
+  "fixed_step": {
+    "cmd": "mkdir -p target; (touch gate_ran.marker; echo '{\"win_rate\":0.9}') > target/ai-gate-report.md; body=\"$(cat target/ai-gate-report.md)\"; echo \"drift body: $body\"",
+    "exit": 0,
+    "stdout": "drift body: {\"win_rate\":0.9}\n",
+    "stderr": "",
+    "note": "current semantics: mkdir -p target before redirect"
+  },
+  "latest_nightly_main": {
+    "run": "https://github.com/phase-rs/phase/actions/runs/34481533393",
+    "run_conclusion": "failure",
+    "job": "Nightly AI gate drift monitor",
+    "job_conclusion": "failure",
+    "step": "Run full AI gate",
+    "step_conclusion": "cancelled",
+    "step_duration_s": 11440.0,
+    "note": "a redirect failure would end the step in seconds with conclusion failure"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "sandbox_prefix": {
+    "target_exists": false,
+    "gate_marker": false,
+    "report": false
+  },
+  "sandbox_fixed": {
+    "target_exists": true,
+    "gate_marker": true,
+    "report_bytes": 17
+  },
+  "workflow": {
+    "file": ".github/workflows/ai-gate.yml",
+    "ref": "main",
+    "content_sha": "390fd3c5de11438d139836cf971e918e092ab234"
+  },
+  "fix_commit": {
+    "sha": "56509356",
+    "message": "ci(ai-gate): create target/ before redirecting the nightly reports (#6815)",
+    "date": "2026-07-30T17:19:08Z"
+  },
+  "latest_nightly_main": {
+    "run": "https://github.com/phase-rs/phase/actions/runs/34481533393",
+    "run_conclusion": "failure",
+    "job": "Nightly AI gate drift monitor",
+    "job_conclusion": "failure",
+    "step": "Run full AI gate",
+    "step_conclusion": "cancelled",
+    "step_duration_s": 11440.0,
+    "note": "a redirect failure would end the step in seconds with conclusion failure"
+  }
+}

@@ -1,0 +1,8 @@
+evidence dir: /home/hatch/workspace/dev/phase-backfill/evidence/6816/20260911-6816
+run_id=20260911-6816 issue=6816
+A1_setup_ok: PASSED - sandbox_prefix/ has no target/ dir (cache-hit simulation)
+A2_prefix_redirect_fails: PASSED - exit=1, stderr='bash: line 1: target/ai-gate-report.md: No such file or directory', gate_ran.marker=absent (gate never ran), report=absent
+A3_prefix_drift_step_fails: PASSED - exit=1, stderr='cat: target/ai-gate-report.md: No such file or directory'
+A4_fixed_semantics_gate_runs: PASSED - exit=0, gate_ran.marker=present, report=non-empty
+A5_workflow_has_mkdir: PASSED - ai-gate.yml@390fd3c5: mkdir guards ai-gate redirect=True, perf redirect=True
+A6_nightly_gate_executes: PASSED - main run 34481533393: 'Run full AI gate' ran 3.2h, conclusion=cancelled (redirect did not fail instantly)

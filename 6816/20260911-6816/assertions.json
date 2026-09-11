@@ -1,0 +1,38 @@
+[
+  {
+    "id": "A1_setup_ok",
+    "status": "passed",
+    "observed": "sandbox_prefix/ has no target/ dir (cache-hit simulation)",
+    "expected": "sandbox pre-state with target/ absent, like a cache-hit job"
+  },
+  {
+    "id": "A2_prefix_redirect_fails",
+    "status": "passed",
+    "observed": "exit=1, stderr='bash: line 1: target/ai-gate-report.md: No such file or directory', gate_ran.marker=absent (gate never ran), report=absent",
+    "expected": "exit 1, 'No such file or directory', gate marker absent (gate never ran), report absent"
+  },
+  {
+    "id": "A3_prefix_drift_step_fails",
+    "status": "passed",
+    "observed": "exit=1, stderr='cat: target/ai-gate-report.md: No such file or directory'",
+    "expected": "exit 1: cat of the never-created report fails under bash -e (no drift issue filed)"
+  },
+  {
+    "id": "A4_fixed_semantics_gate_runs",
+    "status": "passed",
+    "observed": "exit=0, gate_ran.marker=present, report=non-empty",
+    "expected": "exit 0, gate marker present (gate ran), report written non-empty"
+  },
+  {
+    "id": "A5_workflow_has_mkdir",
+    "status": "passed",
+    "observed": "ai-gate.yml@390fd3c5: mkdir guards ai-gate redirect=True, perf redirect=True",
+    "expected": "mkdir -p target immediately before both gate redirects on main"
+  },
+  {
+    "id": "A6_nightly_gate_executes",
+    "status": "passed",
+    "observed": "main run 34481533393: 'Run full AI gate' ran 3.2h, conclusion=cancelled (redirect did not fail instantly)",
+    "expected": "gate step runs long (binary executes); no instant redirect failure"
+  }
+]

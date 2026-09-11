@@ -1,0 +1,12 @@
+# ai-gate.yml @ main, content sha 390fd3c5de11438d139836cf971e918e092ab234
+# lines mentioning target/, mkdir, or the gate report redirects
+87:           # bash opens the redirect before cargo runs, so `target/` has to exist
+91:           mkdir -p target
+92:           cargo ai-gate --full-suite --games 10 --seed 10573729 --difficulty medium > target/ai-gate-report.md
+100:           if [ ! -s target/ai-gate-report.md ]; then
+104:           body="$(cat target/ai-gate-report.md)"
+185:           # bash opens the redirect before cargo runs, so `target/` has to exist
+189:           mkdir -p target
+190:           cargo ai-perf-gate > target/ai-perf-gate-report.md
+198:           if [ ! -s target/ai-perf-gate-report.md ]; then
+202:           body="$(cat target/ai-perf-gate-report.md)"
