@@ -1,0 +1,96 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_granted_exposed": "failed",
+    "A3_activation_completes": "not-run",
+    "A4_control_recorded": "not-run",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: attached=True yargle=10/4 main=True",
+    "A2: advertised_indices=[] obj_desc_match=True not_offered=True",
+    "A3 not-run: granted ability never exposed",
+    "A4: markers=[('post.json', 'ControlNextTurn')] p0_decides_for_p1=False control_snaps=0",
+    "A5: stack_empty=True game_over=False",
+    "A4 corrected post-run: the run-time marker search matched 'ControlNextTurn' inside the static granted-ability definition on Yargle's object (present in pre_grant.json too), not an effect registration. scheduled_turn_controls is [] in pre and post. Since the granted ability was never exposed (A2 failed) no activation occurred, so A4 is not-run.",
+    "A3 not-run: no ActivateAbility was ever advertised for the equipped Yargle, so there was no activation to complete; bracelet stayed attached on the battlefield."
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "observations": {
+    "pre_exported": {
+      "at": 1789163807.6138182,
+      "turn": 14,
+      "untapped_swamps": 7
+    },
+    "grant_probe": {
+      "at": 1789163812.6255956,
+      "turn": 14,
+      "advertised_indices": [],
+      "object_ability_descriptions": [
+        "{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to ac"
+      ],
+      "object_ability_kinds": [
+        "Activated"
+      ]
+    },
+    "grant_not_offered": {
+      "at": 1789163812.6255999,
+      "turn": 14,
+      "all_action_types": [
+        "ActivateAbility",
+        "CastSpell",
+        "PassPriority"
+      ],
+      "object_ability_descriptions": [
+        "{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to ac"
+      ]
+    }
+  },
+  "ids": {
+    "grant_ability": null
+  },
+  "act": {
+    "equip": {
+      "at": 1789163798.9904788,
+      "turn": 12
+    },
+    "equip_targeted": {
+      "at": 1789163799.7522178,
+      "auto": true,
+      "ref": "12"
+    }
+  },
+  "seen_turns": {
+    "yargle": 10,
+    "attached": 12
+  }
+}
