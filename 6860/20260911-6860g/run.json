@@ -1,0 +1,88 @@
+{
+  "issue": 6860,
+  "run_id": "20260911-6860g",
+  "started_at": "2026-09-11T14:03:16Z",
+  "server": {
+    "server_version": "0.79.0",
+    "build_commit": "1cde7a2",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+    "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+    "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "server_run_dir": "runs/20260911-6860e",
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6860.py"
+  },
+  "scenario_sha256": "3389426115a6af7cd35604351e1f4e73449e1c146625a98d351cac58cf7bebad",
+  "decks": {
+    "P0": [
+      [
+        "Dargo, the Shipwrecker",
+        8
+      ],
+      [
+        "Memnite",
+        8
+      ],
+      [
+        "Goblin Bombardment",
+        4
+      ],
+      [
+        "Mountain",
+        40
+      ]
+    ],
+    "P1": [
+      [
+        "Mountain",
+        60
+      ]
+    ]
+  },
+  "mulligans": "P0 kept with Dargo (<=2 mulligans); P1 kept 7",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_additional_offered": "passed",
+    "A3_prior_discount": "failed",
+    "A4_additional_discount": "failed",
+    "A5_cleanup": "passed"
+  },
+  "legs": {
+    "LEG1": {
+      "untapped_before": 15,
+      "pool_before": 0,
+      "untapped_after": 8,
+      "pool_after": 0,
+      "spent": 7
+    },
+    "LEG2": {
+      "untapped_before": 8,
+      "pool_before": 0,
+      "untapped_after": 5,
+      "pool_after": 0,
+      "spent": 3
+    }
+  },
+  "verdict": "reproduced",
+  "notes": [
+    "Pinned v0.79.0 card data prices Dargo, the Shipwrecker at {6}{R} (generic 6 + one Red shard).",
+    "LEG1: Goblin Bombardment activation sacrificed one Memnite earlier the same turn (1 damage to P1), then Dargo#1 was cast DECLINING the optional additional cost. Oracle cost: {6}{R} - {2} = 5 mana.",
+    "LEG2: Dargo#2 was cast PAYING the additional cost with two Memnites (same turn as the Bombardment sacrifice). Oracle cost: {6}{R} - {2} (prior) - {4} (additional) = 1 mana.",
+    "Mana spent is measured as the delta of untapped Mountains (engine auto-taps on protocol 69); mana pool was empty at each measurement.",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+    "Server for this run was the still-running v0.79.0 instance started under runs/20260911-6860e/ (identical pinned binary + card data; game code 6G19QF)."
+  ],
+  "limitations": [
+    "Authoritative exports are point-in-time snapshots; the announcement decisions are observed via wire_log.jsonl event sequence.",
+    "Browser UI not exercised."
+  ]
+}
