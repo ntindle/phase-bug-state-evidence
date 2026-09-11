@@ -1,0 +1,27 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game J2B61B; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 casts Yargle, Glutton of Urborg
+Yargle on BF turn 10
+P0 casts The Dominion Bracelet
+[P0] equip options: 1
+P0 activates Equip {1}
+[P0] equip auto-targeted Yargle (no prompt)
+Bracelet attached to Yargle turn 12
+=== stage -> PROOF ===
+exported pre_grant.json
+[P0] pre_grant exported (turn 14); Yargle oid=12
+[P0] grant probe: advertised ActivateAbility indices on Yargle = []; object abilities = 1
+    obj ability: {15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability 
+[P0] granted ability NOT advertised on equipped Yargle
+granted ability never offered after 90s; exporting post (captured failure)
+exported post.json
+A1_setup_ok: passed
+A2_granted_exposed: failed
+A3_activation_completes: not-run
+A4_control_recorded: passed
+A5_cleanup: passed
+verdict: reproduced
