@@ -1,0 +1,27 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game YLK56T; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+state top-level keys: ['active_player', 'all_creature_types', 'allows_cancel_cast', 'alt_cost_grant_permissions_used', 'attacked_defenders_this_turn', 'attacking_creatures_this_turn', 'battlefield', 'cancelled_casts', 'cards_discarded_this_turn_by_player', 'combat', 'combat_phase_skip_next_turn', 'command_zone', 'commander_cast_count', 'commander_damage', 'creature_attacked_defenders_this_turn', 'creatures_attacked_this_turn', 'creatures_blocked_this_turn', 'crew_activated_this_turn', 'crew_resolved_this_turn', 'current_combat_attacker_restriction', 'current_combat_attacker_restriction_source', 'current_starting_player', 'damage_dealt_this_turn', 'day_night', 'debug_mode', 'debug_permitted', 'deck_pools', 'delayed_triggers', 'eliminated_players', 'exerted_this_turn', 'exile', 'exile_cast_permissions_used', 'exile_links', 'exile_play_permissions_used', 'exile_play_single_use_consumed', 'extra_loyalty_activations_this_turn', 'extra_phase_resume', 'extra_phases', 'extra_turn_sequence_anchor', 'extra_turns', 'format_config', 'game_number', 'graveyard_cast_permissions_used', 'graveyard_cast_permissions_used_per_type', 'hand_cast_free_permissions_used', 'has_pending_cast', 'lands_played_this_turn', 'lands_played_this_turn_by_player', 'last_vote_ballots', 'loop_detection', 'loyalty_abilities_activated_this_turn', 'mana_spent_on_spells_this_turn', 'match_config', 'match_phase', 'match_score', 'max_lands_per_turn', 'modal_modes_chosen_this_game', 'modal_modes_chosen_this_turn', 'next_continuous_effect_id', 'next_delayed_trigger_instance', 'next_delayed_trigger_token', 'next_end_effect_group_id', 'next_game_chooser', 'next_logical_zone_change_group_id', 'next_object_id', 'next_pip_id', 'next_resolve_all_consent_epoch', 'next_timestamp', 'next_tracked_set_id', 'objects', 'pending_replacement', 'pending_trigger', 'phase', 'players', 'players_attacked_this_step', 'players_attacked_this_turn', 'players_who_created_token_this_turn', 'players_who_discarded_card_this_turn', 'players_who_sacrificed_artifact_this_turn', 'players_who_searched_library_this_turn', 'priority_pass_count', 'priority_passes', 'priority_player', 'public_revealed_cards', 'resolved_rules_journal', 'revealed_cards', 'ring_bearer', 'ring_level', 'rng_seed', 'rng_word_pos', 'scheduled_turn_controls', 'seat_order', 'sideboard_submitted', 'spells_cast_last_turn', 'spells_cast_this_game', 'spells_cast_this_game_by_player', 'spells_cast_this_turn', 'spells_cast_this_turn_by_player', 'stack', 'steps_to_skip', 'top_of_library_cast_permissions_used', 'tracked_object_sets', 'transient_continuous_effects', 'triggers_fired_this_game', 'triggers_fired_this_turn', 'triggers_fired_this_turn_per_opponent', 'turn_direction', 'turn_number', 'turns_to_skip', 'viewer_projection', 'waiting_for', 'zone_changes_this_turn']
+[P1] casts Grizzly Bears
+[P1] casts Grizzly Bears
+[P1] casts Giant Spider
+exported pre.json
+=== stage -> PROOF (turn 22) bear=62 spider=88 ===
+[P0] casts Lightning Bolt (oid 15)
+[P0] burn target prompt: [('', 0), ('', 1), ('Grizzly Bears', None), ('Grizzly Bears', None), ('Giant Spider', None)] -> P1
+[P0] burn targets P1 (seat 1)
+[P0] casts Volcanic Hammer (oid 60)
+[P0] burn target prompt: [('', 0), ('', 1), ('Grizzly Bears', None), ('Grizzly Bears', None), ('Giant Spider', None)] -> P1
+[P0] burn targets P1 (seat 1)
+[P0] casts Call Forth the Tempest (oid 45)
+exported mid_tempest_on_stack.json
+=== Tempest on stack (oid 45); mid exported ===
+exported post.json
+=== all three resolved; post.json exported; DONE ===
+NOTE: WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority', 'TargetSelection', 'Priority']
+NOTE: P0 casts: [(22, 'Lightning Bolt'), (22, 'Volcanic Hammer'), (22, 'Call Forth the Tempest')]
+NOTE: cascade declines: 0
+NOTE: stage at end: DONE

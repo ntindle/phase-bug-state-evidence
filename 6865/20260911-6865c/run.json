@@ -1,0 +1,91 @@
+{
+  "issue": 6865,
+  "run_id": "20260911-6865c",
+  "started_at": "2026-09-11T18:43:00Z",
+  "server": {
+    "server_version": "0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6865.py"
+  },
+  "scenario_sha256": "bf91743765a15b3c408ec23e671c43458ef897793f60cb44f9a6bf9837bcab77",
+  "decks": {
+    "P0": [
+      [
+        "Mountain",
+        36
+      ],
+      [
+        "Lightning Bolt",
+        10
+      ],
+      [
+        "Volcanic Hammer",
+        10
+      ],
+      [
+        "Call Forth the Tempest",
+        4
+      ]
+    ],
+    "P1": [
+      [
+        "Forest",
+        40
+      ],
+      [
+        "Grizzly Bears",
+        12
+      ],
+      [
+        "Giant Spider",
+        12
+      ]
+    ]
+  },
+  "setup_line": "P0 holds Bolt+Hammer+Tempest with 11 untapped Mountains; P1 has Grizzly Bears (2/2) + Giant Spider (2/4) on BF",
+  "contract_line": "Cast Bolt (MV1) + Hammer (MV2) + Tempest back-to-back on the same turn (no priority pass between casts); decline cascade may-casts if offered; on resolution each P1 creature takes 3 (total MV of other spells cast this turn) -> Bear destroyed, Spider survives with 3 marked",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_precast_ok": "passed",
+    "A3_journal_ok": "passed",
+    "A4_bear_dies": "passed",
+    "A5_spider_3": "passed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "A1: phase=PreCombatMain active=0 untapped_mountains=11 bear=True spider=True life=20/20",
+    "A2: P1 life pre->post: 20->14; P0 gy has Bolt=True Hammer=True",
+    "A3: spells_cast_this_turn_by_player={'0': [{'cast_variant': 'Normal', 'colors': ['Red'], 'core_types': ['Instant'], 'from_zone': 'Hand', 'keywords': [], 'mana_value': 1, 'name': 'Lightning Bolt', 'spell_object_id': 15, 'subtypes': [], 'supertypes': []}, {'cast_variant': 'Normal', 'colors': ['Red'], 'core_types': ['Sorcery'], 'from_zone': 'Hand', 'keywords': [], 'mana_value': 2, 'name': 'Volcanic Hammer', 'spell_object_id': 60, 'subtypes': [], 'supertypes': []}, {'cast_variant': 'Normal', 'colors': ['Red'], 'core_types': ['Sorcery'], 'from_zone': 'Hand', 'keywords': ['Cascade', 'Cascade'], 'mana_value': 8, 'name': 'Call Forth the Tempest', 'spell_object_id': 45, 'subtypes': [], 'supertypes': []}]}; P0 cast log=[[22, 'Lightning Bolt'], [22, 'Volcanic Hammer'], [22, 'Call Forth the Tempest']] (all on turn 22: True)",
+    "A4: bear oid=62 zone=Graveyard (expect Graveyard)",
+    "A5: spider oid=88 zone=Battlefield damage=3 (expect Battlefield/3); spider keys=['abilities', 'assigns_damage_as_though_unblocked', 'assigns_damage_from_toughness', 'assigns_no_combat_damage', 'attached_to', 'attachments', 'available_mana_pips', 'back_face', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_defense', 'base_keywords', 'base_loyalty', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_replacement_definitions', 'base_static_definitions', 'base_toughness', 'base_trigger_definitions', 'card_id', 'card_types', 'cast_controller', 'cast_face_committed', 'cast_from_zone', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'echo_due', 'entered_battlefield_turn', 'face_down', 'flipped', 'foretold', 'harnessed', 'has_mana_ability', 'has_summoning_sickness', 'id', 'in_attraction_deck', 'in_contraption_deck', 'incarnation', 'intensity', 'is_commander', 'is_emblem', 'is_renowned', 'is_saddled', 'is_suspected', 'is_token', 'keywords', 'layer_base_power', 'layer_base_toughness', 'loyalty', 'loyalty_activations_this_turn', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast', 'mana_spent_to_cast_amount', 'modal_back_face', 'monstrous', 'name', 'next_trigger_base_set_instance', 'owner', 'phase_status', 'power', 'printed_ref', 'replacement_definitions', 'saddled_by', 'static_definitions', 'summoning_sick', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_base_set_instance', 'trigger_definitions', 'trigger_occurrence_state', 'zone']",
+    "A6: Tempest in P0 gy=True; stack=[]; P1 life=14; stage=DONE",
+    "cascade: stack at mid=['DamageAll', 'Cascade', 'Cascade']; may-choice prompts observed=0; declines=0; P0 exile pre->post: 0->0",
+    "Pinned v0.80.0 card-data parses the damage clause as DamageAll(amount=Ref(PropertyAggregate(Sum, ManaValue, TurnJournal(SpellsCast, Controller, OtherThanTriggerObject)))); the Aug-2026 classifier gap (unsupported_aspect) appears closed in the parser. This run tests whether the engine resolves it.",
+    "Expected damage total: 1 (Bolt) + 2 (Hammer) = 3; Tempest itself (MV8) must be excluded as 'other spells'."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay).",
+    "Cascade free-cast branches were declined, not accepted; the accept-branch outcome was not exercised.",
+    "Only red MV1+MV2 pre-cast spells were used; the total was 3."
+  ],
+  "stats": {
+    "states_seen": "n/a",
+    "cascade_may_prompts": 0
+  },
+  "verdict": "not-reproduced"
+}
