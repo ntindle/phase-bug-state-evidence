@@ -1,0 +1,95 @@
+{
+  "issue": 6864,
+  "run_id": "20260911-6864b",
+  "started_at": "2026-09-11T18:30:00Z",
+  "server": {
+    "server_version": "0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6864.py"
+  },
+  "scenario_sha256": "26e28e4d2ce025a1845178787dc43334df1d5c14281cab6ffd2bd8da5112c536",
+  "decks": {
+    "P0": [
+      [
+        "Zariel, Archduke of Avernus",
+        8
+      ],
+      [
+        "Grizzly Bears",
+        12
+      ],
+      [
+        "Mountain",
+        20
+      ],
+      [
+        "Forest",
+        20
+      ]
+    ],
+    "P1": [
+      [
+        "Forest",
+        15
+      ],
+      [
+        "Plains",
+        15
+      ],
+      [
+        "Island",
+        15
+      ],
+      [
+        "Swamp",
+        15
+      ]
+    ]
+  },
+  "setup_line": "P0: Zariel, Archduke of Avernus + Grizzly Bears on BF; +1 x2 to loyalty 6, then -6 on turn 14",
+  "contract_line": "-6 must create the emblem; at end of first combat its trigger must offer 'target creature you control' to untap, then an additional combat follows",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_loyalty_paid": "passed",
+    "A3_emblem_created": "failed",
+    "A4_target_prompt": "failed",
+    "A5_untap_resolves": "failed",
+    "A6_additional_combat": "passed"
+  },
+  "notes": [
+    "A2: P0 Zariel zones post-ult: ['Graveyard', 'Hand', 'Library']",
+    "A3: emblem objects post-ult=[]; post-combat=[]; command_zone=[]",
+    "A4: TargetSelection prompt events for P0: 0",
+    "A5: no emblem prompt answered; P0 Bears on BF=['31'], tapped=['31'] (attacker never untapped)",
+    "A6: combat_phases_started trace=[[1, 1], [14, 2]]; turn-14 combat phases=[2]",
+    "A6: turn-14 phase sequence: ['Upkeep', 'Draw', 'PreCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'BeginCombat', 'EndCombat', 'PostCombatMain']",
+    "Zariel loyalty trace (turn, loyalty): [[10, 4], [10, 5], [12, 6]]",
+    "The collapsed AdditionalPhase AST still inserted the extra combat (turn-14 phases: ... EndCombat, BeginCombat, EndCombat ...; combat_phases_started_this_turn=2), but with no emblem there was no trigger, no target choice, and no untap.",
+    "Pre-ult export shows Zariel at loyalty 6 on the battlefield; post-ult export shows Zariel in the graveyard (loyalty cost paid)."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay).",
+    "Only the -6 loyalty ability was exercised (+1 used for loyalty setup, 0 untouched).",
+    "Emblem scan is heuristic: is_emblem flag, name/subtype containing 'Emblem'; command_zone was empty in all exports."
+  ],
+  "stats": {
+    "states_seen": "n/a",
+    "trigger_observations": 0
+  },
+  "verdict": "reproduced"
+}

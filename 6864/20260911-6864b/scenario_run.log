@@ -1,0 +1,41 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game 0H0KLJ; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Mulligan
+P1 mulligan -> Keep
+P1 bottoms 1
+P0 casts Grizzly Bears
+P0 casts Zariel, Archduke of Avernus
+[watch] Zariel loyalty=4 (turn 10)
+=== stage -> LOYAL1 ===
+[P0] Zariel object keys: ['abilities', 'assigns_damage_as_though_unblocked', 'assigns_damage_from_toughness', 'assigns_no_combat_damage', 'attached_to', 'attachments', 'available_mana_pips', 'back_face', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_defense', 'base_keywords', 'base_loyalty', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_loyalty', 'base_printed_ref', 'base_replacement_definitions', 'base_static_definitions', 'base_toughness', 'base_trigger_definitions', 'card_id', 'card_types', 'cast_controller', 'cast_face_committed', 'cast_from_zone', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'display_visible_to_viewer', 'echo_due', 'entered_battlefield_turn', 'face_down', 'flipped', 'foretold', 'harnessed', 'has_mana_ability', 'has_summoning_sickness', 'id', 'in_attraction_deck', 'in_contraption_deck', 'incarnation', 'intensity', 'is_commander', 'is_emblem', 'is_renowned', 'is_saddled', 'is_suspected', 'is_token', 'keywords', 'loyalty', 'loyalty_activations_this_turn', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast', 'mana_spent_to_cast_amount', 'modal_back_face', 'monstrous', 'name', 'next_trigger_base_set_instance', 'owner', 'phase_status', 'power', 'printed_loyalty', 'printed_ref', 'replacement_definitions', 'saddled_by', 'source_related_token_ids', 'static_definitions', 'summoning_sick', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_base_set_instance', 'trigger_definitions', 'trigger_occurrence_state', 'zone']; loyalty=4
+[P0] ActivateAbility options: []
+[P0] ActivateAbility options: [(0, '{"type": "ActivateAbility", "data": {"source_id": 1, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 1, "ability_index": 1}}')]
+[P0] activates Zariel +1 (ability_index 0), loyalty was 4
+[watch] Zariel loyalty=5 (turn 10)
+=== stage -> LOYAL2 ===
+[P0] activates Zariel +1 (ability_index 0), loyalty was 5
+[watch] Zariel loyalty=6 (turn 12)
+=== stage -> ACTIVATE ===
+[P0] ult ActivateAbility options: []
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] ult ActivateAbility options: [(0, '{"type": "ActivateAbility", "data": {"source_id": 1, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 1, "ability_index": 1}}'), (2, '{"type": "ActivateAbility", "data": {"source_id": 1, "ability_index": 2}}')]
+exported pre_activate.json
+[P0] activates Zariel -6 (ability_index 2)
+exported post_activate.json
+[watch] post-ult emblem scan: []
+=== stage -> COMBAT ===
+P0 declares attackers: [31] -> P1
+exported post.json
+=== DONE (post-combat main reached) ===
+NOTE: WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority']
+NOTE: Zariel loyalty trace: [(10, 4), (10, 5), (12, 6)]
+NOTE: emblem triggers seen: []
+NOTE: target answer: None
+NOTE: combat phases started trace: [(1, 1), (14, 2)]

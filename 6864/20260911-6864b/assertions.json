@@ -1,0 +1,18 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_loyalty_paid": "passed",
+    "A3_emblem_created": "failed",
+    "A4_target_prompt": "failed",
+    "A5_untap_resolves": "failed",
+    "A6_additional_combat": "passed"
+  },
+  "notes": [
+    "A2: P0 Zariel zones post-ult: ['Graveyard', 'Hand', 'Library']",
+    "A3: emblem objects post-ult=[]; post-combat=[]; command_zone=[]",
+    "A4: TargetSelection prompt events for P0: 0",
+    "A5: no emblem prompt answered; P0 Bears on BF=['31'], tapped=['31'] (attacker never untapped)",
+    "A6: combat_phases_started trace=[[1, 1], [14, 2]]; turn-14 combat phases=[2]",
+    "A6: turn-14 phase sequence: ['Upkeep', 'Draw', 'PreCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'BeginCombat', 'EndCombat', 'PostCombatMain']"
+  ]
+}
