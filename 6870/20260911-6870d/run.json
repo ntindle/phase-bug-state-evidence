@@ -1,0 +1,81 @@
+{
+  "issue": 6870,
+  "run_id": "20260911-6870d",
+  "started_at": "2026-09-11T21:34:00Z",
+  "server": {
+    "server_version": "v0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key (pinned v0.80.0)"
+  },
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6870.py"
+  },
+  "scenario_sha256": "80c2768706419a98b2e5b230b985fef12af48b2e129313220481e5ea4c887722",
+  "decks": {
+    "P0": [
+      [
+        "Lithoform Engine",
+        8
+      ],
+      [
+        "Chandra Nalaar",
+        8
+      ],
+      [
+        "Mountain",
+        44
+      ]
+    ],
+    "P1": [
+      [
+        "Mountain",
+        60
+      ]
+    ]
+  },
+  "setup_line": "P0: Lithoform Engine (turn 7) + Chandra Nalaar (turn 9); proof on P0 turn 11 main phase",
+  "contract_line": "Chandra +1 targets P1 (loyalty ability on stack, targets=[{Player:1}]); Lithoform Engine {2},{T} must accept the loyalty ability as its target (StackAbility/You); the copy is created and its may-choose-new-targets prompt answered (P1); both the copy and the original resolve for 1 damage each (P1 20->18), Chandra 6->7 loyalty",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_loyalty_on_stack": "passed",
+    "A3_engine_targets_loyalty": "passed",
+    "A4_copy_damage": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: engine_untapped=True chandra=True p0_main=True turn=11",
+    "A2: loyalty_sid=121 on_stack=True signature_ok=True",
+    "A3: engine_targeted={'auto': True, 'ref': '121'} engine_stack_targets=[{'Object': 121}] rejections=0",
+    "A4: P1 life 20->18 (dmg=2, expected 2 = original 1 + copy 1); chandra loyalty=7 (expected 7)",
+    "retarget: CopyRetarget prompt offered and answered: {'seat': 1, 'at': 1789162452.3939888} (may-choose form: None); copy ids seen on stack: [123]",
+    "A5: stack_empty=True game_over=False",
+    "The Engine's copy ability was advertised (1 ActivateAbility option, ability_index 0) and, with the loyalty ability as the only P0-controlled ability on the stack, auto-targeted it: the stack entry's targets field reads [{\"Object\": 121}] where 121 is the loyalty ability's stack id. No TargetSelection prompt appeared (single legal target auto-target, cf. #6863).",
+    "On resolution the engine created the copy (stack id 123) and surfaced waiting_for type CopyRetarget (copy_id 123, current target {Player: 1}, legal alternatives P0/P1/Chandra); the driver answered P1 via the exactChoices interaction.",
+    "Stack entries live in state['stack'] (id/controller/source_id/kind), not as objects with zone=='Stack'; two early attempts failed on the wrong assumption (first: P0 passed priority and the loyalty ability resolved before the Engine activation; second: loyalty-on-stack detection found nothing for 120s while P0 held priority with the ability sitting on the stack)."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense playsets (8x) are a test-harness convenience (engine accepts >4-of for custom games).",
+    "Only Chandra Nalaar's +1 (targeted damage) exercised as the loyalty ability; triggered abilities and other planeswalkers not tested.",
+    "The copy's new-target choice was answered P1 (same as original); choosing a different new target was not exercised.",
+    "Not tested on the original 2026-08-02 report build; verdict is scoped to v0.80.0, not a fix claim.",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "verdict": "not-reproduced",
+  "stats": {
+    "states_seen": 5,
+    "trigger_observations": 3,
+    "wire_events": 189,
+    "rejections": 0
+  }
+}

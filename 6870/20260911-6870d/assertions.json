@@ -1,0 +1,45 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_loyalty_on_stack": "passed",
+    "A3_engine_targets_loyalty": "passed",
+    "A4_copy_damage": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: engine_untapped=True chandra=True p0_main=True turn=11",
+    "A2: loyalty_sid=121 on_stack=True signature_ok=True",
+    "A3: engine_targeted={'auto': True, 'ref': '121'} engine_stack_targets=[{'Object': 121}] rejections=0",
+    "A4: P1 life 20->18 (dmg=2, expected 2 = original 1 + copy 1); chandra loyalty=7 (expected 7)",
+    "retarget: CopyRetarget prompt offered and answered: {'seat': 1, 'at': 1789162452.3939888} (may-choose form: None); copy ids seen on stack: [123]",
+    "A5: stack_empty=True game_over=False"
+  ],
+  "observations": {
+    "life_before": 20,
+    "copy_seen": [
+      123
+    ],
+    "retarget_answered": {
+      "seat": 1,
+      "at": 1789162452.3939888
+    },
+    "life_after": 18,
+    "loyalty_after": 7
+  },
+  "ids": {
+    "loyalty": "121",
+    "engine_ability": "122"
+  },
+  "act": {
+    "plus1_targeted": {
+      "ref": "1"
+    },
+    "engine": null,
+    "engine_targeted": {
+      "auto": true,
+      "ref": "121"
+    },
+    "retarget_answered": true,
+    "retarget_may_answered": null
+  }
+}

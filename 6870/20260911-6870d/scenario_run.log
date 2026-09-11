@@ -1,0 +1,34 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game 9Y59EQ; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 casts Lithoform Engine
+Lithoform Engine on BF turn 7
+P0 casts Chandra Nalaar
+Chandra Nalaar on BF turn 9
+=== stage -> PROOF ===
+[P0] Chandra +1 options: 1
+[P0] activates Chandra +1 (ability_index 0) turn=11
+[P0] +1 target prompt: [(0, ''), (1, ''), (None, 'Chandra Nalaar')]
+[P0] +1 targets P1
+loyalty ability on stack: sid=121
+exported mid_loyalty.json
+[P0] Engine copy-ability options: 1
+exported pre_activate.json
+[P0] activates Engine copy ability (ability_index 0) turn=11
+engine ability on stack: sid=122
+[P0] engine auto-targeted the loyalty ability (no prompt)
+=== stage -> COPY (engine ability resolved) ===
+[P0] copy retarget prompt: [(None, ''), (None, 'Chandra Nalaar'), (0, ''), (1, ''), (None, '')]
+[P0] copy keeps/chooses P1 as new target
+DONE: stack empty; P1 life=18 chandra loyalty=7
+exported post_activate.json
+exported post.json
+A1_setup_ok: passed
+A2_loyalty_on_stack: passed
+A3_engine_targets_loyalty: passed
+A4_copy_damage: passed
+A5_cleanup: passed
+verdict: not-reproduced
