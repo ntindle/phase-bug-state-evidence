@@ -1,0 +1,114 @@
+{
+  "issue": 6868,
+  "run_id": "20260911-6868b",
+  "started_at": "2026-09-11T20:30:00Z",
+  "server": {
+    "server_version": "v0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6868.py"
+  },
+  "scenario_sha256": "40f30a1e30d9863b571b4fc8f46a6d79c68e335b918431146a4a0268959d563d",
+  "decks": {
+    "P0": [
+      [
+        "Jared Carthalion",
+        8
+      ],
+      [
+        "Grizzly Bears",
+        12
+      ],
+      [
+        "Plains",
+        8
+      ],
+      [
+        "Island",
+        8
+      ],
+      [
+        "Swamp",
+        8
+      ],
+      [
+        "Mountain",
+        8
+      ],
+      [
+        "Forest",
+        8
+      ]
+    ],
+    "P1": [
+      [
+        "Grizzly Bears",
+        12
+      ],
+      [
+        "Plains",
+        12
+      ],
+      [
+        "Island",
+        12
+      ],
+      [
+        "Swamp",
+        12
+      ],
+      [
+        "Mountain",
+        12
+      ],
+      [
+        "Forest",
+        12
+      ]
+    ]
+  },
+  "setup_line": "P0: Jared Carthalion +1 on turn of casting (loyalty 6), 3/3 all-colors Kavu token created; P1: Grizzly Bears on BF; -3 on next P0 turn",
+  "contract_line": "-3 must accept two creature targets, then put counters equal to each target's own color count: 5 on the all-colors Kavu, 1 on the green Bears; evaluated independently at resolution",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_minus3_offered": "passed",
+    "A3_target_resolve": "passed",
+    "A4_kavu_counters": "failed",
+    "A5_bears_counters": "failed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "A1: Jared=True Kavu=134 colors=['White', 'Blue', 'Black', 'Red', 'Green'] P1 Bears=125",
+    "A2: -3 ActivateAbility offered=True",
+    "A3: targets_answered=2/2 submissions=2 rejections_after_minus3=0 loyalty=3 stack_empty=True",
+    "A4: Kavu counters_field={} power=3 toughness=3 (expected 8/8, five +1/+1)",
+    "A5: P1 Bears counters_field={} power=2 toughness=2 (expected 3/3, one +1/+1)",
+    "A6: stack_empty=True game_over=False",
+    "The -3's target selection is offered as sequential per-target prompts (spec max=1 per prompt); the driver answered Kavu first, then P1 Bears. A first attempt submitted both choiceIds in one sequence response and was correctly rejected interaction_constraint_unsatisfied (see wire_log.jsonl of the superseded run 20260911-6868) -- engine behavior, not a defect.",
+    "Post-resolution: Jared loyalty 6->3, stack empty, game proceeds; Kavu stayed 3/3 with empty counters field, Bears stayed 2/2. Card data marks the -3's counter child Unimplemented (see carddata_excerpt.json), matching the observed no-counters outcome."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay).",
+    "Only the -3 loyalty ability was exercised (+1 used for setup, -6 untouched).",
+    "The two early mulligan-phase rejections (wrong_player / invalid_action) are driver races during mulligan, unrelated to the -3; zero rejections after the -3 activation."
+  ],
+  "stats": {
+    "targets_answered": 2,
+    "submissions": 2
+  },
+  "verdict": "reproduced"
+}

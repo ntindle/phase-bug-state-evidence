@@ -1,0 +1,37 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game V0DO2R; seats 0/1
+P0 mulligan -> Mulligan
+P1 mulligan -> Keep
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 mulligan -> Keep
+[P0] ActionRejected: {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}
+P0 bottoms 1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P1 casts Grizzly Bears
+P0 casts Grizzly Bears
+P0 casts Jared Carthalion
+=== stage -> PLUS1 ===
+[P0] Jared +1 options: 0
+[P0] Jared +1 options: 1
+[P0] activates Jared +1 (ability_index 0) turn=11
+=== Kavu token on BF; stage -> MINUS3 (turn 11) ===
+[P0] Jared -3 options: 1
+exported pre_activate.json
+[P0] activates Jared -3 (ability_index 1) turn=13
+[P0] -3 target prompt candidates: [('Grizzly Bears', '125', 1), ('Grizzly Bears', '21', 0), ('Kavu', '134', 0)]
+[P0] -3: targeted Kavu (oid=134) [1/2]
+[P0] -3 target prompt candidates: [('Grizzly Bears', '125', 1), ('Grizzly Bears', '21', 0)]
+[P0] -3: targeted Grizzly Bears (oid=125) [2/2]
+exported post_activate.json
+exported post.json
+=== DONE: -3 resolved ===
+A1_setup_ok: passed
+A2_minus3_offered: passed
+A3_target_resolve: failed
+A4_kavu_counters: failed
+A5_bears_counters: failed
+A6_cleanup: passed
+verdict: blocked
