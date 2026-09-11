@@ -1,0 +1,27 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_attack_declared": "passed",
+    "A3_trigger_fires": "failed",
+    "A4_pump_correct": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "pre: duskana_bf=1 bears_bf=2 life=[20, 20]",
+    "trigger evidence hits: none",
+    "mid_combat attacker 28 P/T=2/2 (expected 5/5)",
+    "non-attacking bears mid_combat: [(2, 2)]",
+    "post: phase=PostCombatMain turn=10 stack_empty=True",
+    "ETB observation: Duskana ETB with 2 other 2/2 Bears on BF; cards_drawn_this_turn(P0)=[60]; P0 hand=4 (oracle: draw 2; parsed trigger: fixed 1)"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ]
+}

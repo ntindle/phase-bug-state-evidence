@@ -1,0 +1,26 @@
+P0 creating game...
+P1 joining...
+game PG8TLP; seats 0/1
+[P0] keeps
+[P0] plays taiga
+[P0] plays taiga
+[P0] casts Grizzly Bears
+[P0] plays taiga
+[P0] casts Grizzly Bears
+[P0] plays savannah
+[P0] plays taiga
+[P0] casts Duskana, the Rage Mother
+[note] Duskana ETB with 2 other 2/2 Bears on BF; cards_drawn_this_turn(P0)=[60]; P0 hand=4 (oracle: draw 2; parsed trigger: fixed 1)
+exported pre.json
+[P0] attacks P1 with Bear oid 28 (turn 10)
+exported mid_combat.json
+[mid] attacker 28 P/T=2/2 phase=DeclareBlockers
+exported post.json
+[post] phase=PostCombatMain turn=10 attacker P/T=2/2
+A1_setup_ok: passed
+A2_attack_declared: passed
+A3_trigger_fires: failed
+A4_pump_correct: failed
+A5_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority']
+verdict: reproduced
