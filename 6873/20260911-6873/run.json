@@ -1,0 +1,81 @@
+{
+  "issue": 6873,
+  "run_id": "20260911-6873",
+  "started_at": "2026-09-11T22:42:00Z",
+  "server": {
+    "server_version": "v0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key (pinned v0.80.0)"
+  },
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6873.py"
+  },
+  "scenario_sha256": "a10e3dd59ad9262af4211717fb47a64183ebf0f8e289fd168adcaded50f33618",
+  "decks": {
+    "P0": [
+      [
+        "Wren's Run Vanquisher",
+        12
+      ],
+      [
+        "Llanowar Elves",
+        12
+      ],
+      [
+        "Forest",
+        36
+      ]
+    ],
+    "P1": [
+      [
+        "Forest",
+        60
+      ]
+    ]
+  },
+  "setup_line": "P0: 12x Wren's Run Vanquisher / 12x Llanowar Elves / 36x Forest; proof casts on P0 main phases (reveal: turn 5 with 3 Forests; pay: turn 17 with 6 Forests)",
+  "contract_line": "Cast Wren's Run Vanquisher and take the REVEAL branch of its 'reveal an Elf card from your hand or pay {3}' additional cost: the reveal choice must be offered, the Elf selectable, the cast must complete (3/3 on the battlefield, stack empty, game proceeding, no perpetual-stack stall). Control: the PAY {3} branch completes the same way.",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_cost_prompted": "passed",
+    "A3_reveal_answerable": "passed",
+    "A4_cast_completes": "passed",
+    "A5_control_pay": "passed",
+    "A6_no_softlock": "passed"
+  },
+  "notes": [
+    "A1: reveal pre: main=True vanq=True elf=True untapped_forests=3; pay pre: main=True vanq=True untapped_forests=6",
+    "A2: waiting_for types per mode: {'reveal': ['OptionalCostChoice', 'PayCost'], 'pay': ['OptionalCostChoice']} (pay game's {3} auto-paid, no PayCost prompt needed)",
+    "A3: PayCost Reveal candidates offered=[(\"Wren's Run Vanquisher\", '56'), ('Llanowar Elves', '54'), ('Llanowar Elves', '26'), ('Llanowar Elves', '27'), ('Llanowar Elves', '38')]; elf_offered=True elf_answered=True reveal-mode rejections=0 cast_completed=True",
+    "A4: reveal: vanq_bf=1 (3, 3) stack_empty=True wf=Priority; pay: vanq_bf=1 (3, 3) stack_empty=True wf=Priority",
+    "A5: decideOptionalCost answered=True pay-mode rejections=0 cast_completed=True; OBSERVATION: engine auto-tap tapped 5/6 Forests for the {2}{G}+{3} = 6-mana total (pools empty pre/post)",
+    "A6: stall_watchdog_fired=False both_casts_resolved=True",
+    "Wire shape (protocol 69): the additional cost first surfaces as waiting_for OptionalCostChoice with exactChoices carrying EMPTY text; the two choices are identified by action-surface codes cancelCast vs decideOptionalCost (cf. the protocol-69 kicker flow). Choosing decideOptionalCost advances to a PayCost{kind: Reveal} schema/select prompt whose candidates carry object surfaces (reference/name/zone/controller).",
+    "OBSERVATION (candidate enumeration): the PayCost Reveal prompt offered 3 candidates for the Elf-subtype filter: two Wren's Run Vanquisher copies plus one Llanowar Elves. The driver selected the Elf; the submission was accepted with zero rejections and the cast completed.",
+    "OBSERVATION (auto-tap count): the engine's Auto payment tapped cost-minus-one lands in both games (reveal: 2 tapped for {2}{G}; pay: 5 tapped for {2}{G}+{3}); mana pools were empty before and after each cast. Not part of the reported outcome; flagged for follow-up, not asserted.",
+    "Driver pitfall hit and fixed mid-run: the first attempt answered the OptionalCostChoice with cancelCast (empty-text c0), abandoning the cast; the scenario now never selects cancelCast and keys all cost decisions off action-surface codes, never choice text."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats. The report's frontend claim (UI not rendering the reveal choice) was not tested.",
+    "12x playset density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "Only Wren's Run Vanquisher exercised; the other six cards named in the issue share the mechanic but were not tested.",
+    "Not tested on the original 2026-08-02 report build; verdict is scoped to v0.80.0, not a fix claim.",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "verdict": "not-reproduced",
+  "stats": {
+    "wire_events": 340,
+    "rejections": 0,
+    "cost_prompts": 3
+  }
+}
