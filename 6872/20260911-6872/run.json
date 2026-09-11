@@ -1,0 +1,70 @@
+{
+  "issue": 6872,
+  "run_id": "20260911-6872",
+  "started_at": "2026-09-11T22:09:58Z",
+  "verdict": "reproduced",
+  "server": {
+    "server_version": "0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary": "phase-server-slim-x86_64-unknown-linux-musl",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "release_dir": "server/releases/v0.80.0/",
+    "games_db": "runs/20260911-6872/games.db"
+  },
+  "scenario": {
+    "file": "scenario_6872.py",
+    "sha256": "0576389b03646854f4182c6b7d2a77c83ddb0442c1accf9c399b8b9677f56d3a"
+  },
+  "setup": {
+    "P0": "8x Yargle, Glutton of Urborg + 4x The Dominion Bracelet + 48x Swamp",
+    "P1": "60x Swamp (passive, own land drops)",
+    "mode": "two native human seats, Bo1, single-user server"
+  },
+  "decisions": [
+    "P0 mulligan: keep with 2+ lands and (Yargle or Bracelet); else mulligan (max 2)",
+    "land drops every P0/P1 main; no attacks or blocks by either seat",
+    "P0 casts Yargle (turn 10), casts Bracelet, activates Equip {1} targeting Yargle (engine auto-targeted: single legal target, no prompt)",
+    "PROOF on fresh P0 PreCombatMain (turn 14, 7 untapped Swamps): export pre_grant.json, probe ActivateAbility actions sourced from Yargle"
+  ],
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_granted_exposed": "failed",
+    "A3_activation_completes": "not-run",
+    "A4_control_recorded": "not-run",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: attached=True yargle=10/4 main=True",
+    "A2: advertised_indices=[] obj_desc_match=True not_offered=True",
+    "A3 not-run: granted ability never exposed",
+    "A4: markers=[('post.json', 'ControlNextTurn')] p0_decides_for_p1=False control_snaps=0",
+    "A5: stack_empty=True game_over=False",
+    "A4 corrected post-run: the run-time marker search matched 'ControlNextTurn' inside the static granted-ability definition on Yargle's object (present in pre_grant.json too), not an effect registration. scheduled_turn_controls is [] in pre and post. Since the granted ability was never exposed (A2 failed) no activation occurred, so A4 is not-run.",
+    "A3 not-run: no ActivateAbility was ever advertised for the equipped Yargle, so there was no activation to complete; bracelet stayed attached on the battlefield."
+  ],
+  "observed_result": "The granted ability IS installed on the equipped creature's object data (full {15}/exile/cost-reduction/AsSorcery definition present on Yargle oid 12), but the engine advertises NO ActivateAbility action with source_id == Yargle while P0 holds priority in main phase with empty stack. all_action_types at probe: [ActivateAbility, CastSpell, PassPriority] (the ActivateAbility is the Bracelet's own re-equip). 90s watch: never offered. Verdict: reproduced.",
+  "scope": "granted-ability advertisement on the equipped creature; native human seats",
+  "limitations": [
+    "Browser/UI not exercised",
+    "A3/A4 not-run: with no advertised activation there was no activation path to complete; scheduled_turn_controls empty in pre and post",
+    "Restoration from exported states not re-imported in this run (ExportAuthoritativeState envelope preserved verbatim; no ImportAuthoritativeState path exercised)"
+  ],
+  "evidence_files": [
+    "pre_grant.json",
+    "post.json",
+    "assertions.json",
+    "observations.json",
+    "run.json",
+    "scenario_run.log",
+    "wire_log.jsonl",
+    "server_excerpts.log",
+    "scenario_6872.py",
+    "summary.png",
+    "manifest.sha256"
+  ],
+  "evidence_notes": "mid_grant.json / post_activate.json do not exist: the granted ability never reached the stack, so there was no mid-activation state to capture."
+}
