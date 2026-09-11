@@ -1,0 +1,41 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game 4PA6G7; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 casts Grizzly Bears
+P0 casts Estrid, the Masked
+=== stage -> ACTIVATE ===
+[P0] ActivateAbility options on Estrid: []
+[P0] ALL legal action types: []
+[P0] ActivateAbility options on Estrid: [(0, '{"type": "ActivateAbility", "data": {"source_id": 29, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 29, "ability_index": 1}}')]
+[P0] ALL legal action types: ['ActivateAbility', 'CastSpell', 'PassPriority']
+exported pre_activate.json
+[P0] activates Estrid -1 (ability_index 1) targeting Bears 71
+[P0] estrid_minus1 target prompt: ['Plains', 'Swamp', 'Plains', 'Swamp', 'Plains', 'Swamp', 'Plains', 'Forest', 'Grizzly Bears', 'Plains', 'Forest', 'Plains', 'Forest', 'Forest', 'Swamp', 'Forest', 'Plains', 'Island', 'Swamp', 'Plains', 'Swamp', 'Island', 'Plains', 'Island', 'Swamp', 'Island', 'Forest', 'Forest', 'Island']
+[P0] estrid_minus1: targeted Grizzly Bears (oid=71)
+exported mid_mask.json
+=== Mask attached to Bears 71; stage -> MURDER ===
+P0 casts Murder (MURDER, oid=21)
+Murder (MURDER) resolved; target=None
+exported post_murder.json
+=== stage -> CONTROL ===
+P0 casts Murder (CONTROL, oid=40)
+Murder (CONTROL) resolved; target=None
+exported post_control.json
+exported post.json
+=== DONE ===
+A1_setup_ok: passed
+A2_mask_attached: passed
+A3_armor_replaces: not-run
+A4_control_dies: passed
+A5_cleanup: passed
+verdict: blocked
+{
+  "A1_setup_ok": "passed",
+  "A2_mask_attached": "passed",
+  "A3_armor_replaces": "not-run",
+  "A4_control_dies": "passed",
+  "A5_cleanup": "passed"
+}
