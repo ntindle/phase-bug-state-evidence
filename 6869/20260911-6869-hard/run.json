@@ -1,0 +1,103 @@
+{
+  "run_id": "20260911-6869-hard",
+  "issue": 6869,
+  "started_at": "2026-09-11T21:05:11Z",
+  "server": {
+    "server_version": "0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_verified": true,
+    "signature_note": "minisign-verify (prehashed Ed25519, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data files match manifest SHA-256 (pinned 2026-09-11)",
+    "observed_at": "2026-09-11",
+    "source": "ledger pin v0.80.0 (server/releases/v0.80.0/); isolated server on 127.0.0.1:9375 (started by this run, verified listening before driving)"
+  },
+  "verdict": "blocked",
+  "assertions": {
+    "A1_ai_cast": "failed",
+    "A2_no_freeze": "not-run",
+    "A3_draws": "not-run",
+    "A4_control": "passed",
+    "A5_cleanup": "passed"
+  },
+  "observations": {
+    "rejections": [],
+    "p0_acts": 84,
+    "casts": [
+      {
+        "oid": 20,
+        "cast_t": 1789160735.200559,
+        "cast_rev": 156,
+        "cast_turn": 11,
+        "controller": 0,
+        "resolved": true,
+        "resolve_t": 1789160735.5545876,
+        "resolve_s": 0.35,
+        "target_wait": null
+      }
+    ],
+    "ai_target_waits": [],
+    "control": {
+      "cast_oid": 20,
+      "cast_turn": 11,
+      "tail_started": 1789160735.5545876,
+      "p0_drew": 3,
+      "p1_drew": 3
+    }
+  },
+  "notes": [
+    "AI cast no AI cast by turn 10; proceeding to P0 control cast",
+    "AI never cast Secret Rendezvous within the run",
+    "draws not evaluated (no pre/post AI pair)",
+    "P0 control: target prompt seen=True (mode=prompt); P0 drew 3, P1 drew 3",
+    "post_ai_cast: turn 11 phase Cleanup waiting_for=DiscardToHandSize game_over=None",
+    "Hard-difficulty corroboration run; driver scenario_6869_hard.py (= scenario_6869.py with AI difficulty Hard, phase-1 turn limit 10)."
+  ],
+  "stall": null,
+  "setup_line": "P0: 12x Secret Rendezvous + 48x Plains (human driver, passive in phase 1; control cast in phase 2). P1: AI Medium, 12x Secret Rendezvous + 48x Plains.",
+  "contract_line": "AI casts Secret Rendezvous -> target decision must complete with no freeze; caster and chosen opponent each draw three. Then a human-driven control cast exercises the target path directly.",
+  "parser_corroboration": "v0.80.0 card-data.json models the second Draw as target {type: Typed, controller: Opponent} with target_prompt:null, optional_targeting:false - a generic opponent scope, not a targeted-opponent slot (matches issue triage).",
+  "limitations": [
+    "Browser/UI not exercised; server-side AI (phase-ai) policy tested, not any browser/client AI driver path",
+    "2-player game only (single legal opponent); 3+ player target choice among multiple opponents not exercised",
+    "Not tested on the original report build; verdict is scoped to v0.80.0, not a fix claim",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)"
+  ],
+  "stats": {
+    "states_seen": 854,
+    "casts_observed": 1
+  },
+  "scenario": {
+    "file": "scenario_6869_hard.py",
+    "sha256": "97a87a4f7cd15b3b003d1ffcdfe4a8a2a23cf0be1820784988a73134ea86c51f"
+  },
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "Secret Rendezvous",
+          12
+        ],
+        [
+          "Plains",
+          48
+        ]
+      ]
+    },
+    "P1_AI": {
+      "main": [
+        [
+          "Secret Rendezvous",
+          12
+        ],
+        [
+          "Plains",
+          48
+        ]
+      ]
+    }
+  }
+}

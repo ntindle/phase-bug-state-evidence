@@ -1,0 +1,16 @@
+game LJ6QIP; P0 seat=0; P1 = AI Medium seat
+P0 mulligan: Keep
+phase 1 timeout: AI never cast; arming P0 control cast
+exported pre_control.json
+P0 CONTROL: casting Secret Rendezvous (oid 20)
+OBSERVED cast #1: Secret Rendezvous on stack (oid 20, controller 0, turn 11, rev 156)
+P0 CONTROL: waiting_for=Priority for P0
+control: target candidates found: []; pick=None; iid=None
+OBSERVED cast #1 resolved in 0.35s (rev 158)
+P0 CONTROL: cast resolved (left stack)
+exported post_control.json
+control resolved; starting tail watch
+tail watch complete after control resolution
+exported post_ai_cast.json
+VERDICT: blocked
+assertions: {"A1_ai_cast": "failed", "A2_no_freeze": "not-run", "A3_draws": "not-run", "A4_control": "passed", "A5_cleanup": "passed"}
