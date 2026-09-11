@@ -1,0 +1,60 @@
+P0 creating game...
+P1 joining...
+game SQZVAO; P0 seat=0 P1 seat=1
+P1 keeps opening hand (lands=7 mulls=0 hand=7 shock=False)
+P0 keeps opening hand (lands=5 mulls=0 hand=7 shock=True)
+mulligans done: P0 hand=['Swamp', 'Shock', 'Island', 'Bloodbraid Elf', 'Mountain', 'Mountain', 'Forest']
+P0 discards ['Island']
+P0 discards ['Island']
+P0 discards ['Island']
+P0 discards ['Forest']
+P0 discards ['Swamp']
+P0 discards ['Forest']
+P0 discards ['Forest']
+P0 discards ['Mountain']
+P0 discards ['Island']
+P0 discards ['Swamp']
+P0 discards ['Forest']
+P0 discards ['Swamp']
+P0 discards ['Swamp']
+P0 discards ['Swamp']
+P0 discards ['Island']
+P0 casts Yidris, Maelstrom Wielder on turn 53
+A1 passed: Yidris on battlefield
+attack turn = 55 (hunt window staged)
+exported pre_shock_cast.json (1122574 bytes)
+P0 casts Shock (oid 26)
+P0 answers shock_target: seat=1 candidate=SQZVAO.0.818.t1 (<id SQZVAO.0.818.t1>)
+shock target answered: True
+P0 declares attackers: Yidris, Maelstrom Wielder -> P1
+A3: cascade before damage = False (expect False)
+exporting PRE_DAMAGE state
+exported pre_damage.json (1133891 bytes)
+YIDRIS TRIGGER ON STACK: {"id": 307, "source_id": 59, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 59, "ability": {"effect": {"type": "Unimplemented", "name": "as", "description": "as you cast spells from your hand"}, "targets": [], "source_id"
+A2: combat damage dealt=True, life 18->13
+exporting POST_DAMAGE state (grant window should be active)
+exported post_damage.json (1154312 bytes)
+Yidris stood down (attack_live=False); P1 must survive for A5
+exported pre_cast.json (1154312 bytes)
+P0 casts Shock (oid 40)
+P0 answers shock_target: seat=1 candidate=SQZVAO.0.837.t1 (<id SQZVAO.0.837.t1>)
+shock target answered: True
+P0 discards ['Island']
+P0 discards ['Island']
+P0 discards ['Forest']
+P0 discards ['Island']
+P0 discards ['Mountain']
+P0 discards ['Swamp']
+A4: cascade after Yidris damage = False (expect True per Oracle text)
+exporting POST_CAST state
+exported post_cast.json (1127215 bytes)
+exported pre_control.json (1123018 bytes)
+P0 casts Bloodbraid Elf (native cascade control)
+control: CASCADE TRIGGER ON STACK: {"id": 308, "source_id": 54, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 54, "ability": {"effect": {"type": "Cascade"}, "targets": [], "source_id": 54, "source_incarnat
+A5: native cascade works = True (expect True)
+TIMEOUT in wait_cond: control settle
+exporting POST_CONTROL state
+exported post_control.json (1176054 bytes)
+TIMEOUT in wait_cond: cleanup settle
+DONE verdict=reproduced assertions={"A0_connect": "passed", "A1_setup_ok": "passed", "A3_pre_damage_control": "passed", "A2_combat_damage": "passed", "A4_yidris_grant": "failed", "A5_control_cascade": "passed", "A6_cleanup": "failed"}
+manifest written for 14 files
