@@ -1,0 +1,22 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_prompted": "failed",
+    "A3_noncreature_excluded": "not-run",
+    "A4_illegal_enforcement": "not-run",
+    "A5_control_token": "not-run",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "pre.json P1 gy: [('Grizzly Bears', 2), ('Plains', 1), ('Sylvan Reclamation', 2)]",
+    "waiting_for types (2 games): {'MulliganDecision': 2, 'Priority': 205, 'DeclareAttackers': 89, 'DeclareBlockers': 4, 'DiscardToHandSize': 110, 'GameOver': 1}",
+    "interaction submissions: 0",
+    "post_exile P1 exile: [('Grizzly Bears', 2), ('Plains', 1), ('Sylvan Reclamation', 2)] (gy now: [])",
+    "post_exile stack: []; waiting_for=Priority",
+    "post_exile tokens: [(('Zombie', 0), 10)]",
+    "post tokens: [(('Zombie', 0), 10)]",
+    "A3/A4/A5 not-run: the reflexive trigger never produced a TargetSelection prompt, so no candidate list existed to evaluate and no token could be created.",
+    "post.json stack: []; phase=PostCombatMain",
+    "Verdict rationale: the reported failure is the reflexive trigger offering a noncreature (Sylvan Reclamation) as the token source. On v0.80.0 the trigger never fires at all -- no TargetSelection, no token -- across two independent games. That is a clearly identified related failure in the same Oracle clause ('When you do, choose up to one target creature card exiled this way...'), and it blocks the reported illegal-target path from being reached. Differences from the report are documented; this is not a claim about the filter."
+  ]
+}
