@@ -1,0 +1,38 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_exile_cast_offered": "failed",
+    "A5_cleanup": "passed",
+    "A3_exile_cast_completes": "failed",
+    "A4_gy_cast_completes": "passed"
+  },
+  "notes": [
+    "WF sequence: ['MulliganDecision', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardChoice', 'Priority', 'TargetSelection', 'Priority', 'DiscardToHandSize', 'Priority']",
+    "exile offered=True (source=viewer_interaction) stack=False bf=False rejected=True",
+    "gy offered=True stack=True bf=True",
+    "CORRECTION (2026-09-11, post-run evaluator fix): the scenario's vi_cast_choice matched the exiled Squee via the fragile `SQUEE in blob` substring, returning a castSpell choice for a DIFFERENT Squee (oids 38/45, in graveyard/hand). The full viewer-interaction menu at the attempt (wire_log line 265, iid 07SXFS.0.227) offers castSpell choices only for object references 6, 21 (Faithless Looting), 38 (gy Squee), 45 (hand Squee) -- none for the exiled Squee (oid 1). Combined with no CastSpell legal action advertised (castspell_advertised returned None), A2 is correctly 'failed': the engine never offered casting the exiled Squee. Verdict logic unchanged: A3 failed -> reproduced."
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardChoice",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority"
+  ],
+  "a2_source": "viewer_interaction"
+}

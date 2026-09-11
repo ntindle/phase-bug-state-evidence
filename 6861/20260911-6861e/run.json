@@ -1,0 +1,75 @@
+{
+  "issue": 6861,
+  "run_id": "20260911-6861e",
+  "started_at": "2026-09-11T14:50:00Z",
+  "server": {
+    "server_version": "0.79.0",
+    "build_commit": "1cde7a2",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "46d89146bf3e051cf22591bd195b7d15d4806a8f6d226bb8792dbcfe479fef94",
+    "card_data_sha256": "75cbfe139b220b8267c4d99b1d478b59d7298a86dfc3def83fbb31eaa970b5b3",
+    "draft_pools_sha256": "7518817d5db317ccba9f6d197648677a8ff8341700e14b4b54f8bdf2d71b0b8b",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "observed_at": "2026-09-11",
+    "source": "ServerHello + minisign verification against repo-pinned key"
+  },
+  "server_run_dir": "runs/20260911-6861b",
+  "driver": {
+    "protocol_version": 69,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6861.py"
+  },
+  "scenario_sha256": "3947dde5a1640327c0f6411a59fcb6b079a4b2e06a3252c1f5c161f6cbb86759",
+  "decks": {
+    "P0": [
+      [
+        "Squee, the Immortal",
+        12
+      ],
+      [
+        "Faithless Looting",
+        4
+      ],
+      [
+        "Scavenging Ooze",
+        4
+      ],
+      [
+        "Mountain",
+        20
+      ],
+      [
+        "Forest",
+        20
+      ]
+    ],
+    "P1": [
+      [
+        "Mountain",
+        30
+      ],
+      [
+        "Forest",
+        30
+      ]
+    ]
+  },
+  "mulligans": "P0 kept with Squee or Faithless Looting (<=2 mulligans); P1 kept 7",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_exile_cast_offered": "failed",
+    "A5_cleanup": "passed",
+    "A3_exile_cast_completes": "failed",
+    "A4_gy_cast_completes": "passed"
+  },
+  "notes": [
+    "WF sequence: ['MulliganDecision', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardChoice', 'Priority', 'TargetSelection', 'Priority', 'DiscardToHandSize', 'Priority']",
+    "exile offered=True (source=viewer_interaction) stack=False bf=False rejected=True",
+    "gy offered=True stack=True bf=True",
+    "CORRECTION (2026-09-11, post-run evaluator fix): the scenario's vi_cast_choice matched the exiled Squee via the fragile `SQUEE in blob` substring, returning a castSpell choice for a DIFFERENT Squee (oids 38/45, in graveyard/hand). The full viewer-interaction menu at the attempt (wire_log line 265, iid 07SXFS.0.227) offers castSpell choices only for object references 6, 21 (Faithless Looting), 38 (gy Squee), 45 (hand Squee) -- none for the exiled Squee (oid 1). Combined with no CastSpell legal action advertised (castspell_advertised returned None), A2 is correctly 'failed': the engine never offered casting the exiled Squee. Verdict logic unchanged: A3 failed -> reproduced."
+  ],
+  "verdict": "reproduced",
+  "bug_mechanism": "Pinned v0.79.0 card data parses Squee, the Immortal's 'You may cast this card from your graveyard or from exile.' as a single GraveyardCastPermission static (active_zones=['Graveyard']); no Exile cast permission is emitted. The engine therefore never advertises CastSpell for the exiled Squee."
+}
