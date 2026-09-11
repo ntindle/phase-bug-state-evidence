@@ -1,0 +1,31 @@
+P0 creating game...
+P1 joining...
+game QQ9MI0; seats 0/1
+[P0] keeps
+[P0] plays Plains
+[P0] plays Plains
+[P0] plays Plains
+[P0] plays Plains
+[P0] plays Plains
+[P0] plays Plains
+[P0] plays Plains
+[P0] casts Gisela, the Broken Blade
+[P0] plays Plains
+[P0] casts Bruna, the Fading Light
+exported pre.json
+[pre] both halves on P0 BF at turn 16 PostCombatMain
+[stack meld] [{"id": {"id": 121, "source_id": 1, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 1, "ability": {"effect": {"type": "Meld", "source": "Gisela, the Broken Blade", "partner": "Bruna, the Fading Light", "result": "Brisela, Voice of Nightmares", "source_filter": {"type": "SelfRef"}, "partner_filter": {"type": "Any"}, "entry": {"type": "Normal"}}, "targets": [], "source_id
+exported mid_trigger.json
+[mid] trigger on stack at phase=End
+[P0] discards 1
+exported post_trigger.json
+[post_trigger] phase=Upkeep brisela_bf=0
+exported post.json
+[post] phase=Upkeep turn=23
+A1_setup_ok: passed
+A2_trigger_fires: passed
+A3_exile_observed: passed
+A4_meld_correct: failed
+A5_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority']
+verdict: reproduced

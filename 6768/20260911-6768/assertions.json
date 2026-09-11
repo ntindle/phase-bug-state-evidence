@@ -1,0 +1,26 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_exile_observed": "passed",
+    "A4_meld_correct": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "pre: gisela_bf=1 bruna_bf=1 life=[20, 20]",
+    "trigger evidence hits: ['stack:']",
+    "resolution state: exile bruna=1 gisela=1; bf bruna=0 gisela=0",
+    "brisela_bf=[0, 0] (expected 1 melded permanent under P0)",
+    "half/brisela zones: {'Exile': ['gisela, the broken blade', 'bruna, the fading light'], 'Library': ['bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light'], 'Hand': ['bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light']}",
+    "half/brisela zones: {'Exile': ['gisela, the broken blade', 'bruna, the fading light'], 'Library': ['bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light'], 'Hand': ['bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light']}",
+    "post: phase=Upkeep turn=23 stack_empty=True advanced=True"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority"
+  ]
+}
