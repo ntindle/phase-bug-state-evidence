@@ -1,0 +1,20 @@
+2026-09-12T15:56:14.894246Z  INFO ws_message: server_core::session: game session created game=YHPU5P player_count=2
+2026-09-12T15:56:14.913647Z  INFO ws_message: phase_server: game created via lobby game=YHPU5P host=P0 players=2
+2026-09-12T15:56:14.996836Z  INFO phase_server: client connected online_count=2
+2026-09-12T15:56:14.998341Z  INFO ws_message: phase_server: ClientHello accepted version=driver-0.1 commit=driver
+2026-09-12T15:56:14.998713Z  INFO ws_message: phase_server: JoinGameWithPassword game=YHPU5P joiner=P1
+2026-09-12T15:56:14.998955Z  INFO ws_message: server_core::session: player joined session game=YHPU5P player=PlayerId(1) seat=1
+2026-09-12T15:56:15.038699Z  INFO ws_message: phase_server: player joined via lobby game=YHPU5P player=PlayerId(1)
+2026-09-12T15:56:15.199118Z  WARN phase_server: Full snapshot was no longer current game=YHPU5P disposition=SupersededOrRetired
+2026-09-12T15:56:48.625259Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: server_core::session: action applied game=YHPU5P player=PlayerId(0) action_type="CastSpell" event_count=1
+2026-09-12T15:56:48.639417Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: phase_server: game submission processed (lock held) game=YHPU5P kind="action" lock_ms=15 ai_actions=0
+2026-09-12T15:56:48.789048Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: server_core::session: interaction applied game=YHPU5P player=PlayerId(0) action_type="ChooseTarget" event_count=13
+2026-09-12T15:56:48.794882Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: phase_server: game submission processed (lock held) game=YHPU5P kind="interaction" lock_ms=19 ai_actions=0
+2026-09-12T15:56:51.975442Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: server_core::session: action applied game=YHPU5P player=PlayerId(0) action_type="PassPriority" event_count=1
+2026-09-12T15:56:51.977829Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(0)}: phase_server: game submission processed (lock held) game=YHPU5P kind="action" lock_ms=5 ai_actions=0
+2026-09-12T15:56:52.130199Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(1)}: server_core::session: action applied game=YHPU5P player=PlayerId(1) action_type="PassPriority" event_count=8
+2026-09-12T15:56:52.152323Z  INFO ws_message:game_session{game=YHPU5P player=PlayerId(1)}: phase_server: game submission processed (lock held) game=YHPU5P kind="action" lock_ms=29 ai_actions=0
+2026-09-12T15:56:52.489263Z  INFO phase_server: client disconnected game=Some("YHPU5P") player=Some(PlayerId(0))
+2026-09-12T15:56:52.489331Z  INFO server_core::session: player disconnected game=YHPU5P player=PlayerId(0)
+2026-09-12T15:56:52.490337Z  INFO phase_server: client disconnected game=Some("YHPU5P") player=Some(PlayerId(1))
+2026-09-12T15:56:52.490383Z  INFO server_core::session: player disconnected game=YHPU5P player=PlayerId(1)
