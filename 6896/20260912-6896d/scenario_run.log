@@ -1,0 +1,22 @@
+connected P0
+game YHPU5P; seats 0/1
+P1 mulligan -> Mulligan (lands=6 key=N)
+P0 mulligan -> Keep (lands=4 key=Y)
+P1 mulligan -> Mulligan (lands=7 key=N)
+P1 mulligan -> Keep (lands=6 key=Y)
+P1 bottoms 2
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Young Wolf
+[P0] casts Nightpack Ambusher
+[P1] casts Grizzly Bears
+[P1] casts Craw Wurm
+exported pre.json
+[P0] casts Moonlight Hunt
+[P0] TargetSelection prompt: rtype=schema cands=[('Grizzly Bears', 1), ('Craw Wurm', 1)]
+[P0] answers TargetSelection with Craw Wurm (cid YHPU5P.0.222.t1)
+exported mid_hunt.json
+Moonlight Hunt on stack; holding priority 3s
+exported post.json
+post.json exported; stopping
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_target_prompt": "passed", "A3a_any_damage": "passed", "A3b_full_damage": "passed", "A4_wolves_intact": "passed", "A5_hunt_resolved": "passed", "A6_cleanup": "passed"}
+VERDICT: not-reproduced
