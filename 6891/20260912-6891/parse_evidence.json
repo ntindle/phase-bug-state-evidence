@@ -1,0 +1,97 @@
+{
+ "name": "Lathiel, the Bounteous Dawn",
+ "oracle_text": "Lifelink\nAt the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.",
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "P1P1",
+     "count": {
+      "type": "UpTo",
+      "max": {
+       "type": "Ref",
+       "qty": {
+        "type": "LifeGainedThisTurn",
+        "player": {
+         "type": "Controller"
+        }
+       }
+      }
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "Another"
+       }
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "multi_target": {
+     "min": 0,
+     "max": {
+      "type": "Ref",
+      "qty": {
+       "type": "LifeGainedThisTurn",
+       "player": {
+        "type": "Controller"
+       }
+      }
+     }
+    },
+    "distribute": {
+     "type": "Counters",
+     "data": "P1P1"
+    },
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "End",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.",
+   "constraint": null,
+   "condition": {
+    "type": "QuantityComparison",
+    "lhs": {
+     "type": "Ref",
+     "qty": {
+      "type": "LifeGainedThisTurn",
+      "player": {
+       "type": "Controller"
+      }
+     }
+    },
+    "comparator": "GE",
+    "rhs": {
+     "type": "Fixed",
+     "value": 1
+    }
+   },
+   "batched": false
+  }
+ ]
+}

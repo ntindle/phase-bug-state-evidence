@@ -1,0 +1,82 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_budget": "passed",
+  "A4_slot0_accepted": "passed",
+  "A5_free_distribution": "failed",
+  "A6_decline_path": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "lathiel_bf=True own_bears=1 p1_bears=1 p0_life_at_trigger=22",
+  "A2_trigger_fired_detail": "trigger_on_stack=True target_prompt_seen=True wf_seq=['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareBlockers', 'Priority', 'TriggerTargetSelection', 'TriggerTargetSelection', 'Priority', 'Priority']",
+  "A3_budget_detail": "p0_life_at_endstep=22 life_gained=2 (expected 2)",
+  "A4_slot0_accepted_detail": "submitted=True accepted=True rejection=None",
+  "A5_free_distribution_detail": "distinct_required_observed=True slot1_same_tried=False slot1_same_rejected=False own_bear_counters=2 (free distribution wants 2) p1_bear_counters=0 (expected 0)",
+  "A6_decline_path_detail": "declined_extra_slots=False empty_slot_attempted=True",
+  "A7_cleanup_detail": "post waiting_for=Priority stack_empty=True"
+ },
+ "verdict": "reproduced",
+ "waiting_for_seq": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareBlockers",
+  "Priority",
+  "TriggerTargetSelection",
+  "TriggerTargetSelection",
+  "Priority",
+  "Priority"
+ ],
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}

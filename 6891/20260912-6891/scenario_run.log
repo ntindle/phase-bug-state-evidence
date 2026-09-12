@@ -1,0 +1,44 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.80.0", "build_commit": "22cca6d", "protocol_version": 69, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+parse_evidence.json written
+game 8LXML9; seats 0/1
+waiting_for: MulliganDecision player=None stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] casts Grizzly Bears
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Lathiel, the Bounteous Dawn
+[P0] casts Grizzly Bears
+waiting_for: Priority player=0 stage=ATTACK
+waiting_for: DeclareAttackers player=1 stage=ATTACK
+waiting_for: Priority player=1 stage=ATTACK
+waiting_for: DeclareAttackers player=0 stage=ATTACK
+[P0] attacks with Lathiel (turn 17)
+waiting_for: Priority player=0 stage=ATTACK
+waiting_for: DeclareBlockers player=1 stage=ATTACK
+waiting_for: Priority player=0 stage=ATTACK
+waiting_for: TriggerTargetSelection player=0 stage=ATTACK
+Lathiel trigger on stack at End; P0 life=22
+exported pre_trigger.json
+Lathiel TriggerTargetSelection at End; P0 life=22; candidates=[('Grizzly Bears', '102', 1), ('Grizzly Bears', '13', 0)]
+[P0] slot 0 opp 8LXML9.0.277: [('Grizzly Bears', '102', 1), ('Grizzly Bears', '13', 0)]
+[P0] slot 0 targets own Grizzly Bears oid=13
+waiting_for: TriggerTargetSelection player=0 stage=ENDSTEP
+[P0] slot 1 opp 8LXML9.0.278: [('Grizzly Bears', '102', 1)]
+[P0] slot 1: own bear oid=13 NOT among candidates -- distinct targets required
+[P0] slot 1: trying empty selection (up-to path)
+waiting_for: Priority player=0 stage=ENDSTEP
+slot-0 submission appears ACCEPTED (prompt moved on)
+exported post.json
+post.json exported; stopping
+waiting_for: Priority player=0 stage=DONE
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_budget": "passed", "A4_slot0_accepted": "passed", "A5_free_distribution": "failed", "A6_decline_path": "passed", "A7_cleanup": "passed"}
+VERDICT: reproduced

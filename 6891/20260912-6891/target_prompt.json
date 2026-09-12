@@ -1,0 +1,190 @@
+{
+ "waiting_for_type": "TriggerTargetSelection",
+ "waiting_for_data": {
+  "player": 0,
+  "trigger_controller": 0,
+  "trigger_event": {
+   "type": "PhaseChanged",
+   "data": {
+    "phase": "End"
+   }
+  },
+  "trigger_events": [
+   {
+    "type": "PhaseChanged",
+    "data": {
+     "phase": "End"
+    }
+   }
+  ],
+  "target_slots": [
+   {
+    "legal_targets": [
+     {
+      "Object": 102
+     },
+     {
+      "Object": 13
+     }
+    ],
+    "optional": true,
+    "effect_kind": "PutCounter",
+    "effect_detail": {
+     "type": "None"
+    }
+   },
+   {
+    "legal_targets": [
+     {
+      "Object": 102
+     },
+     {
+      "Object": 13
+     }
+    ],
+    "optional": true,
+    "effect_kind": "PutCounter",
+    "effect_detail": {
+     "type": "None"
+    }
+   }
+  ],
+  "selection": {
+   "current_slot": 0,
+   "current_legal_targets": [
+    {
+     "Object": 102
+    },
+    {
+     "Object": 13
+    }
+   ]
+  },
+  "source_id": 24,
+  "description": "At the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures."
+ },
+ "opportunity": {
+  "interactionId": "8LXML9.0.277",
+  "response": {
+   "type": "schema",
+   "data": {
+    "spec": {
+     "type": "sequence",
+     "data": {
+      "min": 0,
+      "max": 1,
+      "unique": true,
+      "includeAll": false,
+      "engineValidated": false,
+      "escape": null,
+      "confirm": "explicit"
+     }
+    },
+    "candidates": [
+     {
+      "id": "8LXML9.0.277.t0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "102",
+         "name": "Grizzly Bears",
+         "zone": "battlefield",
+         "controller": 1,
+         "power": 2,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "8LXML9.0.277.t1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "13",
+         "name": "Grizzly Bears",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 2,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   },
+   {
+    "type": "selection",
+    "data": {
+     "intent": "modify",
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 0,
+   "maximum": 1,
+   "aggregate": null,
+   "confirmable": true
+  }
+ },
+ "candidates": [
+  {
+   "choice_id": "8LXML9.0.277.t0",
+   "ref": "102",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 1,
+   "text": null
+  },
+  {
+   "choice_id": "8LXML9.0.277.t1",
+   "ref": "13",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 0,
+   "text": null
+  }
+ ],
+ "trigger_desc": "At the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures."
+}

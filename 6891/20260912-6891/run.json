@@ -1,0 +1,101 @@
+{
+ "issue": 6891,
+ "run_id": "20260912-6891",
+ "started_at": "2026-09-12T09:49:53Z",
+ "server": {
+  "server_version": "0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "run's own ServerHello (captured in wire_log.jsonl game_start event) + pinned v0.80.0 artifacts minisign-verified 2026-09-11 against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY"
+ },
+ "driver": {
+  "protocol_version": 69,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6891.py"
+ },
+ "scenario_sha256": "afbadf8ad4b168a0b7cadbc68f49558bd4d4e508d9773e72a4aa1cb134f6807a",
+ "decks": {
+  "P0": [
+   [
+    "Lathiel, the Bounteous Dawn",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    18
+   ],
+   [
+    "Plains",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "8LXML9",
+   "note": "P0 ramps, casts Lathiel (turn ~5), casts a Grizzly Bears; P1 casts one Grizzly Bears. Turn 17: P0 attacks P1's player with Lathiel alone (lifelink) -> P0 life 20->22 (gained 2). P1 declares no blockers. End step: Lathiel trigger fires (TriggerTargetSelection, source_id 24, description matches oracle text). Slot 0: driver targets own bear (oid 13) - accepted. Slot 1: candidates contain ONLY P1's bear (oid 102); own bear excluded (unique:true). Driver submits empty selection (decline/up-to path) - accepted. Post: own bear has 2 P1P1 counters, P1 bear 0."
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_budget": "passed",
+  "A4_slot0_accepted": "passed",
+  "A5_free_distribution": "failed",
+  "A6_decline_path": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "lathiel_bf=True own_bears=1 p1_bears=1 p0_life_at_trigger=22",
+  "A2_trigger_fired_detail": "trigger_on_stack=True target_prompt_seen=True wf_seq=['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareBlockers', 'Priority', 'TriggerTargetSelection', 'TriggerTargetSelection', 'Priority', 'Priority']",
+  "A3_budget_detail": "p0_life_at_endstep=22 life_gained=2 (expected 2)",
+  "A4_slot0_accepted_detail": "submitted=True accepted=True rejection=None",
+  "A5_free_distribution_detail": "distinct_required_observed=True slot1_same_tried=False slot1_same_rejected=False own_bear_counters=2 (free distribution wants 2) p1_bear_counters=0 (expected 0)",
+  "A6_decline_path_detail": "declined_extra_slots=False empty_slot_attempted=True",
+  "A7_cleanup_detail": "post waiting_for=Priority stack_empty=True"
+ },
+ "notes": [
+  "Parse layer (pinned v0.80.0 card-data.json, parse_evidence.json): Lathiel's end-step trigger is supported but encodes multi_target={min:0, max:Ref(LifeGainedThisTurn)} - the target-count cap is tied to life gained, conflating the counter budget with oracle's independently variable 'any number' of targets.",
+  "Runtime manifestation (target_prompt.json): the engine presents the trigger as N=life-gained sequential target slots (here 2 slots), each a sequence schema {min:0, max:1, unique:true, confirm:explicit}. Slot 1's candidates EXCLUDE the creature chosen in slot 0 - the same creature cannot be selected twice.",
+  "With a single own creature on board, the engine's slot-1 offer was exactly one candidate: the OPPONENT's Grizzly Bears (oid 102). The only way to avoid targeting it was the empty-selection decline path (min:0). This is the reported experience: the ability plays as 'distribute among THAT MANY distinct creatures', steering the controller toward opponent creatures.",
+  "Decline-path quirk, recorded honestly: after declining slot 1, the post state shows the own bear (oid 13) with 2 P1P1 counters and the opponent bear with 0 - the engine distributed both counters onto the single chosen target rather than dropping the declined counter. The defect is in the target-selection model (distinct slots, re-selection forbidden), not in the final tally of this particular line.",
+  "A6 passed: an up-to decline path exists (empty selection accepted), so the controller is not literally forced onto the opponent's creature - but stacking counters is only expressible via decline, never by selecting the same creature twice.",
+  "waiting_for types seen: MulliganDecision, Priority, DeclareAttackers, Priority, DeclareAttackers, Priority, DeclareAttackers, Priority, DeclareAttackers, Priority, Priority, DeclareAttackers, Priority, DeclareAttackers, Priority, DeclareBlockers, Priority, TriggerTargetSelection, TriggerTargetSelection, Priority, Priority"
+ ],
+ "verdict": "reproduced",
+ "setup_line": "P0 (Lathiel + own Grizzly Bears) vs P1 (one Grizzly Bears); two human-driver seats; P0 gains 2 life via Lathiel lifelink attack",
+ "contract_line": "Controller may distribute 0..N counters (N=life gained) among ANY number of other target creatures, stacking freely; opponent creatures optional, never mandatory",
+ "stats": {
+  "states_seen": "21 waiting_for transitions",
+  "interaction_submits": 2,
+  "action_submits": 280
+ },
+ "limitations": [
+  "Browser UI not exercised",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games)",
+  "Distribution with 3+ counters / 3+ targets not exercised (single 2-counter scenario)",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)"
+ ],
+ "restoration": "pre_trigger.json/post.json are authoritative export envelopes ({\"state\", \"precast_shortcut_runtime\"}); verified by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}
