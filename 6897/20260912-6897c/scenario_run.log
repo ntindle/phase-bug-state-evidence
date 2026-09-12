@@ -1,0 +1,48 @@
+[one] game 9J4LCK; seats 0/1
+[one] P0 casts Lockjaw
+[one] P1 casts Storm Crow (blocker)
+[one] P1 casts Storm Crow (blocker)
+[one] P0 casts Storm Crow
+[one] P1 casts Storm Crow (blocker)
+exported a_pre.json
+[one] P0 casts Divination; stage -> TRIGGER
+[one] reflexive prompt #1: rtype=schema spec=sequence cands=[('Storm Crow', '19')]
+[one] answered reflexive prompt #1 with Crow 19 (answer #1)
+exported a_post_trigger.json
+[one] trigger resolved, at DeclareAttackers; stage -> ATTACK
+[one] P0 attacks with ['5', '19']
+exported a_post.json
+[one] post.json exported; stopping game
+[zero] game E1FU2E; seats 0/1
+[zero] P1 casts Storm Crow (blocker)
+[zero] P0 casts Storm Crow
+[zero] P1 casts Storm Crow (blocker)
+[zero] P1 casts Storm Crow (blocker)
+[zero] P1 casts Storm Crow (blocker)
+[zero] P0 casts Lockjaw
+exported b_pre.json
+[zero] P0 casts Divination; stage -> TRIGGER
+[zero] reflexive prompt #1: rtype=schema spec=sequence cands=[('Storm Crow', '6')]
+[zero] answered reflexive prompt #1 with EMPTY (answer #1)
+exported b_post_trigger.json
+[zero] trigger resolved, at DeclareAttackers; stage -> ATTACK
+[zero] P0 attacks with ['56', '6']
+[zero] DeclareBlockers: keys=['assignments'] mentions_lockjaw=False mentions_crow=False
+[zero] P1 declares no blockers
+exported b_post.json
+[zero] post.json exported; stopping game
+ASSERTIONS: {
+ "A1_setup_ok": "passed",
+ "A2_counter_placed": "passed",
+ "A3_prompt_once": "passed",
+ "A4_choice_completes": "passed",
+ "A5_unblockable": "passed",
+ "A6_cleanup": "passed",
+ "B0_setup_ok": "passed",
+ "B0_counter_placed": "passed",
+ "B1_prompt_once": "passed",
+ "B2_zero_completes": "passed",
+ "B2b_unblockable": "passed",
+ "B3_cleanup": "passed"
+}
+VERDICT: not-reproduced

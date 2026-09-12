@@ -1,0 +1,118 @@
+{
+ "issue": 6897,
+ "run_id": "20260912-6897c",
+ "started_at": "2026-09-12T16:36:01Z",
+ "server": {
+  "server_version": "0.81.1",
+  "build_commit": "ab70305",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "6a33738e215f9c5dde5fd6f2e72568992a83d668778d593b9d65fab657c0d8c0",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "ServerHello + minisign verification against repo-pinned key"
+ },
+ "driver": {
+  "protocol_version": 70,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6897.py"
+ },
+ "scenario_sha256": "812886d52b8abeca78a98af07f365a39424da660578fd926bda810cd3eb45aac",
+ "decks": {
+  "P0": [
+   [
+    "Lockjaw, Slobbering Teleporter",
+    4
+   ],
+   [
+    "Storm Crow",
+    8
+   ],
+   [
+    "Divination",
+    12
+   ],
+   [
+    "Island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Storm Crow",
+    12
+   ],
+   [
+    "Island",
+    48
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "9J4LCK",
+   "note": "Choose-one branch: P0 controls Lockjaw + Storm Crow, casts Divination in PreCombatMain. Beginning-of-combat trigger fires; reflexive prompt appears EXACTLY ONCE (TriggerTargetSelection, schema/sequence, candidates=[Storm Crow]); driver answers with the Crow. Trigger resolves; game reaches DeclareAttackers with empty stack; no second prompt (prompt_count=1, reopen_count=0)."
+  },
+  {
+   "game_code": "E1FU2E",
+   "note": "Choose-zero branch: same setup; driver answers the single reflexive prompt with an empty selection. Trigger resolves; DeclareAttackers reached with empty stack; no second prompt (prompt_count=1, reopen_count=0)."
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counter_placed": "passed",
+  "A3_prompt_once": "passed",
+  "A4_choice_completes": "passed",
+  "A5_unblockable": "passed",
+  "A6_cleanup": "passed",
+  "B0_setup_ok": "passed",
+  "B0_counter_placed": "passed",
+  "B1_prompt_once": "passed",
+  "B2_zero_completes": "passed",
+  "B2b_unblockable": "passed",
+  "B3_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "lockjaw_bf=True crow_bf=True div_in_hand=True life=(20,20)",
+  "A2_counter_placed_detail": "lockjaw_oid=5 p1p1=True post_trigger=yes",
+  "A3_prompt_once_detail": "prompt_count=1 reopens=0 answers=1 loop_flag=False",
+  "A4_choice_completes_detail": "post_trigger_exported=True attack_declared=True",
+  "A5_unblockable_detail": "markers=[('5', True), ('19', True)] block_offer_clean=False block_keys=None",
+  "A6_cleanup_detail": "post_exported=True stack_empty=True final_stage=DONE",
+  "B0_setup_ok_detail": "lockjaw_bf=True crow_bf=True div_in_hand=True life=(20,20)",
+  "B0_counter_placed_detail": "lockjaw_oid=56 p1p1=True post_trigger=yes",
+  "B1_prompt_once_detail": "prompt_count=1 reopens=0 answers=1 loop_flag=False",
+  "B2_zero_completes_detail": "post_trigger_exported=True attack_declared=True",
+  "B2b_unblockable_detail": "markers=[('56', True)] block_offer_clean=True block_keys=['assignments']",
+  "B3_cleanup_detail": "post_exported=True stack_empty=True final_stage=DONE"
+ },
+ "notes": [
+  "Parse layer (pinned v0.81.1 card-data.json): Lockjaw's reflexive sub-ability carries multi_target {min: 0, max: Fixed 1}, condition WhenYouDo, duration UntilEndOfTurn -- the 'up to one other target creature you control' structure the report is about.",
+  "Runtime layer, game A: the reflexive prompt surfaced once as waiting_for type TriggerTargetSelection (NOT legacy TargetSelection) with a viewer_interaction schema/sequence opportunity; candidate was P0's Storm Crow. After answering, the stack emptied and the game advanced to DeclareAttackers -- the prompt never reopened.",
+  "Runtime layer, game B: the same single prompt answered with an empty selection completed the trigger identically -- the decline path works.",
+  "Authoritative post-trigger states: Lockjaw carries a +1/+1 counter; CantBeBlocked markers present on Lockjaw in both games and on the chosen Crow in game A. Combat resolved (P1 20->17 both games); both games reached End with an empty stack and no stall.",
+  "Zero rejections/errors across both games in the final run; prompt_count=1 and reopen_count=0 per game (wire_log.jsonl).",
+  "Verdict rationale: the reported outcome -- the reflexive prompt returning after the choice is made and looping through priority -- did not occur on v0.81.1 in either the choose-one or the choose-zero branch. Every assertion passed."
+ ],
+ "verdict": "not-reproduced",
+ "setup_line": "P0 (4x Lockjaw + 8x Storm Crow + 12x Divination + 36x Island) vs P1 (12x Storm Crow + 48x Island); two human-driver seats",
+ "contract_line": "After casting a noncreature spell, Lockjaw's beginning-of-combat trigger puts a +1/+1 counter on it and its reflexive 'up to one other target creature' prompt fires exactly once; the choice (or empty choice) completes and the game advances without re-prompting",
+ "stats": {
+  "states_seen": "n/a (event-driven driver)",
+  "trigger_observations": "reflexive TriggerTargetSelection observed once per game in wire_log.jsonl (reflexive_prompt events)",
+  "interaction_submits": 2,
+  "action_submits": 377,
+  "rejections": 0
+ },
+ "limitations": [
+  "Browser UI not exercised",
+  "Native AI seats not used; the trigger/prompt path is engine-level and seat-independent",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games)",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)",
+  "Not tested on the report's original build; verdict is scoped to v0.81.1, not a fix claim"
+ ],
+ "restoration": "a_pre.json/a_post_trigger.json/a_post.json and the b_* set are authoritative export envelopes ({\"precast_shortcut_runtime\", \"state\"}); restored only by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}

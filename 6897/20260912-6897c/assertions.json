@@ -1,0 +1,86 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counter_placed": "passed",
+  "A3_prompt_once": "passed",
+  "A4_choice_completes": "passed",
+  "A5_unblockable": "passed",
+  "A6_cleanup": "passed",
+  "B0_setup_ok": "passed",
+  "B0_counter_placed": "passed",
+  "B1_prompt_once": "passed",
+  "B2_zero_completes": "passed",
+  "B2b_unblockable": "passed",
+  "B3_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "lockjaw_bf=True crow_bf=True div_in_hand=True life=(20,20)",
+  "A2_counter_placed_detail": "lockjaw_oid=5 p1p1=True post_trigger=yes",
+  "A3_prompt_once_detail": "prompt_count=1 reopens=0 answers=1 loop_flag=False",
+  "A4_choice_completes_detail": "post_trigger_exported=True attack_declared=True",
+  "A5_unblockable_detail": "markers=[('5', True), ('19', True)] block_offer_clean=False block_keys=None",
+  "A6_cleanup_detail": "post_exported=True stack_empty=True final_stage=DONE",
+  "B0_setup_ok_detail": "lockjaw_bf=True crow_bf=True div_in_hand=True life=(20,20)",
+  "B0_counter_placed_detail": "lockjaw_oid=56 p1p1=True post_trigger=yes",
+  "B1_prompt_once_detail": "prompt_count=1 reopens=0 answers=1 loop_flag=False",
+  "B2_zero_completes_detail": "post_trigger_exported=True attack_declared=True",
+  "B2b_unblockable_detail": "markers=[('56', True)] block_offer_clean=True block_keys=['assignments']",
+  "B3_cleanup_detail": "post_exported=True stack_empty=True final_stage=DONE"
+ },
+ "verdict": "not-reproduced",
+ "games": {
+  "one": {
+   "mode": "one",
+   "prefix": "a",
+   "game_code": "9J4LCK",
+   "stage": "DONE",
+   "prompt_count": 1,
+   "prompt_iids": [
+    "9J4LCK.0.152"
+   ],
+   "reopen_count": 0,
+   "answers": 1,
+   "loop": false,
+   "lockjaw_oid": "5",
+   "crow_oid": "19",
+   "pre_exported": true,
+   "post_trigger_exported": true,
+   "attack_declared": true,
+   "block_action_logged": false,
+   "block_shape": null,
+   "post_exported": true,
+   "p1_life_pre_attack": 20,
+   "rejections": []
+  },
+  "zero": {
+   "mode": "zero",
+   "prefix": "b",
+   "game_code": "E1FU2E",
+   "stage": "DONE",
+   "prompt_count": 1,
+   "prompt_iids": [
+    "E1FU2E.0.202"
+   ],
+   "reopen_count": 0,
+   "answers": 1,
+   "loop": false,
+   "lockjaw_oid": "56",
+   "crow_oid": null,
+   "pre_exported": true,
+   "post_trigger_exported": true,
+   "attack_declared": true,
+   "block_action_logged": true,
+   "block_shape": {
+    "keys": [
+     "assignments"
+    ],
+    "mentions_lockjaw": false,
+    "mentions_crow": false,
+    "len": 56
+   },
+   "post_exported": true,
+   "p1_life_pre_attack": 20,
+   "rejections": []
+  }
+ }
+}
