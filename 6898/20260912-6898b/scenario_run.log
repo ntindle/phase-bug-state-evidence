@@ -1,0 +1,46 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.2", "build_commit": "f976096", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game Y7Y9OG; seats P0=0 P1=1
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] declined miracle (iid Y7Y9OG.0.94)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P0 casts Lightning Bolt #1 at P1
+[P0] answered damage prompt:  ref=None
+P0 casts Cemetery Prowler #1
+exported exiles.json (585428 bytes)
+ETB exile checkpoint saved; stage -> PROOF1
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre.json (535262 bytes)
+P0 casts Thunderous Wrath #1 (P1 life 17)
+[P0] answered damage prompt:  ref=None
+exported post.json (549763 bytes)
+Wrath #1 resolved; taps={'total': 2, 'mountains': 2}; stage -> SETUP2
+P0 casts Lightning Bolt #2 at P1
+[P0] answered damage prompt:  ref=None
+stage -> ATTACK1
+P0 attacks with Cemetery Prowler
+[P0] answered exile prompt: Lightning Bolt ref=6
+exported exiles2.json (571111 bytes)
+attack-trigger exile checkpoint saved; stage -> PROOF2
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre2.json (539431 bytes)
+P0 casts Thunderous Wrath #2 (P1 life 6)
+[P0] answered damage prompt:  ref=None
+exported post2.json (553942 bytes)
+Wrath #2 resolved; taps={'total': 2, 'mountains': 2}; DONE
+loop ended: stage=DONE stop=True
+ASSERTIONS: {
+ "A1_setup_ok": "passed",
+ "A2_wrath1_cast": "passed",
+ "A3_reduction_exact": "failed",
+ "A4_second_exile": "passed",
+ "A5_no_multiply": "failed",
+ "A6_cleanup": "passed"
+}
+VERDICT (proposal): reproduced
+wrote run.json
+copied scenario_6898.py to evidence
+wrote server_excerpts.log (500 lines)
