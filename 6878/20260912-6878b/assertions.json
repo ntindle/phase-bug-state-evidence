@@ -1,0 +1,70 @@
+{
+ "issue": 6878,
+ "run_id": "20260912-6878b",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A3_order_offered_r1": "failed",
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "3",
+    "33"
+   ],
+   "positions": {
+    "3": 25,
+    "33": 26
+   },
+   "post_bottom_tail": [
+    "26",
+    "34",
+    "22",
+    "37",
+    "3",
+    "33"
+   ]
+  },
+  "A5_no_opponent_leak": "passed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "5": {
+     "name": "Hidden Card",
+     "zone": "Library",
+     "face_down": true,
+     "revealed": null
+    },
+    "3": {
+     "name": "Hidden Card",
+     "zone": "Library",
+     "face_down": true,
+     "revealed": null
+    },
+    "33": {
+     "name": "Hidden Card",
+     "zone": "Library",
+     "face_down": true,
+     "revealed": null
+    }
+   },
+   "leaked": []
+  },
+  "A6_decline_branch_r2": "failed",
+  "A6_decline_branch_r2_detail": {
+   "kept": [],
+   "rest_oids": [
+    "9",
+    "21",
+    "4"
+   ],
+   "rest_positions": {
+    "9": 23,
+    "21": 24,
+    "4": 25
+   },
+   "order_offered": false
+  },
+  "A7_cleanup": "passed"
+ },
+ "notes": []
+}
