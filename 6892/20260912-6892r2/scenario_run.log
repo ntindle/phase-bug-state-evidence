@@ -1,0 +1,35 @@
+game YWH78X; P0 seat=0; P1 = native AI Medium
+P0 mulligan -> Keep (lands=6)
+waiting_for: MulliganDecision player=None stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Serra Angel (oid=21)
+[P0] casts Serra Angel (oid=28)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Serra Angel (oid=6)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Serra Angel (oid=12)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+Ob Nixilis on P1 BF oid=72 turn=22 loyalty=1 counter_fields=['loyalty', 'printed_loyalty', 'base_loyalty', 'base_printed_loyalty', 'loyalty_activations_this_turn']
+exported pre.json
+AI loyalty activation observed (counter): oid=72 turn=22 loyalty 1 -> 1 p0life 20 -> 20 p1life 20 -> 20 demons 0 -> 0
+activation resolved: stack empty, turn=22 demons=1 p0life=20 p1life=18 loyalty=1
+exported post_activation.json
+waiting_for: DeclareAttackers player=0 stage=RESOLVED
+waiting_for: Priority player=0 stage=RESOLVED
+[P0] blocks 1 attackers
+waiting_for: DeclareBlockers player=0 stage=RESOLVED
+waiting_for: Priority player=0 stage=RESOLVED
+game advanced 3 turns past activation; exporting post.json
+exported post.json
+verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_ai_activation": "passed", "A3_activation_resolves": "passed", "A4_no_double_activation": "passed", "A5_no_stuck": "passed"}
+evidence files: ['post.json', 'post_activation.json', 'pre.json', 'run.json', 'scenario_6892.py', 'scenario_run.log', 'server_excerpts.log', 'wire_log.jsonl']
+scenario finished
