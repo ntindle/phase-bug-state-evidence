@@ -1,0 +1,95 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_creatures_enter": "passed",
+  "A3_triggers_fired": "passed",
+  "A4_both_sacrificed": "failed",
+  "A5_cleanup_leg1": "passed",
+  "A6_endstep_survives": "passed",
+  "A7_next_endstep_sac": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "sneak_on_p0_bf=True hand_bears=2 main_phase=True turn=10",
+  "A2_creatures_enter": "leg1_bears=['3', '45'] zones=['Battlefield', 'Battlefield']",
+  "A3_triggers_fired": "sacrifice triggers observed on stack at end step: 2 (expect >=2)",
+  "A4_both_sacrificed": "zones post1=['Battlefield', 'Graveyard'] (expect both Graveyard)",
+  "A5_cleanup_leg1": "stack empty in post1: True; post1 turn=11 vs leg1 end turn=10",
+  "A6_endstep_survives": "leg2 bear 51 zone at next turn: Battlefield (expect Battlefield)",
+  "A7_next_endstep_sac": "leg2 bear 51 zone: Graveyard (expect Graveyard); stack empty: True"
+ },
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": [
+      18
+     ]
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "trigger_records": [
+  {
+   "id": 123,
+   "blob": "{\"id\": 123, \"source_id\": 18, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 18, \"ability\": {\"effect\": {\"type\": \"Sacrifice\", \"target\": {\"type\": \"ParentTarget\"}, \"count\": {\"type\": \"Fixed\", \"value\": 1}}, \"targets\": [{\"Object\": 45}], \"source_id\": 18, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 18, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Sneak Attack\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 4, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Enchantment\"], \"subtypes\": [], \"supertypes\": [], \"keywords\": [], \"colors\": [\"Red\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 18, \"printed_ref\": {\"oracle_id\": \"e7aee670-e6ac-4b3a-b3d1-7b7013db8f3d\", \"face_name\": \"Sneak Attack\"}, \"is_token\": false, \"face_down\": false, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"timestamp\": 9, \"entered_battlefield_turn\": 8, \"combat_status\": {\"attacking\": false, \"blocking\": false, \"blocked\": false, \"attacking_alone\": false, \"blocking_alone\": false, \"defending_player\": null}, \"cast_from_zone\": \"Hand\", \"cast_controller\": 0, \"phase_status\": {\"status\": \"PhasedIn\"}, \"mana_spent_to_cast\": true, \"colors_spent_to_cast\": {\"red\": 4}, \"mana_spent_to_cast_amount\": 4, \"mana_spent_source_snapshots\": [{\"source_id\": 13, \"lki\": {\"name\": \"Mountain\", \"power\": null, \"toughness\": null, \"base_power\":"
+  },
+  {
+   "id": 124,
+   "blob": "{\"id\": 124, \"source_id\": 18, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 18, \"ability\": {\"effect\": {\"type\": \"Sacrifice\", \"target\": {\"type\": \"ParentTarget\"}, \"count\": {\"type\": \"Fixed\", \"value\": 1}}, \"targets\": [], \"source_id\": 18, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 18, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Sneak Attack\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 4, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Enchantment\"], \"subtypes\": [], \"supertypes\": [], \"keywords\": [], \"colors\": [\"Red\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 18, \"printed_ref\": {\"oracle_id\": \"e7aee670-e6ac-4b3a-b3d1-7b7013db8f3d\", \"face_name\": \"Sneak Attack\"}, \"is_token\": false, \"face_down\": false, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"timestamp\": 9, \"entered_battlefield_turn\": 8, \"combat_status\": {\"attacking\": false, \"blocking\": false, \"blocked\": false, \"attacking_alone\": false, \"blocking_alone\": false, \"defending_player\": null}, \"cast_from_zone\": \"Hand\", \"cast_controller\": 0, \"phase_status\": {\"status\": \"PhasedIn\"}, \"mana_spent_to_cast\": true, \"colors_spent_to_cast\": {\"red\": 4}, \"mana_spent_to_cast_amount\": 4, \"mana_spent_source_snapshots\": [{\"source_id\": 13, \"lki\": {\"name\": \"Mountain\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_t"
+  }
+ ]
+}
