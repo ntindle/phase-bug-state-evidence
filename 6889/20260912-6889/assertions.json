@@ -1,0 +1,35 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_wolf_trigger": "passed",
+  "A3_life_gain": "passed",
+  "A4_fight_prompted": "failed",
+  "A5_fight_resolved": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "tolsimir_bf=True voja_bf=True p1_bears_mid=2",
+  "A2_wolf_trigger_detail": "DIRECT stack observation in mid_trigger.json: TriggeredAbility id=123, source=Tolsimir, Friend to Wolves (oid 3), description='Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.', effect=GainLife{3} ONLY, sub_ability=null, targets=[], optional_targeting=false. The fight half is absent at trigger-instantiation. (Live tick scan missed it: description nests under kind.data.ability on protocol 69; scenario scanner patched for future runs.)",
+  "A3_life_gain_detail": "P0 life pre=20 post-trigger=23 (expect +3)",
+  "A4_fight_prompted_detail": "fight_prompted=False fight_answered=False target_oid=None; waiting_for types seen: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'Priority'] Direct stack evidence: the trigger carried targets=[] and no TriggerTargetSelection/TargetSelection wait ever appeared (only MulliganDecision/DeclareAttackers/Priority in the full waiting_for sequence).",
+  "A5_fight_resolved_detail": "no fight prompt; nothing to resolve",
+  "A6_cleanup_detail": "stack_empty=True trigger_resolved=True"
+ },
+ "verdict": "reproduced",
+ "waiting_for_seq": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "Priority"
+ ],
+ "rejections": []
+}

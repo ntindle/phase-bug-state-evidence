@@ -1,0 +1,100 @@
+{
+ "issue": 6889,
+ "run_id": "20260912-6889",
+ "started_at": "2026-09-12T07:47:27Z",
+ "server": {
+  "server_version": "0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "ServerHello + minisign verification against repo-pinned key"
+ },
+ "driver": {
+  "protocol_version": 69,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6889.py"
+ },
+ "scenario_sha256": "f82a769c736ea716081cece69985b6111fa20711c7861e2752e0e4ba11019921",
+ "decks": {
+  "P0": [
+   [
+    "Tolsimir, Friend to Wolves",
+    12
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Plains",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "7ZIUIK",
+   "note": "P0 casts Tolsimir, Friend to Wolves (turn 14 PreCombatMain); ETB creates Voja, Friend to Elves token; Wolf-enter trigger observed ON THE STACK (id 123, source Tolsimir) with effect=GainLife{3} only, sub_ability=null, targets=[]; P0 life 20->23; no TargetSelection/TriggerTargetSelection wait ever appeared; both Bears survived; stack empty, game proceeds."
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_wolf_trigger": "passed",
+  "A3_life_gain": "passed",
+  "A4_fight_prompted": "failed",
+  "A5_fight_resolved": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "tolsimir_bf=True voja_bf=True p1_bears_mid=2",
+  "A2_wolf_trigger_detail": "DIRECT stack observation in mid_trigger.json: TriggeredAbility id=123, source=Tolsimir, Friend to Wolves (oid 3), description='Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.', effect=GainLife{3} ONLY, sub_ability=null, targets=[], optional_targeting=false. The fight half is absent at trigger-instantiation. (Live tick scan missed it: description nests under kind.data.ability on protocol 69; scenario scanner patched for future runs.)",
+  "A3_life_gain_detail": "P0 life pre=20 post-trigger=23 (expect +3)",
+  "A4_fight_prompted_detail": "fight_prompted=False fight_answered=False target_oid=None; waiting_for types seen: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'Priority'] Direct stack evidence: the trigger carried targets=[] and no TriggerTargetSelection/TargetSelection wait ever appeared (only MulliganDecision/DeclareAttackers/Priority in the full waiting_for sequence).",
+  "A5_fight_resolved_detail": "no fight prompt; nothing to resolve",
+  "A6_cleanup_detail": "stack_empty=True trigger_resolved=True"
+ },
+ "notes": [
+  "Parse layer (pinned v0.80.0 card-data.json, parse_evidence.json): Tolsimir's Wolf-enter trigger execute = GainLife{3} only; the 'fights up to one target creature you don't control' clause has no sub_ability and no target definition. Matches triage: 'its child structure contains only GainLife'.",
+  "Runtime layer: the trigger instantiated on the stack carried effect GainLife{3}, sub_ability null, targets [], optional_targeting false -- the fight half never reached the stack.",
+  "Full waiting_for sequence for the game: MulliganDecision, DeclareAttackers, Priority only. No target-selection wait was ever opened, so the controller was never offered the fight.",
+  "2+ legal fight targets (Grizzly Bears x2 on P1 battlefield) were present at trigger time, so a missing prompt cannot be explained by single-target auto-targeting or lack of legal targets.",
+  "Life gain occurred (20->23) exactly as reported; only the fight half is broken.",
+  "The live tick's stack scanner missed the trigger (description nests under kind.data.ability on protocol 69); scenario_6889.py patched for future runs. The observation itself is direct from mid_trigger.json.",
+  "Verdict rationale: the reported outcome (fight never offered or resolved while life gain works) is exactly reproduced on v0.80.0."
+ ],
+ "verdict": "reproduced",
+ "setup_line": "P0 (12x Tolsimir + Forests/Plains) vs P1 (12x Grizzly Bears + Forests); two human-driver seats",
+ "contract_line": "Wolf entering must trigger life gain AND offer the up-to-one fight target; with a legal target the wolf and target fight",
+ "stats": {
+  "states_seen": "13 waiting_for transitions",
+  "trigger_observations": "wolf trigger on stack id=123 in mid_trigger.json",
+  "interaction_submits": 0,
+  "action_submits": 231,
+  "rejections": 12
+ },
+ "limitations": [
+  "Browser UI not exercised",
+  "Native AI seats not used; the trigger/fight path is engine-level and seat-independent",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games)",
+  "The decline branch ('up to one' choosing zero targets) was not separately exercised -- no target prompt appeared at all",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)",
+  "Not tested on the report's original build; verdict is scoped to v0.80.0, not a fix claim"
+ ],
+ "restoration": "pre.json/mid_trigger.json/post.json are authoritative export envelopes ({\"precast_shortcut_runtime\", \"state\"}); restored only by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}

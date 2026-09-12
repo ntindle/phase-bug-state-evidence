@@ -1,0 +1,57 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.80.0", "build_commit": "22cca6d", "protocol_version": 69, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+parse_evidence.json written
+game 7ZIUIK; seats 0/1
+waiting_for: MulliganDecision player=None stage=SETUP
+[P1] keeps
+[P0] keeps
+waiting_for: Priority player=1 stage=SETUP
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+[P0] plays Forest
+[P1] plays Forest
+[P1] casts Grizzly Bears
+[P0] plays Forest
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+[P1] casts Grizzly Bears
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] plays Forest
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] plays Forest
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] plays Forest
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [53]}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] plays Forest
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] plays Forest
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [55]}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] plays Forest
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] plays Plains
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre.json
+[P0] casts Tolsimir, Friend to Wolves
+exported mid_trigger.json
+Voja token on P0 battlefield at turn 14 PreCombatMain
+waiting_for: Priority player=0 stage=TRIGGER
+wolf trigger resolved implicitly (life +3, no stack sighting)
+exported post.json
+post.json exported; stopping
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_wolf_trigger": "passed", "A3_life_gain": "passed", "A4_fight_prompted": "failed", "A5_fight_resolved": "not-run", "A6_cleanup": "passed"}
+VERDICT: reproduced

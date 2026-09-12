@@ -1,0 +1,119 @@
+{
+ "card": "Tolsimir, Friend to Wolves",
+ "oracle_text": "When Tolsimir enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.\nWhenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Token",
+     "name": "Voja, Friend to Elves",
+     "power": {
+      "type": "Fixed",
+      "value": 3
+     },
+     "toughness": {
+      "type": "Fixed",
+      "value": 3
+     },
+     "types": [
+      "Creature",
+      "Wolf"
+     ],
+     "colors": [
+      "Green",
+      "White"
+     ],
+     "keywords": [],
+     "tapped": false,
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "owner": {
+      "type": "Controller"
+     },
+     "enters_attacking": false,
+     "supertypes": [
+      "Legendary"
+     ]
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "GainLife",
+     "amount": {
+      "type": "Fixed",
+      "value": 3
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "Typed",
+    "type_filters": [
+     {
+      "Subtype": "Wolf"
+     }
+    ],
+    "controller": "You",
+    "properties": []
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
