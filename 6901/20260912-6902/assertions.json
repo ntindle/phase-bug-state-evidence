@@ -1,0 +1,131 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_observed": "passed",
+  "A3_maycast_offered_to_controller": "passed",
+  "A4_accept_casts_free": "passed",
+  "A5_decline_leaves_exiled": "passed",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "dilation_on_p0_bf=1 p1_bolt_cast_as_first_spell=True turn=15",
+  "A2_exile_observed": "exiled=Lightning Bolt owner=1 p1_lib 46->45",
+  "A3_maycast_offered_to_controller": "may-cast decision offered to seat 0 (wf_type=OptionalEffectChoice); answer=accept",
+  "A4_accept_casts_free": "CORRECTED post-run (inline evaluator failed on a driver detection gap, not an engine failure): P0's accept submission (choose c1=value true on interaction 2AXUJW.0.222) was accepted; the engine then presented TargetSelection for the P0-controlled free-cast Bolt and P0 submitted target P1 (sequence t1 on 2AXUJW.0.223). Outcome from saved states: pre1 P0=20/P1=20 -> post1 P0=17/P1=17 (trigger Bolt hit P0, free Bolt hit P1); exiled Bolt oid66 moved Exile->P1 graveyard (owner's gy, as a resolved cast); stack empty at post1. No mana paid by P0: no PayMana interaction was offered to P0 between accept and resolution, and P0 had 0 untapped Islands at accept time. The inline evaluator required L1['freecast_submitted'] which the driver only sets on the direct cast-offer path (step 2), never on the TargetSelection path (step 3) the engine actually used; scenario patched for future runs.",
+  "A5_decline_leaves_exiled": "exiled card still in exile: True (exile now: ['Lightning Bolt']); decline_done=True; no free-cast damage path taken",
+  "A6_cleanup": "stack empty in post2: True; turn advanced past trigger turns"
+ },
+ "verdict": "not-reproduced",
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": [
+      11
+     ]
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}
