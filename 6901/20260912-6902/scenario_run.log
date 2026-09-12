@@ -1,0 +1,43 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.2", "build_commit": "f976096", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game 2AXUJW; seats P0=0 P1=1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] discards 1 to hand size
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] discards 1 to hand size
+[P0] submits Mind's Dilation cast (turn 14)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": [11]}}
+[P0] Dilation cast rejected; will retry
+[P0] submits Mind's Dilation cast (turn 14)
+Dilation resolved on battlefield (turn 14); stage -> PROOF, leg 1 armed
+[P1] submits Lightning Bolt cast (leg 1, turn 15)
+exported pre1.json (487094 bytes)
+[P1] answers TargetSelection -> seat 0
+[P1] trigger Bolt confirmed (leg 1)
+[P0] may-cast choice offered to P0 (leg 1)
+exported mid1.json (546789 bytes)
+[P0] answers may-cast: accept (leg 1)
+[P1] trigger exiled: Lightning Bolt (oid 66, owner 1) leg 1
+[P0] answers TargetSelection -> seat 1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported post1.json (542075 bytes)
+[P1] leg-1: accept answered but no free cast materialized; post1 exported
+leg 1 complete; leg 2 (decline) armed
+[P1] submits Lightning Bolt cast (leg 2, turn 17)
+exported pre2.json (488491 bytes)
+[P1] answers TargetSelection -> seat 0
+[P1] trigger Bolt confirmed (leg 2)
+[P0] may-cast choice offered to P0 (leg 2)
+exported mid2.json (547732 bytes)
+[P0] answers may-cast: decline (leg 2)
+[P1] trigger exiled: Lightning Bolt (oid 71, owner 1) leg 2
+[P1] leg-2 decline settled
+exported post2.json (532034 bytes)
+leg 2 complete; DONE
+loop ended: stage=DONE stop=True leg=2
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_exile_observed": "passed", "A3_maycast_offered_to_controller": "passed", "A4_accept_casts_free": "failed", "A5_decline_leaves_exiled": "passed", "A6_cleanup": "passed"}
+VERDICT: reproduced
