@@ -1,0 +1,46 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.2", "build_commit": "f976096", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game 1H4688; seats P0=0 P1=1
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] submits Sneak Attack cast (turn 8)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": [18]}}
+[P0] Sneak Attack cast rejected; will retry
+[P0] submits Sneak Attack cast (turn 8)
+Sneak Attack resolved on battlefield (turn 8); stage -> PROOF, leg 1
+exported pre1.json (487885 bytes)
+leg 1 pre exported (turn 10); proof armed
+[P0] submits Sneak Attack activation #1 (leg 1)
+[P0] answers Sneak Attack may-choice: ACCEPT (leg 1)
+[P0] selects Bear 3 for Sneak Attack (leg 1)
+[P0] activation #1 complete: Bear 3 on BF (leg 1)
+[P0] submits Sneak Attack activation #2 (leg 1)
+[P0] answers Sneak Attack may-choice: ACCEPT (leg 1)
+[P0] activation #2 complete: Bear 45 on BF (leg 1)
+exported mid1.json (531381 bytes)
+leg 1 mid exported: both Bears on BF
+[P0] answers OrderTriggers with advertised order (2 triggers)
+[P0] sacrifice delayed trigger on stack (id 123)
+[P0] sacrifice delayed trigger on stack (id 124)
+exported mid_end.json (538543 bytes)
+leg 1 mid_end exported with triggers on stack
+exported post1.json (482532 bytes)
+leg 1 complete; post1 exported (turn 11); leg 2 armed
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] discards 1 to hand size
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] discards 1 to hand size
+[P0] discards 1 to hand size
+[P0] submits Sneak Attack activation #3 (leg 2)
+[P0] leg-2 end-step activation submitted (turn 22)
+[P0] answers Sneak Attack may-choice: ACCEPT (leg 2)
+exported mid2.json (509326 bytes)
+[P0] leg-2 Bear 51 entered during End; mid2 exported
+exported mid2b.json (486277 bytes)
+[P0] leg-2 Bear zone at next turn: Battlefield; mid2b exported
+exported post2.json (504414 bytes)
+[P0] leg-2 Bear sacrificed at the next end step; post2 exported; DONE
+loop ended: stage=DONE stop=True leg=2
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_creatures_enter": "passed", "A3_triggers_fired": "passed", "A4_both_sacrificed": "failed", "A5_cleanup_leg1": "passed", "A6_endstep_survives": "passed", "A7_next_endstep_sac": "passed"}
+VERDICT: reproduced
+run.json written; verdict = reproduced
+server_excerpts.log: 2 matching lines
