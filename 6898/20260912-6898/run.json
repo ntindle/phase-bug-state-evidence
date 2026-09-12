@@ -1,0 +1,178 @@
+{
+ "issue": 6898,
+ "run_id": "20260912-6898",
+ "title": "Cemetery Prowler reduces cost too much",
+ "server": {
+  "observed_hello": {
+   "server_version": "0.81.1",
+   "build_commit": "ab70305",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  },
+  "server_version": "0.81.1",
+  "build_commit": "ab70305",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "6a33738e215f9c5dde5fd6f2e72568992a83d668778d593b9d65fab657c0d8c0",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "started_at": "2026-09-12T17:18:13+0000",
+ "ended_at": "2026-09-12T17:18:55+0000",
+ "game_code": "1XC9KP",
+ "decks": {
+  "P0": [
+   [
+    "Cemetery Prowler",
+    8
+   ],
+   [
+    "Lightning Bolt",
+    10
+   ],
+   [
+    "Thunderous Wrath",
+    8
+   ],
+   [
+    "Mountain",
+    18
+   ],
+   [
+    "Forest",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "decisions": {
+  "bolt1_cast": true,
+  "prowler1_cast": true,
+  "exile_answers": 1,
+  "miracle_declines": 0,
+  "bolt2_cast": true,
+  "attack1_done": true,
+  "wrath1_cast": true,
+  "wrath2_cast": true,
+  "life1_pre": 17,
+  "life2_pre": 6,
+  "taps1": {
+   "total": 2,
+   "mountains": 2
+  },
+  "taps2": {
+   "total": 2,
+   "mountains": 2
+  },
+  "rejections": [
+   {
+    "who": "P0",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P0",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P0",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_wrath1_cast": "passed",
+  "A3_reduction_exact": "failed",
+  "A4_second_exile": "passed",
+  "A5_no_multiply": "failed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "prowler_on_bf=True exiled_count=1 exiled_names=['Lightning Bolt']",
+  "A2_wrath1_cast": "p1_life 17 -> 12 (delta 5)",
+  "A3_reduction_exact": "tapped_p0_lands=2 (mountains=2); engine cost 4{R}{R}={6}; correct reduction {1} -> pay {3}{R}{R} = 5 lands",
+  "A4_second_exile": "prowler_on_bf=True exiled_count=2 exiled_names=['Lightning Bolt', 'Lightning Bolt']",
+  "A5_no_multiply": "tapped_p0_lands=2 (mountains=2); 2 instants exiled with same Prowler; unique shared type Instant counts once -> still 5",
+  "A6_cleanup": "stack_empty=True final_stage=DONE turn=16"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "proposal only, from A3 (+A5); the assertion table is authoritative",
+ "limitations": [
+  "Thunderous Wrath parsed as {4}{R}{R} (engine card-data), not oracle {4}{R}; discriminator calibrated to 5 lands correct.",
+  "Tapped-land delta counts all P0 lands (engine auto-tap may use Forests for generic); mountain-only counts recorded as detail.",
+  "Miracle {R} on Thunderous Wrath declined defensively if offered; decline count in decisions.",
+  "Single shared server; no games.db copy (server-owned)."
+ ],
+ "stats": {
+  "final_stage": "DONE"
+ }
+}
