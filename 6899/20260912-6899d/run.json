@@ -1,0 +1,161 @@
+{
+ "issue": 6899,
+ "run_id": "20260912-6899d",
+ "title": "Moonmist doesn't prevent damage",
+ "server": {
+  "observed_hello": {
+   "server_version": "0.81.1",
+   "build_commit": "ab70305",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  },
+  "server_version": "0.81.1",
+  "build_commit": "ab70305",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "6a33738e215f9c5dde5fd6f2e72568992a83d668778d593b9d65fab657c0d8c0",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "started_at": "2026-09-12T18:06:45+0000",
+ "ended_at": "2026-09-12T18:07:34+0000",
+ "game_code": "BI9V70",
+ "decks": {
+  "P0": [
+   [
+    "Moonmist",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Young Wolf",
+    8
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Young Wolf",
+    8
+   ],
+   [
+    "Forest",
+    44
+   ]
+  ]
+ },
+ "decisions": {
+  "p1_attack_done": true,
+  "moonmist_a_resolved": true,
+  "b_cast_done": true,
+  "moonmist_b_resolved": true,
+  "target_prompt_seen": false,
+  "target_attempts": {},
+  "life0_pre": 20,
+  "life0_post": 20,
+  "life1_pre": 20,
+  "life1_post": 20,
+  "rejections": [
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P1",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_moonmist_resolves": "passed",
+  "A3_p1_attack_prevented": "failed",
+  "A4_p0_attack_prevented": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "p0_bear+wolf=True p1_bear+wolf=True p0_life_pre=20",
+  "A2_moonmist_resolves": "proofA: resolved=True (gy>=1: True); proofB: cast=True resolved=True; target_prompt_seen=False",
+  "A3_p1_attack_prevented": "P1 attacked P0 with unblocked Bear(2/2)+Wolf(1/1); P0 life 20 -> 20 (delta 0); expected 1 (Bear 0 + Wolf 1); delta 3 = no prevention, delta 0 = over-prevention",
+  "A4_p0_attack_prevented": "P0 attacked P1 with unblocked Bear(2/2)+Wolf(1/1); P1 life 20 -> 20 (delta 0); expected 1 (Bear 0 + Wolf 1)",
+  "A5_cleanup": "stack_empty=True final_stage=DONE turn=19"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "proposal only, from A3/A4; the assertion table is authoritative",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "No Humans on either battlefield, so the Transform clause was a no-op; the target prompt (if any) was driven through, not asserted (that defect is tracked in #6403).",
+  "Werewolf subtype not separately tested; Young Wolf (Wolf) is the wolf-class representative.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full replay)."
+ ],
+ "stats": {
+  "final_stage": "DONE"
+ }
+}

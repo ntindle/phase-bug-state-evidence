@@ -1,0 +1,36 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.1", "build_commit": "ab70305", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game BI9V70; seats P0=0 P1=1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P0 casts Grizzly Bears
+P1 casts Grizzly Bears
+P0 casts Young Wolf
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P1 casts Young Wolf
+board ready at turn 17; stage -> AWAIT_A
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+P1 attacks P0 with Bear + Wolf; stage -> PROOF_A
+[P0] casts Moonmist
+exported pre.json (506752 bytes)
+Moonmist A resolved; P0 life 20; stage -> AWAIT_A_DMG
+exported post.json (504309 bytes)
+P1 combat ended with no life change (P0 20); stage -> SETUP_B
+[P0] casts Moonmist
+exported pre2.json (502725 bytes)
+Moonmist B resolved; P1 life 20; stage -> PROOF_B_ATK
+P0 attacks P1 with Bear + Wolf; stage -> AWAIT_B_DMG
+exported post2.json (501861 bytes)
+P0 combat ended with no life change (P1 20); DONE
+loop ended: stage=DONE stop=True
+ASSERTIONS: {
+ "A1_setup_ok": "passed",
+ "A2_moonmist_resolves": "passed",
+ "A3_p1_attack_prevented": "failed",
+ "A4_p0_attack_prevented": "failed",
+ "A5_cleanup": "passed"
+}
+VERDICT (proposal): reproduced
+wrote run.json
+copied scenario_6899.py to evidence
+wrote server_excerpts.log (0 lines)
