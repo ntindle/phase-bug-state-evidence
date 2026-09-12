@@ -1,0 +1,93 @@
+{
+ "issue": 6900,
+ "run_id": "20260912-6900",
+ "title": "Promise of Loyalty does nothing",
+ "server": {
+  "observed_hello": {
+   "server_version": "0.81.1",
+   "build_commit": "ab70305",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  },
+  "server_version": "0.81.1",
+  "build_commit": "ab70305",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "6a33738e215f9c5dde5fd6f2e72568992a83d668778d593b9d65fab657c0d8c0",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "started_at": "2026-09-12T18:22:44+0000",
+ "ended_at": "2026-09-12T18:23:43+0000",
+ "game_code": "FL3PEZ",
+ "decks": {
+  "P0": [
+   [
+    "Promise of Loyalty",
+    8
+   ],
+   [
+    "Savannah Lions",
+    8
+   ],
+   [
+    "Plains",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "Savannah Lions",
+    12
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ]
+ },
+ "decisions": {
+  "setup_turn": 25,
+  "cast_advertised": true,
+  "cast_submitted": true,
+  "cast_manual": false,
+  "promise_resolved": true,
+  "vow_prompt_seen": false,
+  "pre_lions_p0": 2,
+  "pre_lions_p1": 2,
+  "post_lions_p0": 2,
+  "post_lions_p1": 2,
+  "post_vow_hits": [],
+  "rejections": []
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_completes": "passed",
+  "A3_no_vow_counter_prompt": "passed",
+  "A4_no_sacrifice": "passed",
+  "A5_no_vow_counters": "passed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "p0_lions_pre=2 p1_lions_pre=2 (need >=2 each); Promise in P0 hand at cast",
+  "A2_cast_completes": "CastSpell advertised=True manual_probe=False rejections=0; Promise in P0 gy in post.json: True",
+  "A3_no_vow_counter_prompt": "vow_prompt_seen=False (wire_log.jsonl holds the full opportunity scan; 'passed' = the reported no-prompt symptom was observed)",
+  "A4_no_sacrifice": "lions pre: p0=2 p1=2; post: p0=2 p1=2 ('passed' = reported symptom: sacrifice-the-rest did not fire)",
+  "A5_no_vow_counters": "vow-counter-bearing battlefield objects in post.json: 0  ('passed' = reported symptom: no counters placed)",
+  "A6_cleanup": "stack_empty=True final_stage=DONE turn=25"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "proposal only, from A1-A6; the assertion table is authoritative",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x/12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full replay)."
+ ],
+ "stats": {
+  "final_stage": "DONE"
+ }
+}
