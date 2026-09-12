@@ -1,0 +1,55 @@
+{
+ "card": "Lotus Petal",
+ "oracle_text": "{T}, Sacrifice this artifact: Add one mana of any color.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Mana",
+    "produced": {
+     "type": "AnyOneColor",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "color_options": [
+      "White",
+      "Blue",
+      "Black",
+      "Red",
+      "Green"
+     ]
+    }
+   },
+   "cost": {
+    "type": "Composite",
+    "costs": [
+     {
+      "type": "Tap"
+     },
+     {
+      "type": "Sacrifice",
+      "target": {
+       "type": "SelfRef"
+      },
+      "count": 1
+     }
+    ]
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{T}, Sacrifice ~: Add one mana of any color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "is_mana_ability": true
+  }
+ ],
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [],
+  "generic": 0
+ }
+}

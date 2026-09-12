@@ -1,0 +1,102 @@
+{
+ "issue": 6890,
+ "run_id": "20260912-6890",
+ "started_at": "2026-09-12T08:59:45Z",
+ "server": {
+  "server_version": "0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "ServerHello + minisign verification against repo-pinned key"
+ },
+ "client_source": {
+  "file": "client/src/components/mana/ManaPaymentUI.tsx",
+  "tag": "v0.80.0",
+  "sha256": "2e6b067885fab5e02bf6c6040bca167a6fef55a22e9ab4b7ebe58f713fd053b0",
+  "verification": "raw.githubusercontent.com/phase-rs/phase/v0.80.0 copy is byte-identical to local checkout at a0f9c55",
+  "function_lines": "627-690 (ManaSourceSelectionUI), rows 656-666"
+ },
+ "driver": {
+  "protocol_version": 69,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6890.py"
+ },
+ "scenario_sha256": "90b906ab8126cb3b514598406fe938f7404f89e164dde404df707539937e3a81",
+ "decks": {
+  "P0": [
+   [
+    "Lotus Petal",
+    12
+   ],
+   [
+    "Aether Vial",
+    12
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    28
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "0OGHKM",
+   "note": "P0 casts 2x Lotus Petal (turns 1-2), then Aether Vial ({1}) with payment_mode AutoExceptSacrificialMana. Engine offers ManaSourceSelection with 2 options (one per petal). Driver answers option 0, then answers the deferred ChooseManaColor with White. Petal sacrificed, vial resolves."
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_selection_prompted": "passed",
+  "A3_options_carry_color": "passed",
+  "A4_ui_drops_color": "passed",
+  "A5_selection_works": "passed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "petal_bf=True petal_untapped=True vial_in_hand=True",
+  "A2_selection_prompted_detail": "mss_seen=True waiting_for_seq=['MulliganDecision', 'Priority', 'ManaSourceSelection', 'ManaSourceSelection', 'ChooseManaColor', 'ManaPayment', 'Priority']",
+  "A3_options_carry_color_detail": "n_options=2 distinct_sources=2 mana_types=['Colorless'] outputs=[{'type': 'DeferredColorChoice'}, {'type': 'DeferredColorChoice'}]",
+  "A4_ui_drops_color_detail": "renders source name=True, renders 'sacrifice' caption=True, renders any color=False -> options visually indistinguishable: True",
+  "A5_selection_works_detail": "answered=True chosen_color=Colorless cmc_answered=True cmc_chosen=White petal_sacrificed=True vial_on_bf=True",
+  "A6_cleanup_detail": "post waiting_for=Priority stack_empty=True"
+ },
+ "notes": [
+  "Engine-level data is complete: each ManaSourceSelection option carries source_object_id, ability_index, mana_type, output (DeferredColorChoice for 'any color'), and penalty. The viewer_interaction projection ALSO carries a mana surface with symbols per choice (mss_viewer_interaction.json).",
+  "The shipped client's ManaSourceSelectionUI (ManaPaymentUI.tsx L627-690) reads waitingFor.data.options and renders each row as source-name + the translated 'sacrifice' caption only (L664-665). It never reads selection.mana_type, selection.output, or the interaction's mana surfaces, so every option from a multi-color sacrificial source renders identically: no color, no amount.",
+  "With 2 Lotus Petals the modal shows 2 identical rows ('Lotus Petal' / 'sacrifice'); the reporter can only process-of-elimination it. This is exactly the reported outcome.",
+  "A separate ChooseManaColor modal (shown after the source is picked) does render colors; it is not the broken path.",
+  "payment_mode AutoExceptSacrificialMana is a real client path: the shipped client's spell-payment preference stamps the same mode onto every cast (client/src/game/castPaymentMode.ts).",
+  "waiting_for types seen: MulliganDecision, Priority, ManaSourceSelection, ManaSourceSelection, ChooseManaColor, ManaPayment, Priority",
+  "Verdict rationale: the reported UI outcome reproduces \u2014 the selection modal drops all mana color/amount information even though the engine supplies it."
+ ],
+ "verdict": "reproduced",
+ "setup_line": "P0 (2x Lotus Petal + Aether Vial) vs P1 (bears); two human-driver seats",
+ "contract_line": "Each mana-source selection option must display the color and amount it will produce, distinguishable per option",
+ "stats": {
+  "states_seen": "7 waiting_for transitions",
+  "interaction_submits": 0,
+  "action_submits": 80
+ },
+ "limitations": [
+  "Browser UI not exercised; the defect is shown via the shipped client's own render code (commit-pinned source) against live engine data",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games)",
+  "ChooseManaColor answered with the first offered color (White); other colors not exercised"
+ ],
+ "restoration": "pre.json/post.json are authoritative export envelopes ({\"state\", \"precast_shortcut_runtime\"}); restored only by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}

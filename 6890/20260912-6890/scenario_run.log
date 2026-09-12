@@ -1,0 +1,29 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.80.0", "build_commit": "22cca6d", "protocol_version": 69, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+parse_evidence.json written
+game 0OGHKM; seats 0/1
+waiting_for: MulliganDecision player=None stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Lotus Petal (1/2)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Lotus Petal (2/2)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre.json
+[P0] casts Aether Vial (AutoExceptSacrificialMana)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+waiting_for: ManaSourceSelection player=0 stage=SETUP
+ManaSourceSelection: 2 options
+  option 0: mana_type=Colorless output={'type': 'DeferredColorChoice'} source=5
+  option 1: mana_type=Colorless output={'type': 'DeferredColorChoice'} source=6
+[P0] answers ManaSourceSelection with mana_type=Colorless
+waiting_for: ManaSourceSelection player=0 stage=RESOLVE
+waiting_for: ChooseManaColor player=0 stage=RESOLVE
+[P0] ChooseManaColor options=['White', 'Blue', 'Black', 'Red', 'Green']; picking White
+waiting_for: ManaPayment player=0 stage=RESOLVE
+waiting_for: Priority player=0 stage=RESOLVE
+Aether Vial resolved onto P0 battlefield
+exported post.json
+post.json exported; stopping
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_selection_prompted": "passed", "A3_options_carry_color": "passed", "A4_ui_drops_color": "passed", "A5_selection_works": "passed", "A6_cleanup": "passed"}
+VERDICT: reproduced

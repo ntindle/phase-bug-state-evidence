@@ -1,0 +1,90 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_selection_prompted": "passed",
+  "A3_options_carry_color": "passed",
+  "A4_ui_drops_color": "passed",
+  "A5_selection_works": "passed",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "petal_bf=True petal_untapped=True vial_in_hand=True",
+  "A2_selection_prompted_detail": "mss_seen=True waiting_for_seq=['MulliganDecision', 'Priority', 'ManaSourceSelection', 'ManaSourceSelection', 'ChooseManaColor', 'ManaPayment', 'Priority']",
+  "A3_options_carry_color_detail": "n_options=2 distinct_sources=2 mana_types=['Colorless'] outputs=[{'type': 'DeferredColorChoice'}, {'type': 'DeferredColorChoice'}]",
+  "A4_ui_drops_color_detail": "renders source name=True, renders 'sacrifice' caption=True, renders any color=False -> options visually indistinguishable: True",
+  "A5_selection_works_detail": "answered=True chosen_color=Colorless cmc_answered=True cmc_chosen=White petal_sacrificed=True vial_on_bf=True",
+  "A6_cleanup_detail": "post waiting_for=Priority stack_empty=True"
+ },
+ "verdict": "reproduced",
+ "waiting_for_seq": [
+  "MulliganDecision",
+  "Priority",
+  "ManaSourceSelection",
+  "ManaSourceSelection",
+  "ChooseManaColor",
+  "ManaPayment",
+  "Priority"
+ ],
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}
