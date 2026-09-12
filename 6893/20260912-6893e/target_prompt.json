@@ -1,0 +1,979 @@
+{
+ "waiting_for_type": "TriggerTargetSelection",
+ "waiting_for_data": {
+  "player": 0,
+  "trigger_controller": 0,
+  "trigger_event": {
+   "type": "ZoneChanged",
+   "data": {
+    "object_id": 3,
+    "from": "Stack",
+    "to": "Battlefield",
+    "record": {
+     "object_id": 3,
+     "name": "Shield Broker",
+     "core_types": [
+      "Creature"
+     ],
+     "subtypes": [
+      "Octopus",
+      "Advisor"
+     ],
+     "supertypes": [],
+     "keywords": [],
+     "trigger_definitions": [
+      {
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 1,
+         "printed_index": 0
+        }
+       },
+       "definition": {
+        "mode": "ChangesZone",
+        "execute": {
+         "kind": "Spell",
+         "effect": {
+          "type": "PutCounter",
+          "counter_type": "shield",
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "type": "Typed",
+           "type_filters": [
+            "Creature",
+            {
+             "Non": {
+              "Subtype": "Commander"
+             }
+            }
+           ],
+           "controller": "Opponent",
+           "properties": []
+          }
+         },
+         "cost": null,
+         "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+           "type": "GainControl",
+           "target": {
+            "type": "ParentTarget"
+           }
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": {
+           "ForAsLongAs": {
+            "condition": {
+             "type": "RecipientHasCounters",
+             "counters": {
+              "type": "OfType",
+              "data": "shield"
+             },
+             "minimum": 1
+            }
+           }
+          },
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+         },
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": null,
+         "optional_targeting": false,
+         "optional": false,
+         "forward_result": false
+        },
+        "valid_card": {
+         "type": "SelfRef"
+        },
+        "origin": null,
+        "destination": "Battlefield",
+        "trigger_zones": [
+         "Battlefield"
+        ],
+        "phase": null,
+        "optional": false,
+        "damage_kind": "Any",
+        "secondary": false,
+        "valid_target": null,
+        "valid_source": null,
+        "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it.",
+        "constraint": null,
+        "condition": null,
+        "batched": false
+       }
+      }
+     ],
+     "trigger_source_context": {
+      "identity": {
+       "reference": {
+        "object_id": 3,
+        "incarnation": 2
+       },
+       "expected_zone": "Stack"
+      },
+      "lki": {
+       "name": "Shield Broker",
+       "power": 3,
+       "toughness": 4,
+       "base_power": 3,
+       "base_toughness": 4,
+       "mana_value": 5,
+       "controller": 0,
+       "owner": 0,
+       "card_types": [
+        "Creature"
+       ],
+       "subtypes": [
+        "Octopus",
+        "Advisor"
+       ],
+       "supertypes": [],
+       "keywords": [],
+       "colors": [
+        "Blue"
+       ],
+       "chosen_attributes": [],
+       "counters": {},
+       "tapped": false,
+       "is_suspected": false,
+       "attachments": []
+      },
+      "card_id": 3,
+      "printed_ref": {
+       "oracle_id": "481234e5-fbfd-46e8-8b9a-a4e708dd2195",
+       "face_name": "Shield Broker"
+      },
+      "is_token": false,
+      "face_down": false,
+      "transformed": false,
+      "is_renowned": false,
+      "is_saddled": false,
+      "trigger_entries": [
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        },
+        "definition": {
+         "mode": "ChangesZone",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "PutCounter",
+           "counter_type": "shield",
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature",
+             {
+              "Non": {
+               "Subtype": "Commander"
+              }
+             }
+            ],
+            "controller": "Opponent",
+            "properties": []
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "GainControl",
+            "target": {
+             "type": "ParentTarget"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": {
+            "ForAsLongAs": {
+             "condition": {
+              "type": "RecipientHasCounters",
+              "counters": {
+               "type": "OfType",
+               "data": "shield"
+              },
+              "minimum": 1
+             }
+            }
+           },
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false,
+           "sub_link": "SequentialSibling"
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": "Battlefield",
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": false,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       }
+      ],
+      "timestamp": 0,
+      "combat_status": {
+       "attacking": false,
+       "blocking": false,
+       "blocked": false,
+       "attacking_alone": false,
+       "blocking_alone": false,
+       "defending_player": null
+      },
+      "cast_from_zone": "Hand",
+      "cast_controller": 0,
+      "phase_status": {
+       "status": "PhasedIn"
+      },
+      "mana_spent_to_cast": true,
+      "colors_spent_to_cast": {
+       "blue": 5
+      },
+      "mana_spent_to_cast_amount": 5,
+      "mana_spent_source_snapshots": [
+       {
+        "source_id": 30,
+        "lki": {
+         "name": "Island",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Island"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 60,
+        "lki": {
+         "name": "Island",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Island"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 41,
+        "lki": {
+         "name": "Island",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Island"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 33,
+        "lki": {
+         "name": "Island",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Island"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 7,
+        "lki": {
+         "name": "Island",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Island"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       }
+      ]
+     },
+     "power": 3,
+     "toughness": 4,
+     "base_power": 3,
+     "base_toughness": 4,
+     "colors": [
+      "Blue"
+     ],
+     "mana_value": 5,
+     "controller": 0,
+     "owner": 0,
+     "from_zone": "Stack",
+     "cast_from_zone": "Hand",
+     "played_from_zone": null,
+     "to_zone": "Battlefield",
+     "attachments": [],
+     "linked_exile_snapshot": [],
+     "is_token": false,
+     "combat_status": {
+      "attacking": false,
+      "blocking": false,
+      "blocked": false,
+      "attacking_alone": false,
+      "blocking_alone": false,
+      "defending_player": null
+     },
+     "co_departed": [],
+     "entered_incarnation": 3,
+     "attached_to": null,
+     "turn_zone_change_index": 3,
+     "recorded_turn_number": 9,
+     "is_suspected": false
+    }
+   }
+  },
+  "trigger_events": [
+   {
+    "type": "ZoneChanged",
+    "data": {
+     "object_id": 3,
+     "from": "Stack",
+     "to": "Battlefield",
+     "record": {
+      "object_id": 3,
+      "name": "Shield Broker",
+      "core_types": [
+       "Creature"
+      ],
+      "subtypes": [
+       "Octopus",
+       "Advisor"
+      ],
+      "supertypes": [],
+      "keywords": [],
+      "trigger_definitions": [
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        },
+        "definition": {
+         "mode": "ChangesZone",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "PutCounter",
+           "counter_type": "shield",
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature",
+             {
+              "Non": {
+               "Subtype": "Commander"
+              }
+             }
+            ],
+            "controller": "Opponent",
+            "properties": []
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "GainControl",
+            "target": {
+             "type": "ParentTarget"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": {
+            "ForAsLongAs": {
+             "condition": {
+              "type": "RecipientHasCounters",
+              "counters": {
+               "type": "OfType",
+               "data": "shield"
+              },
+              "minimum": 1
+             }
+            }
+           },
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false,
+           "sub_link": "SequentialSibling"
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": "Battlefield",
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": false,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       }
+      ],
+      "trigger_source_context": {
+       "identity": {
+        "reference": {
+         "object_id": 3,
+         "incarnation": 2
+        },
+        "expected_zone": "Stack"
+       },
+       "lki": {
+        "name": "Shield Broker",
+        "power": 3,
+        "toughness": 4,
+        "base_power": 3,
+        "base_toughness": 4,
+        "mana_value": 5,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Octopus",
+         "Advisor"
+        ],
+        "supertypes": [],
+        "keywords": [],
+        "colors": [
+         "Blue"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 3,
+       "printed_ref": {
+        "oracle_id": "481234e5-fbfd-46e8-8b9a-a4e708dd2195",
+        "face_name": "Shield Broker"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "ChangesZone",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "PutCounter",
+            "counter_type": "shield",
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature",
+              {
+               "Non": {
+                "Subtype": "Commander"
+               }
+              }
+             ],
+             "controller": "Opponent",
+             "properties": []
+            }
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "GainControl",
+             "target": {
+              "type": "ParentTarget"
+             }
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": {
+             "ForAsLongAs": {
+              "condition": {
+               "type": "RecipientHasCounters",
+               "counters": {
+                "type": "OfType",
+                "data": "shield"
+               },
+               "minimum": 1
+              }
+             }
+            },
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false,
+            "sub_link": "SequentialSibling"
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": "Battlefield",
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 0,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "blue": 5
+       },
+       "mana_spent_to_cast_amount": 5,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 30,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 60,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 41,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 33,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 7,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "power": 3,
+      "toughness": 4,
+      "base_power": 3,
+      "base_toughness": 4,
+      "colors": [
+       "Blue"
+      ],
+      "mana_value": 5,
+      "controller": 0,
+      "owner": 0,
+      "from_zone": "Stack",
+      "cast_from_zone": "Hand",
+      "played_from_zone": null,
+      "to_zone": "Battlefield",
+      "attachments": [],
+      "linked_exile_snapshot": [],
+      "is_token": false,
+      "combat_status": {
+       "attacking": false,
+       "blocking": false,
+       "blocked": false,
+       "attacking_alone": false,
+       "blocking_alone": false,
+       "defending_player": null
+      },
+      "co_departed": [],
+      "entered_incarnation": 3,
+      "attached_to": null,
+      "turn_zone_change_index": 3,
+      "recorded_turn_number": 9,
+      "is_suspected": false
+     }
+    }
+   }
+  ],
+  "target_slots": [
+   {
+    "legal_targets": [
+     {
+      "Object": 81
+     },
+     {
+      "Object": 91
+     },
+     {
+      "Object": 92
+     }
+    ],
+    "optional": false,
+    "effect_kind": "PutCounter",
+    "effect_detail": {
+     "type": "None"
+    }
+   }
+  ],
+  "selection": {
+   "current_slot": 0,
+   "current_legal_targets": [
+    {
+     "Object": 81
+    },
+    {
+     "Object": 91
+    },
+    {
+     "Object": 92
+    }
+   ]
+  },
+  "source_id": 3,
+  "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it."
+ },
+ "candidates": [
+  {
+   "choice_id": "DPNLWD.0.146.t0",
+   "ref": "81",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 1,
+   "text": null
+  },
+  {
+   "choice_id": "DPNLWD.0.146.t1",
+   "ref": "91",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 1,
+   "text": null
+  },
+  {
+   "choice_id": "DPNLWD.0.146.t2",
+   "ref": "92",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 1,
+   "text": null
+  }
+ ],
+ "opportunity_summary": {
+  "interactionId": "DPNLWD.0.146",
+  "resp_type": "schema"
+ }
+}
