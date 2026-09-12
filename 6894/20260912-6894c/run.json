@@ -1,0 +1,188 @@
+{
+ "issue": 6894,
+ "run_id": "20260912-6894c",
+ "validated_version": "v0.80.0",
+ "server_version": "0.80.0",
+ "build_commit": "22cca6d",
+ "protocol_version": 69,
+ "started_at": "2026-09-12T13:18:29Z",
+ "server": {
+  "server_version": "0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "mode": "Full"
+ },
+ "game_code": "2448NL",
+ "scenario": "driver/scenario_6894.py",
+ "setup_line": "P0 Forests+Bears floods board (never attacks); P1 native Medium AI on 8x Cyclonic Rift + 52x Island",
+ "contract_line": "AI must offer overload only when it can pay {6}{U}; unaffordable casts rejected pre-stack; no lock",
+ "limitations": [
+  "Browser UI not exercised; native engine via one human-driver seat + one native AI seat.",
+  "8x Rift / 12x Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "AI proposals rejected server-side before the stack are not visible to the driver; only committed casts are observable.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "p0_deck": [
+  [
+   "Grizzly Bears",
+   24
+  ],
+  [
+   "Forest",
+   36
+  ]
+ ],
+ "p1_ai_deck": [
+  [
+   "Cyclonic Rift",
+   8
+  ],
+  [
+   "Island",
+   52
+  ]
+ ],
+ "p1_ai_difficulty": "Medium",
+ "assertions": {
+  "A1_setup_ok": "failed",
+  "A2_overload_attempted": "failed",
+  "A3_unaffordable": "not-run",
+  "A4_committed_to_stack": "not-run",
+  "A5_no_lock": "not-run",
+  "A6_affordable_control": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "window_seen=False pre_exported=False",
+  "A2_overload_attempted_detail": "overload_attempts=0 rift_casts_total=3",
+  "A3_unaffordable_detail": "first_unaffordable=None",
+  "A4_committed_to_stack_detail": "detection is via the Stack-zone spell object; mid_file=None",
+  "A5_no_lock_detail": "turns_past_attempt=0 stall_observed=False stall_wf=None log_signatures=[] resolved=None",
+  "A6_affordable_control_detail": "affordable_casts=1 modes=[False] resolved=[True] advanced_after=True"
+ },
+ "all_rift_casts": [
+  {
+   "n": 1,
+   "turn": 4,
+   "phase": "BeginCombat",
+   "spell_oid": "117",
+   "entry_matched": true,
+   "overload_mode": false,
+   "markers": {
+    "alternative_mana_cost_paid": false,
+    "each_text": false,
+    "target_text": true,
+    "overload_mentioned": true,
+    "overload": false
+   },
+   "avail_prev_untapped_islands": 2,
+   "avail_prev_pool": 0,
+   "avail_prev_total": 2,
+   "affordable_overload": false,
+   "p1_life": 20,
+   "p0_nonland_at_cast": 1,
+   "resolved_cleanly": true,
+   "mid_file": "mid_cast_normal_1.json",
+   "resolved_zone": "Graveyard",
+   "resolved_turn": 4
+  },
+  {
+   "n": 2,
+   "turn": 9,
+   "phase": "Draw",
+   "spell_oid": "64",
+   "entry_matched": true,
+   "overload_mode": false,
+   "markers": {
+    "alternative_mana_cost_paid": false,
+    "each_text": false,
+    "target_text": true,
+    "overload_mentioned": true,
+    "overload": false
+   },
+   "avail_prev_untapped_islands": 4,
+   "avail_prev_pool": 0,
+   "avail_prev_total": 4,
+   "affordable_overload": false,
+   "p1_life": 20,
+   "p0_nonland_at_cast": 2,
+   "resolved_cleanly": true,
+   "mid_file": "mid_cast_normal_2.json",
+   "resolved_zone": "Graveyard",
+   "resolved_turn": 9
+  },
+  {
+   "n": 3,
+   "turn": 19,
+   "phase": "Draw",
+   "spell_oid": "62",
+   "entry_matched": true,
+   "overload_mode": false,
+   "markers": {
+    "alternative_mana_cost_paid": false,
+    "each_text": false,
+    "target_text": true,
+    "overload_mentioned": true,
+    "overload": false
+   },
+   "avail_prev_untapped_islands": 9,
+   "avail_prev_pool": 0,
+   "avail_prev_total": 9,
+   "affordable_overload": true,
+   "p1_life": 20,
+   "p0_nonland_at_cast": 4,
+   "resolved_cleanly": true,
+   "mid_file": "mid_cast_normal_3.json",
+   "resolved_zone": "Graveyard",
+   "resolved_turn": 19
+  }
+ ],
+ "waiting_for_sequence": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority"
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-12T13:18:29Z",
+ "rejections_p0": [],
+ "mulligans_p0": 0,
+ "stats": {
+  "states_seen": 41,
+  "trigger_observations": 3
+ }
+}
