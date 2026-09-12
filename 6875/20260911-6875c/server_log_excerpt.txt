@@ -1,0 +1,15 @@
+=== server log excerpt: game 313T90 (phase-server.log.2026-09-12) ===
+--- session start ---
+2026-09-12T01:42:03.031450Z  INFO ws_message: server_core::session: game session created game=313T90 player_count=2
+2026-09-12T01:42:03.051831Z  INFO ws_message: phase_server: game created via lobby game=313T90 host=P0 players=2
+2026-09-12T01:42:03.124951Z  INFO ws_message: phase_server: JoinGameWithPassword game=313T90 joiner=P1
+2026-09-12T01:42:03.125206Z  INFO ws_message: server_core::session: player joined session game=313T90 player=PlayerId(1) seat=1
+2026-09-12T01:42:03.156174Z  INFO ws_message: phase_server: player joined via lobby game=313T90 player=PlayerId(1)
+2026-09-12T01:42:03.345844Z  WARN phase_server: Full snapshot was no longer current game=313T90 disposition=SupersededOrRetired
+2026-09-12T01:42:03.631647Z  INFO ws_message:game_session{game=313T90 player=PlayerId(0)}: server_core::session: action applied game=313T90 player=PlayerId(0) action_type="MulliganDecision" event_count=0
+2026-09-12T01:42:03.641913Z  INFO ws_message:game_session{game=313T90 player=PlayerId(0)}: phase_server: game submission processed (lock held) game=313T90 kind="action" lock_ms=10 ai_actions=0
+--- activation #1 and #2 applied ---
+2026-09-12T01:43:23.868100Z  INFO ws_message:game_session{game=313T90 player=PlayerId(0)}: server_core::session: action applied game=313T90 player=PlayerId(0) action_type="ActivateAbility" event_count=0
+2026-09-12T01:43:24.404435Z  INFO ws_message:game_session{game=313T90 player=PlayerId(0)}: server_core::session: action applied game=313T90 player=PlayerId(0) action_type="ActivateAbility" event_count=0
+--- errors/warnings for this game ---
+(end excerpt)

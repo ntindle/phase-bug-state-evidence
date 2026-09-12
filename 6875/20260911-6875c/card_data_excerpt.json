@@ -1,0 +1,112 @@
+{
+ "source": "server/releases/v0.80.0/data/card-data.json (pinned v0.80.0)",
+ "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+ "entry": {
+  "name": "Krark-Clan Shaman",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Red"
+   ],
+   "generic": 0
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Goblin",
+    "Shaman"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Sacrifice an artifact: This creature deals 1 damage to each creature without flying.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "DamageAll",
+     "amount": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "WithoutKeyword",
+        "value": "Flying"
+       }
+      ]
+     }
+    },
+    "cost": {
+     "type": "Sacrifice",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Artifact"
+      ],
+      "controller": null,
+      "properties": []
+     },
+     "count": 1
+    },
+    "sub_ability": null,
+    "duration": null,
+    "description": "Sacrifice an artifact: ~ deals 1 damage to each creature without flying.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Red"
+  ],
+  "scryfall_oracle_id": "198d1792-d638-4760-a476-7ec3af495610",
+  "metadata": {
+   "source_printing_ids": [
+    "975f9ea8-af2c-456f-acd0-ffa9ea0d98c1"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pauper": "legal",
+   "paupercommander": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "MRD"
+  ],
+  "rarities": [
+   "common"
+  ]
+ }
+}

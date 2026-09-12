@@ -1,0 +1,72 @@
+{
+  "issue": 6875,
+  "run_id": "20260911-6875c",
+  "issue_title": "Krark-clan shaman - ability cannot be used more than once",
+  "server": {
+    "server_version": "0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true
+  },
+  "validated_at": "2026-09-12",
+  "verdict": "not-reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_first_activation_ok": "passed",
+    "A3_second_activation_ok": "passed",
+    "A4_independent_resolution": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: shaman=1 memnites=2 bears_p1=2 thopter_p1=2 main=True",
+    "A2: act1_sid=121 in mid1 stack; sac1=7 in gy=True",
+    "A3: two_on_stack mid2 sids=['121', '122']; sac1=7 sac2=51",
+    "A4: bears_dead=True (pre_bf=2 post_bf=0 gy_has_all=True); thopters 2->2 dmg=[0, 0]; stack_empty=True",
+    "A5: stack_empty=True game_over=False dangling=False"
+  ],
+  "decks": {
+    "P0": [
+      [
+        "Krark-Clan Shaman",
+        8
+      ],
+      [
+        "Memnite",
+        8
+      ],
+      [
+        "Mountain",
+        44
+      ]
+    ],
+    "P1": [
+      [
+        "Grizzly Bears",
+        12
+      ],
+      [
+        "Ornithopter",
+        12
+      ],
+      [
+        "Forest",
+        26
+      ],
+      [
+        "Mountain",
+        10
+      ]
+    ]
+  },
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats (explicit priority driving).",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "scenario": "driver/scenario_6875.py",
+  "evidence_dir": "6875/20260911-6875c"
+}

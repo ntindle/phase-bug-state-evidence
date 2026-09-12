@@ -1,0 +1,39 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game 313T90; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 casts Krark-Clan Shaman
+P1 casts Ornithopter
+P1 casts Grizzly Bears
+P1 casts Grizzly Bears
+P0 casts Memnite
+P1 casts Ornithopter
+P0 casts Memnite
+=== stage -> PROOF (turn 19) shaman=['28'] memnites=['7', '51'] bears=['64', '79'] thopter=['97', '100'] ===
+exported pre.json
+[P0] activation #1 options: 1 vi=True (actions: ['ActivateAbility', 'PassPriority'])
+[P0] submits activation #1 (ability_index=0)
+[P0] sacrifice prompt (PayCost/schema): [('Memnite', '7'), ('Memnite', '51')]
+[P0] sacrifices Memnite oid=7 (choice #1)
+activation #1 confirmed on stack: sid=121
+exported mid1.json
+exported mid1.json
+[P0] 2nd-activation window #1: action_options=1 vi_choice=True
+[P0] submits activation #2 (ability_index=0) while #1 still on stack
+[P0] sacrifice prompt (PayCost/schema): [('Memnite', '51')]
+[P0] sacrifices Memnite oid=51 (choice #2)
+TWO Shaman activations coexisting on stack: ['121', '122']
+exported mid2.json
+exported mid2.json
+stack empty after both activations; exporting post
+exported post.json
+A1_setup_ok: passed
+A2_first_activation_ok: passed
+A3_second_activation_ok: passed
+A4_independent_resolution: passed
+A5_cleanup: passed
+verdict: not-reproduced
+rendered summary.png
+manifest written (10 files)
