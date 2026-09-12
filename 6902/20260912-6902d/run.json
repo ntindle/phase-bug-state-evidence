@@ -1,0 +1,82 @@
+{
+ "issue": 6902,
+ "run_id": "20260912-6902d",
+ "title": "Sneak Attack \u2014 delayed end-step sacrifice trigger only sometimes sacrifices the creature",
+ "server": {
+  "server_version": "0.81.2",
+  "build_commit": "f976096",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "d186daaea35a9fa0bb5acac52b82bbd6ba47eaebef9203cb49b402783a02313e",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "started_at": "2026-09-12T21:31:20Z",
+ "ended_at": "2026-09-12T21:32:19Z",
+ "game_code": "1H4688",
+ "decks": {
+  "P0": [
+   [
+    "Sneak Attack",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Mountain",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "decisions": {
+  "leg1_activations": 2,
+  "leg1_bears": [
+   "3",
+   "45"
+  ],
+  "leg1_sac_triggers_seen": 2,
+  "leg2_bear": "51",
+  "rejections": 5
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_creatures_enter": "passed",
+  "A3_triggers_fired": "passed",
+  "A4_both_sacrificed": "failed",
+  "A5_cleanup_leg1": "passed",
+  "A6_endstep_survives": "passed",
+  "A7_next_endstep_sac": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "sneak_on_p0_bf=True hand_bears=2 main_phase=True turn=10",
+  "A2_creatures_enter": "leg1_bears=['3', '45'] zones=['Battlefield', 'Battlefield']",
+  "A3_triggers_fired": "sacrifice triggers observed on stack at end step: 2 (expect >=2)",
+  "A4_both_sacrificed": "zones post1=['Battlefield', 'Graveyard'] (expect both Graveyard)",
+  "A5_cleanup_leg1": "stack empty in post1: True; post1 turn=11 vs leg1 end turn=10",
+  "A6_endstep_survives": "leg2 bear 51 zone at next turn: Battlefield (expect Battlefield)",
+  "A7_next_endstep_sac": "leg2 bear 51 zone: Graveyard (expect Graveyard); stack empty: True"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "Two-activation leg tests acceptance criteria 1-3; end-step activation leg tests criterion 4.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Sneak Attack / 12x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.81.2, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Sneak Attack, 12x Grizzly Bears, 36x Mountain; P1: 60x Mountain. Cast Sneak Attack, activate twice in one main phase.",
+ "contract_line": "Leg 1: two activations -> both Bears sacrificed at the end step. Leg 2: activation during the end step -> no sacrifice that turn; sacrifice at the next end step.",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": 2
+ }
+}
