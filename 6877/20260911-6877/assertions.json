@@ -1,0 +1,96 @@
+{
+ "issue": 6877,
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": {
+   "status": "passed",
+   "detail": [
+    {
+     "run": "20260912-01",
+     "passed": true,
+     "krark_bf": 2,
+     "box_bf": 1,
+     "bolt_in_hand": 2,
+     "phase": "PostCombatMain",
+     "active_player": 0
+    },
+    {
+     "run": "20260912-02",
+     "passed": true,
+     "krark_bf": 2,
+     "box_bf": 1,
+     "bolt_in_hand": 4,
+     "phase": "PostCombatMain",
+     "active_player": 0
+    },
+    {
+     "run": "20260912-03",
+     "passed": true,
+     "krark_bf": 2,
+     "box_bf": 1,
+     "bolt_in_hand": 5,
+     "phase": "PostCombatMain",
+     "active_player": 0
+    },
+    {
+     "run": "20260912-04",
+     "passed": true,
+     "krark_bf": 2,
+     "box_bf": 1,
+     "bolt_in_hand": 6,
+     "phase": "PostCombatMain",
+     "active_player": 0
+    }
+   ]
+  },
+  "A2_two_triggers": {
+   "status": "passed",
+   "detail": "30/30 checks: each trial began with exactly 2 Krark FlipCoin triggers above 1 boltlike spell (3-entry stack)"
+  },
+  "A3_firstloss_set": {
+   "status": "passed",
+   "detail": "18 clean first-loss trials (first trigger demonstrably lost: bolt left the stack, no copy, bolt returned to hand, 0 damage)"
+  },
+  "A4_win_after_loss_copies": {
+   "status": "failed",
+   "detail": "0/18 first-loss trials produced a second-trigger copy; coin-win rate from 26 observable first flips p_hat=8/26=0.3077; binomial p(0 copies | correct) = (1-p_hat)^18 = 1.33e-03 (< 0.01 bar)"
+  },
+  "A5_control_first_win": {
+   "status": "passed",
+   "detail": "8/8 first-resolving wins created a bolt copy (the copy path works while the spell is on the stack)"
+  },
+  "A6_cleanup": {
+   "status": "passed",
+   "detail": [
+    {
+     "run": "20260912-01",
+     "passed": true,
+     "stack_len": 0
+    },
+    {
+     "run": "20260912-02",
+     "passed": null,
+     "note": "run ended early (deck-out game-over in -02; watchdog in -04); no post_trials"
+    },
+    {
+     "run": "20260912-03",
+     "passed": true,
+     "stack_len": 0
+    },
+    {
+     "run": "20260912-04",
+     "passed": null,
+     "note": "run ended early (deck-out game-over in -02; watchdog in -04); no post_trials"
+    }
+   ]
+  }
+ },
+ "stats": {
+  "trials_total": 26,
+  "firstloss_clean": 18,
+  "second_trigger_copies": 0,
+  "coin_win_rate_first_flips": "8/26",
+  "binomial_p": 0.0013347035893180458
+ },
+ "notes": []
+}
