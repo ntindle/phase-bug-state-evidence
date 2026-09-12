@@ -1,0 +1,62 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.80.0", "build_commit": "22cca6d", "protocol_version": 69, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game LOZ6OY; seats 0/1
+waiting_for: MulliganDecision player=None stage=SETUP
+[P1] keeps
+[P0] keeps
+waiting_for: Priority player=0 stage=SETUP
+[P0] plays Plains
+[P1] plays Forest
+[P0] plays Island
+[P0] casts Onakke Oathkeeper
+[P1] plays Forest
+[P0] plays Plains
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] plays Forest
+[P0] plays Island
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] plays Forest
+[P0] plays Island
+[P0] casts Jace, Cunning Castaway
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] plays Forest
+[P1] casts Grizzly Bears
+ARMED at turn 10: Oathkeeper+jace on P0 board, 1 untapped bears, P1 untapped lands 3
+waiting_for: Priority player=0 stage=ARMED
+[P0] plays Plains
+waiting_for: DeclareAttackers player=0 stage=ARMED
+waiting_for: Priority player=0 stage=ARMED
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=ARMED
+[P1] declare surface dumped for round A
+exported pre_roundA.json
+[P1] round A: bear 57 attacks JACE
+waiting_for: CombatTaxPayment player=1 stage=A
+[P1] round A: pays combat tax (choice LOZ6OY.0.190.c1)
+waiting_for: Priority player=1 stage=A
+round A: attack recorded in combat (bear 57)
+waiting_for: DeclareBlockers player=0 stage=A
+waiting_for: Priority player=1 stage=A
+round A: combat done at phase PostCombatMain
+exported mid_roundA.json
+round A: tax_demanded=True [prompt=True pay_submits=1 land_delta=1 (pre 6 -> post 5)]
+waiting_for: Priority player=1 stage=A_DONE
+[P0] plays Island
+waiting_for: DeclareAttackers player=0 stage=A_DONE
+waiting_for: Priority player=0 stage=A_DONE
+[P1] plays Forest
+waiting_for: DeclareAttackers player=1 stage=A_DONE
+[P1] declare surface dumped for round B
+exported pre_roundB.json
+[P1] round B: bear 57 attacks P0 player
+waiting_for: Priority player=1 stage=B
+round B: attack recorded in combat (bear 57)
+waiting_for: DeclareBlockers player=0 stage=B
+waiting_for: Priority player=1 stage=B
+round B: combat done at phase PostCombatMain
+exported post_roundB.json
+round B: tax_demanded=False [prompt=False pay_submits=0 land_delta=0 (pre 7 -> post 7)]
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_pw_tax_demanded": "passed", "A3_player_tax_demanded": "passed", "A4_attacks_resolved": "passed"}
+VERDICT: not-reproduced

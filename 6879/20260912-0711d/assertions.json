@@ -1,0 +1,40 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_pw_tax_demanded": "passed",
+  "A3_player_tax_demanded": "passed",
+  "A4_attacks_resolved": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "armed_at_turn=10 declareA={'bear': 57, 'target': {'type': 'Planeswalker', 'data': 36}, 'turn': 12}",
+  "A2_pw_tax_demanded_detail": "prompt=True pay_submits=1 land_delta=1 (pre 6 -> post 5)",
+  "A3_player_tax_demanded_detail": "prompt=False pay_submits=0 land_delta=0 (pre 7 -> post 7)",
+  "A4_attacks_resolved_detail": "jace loyalty preA=3 midA=1 (expect -2); P0 life preB=20 postB=18 (expect -2)"
+ },
+ "verdict": "not-reproduced",
+ "waiting_for_seq": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "CombatTaxPayment",
+  "Priority",
+  "DeclareBlockers",
+  "Priority",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareBlockers",
+  "Priority"
+ ]
+}
