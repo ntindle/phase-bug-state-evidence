@@ -1,0 +1,87 @@
+{
+ "issue": 6895,
+ "run_id": "20260912-6895f",
+ "started_at": "2026-09-12T15:29:59Z",
+ "server": {
+  "server_version": "0.81.0",
+  "build_commit": "a760a8b",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "9aa4c2250cfba3b4423daf08504857752da4dab73c8f33589f69bebc4a3b6063",
+  "card_data_sha256": "e39c5453db6c40e21bbbedaa2acc23e0248173286569bdd86000434ee22606b1",
+  "draft_pools_sha256": "b78f9e8782bb7079bd3cf52ad716e14202e2d501663e0166cf451ff52bf15f18",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "ServerHello + minisign verification against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (ED/BLAKE2b-512 prehashed); binary digest matches the GitHub release asset digest; data-file hashes match the signed manifest"
+ },
+ "driver": {
+  "protocol_version": 70,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6895f.py"
+ },
+ "scenario_sha256": "8bfd207244619356d1589406c4812da76cdb66497292f57f73f71f9ae906d5ce",
+ "decks": {
+  "P0": [
+   [
+    "Exquisite Blood",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Swamp",
+    18
+   ],
+   [
+    "Mountain",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "9LX3Y2",
+   "note": "P0 casts Exquisite Blood turn 15, then Lightning Bolt targeting P1 (seat-1 candidate answered via the top-level Interaction envelope). Bolt resolves: P1 20->17. Exquisite Blood's TriggeredAbility goes on the stack (source = EB on P0's battlefield); driver holds priority to observe it, then releases. Trigger resolves: P0 20->23. Stack empty, game proceeds."
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fires": "passed",
+  "A3_life_gain": "passed",
+  "A4_no_extra": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "eb_on_p0_bf=True bolt_in_hand=True p0_life=20 p1_life=20",
+  "A2_trigger_fires_detail": "trigger_seen=True life_at_trigger=(20,17)",
+  "A3_life_gain_detail": "P0 20->23: gained 3, matches Oracle text",
+  "A4_no_extra_detail": "P1 20->17 (bolt only: True) stack_empty=True"
+ },
+ "notes": [
+  "Life totals are from ExportAuthoritativeState envelopes: pre (20/20, EB on P0 BF, Bolt in P0 hand), mid_trigger (P0 20 / P1 17, one TriggeredAbility on the stack sourced from EB object 22 on P0's battlefield), post (P0 23 / P1 17, stack empty).",
+  "P0's life moved 20->23, exactly the 3 life P1 lost: the controller GAINED life per the Oracle text ('Whenever an opponent loses life, you gain that much life.'). The reported outcome (controller loses life) does not occur on v0.81.0.",
+  "No other life-change sources exist in either deck (lands, Exquisite Blood, Lightning Bolt, Forests only), so the +3 is unambiguously the trigger's resolution.",
+  "waiting_for types seen include Priority and TargetSelection; the Bolt's target prompt offered seat 0 and seat 1 candidates and the driver answered seat 1 via choice 9LX3Y2.0.220.t1."
+ ],
+ "verdict": "not-reproduced",
+ "setup_line": "P0 (Exquisite Blood + Lightning Bolt) vs P1 (Forests); two human-driver seats",
+ "contract_line": "When an opponent loses life, Exquisite Blood's controller must gain exactly that much life",
+ "stats": {
+  "interaction_submits": 1,
+  "action_submits": 226,
+  "trigger_observations": 1
+ },
+ "limitations": [
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games); single-copy behavior not separately run",
+  "Browser UI not exercised; verdict is on engine outcome via authoritative exports"
+ ],
+ "restoration": "pre.json/mid_trigger.json/post.json/stack_bolt.json are authoritative export envelopes ({\"state\", \"precast_shortcut_runtime\"}); restored only by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}

@@ -1,0 +1,69 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fires": "passed",
+  "A3_life_gain": "passed",
+  "A4_no_extra": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "eb_on_p0_bf=True bolt_in_hand=True p0_life=20 p1_life=20",
+  "A2_trigger_fires_detail": "trigger_seen=True life_at_trigger=(20,17)",
+  "A3_life_gain_detail": "P0 20->23: gained 3, matches Oracle text",
+  "A4_no_extra_detail": "P1 20->17 (bolt only: True) stack_empty=True"
+ },
+ "verdict": "not-reproduced",
+ "life_at_trigger": [
+  20,
+  17
+ ],
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}

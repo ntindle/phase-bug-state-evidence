@@ -1,0 +1,21 @@
+connected P0
+game 9LX3Y2; seats 0/1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Exquisite Blood
+[P0] Exquisite Blood resolved; stage -> BOLT
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre.json
+[P0] casts Lightning Bolt at P1
+exported stack_bolt.json
+Bolt on stack; holding priority 3s
+[P0] TargetSelection prompt: rtype=schema cands=[(0, ''), (1, '')]
+[P0] answers TargetSelection with seat 1 (cid 9LX3Y2.0.220.t1)
+EB trigger on stack: P0 life=20 P1 life=17
+exported mid_trigger.json
+trigger hold released; letting it resolve
+exported post.json
+post.json exported; stopping
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_trigger_fires": "passed", "A3_life_gain": "passed", "A4_no_extra": "passed"}
+VERDICT: not-reproduced
