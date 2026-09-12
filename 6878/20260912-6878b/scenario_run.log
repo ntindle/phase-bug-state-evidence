@@ -1,0 +1,55 @@
+P0 creating game...
+P1 joining...
+game 5LMN1L; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+[P1] casts Llanowar Elves (turn 2)
+[P1] casts Llanowar Elves (turn 4)
+[P1] casts Llanowar Elves (turn 6)
+[P1] casts Llanowar Elves (turn 8)
+[P0] casts Duskwatch Recruiter (turn 11)
+=== stage -> R1ARM (turn 11) ===
+[P0] R1ARM diag: turn=11 untapped_forests=4 stack=0
+exported pre_r1.json
+[P0] r1 top3: [('5', 'Grizzly Bears'), ('3', 'Forest'), ('33', 'Duskwatch Recruiter')]
+[P0] r1 activated Duskwatch Recruiter (choice 5LMN1L.0.182.c11)
+[P1 view during Dig] {'5': {'name': 'Hidden Card', 'zone': 'Library', 'face_down': True, 'revealed': None}, '3': {'name': 'Hidden Card', 'zone': 'Library', 'face_down': True, 'revealed': None}, '33': {'name': 'Hidden Card', 'zone': 'Library', 'face_down': True, 'revealed': None}}
+[P0] r1 Dig prompt wf=Priority rtype=exactChoices ncand=2
+    cand 5LMN1L.0.183.c0 ref=None name= zone=None codes=['passPriority']
+    cand 5LMN1L.0.183.c1 ref=38 name=Forest zone=Battlefield codes=['tapLandForMana']
+[P0] r1 Dig prompt wf=DigChoice rtype=schema ncand=2
+    cand 5LMN1L.0.185.s0 ref=5 name=Grizzly Bears zone=Library codes=[]
+    cand 5LMN1L.0.185.s1 ref=33 name=Duskwatch Recruiter zone=Library codes=[]
+[P0] r1 Dig keep answered cids=['5LMN1L.0.185.s0'] kept=['5'] rest=['3', '33']
+[P0] r1 Dig prompt wf=Priority rtype=exactChoices ncand=2
+    cand 5LMN1L.0.186.c0 ref=None name= zone=None codes=['passPriority']
+    cand 5LMN1L.0.186.c1 ref=38 name=Forest zone=Battlefield codes=['tapLandForMana']
+exported post_r1.json
+=== r1 resolved; post exported; rest_positions={'3': 25, '33': 26} ===
+=== stage -> R2ARM ===
+[P1] casts Llanowar Elves (turn 12)
+[P0] safety cast Grizzly Bears (turn 13)
+exported pre_r2.json
+[P0] r2 top3: [('9', 'Duskwatch Recruiter'), ('21', 'Forest'), ('4', 'Duskwatch Recruiter')]
+[P0] r2 activated Duskwatch Recruiter (choice 5LMN1L.0.216.c13)
+[P0] r2 Dig prompt wf=Priority rtype=exactChoices ncand=2
+    cand 5LMN1L.0.217.c0 ref=None name= zone=None codes=['passPriority']
+    cand 5LMN1L.0.217.c1 ref=38 name=Forest zone=Battlefield codes=['tapLandForMana']
+[P0] r2 Dig prompt wf=DigChoice rtype=schema ncand=2
+    cand 5LMN1L.0.219.s0 ref=9 name=Duskwatch Recruiter zone=Library codes=[]
+    cand 5LMN1L.0.219.s1 ref=4 name=Duskwatch Recruiter zone=Library codes=[]
+[P0] r2 Dig keep answered cids=[] kept=[] rest=['9', '21', '4']
+[P0] r2 Dig prompt wf=Priority rtype=exactChoices ncand=2
+    cand 5LMN1L.0.220.c0 ref=None name= zone=None codes=['passPriority']
+    cand 5LMN1L.0.220.c1 ref=38 name=Forest zone=Battlefield codes=['tapLandForMana']
+exported post_r2.json
+=== r2 resolved; post exported; rest_positions={'9': 23, '21': 24, '4': 25} ===
+loop ended: stage=DIG2 elapsed=56s
+verdict=reproduced
+  A1_setup_ok: passed
+  A2_keep_offered: passed
+  A3_order_offered_r1: failed
+  A4_rest_preserved_r1: passed
+  A5_no_opponent_leak: passed
+  A6_decline_branch_r2: failed
+  A7_cleanup: passed
