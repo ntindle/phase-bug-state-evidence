@@ -1,0 +1,97 @@
+{
+ "issue": 6878,
+ "run_id": "20260912-6878b",
+ "started_at": "2026-09-12T05:55:47Z",
+ "server": {
+  "server_version": "0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-12",
+  "source": "ServerHello + minisign verification against repo-pinned key"
+ },
+ "driver": {
+  "protocol_version": 69,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6878_run3.py"
+ },
+ "scenario_sha256": "2753d25779d1963aebbe7c41cd01246757f78a678547374b6f5557307104634a",
+ "decks": {
+  "P0": [
+   [
+    "Duskwatch Recruiter",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Forest",
+    28
+   ]
+  ]
+ },
+ "games": [
+  {
+   "game_code": "5LMN1L",
+   "note": "attempt 1 (superseded, transform spoiled round 2): 20260912-6878, game MRB5P6"
+  },
+  {
+   "game_code": "5LMN1L",
+   "note": "round 1 accept branch (kept Grizzly Bears oid 5; rest Forest oid 3 + Duskwatch Recruiter oid 33 to bottom, no ordering choice) and round 2 decline branch (kept 0 of [Recruiter 9, Forest 21, Recruiter 4]; all three to bottom, no ordering choice); pre/post JSON states are from this game"
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A3_order_offered_r1": "failed",
+  "A4_rest_preserved_r1": "passed",
+  "A5_no_opponent_leak": "passed",
+  "A6_decline_branch_r2": "failed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "r1 top3 (turn 11): [oid 5 Grizzly Bears, oid 3 Forest, oid 33 Duskwatch Recruiter]; keep select offered the two creatures (selectable_cards [5,33], keep_count 1, up_to true); kept oid 5 -> hand; rest [3,33] landed at library positions 25,26 (the two bottom slots, original relative order).",
+  "r2 top3 (turn 13): [oid 9 Duskwatch Recruiter, oid 21 Forest, oid 4 Duskwatch Recruiter]; decline submitted (choiceIds []); rest [9,21,4] landed at positions 23,24,25 (bottom three, original relative order).",
+  "Both rounds: engine waiting_for for the keep carried rest_order:'preserve'; after the keep submission the engine returned straight to Priority with no ordering interaction for the rest (A3 failed, A6 failed).",
+  "P1's filtered view during both Dig decisions showed all three looked-at cards as 'Hidden Card' (face_down) -- no opponent information leak observed (A5 passed).",
+  "P1 cast a 1-mana creature on each of its main phases so 'a spell was cast last turn' stayed true at every P0 upkeep; the Recruiter never transformed in this game.",
+  "waiting_for types seen: DeclareAttackers, DigChoice, MulliganDecision, Priority",
+  "interaction submissions: keep accept (r1), keep decline (r2), ability activations x2; 0 rejections.",
+  "Verdict rationale: the reported defect is the missing controller-selected ordering for the rest ('in any order'). On v0.80.0 the engine offers no ordering choice on either the accept branch or the decline/zero-keep branch and silently preserves the original relative order at the bottom -- exactly the reported behavior, observed twice in one game."
+ ],
+ "verdict": "reproduced",
+ "setup_line": "P0 (12x Duskwatch Recruiter + Elves/Bears/Forests) vs P1 (12x Llanowar Elves + Forests, casts one each turn to suppress the upkeep transform)",
+ "contract_line": "After the optional keep, the controller must be able to order every remaining looked-at card; the rest go to the bottom in the submitted order (accept and decline branches)",
+ "stats": {
+  "states_seen": "16 waiting_for transitions",
+  "dig_activations": 2,
+  "interaction_submits": 4
+ },
+ "limitations": [
+  "Browser UI not exercised",
+  "Native AI seats not used; the Dig ordering is engine-level and seat-independent",
+  "Fewer-than-three-card library edge not exercised (library had 25+ cards)"
+ ],
+ "restoration": "pre.json/post.json/pre_r2.json/post_r2.json are authoritative export envelopes ({\"state\", \"precast_shortcut_runtime\"}); restored only by inspection in this run, not re-imported into a live game (no ImportAuthoritativeState path used)."
+}
