@@ -1,0 +1,17 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_teamwork_cast": "passed",
+  "A3_teamwork_trigger_ok": "passed",
+  "A4_attack_no_trigger": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: hill={'count': 1, 'tapped': False, 'counters': 0} bears_bf=1 beast_in_hand=yes phase=PreCombatMain turn=15",
+  "A2: beast_casts=1 teamwork_pay_subs=1 tap_select_subs=1 beast_stack_seen=True beast_in_gy=True stack_empty=True hill_post_tw={'count': 1, 'tapped': True, 'counters': 1}",
+  "A3: hill 0->1 counters (expect 0->1); P0 hand 3->3 (expect equal: cast -1 + trigger draw +1); Bears teamwork counter=1 (expect 1: bonus landed on spell target, so Hill's counter is from her trigger)",
+  "A4: hill 1->2 counters (expect 1->1); P1 life 20->16 (expect -2 unblocked 2/1); P0 library 36->34 (expect -1 normal draw only)",
+  "A5: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced"
+ ]
+}

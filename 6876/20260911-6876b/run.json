@@ -1,0 +1,31 @@
+{
+ "issue": 6876,
+ "run_id": "20260911-6876b",
+ "validated_at": "2026-09-11",
+ "server": {
+  "server_version": "v0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828"
+ },
+ "verdict": "reproduced",
+ "scope": "Agent Maria Hill tapped-trigger qualifier: teamwork-cost tap (true branch) vs attack tap (reported over-broad branch). Native engine, two human-client seats.",
+ "result": "A1_setup_ok=passed; A2_teamwork_cast=passed; A3_teamwork_trigger_ok=passed; A4_attack_no_trigger=failed; A5_cleanup=passed",
+ "limitations": [
+  "Browser UI not exercised.",
+  "8x Beast Mode / 8x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.80.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "driver_notes": [
+  "client.py advertises protocol 69 (v0.80.0); fresh isolated server on 127.0.0.1:9374, games.db under runs/20260911-6876/.",
+  "Beast Mode ({1}{G}, Teamwork 1, 'target creature gets +2/+2') chosen because it targets any creature: no combat setup needed for the teamwork branch, and its own teamwork bonus counter lands on the Bears, keeping Hill's counter count a clean signal."
+ ],
+ "scenario_sha256": "fb86c2065e2c5d0d28f66e0101e790790830da290bde25e3542b2fa54f0d04d0",
+ "evidence_dir": "6876/20260911-6876b"
+}

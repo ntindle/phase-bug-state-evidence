@@ -1,0 +1,27 @@
+P0 creating game...
+P1 joining...
+game YDFB7C; seats 0/1
+P0 mulligan -> Mulligan
+P1 mulligan -> Keep
+P0 mulligan -> Keep
+P0 bottoms 1
+[P0] casts Agent Maria Hill
+[P0] casts Grizzly Bears
+=== stage -> TEAMWORK (turn 15) ===
+exported pre_teamwork.json
+[P0] casts Beast Mode
+[P0] Beast Mode target prompt: [('Agent Maria Hill', '18'), ('Grizzly Bears', '34')] -> Bears
+[P0] Beast Mode targets Bears oid=34
+[P0] OptionalCostChoice cost.type=Optional choices=3
+[P0] teamwork -> PAY (true)
+[P0] teamwork tap prompt (PayCost/schema): [('Agent Maria Hill', '18'), ('Grizzly Bears', '34')] -> Hill only
+[P0] teamwork taps Hill oid=18 (only)
+Hill counter observed: 1
+stack empty after Beast Mode + Hill trigger; exporting post_teamwork
+exported post_teamwork.json
+=== stage -> ATTACK ===
+[P0] attacks with Hill oid=18 (turn 17)
+PostCombatMain on attack turn; exporting post_attack
+exported post_attack.json
+loop ended: stage=ATTACK elapsed=72s
+wrote observations.json
