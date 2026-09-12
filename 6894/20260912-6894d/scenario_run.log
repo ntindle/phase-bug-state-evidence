@@ -1,0 +1,74 @@
+game XQE8B9; P0 seat=0; P1 = native AI Medium
+waiting_for: MulliganDecision player=None stage=SETUP
+P0 mulligan -> Keep (lands=4)
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=37)
+AI RIFT CAST #1: turn=5 phase=BeginCombat oid=111 overload=False mana_prev=3+0=3 affordable=False
+exported mid_cast_normal_1.json
+AI RIFT CAST #1 resolved -> Graveyard (turn 5)
+[P0] casts Grizzly Bears (oid=37)
+[P0] casts Grizzly Bears (oid=49)
+[P0] casts Grizzly Bears (oid=53)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+AI RIFT CAST #2: turn=13 phase=Draw oid=92 overload=False mana_prev=6+0=6 affordable=False
+exported mid_cast_normal_2.json
+AI RIFT CAST #2 resolved -> Graveyard (turn 13)
+[P0] casts Grizzly Bears (oid=37)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=20)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=24)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=2)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+AI RIFT CAST #3: turn=25 phase=Draw oid=66 overload=False mana_prev=12+0=12 affordable=True
+exported mid_cast_normal_3.json
+AI RIFT CAST #3 resolved -> Graveyard (turn 25)
+[P0] casts Grizzly Bears (oid=2)
+[P0] casts Grizzly Bears (oid=20)
+[P0] casts Grizzly Bears (oid=24)
+[P0] casts Grizzly Bears (oid=37)
+[P0] casts Grizzly Bears (oid=49)
+[P0] casts Grizzly Bears (oid=53)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=7)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+AI RIFT CAST #4: turn=31 phase=Draw oid=72 overload=False mana_prev=15+0=15 affordable=True
+exported mid_cast_normal_4.json
+AI RIFT CAST #4 resolved -> Graveyard (turn 31)
+[P0] casts Grizzly Bears (oid=2)
+[P0] casts Grizzly Bears (oid=7)
+[P0] casts Grizzly Bears (oid=20)
+[P0] casts Grizzly Bears (oid=24)
+[P0] casts Grizzly Bears (oid=37)
+[P0] casts Grizzly Bears (oid=49)
+[P0] casts Grizzly Bears (oid=53)
+[P0] casts Grizzly Bears (oid=57)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+TURN CAP 40 reached; stopping
+exported post.json
+verdict=not-reproduced assertions={"A1_setup_ok": "failed", "A2_overload_attempted": "failed", "A3_unaffordable": "not-run", "A4_committed_to_stack": "not-run", "A5_no_lock": "not-run", "A6_affordable_control": "passed"}
+evidence files: ['mid_cast_normal_1.json', 'mid_cast_normal_2.json', 'mid_cast_normal_3.json', 'mid_cast_normal_4.json', 'post.json', 'run.json', 'scenario_6894.py', 'scenario_run.log', 'wire_log.jsonl']
+scenario finished
