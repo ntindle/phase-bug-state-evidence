@@ -1,0 +1,33 @@
+game DPNLWD; P0 seat=0; P1 seat=1
+P0 mulligan -> Keep (lands=6)
+P1 mulligan -> Keep (lands=5)
+waiting_for: MulliganDecision player=None stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Storm Crow (oid=16)
+[P1] casts Grizzly Bears (oid=81)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] casts Grizzly Bears (oid=91)
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] casts Grizzly Bears (oid=92)
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] casts Shield Broker (oid=3)
+Shield Broker target prompt; candidates=[('Grizzly Bears', '81', 1, 'DPNLWD.0.146.t0'), ('Grizzly Bears', '91', 1, 'DPNLWD.0.146.t1'), ('Grizzly Bears', '92', 1, 'DPNLWD.0.146.t2')]
+exported pre_target.json
+[P0] FORGE: submitting own creature oid=16 as target choiceId (not advertised)
+waiting_for: TriggerTargetSelection player=0 stage=FORGED
+[P0] ActionRejected: {"rejection": {"code": "invalid_interaction_response", "disposition": "invalid", "message": "That response is not valid for this interaction.", "related_object_ids": []}}
+forge submission REJECTED -> {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "invalid_interaction_response", "disposition": "invalid", "message": "That response is not valid for this interaction.", "related_object_ids": []}}}
+[P0] LEGAL: targeting Grizzly Bears oid=81 choice=DPNLWD.0.146.t0
+waiting_for: Priority player=0 stage=LEGAL
+trigger resolved: Bear oid=81 shield=1 controller=0; stack empty
+exported post_trigger.json
+waiting_for: DeclareAttackers player=0 stage=RESOLVED
+waiting_for: Priority player=0 stage=RESOLVED
+exported post.json
+verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_candidates_exclude_own": "passed", "A3_own_target_forged_rejected": "passed", "A4_legal_resolution": "passed", "A5_cleanup": "passed"}
+scenario finished
