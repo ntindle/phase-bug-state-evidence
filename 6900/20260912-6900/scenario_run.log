@@ -1,0 +1,26 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.1", "build_commit": "ab70305", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game FL3PEZ; seats P0=0 P1=1
+P0 casts Savannah Lions
+P1 casts Savannah Lions
+P1 casts Savannah Lions
+SETUP STALL? turn 21 stage SETUP: P0 hand=['Promise of Loyalty', 'Plains', 'Plains', 'Plains', 'Plains'] p0bf=['Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Savannah Lions'] p1bf=['Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Savannah Lions', 'Plains', 'Plains', 'Plains', 'Savannah Lions', 'Plains'] wf={'type': 'Priority', 'data': {'player': 0}}
+P0 casts Savannah Lions
+board ready at turn 25; stage -> PROOF
+[P0] casts Promise of Loyalty (advertised action)
+exported pre.json (470383 bytes)
+pre.json exported at cast; stage -> AWAIT_RESOLVE
+exported post.json (473212 bytes)
+post.json exported; DONE
+loop ended: stage=DONE stop=True
+ASSERTIONS: {
+ "A1_setup_ok": "passed",
+ "A2_cast_completes": "passed",
+ "A3_no_vow_counter_prompt": "passed",
+ "A4_no_sacrifice": "passed",
+ "A5_no_vow_counters": "passed",
+ "A6_cleanup": "passed"
+}
+VERDICT (proposal): reproduced
+wrote run.json
+copied scenario_6900.py to evidence
+wrote server_excerpts.log (500 lines)
