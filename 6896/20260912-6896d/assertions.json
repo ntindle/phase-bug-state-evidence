@@ -1,0 +1,39 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_target_prompt": "passed",
+  "A3a_any_damage": "passed",
+  "A3b_full_damage": "passed",
+  "A4_wolves_intact": "passed",
+  "A5_hunt_resolved": "passed",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "wolves={'Wolf': 1, 'Nightpack Ambusher': 1, 'Young Wolf': 1} wurm_on_p1_bf=True hunt_in_hand=True life=20/20 powers={'24': (4, 4), '54': (2, 2)}",
+  "A2_target_prompt_detail": "prompt_seen=True answered=True",
+  "A3_detail": "wurm zone=Graveyard damage_marked=9 expected=9 (sum of P0 wolf powers pre-hunt) vs toughness 4",
+  "A4_wolves_intact_detail": "pre={'Wolf': 1, 'Nightpack Ambusher': 1, 'Young Wolf': 1} post={'Wolf': 1, 'Nightpack Ambusher': 1, 'Young Wolf': 1}",
+  "A5_hunt_resolved_detail": "hunt_in_p0_gy=True",
+  "A6_cleanup_detail": "stack_empty=True wf=Priority"
+ },
+ "verdict": "not-reproduced",
+ "pre_wolves": {
+  "Nightpack Ambusher": 1,
+  "Young Wolf": 1,
+  "Wolf": 1
+ },
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}
