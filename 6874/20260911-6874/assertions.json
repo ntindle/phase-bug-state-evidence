@@ -1,0 +1,16 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_annihilator_resolved": "passed",
+    "A3_ai_sacrificed_exactly_6": "passed",
+    "A4_no_softlock": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: pre turn=31 phase=DeclareAttackers active=0 emrakul_bf_p0=1 p1_battlefield=15 (>=6 needed for annihilator 6)",
+    "A2: mid turn=31 phase=CombatDamage emrakul tapped on BF=True; P1 BF 15->9 (-6), P1 GY 2->8 (+6); new GY cards: {'Forest': 6} (all lands = sacrifices, not combat deaths; mid is pre-damage priority)",
+    "A3: P1 battlefield delta -6, graveyard delta +6 (annihilator 6 requires exactly 6)",
+    "A4: 'AI controller halted after 3 failed proposals' lines in server.log: 0; 'failed proposals' lines: 0; game advanced turn 31 -> 61",
+    "A5: post turn=61 phase=DeclareAttackers stack=0 waiting_for=DeclareAttackers emrakul still on BF=True"
+  ]
+}

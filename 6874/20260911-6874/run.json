@@ -1,0 +1,91 @@
+{
+  "issue": 6874,
+  "run_id": "20260911-6874",
+  "validated_version": "v0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "validated_at": "2026-09-11",
+  "started_at": "2026-09-11T23:56:00Z",
+  "finished_at": "2026-09-11T23:59:46Z",
+  "verdict": "not-reproduced",
+  "scope": "#6874 annihilator-6 attack trigger vs native Medium AI defender (EffectZoneChoice sacrifice prompt). Native engine, two seats, Bo1. Reported branch exercised end to end.",
+  "result": "A1_setup_ok: passed; A2_annihilator_resolved: passed; A3_ai_sacrificed_exactly_6: passed; A4_no_softlock: passed; A5_cleanup: passed. The defending AI sacrificed exactly 6 permanents in response to annihilator 6; no 'AI controller halted after 3 failed proposals' diagnostic; the game proceeded to turn 61 with an empty stack.",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_annihilator_resolved": "passed",
+    "A3_ai_sacrificed_exactly_6": "passed",
+    "A4_no_softlock": "passed",
+    "A5_cleanup": "passed"
+  },
+  "assertion_notes": [
+    "A1: pre turn=31 phase=DeclareAttackers active=0 emrakul_bf_p0=1 p1_battlefield=15 (>=6 needed for annihilator 6)",
+    "A2: mid turn=31 phase=CombatDamage emrakul tapped on BF=True; P1 BF 15->9 (-6), P1 GY 2->8 (+6); new GY cards: {'Forest': 6} (all lands = sacrifices, not combat deaths; mid is pre-damage priority)",
+    "A3: P1 battlefield delta -6, graveyard delta +6 (annihilator 6 requires exactly 6)",
+    "A4: 'AI controller halted after 3 failed proposals' lines in server.log: 0; 'failed proposals' lines: 0; game advanced turn 31 -> 61",
+    "A5: post turn=61 phase=DeclareAttackers stack=0 waiting_for=DeclareAttackers emrakul still on BF=True"
+  ],
+  "limitations": [
+    "Browser UI not exercised; engine + native AI path only.",
+    "The annihilator trigger never appeared in a client-visible snapshot (native AI answers EffectZoneChoice synchronously), so no mid-annihilator stack export exists; resolution is proven by the exact -6/+6 permanent movement between the pre (DeclareAttackers) and mid (CombatDamage, pre-damage) exports.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Report dates to a ~2026-07-31 build; verdict is scoped to v0.80.0, not a fix claim. The attached Discord CDN save state has expired and could not be re-run.",
+    "AI difficulty Medium; other difficulties not tested."
+  ],
+  "server": {
+    "server_version": "v0.80.0",
+    "build_commit": "22cca6d",
+    "protocol_version": 69,
+    "mode": "Full",
+    "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+    "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+    "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+    "signature_verified": true,
+    "signature_key_id": "436711b6a2d36828",
+    "bind": "127.0.0.1:9374",
+    "games_db": "runs/20260911-6874/games.db"
+  },
+  "scenario": {
+    "file": "driver/scenario_6874.py",
+    "sha256": "e52acf452633a9fc4d3ef3996260e8bee92635ddb3706a8fec6abc60a91f4b2a",
+    "p0_deck": [
+      [
+        "Emrakul, the Aeons Torn",
+        8
+      ],
+      [
+        "Grizzly Bears",
+        8
+      ],
+      [
+        "Forest",
+        44
+      ]
+    ],
+    "p1_ai_deck": [
+      [
+        "Grizzly Bears",
+        4
+      ],
+      [
+        "Forest",
+        56
+      ]
+    ],
+    "p1_ai_difficulty": "Medium",
+    "game_code": "RVJQI2"
+  },
+  "evidence_files": [
+    "pre_attack.json",
+    "mid_blockers.json",
+    "post.json",
+    "wire_log.jsonl",
+    "scenario_run.log",
+    "assertions.json",
+    "run.json",
+    "summary.png",
+    "manifest.sha256"
+  ],
+  "publication": {
+    "status": "pending"
+  }
+}
