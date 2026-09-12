@@ -1,0 +1,27 @@
+game EEEN0P; P0 seat=0; P1 seat=1
+P0 mulligan -> Keep (lands=3)
+P1 mulligan -> Keep (lands=3)
+waiting_for: MulliganDecision player=None stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] casts Grizzly Bears (oid=22)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] casts Shield Broker (oid=82)
+Broker ETB resolved: Bear oid=22 shield=1 controller=1
+exported pre_wipe.json
+STAGE -> BROKER_RESOLVED
+[P0] casts Day of Judgment (oid=8)
+Wipe resolved: Bear survived with counter consumed, control reverted to P0, Broker in P1 graveyard
+exported post_wipe.json
+STAGE -> WIPE_RESOLVED
+[P1] casts Perrie, the Pulverizer (oid=53)
+[P1] answering Shield Broker: targeting Grizzly Bears oid=22
+waiting_for: TriggerTargetSelection player=1 stage=WIPE_RESOLVED
+waiting_for: Priority player=1 stage=WIPE_RESOLVED
+Perrie ETB resolved: Bear shield=1 controller=0
+exported post_perrie.json
+STAGE -> PERRIE_RESOLVED
+exported post.json
+STAGE -> DONE
+verdict=reproduced assertions={"A1_broker_steal": "passed", "A2_wipe_replacement": "passed", "A3_control_reverted": "passed", "A4_no_reactivation": "failed", "A5_cleanup": "passed"}
+scenario finished
