@@ -1,0 +1,107 @@
+{
+ "issue": 6893,
+ "run_id": "20260912-6893f",
+ "validated_version": "v0.80.0",
+ "server": {
+  "server_version": "v0.80.0",
+  "build_commit": "22cca6d",
+  "protocol_version": 69,
+  "mode": "Full",
+  "binary_sha256": "1d414c0e999a088560ab9ad0d77a4ae4f5773610cee6afda616a62c0e654238e",
+  "card_data_sha256": "7ce6f92d0adb8fc4158bf0ab76797a644eb77dcea01f9743bb849550bb677bfd",
+  "draft_pools_sha256": "c78dbd16f671e5b21ec094d6fcbc2b5da76e79cc82c2d9daa914369180021348",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true
+ },
+ "game_code": "EEEN0P",
+ "scenario": "driver/scenario_6893.py",
+ "p0_deck": [
+  [
+   "Grizzly Bears",
+   12
+  ],
+  [
+   "Day of Judgment",
+   12
+  ],
+  [
+   "Forest",
+   12
+  ],
+  [
+   "Plains",
+   12
+  ]
+ ],
+ "p1_deck": [
+  [
+   "Shield Broker",
+   12
+  ],
+  [
+   "Perrie, the Pulverizer",
+   12
+  ],
+  [
+   "Boon of Safety",
+   4
+  ],
+  [
+   "Island",
+   12
+  ],
+  [
+   "Plains",
+   8
+  ],
+  [
+   "Forest",
+   8
+  ]
+ ],
+ "assertions": {
+  "A1_broker_steal": "passed",
+  "A2_wipe_replacement": "passed",
+  "A3_control_reverted": "passed",
+  "A4_no_reactivation": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_broker_steal_detail": "bear=22 shield=1 controller=1 (pre_wipe.json)",
+  "A2_wipe_replacement_detail": "bear=22 zone=Battlefield shield=0 (post_wipe.json): counter removed instead of destruction",
+  "A3_control_reverted_detail": "bear_controller=0 broker_in_p1_graveyard=True (post_wipe.json)",
+  "A4_no_reactivation_detail": "counter_source=perrie post_perrie: bear=22 shield=1 controller=0; post: bear=22 shield=1 controller=1",
+  "A5_cleanup_detail": "stage=DONE turns_past_perrie=1 stall=False stages=['SETUP', 'BROKER_RESOLVED', 'WIPE_RESOLVED', 'PERRIE_RESOLVED', 'DONE']"
+ },
+ "waiting_for_sequence": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "TriggerTargetSelection",
+  "Priority"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-12T12:21:04Z",
+ "rejections": [],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "stages_reached": [
+  "SETUP",
+  "BROKER_RESOLVED",
+  "WIPE_RESOLVED",
+  "PERRIE_RESOLVED",
+  "DONE"
+ ],
+ "counter_source": "perrie",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Grizzly Bears stands in for the reporter's Witherbloom Apprentice as the stolen creature (both ordinary noncommander creatures).",
+  "Perrie, the Pulverizer is the reporter's 'Perry the Piledriver' (the commander that re-entered and placed the later shield counter); Boon of Safety is a fallback shield-counter source used only if Perrie's counter does not land on the Bear.",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.80.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ]
+}
