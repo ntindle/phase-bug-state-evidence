@@ -1,0 +1,234 @@
+{
+ "run_id": "20260913-6983l",
+ "issue": 6983,
+ "verdict": "blocked",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "isolated v0.81.3 single-user server on 127.0.0.1:9375 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 single-user server on 127.0.0.1:9375 (started fresh by this run; its games.db holds only this run)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b92636802e9c4290ac75f6b30fa7c88acefff3443b0cdae82cc4bf8278c705b3",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "repulsive mutation",
+    12
+   ],
+   [
+    "grizzly bears",
+    8
+   ],
+   [
+    "leatherback baloth",
+    8
+   ],
+   [
+    "forest",
+    16
+   ],
+   [
+    "island",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    12
+   ],
+   [
+    "mountain",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_mutation_cast": "passed",
+  "A4_payment_prompt": "failed",
+  "A5_bolt_resolves": "passed",
+  "A6_baloth_unchanged": "passed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "life_trace": [
+   [
+    3.1,
+    [
+     20,
+     20
+    ]
+   ],
+   [
+    29.3,
+    [
+     17,
+     20
+    ]
+   ],
+   [
+    29.6,
+    [
+     14,
+     20
+    ]
+   ]
+  ],
+  "stack_trace": [],
+  "payment_scan": [],
+  "castdiag_done": [
+   [
+    "castdiag",
+    1,
+    "PreCombatMain"
+   ],
+   [
+    "castdiag",
+    1,
+    "PostCombatMain"
+   ],
+   [
+    "castdiag",
+    3,
+    "PreCombatMain"
+   ],
+   [
+    "castdiag",
+    3,
+    "PostCombatMain"
+   ],
+   [
+    "castdiag",
+    5,
+    "PreCombatMain"
+   ],
+   [
+    "castdiag",
+    5,
+    "PostCombatMain"
+   ],
+   [
+    "castdiag",
+    7,
+    "PreCombatMain"
+   ],
+   [
+    "castdiag",
+    7,
+    "PostCombatMain"
+   ],
+   [
+    "castdiag",
+    9,
+    "PreCombatMain"
+   ],
+   [
+    "castdiag",
+    9,
+    "PostCombatMain"
+   ]
+  ],
+  "bolt2diag_done": [
+   [
+    "bolt2diag",
+    10
+   ]
+  ],
+  "respond_diag": [
+   [
+    "respond",
+    10
+   ]
+  ]
+ },
+ "driver_state": {
+  "mutation_cast": true,
+  "mutation_in_flight": false,
+  "mutation_resolved": true,
+  "mutation_oid": 8,
+  "mutation_on_stack_seen": true,
+  "mutation_stack_targets": {
+   "targets": [
+    {
+     "Object": 31
+    }
+   ],
+   "effect": "{'type': 'PutCounter', 'counter_type': 'P1P1', 'count': {'type': 'Ref', 'qty': {'type': 'Variable', 'name': 'X'}}, 'target': {'type': 'Typed', 'type_filters': ['Creature'], 'controller': 'You', 'properties': []}}",
+   "sub_ability": "{'effect': {'type': 'Unimplemented', 'name': 'unless_payment', 'description': 'counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control'}, 'targets': [], 'source_id': 8, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'controll"
+  },
+  "mutation_castable": true,
+  "creature_target_ref": "31",
+  "spell_target_ref": null,
+  "x_answered": true,
+  "bolt_cast": true,
+  "bolt_submitted": true,
+  "bolt_resolved": true,
+  "bolt_targets_answered": 2,
+  "bolt2_cast": true,
+  "bolt2_submitted": true,
+  "bolt2_oid": 81,
+  "bolt2_resolved": true,
+  "bolt_on_stack_seen": false,
+  "bolt2_on_stack_seen": false,
+  "bolts_seen_max": 2,
+  "bolt_oid": 72,
+  "bolt_life_pre": null,
+  "pre_exported": true,
+  "post_exported": true,
+  "payment_prompt_seen": false,
+  "payment_prompt_detail": null,
+  "baloth_oid": 31,
+  "bears_oid": 20,
+  "mutation_resolved_at": 1789298748.3613791
+ },
+ "notes": [
+  "parse: sub_ability.effect = {\"type\": \"Unimplemented\", \"name\": \"unless_payment\", \"description\": \"counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control\"}",
+  "A1_parse_gap: effect.type=Unimplemented name=unless_payment -> passed",
+  "A2: baloth=31 bears=20 greatest_power=4 bolts_on_stack=2 mutation_in_hand=True lives=[20, 20]",
+  "A3: cast=True resolved=True in_P0_gy=True x_answered=True creature_target_ref=31 spell_target_ref=None stack_targets={'targets': [{'Object': 31}], 'effect': \"{'type': 'PutCounter', 'counter_type': 'P1P1', 'count': {'type': 'Ref', 'qty': {'type': 'Variable', 'name': 'X'}}, 'target': {'type': 'Typed', 'type_filters': ['Creature'], 'controller': 'You', 'properties': []}}\", 'sub_ability': \"{'effect': {'type': 'Unimplemented', 'name': 'unless_payment', 'description': 'counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control'}, 'targets': [], 'source_id': 8, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'controll\"}",
+  "A4: payment_prompt_seen=False detail=None",
+  "A4: no unless-payment interaction was offered during Mutation resolution (expected for the Unimplemented clause)",
+  "A5: bolt_resolved=True bolt2_resolved=True bolts_in_P1_gy=2 P0_life=14 (bug expectation: 14, both resolved uncountered; 17/20 would mean a Bolt was countered)",
+  "A6: Baloth oid=31 power=4 (expected 4: X=0 counters placed)",
+  "A7: stack_empty=True",
+  "verdict=blocked: engine never offered the optional 'up to one target spell' target (spell_target_ref is None); the unless-payment step was unreachable",
+  "verdict=blocked"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6983.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Mutation / 4x Bears / 4x Baloth / 12x Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The zero-creature branch of the acceptance criteria is not reachable: the spell requires targeting a creature you control to cast. One (4-power) and two (4+2-power) qualifying creatures were covered.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 29.8
+}
