@@ -1,0 +1,180 @@
+{
+ "issue": 6903,
+ "run_id": "20260912-f33127k",
+ "title": "Shadow Kin is just exiling whatever it likes",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "started_at": "2026-09-13T01:21:47Z",
+ "ended_at": "2026-09-13T01:25:39Z",
+ "game_code": "QTA50O",
+ "decks": {
+  "P0": [
+   [
+    "Shadow Kin",
+    4
+   ],
+   [
+    "Storm Crow",
+    24
+   ],
+   [
+    "Island",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    24
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ]
+ },
+ "decisions": {
+  "kin_cast_turn": 10,
+  "leg1": {
+   "turn": 12,
+   "milled": {
+    "0": [
+     "26",
+     "51",
+     "57"
+    ],
+    "1": [
+     "81",
+     "87",
+     "92"
+    ]
+   },
+   "mill_drops": {
+    "0": 3,
+    "1": 3
+   },
+   "forced_pick": true,
+   "optional_offered": false,
+   "candidates": [
+    {
+     "choiceId": "QTA50O.0.188.c1",
+     "oid": "36",
+     "name": "Shadow Kin",
+     "zone": "Hand",
+     "newly_milled": false,
+     "was_battlefield": false,
+     "was_preexisting_gy": false,
+     "is_creature": true
+    },
+    {
+     "choiceId": "QTA50O.0.188.c2",
+     "oid": "36",
+     "name": "Shadow Kin",
+     "zone": "Hand",
+     "newly_milled": false,
+     "was_battlefield": false,
+     "was_preexisting_gy": false,
+     "is_creature": true
+    },
+    {
+     "choiceId": "QTA50O.0.188.c3",
+     "oid": "2",
+     "name": "Island",
+     "zone": "Battlefield",
+     "newly_milled": false,
+     "was_battlefield": true,
+     "was_preexisting_gy": false,
+     "is_creature": false
+    },
+    {
+     "choiceId": "QTA50O.0.188.c4",
+     "oid": "3",
+     "name": "Island",
+     "zone": "Battlefield",
+     "newly_milled": false,
+     "was_battlefield": true,
+     "was_preexisting_gy": false,
+     "is_creature": false
+    },
+    {
+     "choiceId": "QTA50O.0.188.c5",
+     "oid": "6",
+     "name": "Island",
+     "zone": "Battlefield",
+     "newly_milled": false,
+     "was_battlefield": true,
+     "was_preexisting_gy": false,
+     "is_creature": false
+    },
+    {
+     "choiceId": "QTA50O.0.188.c6",
+     "oid": "19",
+     "name": "Island",
+     "zone": "Battlefield",
+     "newly_milled": false,
+     "was_battlefield": true,
+     "was_preexisting_gy": false,
+     "is_creature": false
+    },
+    {
+     "choiceId": "QTA50O.0.188.c7",
+     "oid": "22",
+     "name": "Island",
+     "zone": "Battlefield",
+     "newly_milled": false,
+     "was_battlefield": true,
+     "was_preexisting_gy": false,
+     "is_creature": false
+    }
+   ],
+   "chosen_oid": "36",
+   "chosen_name": "Shadow Kin"
+  },
+  "declined_leg2": true,
+  "rejections": 5
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_each_milled_3": "passed",
+  "A3_optional_offered": "passed",
+  "A4_candidates_in_scope": "failed",
+  "A5_exile_and_copy": "passed",
+  "A6_ability_retained": "failed",
+  "A7_decline_control": "not-run",
+  "A8_cleanup": "not-run"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "kin_on_bf=True crow_on_p0_bf=True bear_on_p1_bf=True upkeep_p0=True turn=12",
+  "A2_each_milled_3": "lib drops P0=3 P1=3 (expect 3/3); gy growth P0=3 P1=3 (expect 3/3)",
+  "A3_optional_offered": "may-exile decision observed on leg 1 (optional_offered=False, choice_recorded=True, milled creatures=3)",
+  "A4_candidates_in_scope": "7 candidates; out-of-scope=[('Shadow Kin', 'Hand', False, False), ('Shadow Kin', 'Hand', False, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False)]",
+  "A5_exile_and_copy": "chosen Shadow Kin zone=Exile (expect Exile); Kin object name now 'Shadow Kin' (expect 'Shadow Kin')",
+  "A6_ability_retained": "leg-2 upkeep mill: lib drops P0=0 P1=0 (trigger fired again post-copy)",
+  "A7_decline_control": "leg-2 decline not completed",
+  "A8_cleanup": "post2.json missing"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "Leg 1 accepts the may-exile and checks the candidate scope against the exact milled set; with no in-scope candidate offered, the driver force-picks the first offered candidate to observe the full reported outcome. Leg 2 declines as a control and confirms the copy kept the upkeep ability.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Shadow Kin / 24x Storm Crow / 24x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.81.2, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 4x Shadow Kin, 24x Storm Crow, 32x Island; P1: 24x Grizzly Bears, 36x Forest. P0 casts Storm Crow then Shadow Kin; P1 casts Grizzly Bears.",
+ "contract_line": "Leg 1: at P0's first upkeep with Kin on the battlefield, each player mills 3; the may-exile choice must offer only creature cards milled by that trigger; accept one and verify exile + copy. Leg 2: decline; verify the copy kept the ability and the game proceeds.",
+ "stats": {
+  "proof_turns": [
+   12,
+   14
+  ]
+ }
+}
