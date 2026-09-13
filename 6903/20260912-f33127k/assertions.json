@@ -1,0 +1,216 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_each_milled_3": "passed",
+  "A3_optional_offered": "passed",
+  "A4_candidates_in_scope": "failed",
+  "A5_exile_and_copy": "passed",
+  "A6_ability_retained": "failed",
+  "A7_decline_control": "not-run",
+  "A8_cleanup": "not-run"
+ },
+ "details": {
+  "A1_setup_ok": "kin_on_bf=True crow_on_p0_bf=True bear_on_p1_bf=True upkeep_p0=True turn=12",
+  "A2_each_milled_3": "lib drops P0=3 P1=3 (expect 3/3); gy growth P0=3 P1=3 (expect 3/3)",
+  "A3_optional_offered": "may-exile decision observed on leg 1 (optional_offered=False, choice_recorded=True, milled creatures=3)",
+  "A4_candidates_in_scope": "7 candidates; out-of-scope=[('Shadow Kin', 'Hand', False, False), ('Shadow Kin', 'Hand', False, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False), ('Island', 'Battlefield', True, False)]",
+  "A5_exile_and_copy": "chosen Shadow Kin zone=Exile (expect Exile); Kin object name now 'Shadow Kin' (expect 'Shadow Kin')",
+  "A6_ability_retained": "leg-2 upkeep mill: lib drops P0=0 P1=0 (trigger fired again post-copy)",
+  "A7_decline_control": "leg-2 decline not completed",
+  "A8_cleanup": "post2.json missing"
+ },
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "leg1": {
+  "turn": 12,
+  "milled": {
+   "0": [
+    "26",
+    "51",
+    "57"
+   ],
+   "1": [
+    "81",
+    "87",
+    "92"
+   ]
+  },
+  "mill_drops": {
+   "0": 3,
+   "1": 3
+  },
+  "forced_pick": true,
+  "optional_offered": false,
+  "candidates": [
+   {
+    "choiceId": "QTA50O.0.188.c1",
+    "oid": "36",
+    "name": "Shadow Kin",
+    "zone": "Hand",
+    "newly_milled": false,
+    "was_battlefield": false,
+    "was_preexisting_gy": false,
+    "is_creature": true
+   },
+   {
+    "choiceId": "QTA50O.0.188.c2",
+    "oid": "36",
+    "name": "Shadow Kin",
+    "zone": "Hand",
+    "newly_milled": false,
+    "was_battlefield": false,
+    "was_preexisting_gy": false,
+    "is_creature": true
+   },
+   {
+    "choiceId": "QTA50O.0.188.c3",
+    "oid": "2",
+    "name": "Island",
+    "zone": "Battlefield",
+    "newly_milled": false,
+    "was_battlefield": true,
+    "was_preexisting_gy": false,
+    "is_creature": false
+   },
+   {
+    "choiceId": "QTA50O.0.188.c4",
+    "oid": "3",
+    "name": "Island",
+    "zone": "Battlefield",
+    "newly_milled": false,
+    "was_battlefield": true,
+    "was_preexisting_gy": false,
+    "is_creature": false
+   },
+   {
+    "choiceId": "QTA50O.0.188.c5",
+    "oid": "6",
+    "name": "Island",
+    "zone": "Battlefield",
+    "newly_milled": false,
+    "was_battlefield": true,
+    "was_preexisting_gy": false,
+    "is_creature": false
+   },
+   {
+    "choiceId": "QTA50O.0.188.c6",
+    "oid": "19",
+    "name": "Island",
+    "zone": "Battlefield",
+    "newly_milled": false,
+    "was_battlefield": true,
+    "was_preexisting_gy": false,
+    "is_creature": false
+   },
+   {
+    "choiceId": "QTA50O.0.188.c7",
+    "oid": "22",
+    "name": "Island",
+    "zone": "Battlefield",
+    "newly_milled": false,
+    "was_battlefield": true,
+    "was_preexisting_gy": false,
+    "is_creature": false
+   }
+  ],
+  "chosen_oid": "36",
+  "chosen_name": "Shadow Kin",
+  "pre": {
+   "turn": 12,
+   "phase": "Upkeep",
+   "active": 0,
+   "lib": {
+    "0": 48,
+    "1": 48
+   },
+   "gy": {
+    "0": [],
+    "1": []
+   },
+   "exile": [],
+   "bf_creatures": [
+    "104",
+    "11",
+    "19",
+    "2",
+    "20",
+    "22",
+    "3",
+    "33",
+    "6",
+    "62",
+    "64",
+    "71",
+    "73",
+    "79",
+    "82",
+    "88"
+   ]
+  }
+ },
+ "proof_turns": [
+  12,
+  14
+ ]
+}
