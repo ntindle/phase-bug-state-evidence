@@ -1,0 +1,35 @@
+{
+  "assertions": {
+    "A1_parse_emrakul_madness": "failed",
+    "A2_setup_ok": "passed",
+    "A3_control_exile": "passed",
+    "A4_control_offer": "passed",
+    "A5_control_resolves": "passed",
+    "A6_emrakul_exile": "failed",
+    "A7_emrakul_offer": "failed",
+    "A8_cleanup": "passed"
+  },
+  "notes": [
+    "A1: keywords=['Flying', {'Protection': {'CardType': 'spells'}}, {'Protection': {'CardType': 'permanents that were cast this turn'}}]; Unimplemented abilities: [('Spell', 'unknown')]",
+    "A2: pre.json P0 main=True, Looting in hand=True, Temper in hand=True, untapped Mountains=2 -> passed",
+    "A3: discarded Fiery Temper entered Exile: True -> passed",
+    "A4: madness cast offered for Fiery Temper: True (source=CastOffer) -> passed",
+    "A5: control resolved=True, P1 life 20->17 (delta=3, expected 3) -> passed",
+    "A6: discarded Emrakul zone=Graveyard (expected Exile via madness replacement) -> failed",
+    "A7: madness cast offered at six {C}: False (source=None) -> failed",
+    "A8: post.json stack empty=True, turn=7, phase=PreCombatMain -> passed",
+    "verdict=reproduced: Emrakul's madness permission did not offer the printed six-{C} alternative cost after discard",
+    "WF sequence: ['MulliganDecision', 'Priority', 'DiscardChoice', 'Priority', 'CastOffer', 'TargetSelection', 'Priority', 'DiscardChoice', 'Priority']"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DiscardChoice",
+    "Priority",
+    "CastOffer",
+    "TargetSelection",
+    "Priority",
+    "DiscardChoice",
+    "Priority"
+  ]
+}
