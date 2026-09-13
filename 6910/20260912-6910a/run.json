@@ -1,0 +1,124 @@
+{
+ "issue": 6910,
+ "run_id": "20260912-6910a",
+ "title": "Reducers behaving incorrectly - Goreclaw reduces all spells; Thryx reduces nothing",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "started_at": "2026-09-13T03:49:10Z",
+ "ended_at": "2026-09-13T03:51:07Z",
+ "game_code": "TN2ZLR",
+ "decks": {
+  "P0": [
+   [
+    "Goreclaw, Terror of Qal Sisma",
+    4
+   ],
+   [
+    "Overrun",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Colossal Dreadmaw",
+    4
+   ],
+   [
+    "Forest",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "Thryx, the Sudden Storm",
+    4
+   ],
+   [
+    "Colossal Dreadmaw",
+    4
+   ],
+   [
+    "Island",
+    26
+   ],
+   [
+    "Forest",
+    26
+   ]
+  ]
+ },
+ "decisions": {
+  "goreclaw_cast_turn": 8,
+  "thryx_cast_turn": 29,
+  "tests": {
+   "overrun": {
+    "paid": 3,
+    "expect": 5,
+    "pre_untapped": 7,
+    "post_untapped": 4,
+    "done": true
+   },
+   "bears": {
+    "paid": 1,
+    "expect": 2,
+    "pre_untapped": 21,
+    "post_untapped": 20,
+    "done": true
+   },
+   "dreadmaw_goreclaw": {
+    "paid": 4,
+    "expect": 4,
+    "pre_untapped": 22,
+    "post_untapped": 18,
+    "done": true
+   },
+   "dreadmaw_thryx": {
+    "paid": 6,
+    "expect": 5,
+    "pre_untapped": 23,
+    "post_untapped": 17,
+    "done": true
+   }
+  },
+  "rejections": 25
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_overrun_cost": "failed",
+  "A3_bears_cost": "failed",
+  "A4_dreadmaw_goreclaw_control": "passed",
+  "A5_thryx_dreadmaw_cost": "failed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "goreclaw_on_p0_bf=True thryx_on_p1_bf=True",
+  "A2_overrun_cost": "Overrun (P0): paid 3 mana (printed 5, expect 5); non-creature: no reduction expected",
+  "A3_bears_cost": "Grizzly Bears (P0): paid 1 mana (printed 2, expect 2); creature power 2 < 4: no reduction expected",
+  "A4_dreadmaw_goreclaw_control": "Colossal Dreadmaw (P0): paid 4 mana (printed 6, expect 4); creature power 6: {2} reduction expected (control)",
+  "A5_thryx_dreadmaw_cost": "Colossal Dreadmaw (P1): paid 6 mana (printed 6, expect 5); MV 6 with Thryx: {1} reduction expected",
+  "A6_cleanup": "stack empty=True; turn=47"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "Cost actually paid measured as tapped-land delta between saved pre/post cast states. Goreclaw reduces only creature spells with power >= 4; Thryx reduces MV>=5 spells by 1.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x key cards / dense lands is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-07-24 build; verdict is scoped to v0.81.3, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 4x Goreclaw, 4x Overrun, 4x Grizzly Bears, 4x Colossal Dreadmaw, 44x Forest; P1: 4x Thryx, 4x Colossal Dreadmaw, 26x Island, 26x Forest. Each test cast on a fresh turn with all lands untapped; mana paid = tapped-land delta.",
+ "contract_line": "P0 casts Overrun (non-creature), Grizzly Bears (P2), Colossal Dreadmaw (P6) with Goreclaw on board; P1 casts Colossal Dreadmaw (MV6) with Thryx on board. Expected payments: 5 / 2 / 4 / 5.",
+ "stats": {
+  "tests_completed": 4
+ }
+}
