@@ -1,0 +1,169 @@
+{
+ "run_id": "20260913-6914",
+ "issue": 6914,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (pinned v0.81.3 server, already listening for this run) + reuse of the verified pin from the #6912 run (minisign-verify of binary + signed data manifest with the repo-pinned key; binary sha256 matches GitHub asset digest; data files sha256-verified against the manifest)."
+ },
+ "server_run_note": "reused pinned v0.81.3 server on 127.0.0.1:9374 (started for the #6914 run itself)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "57a3526e38d417012651e9e427eb73475298957e85370e1d22913118c8d75fd3",
+ "format_config": "CommanderDraft (3 seats; P0/P1 commanders, P2 none)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "island",
+     48
+    ],
+    [
+     "mountain",
+     12
+    ]
+   ],
+   "commander": [
+    "malcolm, keen-eyed navigator",
+    "kediss, emberclaw familiar"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_kediss_trigger": "passed",
+  "A4_source_attribution": "failed",
+  "A5_cleanup": "passed"
+ },
+ "observations": {
+  "wf_types_resolution": [
+   "OrderTriggers",
+   "Priority"
+  ],
+  "treasure_timeline": [
+   [
+    1,
+    0
+   ],
+   [
+    20,
+    1
+   ]
+  ],
+  "stack_entries": [
+   "{\"id\": 184, \"source_id\": 181, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 181, \"ability\"",
+   "{\"id\": 185, \"source_id\": 182, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 182, \"ability\"",
+   "{\"id\": 184, \"source_id\": 181, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 181, \"ability\"",
+   "{\"id\": 185, \"source_id\": 182, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 182, \"ability\"",
+   "{\"id\": 184, \"source_id\": 181, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 181, \"ability\"",
+   "{\"id\": 185, \"source_id\": 182, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 182, \"ability\"",
+   "{\"id\": 184, \"source_id\": 181, \"controller\": 0, \"kind\": {\"type\": \"triggeredability\", \"data\": {\"source_id\": 181, \"ability\""
+  ],
+  "auto_answered": [],
+  "unexpected_prompts": [
+   {
+    "who": "P1",
+    "iid": "R80NF9.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   },
+   {
+    "who": "P2",
+    "iid": "R80NF9.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   }
+  ],
+  "rejections": [],
+  "trigger_order": [
+   "R80NF9.0.454.q0",
+   "R80NF9.0.454.q1"
+  ]
+ },
+ "driver_state": {
+  "malcolm_cast": true,
+  "malcolm_cast_turn": 8,
+  "malcolm_oid": 181,
+  "kediss_cast": true,
+  "kediss_cast_turn": 20,
+  "kediss_oid": 182,
+  "attack_turn": 20,
+  "malcolm_attacker_oid": 181,
+  "pre_exported": true,
+  "mid_exported": true,
+  "post_exported": true,
+  "post_at": 1789277850.21778
+ },
+ "notes": [
+  "A1: malcolm_bf=181 is_commander=True untapped=True kediss_bf=182 life=[40, 40, 40]",
+  "A2: P1 life=38 (expect 38 = Malcolm's 2 combat damage)",
+  "A3: P2 life=38 (expect 38 = Kediss trigger dealing 2)",
+  "A4: post.json P0 treasure tokens=1 (expect 2 if commander is the damage source)",
+  "A4 FAILED: only 1 treasure despite P2 taking 2 damage -> the engine attributed the extra damage to Kediss (not a Pirate), so Malcolm's trigger did not fire. BUG REPRODUCED.",
+  "A5 passed: stack empty, waiting_for=Priority",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6914.py",
+  "wire_log.jsonl",
+  "scenario_run.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "Dense 48x Island / 12x Mountain main deck is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The observable is Malcolm's own source-sensitive trigger (Pirate damage -> Treasure): it is the acceptance criterion the issue's triage comments named, not a direct wire read of the damage source field."
+ ],
+ "duration_s": 87.2,
+ "started_at": "2026-09-13",
+ "setup_line": "P0 partner commanders Malcolm, Keen-Eyed Navigator + Kediss, Emberclaw Familiar (48 Island/12 Mountain); P1 Ayula (60 Forest, inert); P2 60 Forest, no commander. Malcolm attacks P1 unblocked.",
+ "contract_line": "Kediss's trigger damage to P2 must be sourced from the commander (Malcolm, a Pirate) so Malcolm's trigger makes a 2nd Treasure; observed 1 Treasure => Kediss wrongly the source.",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
