@@ -1,0 +1,1217 @@
+{
+ "interactionId": "UJUF1V.0.186",
+ "turn": 12,
+ "phase": "PostCombatMain",
+ "stage": "SETUP",
+ "wf_data": {
+  "player": 0,
+  "trigger_controller": 0,
+  "trigger_event": {
+   "type": "ZoneChanged",
+   "data": {
+    "object_id": 9,
+    "from": "Stack",
+    "to": "Battlefield",
+    "record": {
+     "object_id": 9,
+     "name": "Sanctuary Warden",
+     "core_types": [
+      "Creature"
+     ],
+     "subtypes": [
+      "Angel",
+      "Soldier"
+     ],
+     "supertypes": [],
+     "keywords": [
+      "Flying"
+     ],
+     "trigger_definitions": [
+      {
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 1,
+         "printed_index": 0
+        }
+       },
+       "definition": {
+        "mode": "EntersOrAttacks",
+        "execute": {
+         "kind": "Spell",
+         "effect": {
+          "type": "RemoveCounter",
+          "counter_type": null,
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "type": "Or",
+           "filters": [
+            {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "You",
+             "properties": []
+            },
+            {
+             "type": "Typed",
+             "type_filters": [
+              "Planeswalker"
+             ],
+             "controller": "You",
+             "properties": []
+            }
+           ]
+          }
+         },
+         "cost": null,
+         "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+           "type": "Draw",
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Controller"
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Token",
+            "name": "Citizen",
+            "power": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "toughness": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "types": [
+             "Creature",
+             "Citizen"
+            ],
+            "colors": [
+             "Green",
+             "White"
+            ],
+            "keywords": [],
+            "tapped": false,
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "owner": {
+             "type": "Controller"
+            },
+            "enters_attacking": false
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": {
+           "type": "EffectOutcome",
+           "signal": "OptionalEffectPerformed"
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+         },
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": null,
+         "optional_targeting": false,
+         "optional": true,
+         "forward_result": false
+        },
+        "valid_card": {
+         "type": "SelfRef"
+        },
+        "origin": null,
+        "destination": "Battlefield",
+        "trigger_zones": [
+         "Battlefield"
+        ],
+        "phase": null,
+        "optional": true,
+        "damage_kind": "Any",
+        "secondary": false,
+        "valid_target": null,
+        "valid_source": null,
+        "description": "Whenever ~ enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.",
+        "constraint": null,
+        "condition": null,
+        "batched": false
+       }
+      }
+     ],
+     "trigger_source_context": {
+      "identity": {
+       "reference": {
+        "object_id": 9,
+        "incarnation": 2
+       },
+       "expected_zone": "Stack"
+      },
+      "lki": {
+       "name": "Sanctuary Warden",
+       "power": 5,
+       "toughness": 5,
+       "base_power": 5,
+       "base_toughness": 5,
+       "mana_value": 6,
+       "controller": 0,
+       "owner": 0,
+       "card_types": [
+        "Creature"
+       ],
+       "subtypes": [
+        "Angel",
+        "Soldier"
+       ],
+       "supertypes": [],
+       "keywords": [
+        "Flying"
+       ],
+       "colors": [
+        "White"
+       ],
+       "chosen_attributes": [],
+       "counters": {},
+       "tapped": false,
+       "is_suspected": false,
+       "attachments": []
+      },
+      "card_id": 9,
+      "printed_ref": {
+       "oracle_id": "713bcfb6-e5ea-411e-b4b3-52e5eed5cdf1",
+       "face_name": "Sanctuary Warden"
+      },
+      "is_token": false,
+      "face_down": false,
+      "transformed": false,
+      "is_renowned": false,
+      "is_saddled": false,
+      "trigger_entries": [
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        },
+        "definition": {
+         "mode": "EntersOrAttacks",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "RemoveCounter",
+           "counter_type": null,
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Or",
+            "filters": [
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "You",
+              "properties": []
+             },
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Planeswalker"
+              ],
+              "controller": "You",
+              "properties": []
+             }
+            ]
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Draw",
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "target": {
+             "type": "Controller"
+            }
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Token",
+             "name": "Citizen",
+             "power": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "toughness": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "types": [
+              "Creature",
+              "Citizen"
+             ],
+             "colors": [
+              "Green",
+              "White"
+             ],
+             "keywords": [],
+             "tapped": false,
+             "count": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "owner": {
+              "type": "Controller"
+             },
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": {
+            "type": "EffectOutcome",
+            "signal": "OptionalEffectPerformed"
+           },
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false,
+           "sub_link": "SequentialSibling"
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": true,
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": "Battlefield",
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": true,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "Whenever ~ enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       }
+      ],
+      "timestamp": 0,
+      "combat_status": {
+       "attacking": false,
+       "blocking": false,
+       "blocked": false,
+       "attacking_alone": false,
+       "blocking_alone": false,
+       "defending_player": null
+      },
+      "cast_from_zone": "Hand",
+      "cast_controller": 0,
+      "phase_status": {
+       "status": "PhasedIn"
+      },
+      "cast_spell_keywords": [
+       "Flying"
+      ],
+      "mana_spent_to_cast": true,
+      "colors_spent_to_cast": {
+       "white": 4,
+       "green": 2
+      },
+      "mana_spent_to_cast_amount": 6,
+      "mana_spent_source_snapshots": [
+       {
+        "source_id": 16,
+        "lki": {
+         "name": "Plains",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Plains"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 40,
+        "lki": {
+         "name": "Plains",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Plains"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 25,
+        "lki": {
+         "name": "Plains",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Plains"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 23,
+        "lki": {
+         "name": "Plains",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Plains"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 26,
+        "lki": {
+         "name": "Forest",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Forest"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       },
+       {
+        "source_id": 7,
+        "lki": {
+         "name": "Forest",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Land"
+         ],
+         "subtypes": [
+          "Forest"
+         ],
+         "supertypes": [
+          "Basic"
+         ],
+         "keywords": [],
+         "colors": [],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        }
+       }
+      ]
+     },
+     "power": 5,
+     "toughness": 5,
+     "base_power": 5,
+     "base_toughness": 5,
+     "colors": [
+      "White"
+     ],
+     "mana_value": 6,
+     "controller": 0,
+     "owner": 0,
+     "from_zone": "Stack",
+     "cast_from_zone": "Hand",
+     "played_from_zone": null,
+     "to_zone": "Battlefield",
+     "attachments": [],
+     "linked_exile_snapshot": [],
+     "is_token": false,
+     "combat_status": {
+      "attacking": false,
+      "blocking": false,
+      "blocked": false,
+      "attacking_alone": false,
+      "blocking_alone": false,
+      "defending_player": null
+     },
+     "co_departed": [],
+     "entered_incarnation": 3,
+     "attached_to": null,
+     "turn_zone_change_index": 3,
+     "recorded_turn_number": 12,
+     "is_suspected": false
+    }
+   }
+  },
+  "trigger_events": [
+   {
+    "type": "ZoneChanged",
+    "data": {
+     "object_id": 9,
+     "from": "Stack",
+     "to": "Battlefield",
+     "record": {
+      "object_id": 9,
+      "name": "Sanctuary Warden",
+      "core_types": [
+       "Creature"
+      ],
+      "subtypes": [
+       "Angel",
+       "Soldier"
+      ],
+      "supertypes": [],
+      "keywords": [
+       "Flying"
+      ],
+      "trigger_definitions": [
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        },
+        "definition": {
+         "mode": "EntersOrAttacks",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "RemoveCounter",
+           "counter_type": null,
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Or",
+            "filters": [
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "You",
+              "properties": []
+             },
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Planeswalker"
+              ],
+              "controller": "You",
+              "properties": []
+             }
+            ]
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Draw",
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "target": {
+             "type": "Controller"
+            }
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Token",
+             "name": "Citizen",
+             "power": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "toughness": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "types": [
+              "Creature",
+              "Citizen"
+             ],
+             "colors": [
+              "Green",
+              "White"
+             ],
+             "keywords": [],
+             "tapped": false,
+             "count": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "owner": {
+              "type": "Controller"
+             },
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": {
+            "type": "EffectOutcome",
+            "signal": "OptionalEffectPerformed"
+           },
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false,
+           "sub_link": "SequentialSibling"
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": true,
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": "Battlefield",
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": true,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "Whenever ~ enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       }
+      ],
+      "trigger_source_context": {
+       "identity": {
+        "reference": {
+         "object_id": 9,
+         "incarnation": 2
+        },
+        "expected_zone": "Stack"
+       },
+       "lki": {
+        "name": "Sanctuary Warden",
+        "power": 5,
+        "toughness": 5,
+        "base_power": 5,
+        "base_toughness": 5,
+        "mana_value": 6,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Angel",
+         "Soldier"
+        ],
+        "supertypes": [],
+        "keywords": [
+         "Flying"
+        ],
+        "colors": [
+         "White"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 9,
+       "printed_ref": {
+        "oracle_id": "713bcfb6-e5ea-411e-b4b3-52e5eed5cdf1",
+        "face_name": "Sanctuary Warden"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "EntersOrAttacks",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "RemoveCounter",
+            "counter_type": null,
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "target": {
+             "type": "Or",
+             "filters": [
+              {
+               "type": "Typed",
+               "type_filters": [
+                "Creature"
+               ],
+               "controller": "You",
+               "properties": []
+              },
+              {
+               "type": "Typed",
+               "type_filters": [
+                "Planeswalker"
+               ],
+               "controller": "You",
+               "properties": []
+              }
+             ]
+            }
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Draw",
+             "count": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "target": {
+              "type": "Controller"
+             }
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Token",
+              "name": "Citizen",
+              "power": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "toughness": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "types": [
+               "Creature",
+               "Citizen"
+              ],
+              "colors": [
+               "Green",
+               "White"
+              ],
+              "keywords": [],
+              "tapped": false,
+              "count": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "owner": {
+               "type": "Controller"
+              },
+              "enters_attacking": false
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": {
+             "type": "EffectOutcome",
+             "signal": "OptionalEffectPerformed"
+            },
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false,
+            "sub_link": "SequentialSibling"
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": true,
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": "Battlefield",
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": true,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "Whenever ~ enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 0,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "cast_spell_keywords": [
+        "Flying"
+       ],
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "white": 4,
+        "green": 2
+       },
+       "mana_spent_to_cast_amount": 6,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 16,
+         "lki": {
+          "name": "Plains",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Plains"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 40,
+         "lki": {
+          "name": "Plains",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Plains"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 25,
+         "lki": {
+          "name": "Plains",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Plains"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 23,
+         "lki": {
+          "name": "Plains",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Plains"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 26,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 7,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "power": 5,
+      "toughness": 5,
+      "base_power": 5,
+      "base_toughness": 5,
+      "colors": [
+       "White"
+      ],
+      "mana_value": 6,
+      "controller": 0,
+      "owner": 0,
+      "from_zone": "Stack",
+      "cast_from_zone": "Hand",
+      "played_from_zone": null,
+      "to_zone": "Battlefield",
+      "attachments": [],
+      "linked_exile_snapshot": [],
+      "is_token": false,
+      "combat_status": {
+       "attacking": false,
+       "blocking": false,
+       "blocked": false,
+       "attacking_alone": false,
+       "blocking_alone": false,
+       "defending_player": null
+      },
+      "co_departed": [],
+      "entered_incarnation": 3,
+      "attached_to": null,
+      "turn_zone_change_index": 3,
+      "recorded_turn_number": 12,
+      "is_suspected": false
+     }
+    }
+   }
+  ],
+  "target_slots": [
+   {
+    "legal_targets": [
+     {
+      "Object": 50
+     },
+     {
+      "Object": 9
+     }
+    ],
+    "optional": false,
+    "effect_kind": "RemoveCounter",
+    "effect_detail": {
+     "type": "None"
+    }
+   }
+  ],
+  "selection": {
+   "current_slot": 0,
+   "current_legal_targets": [
+    {
+     "Object": 50
+    },
+    {
+     "Object": 9
+    }
+   ]
+  },
+  "source_id": 9,
+  "description": "Whenever ~ enters or attacks, you may remove a counter from a creature or planeswalker you control. If you do, draw a card and create a 1/1 green and white Citizen creature token."
+ },
+ "prompt_text": "{\"spec\": {\"type\": \"sequence\", \"data\": {\"min\": 1, \"max\": 1, \"unique\": true, \"includeAll\": false, \"engineValidated\": false, \"escape\": null, \"confirm\": \"explicit\"}}, \"candidates\": [{\"id\": \"UJUF1V.0.186.t0\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"object\", \"data\": {\"role\": \"candidate\", \"index\": null, \"reference\": \"50\", \"name\": \"Grizzly Bears\", \"zone\": \"battlefield\", \"controller\": 0, \"power\": 2, \"tapped\": false}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"UJUF1V.0.186.t1\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"object\", \"data\": {\"role\": \"candidate\", \"index\": null, \"reference\": \"9\", \"name\": \"Sanctuary Warden\", \"zone\": \"battlefield\", \"controller\": 0, \"power\": 5, \"tapped\": false}}], \"status\": {\"type\": \"available\"}}]}",
+ "candidates": [
+  {
+   "choiceId": "UJUF1V.0.186.t0",
+   "oid": "50",
+   "name": "Grizzly Bears",
+   "zone": "Battlefield",
+   "controller": 0
+  },
+  {
+   "choiceId": "UJUF1V.0.186.t1",
+   "oid": "9",
+   "name": "Sanctuary Warden",
+   "zone": "Battlefield",
+   "controller": 0
+  }
+ ]
+}
