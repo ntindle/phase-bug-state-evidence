@@ -1,0 +1,21 @@
+{"t": 1789302537.816527, "event": "parse_tomb_tyrant", "payload": {"n_activated": 1, "restriction_types": ["RequiresCondition", "DuringYourTurn"], "count_ge3": true, "during_your_turn": true, "unimplemented": 0, "verdict": "passed"}}
+{"t": 1789302541.9959207, "event": "cast", "payload": {"who": "P0", "name": "diregraf ghoul", "oid": 45, "action": "CastSpell"}}
+{"t": 1789302558.2274444, "event": "cast", "payload": {"who": "P0", "name": "tomb tyrant", "oid": 24, "action": "CastSpell"}}
+{"t": 1789302558.6808534, "event": "tyrant_cast", "payload": {"oid": 24, "turn": 8}}
+{"t": 1789302563.373462, "event": "offer_scan", "payload": {"test": "C", "offered": false, "channel": null, "turn": 10, "phase": "PreCombatMain", "active_player": 0, "priority_player": 0, "tyrant_tapped": false, "untapped_swamps": 4, "zombie_gy": 0, "ghoul_on_bf": true, "fodder_oid": 45}}
+{"t": 1789302563.5998898, "event": "cast", "payload": {"who": "P0", "name": "entomb", "oid": 11, "action": "CastSpell"}}
+{"t": 1789302564.0572493, "event": "entomb_search", "payload": {"who": "P0", "shape": ["SearchChoice", "schema", 48], "picked_oid": 48, "n_candidates": 48, "texts": ["Swamp", "Swamp", "Entomb", "Diregraf Ghoul", "Swamp", "Entomb"]}}
+{"t": 1789302564.0574102, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "I0EE5V.0.154", "response": {"type": "select", "data": {"choiceIds": ["I0EE5V.0.154.s17"]}}}, "choice_text": "Tomb Tyrant"}}
+{"t": 1789302564.2110603, "event": "cast", "payload": {"who": "P0", "name": "entomb", "oid": 42, "action": "CastSpell"}}
+{"t": 1789302564.6665287, "event": "entomb_search", "payload": {"who": "P0", "shape": ["SearchChoice", "schema", 47], "picked_oid": 56, "n_candidates": 47, "texts": ["Swamp", "Swamp", "Entomb", "Diregraf Ghoul", "Entomb", "Diregraf Ghoul"]}}
+{"t": 1789302564.666746, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "I0EE5V.0.158", "response": {"type": "select", "data": {"choiceIds": ["I0EE5V.0.158.s7"]}}}, "choice_text": "Tomb Tyrant"}}
+{"t": 1789302655.8191981, "event": "cast", "payload": {"who": "P0", "name": "entomb", "oid": 14, "action": "CastSpell"}}
+{"t": 1789302656.2734432, "event": "entomb_search", "payload": {"who": "P0", "shape": ["SearchChoice", "schema", 29], "picked_oid": 17, "n_candidates": 29, "texts": ["Swamp", "Swamp", "Swamp", "Swamp", "Entomb", "Swamp"]}}
+{"t": 1789302656.273665, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "I0EE5V.0.688", "response": {"type": "select", "data": {"choiceIds": ["I0EE5V.0.688.s14"]}}}, "choice_text": "Tomb Tyrant"}}
+{"t": 1789302659.4478843, "event": "offer_scan", "payload": {"test": "B", "offered": false, "channel": null, "turn": 45, "phase": "PreCombatMain", "active_player": 1, "priority_player": 0, "tyrant_tapped": false, "untapped_swamps": 20, "zombie_gy": 3, "ghoul_on_bf": true, "fodder_oid": 45}}
+{"t": 1789302661.652268, "event": "offer_scan", "payload": {"test": "A", "offered": true, "channel": "legal_actions", "turn": 46, "phase": "PreCombatMain", "active_player": 0, "priority_player": 0, "tyrant_tapped": false, "untapped_swamps": 21, "zombie_gy": 3, "ghoul_on_bf": true, "fodder_oid": 45}}
+{"t": 1789302661.8457193, "event": "sac_prompt", "payload": {"who": "P0", "shape": ["PayCost", "schema", 2], "sacrificed": 45, "sacrificed_name": "diregraf ghoul", "n_candidates": 2}}
+{"t": 1789302661.845919, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "I0EE5V.0.720", "response": {"type": "select", "data": {"choiceIds": ["I0EE5V.0.720.s0"]}}}, "choice_text": "Diregraf Ghoul"}}
+{"t": 1789302662.0016477, "event": "mid_resolution_stack", "payload": {"kind": "ActivatedAbility", "source_id": 24}}
+{"t": 1789302667.365396, "event": "activation_resolved", "payload": {}}
+{"t": 1789302672.5440989, "event": "a4_check", "payload": {"pre_gy_zombies": [17, 48, 56], "returned": [17], "returned_name": "tomb tyrant", "tyrant_tapped": true, "sacrificed_oid": 45}}
