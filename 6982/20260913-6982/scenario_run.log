@@ -1,0 +1,33 @@
+game H0P4ZY; seats P0=0 P1=1 P2=2 RUN_ID=20260913-6982
+P0 mulligans #1 (5 lands)
+P1 keeps (7 lands; florian=False bolt=False)
+P2 keeps (7 lands; florian=False bolt=False)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 life=[20, 20, 20] florian=None bolt_cast=False bolt_resolved=False attacked=False pre=False post=False trig_dmg=False look=None stack=0
+P0 mulligans #2 (7 lands)
+[P1] UNEXPECTED PROMPT iid=H0P4ZY.0.3 n=2 phase=Untap
+[P2] UNEXPECTED PROMPT iid=H0P4ZY.0.4 n=2 phase=Untap
+P0 keeps (6 lands; florian=False bolt=True)
+P0 bottoms 1
+life = (20, 20, 20)
+DIAG turn=15 active=2 phase=End wf=Priority pp=2 life=[20, 20, 20] florian=None bolt_cast=False bolt_resolved=False attacked=False pre=False post=False trig_dmg=False look=None stack=0
+[P0] casting florian, voldaren scion via CastSpell (oid 49)
+Florian on BF: oid=49 (turn 16)
+exported PRE
+PRE exported: Florian on BF, all at 20
+Florian TriggeredAbility ON STACK (turn 16, postcombat)
+[P0] casting lightning bolt via CastSpell (oid 23)
+[P0] bolt targets P2 (seat 2)
+[P0] submitting interaction iid=H0P4ZY.0.418 choice=H0P4ZY.0.418.t2 ()
+life = (20, 20, 17)
+bolt resolved: P2 life 17
+[P0] attacking P1 with Florian oid=49
+life = (20, 17, 17)
+damage-turn postcombat baselines: exile=0 lib=47
+Florian TriggeredAbility ON STACK (turn 19, postcombat)
+exported POST
+POST exported: damage-turn postcombat, stack empty
+loaded pre.json
+loaded post.json
+wrote server.log excerpts (895 lines for game H0P4ZY)
+wrote summary.png
+wrote manifest.sha256
