@@ -1,0 +1,99 @@
+{
+ "issue": 6907,
+ "run_id": "20260912-6907d",
+ "title": "Nesting Grounds doesn't ask which counter to move",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "started_at": "2026-09-13T03:32:41Z",
+ "ended_at": "2026-09-13T03:33:42Z",
+ "game_code": "UJUF1V",
+ "decks": {
+  "P0": [
+   [
+    "Sanctuary Warden",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Nesting Grounds",
+    4
+   ],
+   [
+    "Gavony Township",
+    4
+   ],
+   [
+    "Forest",
+    22
+   ],
+   [
+    "Plains",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    30
+   ],
+   [
+    "Plains",
+    30
+   ]
+  ]
+ },
+ "decisions": {
+  "ng1_turn": 20,
+  "town_turn": 22,
+  "ng2_turn": 24,
+  "declined_warden_trigger": 0,
+  "target_sels": 5,
+  "decisions_recorded": 0,
+  "counter_prompts": 0,
+  "counter_choice_pick": null,
+  "rejections": 7
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_control_move": "passed",
+  "A3_counter_prompted": "failed",
+  "A4_exact_move": "not-run",
+  "A5_default_documents": "passed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "ng=True warden=True township=True bears=True warden_counters={'shield': 2} single_type=True p0_main=True turn=20",
+  "A2_control_move": "warden {'shield': 2}->{'shield': 1} bears {}->{'shield': 1}; counter-like prompts during CONTROL: 0 (expect 0)",
+  "A3_setup_note": "pre_proof warden counters={'P1P1': 1, 'shield': 1}",
+  "A3_counter_prompted": "0 counter-type choice opportunity(ies) during PROOF (expect >=1); pre_proof warden counters={'P1P1': 1, 'shield': 1}",
+  "A4_exact_move": "A3 not passed",
+  "A5_default_documents": "no counter choice offered; warden {'P1P1': 1, 'shield': 1}->{'shield': 1} bears {'P1P1': 1, 'shield': 1}->{'P1P1': 2, 'shield': 1}; defaulted to +1/+1 = True (report says the engine defaults to +1/+1)",
+  "A6_cleanup": "stack empty=True; turn=24"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "Nesting Grounds' {1},{T} ability must offer a counter-type choice when the source permanent has multiple counter types. A1+A3-failed confirms the reported missing choice.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Sanctuary Warden / 4x Grizzly Bears / 4x Nesting Grounds / 4x Gavony Township density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Shield + +1/+1 counter pairing stands in for the report's +1/+1 + lore pairing (same defect class: unspecified counter_type in the MoveCounters parse).",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.81.3, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 4x Sanctuary Warden, 4x Grizzly Bears, 4x Nesting Grounds, 4x Gavony Township, 22x Forest, 22x Plains; P1: 30x Forest, 30x Plains (passive). P0 casts Warden (declines its may-trigger) and Bears; plays Nesting Grounds + Gavony Township.",
+ "contract_line": "CONTROL: with Warden holding only shield counters, activate Nesting Grounds Warden->Bears; expect no counter choice, exactly one shield moves. PROOF: after Gavony Township gives Warden +1/+1, activate again; expect a counter-type choice (driver answers shield) and exactly one shield moves.",
+ "stats": {
+  "target_selections": 5,
+  "decisions": 0
+ }
+}
