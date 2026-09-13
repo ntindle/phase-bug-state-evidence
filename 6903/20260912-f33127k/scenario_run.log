@@ -1,0 +1,44 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.3", "build_commit": "95bec6e", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game QTA50O; seats P0=0 P1=1
+[P0] keeps hand
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] submits Grizzly Bears cast
+[P1] submits Grizzly Bears cast
+[P0] submits Storm Crow cast (turn 6)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] submits Storm Crow cast (turn 8)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] submits Shadow Kin cast (turn 10)
+Shadow Kin resolved on battlefield (turn 10); stage -> PROOF, leg 1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] leg 1: upkeep turn 12; pre exported (lib={0: 48, 1: 48})
+exported pre_upkeep1.json (476806 bytes)
+[P0] leg 1: recorded 7 exile candidates: Shadow Kin(Hand), Shadow Kin(Hand), Island(Battlefield) BF!, Island(Battlefield) BF!, Island(Battlefield) BF!, Island(Battlefield) BF!, Island(Battlefield) BF!
+exported mid_choice1.json (476806 bytes)
+[P0] leg 1: mill checkpoint (lib drops={0: 0, 1: 0}, new gy={0: 0, 1: 0})
+exported mid_mill1.json (476806 bytes)
+[P0] leg 1: FORCED out-of-scope pick Shadow Kin oid 36 (zone Hand)
+[P0] leg 1: may-exile -> YES (choice QTA50O.0.193.c1)
+[P0] leg 1: exiles Shadow Kin oid 36 via EffectZoneChoice
+[P0] leg 1: mill update lib drops={0: 3, 1: 3}
+exported mid_mill1b.json (557861 bytes)
+exported post1.json (557861 bytes)
+[P0] leg 1 complete: Shadow Kin exiled, Kin is now a copy; post1 exported
+[P0] leg 1 archived; leg 2 (decline control) armed
+[P0] leg 2: upkeep turn 12; pre exported (lib={0: 45, 1: 45})
+exported pre_upkeep2.json (557861 bytes)
+[P0] leg 2: recorded 1 exile candidates: Island(Battlefield) BF!
+exported mid_choice2.json (557861 bytes)
+[P0] leg 2: mill checkpoint (lib drops={0: 0, 1: 0}, new gy={0: 0, 1: 0})
+exported mid_mill2.json (557861 bytes)
+[P0] leg 2: no decline option for 45s; falling through to pass priority
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] leg 2: may-exile -> NO (choice QTA50O.0.228.c1)
+[P0] HOLDING unhandled decision EffectZoneChoice (leg 2)
+held decision for 150s with no progress; exporting and stopping
+exported mid_held.json (541752 bytes)
+loop ended: stage=PROOF stop=False leg=2
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_each_milled_3": "passed", "A3_optional_offered": "passed", "A4_candidates_in_scope": "failed", "A5_exile_and_copy": "passed", "A6_ability_retained": "failed", "A7_decline_control": "not-run", "A8_cleanup": "not-run"}
+VERDICT: reproduced
+run.json written; verdict = reproduced
+server_excerpts.log: 2 matching lines
