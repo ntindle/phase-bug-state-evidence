@@ -1,0 +1,76 @@
+{
+ "run_id": "20260913-7028b",
+ "issue": 7028,
+ "title": "Bre of Clan Stoutarm - exiled card not revealed before the cast/hand choice prompt",
+ "engine_leg": {
+  "validated_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "server_binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "scope": "Bre end-step trigger (life gained this turn) -> ExileFromTopUntil -> may-cast choice; native engine, two human-client seats",
+  "assertions": {
+   "A1_setup_ok": "passed",
+   "A2_trigger_fired": "passed",
+   "A3_exile_observed": "passed",
+   "A4_choice_offered": "passed",
+   "A5_engine_correct": "passed",
+   "A6_cleanup": "passed",
+   "F1_frontend_reveal": "failed"
+  },
+  "notes": [
+   "A1: bre_cast=True salve_cast=True choice_answered=True -> passed",
+   "A2: cards exiled at choice time=0 (names=[]) -> failed",
+   "A3: exiled nonland=None -> failed",
+   "A4: choice window type=OptionalEffectChoice at turn 36; payload saved=True -> passed",
+   "A5: post parse failed: 'data' -> failed",
+   "A6: post exported=True stack empty at post=True -> passed",
+   "FINALIZE: the scenario's live A2/A3/A5 reported 'failed' because its exile_ids() helper reads the player object's 'exile' list, which the authoritative export does not populate (objects carry zone='Exile'). Assertions were recomputed here from the immutable saved states; the live wire_log confirms the same sequence (accept submitted, free cast).",
+   "FINALIZE A5: Grizzly Bears (oid 44) on stack, mana spent 0 -> passed."
+  ],
+  "state": {
+   "stage": "cleanup",
+   "bre_cast": true,
+   "salve_cast": true,
+   "salve_mode_answered": true,
+   "life_gained_at_cast": 20,
+   "exile_at_pre": 0,
+   "exile_names_at_pre": [],
+   "nonland_exiled": null,
+   "nonland_oid": null,
+   "choice_answered": true,
+   "choice_type": "OptionalEffectChoice",
+   "answer_turn": 36,
+   "pre_exported": true,
+   "mid_exported": true,
+   "post_exported": true,
+   "post_at": 1789321797.8107007,
+   "p0_life_at_pre": 23,
+   "exile_after": [],
+   "turn_of_choice": 36
+  }
+ },
+ "limitations": [
+  "Browser UI not exercised in the engine leg; the frontend leg (harness under frontend/) renders the real modal with the real captured payload and is the reproduction.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "frontend_leg": {
+  "scope": "area:frontend - does the real choice modal reveal the exiled nonland before the cast/hand decision",
+  "component": "OptionalEffectModalContent (components/modal/OptionalEffectModal.tsx), the exact component GamePage renders for waiting_for.type == 'OptionalEffectChoice' (GamePage.tsx:2085)",
+  "client_commit": "a0f9c55",
+  "payload": "REAL captured waiting_for (OptionalEffectChoice, source_id=39 Bre of Clan Stoutarm) + REAL game objects from pre.json; i18n = real en game.json",
+  "rendered_modal_text": "Game ChoiceBre of Clan Stoutarm - Optional EffectBre of Clan StoutarmYesNoDon't ask again this gameApply this to every copy of this card",
+  "exiled_card": "Grizzly Bears",
+  "exiled_name_visible_in_modal": false,
+  "verdict": "reproduced",
+  "key_finding": "waiting_for.data carries no description and no reference to the exiled card (['player', 'source_id', 'may_trigger_key', 'same_card_may_trigger_choice_available']); the modal previews only the SOURCE card (Bre), so the decision subject cannot be displayed.",
+  "assertions": {
+   "F1_frontend_reveal": "failed"
+  }
+ },
+ "verdict": "reproduced",
+ "finalize_note": "finalize_7028.py: corrected the driver's false-negative A2/A3/A5 (helper bug, not engine behavior), staged the frontend-leg evidence, rendered summary.png from saved states, wrote manifest last."
+}

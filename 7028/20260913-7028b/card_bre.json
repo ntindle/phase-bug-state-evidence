@@ -1,0 +1,213 @@
+{
+ "card": "Bre of Clan Stoutarm",
+ "oracle_text": "{1}{W}, {T}: Another target creature you control gains flying and lifelink until end of turn.\nAt the beginning of your end step, if you gained life this turn, exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost if the spell's mana value is less than or equal to the amount of life you gained this turn. Otherwise, put it into your hand.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "GenericEffect",
+    "static_abilities": [
+     {
+      "mode": "Continuous",
+      "affected": {
+       "type": "ParentTarget"
+      },
+      "modifications": [
+       {
+        "type": "AddKeyword",
+        "keyword": "Flying"
+       },
+       {
+        "type": "AddKeyword",
+        "keyword": "Lifelink"
+       }
+      ],
+      "condition": null,
+      "affected_zone": null,
+      "effect_zone": null,
+      "active_zones": [],
+      "characteristic_defining": false,
+      "description": "gain flying and lifelink"
+     }
+    ],
+    "duration": "UntilEndOfTurn",
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": "You",
+     "properties": [
+      {
+       "type": "Another"
+      }
+     ]
+    }
+   },
+   "cost": {
+    "type": "Composite",
+    "costs": [
+     {
+      "type": "Mana",
+      "cost": {
+       "type": "Cost",
+       "shards": [
+        "White"
+       ],
+       "generic": 1
+      }
+     },
+     {
+      "type": "Tap"
+     }
+    ]
+   },
+   "sub_ability": null,
+   "duration": "UntilEndOfTurn",
+   "description": "{1}{W}, {T}: Another target creature you control gains flying and lifelink until end of turn.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ExileFromTopUntil",
+     "player": {
+      "type": "Controller"
+     },
+     "until": {
+      "type": "NextMatches",
+      "filter": {
+       "type": "Typed",
+       "type_filters": [
+        {
+         "Non": "Land"
+        }
+       ],
+       "controller": null,
+       "properties": []
+      }
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CastFromZone",
+      "target": {
+       "type": "ParentTarget"
+      },
+      "without_paying_mana_cost": true,
+      "mode": "Cast",
+      "driver": "DuringResolution"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "else_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Hand",
+       "target": {
+        "type": "ParentTarget"
+       },
+       "owner_library": false,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": {
+      "type": "QuantityCheck",
+      "lhs": {
+       "type": "Ref",
+       "qty": {
+        "type": "ObjectManaValue",
+        "scope": {
+         "type": "Target"
+        }
+       }
+      },
+      "comparator": "LE",
+      "rhs": {
+       "type": "Ref",
+       "qty": {
+        "type": "LifeGainedThisTurn",
+        "player": {
+         "type": "Controller"
+        }
+       }
+      }
+     },
+     "optional_targeting": false,
+     "optional": true,
+     "target_choice_timing": "Resolution",
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "End",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of your end step, if you gained life this turn, exile cards from the top of your library until you exile a nonland card. You may cast that card without paying its mana cost if the spell's mana value is less than or equal to the amount of life you gained this turn. Otherwise, put it into your hand.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": {
+    "type": "QuantityComparison",
+    "lhs": {
+     "type": "Ref",
+     "qty": {
+      "type": "LifeGainedThisTurn",
+      "player": {
+       "type": "Controller"
+      }
+     }
+    },
+    "comparator": "GE",
+    "rhs": {
+     "type": "Fixed",
+     "value": 1
+    }
+   },
+   "batched": false
+  }
+ ],
+ "parse_warnings": null
+}

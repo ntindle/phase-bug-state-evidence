@@ -1,0 +1,82 @@
+card-data.json sha256=5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73
+saved card_bre.json (parse control: engine AST intact per #4769)
+game Z70NYB; seats P0=0 P1=1 RUN_ID=20260913-7028b
+driving...
+P1 keeps (7 lands, bre=False, salve=False)
+status t=3s turn=1 phase=Untap wf=MulliganDecision wfkeys=['pending', 'free_first_mulligan'] pp=0 hand0n=7 lands0=0 stage=ramp wf1=MulliganDecision rev0=3 rev1=3
+P0 keeps (5 lands, bre=True, salve=False)
+P1 plays land Plains
+P0 plays land Mountain
+P1 plays land Mountain
+P0 plays land Plains
+status t=34s turn=5 phase=Draw wf=Priority wfkeys=['player'] pp=0 hand0n=7 lands0=2 stage=ramp wf1=Priority rev0=65 rev1=65
+P1 plays land Plains
+P0 plays land Mountain
+P1 plays land Plains
+P0 plays land Plains
+P0 casts Bre of Clan Stoutarm
+status t=64s turn=9 phase=Draw wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=0 stage=gain_life wf1=Priority rev0=128 rev1=128
+P1 plays land Plains
+P0 plays land Mountain
+P1 plays land Plains
+P0 plays land Mountain
+status t=94s turn=13 phase=Draw wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=6 stage=gain_life wf1=Priority rev0=190 rev1=190
+P1 plays land Plains
+P0 plays land Plains
+P1 plays land Mountain
+P0 plays land Plains
+P1 plays land Mountain
+status t=125s turn=17 phase=PreCombatMain wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=8 stage=gain_life wf1=Priority rev0=255 rev1=255
+P0 plays land Mountain
+P1 plays land Mountain
+P0 plays land Plains
+P1 plays land Mountain
+status t=155s turn=21 phase=BeginCombat wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=10 stage=gain_life wf1=Priority rev0=319 rev1=319
+P0 plays land Plains
+P1 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+status t=185s turn=25 phase=Draw wf=Priority wfkeys=['player'] pp=1 hand0n=6 lands0=12 stage=gain_life wf1=Priority rev0=375 rev1=375
+P1 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+P1 plays land Mountain
+P0 plays land Plains
+P0 plays land Plains
+status t=215s turn=28 phase=End wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=14 stage=gain_life wf1=Priority rev0=433 rev1=433
+P1 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+P1 plays land Plains
+P0 plays land Plains
+P0 plays land Plains
+P0 plays land Plains
+status t=246s turn=32 phase=BeginCombat wf=Priority wfkeys=['player'] pp=0 hand0n=6 lands0=16 stage=gain_life wf1=Priority rev0=488 rev1=488
+P1 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+P1 plays land Plains
+status t=276s turn=35 phase=End wf=Priority wfkeys=['player'] pp=1 hand0n=6 lands0=17 stage=gain_life wf1=Priority rev0=541 rev1=541
+P0 plays land Mountain
+P0 casts Healing Salve (gain 3 life)
+P0 plays land Mountain
+P0 plays land Mountain
+P0 plays land Mountain
+[P0-salve-mode] submitting interaction iid=Z70NYB.0.549 choice=Z70NYB.0.549.o0 (0)
+P0 chooses Salve mode 0 (gain 3 life); awaiting Bre end-step trigger
+[P0-salve-target] submitting interaction iid=Z70NYB.0.550 choice=Z70NYB.0.550.t0 ()
+P0 CHOICE WINDOW: wf_type=OptionalEffectChoice turn=36 phase=End
+exported PRE
+exile at pre: []; nonland=None
+[P0-bre-choice] submitting interaction iid=Z70NYB.0.564 choice=Z70NYB.0.564.c1 (true)
+exported MID
+exile after answer: []
+exported POST
+run.json written; server.log copied
+  A1_setup_ok: passed
+  A2_trigger_fired: failed
+  A3_exile_observed: failed
+  A4_choice_offered: passed
+  A5_engine_correct: failed
+  A6_cleanup: passed
