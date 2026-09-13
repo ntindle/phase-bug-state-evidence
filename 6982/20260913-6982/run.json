@@ -1,0 +1,1602 @@
+{
+ "run_id": "20260913-6982",
+ "issue": 6982,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (shared v0.81.3 single-user server) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "shared v0.81.3 single-user server on 127.0.0.1:9374 (this run's game code H0P4ZY; server.log here holds excerpts for that game only); do NOT restart",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7f0b7fa89f6d16c389f50c8f268e80c6fbaa6d4156bb2547535332328b127561",
+ "format_config": "default Bo1 (3 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "florian, voldaren scion",
+    4
+   ],
+   [
+    "lightning bolt",
+    4
+   ],
+   [
+    "swamp",
+    26
+   ],
+   [
+    "mountain",
+    26
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_life_loss": "passed",
+  "A4_trigger_fires": "passed",
+  "A5_look_X": "failed",
+  "A6_exile_one": "failed",
+  "A7_play_permission": "failed",
+  "A8_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [
+   {
+    "who": "P1",
+    "iid": "H0P4ZY.0",
+    "n_choices": 2,
+    "phase": "Untap",
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   },
+   {
+    "who": "P2",
+    "iid": "H0P4ZY.0",
+    "n_choices": 2,
+    "phase": "Untap",
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   }
+  ],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "life_trace": [
+   [
+    4.1,
+    [
+     20,
+     20,
+     20
+    ]
+   ],
+   [
+    78.8,
+    [
+     20,
+     20,
+     17
+    ]
+   ],
+   [
+    80.9,
+    [
+     20,
+     17,
+     17
+    ]
+   ]
+  ],
+  "stack_trace": [
+   [
+    6.7,
+    0
+   ],
+   [
+    67.1,
+    1
+   ],
+   [
+    67.6,
+    0
+   ],
+   [
+    81.9,
+    1
+   ],
+   [
+    82.3,
+    0
+   ]
+  ]
+ },
+ "driver_state": {
+  "florian_cast": true,
+  "florian_oid": 49,
+  "florian_bf_turn": 16,
+  "bolt_cast": true,
+  "bolt_resolved": true,
+  "bolt_submitted": true,
+  "pre_exported": true,
+  "post_exported": true,
+  "attacked": true,
+  "damage_turn": 19,
+  "trigger_seen_damage_turn": true,
+  "trigger_entry": {
+   "id": 182,
+   "source_id": 49,
+   "controller": 0,
+   "kind": {
+    "type": "TriggeredAbility",
+    "data": {
+     "source_id": 49,
+     "ability": {
+      "effect": {
+       "type": "Unimplemented",
+       "name": "where_x_binding",
+       "description": "where X is the total amount of life your opponents lost this turn"
+      },
+      "targets": [],
+      "source_id": 49,
+      "source_incarnation": 3,
+      "trigger_source": {
+       "identity": {
+        "reference": {
+         "object_id": 49,
+         "incarnation": 3
+        },
+        "expected_zone": "Battlefield"
+       },
+       "lki": {
+        "name": "Florian, Voldaren Scion",
+        "power": 3,
+        "toughness": 3,
+        "base_power": 3,
+        "base_toughness": 3,
+        "mana_value": 3,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Vampire",
+         "Noble"
+        ],
+        "supertypes": [
+         "Legendary"
+        ],
+        "keywords": [
+         "FirstStrike"
+        ],
+        "colors": [
+         "Black",
+         "Red"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": true,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 49,
+       "printed_ref": {
+        "oracle_id": "d74a2cbf-4d13-401d-9b3f-bfbde4942afd",
+        "face_name": "Florian, Voldaren Scion"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "Phase",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Unimplemented",
+            "name": "where_x_binding",
+            "description": "where X is the total amount of life your opponents lost this turn"
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Exile",
+             "target": {
+              "type": "ParentTarget"
+             },
+             "owner_library": false,
+             "enter_transformed": false,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "PutAtLibraryPosition",
+              "target": {
+               "type": "TrackedSet",
+               "id": 0
+              },
+              "count": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "position": {
+               "type": "Bottom"
+              }
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "GrantCastingPermission",
+               "permission": {
+                "type": "PlayFromExile",
+                "duration": "UntilEndOfTurn",
+                "granted_to": 0
+               },
+               "target": {
+                "type": "TrackedSet",
+                "id": 0
+               }
+              },
+              "cost": null,
+              "sub_ability": null,
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false,
+              "sub_link": "SequentialSibling"
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false,
+            "sub_link": "SequentialSibling"
+           },
+           "duration": "UntilEndOfTurn",
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false
+          },
+          "valid_card": null,
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": "PostCombatMain",
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+          "constraint": {
+           "type": "OnlyDuringYourTurn"
+          },
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 16,
+       "entered_battlefield_turn": 16,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": false,
+       "colors_spent_to_cast": {
+        "black": 2,
+        "red": 1
+       },
+       "mana_spent_to_cast_amount": 3,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 11,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 13,
+         "lki": {
+          "name": "Mountain",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Mountain"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 8,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "trigger_definition_ref": {
+       "source": {
+        "object_id": 49,
+        "incarnation": 3
+       },
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 1,
+         "printed_index": 0
+        }
+       }
+      },
+      "controller": 0,
+      "original_controller": 0,
+      "scoped_player": 0,
+      "kind": "Spell",
+      "sub_ability": {
+       "effect": {
+        "type": "ChangeZone",
+        "origin": null,
+        "destination": "Exile",
+        "target": {
+         "type": "ParentTarget"
+        },
+        "owner_library": false,
+        "enter_transformed": false,
+        "enter_tapped": false,
+        "enters_attacking": false
+       },
+       "targets": [],
+       "source_id": 49,
+       "source_incarnation": 3,
+       "trigger_source": {
+        "identity": {
+         "reference": {
+          "object_id": 49,
+          "incarnation": 3
+         },
+         "expected_zone": "Battlefield"
+        },
+        "lki": {
+         "name": "Florian, Voldaren Scion",
+         "power": 3,
+         "toughness": 3,
+         "base_power": 3,
+         "base_toughness": 3,
+         "mana_value": 3,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Vampire",
+          "Noble"
+         ],
+         "supertypes": [
+          "Legendary"
+         ],
+         "keywords": [
+          "FirstStrike"
+         ],
+         "colors": [
+          "Black",
+          "Red"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": true,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 49,
+        "printed_ref": {
+         "oracle_id": "d74a2cbf-4d13-401d-9b3f-bfbde4942afd",
+         "face_name": "Florian, Voldaren Scion"
+        },
+        "is_token": false,
+        "face_down": false,
+        "transformed": false,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "Phase",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Unimplemented",
+             "name": "where_x_binding",
+             "description": "where X is the total amount of life your opponents lost this turn"
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "ChangeZone",
+              "origin": null,
+              "destination": "Exile",
+              "target": {
+               "type": "ParentTarget"
+              },
+              "owner_library": false,
+              "enter_transformed": false,
+              "enter_tapped": false,
+              "enters_attacking": false
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "PutAtLibraryPosition",
+               "target": {
+                "type": "TrackedSet",
+                "id": 0
+               },
+               "count": {
+                "type": "Fixed",
+                "value": 1
+               },
+               "position": {
+                "type": "Bottom"
+               }
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "GrantCastingPermission",
+                "permission": {
+                 "type": "PlayFromExile",
+                 "duration": "UntilEndOfTurn",
+                 "granted_to": 0
+                },
+                "target": {
+                 "type": "TrackedSet",
+                 "id": 0
+                }
+               },
+               "cost": null,
+               "sub_ability": null,
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false,
+               "sub_link": "SequentialSibling"
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false,
+             "sub_link": "SequentialSibling"
+            },
+            "duration": "UntilEndOfTurn",
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": null,
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": "PostCombatMain",
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+           "constraint": {
+            "type": "OnlyDuringYourTurn"
+           },
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 16,
+        "entered_battlefield_turn": 16,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": false,
+        "colors_spent_to_cast": {
+         "black": 2,
+         "red": 1
+        },
+        "mana_spent_to_cast_amount": 3,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 11,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 13,
+          "lki": {
+           "name": "Mountain",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Mountain"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 8,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "trigger_definition_ref": {
+        "source": {
+         "object_id": 49,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        }
+       },
+       "controller": 0,
+       "original_controller": 0,
+       "scoped_player": 0,
+       "kind": "Spell",
+       "sub_ability": {
+        "effect": {
+         "type": "PutAtLibraryPosition",
+         "target": {
+          "type": "TrackedSet",
+          "id": 0
+         },
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "position": {
+          "type": "Bottom"
+         }
+        },
+        "targets": [],
+        "source_id": 49,
+        "source_incarnation": 3,
+        "trigger_source": {
+         "identity": {
+          "reference": {
+           "object_id": 49,
+           "incarnation": 3
+          },
+          "expected_zone": "Battlefield"
+         },
+         "lki": {
+          "name": "Florian, Voldaren Scion",
+          "power": 3,
+          "toughness": 3,
+          "base_power": 3,
+          "base_toughness": 3,
+          "mana_value": 3,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Creature"
+          ],
+          "subtypes": [
+           "Vampire",
+           "Noble"
+          ],
+          "supertypes": [
+           "Legendary"
+          ],
+          "keywords": [
+           "FirstStrike"
+          ],
+          "colors": [
+           "Black",
+           "Red"
+          ],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         },
+         "card_id": 49,
+         "printed_ref": {
+          "oracle_id": "d74a2cbf-4d13-401d-9b3f-bfbde4942afd",
+          "face_name": "Florian, Voldaren Scion"
+         },
+         "is_token": false,
+         "face_down": false,
+         "transformed": false,
+         "is_renowned": false,
+         "is_saddled": false,
+         "trigger_entries": [
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 0
+            }
+           },
+           "definition": {
+            "mode": "Phase",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Unimplemented",
+              "name": "where_x_binding",
+              "description": "where X is the total amount of life your opponents lost this turn"
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "ChangeZone",
+               "origin": null,
+               "destination": "Exile",
+               "target": {
+                "type": "ParentTarget"
+               },
+               "owner_library": false,
+               "enter_transformed": false,
+               "enter_tapped": false,
+               "enters_attacking": false
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "PutAtLibraryPosition",
+                "target": {
+                 "type": "TrackedSet",
+                 "id": 0
+                },
+                "count": {
+                 "type": "Fixed",
+                 "value": 1
+                },
+                "position": {
+                 "type": "Bottom"
+                }
+               },
+               "cost": null,
+               "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                 "type": "GrantCastingPermission",
+                 "permission": {
+                  "type": "PlayFromExile",
+                  "duration": "UntilEndOfTurn",
+                  "granted_to": 0
+                 },
+                 "target": {
+                  "type": "TrackedSet",
+                  "id": 0
+                 }
+                },
+                "cost": null,
+                "sub_ability": null,
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": false,
+                "forward_result": false,
+                "sub_link": "SequentialSibling"
+               },
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false,
+              "sub_link": "SequentialSibling"
+             },
+             "duration": "UntilEndOfTurn",
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "valid_card": null,
+            "origin": null,
+            "destination": null,
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": "PostCombatMain",
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": null,
+            "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+            "constraint": {
+             "type": "OnlyDuringYourTurn"
+            },
+            "condition": null,
+            "batched": false
+           }
+          }
+         ],
+         "timestamp": 16,
+         "entered_battlefield_turn": 16,
+         "combat_status": {
+          "attacking": false,
+          "blocking": false,
+          "blocked": false,
+          "attacking_alone": false,
+          "blocking_alone": false,
+          "defending_player": null
+         },
+         "cast_from_zone": "Hand",
+         "cast_controller": 0,
+         "phase_status": {
+          "status": "PhasedIn"
+         },
+         "mana_spent_to_cast": false,
+         "colors_spent_to_cast": {
+          "black": 2,
+          "red": 1
+         },
+         "mana_spent_to_cast_amount": 3,
+         "mana_spent_source_snapshots": [
+          {
+           "source_id": 11,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 13,
+           "lki": {
+            "name": "Mountain",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Mountain"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 8,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          }
+         ]
+        },
+        "trigger_definition_ref": {
+         "source": {
+          "object_id": 49,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         }
+        },
+        "controller": 0,
+        "original_controller": 0,
+        "scoped_player": 0,
+        "kind": "Spell",
+        "sub_ability": {
+         "effect": {
+          "type": "GrantCastingPermission",
+          "permission": {
+           "type": "PlayFromExile",
+           "duration": "UntilEndOfTurn",
+           "granted_to": 0
+          },
+          "target": {
+           "type": "TrackedSet",
+           "id": 0
+          }
+         },
+         "targets": [],
+         "source_id": 49,
+         "source_incarnation": 3,
+         "trigger_source": {
+          "identity": {
+           "reference": {
+            "object_id": 49,
+            "incarnation": 3
+           },
+           "expected_zone": "Battlefield"
+          },
+          "lki": {
+           "name": "Florian, Voldaren Scion",
+           "power": 3,
+           "toughness": 3,
+           "base_power": 3,
+           "base_toughness": 3,
+           "mana_value": 3,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Creature"
+           ],
+           "subtypes": [
+            "Vampire",
+            "Noble"
+           ],
+           "supertypes": [
+            "Legendary"
+           ],
+           "keywords": [
+            "FirstStrike"
+           ],
+           "colors": [
+            "Black",
+            "Red"
+           ],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          },
+          "card_id": 49,
+          "printed_ref": {
+           "oracle_id": "d74a2cbf-4d13-401d-9b3f-bfbde4942afd",
+           "face_name": "Florian, Voldaren Scion"
+          },
+          "is_token": false,
+          "face_down": false,
+          "transformed": false,
+          "is_renowned": false,
+          "is_saddled": false,
+          "trigger_entries": [
+           {
+            "occurrence": {
+             "type": "Printed",
+             "data": {
+              "base_set": 1,
+              "printed_index": 0
+             }
+            },
+            "definition": {
+             "mode": "Phase",
+             "execute": {
+              "kind": "Spell",
+              "effect": {
+               "type": "Unimplemented",
+               "name": "where_x_binding",
+               "description": "where X is the total amount of life your opponents lost this turn"
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "ChangeZone",
+                "origin": null,
+                "destination": "Exile",
+                "target": {
+                 "type": "ParentTarget"
+                },
+                "owner_library": false,
+                "enter_transformed": false,
+                "enter_tapped": false,
+                "enters_attacking": false
+               },
+               "cost": null,
+               "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                 "type": "PutAtLibraryPosition",
+                 "target": {
+                  "type": "TrackedSet",
+                  "id": 0
+                 },
+                 "count": {
+                  "type": "Fixed",
+                  "value": 1
+                 },
+                 "position": {
+                  "type": "Bottom"
+                 }
+                },
+                "cost": null,
+                "sub_ability": {
+                 "kind": "Spell",
+                 "effect": {
+                  "type": "GrantCastingPermission",
+                  "permission": {
+                   "type": "PlayFromExile",
+                   "duration": "UntilEndOfTurn",
+                   "granted_to": 0
+                  },
+                  "target": {
+                   "type": "TrackedSet",
+                   "id": 0
+                  }
+                 },
+                 "cost": null,
+                 "sub_ability": null,
+                 "duration": null,
+                 "description": null,
+                 "target_prompt": null,
+                 "condition": null,
+                 "optional_targeting": false,
+                 "optional": false,
+                 "forward_result": false,
+                 "sub_link": "SequentialSibling"
+                },
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": false,
+                "forward_result": false
+               },
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false,
+               "sub_link": "SequentialSibling"
+              },
+              "duration": "UntilEndOfTurn",
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+             },
+             "valid_card": null,
+             "origin": null,
+             "destination": null,
+             "trigger_zones": [
+              "Battlefield"
+             ],
+             "phase": "PostCombatMain",
+             "optional": false,
+             "damage_kind": "Any",
+             "secondary": false,
+             "valid_target": null,
+             "valid_source": null,
+             "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+             "constraint": {
+              "type": "OnlyDuringYourTurn"
+             },
+             "condition": null,
+             "batched": false
+            }
+           }
+          ],
+          "timestamp": 16,
+          "entered_battlefield_turn": 16,
+          "combat_status": {
+           "attacking": false,
+           "blocking": false,
+           "blocked": false,
+           "attacking_alone": false,
+           "blocking_alone": false,
+           "defending_player": null
+          },
+          "cast_from_zone": "Hand",
+          "cast_controller": 0,
+          "phase_status": {
+           "status": "PhasedIn"
+          },
+          "mana_spent_to_cast": false,
+          "colors_spent_to_cast": {
+           "black": 2,
+           "red": 1
+          },
+          "mana_spent_to_cast_amount": 3,
+          "mana_spent_source_snapshots": [
+           {
+            "source_id": 11,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 13,
+            "lki": {
+             "name": "Mountain",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Mountain"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 8,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           }
+          ]
+         },
+         "trigger_definition_ref": {
+          "source": {
+           "object_id": 49,
+           "incarnation": 3
+          },
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          }
+         },
+         "controller": 0,
+         "original_controller": 0,
+         "scoped_player": 0,
+         "kind": "Spell",
+         "sub_ability": null,
+         "duration": null,
+         "condition": null,
+         "context": {
+          "additional_cost_paid": false,
+          "alternative_mana_cost_paid": false,
+          "optional_effect_performed": false
+         },
+         "optional_targeting": false,
+         "optional": false,
+         "detached_remainder": "NoProducer",
+         "forward_result": false,
+         "may_trigger_origin": {
+          "type": "Definition",
+          "definition_ref": {
+           "source": {
+            "object_id": 49,
+            "incarnation": 3
+           },
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 0
+            }
+           }
+          }
+         },
+         "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "condition": null,
+        "context": {
+         "additional_cost_paid": false,
+         "alternative_mana_cost_paid": false,
+         "optional_effect_performed": false
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "detached_remainder": "NoProducer",
+        "forward_result": false,
+        "may_trigger_origin": {
+         "type": "Definition",
+         "definition_ref": {
+          "source": {
+           "object_id": 49,
+           "incarnation": 3
+          },
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          }
+         }
+        }
+       },
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "may_trigger_origin": {
+        "type": "Definition",
+        "definition_ref": {
+         "source": {
+          "object_id": 49,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         }
+        }
+       },
+       "sub_link": "SequentialSibling"
+      },
+      "duration": "UntilEndOfTurn",
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "cast_from_zone": "Hand"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false,
+      "ability_index": 0,
+      "may_trigger_origin": {
+       "type": "Definition",
+       "definition_ref": {
+        "source": {
+         "object_id": 49,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        }
+       }
+      }
+     },
+     "condition": null,
+     "trigger_event": {
+      "type": "PhaseChanged",
+      "data": {
+       "phase": "PostCombatMain"
+      }
+     },
+     "description": "At the beginning of each of your postcombat main phases, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+     "source_name": "Florian, Voldaren Scion"
+    }
+   }
+  },
+  "trigger_sightings": [
+   [
+    16,
+    "stack",
+    67.1
+   ],
+   [
+    19,
+    "stack",
+    81.9
+   ]
+  ],
+  "look_offered": null,
+  "look_opp_dumped": false,
+  "look_answered": false,
+  "exile_before": [],
+  "lib_before": 47
+ },
+ "notes": [
+  "parse: 1 triggers in card-data",
+  "parse: triggers[0].execute.effect = {\"type\": \"Unimplemented\", \"name\": \"where_x_binding\", \"description\": \"where X is the total amount of life your opponents lost this turn\"}",
+  "A1_parse_gap: effect.type=Unimplemented name=where_x_binding -> passed",
+  "A2: florian_oid=49 lives=[20, 20, 20]",
+  "A3: POST P1 life=17 P2 life=17 (expected 17/17)",
+  "A4: trigger_on_stack_damage_turn=True sightings=[(16, 'stack', 67.1), (19, 'stack', 81.9)]",
+  "A5: no look interaction was offered on the damage turn (Unimplemented effect skipped silently)",
+  "A5: offered_count=0 (expected 6)",
+  "A6: newly_exiled=0 lib_pre=47 lib_post=47 (expected 1 exiled, library -1)",
+  "A7 failed: no card was exiled by the trigger, so no permission could be granted",
+  "A8: stack_empty=True",
+  "verdict=reproduced: parser gap confirmed (A1) and the trigger outcome is not implemented (A5/A6/A7 fail)",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6982.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "4x Florian / 4x Lightning Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Turn order is randomized by the engine (seat_order varies); the driver keys on active_player, not order."
+ ],
+ "duration_s": 82.4
+}
