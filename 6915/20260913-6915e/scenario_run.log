@@ -1,0 +1,31 @@
+game XOMFI1; seats P0=0 P1=1 P2=2 RUN_ID=20260913-6915e
+P0 keeps
+P1 keeps
+P2 keeps
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['swamp', 'swamp', 'abnormal endurance', 'swamp', 'abnormal endurance', 'swamp', 'swamp'] cmdr=None cmdrcast=False ae=False/False murder=False/False czchoice=False/None trig=False/False pre=False mid=False post=False stack=0
+[P1] UNEXPECTED PROMPT iid=XOMFI1.0.3 n=2 texts=['keep', 'mulligan']
+[P2] UNEXPECTED PROMPT iid=XOMFI1.0.4 n=2 texts=['keep', 'mulligan']
+[P0] casting aphemia, the cacophony via CastSpell (oid 181)
+[P0] submitting interaction iid=XOMFI1.0.97 choice=XOMFI1.0.97.c0 (false)
+P0 DeclareAttackers: declaring empty
+[P0] submitting interaction iid=XOMFI1.0.168 choice=XOMFI1.0.168.c0 (false)
+[P0] casting abnormal endurance via CastSpell (oid 21)
+exported PRE (commander on BF, AE granted)
+AE resolved: commander has the granted dies trigger
+P0 DeclareAttackers: declaring empty
+[P0] submitting interaction iid=XOMFI1.0.243 choice=XOMFI1.0.243.c0 (false)
+AE effect expired (turn advanced); re-arming AE cast
+[P0] casting abnormal endurance via CastSpell (oid 32)
+AE resolved: commander has the granted dies trigger
+[P0] casting murder via CastSpell (oid 27)
+[P0] COMMANDER-ZONE CHOICE: accepting (accept=true) -> command zone: 
+[P0] submitting interaction iid=XOMFI1.0.306 choice=XOMFI1.0.306.p0 (true)
+exported MID (commander dead, choice made)
+Murder resolved: commander left the BF
+DIAG turn=15 active=2 phase=EndCombat wf=Priority pp=2 P0hand=['swamp', 'abnormal endurance', 'swamp', 'murder'] cmdr=181 cmdrcast=True ae=True/True murder=True/True czchoice=True/None trig=False/False pre=True mid=True post=False stack=0
+DIAG turn=30 active=2 phase=BeginCombat wf=Priority pp=2 P0hand=['swamp', 'abnormal endurance', 'murder', 'abnormal endurance'] cmdr=181 cmdrcast=True ae=True/True murder=True/True czchoice=True/None trig=False/False pre=True mid=True post=False stack=0
+exported POST (trigger_resolved=False)
+post exported; finishing
+loaded pre.json
+loaded mid.json
+loaded post.json
