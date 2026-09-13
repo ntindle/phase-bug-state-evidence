@@ -1,0 +1,40 @@
+{
+ "issue": 6987,
+ "title": "Textual Madness cost \"Pay six {C}\" is unsupported",
+ "run_id": "20260913-6987i",
+ "server_version": "v0.81.3",
+ "build_commit": "95bec6e",
+ "protocol_version": 70,
+ "server_binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "validated_at": "2026-09-13",
+ "validated_version": "v0.81.3",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_emrakul_madness": "failed",
+  "A2_setup_ok": "passed",
+  "A3_control_exile": "passed",
+  "A4_control_offer": "passed",
+  "A5_control_resolves": "passed",
+  "A6_emrakul_exile": "failed",
+  "A7_emrakul_offer": "failed",
+  "A8_cleanup": "passed"
+ },
+ "result": "A1 parse_emrakul_madness: failed (no Madness keyword; Spell/Unimplemented unknown). A2 setup_ok: passed. A3 control_exile: passed; A4 control_offer: passed; A5 control_resolves: passed (Fiery Temper Madness {R} control). A6 emrakul_exile: failed; A7 emrakul_offer: failed. A8 cleanup: passed.",
+ "scope": "Emrakul, the World Anew madness permission: card-data parse check + runtime discard via Faithless Looting with Fiery Temper (Madness {R}) as the working-madness control; native engine, two human-client seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Six-{C} payment was not attempted: the offer itself is the asserted outcome."
+ ],
+ "driver_notes": [
+  "WATCH arms at DiscardChoice answer time and tracks the discarded oids' zones plus any CastSpell/castSpell offer each P0 tick.",
+  "The watch closes at the first later-turn P0 main phase with an empty stack (final offer scan), on cast resolution, or after a 300s timeout.",
+  "Unknown P0 prompts during a watch are wire-logged in full; accept=true choices preferred, else first choice after a 20s stall."
+ ],
+ "server_run_note": "Isolated v0.81.3 server on 127.0.0.1:9374, started under setsid for this run (ServerHello v0.81.3/95bec6e/protocol 70/mode Full; server.log in this evidence dir)",
+ "duration_s": 40.1
+}
