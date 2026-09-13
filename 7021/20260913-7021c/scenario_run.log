@@ -1,0 +1,34 @@
+oracle: Damage can't be prevented this turn. Fear, Fire, Foes! deals X damage to target creature and 1 damage to each other creature with the same controller.
+A1_parse_gap: passed (DamageAll target = {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": [{"type": "Another"}]}; no same-controller filter - the parse drops the clause)
+game 0U7BZ6; seats P0=0 P1=1 P2=2 RUN_ID=20260913-7021c
+P0 keeps (4 lands)
+P1 keeps (7 lands)
+P2 keeps (6 lands)
+exported PRE
+[P0] cast Fear, Fire, Foes! (turn 19) target will be P1 mystic 83
+[P0] answered target: P1 mystic oid=83
+[P0] answered X=2 (min=0 max=7)
+Fear resolved (in P0 gy); cleanup window open
+exported POST
+loaded pre.json
+loaded post.json
+A1_parse_gap: passed
+A2_setup_ok: passed
+A3_target_hit: passed
+A4_same_controller_hit: passed
+A5_caster_spared: failed
+A6_third_party_spared: failed
+A7_cleanup: passed
+note: A1_parse_gap: passed (DamageAll target = {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": [{"type": "Another"}]}; no same-controller filter - the parse drops the clause)
+note: A2: P1m=[83, 84] P0m=[1, 38] P2m=[131, 148, 178] fear_in_hand=True
+note: A3: target_oid=83 P1m_post=[] -> passed
+note: A4: P1 other mystics post=[] -> passed (expected 0 survivors: target+X, other+1)
+note: A5: P0 mystics post=[] -> FAILED (expected >=1: caster's creature takes 0)
+note: A6: P2 mystics post=[] -> FAILED (expected >=1: third party takes 0)
+note: A7: stack_empty=True fear_in_P0_gy=True
+VERDICT: reproduced
+wrote run.json
+server.log copy failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/20260913-7021c/server.log'
+wrote summary.png
+manifest: MISSING server.log
+wrote manifest.sha256

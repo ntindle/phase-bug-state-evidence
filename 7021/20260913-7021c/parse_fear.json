@@ -1,0 +1,84 @@
+[
+ {
+  "kind": "Spell",
+  "effect": {
+   "type": "AddRestriction",
+   "restriction": {
+    "type": "DamagePreventionDisabled",
+    "source": 0,
+    "expiry": {
+     "type": "EndOfTurn"
+    }
+   }
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "DealDamage",
+    "amount": {
+     "type": "Ref",
+     "qty": {
+      "type": "Variable",
+      "name": "X"
+     }
+    },
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": []
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "DamageAll",
+     "amount": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "Another"
+       }
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "sub_link": "SequentialSibling"
+  },
+  "duration": "UntilEndOfTurn",
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ }
+]
