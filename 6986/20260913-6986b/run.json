@@ -1,0 +1,143 @@
+{
+ "run_id": "20260913-6986b",
+ "issue": 6986,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9374, started for this run (log in runs/20260913-6986/server.log; the run-id suffix differs because the server predates the RUN_ID bump - same binary/data identity, verified ServerHello v0.81.3/95bec6e/protocol 70)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1caa9c657d47afa42880550c6eb5005eea77c8257dc812039a6d1449138ea32a",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "rakdos, the showstopper",
+    3
+   ],
+   [
+    "grizzly bears",
+    4
+   ],
+   [
+    "mountain",
+    10
+   ],
+   [
+    "forest",
+    10
+   ],
+   [
+    "swamp",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "mountain",
+    24
+   ],
+   [
+    "forest",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_warn_absent": "failed",
+  "A2_parse_per_creature": "failed",
+  "A3_setup_ok": "passed",
+  "A4_flip_per_creature": "failed",
+  "A5_exclusions_honored": "failed",
+  "A6_heads_no_destroy": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "flip_prompts": [],
+  "etb_window": []
+ },
+ "driver_state": {
+  "rakdos_cast": true,
+  "rakdos_cast_turn": 38,
+  "rakdos_oid": 35,
+  "etb_seen": true,
+  "etb_resolved": true,
+  "pre_exported": true,
+  "mid_exported": true,
+  "post_exported": true,
+  "post_at": 1789304106.8505478,
+  "flip_count": 0,
+  "flip_answered_heads": 0,
+  "pre_board": [
+   [
+    14,
+    "grizzly bears",
+    0
+   ],
+   [
+    35,
+    "rakdos, the showstopper",
+    0
+   ],
+   [
+    36,
+    "grizzly bears",
+    0
+   ]
+  ],
+  "mid_board": [],
+  "post_board": [],
+  "eligible_at_pre": 2
+ },
+ "notes": [
+  "parse input: pinned card-data.json sha256=c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a (v0.81.3 signed data manifest)",
+  "A1: Swallow:DynamicQty warnings on the ETB: 1 (expected 0) -> failed",
+  "A2: emitted ETB AST expresses per-creature flips with the Demon/Devil/Imp exclusions: False (FlipCoin nodes=1, single flip with null win/lose=True, unqualified DestroyAll=True, exclusion terms in AST=False) -> failed",
+  "watchdog: turn 14 reached with Rakdos never cast; giving 90s more",
+  "A3: pre.json board=[(14, 'grizzly bears', 0), (35, 'rakdos, the showstopper', 0), (36, 'grizzly bears', 0)]; bears=2 (need >=2), rakdos=1 -> passed",
+  "A4: eligible creatures at pre=2; coin-flip prompts observed=0 (heads answers=0); per-creature iteration present: False -> failed",
+  "A5: mid.json board=[]; Rakdos (a Demon, excluded by Oracle) on BF: 0 (expected 1) -> failed",
+  "A6 not-run: no flip prompt was ever answered (flips observed=0); destruction was flip-independent by construction",
+  "A7: post.json stack empty=True, turn=42, phase=EndCombat -> passed",
+  "verdict=reproduced: parse defect (Swallow:DynamicQty + collapsed single-FlipCoin/unqualified-DestroyAll AST) manifests at runtime: flips=0 heads_answers=0 pre_board=[(14, 'grizzly bears', 0), (35, 'rakdos, the showstopper', 0), (36, 'grizzly bears', 0)] mid_board=[]",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "parse_rakdos.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6986.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; this is an area:parser issue - the primary evidence is the emitted AST in the pinned card-data.json (input Oracle text preserved in parse_rakdos.json).",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Rakdos itself (a Demon) is the exclusion representative; Devil/Imp subtypes were not separately fielded (same exclusion clause, same absent AST filter).",
+  "The coin flip was deliberately answered HEADS every time; the tails branch was not exercised."
+ ],
+ "duration_s": 110.1,
+ "finalize_note": "finish() crashed before rendering summary.png / writing manifest.sha256 (server.log path used the bumped run id); repaired by driver/finalize_6986.py per the #6918 pattern: real server.log copied, provenance corrected, summary.png rendered from saved states, manifest written last."
+}
