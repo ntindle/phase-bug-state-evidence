@@ -1,0 +1,40 @@
+{
+ "issue": 6988,
+ "title": "Tenuous Truce's bidirectional attack trigger is unsupported",
+ "run_id": "20260913-6988b",
+ "server_version": "v0.81.3",
+ "build_commit": "95bec6e",
+ "protocol_version": 70,
+ "server_binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "validated_at": "2026-09-13",
+ "validated_version": "v0.81.3",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_control_direct": "passed",
+  "A4_back_leg": "failed",
+  "A5_pw_leg": "passed",
+  "A6_cleanup": "passed"
+ },
+ "result": "A1 parse_gap: passed (attack trigger split into a YouAttack leg missing the planeswalker clause plus one Unknown-mode leg carrying 'When a planeswalker they control or when they attack you or a planeswalker you control'). A2 setup_ok: passed. A3 control_direct: passed (P0 attacked P1; parsed leg fired). A4 back_leg: failed (P1 attacked P0). A5 pw_leg: passed (P0 attacked P1's Jace Beleren; mechanism attributed via stack trigger). A6 cleanup: passed.",
+ "scope": "Tenuous Truce attack-trigger legs: card-data parse check + runtime attacks in both directions plus a planeswalker attack, with the parsed YouAttack leg as the control; native engine, two human-client seats; one fresh Aura per leg because the parsed YouAttack leg has no valid_target gate and fires on any P0 attack",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The 'they attack your planeswalker' sub-leg was not separately exercised; the 'they attack you' leg covers the unparsed mode."
+ ],
+ "driver_notes": [
+  "Truce target selection picks the seat==1 player candidate via viewer_interaction choice id.",
+  "Planeswalker defender submitted as {'type': 'Planeswalker', 'data': <oid>} in DeclareAttackers.attacks (cf. #6879).",
+  "Mid states exported at the defender's next turn start with an empty stack, guaranteeing the attacker's combat fully resolved.",
+  "Attack-landing corroborated via P1 life delta (20-><20), P0 life delta (20-><20), and Jace loyalty delta (3-><3).",
+  "Sacrifice attribution per leg captured from the TriggeredAbility stack entry's ability.description (the parsed YouAttack leg fires on any P0 attack since it carries no valid_target gate)."
+ ],
+ "server_run_note": "v0.81.3 server on 127.0.0.1:9374, started under setsid by the prior 09:43 CDT attempt for this issue and reused by this run (ServerHello re-verified this run: v0.81.3/95bec6e/protocol 70/mode Full; log in runs/20260913-6988/server.log)",
+ "duration_s": 98.3
+}

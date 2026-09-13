@@ -1,0 +1,159 @@
+{
+ "name": "Tenuous Truce",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White"
+  ],
+  "generic": 1
+ },
+ "oracle_text": "Enchant opponent\nAt the beginning of enchanted opponent's end step, you and that player each draw a card.\nWhen you attack enchanted opponent or a planeswalker they control or when they attack you or a planeswalker you control, sacrifice this Aura.",
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Draw",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "OriginalController"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "ScopedPlayer"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "End",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of enchanted opponent's end step, you and that player each draw a card.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": "YouAttack",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Sacrifice",
+     "target": {
+      "type": "SelfRef"
+     },
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When you attack enchanted opponent, sacrifice ~.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": {
+    "Unknown": "When a planeswalker they control or when they attack you or a planeswalker you control"
+   },
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Sacrifice",
+     "target": {
+      "type": "SelfRef"
+     },
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When a planeswalker they control or when they attack you or a planeswalker you control, sacrifice ~.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ]
+}

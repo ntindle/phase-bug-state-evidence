@@ -1,0 +1,49 @@
+wrote parse_tenuous_truce.json (3 triggers)
+P0 creating game...
+P1 joining...
+game LY7BUN; seats 0/1
+[P0] casts Tenuous Truce (SETUP)
+Tenuous Truce resolved on BF (oid=18, stage=SETUP); attached_to_p1=True detail={"type": "Player", "data": 1}
+[P1] casts Grizzly Bears
+[P0] casts Grizzly Bears
+[P0] discards 2 to hand size
+[P1] casts Grizzly Bears
+[P0] casts Grizzly Bears
+[P0] discards 2 to hand size
+[P1] discards 1 to hand size
+[P0] discards 4 to hand size
+[P1] discards 1 to hand size
+[P0] discards 3 to hand size
+[P1] casts Jace Beleren
+exported pre.json
+SETUP complete at turn 12: aura=18 attached to P1, P1 Jace loyalty=3, ready bears P0=2 P1=2; stage -> CTRL_ATTACK
+[P0] CTRL_ATTACK: attacks=[[8, {'type': 'Player', 'data': 1}]]
+[ctrl] trigger on stack: kind=TriggeredAbility desc=When you attack enchanted opponent, sacrifice ~.
+[P0] discards 1 to hand size
+exported mid_ctrl.json
+stage -> RECAST_B (P0 attacked P1 directly on turn 13)
+[P0] casts Tenuous Truce (RECAST_B)
+Tenuous Truce resolved on BF (oid=11, stage=RECAST_B); attached_to_p1=True detail={"type": "Player", "data": 1}
+stage -> BACK_ATTACK (aura #2 on BF)
+[P0] discards 2 to hand size
+[P1] BACK_ATTACK: attacks=[[64, {'type': 'Player', 'data': 0}]]
+[back] trigger on stack: kind=TriggeredAbility desc=At the beginning of enchanted opponent's end step, you and that player each draw a card.
+[P1] discards 1 to hand size
+exported mid_back.json
+stage -> RECAST_C (P1 attacked P0 on turn 16)
+[P0] casts Tenuous Truce (RECAST_C)
+Tenuous Truce resolved on BF (oid=20, stage=RECAST_C); attached_to_p1=True detail={"type": "Player", "data": 1}
+stage -> PW_ATTACK (aura #3 on BF)
+[P0] PW_ATTACK: attacks=[[8, {'type': 'Planeswalker', 'data': 53}]]
+[pw] trigger on stack: kind=TriggeredAbility desc=When you attack enchanted opponent, sacrifice ~.
+exported post.json
+stage -> DONE (P0 attacked P1's Jace on turn 17)
+A1_parse_gap: passed
+A2_setup_ok: passed
+A3_control_direct: passed
+A4_back_leg: failed
+A5_pw_leg: passed
+A6_cleanup: passed
+verdict: reproduced
+wrote run.json
+copied scenario_6988.py and server log into EVDIR
