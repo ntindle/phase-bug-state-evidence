@@ -1,0 +1,123 @@
+{
+ "run_id": "20260913-6951b",
+ "issue": 6951,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9374, started for this run (log in runs/20260913-6951b/server.log)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d6af0679c925e0fd79417cb45505719bb8af9c576ad7cb72af5d4441a6949343",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "elspeth conquers death",
+    4
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "plains",
+    24
+   ],
+   [
+    "forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    12
+   ],
+   [
+    "mountain",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_ch2_unimplemented": "passed",
+  "A2_ch3_typed": "passed",
+  "A3_reached_ch3": "passed",
+  "A4_tax_absent": "passed",
+  "A5_returned": "passed",
+  "A6_counter": "passed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "stack_trace": []
+ },
+ "driver_state": {
+  "bear_cast": true,
+  "bolt1_done": true,
+  "bolt1_cast": true,
+  "ecd_cast": true,
+  "ecd_oid": 32,
+  "ch2_seen": true,
+  "ch2_at": 1789291494.310073,
+  "mid_exported": true,
+  "bolt2_done": true,
+  "bolt2_cast": true,
+  "bolt2_tapped": 1,
+  "ch3_seen": true,
+  "pre_exported": true,
+  "ch3_targeted": false,
+  "ch3_target_oid": null,
+  "counter_answered": true,
+  "counter_choice": "0 (optionIndex 0)",
+  "post_exported": true,
+  "post_at": 1789291500.6756995,
+  "ecd_cast_at": 1789291489.3197098,
+  "last_target_oid": null
+ },
+ "notes": [
+  "A1: chapter II effect = Unimplemented/noncreature (expected Unimplemented/noncreature)",
+  "A2: chapter III has_unimplemented=False has_chooseoneof_putcounter=True",
+  "A3: pre ecd=32 lore=3 bear_in_yard=True ch3_targeted=False",
+  "A4: P1 in-window Bolt tapped 1 Mountain(s) (expected 1; 3 would mean the chapter-II tax applied)",
+  "A5: P0 Bears on BF in post: 1",
+  "A6: bear oid=44 P/T=3/3 +1/+1counter=True counters={'P1P1': 1}",
+  "A7: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced: chapter II noncreature tax is still Unimplemented on v0.81.3 (deck-builder Effect:noncreature flag persists); chapter III parse-fixed=passed returned=passed counter=passed",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6951.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI / deckbuilder UI not exercised; the deck-builder 'unsupported' flag is evidenced via the card-data parse check (Unimplemented nodes drive the flag).",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 52.7
+}
