@@ -1,0 +1,24 @@
+game FZ670T; P0 seat=0 P1 seat=1
+waiting_for: MulliganDecision player=None stage=SETUP
+top-level state keys: ['auto_pass_recommended', 'derived', 'events', 'full_key', 'legal_actions', 'opponent_name', 'player_names', 'state', 'state_revision', 'viewer_interaction', 'your_player']
+P0 mulligan -> Keep (ER=3 lands=3)
+P1 mulligan -> Keep (lands=5)
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] casts Baloth Gorger (oid=28)
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] casts Entish Restoration (oid=11) turn=9
+cast window: turn=9 ER on stack, Gorger on BF
+exported pre.json
+waiting_for: SearchChoice player=0 stage=RESOLVE
+resolve prompt #1: label=search wf=SearchChoice n_candidates=35 rtype=schema spec=select
+exported mid_search.json
+resolve prompt #1 answered: label=search oids=['33', '9', '55']
+waiting_for: Priority player=0 stage=RESOLVE
+resolution complete: stack empty, wf=Priority, exporting post.json
+exported post.json
+verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_sacrifice_prompted": "failed", "A3_land_sacrificed": "not-run", "A4_search_up_to_three": "passed", "A5_cleanup": "passed"}
+evidence files: ['mid_search.json', 'post.json', 'pre.json', 'run.json', 'scenario_6911.py', 'scenario_run.log', 'wire_log.jsonl']
+scenario finished

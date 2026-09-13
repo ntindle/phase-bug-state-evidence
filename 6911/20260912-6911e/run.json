@@ -1,0 +1,124 @@
+{
+ "issue": 6911,
+ "run_id": "20260912-6911e",
+ "validated_version": "v0.81.3",
+ "server_version": "0.81.3",
+ "build_commit": "95bec6e",
+ "protocol_version": 70,
+ "started_at": "2026-09-13T04:41:01Z",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "server_hello_source": "captured live from the same server process that ran this game (127.0.0.1:9374)",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828"
+ },
+ "game_code": "FZ670T",
+ "scenario": "driver/scenario_6911.py",
+ "setup_line": "P0 12x Entish Restoration / 8x Baloth Gorger / 40x Forest; P1 12x Grizzly Bears / 48x Forest, passive",
+ "contract_line": "ER resolution must first prompt the caster to sacrifice a land, then offer the up-to-3 basic land search (4+ power creature controlled)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-driver seats.",
+  "12x/8x deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The up-to-2 branch (no 4+ creature) was not exercised; both branches share the sacrifice node.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "p0_deck": [
+  [
+   "Entish Restoration",
+   12
+  ],
+  [
+   "Baloth Gorger",
+   8
+  ],
+  [
+   "Forest",
+   40
+  ]
+ ],
+ "p1_deck": [
+  [
+   "Grizzly Bears",
+   12
+  ],
+  [
+   "Forest",
+   48
+  ]
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sacrifice_prompted": "failed",
+  "A3_land_sacrificed": "not-run",
+  "A4_search_up_to_three": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "pre_exported=True gorger_on_bf_at_cast=True er_cast_turn=9",
+  "A2_sacrifice_prompted_detail": "prompt_sequence=['search'] sac_idx=None search_idx=0",
+  "A3_land_sacrificed_detail": "sac_oid=None no_sacrifice_prompt; forests_left_bf=[]",
+  "A4_search_up_to_three_detail": "search_max=3 chosen=['33', '9', '55'] entered_tapped=[True, True, True] bf_forests pre=5 post=8 expected_post=8",
+  "A5_cleanup_detail": "er_in_gy=True stack_empty=True wf=Priority turn=9"
+ },
+ "prompt_sequence": [
+  {
+   "n": 1,
+   "label": "search",
+   "wf": "SearchChoice",
+   "n_candidates": 35,
+   "detail": {
+    "n_candidates": 35,
+    "zones": [
+     "library"
+    ],
+    "names": [
+     "Forest"
+    ],
+    "response_type": "schema",
+    "spec_type": "select",
+    "wf_kind": "select"
+   }
+  }
+ ],
+ "sac_oid": null,
+ "search_max": 3,
+ "search_chosen": [
+  "33",
+  "9",
+  "55"
+ ],
+ "waiting_for_sequence": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "SearchChoice",
+  "Priority"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13T04:41:01Z",
+ "rejections": [],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "turns_seen": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ]
+}
