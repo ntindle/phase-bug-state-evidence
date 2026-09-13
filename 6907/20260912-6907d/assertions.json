@@ -1,0 +1,668 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_control_move": "passed",
+  "A3_counter_prompted": "failed",
+  "A4_exact_move": "not-run",
+  "A5_default_documents": "passed",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "ng=True warden=True township=True bears=True warden_counters={'shield': 2} single_type=True p0_main=True turn=20",
+  "A2_control_move": "warden {'shield': 2}->{'shield': 1} bears {}->{'shield': 1}; counter-like prompts during CONTROL: 0 (expect 0)",
+  "A3_setup_note": "pre_proof warden counters={'P1P1': 1, 'shield': 1}",
+  "A3_counter_prompted": "0 counter-type choice opportunity(ies) during PROOF (expect >=1); pre_proof warden counters={'P1P1': 1, 'shield': 1}",
+  "A4_exact_move": "A3 not passed",
+  "A5_default_documents": "no counter choice offered; warden {'P1P1': 1, 'shield': 1}->{'shield': 1} bears {'P1P1': 1, 'shield': 1}->{'P1P1': 2, 'shield': 1}; defaulted to +1/+1 = True (report says the engine defaults to +1/+1)",
+  "A6_cleanup": "stack empty=True; turn=24"
+ },
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "target_sels": [
+  {
+   "interactionId": "UJUF1V.0.186",
+   "turn": 12,
+   "phase": "PostCombatMain",
+   "stage": "SETUP",
+   "candidates": [
+    {
+     "choiceId": "UJUF1V.0.186.t0",
+     "oid": "50",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.186.t1",
+     "oid": "9",
+     "name": "Sanctuary Warden",
+     "zone": "Battlefield",
+     "controller": 0
+    }
+   ]
+  },
+  {
+   "interactionId": "UJUF1V.0.314",
+   "turn": 20,
+   "phase": "PostCombatMain",
+   "stage": "CONTROL",
+   "candidates": [
+    {
+     "choiceId": "UJUF1V.0.314.t0",
+     "oid": "16",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t1",
+     "oid": "23",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t2",
+     "oid": "7",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t3",
+     "oid": "50",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t4",
+     "oid": "26",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t5",
+     "oid": "25",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t6",
+     "oid": "40",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t7",
+     "oid": "9",
+     "name": "Sanctuary Warden",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t8",
+     "oid": "27",
+     "name": "Gavony Township",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t9",
+     "oid": "6",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t10",
+     "oid": "57",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.314.t11",
+     "oid": "30",
+     "name": "Nesting Grounds",
+     "zone": "Battlefield",
+     "controller": 0
+    }
+   ]
+  },
+  {
+   "interactionId": "UJUF1V.0.315",
+   "turn": 20,
+   "phase": "PostCombatMain",
+   "stage": "CONTROL",
+   "candidates": [
+    {
+     "choiceId": "UJUF1V.0.315.t0",
+     "oid": "69",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t1",
+     "oid": "16",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t2",
+     "oid": "71",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t3",
+     "oid": "23",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t4",
+     "oid": "101",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t5",
+     "oid": "7",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t6",
+     "oid": "103",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t7",
+     "oid": "50",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t8",
+     "oid": "26",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t9",
+     "oid": "84",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t10",
+     "oid": "25",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t11",
+     "oid": "93",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t12",
+     "oid": "40",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t13",
+     "oid": "9",
+     "name": "Sanctuary Warden",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t14",
+     "oid": "94",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t15",
+     "oid": "27",
+     "name": "Gavony Township",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t16",
+     "oid": "106",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t17",
+     "oid": "6",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t18",
+     "oid": "82",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t19",
+     "oid": "57",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t20",
+     "oid": "108",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.315.t21",
+     "oid": "30",
+     "name": "Nesting Grounds",
+     "zone": "Battlefield",
+     "controller": 0
+    }
+   ]
+  },
+  {
+   "interactionId": "UJUF1V.0.376",
+   "turn": 24,
+   "phase": "PreCombatMain",
+   "stage": "PROOF",
+   "candidates": [
+    {
+     "choiceId": "UJUF1V.0.376.t0",
+     "oid": "16",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t1",
+     "oid": "23",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t2",
+     "oid": "7",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t3",
+     "oid": "50",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t4",
+     "oid": "26",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t5",
+     "oid": "25",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t6",
+     "oid": "40",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t7",
+     "oid": "9",
+     "name": "Sanctuary Warden",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t8",
+     "oid": "27",
+     "name": "Gavony Township",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t9",
+     "oid": "6",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t10",
+     "oid": "57",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t11",
+     "oid": "30",
+     "name": "Nesting Grounds",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.376.t12",
+     "oid": "58",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    }
+   ]
+  },
+  {
+   "interactionId": "UJUF1V.0.377",
+   "turn": 24,
+   "phase": "PreCombatMain",
+   "stage": "PROOF",
+   "candidates": [
+    {
+     "choiceId": "UJUF1V.0.377.t0",
+     "oid": "69",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t1",
+     "oid": "16",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t2",
+     "oid": "71",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t3",
+     "oid": "23",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t4",
+     "oid": "101",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t5",
+     "oid": "7",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t6",
+     "oid": "103",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t7",
+     "oid": "50",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t8",
+     "oid": "26",
+     "name": "Forest",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t9",
+     "oid": "84",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t10",
+     "oid": "25",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t11",
+     "oid": "93",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t12",
+     "oid": "40",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t13",
+     "oid": "9",
+     "name": "Sanctuary Warden",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t14",
+     "oid": "94",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t15",
+     "oid": "27",
+     "name": "Gavony Township",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t16",
+     "oid": "106",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t17",
+     "oid": "6",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t18",
+     "oid": "82",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t19",
+     "oid": "57",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t20",
+     "oid": "108",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t21",
+     "oid": "30",
+     "name": "Nesting Grounds",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t22",
+     "oid": "110",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t23",
+     "oid": "58",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "UJUF1V.0.377.t24",
+     "oid": "83",
+     "name": "Plains",
+     "zone": "Battlefield",
+     "controller": 1
+    }
+   ]
+  }
+ ],
+ "decisions": [],
+ "counter_choice_pick": null
+}
