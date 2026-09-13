@@ -1,0 +1,43 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.3", "build_commit": "95bec6e", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game TJ6RTD; seats P0=0 P1=1
+[P0] keeps hand
+[P1] submits Grizzly Bears cast
+[P1] submits Grizzly Bears cast
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] submits Glorious Anthem cast (turn 23)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] discards 1 to hand size
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] submits Glorious Anthem cast (turn 29)
+[P0] submits Calix cast (turn 29)
+Calix + 2 Anthems on battlefield (turn 29); stage -> PROOF
+[P0] activates Calix -3 (loyalty 4, turn 29); pre_activate exported
+exported pre_activate.json (556026 bytes)
+[P0] recorded TargetSelection #1: Grizzly Bears(Battlefield), Grizzly Bears(Battlefield)
+[P0] minus3-exile-target: targets Grizzly Bears
+exported post_minus3.json (565099 bytes)
+[P0] Calix -3 resolved; post_minus3 exported; stage -> DESTROY
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] casts Naturalize targeting P0's Glorious Anthem
+[P0] recorded TargetSelection #2: Glorious Anthem(Battlefield), Glorious Anthem(Battlefield)
+[P1] naturalize-target: targets Glorious Anthem
+exported mid_destroyed.json (544923 bytes)
+[P1] targeted Anthem left battlefield (zone=Graveyard); mid_destroyed exported; watching for return
+exported post_destroy.json (522937 bytes)
+[P1] destroy leg settled; post_destroy exported; DONE
+loop ended: stage=DONE stop=True target_sels=2
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_target_prompted": "passed", "A3_two_target_slots": "failed", "A4_exile_observed": "passed", "A5_own_enchant_targeted": "not-run", "A6_return_on_destroy": "passed", "A7_cleanup": "passed"}
+VERDICT: reproduced
+run.json written; verdict = reproduced
+server_excerpts.log: 3 matching lines

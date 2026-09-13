@@ -1,0 +1,94 @@
+{
+ "issue": 6906,
+ "run_id": "20260912-6906e",
+ "title": "Calix, Destiny's Hand -3 doesn't associate targets correctly",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "started_at": "2026-09-13T02:50:32Z",
+ "ended_at": "2026-09-13T02:51:47Z",
+ "game_code": "TJ6RTD",
+ "decks": {
+  "P0": [
+   [
+    "Calix, Destiny's Hand",
+    4
+   ],
+   [
+    "Glorious Anthem",
+    8
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Plains",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    24
+   ],
+   [
+    "Naturalize",
+    4
+   ],
+   [
+    "Forest",
+    32
+   ]
+  ]
+ },
+ "decisions": {
+  "calix_cast_turn": 29,
+  "minus3_turn": 29,
+  "target_answers": 1,
+  "target_sels_proof": 1,
+  "target_sels_total": 2,
+  "exile_target_oid": "66",
+  "own_enchant_oid": null,
+  "nat_cast": true,
+  "rejections": 15
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_target_prompted": "passed",
+  "A3_two_target_slots": "failed",
+  "A4_exile_observed": "passed",
+  "A5_own_enchant_targeted": "not-run",
+  "A6_return_on_destroy": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "calix_bf=True anthems_bf=True bears_p1_bf=True p0_main=True turn=29",
+  "A2_target_prompted": "1 TargetSelection prompt(s) for the -3 activation (2 total recorded)",
+  "A3_two_target_slots": "1 -3 target slot(s) offered (expect >=2: exile target + own enchantment); candidates=[[('Grizzly Bears', 'Battlefield', 1), ('Grizzly Bears', 'Battlefield', 1)]]",
+  "A4_exile_observed": "target Bear oid 66 zone=Exile (expect Exile)",
+  "A5_own_enchant_targeted": "no second target slot (A3 not passed)",
+  "A6_return_on_destroy": "no link slot offered; Anthem destroyed; target Bear zone=Exile (expect Exile: documents unconditional exile, no return linkage)",
+  "A7_cleanup": "stack empty=True; turn=31"
+ },
+ "verdict": "reproduced",
+ "verdict_note": "The -3 activation must offer two target slots per Oracle (exile target; own enchantment the exile is linked to). A single slot confirms the reported unconditional exile.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Calix / 8x Glorious Anthem / 24x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.81.3, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 4x Calix, 8x Glorious Anthem, 24x Forest, 24x Plains; P1: 24x Grizzly Bears, 4x Naturalize, 32x Forest. P0 casts 2x Anthem + Calix; P1 casts 2x Bears.",
+ "contract_line": "P0 activates Calix -3 at main-phase priority; the driver answers the exile-target slot with a P1 Bear and any second slot with a P0 Anthem. P1 then destroys an Anthem with Naturalize and the driver observes whether the exiled Bear returns.",
+ "stats": {
+  "target_selections": 2
+ }
+}

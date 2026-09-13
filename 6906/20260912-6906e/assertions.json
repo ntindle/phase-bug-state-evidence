@@ -1,0 +1,255 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_target_prompted": "passed",
+  "A3_two_target_slots": "failed",
+  "A4_exile_observed": "passed",
+  "A5_own_enchant_targeted": "not-run",
+  "A6_return_on_destroy": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "calix_bf=True anthems_bf=True bears_p1_bf=True p0_main=True turn=29",
+  "A2_target_prompted": "1 TargetSelection prompt(s) for the -3 activation (2 total recorded)",
+  "A3_two_target_slots": "1 -3 target slot(s) offered (expect >=2: exile target + own enchantment); candidates=[[('Grizzly Bears', 'Battlefield', 1), ('Grizzly Bears', 'Battlefield', 1)]]",
+  "A4_exile_observed": "target Bear oid 66 zone=Exile (expect Exile)",
+  "A5_own_enchant_targeted": "no second target slot (A3 not passed)",
+  "A6_return_on_destroy": "no link slot offered; Anthem destroyed; target Bear zone=Exile (expect Exile: documents unconditional exile, no return linkage)",
+  "A7_cleanup": "stack empty=True; turn=31"
+ },
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "target_sels": [
+  {
+   "interactionId": "TJ6RTD.0.452",
+   "turn": 29,
+   "phase": "PreCombatMain",
+   "candidates": [
+    {
+     "choiceId": "TJ6RTD.0.452.t0",
+     "oid": "66",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 1
+    },
+    {
+     "choiceId": "TJ6RTD.0.452.t1",
+     "oid": "68",
+     "name": "Grizzly Bears",
+     "zone": "Battlefield",
+     "controller": 1
+    }
+   ]
+  },
+  {
+   "interactionId": "TJ6RTD.0.471",
+   "turn": 30,
+   "phase": "PreCombatMain",
+   "candidates": [
+    {
+     "choiceId": "TJ6RTD.0.471.t0",
+     "oid": "52",
+     "name": "Glorious Anthem",
+     "zone": "Battlefield",
+     "controller": 0
+    },
+    {
+     "choiceId": "TJ6RTD.0.471.t1",
+     "oid": "35",
+     "name": "Glorious Anthem",
+     "zone": "Battlefield",
+     "controller": 0
+    }
+   ]
+  }
+ ],
+ "pre": {
+  "turn": 29,
+  "phase": "PreCombatMain",
+  "calix_loyalty": 4,
+  "bears": 2,
+  "anthems": 2
+ },
+ "proof_turns": []
+}
