@@ -1,0 +1,168 @@
+{
+ "run_id": "20260912-6912a",
+ "issue": 6912,
+ "cz_choice": "zone",
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello (0.81.3/95bec6e/proto 70/Full) + minisign-verify (repo-pinned key) of binary + signed data manifest; binary sha256 matches GitHub asset digest; data files sha256-verified against manifest. Reused the already-listening pinned server on 127.0.0.1:9374 (started for the #6911 run; same pin)."
+ },
+ "server_run_note": "reused pinned v0.81.3 server on 127.0.0.1:9374",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "39f4e09e87df51b5b1b7bea53bc2b1a1e664def666073d952ac598923cd9c3b6",
+ "format_config": "CommanderDraft (>=60 cards, no singleton; commanders placed in command zone)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "chaos warp",
+     12
+    ],
+    [
+     "mountain",
+     48
+    ]
+   ],
+   "commander": [
+    "zurgo bellstriker"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_targeted": "passed",
+  "A3_replacement_offered": "passed",
+  "A4_zone_correct": "passed",
+  "A5_owner_routing": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "repl_seen": {
+   "turn": 7,
+   "revision": 154,
+   "chooser": 1
+  },
+  "repl_chooser": 1,
+  "repl_choices": [
+   {
+    "i": 0,
+    "text": "0",
+    "mentions_command_zone": false
+   },
+   {
+    "i": 1,
+    "text": "1",
+    "mentions_command_zone": false
+   }
+  ],
+  "repl_chosen": {
+   "i": 0,
+   "text": "0",
+   "how": "GUESS positional (choice texts ambiguous): idx=0"
+  },
+  "repl_guess": "GUESS positional (choice texts ambiguous): idx=0",
+  "repl_chooser_wrong": false,
+  "reveal_prompts": [],
+  "wf_types_resolution": [
+   "DiscardToHandSize",
+   "Priority",
+   "ReplacementChoice",
+   "TargetSelection"
+  ],
+  "auto_answered": [],
+  "cast_turn": 7,
+  "resolve_turn": null,
+  "rejections": []
+ },
+ "driver_state": {
+  "warp_cast": true,
+  "warp_target_oid": 182,
+  "target_answered": true,
+  "warp_cast_at": 1789276400.8434877,
+  "repl_answered": true,
+  "repl_answered_at": 1789276401.9172,
+  "pre_ayula_oid": 182,
+  "frozen": true,
+  "post_at": 1789276406.2976387
+ },
+ "notes": [
+  "replacement choice texts ambiguous; GUESS positional (choice texts ambiguous): idx=0",
+  "A1: ayula_bf=182 is_commander=True warp_in_hand=True untapped_mtn=3 life=[40, 40]",
+  "A2 passed: submitted target oid 182 == pre-cast Ayula oid",
+  "A3 passed: ReplacementChoice offered to P1 (owner), choices=[{'i': 0, 'text': '0', 'mentions_command_zone': False}, {'i': 1, 'text': '1', 'mentions_command_zone': False}], chosen={'i': 0, 'text': '0', 'how': 'GUESS positional (choice texts ambiguous): idx=0'} [GUESS positional (choice texts ambiguous): idx=0]",
+  "post: ayula_zone=Command p1_lib 51->49 p0_lib 50->50 new_on_p1_bf=['forest'] new_on_p0_bf=[] p1_lib_top=forest",
+  "A4 passed: Ayula in the command zone after choosing the command-zone replacement",
+  "A5 accounting: p1 hand 7->8 (draws~1), gy 0->0",
+  "A5 passed: revealed Forest put onto P1's BF (P1 library 51->49 = -1 draw(s) -1 revealed); P0's battlefield untouched",
+  "A6 passed: stack empty, waiting_for=Priority, game proceeding",
+  "verdict=not-reproduced cz_choice=zone"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6912.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server_excerpt.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 12x Chaos Warp / 48x Mountain decks are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The revealed top card is random; the assertions verify the routing outcome (owner's library, permanent->BF) rather than a specific revealed card."
+ ],
+ "duration_s": 36.5,
+ "started_at": "2026-09-13T05:11:00Z",
+ "setup_line": "P0 (Zurgo Bellstriker) holds Chaos Warp; P1 (Ayula, Queen Among Bears) casts Ayula onto the battlefield; P0 casts Chaos Warp targeting Ayula.",
+ "contract_line": "Replacement choice idx 0 (command zone): Ayula must move to the command zone; Chaos Warp must then shuffle and reveal from P1's (the commander owner's) library, putting the revealed Forest onto P1's battlefield; P0's library/battlefield untouched.",
+ "restoration": {
+  "supported": false,
+  "note": "No mid-game restoration is exercised: the evidence is captured from a single live game (pre/mid/post authoritative exports). Restoring these snapshots into a playable game is not supported by the engine's export format; the JSON envelopes are observational evidence only."
+ },
+ "stats": {
+  "wire_events": 6,
+  "states_seen": "n/a (authoritative pre/mid/post exports)",
+  "trigger_observations": 0
+ },
+ "server_version": "0.81.3",
+ "build_commit": "95bec6e",
+ "protocol_version": 70,
+ "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a"
+}
