@@ -1,0 +1,203 @@
+{
+ "issue": 6984,
+ "run_id": "20260913-6984b",
+ "title": "Tomb Tyrant - compound activation timing and game-state restrictions are unsupported",
+ "validated_at": "2026-09-13",
+ "validated_version": "v0.81.3",
+ "server_version": "v0.81.3",
+ "protocol_version": 70,
+ "build_commit": "95bec6e",
+ "server_binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+ "signature_verified": true,
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse_restrictions": "passed",
+  "A2_setup_ok": "passed",
+  "C1_count_enforced": "passed",
+  "B1_timing_enforced": "passed",
+  "A3_offered_when_legal": "passed",
+  "A4_activation_resolves": "passed",
+  "A5_cleanup": "passed"
+ },
+ "result": "A1 parse_restrictions: passed (2 restriction nodes, 0 Unimplemented); A2 setup_ok: passed; C1 count_enforced: passed (P0 turn, zombie_gy<3); B1 timing_enforced: passed (P1 turn, zombie_gy>=3); A3 offered_when_legal: passed; A4 activation_resolves: passed (returned oid 17); A5 cleanup: passed.",
+ "scope": "Tomb Tyrant compound activation restriction ('Activate only during your turn and only if there are at least three Zombie creature cards in your graveyard'): card-data parse check + runtime offer scans with each condition failing independently and both succeeding; native engine, two human-client seats",
+ "driver_state": {
+  "tyrant_cast_turn": 8,
+  "tyrant_oid": 24,
+  "test_c_done": true,
+  "test_b_done": true,
+  "test_a_done": true,
+  "activation_submitted": true,
+  "activation_resolved": true,
+  "pre_a_exported": true,
+  "mid_b_exported": true,
+  "mid_c_exported": true,
+  "post_exported": true,
+  "post_at": 1789302667.4020135,
+  "scan_c": {
+   "offered": false,
+   "channel": null,
+   "turn": 10,
+   "phase": "PreCombatMain",
+   "active_player": 0,
+   "priority_player": 0,
+   "tyrant_tapped": false,
+   "untapped_swamps": 4,
+   "zombie_gy": 0,
+   "ghoul_on_bf": true,
+   "fodder_oid": 45
+  },
+  "scan_b": {
+   "offered": false,
+   "channel": null,
+   "turn": 45,
+   "phase": "PreCombatMain",
+   "active_player": 1,
+   "priority_player": 0,
+   "tyrant_tapped": false,
+   "untapped_swamps": 20,
+   "zombie_gy": 3,
+   "ghoul_on_bf": true,
+   "fodder_oid": 45
+  },
+  "scan_a": {
+   "offered": true,
+   "channel": "legal_actions",
+   "turn": 46,
+   "phase": "PreCombatMain",
+   "active_player": 0,
+   "priority_player": 0,
+   "tyrant_tapped": false,
+   "untapped_swamps": 21,
+   "zombie_gy": 3,
+   "ghoul_on_bf": true,
+   "fodder_oid": 45
+  },
+  "entombed_oids": [
+   48,
+   56,
+   17
+  ],
+  "returned_oid": 17,
+  "life_p0": null,
+  "life_p1": null,
+  "sacrificed_oid": 45,
+  "mid_res_exported": true,
+  "returned_name": "tomb tyrant"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "offer_scans": [
+   {
+    "test": "C",
+    "offered": false,
+    "channel": null,
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "active_player": 0,
+    "priority_player": 0,
+    "tyrant_tapped": false,
+    "untapped_swamps": 4,
+    "zombie_gy": 0,
+    "ghoul_on_bf": true,
+    "fodder_oid": 45
+   },
+   {
+    "test": "B",
+    "offered": false,
+    "channel": null,
+    "turn": 45,
+    "phase": "PreCombatMain",
+    "active_player": 1,
+    "priority_player": 0,
+    "tyrant_tapped": false,
+    "untapped_swamps": 20,
+    "zombie_gy": 3,
+    "ghoul_on_bf": true,
+    "fodder_oid": 45
+   },
+   {
+    "test": "A",
+    "offered": true,
+    "channel": "legal_actions",
+    "turn": 46,
+    "phase": "PreCombatMain",
+    "active_player": 0,
+    "priority_player": 0,
+    "tyrant_tapped": false,
+    "untapped_swamps": 21,
+    "zombie_gy": 3,
+    "ghoul_on_bf": true,
+    "fodder_oid": 45
+   }
+  ],
+  "entomb_searches": [
+   {
+    "shape": [
+     "SearchChoice",
+     "schema",
+     "48"
+    ],
+    "picked": 48,
+    "n": 48
+   },
+   {
+    "shape": [
+     "SearchChoice",
+     "schema",
+     "47"
+    ],
+    "picked": 56,
+    "n": 47
+   },
+   {
+    "shape": [
+     "SearchChoice",
+     "schema",
+     "29"
+    ],
+    "picked": 17,
+    "n": 29
+   }
+  ],
+  "sac_prompts": [
+   {
+    "shape": [
+     "PayCost",
+     "schema",
+     "2"
+    ],
+    "sacrificed": 45,
+    "name": "diregraf ghoul"
+   }
+  ]
+ },
+ "notes": [
+  "parse input: pinned card-data.json sha256=c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a (v0.81.3 signed data manifest)",
+  "A1: Tomb Tyrant activated abilities=1; activation_restrictions=['RequiresCondition', 'DuringYourTurn']; count>=3 node=True; DuringYourTurn=True; Unimplemented nodes=0 -> passed",
+  "A2: test-C scan ran=True; zombie_gy@C=0; tyrant untapped@C=True -> passed",
+  "C1: P0 turn t10 PreCombatMain, zombie_gy=0 (<3), untapped_swamps=4, fodder=45: offered=False -> passed",
+  "B1: P1 turn t45 PreCombatMain, P0 priority, zombie_gy=3 (>=3), untapped_swamps=20, fodder=45: offered=False -> passed",
+  "A3: P0 turn t46 PreCombatMain, zombie_gy=3 (>=3), channel=legal_actions: offered=True -> passed",
+  "A4: pre-gy zombies=3; returned to BF=[17] (tomb tyrant); tyrant tapped post=True -> passed",
+  "A5: post stack empty=True -> passed",
+  "verdict=not-reproduced: both parsed restrictions enforced at runtime on v0.81.3"
+ ],
+ "driver_notes": [
+  "Test order C -> B -> A in one game isolates each failing condition before the positive control.",
+  "Offer scans check both advertisement channels: legal_actions ActivateAbility and viewer_interaction activateAbility choices.",
+  "Entomb's library search answered by choosing Tomb Tyrant; the sacrificed creature is the Diregraf Ghoul (fallback: a second Tyrant copy).",
+  "Each scan records payable-cost preconditions (untapped Swamps, untapped Tyrant, fodder present) so a withheld offer is attributable to the restriction under test."
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The 'return at random' choice is engine-driven; the assertion checks that one of the Entombed Zombie cards changed zones graveyard -> battlefield."
+ ],
+ "duration_s": 136.6
+}
