@@ -1,0 +1,315 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_overrun_cost": "failed",
+  "A3_bears_cost": "failed",
+  "A4_dreadmaw_goreclaw_control": "passed",
+  "A5_thryx_dreadmaw_cost": "failed",
+  "A6_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "goreclaw_on_p0_bf=True thryx_on_p1_bf=True",
+  "A2_overrun_cost": "Overrun (P0): paid 3 mana (printed 5, expect 5); non-creature: no reduction expected",
+  "A3_bears_cost": "Grizzly Bears (P0): paid 1 mana (printed 2, expect 2); creature power 2 < 4: no reduction expected",
+  "A4_dreadmaw_goreclaw_control": "Colossal Dreadmaw (P0): paid 4 mana (printed 6, expect 4); creature power 6: {2} reduction expected (control)",
+  "A5_thryx_dreadmaw_cost": "Colossal Dreadmaw (P1): paid 6 mana (printed 6, expect 5); MV 6 with Thryx: {1} reduction expected",
+  "A6_cleanup": "stack empty=True; turn=47"
+ },
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": [
+      5
+     ]
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "tests": [
+  {
+   "key": "overrun",
+   "name": "Overrun",
+   "player": 0,
+   "printed": 5,
+   "expect": 5,
+   "pre_untapped": 7,
+   "post_untapped": 4,
+   "paid": 3,
+   "done": true,
+   "note": "non-creature: no reduction expected"
+  },
+  {
+   "key": "bears",
+   "name": "Grizzly Bears",
+   "player": 0,
+   "printed": 2,
+   "expect": 2,
+   "pre_untapped": 21,
+   "post_untapped": 20,
+   "paid": 1,
+   "done": true,
+   "note": "creature power 2 < 4: no reduction expected"
+  },
+  {
+   "key": "dreadmaw_goreclaw",
+   "name": "Colossal Dreadmaw",
+   "player": 0,
+   "printed": 6,
+   "expect": 4,
+   "pre_untapped": 22,
+   "post_untapped": 18,
+   "paid": 4,
+   "done": true,
+   "note": "creature power 6: {2} reduction expected (control)"
+  },
+  {
+   "key": "dreadmaw_thryx",
+   "name": "Colossal Dreadmaw",
+   "player": 1,
+   "printed": 6,
+   "expect": 5,
+   "pre_untapped": 23,
+   "post_untapped": 17,
+   "paid": 6,
+   "done": true,
+   "note": "MV 6 with Thryx: {1} reduction expected"
+  }
+ ],
+ "goreclaw_cast_turn": 8,
+ "thryx_cast_turn": 29
+}
