@@ -1,0 +1,67 @@
+wrote parse_emrakul.json
+P0 creating game...
+P1 joining...
+game 8IZH9S; seats 0/1
+P0 mulligan -> Mulligan
+P1 mulligan -> Keep
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+P0 bottoms 1
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+SETUP t1: hand=['Faithless Looting', 'Mountain', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=1 untappedL=1
+SETUP t1: hand=['Faithless Looting', 'Mountain', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=1 untappedL=1
+SETUP t1: hand=['Faithless Looting', 'Mountain', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=1 untappedL=1
+SETUP t1: hand=['Faithless Looting', 'Mountain', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=1 untappedL=1
+SETUP t3: hand=['Faithless Looting', 'Faithless Looting', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=2 untappedL=2
+exported pre.json
+pre.json exported (P1 life=20)
+SETUP t3: hand=['Faithless Looting', 'Faithless Looting', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=2 untappedL=2
+SETUP t3: hand=['Faithless Looting', 'Faithless Looting', 'Wastes', 'Fiery Temper', 'Faithless Looting'] untappedM=2 untappedL=2
+P0 casts Faithless Looting (control)
+[control] discards ['Fiery Temper', 'Wastes'] oids=['15', '39']; WATCH armed for control
+Looting (control) resolved (discard done)
+[P0] WATCH prompt (control): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH control: Fiery Temper oid=15 entered EXILE
+[P0] WATCH control: stack entry mentions madness: {"id": 121, "source_id": 15, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 15, "ability": {"effect": {"type": "MadnessCast", "cost": {"type": "Cost", "shards": ["Red"], "
+[P0] control madness CAST OFFER via CastOffer (choice=8IZH9S.0.51.c0)
+[P0] answered vi 8IZH9S.0 choice 8IZH9S.0.51.c0 (rtype=exactChoices spec=None)
+[P0] control madness target: P1 ()
+[P0] answered vi 8IZH9S.0 choice 8IZH9S.0.52.t1 (rtype=schema spec=sequence)
+[P0] WATCH prompt (control): wf=Priority iid=8IZH9S.0 n=1
+[P0] WATCH control: madness spell on stack
+[P0] WATCH prompt (control): wf=Priority iid=8IZH9S.0 n=1
+[P0] WATCH control: P1 life now 17
+[P0] WATCH control: madness spell left the stack (resolved)
+[P0] WATCH control closed: cast resolved (control) (exiled=['15'] offer=True resolved=True)
+=== stage -> PRIMARY_SETUP ===
+exported mid.json
+mid.json exported (P1 life now 17)
+P0 casts Faithless Looting (primary: discarding Emrakul)
+[primary] discards ['Emrakul, the World Anew', 'Wastes'] oids=['30', '17']; WATCH armed for primary
+Looting (primary) resolved (discard done)
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=6
+[P0] WATCH primary: Emrakul, the World Anew oid=30 in GRAVEYARD (no madness replacement)
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=2
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=3
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=3
+[P0] WATCH prompt (primary): wf=Priority iid=8IZH9S.0 n=7
+[P0] WATCH primary closed: no offer by turn 7 main phase (primary) (exiled=[] offer=None resolved=False)
+exported post.json
+A1_parse_emrakul_madness: failed
+A2_setup_ok: passed
+A3_control_exile: passed
+A4_control_offer: passed
+A5_control_resolves: passed
+A6_emrakul_exile: failed
+A7_emrakul_offer: failed
+A8_cleanup: passed
+verdict: reproduced
+wrote run.json
+copied scenario_6987.py and server log(s) into EVDIR
