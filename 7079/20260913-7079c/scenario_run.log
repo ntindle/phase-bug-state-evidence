@@ -1,0 +1,45 @@
+game ETADYC; seats P0=0 P1=1 RUN_ID=20260913-7079c
+P0 keeps (6 lands; magnificent end=True plains=True)
+P1 keeps (6 lands; grizzly bears=True plains=False)
+DIAG turn=1 active=1 phase=PreCombatMain wf=Priority pp=1 life=[20, 20] bear=None attacked=False window=False offered_red=False offered_pr=False end=False/False lands0=[]
+[P1] plays land
+[P0] plays land (now 1 in play)
+[P0] want land but no PlayLand advertised; n_lands=1 hold=True actions=['PassPriority', 'TapLandForMana']
+[P0] castdiag t2 PreCombatMain: untapped=['plains'] casts=[]
+[P0] want land but no PlayLand advertised; n_lands=1 hold=True actions=['PassPriority', 'TapLandForMana']
+[P0] castdiag t2 PostCombatMain: untapped=['plains'] casts=[]
+[P1] plays land
+[P1] casts Grizzly Bears oid=119
+[P0] plays land (now 2 in play)
+[P0] castdiag t4 PreCombatMain: untapped=['plains', 'plains'] casts=[]
+[P0] castdiag t4 PostCombatMain: untapped=['plains', 'plains'] casts=[]
+[P1] plays land
+[P1] attacks with bears [119]
+exported PRE
+WINDOW ASSESSED: offered_reduced=False detail={"bear_oid": 119, "bear_tapped": true, "offered_oids": [], "phase": "PreCombatMain", "turn": 6, "untapped_lands": ["plains", "plains"]}
+[P0] not offered at reduced cost; releasing land hold for the printed-cost control
+[P0] plays land (now 3 in play)
+[P0] want land but no PlayLand advertised; n_lands=3 hold=False actions=['PassPriority', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana']
+[P0] castdiag t6 PreCombatMain: untapped=['plains', 'plains', 'plains'] casts=[]
+[P0] want land but no PlayLand advertised; n_lands=3 hold=False actions=['PassPriority', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana']
+[P0] castdiag t6 PostCombatMain: untapped=['plains', 'plains', 'plains'] casts=[]
+[P1] plays land
+[P1] attacks with bears [119]
+[P0] plays land (now 4 in play)
+[P0] want land but no PlayLand advertised; n_lands=4 hold=False actions=['PassPriority', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana']
+[P0] castdiag t8 PreCombatMain: untapped=['plains', 'plains', 'plains', 'plains'] casts=[]
+[P0] want land but no PlayLand advertised; n_lands=4 hold=False actions=['PassPriority', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana', 'TapLandForMana']
+[P0] castdiag t8 PostCombatMain: untapped=['plains', 'plains', 'plains', 'plains'] casts=[]
+[P1] plays land
+[P1] attacks with bears [119]
+[P0] plays land (now 5 in play)
+[P0] CastSpell offered for Magnificent End: {'by': 'P0', 'turn': 10, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains', 'plains', 'plains', 'plains'], 'oids': [33, 49, 33, 49]}
+[P0] printed-cost control: offered at 5 mana (turn 10)
+exported POST
+loaded pre.json
+loaded post.json
+server.log excerpt failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/20260913-7079c/server.log'
+wrote summary.png
+manifest: MISSING server.log
+wrote manifest.sha256
+manifest: MISSING server.log

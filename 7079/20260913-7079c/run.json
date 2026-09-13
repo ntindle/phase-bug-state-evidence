@@ -1,0 +1,158 @@
+{
+ "run_id": "20260913-7079c",
+ "issue": 7079,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run; its games.db holds only this run)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "48cc1177f056ceb83689a3cc4f499aeb109184e3ac4f829c7bdd6a82a365df33",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "magnificent end",
+    12
+   ],
+   [
+    "plains",
+    28
+   ],
+   [
+    "forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_reduced_offer": "failed",
+  "A4_printed_offer": "passed",
+  "A5_reduced_cast": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "life_trace": [],
+  "offer_scans": [
+   {
+    "by": "P0",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "untapped_lands": [
+     "plains",
+     "plains",
+     "plains",
+     "plains",
+     "plains"
+    ],
+    "oids": [
+     33,
+     49,
+     33,
+     49
+    ]
+   }
+  ]
+ },
+ "driver_state": {
+  "land_hold": false,
+  "window_assessed": true,
+  "offered_reduced": false,
+  "offered_reduced_detail": {
+   "turn": 6,
+   "phase": "PreCombatMain",
+   "untapped_lands": [
+    "plains",
+    "plains"
+   ],
+   "bear_oid": 119,
+   "bear_tapped": true,
+   "offered_oids": []
+  },
+  "offered_printed": true,
+  "offered_printed_detail": {
+   "turn": 10,
+   "phase": "PreCombatMain",
+   "untapped_lands": [
+    "plains",
+    "plains",
+    "plains",
+    "plains",
+    "plains"
+   ]
+  },
+  "end_cast": false,
+  "end_in_flight": false,
+  "end_oid": null,
+  "end_resolved": false,
+  "end_resolved_at": null,
+  "target_answered": false,
+  "target_auto": false,
+  "target_submitted_oid": null,
+  "bear_oid": 119,
+  "lands_tapped_at_cast": null,
+  "pre_exported": true,
+  "post_exported": true,
+  "p1_bear_cast": true,
+  "p1_attacked": true,
+  "finished": true
+ },
+ "notes": [
+  "parse: static ModifyCost clause = {\"mode\": {\"ModifyCost\": {\"mode\": \"Reduce\", \"amount\": {\"type\": \"Cost\", \"shards\": [], \"generic\": 3}, \"spell_filter\": {\"type\": \"Typed\", \"type_filters\": [\"Card\"], \"controller\": null, \"properties\": [{\"type\": \"Targets\", \"filter\": {\"type\": \"Typed\", \"type_filters\": [\"Creature\"], \"controller\": null, \"properties\": [{\"type\": \"Tapped\"}]}}]}}}, \"affected\": {\"type\": \"SelfRef\"}, \"modifications\": [], \"condition\": null, \"affected_zone\": null, \"effect_zone\": null, \"active_zones\": [\"Hand\", \"Stack\", \"Command\", \"Graveyard\", \"Exile\", \"Library\"], \"characteristic_defining\": false, \"description\": \"This spell costs {3}",
+  "A1_parse_gap -> passed (Reduce 3 generic, Targets Tapped Creature, SelfRef)",
+  "A2: phase=PreCombatMain turn=6 untapped_lands=['plains', 'plains'] bear=119 tapped=True pp=0 end_in_hand=True",
+  "A3: offered_reduced=False detail={'turn': 6, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains'], 'bear_oid': 119, 'bear_tapped': True, 'offered_oids': []}",
+  "A4: offered_printed=True detail={'turn': 10, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains', 'plains', 'plains', 'plains']}",
+  "A5 not-run: spell never offered at reduced cost",
+  "A6: stack_empty=True",
+  "verdict=reproduced: with a tapped-creature target and exactly {1}{W} available, CastSpell for Magnificent End was NOT advertised; printed-cost control offered=True",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7079.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Magnificent End / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The untapped-creature-target control (spell not offered at reduced total when only untapped targets are legal) was not exercised in this run; the printed-cost control (A4) covers the positive offer path.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 46.0
+}
