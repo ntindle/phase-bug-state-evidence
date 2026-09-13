@@ -1,0 +1,40 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.3", "build_commit": "95bec6e", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game UJUF1V; seats P0=0 P1=1
+[P0] keeps hand
+[P0] casts Grizzly Bears (turn 8)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Sanctuary Warden (turn 12)
+[P0] recorded TargetSelection #1: Grizzly Bears(Battlefield), Sanctuary Warden(Battlefield)
+[P0] Warden-trigger target (no may-choice): Grizzly Bears
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+board ready (turn 20): NG + Warden (shield=2) + Township + Bears; stage -> CONTROL
+exported pre_control.json (609865 bytes)
+[P0] activates Nesting Grounds (control, turn 20); pre_control.json exported
+[P0] recorded TargetSelection #2: Plains(Battlefield), Plains(Battlefield), Forest(Battlefield), Grizzly Bears(Battlefield), Forest(Battlefield), Plains(Battlefield), Plains(Battlefield), Sanctuary Warden(Battlefield)
+[P0] NG target answers Sanctuary Warden (dest_slot=False)
+[P0] recorded TargetSelection #3: Plains(Battlefield), Plains(Battlefield), Plains(Battlefield), Plains(Battlefield), Forest(Battlefield), Forest(Battlefield), Forest(Battlefield), Grizzly Bears(Battlefield)
+[P0] NG target answers Grizzly Bears (dest_slot=True)
+exported post_control.json (615785 bytes)
+[P0] NG activation #1 resolved; post_control exported; stage -> PROOF_SETUP
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre_township.json (614601 bytes)
+[P0] activates Gavony Township (turn 22); pre_township exported
+exported post_township.json (623353 bytes)
+[P0] Township resolved: Warden counters={'P1P1': 1, 'shield': 1}; post_township exported; stage -> PROOF
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre_proof.json (607937 bytes)
+[P0] activates Nesting Grounds (proof, turn 24); pre_proof.json exported
+[P0] recorded TargetSelection #4: Plains(Battlefield), Plains(Battlefield), Forest(Battlefield), Grizzly Bears(Battlefield), Forest(Battlefield), Plains(Battlefield), Plains(Battlefield), Sanctuary Warden(Battlefield)
+[P0] NG target answers Sanctuary Warden (dest_slot=False)
+[P0] recorded TargetSelection #5: Plains(Battlefield), Plains(Battlefield), Plains(Battlefield), Plains(Battlefield), Forest(Battlefield), Forest(Battlefield), Forest(Battlefield), Grizzly Bears(Battlefield)
+[P0] NG target answers Grizzly Bears (dest_slot=True)
+exported post_proof.json (613834 bytes)
+[P0] NG activation #2 resolved; post_proof exported; DONE
+loop ended: stage=DONE stop=True target_sels=5 decisions=0
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_control_move": "passed", "A3_counter_prompted": "failed", "A4_exact_move": "not-run", "A5_default_documents": "passed", "A6_cleanup": "passed"}
+VERDICT: reproduced
+run.json written; verdict = reproduced
+server_excerpts.log: 0 matching lines
