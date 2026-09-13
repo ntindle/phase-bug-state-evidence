@@ -1,0 +1,142 @@
+{
+ "run_id": "20260913-6950c",
+ "issue": 6950,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9374, started for this run (log in runs/20260913-6950c/server.log)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e967031b6c95936585b99015407e8e2ebb109187b88d458b598a788bb41a83e6",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "elenda, saint of dusk",
+    4
+   ],
+   [
+    "revitalize",
+    12
+   ],
+   [
+    "plains",
+    22
+   ],
+   [
+    "swamp",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_parse": "passed",
+  "A3_gain_23": "passed",
+  "A4_below_threshold": "failed",
+  "A5_mid_threshold": "failed",
+  "A6_at_threshold": "passed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [
+   {
+    "who": "P1",
+    "iid": "ZB9V20.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   }
+  ],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "life_trace": [
+   [
+    4.0,
+    20
+   ],
+   [
+    35.7,
+    23
+   ],
+   [
+    44.3,
+    26
+   ],
+   [
+    44.9,
+    29
+   ],
+   [
+    49.5,
+    32
+   ]
+  ]
+ },
+ "driver_state": {
+  "elenda_cast": true,
+  "elenda_oid": 28,
+  "rev_casts": 4,
+  "pre_exported": true,
+  "mid1_exported": true,
+  "post_exported": true,
+  "mid1_at": null,
+  "post_at": 1789289643.6777527,
+  "rev_resolved_at": null,
+  "rev_last_life": 32
+ },
+ "notes": [
+  "parse: 2 static_abilities in card-data",
+  "parse: static[0] condition = {\"type\": \"QuantityComparison\", \"lhs\": {\"type\": \"Ref\", \"qty\": {\"type\": \"LifeTotal\", \"player\": {\"type\": \"Controller\"}}}, \"comparator\": \"GT\", \"rhs\": {\"type\": \"Ref\", \"qty\": {\"type\": \"StartingLifeTotal\"}}}",
+  "parse: static[1] condition = {\"type\": \"Unrecognized\", \"text\": \"your life total is at least 10 greater than your starting life total\"}",
+  "A2_parse: static0_parsed=True static1_unrecognized=True",
+  "A1: oid=28 zone=Battlefield life=20 P/T=9/9 menace=False",
+  "A3: MID1 P0 life=23 (expected 23)",
+  "A4 FAILED: PRE (life 20) Elenda P/T=9/9 menace=False (Oracle-correct: 4/4, no menace). The +5/+5 static applies even though life is NOT >= 10 above starting. BUG REPRODUCED.",
+  "A5 FAILED: MID1 (life 23) Elenda P/T=10/10 menace=True (Oracle-correct: 5/5 + menace; the +5/+5 static still applies below its threshold). BUG REPRODUCED.",
+  "A6: POST life=32 Elenda P/T=10/10 menace=True (expected 10/10 + menace)",
+  "A7: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid1.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6950.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Elenda / 12x Revitalize density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Revitalize stands in for 'gain life' triggers; the static's deck-builder flag is evidenced via the card-data parse check.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 57.6
+}
