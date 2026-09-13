@@ -1,0 +1,48 @@
+game QV6SU1; seats P0=0 P1=1 RUN_ID=20260913-6983l
+P0 keeps (3 lands; mutation=True bolt=False bolt_x0 creature=True)
+P1 keeps (4 lands; mutation=False bolt=True bolt_x3 creature=False)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 life=[20, 20] baloth=None bears=None bolt=False/False mut=False/False pay_prompt=False pre=False post=False stack=[]
+life = (20, 20)
+CASTDIAG turn=1 phase=PreCombatMain acts=[('PassPriority', None), ('PlayLand', 'island'), ('PlayLand', 'forest'), ('PlayLand', 'forest'), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('PlayLand', 'forest')]
+CASTDIAG turn=1 phase=PostCombatMain acts=[('PassPriority', None), ('TapLandForMana', None)]
+CASTDIAG turn=3 phase=PreCombatMain acts=[('PassPriority', None), ('PlayLand', 'forest'), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('PlayLand', 'forest'), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('TapLandForMana', None)]
+[P0] casting grizzly bears via CastSpell (oid 20)
+Bears on BF: oid=20 (turn 3)
+CASTDIAG turn=3 phase=PostCombatMain acts=[('PassPriority', None)]
+CASTDIAG turn=5 phase=PreCombatMain acts=[('PassPriority', None), ('PlayLand', 'forest'), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('PlayLand', 'island'), ('TapLandForMana', None), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('CastSpell', 'repulsive mutation'), ('PlayLand', 'forest'), ('CastSpell', 'repulsive mutation'), ('PlayLand', 'forest')]
+CASTDIAG turn=5 phase=PostCombatMain acts=[('PassPriority', None), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('TapLandForMana', None)]
+CASTDIAG turn=7 phase=PreCombatMain acts=[('PassPriority', None), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('PlayLand', 'forest'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('TapLandForMana', None), ('PlayLand', 'island'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None)]
+[P0] casting leatherback baloth via CastSpell (oid 31)
+Baloth on BF: oid=31 (turn 7)
+CASTDIAG turn=7 phase=PostCombatMain acts=[('PassPriority', None), ('TapLandForMana', None)]
+CASTDIAG turn=9 phase=PreCombatMain acts=[('PassPriority', None), ('PlayLand', 'forest'), ('PlayLand', 'island'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('TapLandForMana', None), ('PlayLand', 'island'), ('TapLandForMana', None), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('CastSpell', 'repulsive mutation'), ('PlayLand', 'forest')]
+CASTDIAG turn=9 phase=PostCombatMain acts=[('PassPriority', None), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('CastSpell', 'repulsive mutation'), ('TapLandForMana', None), ('TapLandForMana', None), ('TapLandForMana', None), ('TapLandForMana', None), ('TapLandForMana', None)]
+[P1] casting lightning bolt via CastSpell (oid 72)
+[P1] bolt targets P0 (seat 0)
+[P1] submitting interaction iid=QV6SU1.0.151 choice=QV6SU1.0.151.t0 ()
+BOLT2-DIAG turn=10 hand_bolts=2 untapped_lands=3 in_flight=True
+[P1] casting lightning bolt via CastSpell (oid 81)
+[P1] Bolt #2 submitted (oid 81)
+[P1] bolt targets P0 (seat 0)
+[P1] submitting interaction iid=QV6SU1.0.153 choice=QV6SU1.0.153.t0 ()
+exported PRE
+PRE exported: Baloth+Bears on BF, 2 Bolts on stack
+RESPOND-DIAG turn=10 stack=[{"id": 72, "source_id": 72, "controller": 1, "kind": {"type": "Spell", "data": {"card_id": 72, "ability": {"effect": {"type": "DealDamage", "amount": {"type": "Fixed", "value": 3}, "target": {"type": "Any"}}, "targets": [{"Player": 0}], "source_id": 72, "cast_occurrence": {"caster": 1, "turn_journal_index": 0}, "controller": 1, "kind": "Spell", "sub_ability": null, "duration": null, "condition": null, "context": {"additional_cost_paid": false, "alternative_mana_cost_paid": false, "optional_effect_performed": false, "cast_from_zone": "Hand", "cast_controller": 1, "cast_phase": "PreCombatMain"}
+RESPOND-DIAG acts=['PassPriority', 'CastSpell', 'CastSpell', 'CastSpell', 'TapLandForMana', 'TapLandForMana', 'CastSpell', 'TapLandForMana', 'TapLandForMana', 'CastSpell', 'TapLandForMana', 'CastSpell']
+[P0] casting repulsive mutation via CastSpell (oid 8)
+Mutation submitted (oid 8); awaiting targets/X
+[P0] mutation creature-target -> Leatherback Baloth ref=31
+[P0] submitting interaction iid=QV6SU1.0.156 choice=QV6SU1.0.156.t1 (Leatherback Baloth)
+[P0] Mutation X-choice -> X=0
+mutation left the stack (resolved -> P0 gy =True)
+life = (17, 20)
+bolt #2 left the stack; P0 life=17
+life = (14, 20)
+bolt #1 left the stack; P0 life=14
+exported POST
+POST exported: both spells resolved, stack empty
+loaded pre.json
+loaded post.json
+wrote server.log excerpts (332 lines for game QV6SU1)
+wrote summary.png
+wrote manifest.sha256
