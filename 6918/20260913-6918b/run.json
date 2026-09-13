@@ -1,0 +1,127 @@
+{
+ "run_id": "20260913-6918b",
+ "issue": 6918,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9374, started this VM session for sibling run 20260913-6918 (pid file runs/20260913-6918/server.pid); the 20260913-6918b launch reused that live server (same binary, same card data, same VM session). Server log copied into this dir.",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d45ef2647ff7ac5622d72eda9bf9c0c81827173358f466577c367815a69d83c1",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "door of destinies",
+    4
+   ],
+   [
+    "llanowar elves",
+    8
+   ],
+   [
+    "grizzly bears",
+    8
+   ],
+   [
+    "forest",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counter_on_elf": "failed",
+  "A3_control_bear": "passed",
+  "A4_anthem": "passed",
+  "A5_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "type_choice": [
+   {
+    "who": "P0",
+    "iid": "0RZ4EB.0.159",
+    "chosen": "elf",
+    "attempt": 1,
+    "wf_type": "NamedChoice",
+    "n_choices": 374
+   }
+  ],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "door_cast": true,
+  "door_cast_turn": 11,
+  "door_oid": 53,
+  "chosen_type": "elf",
+  "choice_iid": "0RZ4EB.0.159",
+  "elf1_cast": true,
+  "elf1_resolved_at": 1789287634.2356026,
+  "mid1_exported": true,
+  "bear_cast": true,
+  "bear_resolved_at": 1789287645.788484,
+  "mid2_exported": true,
+  "elf2_cast": true,
+  "elf2_resolved_at": 1789287656.4095156,
+  "post_exported": true,
+  "post_at": 1789287666.5992734,
+  "counters_seen": [
+   [
+    27.109016180038452,
+    0
+   ]
+  ],
+  "trigger_stack_seen": false
+ },
+ "notes": [
+  "entry choice prompt answered 'Elf' and accepted (iid 0RZ4EB.0.159); door object keys=['abilities', 'assigns_damage_as_though_unblocked', 'assigns_damage_from_toughness', 'assigns_no_combat_damage', 'attached_to', 'attachments', 'available_mana_pips', 'back_face', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_defense', 'base_keywords', 'base_loyalty', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_replacement_definitions', 'base_static_definitions', 'base_toughness', 'base_trigger_definitions', 'card_id', 'card_types', 'cast_controller', 'cast_face_committed', 'cast_from_zone', 'chosen_attributes', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'display_visible_to_viewer', 'echo_due', 'entered_battlefield_turn', 'face_down', 'flipped', 'foretold', 'harnessed', 'has_mana_ability', 'has_summoning_sickness', 'id', 'in_attraction_deck', 'in_contraption_deck', 'incarnation', 'intensity', 'is_commander', 'is_emblem', 'is_renowned', 'is_saddled', 'is_suspected', 'is_token', 'keywords', 'loyalty', 'loyalty_activations_this_turn', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast', 'mana_spent_to_cast_amount', 'modal_back_face', 'monstrous', 'name', 'next_trigger_base_set_instance', 'owner', 'phase_status', 'power', 'printed_ref', 'replacement_definitions', 'saddled_by', 'static_definitions', 'summoning_sick', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_base_set_instance', 'trigger_definitions', 'trigger_occurrence_state', 'zone']",
+  "A1: door_oid=53 zone=Battlefield chosen_type=elf choice_iid=0RZ4EB.0.159",
+  "A2 FAILED: door charge counters in MID1 = 0 (expected 1 after casting an Elf). BUG REPRODUCED.",
+  "A3: counters mid1=0 mid2=0 (bear cast between)",
+  "A4: charge=0 elves=[('Llanowar Elves', 1, 1), ('Llanowar Elves', 1, 1)] (expected 1+0/1+0)",
+  "A5: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced",
+  "finalize: server.log for the 6918b launch was missing (server started under runs/20260913-6918); copied from there and provenance note corrected. Binary/data identity unchanged."
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid1.json",
+  "mid2.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6918.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Door / 8x Elves / 8x Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 64.9
+}
