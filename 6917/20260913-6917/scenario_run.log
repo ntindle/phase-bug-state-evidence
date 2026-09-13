@@ -1,0 +1,42 @@
+game 1JZ41C; seats P0=0 P1=1 RUN_ID=20260913-6917
+P0 keeps (6 lands)
+P1 keeps (7 lands)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0lands=0 P1bears=0 oko=None cast=False act=False mid=False post=False stack=0
+[P0] casting oko, thief of crowns via CastSpell (oid 18)
+Oko on BF: oid=18 loyalty=4
+[P1] casting grizzly bears via CastSpell (oid 85)
+[P1] casting grizzly bears via CastSpell (oid 82)
+exported PRE
+PRE exported before +1 activation
+[P0] activating Oko +1 (src 18)
+[P0] OKO TARGET PROMPT wf=TargetSelection candidates=2 submitted_oid=None
+[P0] submitting interaction iid=1JZ41C.0.137 choice=1JZ41C.0.137.t0 (Grizzly Bears)
+[P0] OKO TARGET PROMPT wf=Priority candidates=5 submitted_oid=None
+[P0] submitting interaction iid=1JZ41C.0.138 choice=1JZ41C.0.138.c0 ()
+[P1] OKO TARGET PROMPT wf=Priority candidates=3 submitted_oid=None
+[P1] submitting interaction iid=1JZ41C.0.139 choice=1JZ41C.0.139.c0 ()
+[P0] OKO TARGET PROMPT wf=Priority candidates=11 submitted_oid=None
+[P0] submitting interaction iid=1JZ41C.0.140 choice=1JZ41C.0.140.c0 ()
+Oko +1 resolved on turn 9; target oid=None
+exported MID
+exported POST
+POST exported on P0 turn 11
+post exported; finishing
+loaded pre.json
+loaded mid.json
+loaded post.json
+copied scenario_6917.py and server.log into EVDIR
+wrote summary.png
+wrote manifest.sha256 (9 files)
+loaded pre.json (turn 9, active 0, phase PreCombatMain)
+loaded mid.json (turn 9, active 0, phase PreCombatMain)
+loaded post.json (turn 11, active 0, phase PreCombatMain)
+A1 passed A1: oko oids=[18] loyalty=4; p1 bears=2
+A2 passed A2: oko loyalty in MID = 5 (expected 5)
+A3 passed A3: target oid=85 MID sig={'name': 'Grizzly Bears', 'zone': 'Battlefield', 'power': 3, 'toughness': 3, 'color': ['Green'], 'subtypes': ['Elk'], 'n_abilities': 0, 'loyalty': None, 'controller': 1} is_elk=True
+A4 failed A4 FAILED: target reverted to 2/2 Bear on P0's next turn (turn 11) - elk effect expired at end of turn. BUG REPRODUCED. sig={'name': 'Grizzly Bears', 'zone': 'Battlefield', 'power': 2, 'toughness': 2, 'color': ['Green'], 'subtypes': ['Bear'], 'n_abilities': 0, 'loyalty': None, 'controller': 1}
+A5 passed A5: stack_empty=True waiting_for=Priority
+verdict reproduced
+rewrote run.json
+rewrote summary.png
+rewrote manifest.sha256 (9 files)

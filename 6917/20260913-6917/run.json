@@ -1,0 +1,176 @@
+{
+ "run_id": "20260913-6917",
+ "issue": 6917,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.81.3",
+  "build_commit": "95bec6e",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+  "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+  "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9374, started for this run (pid in runs/<run-id>/server.pid)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8dfda7eb955275df5148d29b182b2ca21a22a59fb96af48bb2dc48690b56ac7e",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "oko, thief of crowns",
+    4
+   ],
+   [
+    "forest",
+    28
+   ],
+   [
+    "island",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation": "passed",
+  "A3_elk_this_turn": "passed",
+  "A4_elk_persists": "failed",
+  "A5_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "target_selections": [
+   {
+    "stage": "oko_plus_one",
+    "who": "P0",
+    "iid": "1JZ41C.0.137",
+    "submitted_oid": null,
+    "candidates": [
+     "Grizzly Bears",
+     "Grizzly Bears"
+    ]
+   },
+   {
+    "stage": "oko_plus_one",
+    "who": "P0",
+    "iid": "1JZ41C.0.138",
+    "submitted_oid": null,
+    "candidates": [
+     "",
+     "Forest",
+     "Forest",
+     "Island",
+     "Forest"
+    ]
+   },
+   {
+    "stage": "oko_plus_one",
+    "who": "P1",
+    "iid": "1JZ41C.0.139",
+    "submitted_oid": null,
+    "candidates": [
+     "",
+     "Forest",
+     "Forest"
+    ]
+   },
+   {
+    "stage": "oko_plus_one",
+    "who": "P0",
+    "iid": "1JZ41C.0.140",
+    "submitted_oid": null,
+    "candidates": [
+     "",
+     "Island",
+     "Forest",
+     "Island",
+     "Island",
+     "Island",
+     "Forest",
+     "Forest",
+     "Forest",
+     "Island",
+     "Forest"
+    ]
+   }
+  ],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "oko_cast": true,
+  "oko_cast_turn": 5,
+  "oko_oid": 18,
+  "plus_one_done": true,
+  "act_turn": 9,
+  "target_oid": 85,
+  "target_candidates": [
+   "",
+   "Island",
+   "Forest",
+   "Island",
+   "Island",
+   "Island",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Island",
+   "Forest"
+  ],
+  "target_wf": "Priority",
+  "act_in_flight": false,
+  "mid_exported": true,
+  "post_exported": true,
+  "post_at": 1789286518.2709026,
+  "mid_act_turn": 9,
+  "oko_loyalty_mid": 5
+ },
+ "notes": [
+  "Finalize note: the as-run driver failed to record target_oid because the engine issues target-candidate references as strings (\"85\"), which the driver's isinstance(int) check dropped. The submitted choice was 1JZ41C.0.137.t0 -> reference \"85\" (wire_log.jsonl), and mid.json confirms oid 85 is the elk'd creature (oid 82 stayed a 2/2 Bear). Assertions above were re-evaluated from the saved states with target_oid=85. Three extra interaction_submission events in the wire log (iids .138/.139/.140) were passPriority choices on Priority menus - harmless; the game advanced normally to turn 11.",
+  "A1: oko oids=[18] loyalty=4; p1 bears=2",
+  "A2: oko loyalty in MID = 5 (expected 5)",
+  "A3: target oid=85 MID sig={'name': 'Grizzly Bears', 'zone': 'Battlefield', 'power': 3, 'toughness': 3, 'color': ['Green'], 'subtypes': ['Elk'], 'n_abilities': 0, 'loyalty': None, 'controller': 1} is_elk=True",
+  "A4 FAILED: target reverted to 2/2 Bear on P0's next turn (turn 11) - elk effect expired at end of turn. BUG REPRODUCED. sig={'name': 'Grizzly Bears', 'zone': 'Battlefield', 'power': 2, 'toughness': 2, 'color': ['Green'], 'subtypes': ['Bear'], 'n_abilities': 0, 'loyalty': None, 'controller': 1}",
+  "A5: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6917.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Oko / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "'Loses all abilities' is not separately asserted: Grizzly Bears has no abilities; the reported defect is the effect duration (until-EOT vs indefinite).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 32.6,
+ "finalized_by": "driver/finalize_6917.py (assertion re-evaluation from saved states; game evidence untouched)"
+}
