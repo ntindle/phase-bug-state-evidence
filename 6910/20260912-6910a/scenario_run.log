@@ -1,0 +1,57 @@
+ServerHello observed: {"type": "ServerHello", "data": {"server_version": "0.81.3", "build_commit": "95bec6e", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game TN2ZLR; seats P0=0 P1=1
+[P1] keeps hand (7 lands)
+[P0] keeps hand (5 lands)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] casts Goreclaw (turn 8)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": [5]}}
+[P0] casts Goreclaw (turn 8)
+Goreclaw on battlefield (turn 8); stage -> TEST
+exported pre_test_overrun.json (529760 bytes)
+[P0] test overrun: cast Overrun (oid 11); pre_untapped=7
+exported post_test_overrun.json (546879 bytes)
+[P0] test overrun: resolved to Graveyard; paid=3 (expect 5)
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] casts Thryx (turn 29)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre_test_bears.json (535432 bytes)
+[P0] test bears: cast Grizzly Bears (oid 13); pre_untapped=21
+exported post_test_bears.json (545019 bytes)
+[P0] test bears: resolved to Battlefield; paid=1 (expect 2)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre_test_dreadmaw_goreclaw.json (536569 bytes)
+[P0] test dreadmaw_goreclaw: cast Colossal Dreadmaw (oid 26); pre_untapped=22
+exported post_test_dreadmaw_goreclaw.json (552493 bytes)
+[P0] test dreadmaw_goreclaw: resolved to Battlefield; paid=4 (expect 4)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre_test_dreadmaw_thryx.json (537952 bytes)
+[P1] test dreadmaw_thryx: cast Colossal Dreadmaw (oid 71); pre_untapped=23
+exported post_test_dreadmaw_thryx.json (557950 bytes)
+[P1] test dreadmaw_thryx: resolved to Battlefield; paid=6 (expect 5)
+exported post_all_tests.json (557950 bytes)
+all tests complete; post_all_tests exported
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+settled one turn past completion; stopping
+loop ended: stage=DONE stop=True tests_done=['overrun', 'bears', 'dreadmaw_goreclaw', 'dreadmaw_thryx']
+ASSERTIONS: {"A1_setup_ok": "passed", "A2_overrun_cost": "failed", "A3_bears_cost": "failed", "A4_dreadmaw_goreclaw_control": "passed", "A5_thryx_dreadmaw_cost": "failed", "A6_cleanup": "passed"}
+VERDICT: reproduced
+run.json written; verdict = reproduced
+server_excerpts.log: 2 matching lines
