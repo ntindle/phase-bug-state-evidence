@@ -1,0 +1,189 @@
+{
+ "card": "Gix, Yawgmoth Praetor",
+ "oracle_text": "Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.\n{4}{B}{B}{B}, Discard X cards: Exile the top X cards of target opponent's library. You may play lands and cast spells from among cards exiled this way without paying their mana costs.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "ExileTop",
+    "player": {
+     "type": "Typed",
+     "type_filters": [],
+     "controller": "Opponent",
+     "properties": []
+    },
+    "count": {
+     "type": "Ref",
+     "qty": {
+      "type": "Variable",
+      "name": "X"
+     }
+    },
+    "position": {
+     "type": "Top"
+    }
+   },
+   "cost": {
+    "type": "Composite",
+    "costs": [
+     {
+      "type": "Mana",
+      "cost": {
+       "type": "Cost",
+       "shards": [
+        "Black",
+        "Black",
+        "Black"
+       ],
+       "generic": 4
+      }
+     },
+     {
+      "type": "Discard",
+      "count": {
+       "type": "Fixed",
+       "value": 0
+      },
+      "filter": null,
+      "random": false,
+      "self_ref": false
+     }
+    ]
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "play",
+     "description": "play lands"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CastFromZone",
+      "target": {
+       "type": "ExiledBySource"
+      },
+      "without_paying_mana_cost": true,
+      "mode": "Cast",
+      "driver": {
+       "ResolutionWindow": {
+        "bounds": {}
+       }
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "target_choice_timing": "Resolution",
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": "{4}{B}{B}{B}, Discard X cards: Exile the top X cards of target opponent's library. You may play lands and cast spells from among cards exiled this way without paying their mana costs.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "triggers": [
+  {
+   "mode": "DamageDone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PayCost",
+     "cost": {
+      "type": "PayLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "payer": {
+      "type": "ParentTargetController"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "ParentTargetController"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": {
+      "type": "EffectOutcome",
+      "signal": "OptionalEffectPerformed"
+     },
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "CombatOnly",
+   "secondary": false,
+   "valid_target": {
+    "type": "Typed",
+    "type_filters": [],
+    "controller": "Opponent",
+    "properties": []
+   },
+   "valid_source": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   },
+   "description": "Whenever a creature deals combat damage to one of your opponents, its controller may pay 1 life. If they do, they draw a card.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": []
+}

@@ -1,0 +1,49 @@
+card-data.json sha256=c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a
+saved parse_elder_brain.json
+Elder Brain permission nodes: play=[] cast=[('/triggers[0]/execute/sub_ability/sub_ability/sub_ability', 'GrantCastingPermission')] unimpl_play=[('/triggers[0]/execute/sub_ability/sub_ability', 'play lands')]
+saved parse_omenkeel.json
+saved parse_gix.json
+Gix permission nodes: play=[] cast=[('/abilities[0]/sub_ability/sub_ability', 'CastFromZone')] unimpl_play=[('/abilities[0]/sub_ability', 'play lands')]
+A5 census: 50 compound cards; Play half missing on 48: ['advanced floral invocations', 'all-you-can-eat buffet', 'benjamin sisko, besieged', "bolas's citadel", 'brilliant ultimatum', 'case of the locked hothouse', 'case of the lost witness', "colfenor's plans", 'coram, the undertaker', 'crystal skull, isu spyglass', 'elder brain', 'experimental frenzy', 'eye of duskmantle', 'future sight', "gaea's will", 'gix, yawgmoth praetor', "glarb, calamity's augur", 'grolnok, the omnivore', 'haldan, avid arcanist', "hauken's insight", 'intellect devourer', 'isu the abominable', 'kagha, shadow archdruid', 'kheru mind-eater', 'magus of the future', 'magus of the mind', 'magus of the will', 'mikey & don, party planners', 'muldrotha, the gravetide', 'nightveil specter', 'oblivion sower', 'one with the multiverse', 'sen triplets', 'serra paragon', "shaman's trance", 'the belligerent', 'the eighth doctor', 'the fourth doctor', 'the matrix of time', 'the reality chip', 'theater of horrors', 'tinybones, the pickpocket', 'traveling chocobo', 'windriddle palaces', 'wrenn and realmbreaker', "yawgmoth's agenda", "yawgmoth's will", 'zask, skittering swarmlord']
+game SG6K0H; seats P0=0 P1=1 RUN_ID=20260913-6963b
+P0 keeps (5 lands, brain=True)
+P1 keeps (4 lands, brain=False)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0life=20 P1life=20 brain=None attacked=False mid=False scan=False bolt=False/False/False P0hand=['elder brain', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'dark ritual'] P1hand_n=7
+[P0] casting dark ritual via CastSpell (oid 21)
+[P1] discarding to hand size: Forest
+[P1] submitting interaction iid=SG6K0H.0.34 choice=SG6K0H.0.34.s1 (Forest)
+[P1] discarding to hand size: Forest
+[P1] submitting interaction iid=SG6K0H.0.64 choice=SG6K0H.0.64.s1 (Forest)
+[P1] discarding to hand size: Forest
+[P1] submitting interaction iid=SG6K0H.0.94 choice=SG6K0H.0.94.s1 (Forest)
+[P1] discarding to hand size: Forest
+[P1] submitting interaction iid=SG6K0H.0.124 choice=SG6K0H.0.124.s1 (Forest)
+[P1] discarding to hand size: Island
+[P1] submitting interaction iid=SG6K0H.0.154 choice=SG6K0H.0.154.s3 (Island)
+[P0] casting dark ritual via CastSpell (oid 24)
+[P0] casting elder brain via CastSpell (oid 59)
+Elder Brain on BF: oid=59 turn=11
+[P1] discarding to hand size: Forest
+[P1] submitting interaction iid=SG6K0H.0.190 choice=SG6K0H.0.190.s3 (Forest)
+[P0] attacking P1 with Elder Brain oid=59 (turn 13)
+MID: exile set after attack: [(49, 'swamp'), (53, 'swamp'), (60, 'elder brain'), (62, 'island'), (68, 'forest'), (71, 'lightning bolt'), (86, 'lightning bolt'), (101, 'lightning bolt'), (103, 'lightning bolt'), (112, 'island')]
+exported MID
+[P0] OptionalEffectChoice: ACCEPTING the 'you may' permission (deliberate decision)
+[P0] submitting interaction iid=SG6K0H.0.203 choice=SG6K0H.0.203.c1 (true)
+exported PRE
+PRE exported at PostCombatMain turn 13
+SCAN PostCombatMain t13: exiled PlayLand offers=[] exiled CastSpell offers=[(60, 'elder brain', 'CastSpell'), (71, 'lightning bolt', 'CastSpell'), (86, 'lightning bolt', 'CastSpell'), (101, 'lightning bolt', 'CastSpell'), (103, 'lightning bolt', 'CastSpell'), (71, 'lightning bolt', 'CastSpell'), (86, 'lightning bolt', 'CastSpell'), (103, 'lightning bolt', 'CastSpell'), (101, 'lightning bolt', 'CastSpell'), (60, 'elder brain', 'CastSpell')] hand-land PlayLands=0
+[P0] offer scans complete
+[P0] casting exiled Lightning Bolt (oid 71) at P1; P1 life before=14
+[P0] bolt-target-p1: chose oid=None ()
+[P0] submitting interaction iid=SG6K0H.0.213 choice=SG6K0H.0.213.t1 ()
+exiled Bolt resolved: P1 life 14->11
+exported POST
+POST exported
+post exported; finishing
+loaded pre.json
+loaded mid.json
+loaded post.json
+copied scenario_6963.py and server.log into EVDIR
+wrote summary.png
+wrote manifest.sha256

@@ -1,0 +1,132 @@
+{
+ "card": "Elder Brain",
+ "oracle_text": "Menace\nWhenever this creature attacks a player, exile all cards from that player's hand, then they draw that many cards. You may play lands and cast spells from among the exiled cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.",
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "Attacks",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZoneAll",
+     "origin": "Hand",
+     "destination": "Exile",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Card"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "InZone",
+        "zone": "Hand"
+       }
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Ref",
+       "qty": {
+        "type": "EventContextAmount"
+       }
+      },
+      "target": {
+       "type": "DefendingPlayer"
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Unimplemented",
+       "name": "play",
+       "description": "play lands"
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "GrantCastingPermission",
+        "permission": {
+         "type": "PlayFromExile",
+         "duration": "Permanent",
+         "granted_to": 0,
+         "mode": "Cast",
+         "mana_spend_permission": "AnyTypeOrColor"
+        },
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": {
+        "ForAsLongAs": {
+         "condition": {
+          "type": "Unrecognized",
+          "text": "they remain exiled"
+         }
+        }
+       },
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": true,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever ~ attacks a player, exile all cards from that player's hand, then they draw that many cards. You may play lands and cast spells from among the exiled cards for as long as they remain exiled. If you cast a spell this way, you may spend mana as though it were mana of any color to cast it.",
+   "constraint": null,
+   "condition": null,
+   "batched": false,
+   "attack_target_filter": "Player"
+  }
+ ],
+ "static_abilities": []
+}

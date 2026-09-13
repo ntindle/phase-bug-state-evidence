@@ -1,0 +1,114 @@
+{
+ "card": "The Omenkeel",
+ "oracle_text": "Whenever a Vehicle you control deals combat damage to a player, that player exiles that many cards from the top of their library. You may play lands from among those cards for as long as they remain exiled.\nCrew 1",
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "DamageDone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ExileTop",
+     "player": {
+      "type": "TriggeringPlayer"
+     },
+     "count": {
+      "type": "Ref",
+      "qty": {
+       "type": "EventContextAmount"
+      }
+     },
+     "position": {
+      "type": "Top"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CastFromZone",
+      "target": {
+       "type": "And",
+       "filters": [
+        {
+         "type": "Typed",
+         "type_filters": [
+          "Land"
+         ],
+         "controller": null,
+         "properties": []
+        },
+        {
+         "type": "ExiledBySource"
+        }
+       ]
+      },
+      "without_paying_mana_cost": false,
+      "mode": "Play",
+      "duration": {
+       "ForAsLongAs": {
+        "condition": {
+         "type": "Unrecognized",
+         "text": "they remain exiled"
+        }
+       }
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": {
+      "ForAsLongAs": {
+       "condition": {
+        "type": "Unrecognized",
+        "text": "they remain exiled"
+       }
+      }
+     },
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "target_choice_timing": "Resolution",
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "CombatOnly",
+   "secondary": false,
+   "valid_target": {
+    "type": "Player"
+   },
+   "valid_source": {
+    "type": "Typed",
+    "type_filters": [
+     {
+      "Subtype": "Vehicle"
+     }
+    ],
+    "controller": "You",
+    "properties": []
+   },
+   "description": "Whenever a Vehicle you control deals combat damage to a player, that player exiles that many cards from the top of their library. You may play lands from among those cards for as long as they remain exiled.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": []
+}
