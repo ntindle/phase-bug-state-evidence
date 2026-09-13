@@ -1,0 +1,226 @@
+{
+ "generated_from": "/home/hatch/workspace/dev/phase-backfill/server/releases/v0.81.3/data/card-data.json",
+ "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+ "card": {
+  "name": "Tomb Tyrant",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black"
+   ],
+   "generic": 3
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Zombie",
+    "Noble"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Other Zombies you control get +1/+1.\n{2}{B}, {T}, Sacrifice a creature: Return a Zombie creature card at random from your graveyard to the battlefield. Activate only during your turn and only if there are at least three Zombie creature cards in your graveyard.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Graveyard",
+     "destination": "Battlefield",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature",
+       {
+        "Subtype": "Zombie"
+       }
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "InZone",
+        "zone": "Graveyard"
+       },
+       {
+        "type": "Owned",
+        "controller": "You"
+       }
+      ]
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": {
+     "type": "Composite",
+     "costs": [
+      {
+       "type": "Mana",
+       "cost": {
+        "type": "Cost",
+        "shards": [
+         "Black"
+        ],
+        "generic": 2
+       }
+      },
+      {
+       "type": "Tap"
+      },
+      {
+       "type": "Sacrifice",
+       "target": {
+        "type": "Typed",
+        "type_filters": [
+         "Creature"
+        ],
+        "controller": null,
+        "properties": []
+       },
+       "count": 1
+      }
+     ]
+    },
+    "sub_ability": null,
+    "duration": null,
+    "description": "{2}{B}, {T}, Sacrifice a creature: Return a Zombie creature card at random from your graveyard to the battlefield. Activate only during your turn and only if there are at least three Zombie creature cards in your graveyard.",
+    "target_prompt": null,
+    "activation_restrictions": [
+     {
+      "type": "RequiresCondition",
+      "data": {
+       "condition": {
+        "type": "QuantityComparison",
+        "lhs": {
+         "type": "Ref",
+         "qty": {
+          "type": "ZoneCardCount",
+          "zone": "Graveyard",
+          "card_types": [],
+          "filter": {
+           "type": "Typed",
+           "type_filters": [
+            "Creature",
+            {
+             "Subtype": "Zombie"
+            }
+           ],
+           "controller": null,
+           "properties": []
+          },
+          "scope": "Controller"
+         }
+        },
+        "comparator": "GE",
+        "rhs": {
+         "type": "Fixed",
+         "value": 3
+        }
+       }
+      }
+     },
+     {
+      "type": "DuringYourTurn"
+     }
+    ],
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "target_choice_timing": "Resolution",
+    "forward_result": false,
+    "target_selection_mode": {
+     "type": "Random"
+    }
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [
+   {
+    "mode": "Continuous",
+    "affected": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature",
+      {
+       "Subtype": "Zombie"
+      }
+     ],
+     "controller": "You",
+     "properties": [
+      {
+       "type": "Another"
+      }
+     ]
+    },
+    "modifications": [
+     {
+      "type": "AddPower",
+      "value": 1
+     },
+     {
+      "type": "AddToughness",
+      "value": 1
+     }
+    ],
+    "condition": null,
+    "affected_zone": null,
+    "effect_zone": null,
+    "active_zones": [],
+    "characteristic_defining": false,
+    "description": "Zombies you control get +1/+1."
+   }
+  ],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "0fb2c61a-9e74-4ee2-810a-b77a3b45f446",
+  "metadata": {
+   "source_printing_ids": [
+    "30f965af-0960-4c01-be9a-bb6ff98636f6",
+    "73315f75-252e-4db2-b48c-a60eafaf25e3",
+    "7491fb65-9f36-4872-a169-90c20965a689"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "MIC",
+   "SLD"
+  ],
+  "rulings": [
+   {
+    "date": "2021-09-24",
+    "text": "If the creature you sacrifice to pay the cost is a Zombie card, it will be among the cards that may be chosen."
+   },
+   {
+    "date": "2021-09-24",
+    "text": "You need at least three Zombie creature cards in your graveyard before you begin to activate Tomb Tyrant's activated ability. You can't begin to activate it with two and plan to sacrifice a Zombie for the third."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ }
+}
