@@ -1,0 +1,53 @@
+{
+ "name": "Emrakul, the World Anew",
+ "oracle_text": "When you cast this spell, gain control of all creatures target player controls.\nFlying, protection from spells and from permanents that were cast this turn\nWhen Emrakul leaves the battlefield, sacrifice all creatures you control.\nMadness\u2014Pay six {C}.",
+ "keywords": [
+  "Flying",
+  {
+   "Protection": {
+    "CardType": "spells"
+   }
+  },
+  {
+   "Protection": {
+    "CardType": "permanents that were cast this turn"
+   }
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "unknown",
+    "description": "Madness\u2014Pay six {C}."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "Madness\u2014Pay six {C}.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "control": {
+  "name": "Fiery Temper",
+  "oracle_madness_line": [
+   "Madness {R} (If you discard this card, discard it into exile. When you do, cast it for its madness cost or put it into your graveyard.)"
+  ],
+  "keywords": [
+   {
+    "Madness": {
+     "type": "Cost",
+     "shards": [
+      "Red"
+     ],
+     "generic": 0
+    }
+   }
+  ]
+ }
+}
