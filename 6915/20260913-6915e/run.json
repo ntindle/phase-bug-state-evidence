@@ -1,0 +1,180 @@
+{
+  "run_id": "20260913-6915e",
+  "issue": 6915,
+  "verdict": "not-reproduced",
+  "validated_at": "2026-09-13",
+  "server": {
+    "server_version": "0.81.3",
+    "build_commit": "95bec6e",
+    "protocol_version": 70,
+    "mode": "Full",
+    "binary_sha256": "2c9918612e8fcf35d7daf5964eadaf11eeb94cc99463b2de822a906b9030fa44",
+    "card_data_sha256": "c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a",
+    "draft_pools_sha256": "c79abf75cfb3d628906942b2707b047387d444559b5e25d32a411e9ab21f3f7c",
+    "signature_verified": true,
+    "observed_at": "2026-09-13",
+    "source": "ServerHello on 127.0.0.1:9375 (isolated v0.81.3 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+  },
+  "server_run_note": "isolated v0.81.3 server on 127.0.0.1:9375, started for run 20260913-6915d and reused for this control run (same binary, data, and ServerHello identity; new game on the same server)",
+  "driver": {
+    "protocol_advertised": 70,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "b35c56b1aa54d10c499764119d3dc2a6ea6c8ef95e290f5164f51c17ff4ab5a8",
+  "format_config": "CommanderDraft (3 seats; P0/P1 commanders, P2 none)",
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "swamp",
+          36
+        ],
+        [
+          "abnormal endurance",
+          12
+        ],
+        [
+          "murder",
+          12
+        ]
+      ],
+      "commander": [
+        "aphemia, the cacophony"
+      ]
+    },
+    "P1": {
+      "main": [
+        [
+          "forest",
+          60
+        ]
+      ],
+      "commander": [
+        "ayula, queen among bears"
+      ]
+    },
+    "P2": {
+      "main": [
+        [
+          "forest",
+          60
+        ]
+      ],
+      "commander": []
+    }
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_commander_dies": "passed",
+    "A3_graveyard_choice": "passed",
+    "A4_returns_tapped": "passed",
+    "A5_cleanup": "passed"
+  },
+  "observations": {
+    "wf_types_kill_window": [],
+    "auto_answered": [],
+    "unexpected_prompts": [
+      {
+        "who": "P1",
+        "iid": "XOMFI1.0",
+        "n_choices": 2,
+        "texts": [
+          "keep",
+          "mulligan"
+        ]
+      },
+      {
+        "who": "P2",
+        "iid": "XOMFI1.0",
+        "n_choices": 2,
+        "texts": [
+          "keep",
+          "mulligan"
+        ]
+      }
+    ],
+    "rejections": [],
+    "target_selections": {
+      "abnormal endurance": [
+        {
+          "auto": true,
+          "submitted_oid": 181,
+          "actual_commander_oid": 181
+        },
+        {
+          "auto": true,
+          "submitted_oid": 181,
+          "actual_commander_oid": 181
+        }
+      ],
+      "murder": [
+        {
+          "auto": true,
+          "submitted_oid": 181
+        }
+      ]
+    },
+    "stack_entries": []
+  },
+  "driver_state": {
+    "commander_cast": true,
+    "commander_cast_turn": 4,
+    "commander_oid": 181,
+    "ae_cast": true,
+    "ae_cast_turn": 13,
+    "ae_resolved": true,
+    "ae_target_oid": 181,
+    "murder_cast": true,
+    "murder_cast_turn": 13,
+    "murder_target_oid": null,
+    "murder_resolved": true,
+    "cz_choice_made": true,
+    "cz_choice_text": "accepted move to command zone (accept=true)",
+    "cz_choice_auto": null,
+    "cz_choice_iid": "XOMFI1.0.306",
+    "pending_target": null,
+    "trigger_observed": false,
+    "trigger_resolved": false,
+    "death_at": 1789283865.9039717,
+    "death_seen": true,
+    "pre_exported": true,
+    "mid_exported": true,
+    "post_exported": true,
+    "post_at": 1789283956.2949634,
+    "pre_bf_oid": 181,
+    "declared_DeclareAttackers": [
+      10,
+      1789283852.9017847
+    ],
+    "pending_spell": null
+  },
+  "notes": [
+    "AE effect expired after turn 10; re-arming AE cast",
+    "A1: commander_bf=181 is_commander=True ae_effect=True ae_cast=True",
+    "A2: murder_cast=True commander_zone_at_mid=Command",
+    "A3 passed: choice recorded: accepted move to command zone (accept=true)",
+    "A4-control: commander oid=181 zone=Command tapped=False controller=0 trigger_resolved=False",
+    "A4-control passed: commander stayed in the command zone; the dies trigger did not return it. Control behaves correctly.",
+    "A5: stack_empty=True waiting_for=Priority",
+    "verdict=not-reproduced",
+    "server provenance: control ran on the run-d server (127.0.0.1:9375, v0.81.3/95bec6e/protocol 70); server.log covers both runs"
+  ],
+  "evidence_files": [
+    "pre.json",
+    "mid.json",
+    "post.json",
+    "run.json",
+    "manifest.sha256",
+    "summary.png",
+    "scenario_6915e.py",
+    "wire_log.jsonl",
+    "scenario_run.log",
+    "server.log"
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via three human-client seats.",
+    "Dense 12x Abnormal Endurance / 12x Murder main deck is a test-harness convenience (engine accepts >4-of for custom games).",
+    "The report's 'return to hand' premise is Oracle-incorrect; the triage's acceptance criteria (return to battlefield tapped when left in the graveyard) are tested instead."
+  ],
+  "duration_s": 147.4
+}
