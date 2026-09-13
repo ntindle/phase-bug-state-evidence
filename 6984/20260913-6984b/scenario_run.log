@@ -1,0 +1,66 @@
+card-data.json sha256=c1bdd90380ecf9cf414c62dc57f41f2035e02d81c14c266237ddc79430361c1a
+wrote parse_tomb_tyrant.json
+game I0EE5V; seats P0=0 P1=1 RUN_ID=20260913-6984b
+P0 keeps (4 lands)
+P1 keeps (7 lands)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 tyrant=None zgy=0 C=False B=False A=False/False/False P0hand=['tomb tyrant', 'swamp', 'entomb', 'swamp', 'swamp', 'diregraf ghoul', 'swamp']
+[P0] land drop
+[P0] casting diregraf ghoul via CastSpell (oid 45)
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] casting tomb tyrant via CastSpell (oid 24)
+Tomb Tyrant on BF: oid=24 turn=8
+SCAN-C: offered=False channel=None t10 PreCombatMain active=P0 zombie_gy=0 untapped_swamps=4 tyrant_tapped=False fodder=45
+exported MID_C
+TEST C recorded
+[P0] land drop
+[P0] casting entomb via CastSpell (oid 11)
+[P0] Entomb search: choosing Tomb Tyrant oid=48 (shape=('SearchChoice', 'schema', 48))
+[P0] submitting interaction iid=I0EE5V.0.154 choice=I0EE5V.0.154.s17 (Tomb Tyrant)
+[P0] casting entomb via CastSpell (oid 42)
+[P0] Entomb search: choosing Tomb Tyrant oid=56 (shape=('SearchChoice', 'schema', 47))
+[P0] submitting interaction iid=I0EE5V.0.158 choice=I0EE5V.0.158.s7 (Tomb Tyrant)
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+DIAG turn=34 active=0 phase=PreCombatMain wf=Priority pp=1 tyrant=24 zgy=2 C=True B=False A=False/False/False P0hand=['diregraf ghoul', 'diregraf ghoul', 'swamp']
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] land drop
+[P0] casting entomb via CastSpell (oid 14)
+[P0] Entomb search: choosing Tomb Tyrant oid=17 (shape=('SearchChoice', 'schema', 29))
+[P0] submitting interaction iid=I0EE5V.0.688 choice=I0EE5V.0.688.s14 (Tomb Tyrant)
+SCAN-B: offered=False channel=None t45 PreCombatMain active=P1 zombie_gy=3 untapped_swamps=20 tyrant_tapped=False fodder=45
+exported MID_B
+TEST B recorded; passing priority on P1's turn
+SCAN-A: offered=True channel=legal_actions t46 PreCombatMain active=P0 zombie_gy=3 untapped_swamps=21 tyrant_tapped=False fodder=45
+exported PRE_A
+[P0] TEST A: activating via legal_actions (source 24)
+[P0] sacrifice prompt: sacrificing diregraf ghoul oid=45 (shape=('PayCost', 'schema', 2))
+[P0] submitting interaction iid=I0EE5V.0.720 choice=I0EE5V.0.720.s0 (Diregraf Ghoul)
+exported MID_RESOLUTION
+exported MID_RESOLUTION (Tyrant ability on stack)
+activation resolved (stack empty, Tyrant tapped)
+exported POST_A
+post exported; finishing
+loaded pre_a.json
+loaded mid_b.json
+loaded mid_c.json
+loaded post_a.json
+VERDICT: not-reproduced (both parsed restrictions enforced at runtime on v0.81.3)
+copied scenario_6984.py and server.log into EVDIR
+wrote summary.png
+manifest: MISSING post.json
+wrote manifest.sha256
+manifest: MISSING post.json
