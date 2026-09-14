@@ -1,0 +1,176 @@
+{"t": 1789400801.215129, "event": "parse_check", "payload": {"ok": true, "detail": "shards=['X', 'BlackGreen'] tap=True sac_ok=True cmc_x_bound=True sub_bf=True unimplemented=False", "ability": {"kind": "Activated", "effect": {"type": "SearchLibrary", "filter": {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": [{"type": "Cmc", "comparator": "LE", "value": {"type": "Ref", "qty": {"type": "Variable", "name": "X"}}}]}, "count": {"type": "Fixed", "value": 1}, "reveal": false}, "cost": {"type": "Composite", "costs": [{"type": "Mana", "cost": {"type": "Cost", "shards": ["X", "BlackGreen"], "generic": 0}}, {"type": "Tap"}, {"type": "Sacrifice", "target": {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": [{"type": "Another"}]}, "count": 1}]}, "sub_ability": {"kind": "Spell", "effect": {"type": "ChangeZone", "origin": "Library", "destination": "Battlefield", "target": {"type": "Any"}, "owner_library": false, "enter_transformed": false, "enter_tapped": false, "enters_attacking": false}, "cost": null, "sub_ability": {"kind": "Spell", "effect": {"type": "Shuffle", "target": {"type": "Controller"}}, "cost": null, "sub_ability": null, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false}, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false}, "duration": null, "description": "{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle. Activate only as a sorcery.", "target_prompt": null, "activation_restrictions": [{"type": "AsSorcery"}], "condition": null, "optional_targeting": false, "optional": false, "forward_result": false}}}
+{"t": 1789400801.797411, "event": "game_start", "payload": {"game_code": "KXYDGL", "p0_deck": [["Fiend Artisan", 4], ["Llanowar Elves", 12], ["Grizzly Bears", 4], ["Swamp", 20], ["Forest", 20]], "p1_deck": [["Forest", 60]], "server_hello": {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}}}
+{"t": 1789400801.7975967, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "MulliganDecision", "data": {"choice": {"type": "Keep"}}}, "stage": "SETUP"}}
+{"t": 1789400801.8510342, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "MulliganDecision", "data": {"choice": {"type": "Mulligan"}}}, "stage": "SETUP"}}
+{"t": 1789400801.9542809, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "MulliganDecision", "data": {"choice": {"type": "Keep"}}}, "stage": "SETUP"}}
+{"t": 1789400802.009931, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "MulliganDecision", "data": {"choice": {"type": "Keep"}}}, "stage": "SETUP"}}
+{"t": 1789400802.1693842, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "SelectCards", "data": {"cards": [5]}}, "stage": "SETUP"}}
+{"t": 1789400802.2203543, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}, "stage": "SETUP"}}
+{"t": 1789400802.2734976, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400802.3890195, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400802.540307, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 55, "card_id": 55}}, "stage": "SETUP"}}
+{"t": 1789400802.5930417, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 55, "card_id": 55}}, "stage": "SETUP"}}
+{"t": 1789400802.645424, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [55]}}, "stage": "SETUP"}}
+{"t": 1789400802.6457317, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400802.7483225, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400802.8515973, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400802.9585984, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.0614898, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.1633313, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.2648659, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.3683298, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.425476, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.527555, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.6334627, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.7381418, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.7968237, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400803.9003062, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.1053472, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 66, "card_id": 66}}, "stage": "SETUP"}}
+{"t": 1789400804.1589286, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.2148695, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.3202124, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.4253743, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.526972, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.629862, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.6848834, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.7894773, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.892848, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400804.9947176, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.0464065, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.1491666, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.202876, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.30604, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.4584894, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 51, "card_id": 51}}, "stage": "SETUP"}}
+{"t": 1789400805.5100114, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 51, "card_id": 51}}, "stage": "SETUP"}}
+{"t": 1789400805.5641897, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [51]}}, "stage": "SETUP"}}
+{"t": 1789400805.5648088, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.6163337, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.7217846, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.8325617, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400805.9377859, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.0498233, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.1516187, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.2071729, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.3090296, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.4144053, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.467522, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.5790803, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.685415, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.7897713, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400806.9408326, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 71, "card_id": 71}}, "stage": "SETUP"}}
+{"t": 1789400806.9929245, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 71, "card_id": 71}}, "stage": "SETUP"}}
+{"t": 1789400807.044434, "event": "rejected", "payload": {"who": "P1", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [71]}}, "stage": "SETUP"}}
+{"t": 1789400807.044612, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.1476653, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.2512171, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.352368, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.4580753, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.5619237, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.6686008, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.7725286, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.8976977, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400807.952654, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.0098875, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.1246827, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.2325015, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.2855172, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.4390106, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 7, "card_id": 7}}, "stage": "SETUP"}}
+{"t": 1789400808.4912133, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 7, "card_id": 7}}, "stage": "SETUP"}}
+{"t": 1789400808.5424576, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [7]}}, "stage": "SETUP"}}
+{"t": 1789400808.5426702, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "CastSpell", "data": {"object_id": 15, "card_id": 15, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1789400808.5958157, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.6983585, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.8031492, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400808.906006, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.0123436, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.1148944, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.2233682, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.3305666, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.4327667, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.536461, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.6423798, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.6974635, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.8001058, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.857663, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400809.963668, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.0710444, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.2756057, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 63, "card_id": 63}}, "stage": "SETUP"}}
+{"t": 1789400810.331353, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.387188, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.4380684, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.489525, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.5914516, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.6418824, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.7501123, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.8012242, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.8566105, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400810.964065, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.016648, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.068861, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.176299, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.2271855, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.3867016, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 9, "card_id": 9}}, "stage": "SETUP"}}
+{"t": 1789400811.4374735, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 9, "card_id": 9}}, "stage": "SETUP"}}
+{"t": 1789400811.4882536, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [9]}}, "stage": "SETUP"}}
+{"t": 1789400811.4884572, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "CastSpell", "data": {"object_id": 19, "card_id": 19, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1789400811.5393274, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.5926166, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.7462447, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "CastSpell", "data": {"object_id": 31, "card_id": 31, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1789400811.797312, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.8501184, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400811.9525778, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.0580714, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.1124506, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.1650844, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.2175198, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}, "stage": "SETUP"}}
+{"t": 1789400812.2703009, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.379281, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.4809875, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.5341768, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.6430326, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.745806, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.7996988, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400812.9061491, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.0152693, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.0710547, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.2741292, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 77, "card_id": 77}}, "stage": "SETUP"}}
+{"t": 1789400813.326269, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PlayLand", "data": {"object_id": 77, "card_id": 77}}, "stage": "SETUP"}}
+{"t": 1789400813.3781285, "event": "rejected", "payload": {"who": "P1", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [77]}}, "stage": "SETUP"}}
+{"t": 1789400813.3783348, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.48902, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.59148, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.6989706, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.8072605, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400813.9101672, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.0194116, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.1242218, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.228218, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.3359451, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.4381955, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.5401454, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.6427352, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.749803, "event": "action_submit", "payload": {"who": "P1", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1789400814.8507113, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 23, "card_id": 23}}, "stage": "SETUP"}}
+{"t": 1789400814.9021535, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "PlayLand", "data": {"object_id": 23, "card_id": 23}}, "stage": "SETUP"}}
+{"t": 1789400814.9529417, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [23]}}, "stage": "SETUP"}}
+{"t": 1789400814.9539258, "event": "offer_scan", "payload": {"scan": 1, "turn": 9, "found": true, "action": {"type": "ActivateAbility", "data": {"source_id": 15, "ability_index": 0}}, "vi_activate": true, "vi_opp_types": ["exactChoices"], "untapped_lands": 5, "artisan_tapped": false}}
+{"t": 1789400814.9879882, "event": "action_submit", "payload": {"who": "P0", "action": {"type": "ActivateAbility", "data": {"source_id": 15, "ability_index": 0}}, "stage": "SETUP"}}
+{"t": 1789400815.0445168, "event": "x_prompt_shape", "payload": {"wf_type": "ChooseXValue", "wf_data_keys": ["player", "min", "max", "pending_cast"], "spec": {"type": "number", "data": {"min": 0, "max": 6, "confirm": "explicit"}}}}
+{"t": 1789400815.0466218, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.140", "response": {"type": "number", "data": {"value": 2}}}, "x": 2}}
+{"t": 1789400815.1487918, "event": "activation_accepted", "payload": {}}
+{"t": 1789400815.149589, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.141", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.141.p0"}}}, "choice_text": "KXYDGL.0.141.p0"}}
+{"t": 1789400815.150266, "event": "mana_tap", "payload": {"n": 1, "land": "Forest", "choice": "KXYDGL.0.141.p0"}}
+{"t": 1789400815.2045515, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.142", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.142.p0"}}}, "choice_text": "KXYDGL.0.142.p0"}}
+{"t": 1789400815.204765, "event": "mana_tap", "payload": {"n": 2, "land": "Forest", "choice": "KXYDGL.0.142.p0"}}
+{"t": 1789400815.263831, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.143", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.143.p0"}}}, "choice_text": "KXYDGL.0.143.p0"}}
+{"t": 1789400815.2658494, "event": "mana_tap", "payload": {"n": 3, "land": "Swamp", "choice": "KXYDGL.0.143.p0"}}
+{"t": 1789400815.3681843, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.144", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.144.p9"}}}, "choice_text": "KXYDGL.0.144.p9"}}
+{"t": 1789400815.3698528, "event": "mana_spend", "payload": {"n": 1, "choice": "KXYDGL.0.144.p9"}}
+{"t": 1789400815.4716828, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.145", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.145.p10"}}}, "choice_text": "KXYDGL.0.145.p10"}}
+{"t": 1789400815.4728837, "event": "mana_spend", "payload": {"n": 2, "choice": "KXYDGL.0.145.p10"}}
+{"t": 1789400815.5275161, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.146", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.146.p11"}}}, "choice_text": "KXYDGL.0.146.p11"}}
+{"t": 1789400815.5297823, "event": "mana_spend", "payload": {"n": 3, "choice": "KXYDGL.0.146.p11"}}
+{"t": 1789400815.645232, "event": "interaction_submission", "payload": {"who": "P0", "submission": {"interactionId": "KXYDGL.0.147", "response": {"type": "choose", "data": {"choiceId": "KXYDGL.0.147.p4"}}}, "choice_text": "KXYDGL.0.147.p4"}}
+{"t": 1789400815.6469347, "event": "mana_finalize", "payload": {"choice": "KXYDGL.0.147.p4"}}
+{"t": 1789400815.6975546, "event": "rejected", "payload": {"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}, "stage": "ACTIVATE"}}
+{"t": 1789400815.6979933, "event": "finalize_rejected_decisive", "payload": {"rejections": [{"who": "P0", "type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}, "stage": "ACTIVATE"}], "taps": 3, "spends": 3}}

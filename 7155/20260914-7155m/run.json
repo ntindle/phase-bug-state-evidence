@@ -1,0 +1,184 @@
+{
+ "issue": 7155,
+ "title": "Fiend Artisan \u2014 Game does not let you pay for Fiend Artisan's ability.",
+ "run_id": "20260914-7155m",
+ "validated_at": "2026-09-14",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (already running from prior run; ServerHello verified v0.82.0/060b5d2/protocol 70) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "scope": "Fiend Artisan activated ability cost chain ({X}{B/G} + tap + sacrifice another creature) + library search, X=2, native engine, two human-client seats",
+ "assertions": {
+  "A1_parse_cost": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_offered": "passed",
+  "A4_initiation_accepted": "passed",
+  "A5_x_prompt": "passed",
+  "A6_cost_paid": "failed",
+  "A7_search_prompt": "not-run",
+  "A8_resolution": "not-run",
+  "A9_cleanup": "failed"
+ },
+ "assertion_notes": [
+  "A1: composite cost Mana{X,B/G} + Tap + Sacrifice(Another Creature), search effect X-bound: passed",
+  "A2: artisan=True tapped=False elves=2 untapped_lands=5",
+  "A3: ActivateAbility offered=True (offer scans=1, attempts=1)",
+  "A4: activation_accepted=True action_not_allowed_rejects=8",
+  "A5: x_prompted=True x_answered=True x_confirmed=True",
+  "A6: artisan_tapped=False elves_in_gy=0 sac_resolved=False",
+  "A7: search_prompted=False search_answered=False choice=None",
+  "A8: ability_resolved=False bears_on_p0_bf=False",
+  "A9: stack empty in post=False; post waiting_for=ManaPayment; rejections=9",
+  "verdict rule: reproduced"
+ ],
+ "verdict": "reproduced",
+ "x_value": 2,
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "invalid_action",
+     "disposition": "invalid",
+     "message": "That action is not valid in the current game state.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      55
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      51
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      71
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      7
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      9
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      77
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      23
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "ACTIVATE"
+  }
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (60x Forest; plays land, never casts/attacks/blocks)."
+ ]
+}

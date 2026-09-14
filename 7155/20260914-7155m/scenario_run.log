@@ -1,0 +1,66 @@
+A1 parse: shards=['X', 'BlackGreen'] tap=True sac_ok=True cmc_x_bound=True sub_bf=True unimplemented=False -> passed
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game KXYDGL; seats P0=0 P1=1 RUN_ID=20260914-7155m
+[P1] mulligan decision: Keep
+[P0] mulligan decision: Mulligan
+[P0] mulligan decision: Keep
+[P0] mulligan decision: Keep
+[P0] bottoms after mulligan: {'type': 'SelectCards', 'data': {'cards': [5]}}
+[P0] ActionRejected: {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}
+[P0] plays land Forest
+[P0] plays land Forest
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [55]}}
+[P1] plays land
+[P0] plays land Forest
+[P0] plays land Forest
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [51]}}
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [71]}}
+[P0] plays land Swamp
+[P0] plays land Swamp
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [7]}}
+[P0] casts Fiend Artisan (turn 5)
+[P1] plays land
+[P0] plays land Swamp
+[P0] plays land Swamp
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [9]}}
+[P0] casts Elves #1
+[P0] casts Elves #2
+[P0] declares no attackers
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [77]}}
+[P0] plays land Swamp
+[P0] plays land Swamp
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [23]}}
+[P0] offer scan #1: offered=True vi=True untapped_lands=5
+exported pre_activation.json
+[P0] ACTIVATION SUBMITTED (attempt 1)
+[P0] X prompt: spec_type=number
+[P0] submitting X=2 (number value)
+[P0] X confirmed (wf advanced past X prompt)
+[P0] activation ACCEPTED (cost prompt seen)
+[P0] submitting interaction iid=KXYDGL.0.141 choice=KXYDGL.0.141.p0 (KXYDGL.0.141.p0)
+[P0] taps Forest for mana (#1/3)
+[P0] submitting interaction iid=KXYDGL.0.142 choice=KXYDGL.0.142.p0 (KXYDGL.0.142.p0)
+[P0] taps Forest for mana (#2/3)
+[P0] submitting interaction iid=KXYDGL.0.143 choice=KXYDGL.0.143.p0 (KXYDGL.0.143.p0)
+[P0] taps Swamp for mana (#3/3)
+[P0] submitting interaction iid=KXYDGL.0.144 choice=KXYDGL.0.144.p9 (KXYDGL.0.144.p9)
+[P0] spends pool mana (#1)
+[P0] submitting interaction iid=KXYDGL.0.145 choice=KXYDGL.0.145.p10 (KXYDGL.0.145.p10)
+[P0] spends pool mana (#2)
+[P0] submitting interaction iid=KXYDGL.0.146 choice=KXYDGL.0.146.p11 (KXYDGL.0.146.p11)
+[P0] spends pool mana (#3)
+[P0] submitting interaction iid=KXYDGL.0.147 choice=KXYDGL.0.147.p4 (KXYDGL.0.147.p4)
+[P0] finalize pass submitted (engine-advertised passPriority)
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[P0] DECISIVE: the engine-advertised ManaPayment finalize (passPriority choice) was rejected action_not_allowed x1; the cost cannot be paid, so tap/sacrifice/search never happen
+exported mid_manapayment.json
+exported post.json
+main loop ended: stop=True reason=ManaPayment finalize (engine-advertised passPriority) rejected action_not_allowed; cost cannot be paid
+finalizing...
+scenario source copied to evidence
+run.json written; verdict=reproduced
+summary.png rendered
