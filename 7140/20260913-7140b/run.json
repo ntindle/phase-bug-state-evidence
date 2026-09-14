@@ -1,0 +1,281 @@
+{
+  "run_id": "20260913-7140b",
+  "issue": 7140,
+  "verdict": "reproduced",
+  "validated_at": "2026-09-13",
+  "server": {
+    "server_version": "0.82.0",
+    "build_commit": "060b5d2",
+    "protocol_version": 70,
+    "mode": "single-user",
+    "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+    "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+    "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+    "signature_verified": true,
+    "observed_at": "2026-09-13",
+    "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+  },
+  "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for this run's session; this game's states are isolated per game code)",
+  "driver": {
+    "protocol_advertised": 70,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "7dcd3a6e1ac0dd195c97213a6c28b3a112a3002fd2658557ab0e3d912453e49e",
+  "format_config": "default Bo1 (2 human-client seats, life 20)",
+  "decks": {
+    "P0": [
+      [
+        "mercurial spelldancer",
+        12
+      ],
+      [
+        "lightning bolt",
+        12
+      ],
+      [
+        "island",
+        18
+      ],
+      [
+        "mountain",
+        18
+      ]
+    ],
+    "P1": [
+      [
+        "forest",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_parse": "passed",
+    "A2_setup": "passed",
+    "A3_removal_accept": "passed",
+    "A5_copy_resolves": "failed",
+    "A4_copy_created": "failed",
+    "A6_decline_control": "passed",
+    "A7_cleanup": "passed"
+  },
+  "observations": {
+    "rejections": [],
+    "unexpected_prompts": [],
+    "tick_errors": [],
+    "stack_snapshots": [],
+    "prompts": [
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "OptionalEffectChoice",
+        "who": "P0",
+        "stage": "combat1",
+        "accept_values": [
+          "false",
+          "true"
+        ]
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 0,
+        "picked_seat": 0
+      },
+      {
+        "kind": "OptionalEffectChoice",
+        "who": "P0",
+        "stage": "combat2",
+        "accept_values": [
+          "false",
+          "true"
+        ]
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      }
+    ]
+  },
+  "driver_state": {
+    "finished": true,
+    "stage": "done",
+    "pre_exported": true,
+    "mid_exported": true,
+    "post_exported": true,
+    "prompt_first_seen": {
+      "F8T7PG.0.31": {
+        "t0": 1789354799.7053952,
+        "done": true
+      },
+      "F8T7PG.0.64": {
+        "t0": 1789354807.9932196,
+        "done": true
+      },
+      "F8T7PG.0.71": {
+        "t0": 1789354809.7530274,
+        "done": true
+      },
+      "F8T7PG.0.73": {
+        "t0": 1789354810.2554464,
+        "done": true
+      },
+      "F8T7PG.0.93": {
+        "t0": 1789354815.2777627,
+        "done": true
+      },
+      "F8T7PG.0.116": {
+        "t0": 1789354820.173755,
+        "done": true
+      },
+      "F8T7PG.0.147": {
+        "t0": 1789354827.9570413,
+        "done": true
+      },
+      "F8T7PG.0.178": {
+        "t0": 1789354835.8189979,
+        "done": true
+      },
+      "F8T7PG.0.209": {
+        "t0": 1789354843.598874,
+        "done": true
+      },
+      "F8T7PG.0.240": {
+        "t0": 1789354851.3819568,
+        "done": true
+      },
+      "F8T7PG.0.254": {
+        "t0": 1789354855.3258584,
+        "done": true
+      },
+      "F8T7PG.0.277": {
+        "t0": 1789354859.5939384,
+        "done": true
+      },
+      "F8T7PG.0.283": {
+        "t0": 1789354860.5247118,
+        "done": true
+      },
+      "F8T7PG.0.299": {
+        "t0": 1789354862.7883923,
+        "done": true
+      },
+      "F8T7PG.0.322": {
+        "t0": 1789354868.3455179,
+        "done": true
+      },
+      "F8T7PG.0.335": {
+        "t0": 1789354871.614023,
+        "done": true
+      }
+    },
+    "land_turn": 15,
+    "dancer_cast": true,
+    "counter_bolts": 2,
+    "attack1_done": true,
+    "attack2_done": true,
+    "counters_pre_accept": 2,
+    "counters_post_accept": 0,
+    "accept_offered": true,
+    "accept_done": true,
+    "decline_offered": true,
+    "decline_done": true,
+    "counters_at_decline": 2,
+    "test_bolt_cast": true,
+    "test_bolt_targeted": true,
+    "test_bolt_max_stack": 0,
+    "retarget_offered": false,
+    "retarget_done": false,
+    "retarget_target": null,
+    "p1_life_test_cast": 12,
+    "p1_life_after_accept": 9,
+    "regen_bolt_cast": true,
+    "decl_bolt_cast": true,
+    "decl_bolt_targeted": true,
+    "decl_bolt_max_stack": 0,
+    "decl_retarget_seen": false,
+    "p1_life_decl_cast": 7,
+    "p1_life_after_decl": 4,
+    "p0_life_final": 17,
+    "p1_life_final": 4,
+    "game_code": "F8T7PG",
+    "last_rev_acted": {
+      "mull0": 2,
+      "mull1": 2,
+      "pass": 342,
+      "p1pass": 344,
+      "land": 245,
+      "dancer": 37,
+      "bolt_counter": 72,
+      "atk": 331,
+      "bolt_test": 253,
+      "bolt_regen": 282,
+      "bolt_decl": 334
+    },
+    "pending_bolt_kind": "decl",
+    "pending_bolt_tgt": 1,
+    "last_target_oid": "F8T7PG.0.335.t1",
+    "gy_bolts_pre_test": 2,
+    "p1_life_pre_test": 12,
+    "gy_bolts_after_accept": 3,
+    "gy_bolts_pre_regen": 3,
+    "p1_life_pre_regen": 9,
+    "gy_bolts_pre_decl": 4,
+    "p1_life_pre_decl": 7,
+    "cleanup_turn": 19
+  },
+  "notes": [
+    "A1: RemoveCounter=True CreateDelayedTrigger=True CopySpell=True MayChooseNewTargets=True",
+    "A2: dancer_bf=1 counters_pre=2 counter_bolts=2 p1_life_pre=12",
+    "A3: offered=True done=True counters 2->0",
+    "A5: P1 12->9 (dmg=3, expect 6); P0-gy bolts=3 (expect 3)",
+    "A4: retarget_offered=False retarget_done=False max_bolt_stack=0 dmg_accept=3",
+    "A6: counters_at_decline=2 counters_post=3 decl_max_stack=0 decl_retarget_seen=False P1 7->4 (dmg=3, expect 3)",
+    "A7: stack_empty=True post_wf=Priority life_final=17/4",
+    "verdict=reproduced: counters were removed on accept but no copy of the next instant/sorcery was created - the exact reported symptom",
+    "verdict=reproduced",
+    "repair 2026-09-14: A6 recomputed to 'passed' with the corrected decline-control logic (run 7140e) - the original assertion wrongly required a bolt stack sample (decl_max_stack==1), but the 250ms copy window routinely closes between ticks; observed decline data (counters kept at 2, no retarget prompt, exactly 3 damage) fully supports the control. A5 note expectation text corrected.",
+    "intermittency: the copy was NOT offered in this run nor in sibling runs 20260913-7140 / 20260913-7140c (accept removed counters, next bolt dealt 3 with no CopyRetarget prompt), but sibling runs 20260913-7140d and 20260913-7140e DID offer the copy via a 'CopyRetarget' prompt and 7140e resolved bolt+copy for 6. The reported failure reproduces intermittently (~3/5 runs)."
+  ],
+  "evidence_files": [
+    "pre.json",
+    "mid.json",
+    "post.json",
+    "run.json",
+    "manifest.sha256",
+    "summary.png",
+    "scenario_7140.py",
+    "wire_log.jsonl",
+    "scenario_run.log",
+    "server.log"
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "12x Mercurial Spelldancer / 12x Lightning Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "P1 is a fully passive punching bag (60x Forest, never plays lands, never casts, never blocks).",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "run.json repaired post-hoc 2026-09-14 (A6 assertion-logic correction + intermittency note); observed state data unchanged."
+  ],
+  "duration_s": 82.7
+}
