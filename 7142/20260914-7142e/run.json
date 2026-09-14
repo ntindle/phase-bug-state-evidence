@@ -1,0 +1,271 @@
+{
+ "run_id": "20260914-7142e",
+ "issue": 7142,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-14",
+ "mode": "accept",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for this run's session; this game's states are isolated per game code)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1a1929409055d681faaa1dc53f21f233f2819a36c569dc29c243668de5f379d5",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "nykthos paragon",
+    12
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "healing salve",
+    12
+   ],
+   [
+    "plains",
+    18
+   ],
+   [
+    "forest",
+    6
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_offer1": "passed",
+  "A4_decline_preserves": "not-run",
+  "A5_counters_all": "failed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "prompts": [
+   {
+    "kind": "SalveModeChoice",
+    "who": "P0",
+    "leg": 1,
+    "wf_type": "ModeChoice",
+    "modes": [
+     "Target player gains 3 life.",
+     "Prevent the next 3 damage that would be dealt to any target this turn."
+    ]
+   },
+   {
+    "kind": "TargetSelection",
+    "who": "P0",
+    "purpose": "salve_leg1",
+    "picked_seat": 0
+   },
+   {
+    "kind": "OptionalEffectChoice",
+    "who": "P0",
+    "leg": 1,
+    "accept_values": [
+     "false",
+     "true"
+    ]
+   },
+   {
+    "kind": "ChooseFromZoneChoice",
+    "who": "P0",
+    "count": 1,
+    "n_cards": 3,
+    "chosen_oid": 32
+   }
+  ],
+  "stage_timeouts": []
+ },
+ "driver_state": {
+  "finished": true,
+  "stage": "done",
+  "stage_t0": 1789361745.896052,
+  "pre_exported": true,
+  "offer1_exported": true,
+  "offer2_exported": false,
+  "post_exported": true,
+  "prompt_first_seen": {
+   "G7O3EF.0.45": {
+    "t0": 1789361677.7964864,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.75": {
+    "t0": 1789361685.3369043,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.90": {
+    "t0": 1789361689.1044853,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.105": {
+    "t0": 1789361692.8722265,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.135": {
+    "t0": 1789361700.4574733,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.165": {
+    "t0": 1789361707.9974172,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.198": {
+    "t0": 1789361716.6203241,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.232": {
+    "t0": 1789361725.163007,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.262": {
+    "t0": 1789361732.9277232,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.292": {
+    "t0": 1789361740.4658442,
+    "done": true,
+    "shape_wired": true
+   },
+   "G7O3EF.0.301": {
+    "t0": 1789361743.1353471,
+    "done": true
+   },
+   "G7O3EF.0.302": {
+    "t0": 1789361743.3871932,
+    "done": true
+   },
+   "G7O3EF.0.307": {
+    "t0": 1789361744.397237,
+    "done": true
+   },
+   "G7O3EF.0.308": {
+    "t0": 1789361745.0651543,
+    "done": true
+   }
+  },
+  "land_turn": 14,
+  "paragon_cast": true,
+  "paragon_cast_turn": 14,
+  "bears_cast": 2,
+  "salve1_cast": true,
+  "salve1_oid": 1,
+  "salve1_mode_chosen": true,
+  "salve1_target_oid": null,
+  "salve1_resolved": true,
+  "salve1_resolve_t": 1789361744.1456783,
+  "offer1_seen": true,
+  "offer1_skipped": false,
+  "offer1_kind": "OptionalEffectChoice",
+  "offer1_iid": "G7O3EF.0.307",
+  "offer1_declined": false,
+  "offer1_accepted": true,
+  "choice_seen": true,
+  "choice_exported": true,
+  "choice_answered": true,
+  "choice_oid": 32,
+  "choice_count": 1,
+  "choice_cards": [
+   32,
+   2,
+   58
+  ],
+  "choice_source": 2,
+  "p0_life_pre": 20,
+  "p0_life_post_salve1": 23,
+  "salve2_cast": false,
+  "salve2_oid": null,
+  "salve2_mode_chosen": false,
+  "salve2_target_oid": null,
+  "salve2_resolved": false,
+  "salve2_resolve_t": null,
+  "offer2_seen": false,
+  "offer2_skipped": false,
+  "offer2_kind": null,
+  "offer2_iid": null,
+  "offer2_accepted": false,
+  "p0_life_post_salve2": null,
+  "settle_ticks": 0,
+  "game_code": "G7O3EF",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p1pass": 310,
+   "pass": 311,
+   "land": 203,
+   "bear": 297,
+   "paragon": 204,
+   "atk14DeclareAttackers": 211,
+   "atk16DeclareAttackers": 241,
+   "atk18DeclareAttackers": 271,
+   "salve1": 300
+  },
+  "zones_seen": []
+ },
+ "notes": [
+  "A1: mode=LifeGained effect=PutCounter counter=P1P1 count=Ref/EventContextAmount target=Typed/['Creature']/You optional=True constraint=OncePerTurn batched=False; OBS: 'each creature' is a Typed target with no explicit all-matching marker",
+  "A2: paragon_bf=1 bears_bf=2 salves_hand=4 p0_life_pre=20 turn=20",
+  "A3: offer1 seen kind=OptionalEffectChoice iid=G7O3EF.0.307 declined=False",
+  "A4 not-run: accept-only mode (decline preservation is covered by the decline-mode run)",
+  "A5: creatures pre/post=3/3; nykthos paragon#2: P/T fallback 4/6->4/6 (delta=+0/+0, expect +3/+3); grizzly bears#32: counters 0->3 (delta=3, expect 3); grizzly bears#58: P/T fallback 2/2->2/2 (delta=+0/+0, expect +3/+3)",
+  "A5 mechanism: after accepting, the engine raised ChooseFromZoneChoice count=1 over 3 creatures (source oid=2); driver chose oid=32",
+  "A6: P0-gy salves=2 (at least the 1 cast copies) P0_life=23 (expect 23) stack_empty=True post_wf=Priority",
+  "verdict=reproduced (accept mode): the offer never came or counters did not land on every creature",
+  "verdict=reproduced mode=accept"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "offer1.json",
+  "offer2.json",
+  "choice.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7142.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x/18x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a fully passive punching bag (60x Forest; never plays lands, never casts, never attacks, never blocks).",
+  "No combat occurs; life changes come only from the two Healing Salves, so lifegain events are fully controlled.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 79.6
+}
