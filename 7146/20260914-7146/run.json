@@ -1,0 +1,266 @@
+{
+ "issue": 7146,
+ "run_id": "20260914-7146",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (reused from prior run; ServerHello re-verified this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "game_code": "L2S9UX",
+ "seats": {
+  "P0": 0,
+  "P1": 1
+ },
+ "decks": {
+  "P0": [
+   [
+    "Exquisite Blood",
+    12
+   ],
+   [
+    "Enduring Tenacity",
+    12
+   ],
+   [
+    "Bump in the Night",
+    12
+   ],
+   [
+    "Swamp",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Swamp",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_kick_resolves": "passed",
+  "A3_iterations": "passed",
+  "A4_terminal_reached": "passed",
+  "A5_cleanup": "not-run"
+ },
+ "notes": [
+  "A1: EB on BF=True ET on BF=True",
+  "A2: bump_cast=True kick_life=(20, 17) (expect (20,17))",
+  "A3: Enduring resolutions=6 Exquisite resolutions=6 (need 6 each to reach P1<=0 from 17)",
+  "A4: game_over=True final lives=38/-1 done_reason=loop reached terminal state (P1 at <=0)",
+  "A5: post stack depth=None",
+  "verdict=not-reproduced"
+ ],
+ "life_events": [
+  [
+   1789386915.119157,
+   25,
+   "PreCombatMain",
+   20,
+   17,
+   1
+  ],
+  [
+   1789386915.3243787,
+   25,
+   "PreCombatMain",
+   23,
+   17,
+   1
+  ],
+  [
+   1789386915.529662,
+   25,
+   "PreCombatMain",
+   23,
+   14,
+   1
+  ],
+  [
+   1789386915.7372656,
+   25,
+   "PreCombatMain",
+   26,
+   14,
+   1
+  ],
+  [
+   1789386915.941055,
+   25,
+   "PreCombatMain",
+   26,
+   11,
+   1
+  ],
+  [
+   1789386916.143765,
+   25,
+   "PreCombatMain",
+   29,
+   11,
+   1
+  ],
+  [
+   1789386916.3511114,
+   25,
+   "PreCombatMain",
+   29,
+   8,
+   1
+  ],
+  [
+   1789386916.6600358,
+   25,
+   "PreCombatMain",
+   32,
+   8,
+   1
+  ],
+  [
+   1789386916.9707286,
+   25,
+   "PreCombatMain",
+   32,
+   5,
+   1
+  ],
+  [
+   1789386917.2787209,
+   25,
+   "PreCombatMain",
+   35,
+   5,
+   1
+  ],
+  [
+   1789386917.5831585,
+   25,
+   "PreCombatMain",
+   35,
+   2,
+   1
+  ],
+  [
+   1789386917.8968503,
+   25,
+   "PreCombatMain",
+   38,
+   2,
+   1
+  ],
+  [
+   1789386918.1996996,
+   25,
+   "PreCombatMain",
+   38,
+   -1,
+   1
+  ]
+ ],
+ "et_resolutions": 6,
+ "eb_resolutions": 6,
+ "kick_life": [
+  20,
+  17
+ ],
+ "game_over": true,
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      9
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      20
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      38
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      34
+     ]
+    }
+   },
+   "stage": "SETUP"
+  }
+ ],
+ "done_reason": "loop reached terminal state (P1 at <=0)",
+ "verdict": "not-reproduced",
+ "scope": "Exquisite Blood + Enduring Tenacity mandatory trigger chain: Bump in the Night kick, loop iteration count, terminal-state reach; native engine, two human-client seats",
+ "limitations": [
+  "Browser UI not exercised.",
+  "Dense 12x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Authoritative exports only; no standalone state-restore in this build."
+ ],
+ "evidence_files": [
+  "mid.json",
+  "pre.json",
+  "scenario_7146.py",
+  "scenario_run.log",
+  "wire_log.jsonl"
+ ]
+}
