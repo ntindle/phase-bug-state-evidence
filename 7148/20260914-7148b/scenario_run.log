@@ -1,0 +1,31 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game VR4JCS; RUN_ID=20260914-7148b
+[P0] keeps
+[P2] keeps
+[P1] keeps
+[P1] keeps
+[P2] keeps
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P2] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[P2] casts Crow (turn 4)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] casts Bear (turn 6)
+[P0] casts Nils (turn 8)
+[P0] Nils target prompt #0: rtype=schema stype=sequence ncands=1 scope_player=0 (candidate unanimity) iid=VR4JCS.0.191
+    cand id=VR4JCS.0.191.t0 -> Nils, Discipline Enforcer#12(P0)
+exported pre.json
+[P0] Nils prompt #0 answers scope P0 -> Nils, Discipline Enforcer#12(P0)
+exported mid.json
+[watch] mid exported at turn 8 phase End; counters: {'12': {'name': 'Nils, Discipline Enforcer', 'controller': 0, 'p1p1': 3}}
+Nils trigger resolved; stopping
+main loop ended: stop=True reason=nils trigger resolved; mid exported
+scenario source copied to evidence
+exported post.json
+VERDICT: reproduced
+  A1: effect=PutCounter P1P1x1 target.controller=ScopedPlayer multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}} player_scope=All phase=End constraint=OnlyDuringYourTurn
+  A2: prompts_answered=1 pre_exported=True nils_on_bf=True sides=[0, 1, 2] answer_turn=8
+  A3: mid_exported=True total_p1p1=3 max_on_one_creature=3 per_player={0: 3} chosen_oid_counts={'12': 3} distribution={'12': {'name': 'Nils, Discipline Enforcer', 'controller': 0, 'p1p1': 3}}
+  A4: answer_turn=8 mid_turn=8 mid_phase=End
+  A5: final stack depth=0
+  verdict=reproduced: 1 prompt(s) answered; counters landed as {'12': {'name': 'Nils, Discipline Enforcer', 'controller': 0, 'p1p1': 3}}
+run.json written
