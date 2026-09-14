@@ -1,0 +1,37 @@
+{
+ "abilities": [
+  {
+   "index": 0,
+   "desc": "{T}: ~ deals 1 damage to any target.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "DealDamage",
+   "params": "{\"type\": \"Fixed\", \"value\": 1}/{\"type\": \"Any\"}"
+  },
+  {
+   "index": 1,
+   "desc": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on ~ and you gain 1 life.",
+   "cost": "{\"cost\": {\"generic\": 0, \"shards\": [\"Green\"], \"type\": \"Cost\"}, \"type\": \"Mana\"}",
+   "effect": "ChangeZone",
+   "params": "{\"destination\": \"Exile\", \"enter_tapped\": false, \"enter_transformed\": false, \"enters_attacking\": false, \"origin\": \"Graveyard\", \"owner_library\": false, \"target\": {\"controller\": null, \"properties\": [{\"type\": \"InZone\", \"zone\": \"Graveyard\"}], \"type\": \"Typed\", \"type_filters\": [\"Card\"]}, \"type\": \"ChangeZon"
+  },
+  {
+   "index": 2,
+   "desc": "{T}: Add {G}.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "Mana",
+   "params": "{\"colors\": [\"Green\"], \"type\": \"Fixed\"}"
+  },
+  {
+   "index": 3,
+   "desc": "{T}: Destroy target tapped creature.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "Destroy",
+   "params": "{\"controller\": null, \"properties\": [{\"type\": \"Tapped\"}], \"type\": \"Typed\", \"type_filters\": [\"Creature\"]}"
+  }
+ ],
+ "n_offers": 0,
+ "anas_exiled": [
+  "32",
+  "29"
+ ]
+}
