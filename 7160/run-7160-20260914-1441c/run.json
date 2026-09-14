@@ -1,0 +1,83 @@
+{
+ "issue": 7160,
+ "run_id": "run-7160-20260914-1441c",
+ "validated_at": "2026-09-14",
+ "verdict": "not-reproduced",
+ "scope": "AI controller halt at Priority (area:ai); native Medium AI seat vs passive human observer, 40-card draft-like piles, 25-turn watch window",
+ "result": "No AI stall in the watched game: native AI executed 112 actions across 102 submissions through turn 12 (game over, AI won) with no halt signatures in the server log.",
+ "limitations": [
+  "Browser UI not exercised",
+  "Attached turn-22 Discord state unavailable (CDN link expired); exact captured position not restored",
+  "Draft format not used; 40-card draft-like piles instead",
+  "Single difficulty (Medium) only",
+  "AI internal proposal/rejection records are server-internal; only the stall outcome, action counts, and log signatures are observable",
+  "Authoritative post-game export unavailable (session invalidated at game over); final state is a viewer snapshot"
+ ],
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "assertions": {
+  "A1_no_ai_halt": "passed",
+  "A2_no_halt_log": "passed",
+  "A3_progress": "passed",
+  "A4_ai_decisions": "passed"
+ },
+ "notes": [
+  "A1: no 90s AI-owned stall observed",
+  "A2: halt signatures in server.log this run: none",
+  "A3: max_turn=12 game_over=True",
+  "A4: native AI actions this run=112 across 102 submissions (server log ai_actions)",
+  "Attachment game-state-turn-22 zip from Discord CDN is expired ('This content is no longer available'); the exact captured state could not be restored. Runtime verification via live native-AI game.",
+  "P1 ran fully on the server's native AI (phase_ai::auto_play); driver touched only seat 0.",
+  "post.json authoritative export fails after game over ('session identity is no longer current'); final board captured as post_viewer.json viewer snapshot."
+ ],
+ "deck_lists": {
+  "p0": [
+   [
+    "Forest",
+    17
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Giant Spider",
+    11
+   ]
+  ],
+  "p1_ai": [
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Mountain",
+    5
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    11
+   ]
+  ]
+ },
+ "game_code": "1VB6SD",
+ "wire_log": "wire_log.jsonl",
+ "run_log": "scenario_run.log",
+ "exports": {
+  "pre": "pre.json",
+  "post": null,
+  "post_viewer": "post_viewer.json"
+ },
+ "rejections": [],
+ "repair_note": "A4 was recomputed 2026-09-14 from the saved server log: the in-run incremental log reader had its offset consumed by the game-over probe, yielding a false 0. Game 1VB6SD lines in the complete server log give 112 ai_actions across 102 submissions. Scenario fixed for future runs. Evidence dir also carries the fixed scenario_7160.py (sha256 recorded); the 1VB6SD game itself ran the immediately-prior revision, identical except the offline-repaired log-offset bug in finalize().",
+ "scenario_sha256": "8dabcf55783159fac38e5d5bf7be892c8afb1f22e7ab91648eda4bfc5e330cb7",
+ "server_log_file": "server.log"
+}
