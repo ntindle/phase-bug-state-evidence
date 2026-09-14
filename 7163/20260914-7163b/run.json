@@ -1,0 +1,68 @@
+{
+ "issue": 7163,
+ "run_id": "20260914-7163b",
+ "title": "Birthing Ritual does not work with more than 1 creature in play",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "v0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (observed ServerHello; started with --single-user)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d603420bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9376 (started fresh by this run) + verified pin (minisign prehashed verify of binary + signed data manifest with the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY)."
+ },
+ "scope": "Birthing Ritual end-step trigger with 2+ creatures: Dig7 -> may-sacrifice -> conditional put-onto-BF from the 7; native engine, two human-client seats",
+ "verdict": "blocked",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "failed",
+  "A3_trigger_fired": "passed",
+  "A4_sacrifice": "failed",
+  "A5_sacrifice_effect": "not-run",
+  "A6_bf_pick": "not-run",
+  "A7_cleanup": "failed"
+ },
+ "notes": [
+  "A1_parse: passed (Phase/End -> Dig7 prior-look -> optional Sacrifice(1 creature you control) -> EffectOutcome/OptionalEffectPerformed -> Dig(keep1 up_to Battlefield, Creature mv<=CostPaidObject+1, source prior_look), else Dig(0 keep, rest->Library))",
+  "stalled: waiting_for=DigChoice player=0 rev=103 frozen >90s; exporting stuck state",
+  "deadline hit before cleanup completed",
+  "A2 failed: pre.json missing",
+  "A3: trigger_fired at turn 6, resolved=True inferred_from_prompt=True (trigger left the stack between 0.8s stack samples; the may-sacrifice prompt proves it resolved)",
+  "A4: sac_prompt_seen=True sac_accepted=True sac_candidates_n=0 (>=2 required for the reported multi-creature case)",
+  "A5 not-run: sacrifice selection never answered",
+  "A6 not-run: sacrifice never completed",
+  "A7 failed: ability stalled after the sacrifice - no BF-pick prompt, game moved on with the 7 cards unresolved"
+ ],
+ "driver_state": {
+  "trigger_fired": true,
+  "trigger_inferred": true,
+  "trigger_resolved": true,
+  "sac_prompt_seen": true,
+  "sac_accepted": true,
+  "sac_candidates_n": 0,
+  "sac_answered": false,
+  "sac_chosen_oid": null,
+  "sac_done": false,
+  "bf_prompt_seen": false,
+  "bf_candidates_n": 0,
+  "bf_answered": false,
+  "bf_chosen_oid": null,
+  "bf_done": false,
+  "stuck": true,
+  "ritual_turn": 6,
+  "pre_bears_bf": 0,
+  "pre_lib_count": 0
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Zero-attacker combat was scripted on both seats so combat could not mask the trigger.",
+  "Grizzly Bears (mv 2) used as both the sacrifice and the put-onto-BF candidate; X = 3."
+ ],
+ "evidence_dir": "7163/20260914-7163b"
+}
