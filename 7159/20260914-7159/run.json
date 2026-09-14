@@ -1,0 +1,1834 @@
+{
+ "issue": 7159,
+ "title": "The Irencrag - equip {3} missing after the become-Equipment transformation.",
+ "run_id": "20260914-7159",
+ "validated_at": "2026-09-14",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (per task context; ServerHello re-verified at run start) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello_observed": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "protocol_version": 70,
+ "scope": "The Irencrag {2} (pinned card-data AST: ChangesZone trigger -> optional become legendary Equipment named Everflame, Heroes' Legacy; sub_ability: RemoveAllAbilities + GrantStaticAbility(+3/+3, EquippedBy) + GrantAbility equip {3} x2 (duplicated grant)). Isamaru, Hound of Konda as the legendary ETB trigger; native engine, two human-client seats",
+ "decks": {
+  "P0": [
+   [
+    "The Irencrag",
+    12
+   ],
+   [
+    "Isamaru, Hound of Konda",
+    12
+   ],
+   [
+    "Plains",
+    18
+   ],
+   [
+    "Mountain",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_ok": "passed",
+  "A2_setup_ok": "passed",
+  "A3_option_offered": "passed",
+  "A4_transform_ok": "passed",
+  "A5_mana_lost": "passed",
+  "A6_equip_offered": "failed",
+  "A7_equip_resolves": "not-run",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "A1: become-Equipment mods ['SetTextName', 'AddSupertype', 'AddType', 'RemoveAllSubtypes', 'AddSubtype']; sub mods ['RemoveAllAbilities', 'GrantStaticAbility', 'GrantAbility', 'GrantAbility']; equip grants ['equip {3}', 'equip {3} and'] (duplicated grant: True) -> passed",
+  "A2: trigger not on stack in live sampling or pre.json stack (stack empties fast once the option is pending)",
+  "A2: trigger fire established via the OptionalEffectChoice itself (the choice is the trigger's optional decision); the stack entry resolved too fast for sampling",
+  "A3: option offered=True accepted(accept=true)=True",
+  "A4: name=\"Everflame, Heroes' Legacy\" card_types={'supertypes': ['Legendary'], 'core_types': ['Artifact'], 'subtypes': ['Equipment']} -> name_ok=True legendary=True artifact=True equipment=True",
+  "A5: current abilities=2 mana_remaining=0 equip_granted=2 has_mana_ability_flag=False (base_abilities still lists the printed mana ability: 1)",
+  "A6: equip offered=False scans=21 clean_main_turns=6",
+  "A6: ability_index=None descs=[]",
+  "A7: equip never offered -> not-run",
+  "A8: post stack depth=0 turn=16 resolve_turn=6"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_parse_ok: passed; A2_setup_ok: passed; A3_option_offered: passed; A4_transform_ok: passed; A5_mana_lost: passed; A6_equip_offered: failed; A7_equip_resolves: not-run; A8_cleanup: passed",
+ "trigger_stack_record": null,
+ "transform_record": {
+  "oid": "39",
+  "card_name": "Everflame, Heroes' Legacy",
+  "card_types": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Artifact"
+   ],
+   "subtypes": [
+    "Equipment"
+   ]
+  },
+  "zone": "Battlefield",
+  "controller": 0,
+  "tapped": false
+ },
+ "offer_scans": [
+  {
+   "rev": 90,
+   "turn": 6,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "PassPriority"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.90",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.90.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.90",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.90.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.90",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.90.c2"
+    }
+   ]
+  },
+  {
+   "rev": 91,
+   "turn": 6,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 96,
+   "turn": 6,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "PassPriority"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.96",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.96.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.96",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.96.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.96",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.96.c2"
+    }
+   ]
+  },
+  {
+   "rev": 97,
+   "turn": 6,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 119,
+   "turn": 8,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.119.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.119.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.119.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.119.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.119.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.119.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.119",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.119.c11"
+    }
+   ]
+  },
+  {
+   "rev": 120,
+   "turn": 8,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 126,
+   "turn": 8,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.126.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.126.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.126.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.126.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.126.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.126.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.126",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.126.c11"
+    }
+   ]
+  },
+  {
+   "rev": 127,
+   "turn": 8,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 149,
+   "turn": 10,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.149.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.149.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.149.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.149.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.149.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.149.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.149",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.149.c13"
+    }
+   ]
+  },
+  {
+   "rev": 150,
+   "turn": 10,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 156,
+   "turn": 10,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.156.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.156.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.156.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.156.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.156.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.156.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.156",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.156.c13"
+    }
+   ]
+  },
+  {
+   "rev": 157,
+   "turn": 10,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 179,
+   "turn": 12,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.179.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.179.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.179.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.179.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.179.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.179.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c13"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c14"
+    },
+    {
+     "interaction_id": "2OB0P4.0.179",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.179.c15"
+    }
+   ]
+  },
+  {
+   "rev": 180,
+   "turn": 12,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 186,
+   "turn": 12,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.186.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.186.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.186.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.186.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.186.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.186.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c13"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c14"
+    },
+    {
+     "interaction_id": "2OB0P4.0.186",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.186.c15"
+    }
+   ]
+  },
+  {
+   "rev": 187,
+   "turn": 12,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 210,
+   "turn": 14,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.210.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.210.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.210.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.210.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.210.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.210.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c13"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c14"
+    },
+    {
+     "interaction_id": "2OB0P4.0.210",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.210.c15"
+    }
+   ]
+  },
+  {
+   "rev": 211,
+   "turn": 14,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 217,
+   "turn": 14,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.217.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.217.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.217.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.217.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.217.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.217.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c13"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c14"
+    },
+    {
+     "interaction_id": "2OB0P4.0.217",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.217.c15"
+    }
+   ]
+  },
+  {
+   "rev": 218,
+   "turn": 14,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "vi_opportunities": []
+  },
+  {
+   "rev": 241,
+   "turn": 16,
+   "n_activations_for_object": 0,
+   "ability_index": [],
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "CastSpell",
+    "PassPriority",
+    "PlayLand"
+   ],
+   "vi_opportunities": [
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "passPriority"
+     ],
+     "text": "2OB0P4.0.241.c0"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.241.c1"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.241.c2"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.241.c3"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.241.c4"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "playLand",
+      null
+     ],
+     "text": "2OB0P4.0.241.c5"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c6"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c7"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c8"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c9"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c10"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "castSpell",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c11"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "activateAbility",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c12"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c13"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c14"
+    },
+    {
+     "interaction_id": "2OB0P4.0.241",
+     "response_type": "exactChoices",
+     "codes": [
+      "candidate",
+      "tapLandForMana",
+      null,
+      null
+     ],
+     "text": "2OB0P4.0.241.c15"
+    }
+   ]
+  }
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Mana abilities are not surfaced as ActivateAbility offers to human clients on protocol 70, so mana-removal was judged from the transformed object's JSON, not from offer counts."
+ ],
+ "evidence_files": [
+  "mid.json",
+  "parse_irencrag.json",
+  "post.json",
+  "pre.json",
+  "scenario_7159.py",
+  "scenario_run.log",
+  "server.log",
+  "wire_log.jsonl"
+ ],
+ "done_reason": "post-resolution observation window complete"
+}
