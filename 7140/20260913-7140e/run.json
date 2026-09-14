@@ -1,0 +1,306 @@
+{
+  "run_id": "20260913-7140e",
+  "issue": 7140,
+  "verdict": "not-reproduced",
+  "validated_at": "2026-09-13",
+  "server": {
+    "server_version": "0.82.0",
+    "build_commit": "060b5d2",
+    "protocol_version": 70,
+    "mode": "single-user",
+    "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+    "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+    "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+    "signature_verified": true,
+    "observed_at": "2026-09-13",
+    "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+  },
+  "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for this run's session; this game's states are isolated per game code)",
+  "driver": {
+    "protocol_advertised": 70,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "655dad0777c6fccda1f8548a66e08d38d3cefbd3b1fbe45529da2de189822253",
+  "format_config": "default Bo1 (2 human-client seats, life 20)",
+  "decks": {
+    "P0": [
+      [
+        "mercurial spelldancer",
+        4
+      ],
+      [
+        "lightning bolt",
+        20
+      ],
+      [
+        "island",
+        18
+      ],
+      [
+        "mountain",
+        18
+      ]
+    ],
+    "P1": [
+      [
+        "forest",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_parse": "passed",
+    "A2_setup": "passed",
+    "A3_removal_accept": "passed",
+    "A5_copy_resolves": "passed",
+    "A4_copy_created": "passed",
+    "A6_decline_control": "passed",
+    "A7_cleanup": "passed"
+  },
+  "observations": {
+    "rejections": [],
+    "unexpected_prompts": [],
+    "tick_errors": [],
+    "stack_snapshots": [],
+    "prompts": [
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "OptionalEffectChoice",
+        "who": "P0",
+        "stage": "combat1",
+        "accept_values": [
+          "false",
+          "true"
+        ]
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "copy_retarget",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 0,
+        "picked_seat": 0
+      },
+      {
+        "kind": "OptionalEffectChoice",
+        "who": "P0",
+        "stage": "combat2",
+        "accept_values": [
+          "false",
+          "true"
+        ]
+      },
+      {
+        "kind": "TargetSelection",
+        "who": "P0",
+        "purpose": "bolt",
+        "wanted_seat": 1,
+        "picked_seat": 1
+      }
+    ]
+  },
+  "driver_state": {
+    "finished": true,
+    "stage": "done",
+    "pre_exported": true,
+    "mid_exported": true,
+    "post_exported": true,
+    "prompt_first_seen": {
+      "FZYTSI.0.45": {
+        "t0": 1789355638.091322,
+        "done": true
+      },
+      "FZYTSI.0.75": {
+        "t0": 1789355645.6262832,
+        "done": true
+      },
+      "FZYTSI.0.85": {
+        "t0": 1789355648.1389363,
+        "done": true
+      },
+      "FZYTSI.0.114": {
+        "t0": 1789355655.5134323,
+        "done": true
+      },
+      "FZYTSI.0.121": {
+        "t0": 1789355657.2711253,
+        "done": true
+      },
+      "FZYTSI.0.137": {
+        "t0": 1789355661.2909963,
+        "done": true
+      },
+      "FZYTSI.0.143": {
+        "t0": 1789355662.6898415,
+        "done": true
+      },
+      "FZYTSI.0.146": {
+        "t0": 1789355663.5396917,
+        "done": true
+      },
+      "FZYTSI.0.163": {
+        "t0": 1789355666.8081274,
+        "done": true
+      },
+      "FZYTSI.0.178": {
+        "t0": 1789355669.816295,
+        "done": true
+      },
+      "FZYTSI.0.195": {
+        "t0": 1789355674.0856485,
+        "done": true
+      },
+      "FZYTSI.0.218": {
+        "t0": 1789355679.8665261,
+        "done": true
+      },
+      "FZYTSI.0.249": {
+        "t0": 1789355687.819107,
+        "done": true
+      },
+      "FZYTSI.0.280": {
+        "t0": 1789355695.60791,
+        "done": true
+      },
+      "FZYTSI.0.311": {
+        "t0": 1789355703.9069037,
+        "done": true
+      },
+      "FZYTSI.0.342": {
+        "t0": 1789355711.6916318,
+        "done": true
+      },
+      "FZYTSI.0.373": {
+        "t0": 1789355719.479894,
+        "done": true
+      },
+      "FZYTSI.0.404": {
+        "t0": 1789355727.6583831,
+        "done": true
+      },
+      "FZYTSI.0.435": {
+        "t0": 1789355735.439937,
+        "done": true
+      },
+      "FZYTSI.0.466": {
+        "t0": 1789355743.738555,
+        "done": true
+      },
+      "FZYTSI.0.480": {
+        "t0": 1789355747.2578208,
+        "done": true
+      }
+    },
+    "land_turn": 28,
+    "dancer_cast": true,
+    "counter_bolts": 2,
+    "attack1_done": true,
+    "attack2_done": true,
+    "counters_pre_accept": 2,
+    "counters_post_accept": 0,
+    "accept_offered": true,
+    "accept_done": true,
+    "decline_offered": true,
+    "decline_done": true,
+    "counters_at_decline": 2,
+    "test_bolt_cast": true,
+    "test_bolt_targeted": true,
+    "test_bolt_max_stack": 0,
+    "retarget_offered": true,
+    "retarget_done": true,
+    "retarget_target": "FZYTSI.0.146.c3",
+    "p1_life_test_cast": 12,
+    "p1_life_after_accept": 6,
+    "regen_bolt_cast": true,
+    "decl_bolt_cast": true,
+    "decl_bolt_targeted": true,
+    "decl_bolt_max_stack": 0,
+    "decl_retarget_seen": false,
+    "p1_life_decl_cast": 4,
+    "p1_life_after_decl": 1,
+    "p0_life_final": 17,
+    "p1_life_final": 1,
+    "game_code": "FZYTSI",
+    "last_rev_acted": {
+      "mull0": 2,
+      "mull1": 2,
+      "p1pass": 489,
+      "pass": 487,
+      "land": 471,
+      "dancer": 81,
+      "bolt_counter": 120,
+      "atk": 476,
+      "bolt_test": 142,
+      "bolt_regen": 162,
+      "bolt_decl": 479
+    },
+    "pending_bolt_kind": "decl",
+    "pending_bolt_tgt": 1,
+    "last_target_oid": "FZYTSI.0.480.t1",
+    "gy_bolts_pre_test": 2,
+    "p1_life_pre_test": 12,
+    "gy_bolts_after_accept": 3,
+    "gy_bolts_pre_regen": 3,
+    "p1_life_pre_regen": 6,
+    "gy_bolts_pre_decl": 4,
+    "p1_life_pre_decl": 4,
+    "cleanup_turn": 28
+  },
+  "notes": [
+    "A1: RemoveCounter=True CreateDelayedTrigger=True CopySpell=True MayChooseNewTargets=True",
+    "A2: dancer_bf=1 counters_pre=2 counter_bolts=2 p1_life_pre=12",
+    "A3: offered=True done=True counters 2->0",
+    "A5: P1 12->6 (dmg=6, expect 6); P0-gy bolts=3 (expect 3)",
+    "A4: retarget_offered=True retarget_done=True max_bolt_stack=0 dmg_accept=6",
+    "A6: offered=True done=True counters_at_decline=2 (expect 2) decl_max_stack=0 decl_retarget_seen=False P1 4->1 (dmg=3, expect 3)",
+    "A7: stack_empty=True post_wf=Priority life_final=17/1",
+    "verdict=not-reproduced: accept removed counters, copy was created, retargeted, and both bolt+copy resolved for 6",
+    "verdict=not-reproduced",
+    "intermittency: the copy WAS offered and resolved here, but sibling runs 20260913-7140b (complete), 20260913-7140 and 20260913-7140c showed the reported failure - accept removed the counters yet no copy was offered and the next bolt dealt only 3. The bug reproduces intermittently (~3/5 runs); see issue comment for the primary reproduction evidence (20260913-7140b)."
+  ],
+  "evidence_files": [
+    "pre.json",
+    "mid.json",
+    "post.json",
+    "run.json",
+    "manifest.sha256",
+    "summary.png",
+    "scenario_7140.py",
+    "wire_log.jsonl",
+    "scenario_run.log",
+    "server.log"
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "4x Mercurial Spelldancer / 20x Lightning Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "P1 is a fully passive punching bag (60x Forest, never plays lands, never casts, never blocks).",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "duration_s": 122.9
+}
