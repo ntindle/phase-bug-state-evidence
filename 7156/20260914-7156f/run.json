@@ -1,0 +1,290 @@
+{
+ "issue": 7156,
+ "title": "triumph of st. Katherine \u2014 Reflection of Kiki-Jiki targeting Triumph of St. Katherine hangs resolving the dies trigger",
+ "run_id": "20260914-7156f",
+ "validated_at": "2026-09-14",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (already running from prior run; ServerHello verified v0.82.0/060b5d2/protocol 70) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "scope": "Fable of the Mirror-Breaker saga -> transform into Reflection of Kiki-Jiki -> {1},{T} copy of Triumph of Saint Katherine -> end-step sacrifice -> dies-trigger pile resolution; native engine, two human-client seats",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_token_created": "passed",
+  "A4_trigger_fired": "passed",
+  "A5_no_hang": "passed",
+  "A6_pile_correct": "failed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_notes": [
+  "A1: triumph chain + reflection copy/sacrifice + fable ch.III transform parse: passed",
+  "A2: reflection untapped=True triumph_on_bf=True untapped_lands=5 turn=14 transform_turn=10",
+  "A3: target_answered=True (submitted oid=44) token_oid=126 token_seen_turn=14",
+  "A4: token_died=True (turn 14) trigger_seen=True",
+  "A5: trigger_resolved=True hang_declared=False zone_choice_seen=True",
+  "A6: lib_count 46->41 pile_multiset_home=False (pile=['Plains', 'Plains', 'Mountain', 'Plains', 'Mountain', 'Fable of the Mirror-Breaker'] post_top6=['Plains', 'Triumph of Saint Katherine', 'Mountain', 'Plains', 'Triumph of Saint Katherine', 'Triumph of Saint Katherine']) exile_clean=False (post_exile=['Fable of the Mirror-Breaker', 'Mountain', 'Mountain', 'Plains', 'Plains']) token_gone=True",
+  "A7: stack_empty=True turn 14->14 hang=False",
+  "verdict rule: reproduced (done_reason=choice answered and accepted by engine zone_choice_seen=True)"
+ ],
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      20
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      20
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      28
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      28
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      28
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      35
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      35
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      75
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      72
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      24
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      18
+     ]
+    }
+   },
+   "stage": "ACTIVATE"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      18
+     ]
+    }
+   },
+   "stage": "ACTIVATE"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "ACTIVATE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      65
+     ]
+    }
+   },
+   "stage": "ACTIVATE"
+  }
+ ],
+ "wf_types_seen": [
+  "EffectZoneChoice",
+  "MiracleReveal",
+  "OptionalEffectChoice",
+  "Priority",
+  "TargetSelection"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (60x Plains; plays land, never casts/attacks/blocks).",
+  "The reported Discord attachment (turn-17 game state zip) was not used: its signed URL expired; the fixture replays the reported sequence from a fresh game instead."
+ ]
+}
