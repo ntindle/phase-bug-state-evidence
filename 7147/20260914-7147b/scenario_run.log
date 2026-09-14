@@ -1,0 +1,41 @@
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game 9LKIOM; RUN_ID=20260914-7147b
+[P1] keeps
+[P0] keeps
+[P1] casts Bear
+[P0] casts Bear
+[P0] legA plays Talon Gates (turn 6)
+[P0] legA TriggerTargetSelection: rtype=schema ncands=2 iid=9LKIOM.0.89
+    cand id=9LKIOM.0.89.t0 -> Grizzly Bears#116(P1) text=''
+    cand id=9LKIOM.0.89.t1 -> Grizzly Bears#13(P0) text=''
+exported preA.json
+[P0] legA submitting: {"interactionId": "9LKIOM.0.89", "response": {"type": "sequence", "data": {"choiceIds": []}}}
+[legA] trigger targets on stack: [null]
+[P0] casts Bear
+exported midA.json
+[legA] mid: 24 bears tracked; phased=['116', '13'] (answer turn 6 -> mid turn 6)
+legA resolution observed; leg=B armed
+[P0] legB plays Talon Gates (turn 8)
+[P0] legB TriggerTargetSelection: rtype=schema ncands=3 iid=9LKIOM.0.126
+    cand id=9LKIOM.0.126.t0 -> Grizzly Bears#116(P1) text=''
+    cand id=9LKIOM.0.126.t1 -> Grizzly Bears#13(P0) text=''
+    cand id=9LKIOM.0.126.t2 -> Grizzly Bears#40(P0) text=''
+exported preB.json
+[P0] legB targets Grizzly Bears#116(P1)
+[P0] legB submitting: {"interactionId": "9LKIOM.0.126", "response": {"type": "sequence", "data": {"choiceIds": ["9LKIOM.0.126.t0"]}}}
+[legB] trigger targets on stack: [null]
+exported midB.json
+[legB] mid: 24 bears tracked; phased=['116'] (answer turn 8 -> mid turn 8)
+legB resolution observed; stopping
+main loop ended: stop=True reason=both legs resolved
+scenario source copied to evidence
+exported post.json
+VERDICT: reproduced
+  A1: multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}} effect=PhaseOut
+  A2: prompt_seen=True ncands=2 sides=[0, 1] pre=True
+  A3: answered=True rejected_flag=False legA rejections=0
+  A4: mid_exported=True phased_after_empty=['116', '13'] vanished=[] answer_turn=6 mid_turn=6 same_turn=True (bears pre=24 mid=24)
+  A5: prompt_seen=True answered=True target_oid=116 phased=['116'] others_phased=[]
+  A6: final stack depth=0
+  verdict=reproduced: legA empty selection -> phased bears ['116', '13']; legB single-target control -> phased ['116'] (target 116)
+run.json written

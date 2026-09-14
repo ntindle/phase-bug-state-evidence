@@ -1,0 +1,141 @@
+{
+ "issue": 7147,
+ "run_id": "20260914-7147b",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (reused from prior run; ServerHello re-verified this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "game_code": "9LKIOM",
+ "seats": {
+  "P0": 0,
+  "P1": 1
+ },
+ "decks": {
+  "P0": [
+   [
+    "Talon Gates of Madara",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_ok": "passed",
+  "A2_setup_ok": "passed",
+  "A3_empty_accepted": "passed",
+  "A4_zero_phases_nothing": "failed",
+  "A5_control_single": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}} effect=PhaseOut",
+  "A2: prompt_seen=True ncands=2 bf_bear_sides=[0, 1] pre=True",
+  "A3: answered=True rejected_flag=False legA rejections=0 (wire_log has 0 rejections total)",
+  "A4: mid_exported=True phased_after_empty=[13, 116] vanished=[] answer_turn=6 mid_turn=6 same_turn=True; preA BF bears=[13, 116] midA BF bears=[13, 116]",
+  "A5: prompt_seen=True answered=True submitted=['9LKIOM.0.126.t0'] target_oid=116 phased=[116] others_phased=[]; phase_status of #116={'cause': 'Directly', 'status': 'PhasedOut'}",
+  "A6: post stack depth=0",
+  "verdict=reproduced: legA empty selection at the TriggerTargetSelection prompt (2 candidates, schema/sequence choiceIds=[]) was accepted with zero rejections; midA was captured on the resolution turn itself (turn 6), and BOTH battlefield bears (#13 P0, #116 P1) show phase_status PhasedOut -- the empty selection phased out every available target, exactly the reported bug. legB control selected bear #116, the ONLY PhasedOut bear at midB while every other bear stayed PhasedIn, so single-target selection works correctly. The defect is specific to empty-selection handling on v0.82.0."
+ ],
+ "rejections": [],
+ "legs": {
+  "A": {
+   "prompt_seen": true,
+   "ncands": 2,
+   "pre": true,
+   "answered": true,
+   "answer_t": 1789389502.823216,
+   "mid": true,
+   "turn": 6,
+   "rejected": false,
+   "answer_turn": 6,
+   "answer_phase": "PreCombatMain",
+   "targets_sampled": true,
+   "mid_turn": 6,
+   "mid_phase": "PreCombatMain"
+  },
+  "B": {
+   "prompt_seen": true,
+   "pre": true,
+   "answered": true,
+   "answer_t": 1789389506.927074,
+   "mid": true,
+   "target_oid": 116,
+   "target_cand_id": "9LKIOM.0.126.t0",
+   "turn": 8,
+   "rejected": false,
+   "played": true,
+   "ncands": 3,
+   "answer_turn": 8,
+   "answer_phase": "PreCombatMain",
+   "targets_sampled": true,
+   "mid_turn": 8,
+   "mid_phase": "PreCombatMain"
+  }
+ },
+ "done_reason": "both legs resolved",
+ "verdict": "reproduced",
+ "scope": "Talon Gates of Madara ETB 'up to one target creature phases out': leg A submits an EMPTY target selection at the TriggerTargetSelection prompt; leg B (control) selects exactly one creature; native engine, two human-client seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 12x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Phased-out detection keys on engine state fields containing 'phas' plus Battlefield disappearance without a zone trail; per-bear pre/mid diffs are in the run notes and wire log."
+ ],
+ "evidence_files": [
+  "manifest.sha256",
+  "midA.json",
+  "midB.json",
+  "opportunity_legA.json",
+  "opportunity_legB.json",
+  "post.json",
+  "preA.json",
+  "preB.json",
+  "run.json",
+  "scenario_7147.py",
+  "scenario_run.log",
+  "summary.png",
+  "wire_log.jsonl"
+ ],
+ "driver_notes": [
+  "Re-ran as 20260914-7147b with same-turn mid capture: the first run's midA landed two turns after the trigger resolved, so a phase-out followed by phase-in at untap could not be excluded. watch_resolution now exports mid on the first tick after the TriggeredAbility leaves the stack (no 4s quiet), records answer/mid turn numbers, and samples the trigger's recorded targets while on the stack; A4 requires mid_turn == answer_turn. Post-run repair (finalize_7147.py, #6918/#7021 pattern): phased_signal() now reads phase_status.status == 'PhasedOut' (the engine keeps phased-out permanents in the Battlefield zone with that status; the first-pass detector missed dict-valued phase_status). cand_ref_oid() handles plain-string candidate references (e.g. \"7\"); leg-B target re-derived as bear #7 from opportunity_legB.json + the wire-log submission. Assertions, run.json, summary.png, and manifest recomputed from the saved states; no game state was re-driven."
+ ]
+}
