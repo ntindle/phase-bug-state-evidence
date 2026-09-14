@@ -1,0 +1,557 @@
+{
+ "issue": 7144,
+ "run_id": "20260914-7144-084417",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "game_code": "VQL54V",
+ "seats": {
+  "P0": 0,
+  "P1": 1,
+  "P2": 2
+ },
+ "decks": {
+  "P0": [
+   [
+    "Port Razer",
+    24
+   ],
+   [
+    "Mountain",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_razer_on_battlefield": "passed",
+  "A2_able_bodied": "passed",
+  "A3_two_combats_elapsed": "passed",
+  "A4_no_declare_prompt": "passed",
+  "A5_never_attacked": "passed",
+  "A6_condition_dropped": "passed"
+ },
+ "notes": [
+  "A1: razer on P0 battlefield: True",
+  "A2: tapped=False summoning_sick=False",
+  "A3: p0 combats with razer on board=2",
+  "A4: declare prompt offered to P0: False (expect False: engine auto-submits empty attackers when it computes zero valid attackers)",
+  "A5: creatures_attacked_this_turn=['per-defender:None'] lives={1: 20, 2: 20} declare_results=[]",
+  "A6: parsed static mode=CantAttack condition=None (expect CantAttack/None: the 'a player it has already attacked this turn' qualifier was dropped at parse time, leaving a blanket can't-attack)",
+  "verdict=reproduced",
+  "finding: Port Razer 'can't attack a player it has already attacked this turn' is parsed to an unconditional CantAttack (condition null); the engine computes zero valid attackers and auto-skips DeclareAttackers, so the Razer can never attack any player, even with no attack history.",
+  "verdict=reproduced"
+ ],
+ "declare_results": [],
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      145
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      14
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      70
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      129
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      29
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      29
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      29
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      72
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      147
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      30
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      30
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      30
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      75
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      152
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      2
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      2
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      2
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      2
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      79
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      138
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      33
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      33
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      84
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      84
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      84
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P2",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      154
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      51
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      51
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      51
+     ]
+    }
+   },
+   "stage": "OBSERVE"
+  }
+ ],
+ "done_reason": "observation complete: 2 P0 combats with razer on board",
+ "verdict": "reproduced",
+ "scope": "Port Razer attack lockout (can't attack any player); native engine, three human-client seats",
+ "limitations": [
+  "Browser UI not exercised.",
+  "Dense 24x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Authoritative exports only; no standalone state-restore in this build."
+ ],
+ "evidence_files": [
+  "authoritative_state.json",
+  "scenario_7144.py",
+  "scenario_run.log",
+  "wire_log.jsonl"
+ ]
+}
