@@ -1,0 +1,169 @@
+{
+ "run_id": "20260914-6916",
+ "issue": 6916,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "0068db2e747f22b69e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.82.0 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 server on 127.0.0.1:9374, started for this run (pid in runs/<run-id>/server.pid)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "dd3d9ccfb5f97437879b27244ff020f95d55f463482f40b95af5abadb88f2ca0",
+ "format_config": "CommanderDraft (3 seats; P0/P1 commanders, P2 none)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "swamp",
+     30
+    ],
+    [
+     "mountain",
+     30
+    ]
+   ],
+   "commander": [
+    "xantcha, sleeper agent"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_controlled_by_chosen": "passed",
+  "A4_any_player_activate": "failed",
+  "A5_activation_effect": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [
+   {
+    "who": "P1",
+    "iid": "G0QXC0.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   },
+   {
+    "who": "P2",
+    "iid": "G0QXC0.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   }
+  ],
+  "auto_answered": [],
+  "rejections": [],
+  "target_selections": {},
+  "stack_entries": []
+ },
+ "driver_state": {
+  "xantcha_cast": true,
+  "xantcha_cast_turn": 12,
+  "xantcha_oid": 181,
+  "entered": true,
+  "entered_at": 1789426105.5813935,
+  "enter_controller": 2,
+  "enter_owner": 0,
+  "enter_choice_offered": true,
+  "enter_choice_iid": "G0QXC0.0.258",
+  "enter_choice_candidates": [
+   1,
+   1,
+   2,
+   2
+  ],
+  "enter_choice_pick": 2,
+  "enter_wf_types": [
+   "EntryControllerChoice",
+   "Priority"
+  ],
+  "pre_exported": false,
+  "mid_exported": true,
+  "post_exported": true,
+  "post_at": 1789426121.9788368,
+  "p1_activated": false,
+  "p1_activation_turn": null,
+  "pre_act": null,
+  "p1_sample_turns": [
+   13,
+   16
+  ],
+  "p1_noact_logged": [
+   13,
+   16
+  ],
+  "p2_ctrl_sample": {
+   "n": 0,
+   "turn": 12
+  },
+  "p0_owner_sample": {
+   "n": 0,
+   "turn": 12
+  }
+ },
+ "notes": [
+  "A1: xantcha_oid=181 zone=Battlefield owner=0 controller=2",
+  "A2 passed: opponent-choice prompt offered (iid=G0QXC0.0.258, candidates=[1, 1, 2, 2])",
+  "A3 passed: Xantcha controlled by P2 (intended pick)",
+  "A4 FAILED: P1 (non-controller, non-owner) was never offered Xantcha's {3} activation. BUG REPRODUCED (b).",
+  "A5 not-run: no activation happened",
+  "A6: stack_empty=True waiting_for=Priority",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6916.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "CommanderDraft format is a test-harness fixture for 3-player games (P0 casts Xantcha from the command zone).",
+  "The reported 'attacks each combat if able' clause was not asserted; only the opponent-choice entry and the any-player activation permission were tested.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 66.9
+}
