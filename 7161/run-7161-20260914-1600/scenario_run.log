@@ -1,0 +1,53 @@
+[20:24:39] RUN_ID=run-7161-20260914-1600 issue=7161
+[20:24:39] ServerHello: v0.82.0 060b5d2 protocol 70 mode=Full
+[20:24:39] game CIQNWK; P0 seat=0, P1 seat=1
+[20:24:39] [P1] keeps
+[20:24:40] [P0] keeps
+[20:24:40] turn 1 phase=Untap active=0 stage=setup
+[20:24:43] turn 2 phase=Upkeep active=1 stage=setup
+[20:24:44] [P1] plays Forest
+[20:24:47] turn 3 phase=Upkeep active=0 stage=setup
+[20:24:51] turn 4 phase=Upkeep active=1 stage=setup
+[20:24:52] [P1] plays Forest
+[20:24:52] [P1] casts Grizzly Bears
+[20:24:55] turn 5 phase=Upkeep active=0 stage=setup
+[20:24:57] [P0] casts Abyssal Harvester
+[20:24:57] [P0] stage=kill
+[20:25:00] turn 6 phase=Upkeep active=1 stage=kill
+[20:25:01] [P1] plays Forest
+[20:25:01] [P1] casts Grizzly Bears
+[20:25:03] [P1] declares no attackers
+[20:25:05] turn 7 phase=Upkeep active=0 stage=kill
+[20:25:06] [P0] casts Bolt targeting Bear 62
+[20:25:06] [P0] TargetSelection (bolt_target_bear_bf): choice=CIQNWK.0.107.t2 (CIQNWK.0.107.t2) ref=62
+[20:25:07] [P0] Bear died -> P1 graveyard oid=62 turn=7
+[20:25:07] exported pre.json (458469 bytes)
+[20:25:07] [P0] activated Abyssal Harvester (ability_index=0) turn=7
+[20:25:07] [main] stage=watch
+[20:25:08] [watch] bear exiled; nightmare tokens on P0 BF: [('1', 'Abyssal Harvester')]
+[20:25:08] leg1: asserting...
+[20:25:08] exported post.json (480747 bytes)
+[20:25:08] [main] stage=leg2 (second activation leg)
+[20:25:10] [P0] leg2: casts Bolt targeting Bear 70
+[20:25:10] [P0] TargetSelection (leg2_bolt_target_bear_bf): choice=CIQNWK.0.121.t3 (CIQNWK.0.121.t3) ref=70
+[20:25:11] [P0] leg2: Bear2 died oid=70 turn=7
+[20:25:12] turn 8 phase=Upkeep active=1 stage=leg2
+[20:25:13] [P1] plays Forest
+[20:25:13] [P1] casts Grizzly Bears
+[20:25:16] [P0] leg2: activated Abyssal Harvester again
+[20:25:16] turn 9 phase=Upkeep active=0 stage=leg2
+[20:25:17] [leg2 watch] resolved; tokens: [('1', 'Abyssal Harvester')]
+[20:25:17] leg2: finalizing...
+[20:25:17] exported post_leg2.json (460525 bytes)
+[20:25:17] main loop ended: leg2 complete stage=done
+[20:25:17] finalizing...
+[20:25:18] render stdout: 
+[20:25:18] render FAILED: Traceback (most recent call last):
+  File "/home/hatch/workspace/dev/phase-backfill/driver/render_summary_7161.py", line 51, in <module>
+    post_objs = json.loads(post)["state"]["objects"]
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 339, in loads
+    raise TypeError(f'the JSON object must be str, bytes or bytearray, '
+TypeError: the JSON object must be str, bytes or bytearray, not dict
+
+[20:25:18] verdict=reproduced manifest written (6 files)
