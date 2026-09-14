@@ -1,0 +1,687 @@
+{
+ "issue": 7145,
+ "run_id": "20260914-7145i",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (already running from prior run 20260914-7144-081218; ServerHello verified v0.82.0/060b5d2/protocol 70) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "game_code": "ND39PF",
+ "seats": {
+  "P0": 0,
+  "P1": 1
+ },
+ "decks": {
+  "P0": [
+   [
+    "Necrotic Ooze",
+    12
+   ],
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Prodigal Pyromancer",
+    8
+   ],
+   [
+    "Ana Disciple",
+    8
+   ],
+   [
+    "Scavenging Ooze",
+    8
+   ],
+   [
+    "Swamp",
+    10
+   ],
+   [
+    "Mountain",
+    8
+   ],
+   [
+    "Forest",
+    6
+   ]
+  ],
+  "P1": [
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ],
+   [
+    "Royal Assassin",
+    8
+   ],
+   [
+    "Mountain",
+    32
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_grant": "passed",
+  "A2_setup_ok": "passed",
+  "A3_own_gy_complete": "passed",
+  "A4_opp_gy_complete": "passed",
+  "A5_multi_ability_card": "passed",
+  "A6_activation_outcome": "passed",
+  "A6c_offered_when_granted": "passed",
+  "A6b_opp_activation_outcome": "not-run",
+  "A7_removal_updates": "passed",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "A1: card-data static_abilities carry GrantAllActivatedAbilitiesOf(Typed Creature, controller null, InZone Graveyard): passed",
+  "A2: ooze_on_bf=True p0_gy=['Ana Disciple', 'Ana Disciple', 'Faithless Looting', 'Faithless Looting', 'Faithless Looting', 'Faithless Looting', 'Prodigal Pyromancer', 'Prodigal Pyromancer', 'Prodigal Pyromancer', 'Scavenging Ooze'] p1_gy=['Faithless Looting', 'Llanowar Elves', 'Royal Assassin']",
+  "A3: own-gy sigs present=['PYRO', 'ANA_FLY', 'ANA_WEAK'] (expect all of ['PYRO', 'ANA_FLY', 'ANA_WEAK']); state had 6 activated abilities",
+  "A4: opp-gy sigs present=['ELVES', 'ASSASSIN'] (expect all of ['ELVES', 'ASSASSIN'])",
+  "A5: ana sigs present=['ANA_FLY', 'ANA_WEAK'] (expect both)",
+  "A6: pyro_activated=True pyro_resolved=True p1_life=20->19",
+  "A6c: grant_idxs=[0, 1, 2, 3, 4, 5] offered_idxs=[0, 2, 3] pyro_idx=0 no_phantoms=True pyro_offered=True",
+  "A6b: elves_activated=False elves_resolved=False",
+  "A7: anas_exiled=['32', '29'] p0gy_final=['Faithless Looting', 'Faithless Looting', 'Faithless Looting', 'Faithless Looting', 'Faithless Looting', 'Prodigal Pyromancer', 'Prodigal Pyromancer', 'Prodigal Pyromancer', 'Scavenging Ooze'] ana_gone=True ana_sigs_gone=True others_stay=True scav_grant_stays=True remove_scan_n=4",
+  "A8: final stack=[] turn=33",
+  "verdict=not-reproduced",
+  "finding: Ooze gained all 5 expected abilities from both graveyards (incl. both of Ana Disciple's), all were offered for activation when able-bodied, both sample activations resolved, and exiling a source removed exactly its abilities."
+ ],
+ "offer_scans": [
+  {
+   "stage": "grant",
+   "n_offers": 0,
+   "idxs": [],
+   "n_state_abs": 6
+  },
+  {
+   "stage": "remove",
+   "n_offers": 0,
+   "idxs": [],
+   "n_state_abs": 4
+  }
+ ],
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": [
+      75
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "stale_interaction",
+     "disposition": "stale",
+     "message": "That interaction has already changed.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  }
+ ],
+ "unexpected": [],
+ "done_reason": "flow complete",
+ "verdict": "not-reproduced",
+ "scope": "Necrotic Ooze continuous grant: enumeration of activated abilities from both players' graveyards (own + opponent), multi-ability card, functional activation of own- and opp-sourced grants, source-removal update; native engine, two human-client seats",
+ "limitations": [
+  "Browser UI not exercised.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Authoritative exports only; no standalone state-restore in this build.",
+  "Faithless Looting is the graveyard-stocking fixture; natural deaths were not used."
+ ],
+ "evidence_files": [
+  "grant_scan.json",
+  "parse_necrotic_ooze.json",
+  "post_activate_pyro.json",
+  "post_remove.json",
+  "pre_grant.json",
+  "remove_scan.json",
+  "scenario_7145.py",
+  "scenario_run.log",
+  "wire_log.jsonl"
+ ]
+}
