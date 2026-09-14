@@ -1,0 +1,249 @@
+{
+ "run_id": "20260913-7141",
+ "issue": 7141,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for this run's session; this game's states are isolated per game code)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d953495c134c08068e24485f2a91b1dacd49560ec847e62a9fcf268dd0e454c2",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "gr\u00edma, saruman's footman",
+    12
+   ],
+   [
+    "island",
+    24
+   ],
+   [
+    "swamp",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    20
+   ],
+   [
+    "forest",
+    40
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_exile_until": "passed",
+  "A4_cast_offered": "passed",
+  "A5_cast_resolves": "passed",
+  "A6_bottom_cleanup": "failed",
+  "A7_decline_control": "failed",
+  "A8_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "prompts": [
+   {
+    "kind": "OptionalEffectChoice",
+    "who": "P0",
+    "stage": "combat1",
+    "accept_values": [
+     "false",
+     "true"
+    ],
+    "action_codes": [
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ],
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ]
+    ]
+   },
+   {
+    "kind": "TargetSelection",
+    "who": "P0",
+    "purpose": "grima_bolt",
+    "picked_seat": 1
+   },
+   {
+    "kind": "OptionalEffectChoice",
+    "who": "P0",
+    "stage": "combat2",
+    "accept_values": [
+     "false",
+     "true"
+    ],
+    "action_codes": [
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ],
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ]
+    ]
+   }
+  ],
+  "stage_timeouts": []
+ },
+ "driver_state": {
+  "finished": true,
+  "stage": "done",
+  "stage_t0": 1789357222.8392148,
+  "pre_exported": true,
+  "offer1_exported": true,
+  "mid_exported": true,
+  "offer2_exported": true,
+  "post_exported": true,
+  "prompt_first_seen": {
+   "KH6NQR.0.31": {
+    "t0": 1789357183.8510752,
+    "done": true
+   },
+   "KH6NQR.0.61": {
+    "t0": 1789357191.3811622,
+    "done": true
+   },
+   "KH6NQR.0.91": {
+    "t0": 1789357198.923138,
+    "done": true
+   },
+   "KH6NQR.0.124": {
+    "t0": 1789357207.2103262,
+    "done": true
+   },
+   "KH6NQR.0.141": {
+    "t0": 1789357210.8856912,
+    "done": true
+   },
+   "KH6NQR.0.142": {
+    "t0": 1789357211.2316692,
+    "done": true
+   },
+   "KH6NQR.0.167": {
+    "t0": 1789357217.6106942,
+    "done": true
+   },
+   "KH6NQR.0.184": {
+    "t0": 1789357221.8960686,
+    "done": true
+   }
+  },
+  "land_turn": 11,
+  "grima_cast": true,
+  "grima_cast_turn": 7,
+  "attack1_done": true,
+  "attack1_turn": 9,
+  "attack2_done": true,
+  "attack2_turn": 11,
+  "offer1_seen": true,
+  "offer1_skipped": false,
+  "offer1_kind": "OptionalEffectChoice",
+  "offer1_bolt_oid": 88,
+  "offer1_exiled": [
+   88,
+   106
+  ],
+  "offer1_accepted": true,
+  "p1_life_pre": 20,
+  "p1_life_at_offer1": 19,
+  "p1_life_post_bolt": 16,
+  "p1_life_at_offer2": 15,
+  "p1_life_post": 15,
+  "gy1_bolts_pre_leg1": 1,
+  "gy1_bolts_post_leg1": 2,
+  "bolt_targeted": true,
+  "bolt_resolved": true,
+  "p0_untapped_pre_cast": 5,
+  "p0_untapped_post_cast": 5,
+  "settle_ticks": 0,
+  "offer2_seen": true,
+  "offer2_skipped": false,
+  "offer2_kind": "OptionalEffectChoice",
+  "offer2_bolt_oid": 111,
+  "offer2_exiled": [
+   62,
+   73,
+   92,
+   106,
+   111
+  ],
+  "offer2_declined": true,
+  "gy1_bolts_at_mid": 2,
+  "game_code": "KH6NQR",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "pass": 187,
+   "p1pass": 186,
+   "land": 172,
+   "grima": 97,
+   "atk9DeclareAttackers": 134,
+   "atk11DeclareAttackers": 177
+  },
+  "zones_seen": [
+   "Exile"
+  ],
+  "p1_life_pre_bolt": 19,
+  "top_end": "front",
+  "p0_life_final": 20,
+  "p1_life_final": 15
+ },
+ "notes": [
+  "A1: ExileFromTopUntil=True NextMatches=True Instant=True Sorcery=True CastFromZone_free=True Bottom=True; OBS bottom_count={'type': 'Fixed', 'value': 1} (oracle: ALL uncast exiled cards), random_order_marker=True",
+  "A2: grima_bf=1 p1_life_pre=20 p1_lib=49 turn=9",
+  "A3: exiled_n=2 exiled=['forest', 'lightning bolt'] top_end=front bolt_oid=88",
+  "A4: offer1_seen=True kind=OptionalEffectChoice bolt_oid=88 accepted=True skipped=False",
+  "A5: P1 19->16 (dmg=3, expect 3); bolt oid=88 in P1 gy=True; P0 untapped lands 5->5 (free cast: expect no payment)",
+  "A6: uncast_exiled=1 in_P1_lib=0 stranded_in_exile=1 ['forest']",
+  "A7: exiled_n=5 in_P1_lib=0 stranded=5 P1-gy bolts 2->2 (expect no new); P1 15->15 (dmg=0, expect 0)",
+  "A8: stack_empty=True post_wf=Priority life_final=20/15",
+  "verdict=reproduced: the exile-until / may-cast / bottom-cleanup chain failed in at least one stage",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "offer1.json",
+  "mid.json",
+  "offer2.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7141.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grima / 20x Lightning Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a fully passive punching bag (20x Bolt, 40x Forest; never plays lands, never casts, never blocks).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 47.5
+}
