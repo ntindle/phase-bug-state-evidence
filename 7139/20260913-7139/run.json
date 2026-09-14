@@ -1,0 +1,1760 @@
+{
+ "run_id": "20260913-7139",
+ "issue": 7139,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "ServerHello on 127.0.0.1:9374 (isolated v0.82.0 server started for this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 server on 127.0.0.1:9374, started for this run (pid in runs/<run-id>/server.pid)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a9d88ea4579a2a4778db08eef114c0461014f0acff0b205cebe23fb026ed9ad5",
+ "format_config": "CommanderDraft (3 seats; P0 Gonti / P1 Krenko inert / P2 no commander)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "swamp",
+     60
+    ]
+   ],
+   "commander": [
+    "gonti, lord of luxury"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "lightning bolt",
+     60
+    ]
+   ],
+   "commander": [
+    "krenko, mob boss"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_offered": "passed",
+  "A3_cast_completes": "passed",
+  "A4_resolves": "passed",
+  "A5_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   },
+   {
+    "who": "P2",
+    "iid": "5HG2JQ.0",
+    "n_choices": 2,
+    "texts": [
+     "keep",
+     "mulligan"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P0",
+    "iid": "5HG2JQ.0",
+    "n_choices": 2,
+    "texts": [
+     "",
+     ""
+    ]
+   },
+   {
+    "who": "P0",
+    "iid": "5HG2JQ.0",
+    "n_choices": 4,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P0",
+    "iid": "5HG2JQ.0",
+    "n_choices": 4,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P0",
+    "iid": "5HG2JQ.0",
+    "n_choices": 4,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P0",
+    "iid": "5HG2JQ.0",
+    "n_choices": 4,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "5HG2JQ.0",
+    "n_choices": 8,
+    "texts": [
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt",
+     "Lightning Bolt"
+    ]
+   }
+  ],
+  "auto_answered": [
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P0",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   },
+   {
+    "who": "P1",
+    "choice": "Lightning Bolt"
+   }
+  ],
+  "rejections": [],
+  "cast_action_names": [
+   "CastSpell"
+  ]
+ },
+ "driver_state": {
+  "gonti_cast": true,
+  "gonti_cast_turn": 10,
+  "gonti_oid": 181,
+  "entered": true,
+  "entered_at": 1789347376.4468186,
+  "etb_target_offered": true,
+  "etb_target_pick": 1,
+  "etb_wf_types": [
+   "TriggerTargetSelection"
+  ],
+  "exile_choice_offered": true,
+  "exile_pick_oid": "5HG2JQ.0.215.c0",
+  "exile_done": true,
+  "exile_done_at": 1789347397.6639173,
+  "exile_oid": 82,
+  "grant_fields": {
+   "cast": true,
+   "permission": true,
+   "granted": true,
+   "as_though": true
+  },
+  "cast_offered": true,
+  "cast_samples": [
+   {
+    "turn": 10,
+    "offered": false,
+    "untapped_swamps": 0,
+    "n_cast_actions": 0,
+    "vi_opportunities": 1
+   },
+   {
+    "turn": 13,
+    "offered": true,
+    "untapped_swamps": 4,
+    "n_cast_actions": 1,
+    "vi_opportunities": 1
+   }
+  ],
+  "sampled_turns": [
+   10,
+   13
+  ],
+  "cast_submitted": true,
+  "cast_submitted_oid": 82,
+  "cast_rejected": false,
+  "cast_rejection": null,
+  "bolt_stack_seen": false,
+  "bolt_target_done": true,
+  "bolt_target_submitted_cid": "5HG2JQ.0.285.t1",
+  "life_at_cast": 40,
+  "tapped_at_cast": 0,
+  "pre_exported": true,
+  "post_exported": false,
+  "post_at": null
+ },
+ "notes": [
+  "watchdog: 1200s elapsed; finishing",
+  "post export failed: sent 1011 (internal error) keepalive ping timeout; no close frame received",
+  "A1 failed: post.json missing",
+  "A2 passed: cast of exiled Bolt advertised to P0 (samples=2)",
+  "A3 passed: cast submitted (oid 82), accepted; bolt on stack seen=False",
+  "A4 failed: post.json missing",
+  "A5 failed: post.json missing",
+  "verdict=blocked",
+  "finalize_7139b: original run finished as blocked (server died before post export; driver never sampled the Bolt on the stack).",
+  "forensic post-state recovered from runs/20260913-7139/games.db (authoritative server session row, mutation_revision 1869, turn 83); post.json envelope mirrors the ExportAuthoritativeState shape.",
+  "A3 note: Bolt-on-stack was not directly sampled (driver gate too strict); acceptance + target submission + observed resolution strictly imply it.",
+  "verdict=not-reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7139.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "CommanderDraft format is a test-harness fixture for 3-player games.",
+  "Dense 60x single-card main decks are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "post.json is the final authoritative session state recovered from the server's games.db after the server process died (not a live ExportAuthoritativeState round-trip); byte-identical to the server's own persisted state.",
+  "Server process died at ~01:08:39 UTC with no panic in server.log (clients saw 1011 keepalive timeouts); root cause not investigated \u2014 out of scope for this issue's behavioral contract."
+ ],
+ "duration_s": 1200.6,
+ "assertion_details": {
+  "A1_setup_ok": "pre: Gonti oid181 Battlefield owner=0 ctrl=0; Bolt oid82 Exile owner=1 (P1's card)",
+  "A2_cast_offered": "turn-13 sample: offered=True, CastSpell in legal_actions, 4 untapped Swamps",
+  "A3_cast_completes": "cast of oid82 submitted and accepted (no rejection); TargetSelection answered with P1 as target",
+  "A4_resolves": "P1 life 40->37; oid82 Graveyard owner=1; spells_cast_this_game_by_player[0] has Lightning Bolt colors=[Red] from_zone=Exile; only 2 spells cast all game (Gonti + Bolt), no combat/commander damage",
+  "A5_cleanup": "final state turn 83, stack empty, phase Cleanup with P1 DiscardToHandSize pending \u2014 game proceeded normally after the stolen cast"
+ },
+ "result": "A1-A5 all passed: stolen red Lightning Bolt was offered to mono-black-commander P0, cast submitted+accepted, targeted P1, resolved for 3 damage (P1 40->37), and moved to owner's graveyard."
+}
