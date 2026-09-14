@@ -1,0 +1,37 @@
+oracle: At the beginning of your end step, if you control a creature, look at the top seven cards of your library. Then you may 
+A1_parse: passed (Phase/End -> Dig7 prior-look -> optional Sacrifice(1 creature you control) -> EffectOutcome/OptionalEffectPerformed -> Dig(keep1 up_to Battlefield, Creature mv<=CostPaidObject+1, source prior_look), else Dig(0 keep, rest->Library))
+game E2FQIB; seats P0=0 P1=1 RUN_ID=20260914-7163b
+[P1] mulligan: keep
+[P0] mulligan: keep
+[P1] cast Bears (turn 3)
+[P0] cast Birthing Ritual (turn 4)
+[P0] cast Bears (turn 6)
+[P0] Birthing Ritual trigger inferred from may-sacrifice prompt (turn 6)
+[P0] optional 'ritual may-sacrifice' answered accept=True
+[P0] ritual trigger left the stack (sac_done=False bf_prompt_seen=False)
+STALLED on DigChoice, exporting stuck state
+exported MID
+exported POST
+loaded mid.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: failed
+A3_trigger_fired: passed
+A4_sacrifice: failed
+A5_sacrifice_effect: not-run
+A6_bf_pick: not-run
+A7_cleanup: failed
+note: A1_parse: passed (Phase/End -> Dig7 prior-look -> optional Sacrifice(1 creature you control) -> EffectOutcome/OptionalEffectPerformed -> Dig(keep1 up_to Battlefield, Creature mv<=CostPaidObject+1, source prior_look), else Dig(0 keep, rest->Library))
+note: stalled: waiting_for=DigChoice player=0 rev=103 frozen >90s; exporting stuck state
+note: deadline hit before cleanup completed
+note: A2 failed: pre.json missing
+note: A3: trigger_fired at turn 6, resolved=True inferred_from_prompt=True (trigger left the stack between 0.8s stack samples; the may-sacrifice prompt proves it resolved)
+note: A4: sac_prompt_seen=True sac_accepted=True sac_candidates_n=0 (>=2 required for the reported multi-creature case)
+note: A5 not-run: sacrifice selection never answered
+note: A6 not-run: sacrifice never completed
+note: A7 failed: ability stalled after the sacrifice - no BF-pick prompt, game moved on with the 7 cards unresolved
+VERDICT: blocked
+wrote run.json
+wrote summary.png
+manifest: MISSING pre.json
+wrote manifest.sha256
