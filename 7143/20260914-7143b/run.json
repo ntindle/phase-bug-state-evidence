@@ -1,0 +1,1143 @@
+{
+ "run_id": "20260914-7143b",
+ "issue": 7143,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for this run's session; this game's states are isolated per game code)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "4bd73742eb107c89cc9fbe50619570b84621ae52565ea2ad2c4e6ce48e11cce4",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "bloodchief ascension",
+    4
+   ],
+   [
+    "bump in the night",
+    8
+   ],
+   [
+    "torment of hailfire",
+    4
+   ],
+   [
+    "dark ritual",
+    4
+   ],
+   [
+    "swamp",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "memnite",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_cast_x10": "passed",
+  "A3_ten_choices": "passed",
+  "A4_sacrifices": "failed",
+  "A5_triggers": "failed",
+  "A6_effect": "passed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "prompts": [
+   {
+    "kind": "QuestCounterOffer",
+    "who": "P0",
+    "iid": "JO63VW.0.783"
+   },
+   {
+    "kind": "QuestCounterOffer",
+    "who": "P0",
+    "iid": "JO63VW.0.822"
+   },
+   {
+    "kind": "QuestCounterOffer",
+    "who": "P0",
+    "iid": "JO63VW.0.861"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 1,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 2,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 3,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 4,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 5,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 6,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 7,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 8,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 9,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "UnlessPaymentChooseCost",
+    "who": "P1",
+    "rep": 10,
+    "branch": "sacrifice"
+   },
+   {
+    "kind": "BloodchiefTriggerOffer",
+    "who": "P0",
+    "iid": "JO63VW.0.912",
+    "n": 1
+   },
+   {
+    "kind": "QuestCounterOffer",
+    "who": "P0",
+    "iid": "JO63VW.0.923"
+   }
+  ],
+  "stage_timeouts": []
+ },
+ "driver_state": {
+  "finished": true,
+  "stage": "settle",
+  "stage_t0": 1789372572.0883803,
+  "pre_exported": true,
+  "post_torment_exported": true,
+  "post_exported": true,
+  "prompt_first_seen": {
+   "JO63VW.0.645": {
+    "t0": 1789372371.4333694,
+    "done": true
+   },
+   "JO63VW.0.711": {
+    "t0": 1789372390.273754,
+    "done": true
+   },
+   "JO63VW.0.783": {
+    "t0": 1789372417.523161,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.822": {
+    "t0": 1789372434.5977752,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.861": {
+    "t0": 1789372454.1738763,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.887": {
+    "t0": 1789372464.5644355,
+    "done": false
+   },
+   "JO63VW.0.890": {
+    "t0": 1789372465.2435372,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.891": {
+    "t0": 1789372465.7478573,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.892": {
+    "t0": 1789372466.0017562,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.893": {
+    "t0": 1789372466.5060346,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.894": {
+    "t0": 1789372466.7598083,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.895": {
+    "t0": 1789372467.0142293,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.896": {
+    "t0": 1789372467.2669187,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.897": {
+    "t0": 1789372467.7733674,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.898": {
+    "t0": 1789372468.0279362,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.899": {
+    "t0": 1789372468.279264,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.900": {
+    "t0": 1789372468.5318575,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.901": {
+    "t0": 1789372468.785724,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.902": {
+    "t0": 1789372469.0396063,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.903": {
+    "t0": 1789372469.292125,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.904": {
+    "t0": 1789372469.5433028,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.905": {
+    "t0": 1789372469.796577,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.906": {
+    "t0": 1789372470.0484757,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.907": {
+    "t0": 1789372470.2994556,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.908": {
+    "t0": 1789372470.5526388,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.909": {
+    "t0": 1789372470.8077023,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.911": {
+    "t0": 1789372471.310549,
+    "done": false
+   },
+   "JO63VW.0.912": {
+    "t0": 1789372471.6012025,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.914": {
+    "t0": 1789372473.568702,
+    "done": false
+   },
+   "JO63VW.0.916": {
+    "t0": 1789372474.0705948,
+    "done": false
+   },
+   "JO63VW.0.918": {
+    "t0": 1789372474.5726418,
+    "done": false
+   },
+   "JO63VW.0.920": {
+    "t0": 1789372476.5821505,
+    "done": false
+   },
+   "JO63VW.0.922": {
+    "t0": 1789372477.0835667,
+    "done": false
+   },
+   "JO63VW.0.923": {
+    "t0": 1789372477.3726792,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.925": {
+    "t0": 1789372477.836448,
+    "done": false
+   },
+   "JO63VW.0.926": {
+    "t0": 1789372478.0877934,
+    "done": false
+   },
+   "JO63VW.0.928": {
+    "t0": 1789372478.5898852,
+    "done": false
+   },
+   "JO63VW.0.930": {
+    "t0": 1789372479.8877,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.931": {
+    "t0": 1789372480.139733,
+    "done": false
+   },
+   "JO63VW.0.933": {
+    "t0": 1789372480.6423018,
+    "done": false
+   },
+   "JO63VW.0.935": {
+    "t0": 1789372481.1437888,
+    "done": false
+   },
+   "JO63VW.0.937": {
+    "t0": 1789372481.645597,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.938": {
+    "t0": 1789372482.1485343,
+    "done": false
+   },
+   "JO63VW.0.940": {
+    "t0": 1789372482.4011188,
+    "done": false
+   },
+   "JO63VW.0.942": {
+    "t0": 1789372482.6521246,
+    "done": false
+   },
+   "JO63VW.0.945": {
+    "t0": 1789372483.1538987,
+    "done": false
+   },
+   "JO63VW.0.947": {
+    "t0": 1789372483.4049704,
+    "done": false
+   },
+   "JO63VW.0.949": {
+    "t0": 1789372486.9201658,
+    "done": false
+   },
+   "JO63VW.0.951": {
+    "t0": 1789372487.1723263,
+    "done": false
+   },
+   "JO63VW.0.953": {
+    "t0": 1789372487.4233212,
+    "done": false
+   },
+   "JO63VW.0.955": {
+    "t0": 1789372490.9373739,
+    "done": false
+   },
+   "JO63VW.0.957": {
+    "t0": 1789372491.1883569,
+    "done": false
+   },
+   "JO63VW.0.958": {
+    "t0": 1789372491.4396539,
+    "done": false
+   },
+   "JO63VW.0.960": {
+    "t0": 1789372491.690269,
+    "done": false
+   },
+   "JO63VW.0.962": {
+    "t0": 1789372491.9408479,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.963": {
+    "t0": 1789372492.1924775,
+    "done": false
+   },
+   "JO63VW.0.965": {
+    "t0": 1789372492.4433906,
+    "done": false
+   },
+   "JO63VW.0.967": {
+    "t0": 1789372492.6941378,
+    "done": false
+   },
+   "JO63VW.0.969": {
+    "t0": 1789372493.1959093,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.970": {
+    "t0": 1789372493.6988087,
+    "done": false
+   },
+   "JO63VW.0.972": {
+    "t0": 1789372493.9499462,
+    "done": false
+   },
+   "JO63VW.0.974": {
+    "t0": 1789372494.201444,
+    "done": false
+   },
+   "JO63VW.0.977": {
+    "t0": 1789372494.7032075,
+    "done": false
+   },
+   "JO63VW.0.979": {
+    "t0": 1789372494.9545221,
+    "done": false
+   },
+   "JO63VW.0.982": {
+    "t0": 1789372501.9824975,
+    "done": false
+   },
+   "JO63VW.0.984": {
+    "t0": 1789372502.234159,
+    "done": false
+   },
+   "JO63VW.0.986": {
+    "t0": 1789372502.4856234,
+    "done": false
+   },
+   "JO63VW.0.988": {
+    "t0": 1789372506.2527423,
+    "done": false
+   },
+   "JO63VW.0.990": {
+    "t0": 1789372506.5036402,
+    "done": false
+   },
+   "JO63VW.0.991": {
+    "t0": 1789372506.7544155,
+    "done": false
+   },
+   "JO63VW.0.993": {
+    "t0": 1789372507.005549,
+    "done": false
+   },
+   "JO63VW.0.995": {
+    "t0": 1789372507.2564106,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.996": {
+    "t0": 1789372507.5078533,
+    "done": false
+   },
+   "JO63VW.0.998": {
+    "t0": 1789372507.7592301,
+    "done": false
+   },
+   "JO63VW.0.1000": {
+    "t0": 1789372508.0100644,
+    "done": false
+   },
+   "JO63VW.0.1002": {
+    "t0": 1789372508.5119176,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1003": {
+    "t0": 1789372509.0168443,
+    "done": false
+   },
+   "JO63VW.0.1005": {
+    "t0": 1789372509.2675447,
+    "done": false
+   },
+   "JO63VW.0.1007": {
+    "t0": 1789372509.5186756,
+    "done": false
+   },
+   "JO63VW.0.1010": {
+    "t0": 1789372510.0205338,
+    "done": false
+   },
+   "JO63VW.0.1012": {
+    "t0": 1789372510.2717927,
+    "done": false
+   },
+   "JO63VW.0.1015": {
+    "t0": 1789372517.5567374,
+    "done": false
+   },
+   "JO63VW.0.1017": {
+    "t0": 1789372517.8081477,
+    "done": false
+   },
+   "JO63VW.0.1019": {
+    "t0": 1789372518.0595372,
+    "done": false
+   },
+   "JO63VW.0.1021": {
+    "t0": 1789372522.0766861,
+    "done": false
+   },
+   "JO63VW.0.1023": {
+    "t0": 1789372522.3273215,
+    "done": false
+   },
+   "JO63VW.0.1024": {
+    "t0": 1789372522.5790288,
+    "done": false
+   },
+   "JO63VW.0.1026": {
+    "t0": 1789372522.8302894,
+    "done": false
+   },
+   "JO63VW.0.1028": {
+    "t0": 1789372523.081047,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1029": {
+    "t0": 1789372523.3319607,
+    "done": false
+   },
+   "JO63VW.0.1031": {
+    "t0": 1789372523.5835166,
+    "done": false
+   },
+   "JO63VW.0.1033": {
+    "t0": 1789372523.835218,
+    "done": false
+   },
+   "JO63VW.0.1035": {
+    "t0": 1789372524.339215,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1036": {
+    "t0": 1789372524.8412635,
+    "done": false
+   },
+   "JO63VW.0.1038": {
+    "t0": 1789372525.0919354,
+    "done": false
+   },
+   "JO63VW.0.1040": {
+    "t0": 1789372525.3431053,
+    "done": false
+   },
+   "JO63VW.0.1043": {
+    "t0": 1789372525.845111,
+    "done": false
+   },
+   "JO63VW.0.1045": {
+    "t0": 1789372526.09569,
+    "done": false
+   },
+   "JO63VW.0.1047": {
+    "t0": 1789372530.1125352,
+    "done": false
+   },
+   "JO63VW.0.1049": {
+    "t0": 1789372530.3635118,
+    "done": false
+   },
+   "JO63VW.0.1051": {
+    "t0": 1789372531.921179,
+    "done": false
+   },
+   "JO63VW.0.1053": {
+    "t0": 1789372535.9347956,
+    "done": false
+   },
+   "JO63VW.0.1055": {
+    "t0": 1789372536.438443,
+    "done": false
+   },
+   "JO63VW.0.1056": {
+    "t0": 1789372536.6888242,
+    "done": false
+   },
+   "JO63VW.0.1058": {
+    "t0": 1789372537.1913788,
+    "done": false
+   },
+   "JO63VW.0.1060": {
+    "t0": 1789372537.6933236,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1061": {
+    "t0": 1789372537.9443169,
+    "done": false
+   },
+   "JO63VW.0.1063": {
+    "t0": 1789372538.447856,
+    "done": false
+   },
+   "JO63VW.0.1065": {
+    "t0": 1789372538.9494338,
+    "done": false
+   },
+   "JO63VW.0.1067": {
+    "t0": 1789372539.4518204,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1068": {
+    "t0": 1789372539.954202,
+    "done": false
+   },
+   "JO63VW.0.1070": {
+    "t0": 1789372540.45714,
+    "done": false
+   },
+   "JO63VW.0.1072": {
+    "t0": 1789372540.9592366,
+    "done": false
+   },
+   "JO63VW.0.1075": {
+    "t0": 1789372541.7115793,
+    "done": false
+   },
+   "JO63VW.0.1077": {
+    "t0": 1789372542.2147493,
+    "done": false
+   },
+   "JO63VW.0.1080": {
+    "t0": 1789372549.9980602,
+    "done": false
+   },
+   "JO63VW.0.1082": {
+    "t0": 1789372550.5001457,
+    "done": false
+   },
+   "JO63VW.0.1084": {
+    "t0": 1789372551.0041413,
+    "done": false
+   },
+   "JO63VW.0.1086": {
+    "t0": 1789372555.27134,
+    "done": false
+   },
+   "JO63VW.0.1088": {
+    "t0": 1789372555.7752988,
+    "done": false
+   },
+   "JO63VW.0.1089": {
+    "t0": 1789372556.0264008,
+    "done": false
+   },
+   "JO63VW.0.1091": {
+    "t0": 1789372556.529185,
+    "done": false
+   },
+   "JO63VW.0.1093": {
+    "t0": 1789372557.031162,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1094": {
+    "t0": 1789372557.2825985,
+    "done": false
+   },
+   "JO63VW.0.1096": {
+    "t0": 1789372557.784869,
+    "done": false
+   },
+   "JO63VW.0.1098": {
+    "t0": 1789372558.2871993,
+    "done": false
+   },
+   "JO63VW.0.1100": {
+    "t0": 1789372558.7890399,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1101": {
+    "t0": 1789372559.2932906,
+    "done": false
+   },
+   "JO63VW.0.1103": {
+    "t0": 1789372559.794911,
+    "done": false
+   },
+   "JO63VW.0.1105": {
+    "t0": 1789372560.2971842,
+    "done": false
+   },
+   "JO63VW.0.1108": {
+    "t0": 1789372561.0499957,
+    "done": false
+   },
+   "JO63VW.0.1110": {
+    "t0": 1789372561.5515835,
+    "done": false
+   },
+   "JO63VW.0.1113": {
+    "t0": 1789372569.328865,
+    "done": false
+   },
+   "JO63VW.0.1115": {
+    "t0": 1789372569.8306193,
+    "done": false
+   },
+   "JO63VW.0.1117": {
+    "t0": 1789372570.3325071,
+    "done": false
+   },
+   "JO63VW.0.1119": {
+    "t0": 1789372574.5981262,
+    "done": false
+   },
+   "JO63VW.0.1121": {
+    "t0": 1789372575.1002913,
+    "done": false
+   },
+   "JO63VW.0.1122": {
+    "t0": 1789372575.3513296,
+    "done": false
+   },
+   "JO63VW.0.1124": {
+    "t0": 1789372575.8542411,
+    "done": false
+   },
+   "JO63VW.0.1126": {
+    "t0": 1789372576.356394,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1127": {
+    "t0": 1789372576.6074853,
+    "done": false
+   },
+   "JO63VW.0.1129": {
+    "t0": 1789372577.1101565,
+    "done": false
+   },
+   "JO63VW.0.1131": {
+    "t0": 1789372577.6118817,
+    "done": false
+   },
+   "JO63VW.0.1133": {
+    "t0": 1789372578.113979,
+    "done": true,
+    "shape_wired": true
+   },
+   "JO63VW.0.1134": {
+    "t0": 1789372578.6162717,
+    "done": false
+   },
+   "JO63VW.0.1136": {
+    "t0": 1789372579.118999,
+    "done": false
+   },
+   "JO63VW.0.1138": {
+    "t0": 1789372579.6217618,
+    "done": false
+   },
+   "JO63VW.0.1141": {
+    "t0": 1789372580.3764396,
+    "done": false
+   },
+   "JO63VW.0.1143": {
+    "t0": 1789372580.8792934,
+    "done": false
+   },
+   "JO63VW.0.1145": {
+    "t0": 1789372585.1426084,
+    "done": false
+   },
+   "JO63VW.0.1147": {
+    "t0": 1789372585.645195,
+    "done": false
+   },
+   "JO63VW.0.1149": {
+    "t0": 1789372586.1467469,
+    "done": false
+   },
+   "JO63VW.0.1151": {
+    "t0": 1789372590.662611,
+    "done": false
+   },
+   "JO63VW.0.1153": {
+    "t0": 1789372591.1648085,
+    "done": false
+   },
+   "JO63VW.0.1154": {
+    "t0": 1789372591.4158735,
+    "done": false
+   },
+   "JO63VW.0.1156": {
+    "t0": 1789372591.9181743,
+    "done": false
+   }
+  },
+  "land_turn": 64,
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p1pass": 1156,
+   "p0pass": 1155,
+   "mem1": 24,
+   "land2": 41,
+   "mem3": 56,
+   "p1atk3DeclareAttackers": 63,
+   "land4": 74,
+   "mem5": 89,
+   "p1atk5DeclareAttackers": 96,
+   "land6": 107,
+   "mem7": 122,
+   "p1atk7DeclareAttackers": 129,
+   "land8": 140,
+   "mem9": 155,
+   "p1atk9DeclareAttackers": 162,
+   "land10": 173,
+   "mem11": 188,
+   "p1atk11DeclareAttackers": 195,
+   "land12": 206,
+   "mem13": 221,
+   "p1atk13DeclareAttackers": 228,
+   "land14": 239,
+   "mem15": 254,
+   "p1atk15DeclareAttackers": 261,
+   "land16": 272,
+   "mem17": 287,
+   "p1atk17DeclareAttackers": 294,
+   "land18": 305,
+   "mem19": 320,
+   "p1atk19DeclareAttackers": 327,
+   "land20": 338,
+   "mem21": 353,
+   "p1atk21DeclareAttackers": 360,
+   "land22": 371,
+   "mem23": 386,
+   "p1atk23DeclareAttackers": 393,
+   "land24": 404,
+   "mem25": 419,
+   "p1atk25DeclareAttackers": 426,
+   "land26": 437,
+   "mem27": 452,
+   "p1atk27DeclareAttackers": 459,
+   "land28": 470,
+   "mem29": 485,
+   "p1atk29DeclareAttackers": 492,
+   "land30": 503,
+   "mem31": 518,
+   "p1atk31DeclareAttackers": 525,
+   "land32": 536,
+   "mem33": 551,
+   "p1atk33DeclareAttackers": 558,
+   "land34": 569,
+   "mem35": 584,
+   "p1atk35DeclareAttackers": 591,
+   "land36": 602,
+   "mem37": 617,
+   "p1atk37DeclareAttackers": 624,
+   "mem39": 650,
+   "p1atk39DeclareAttackers": 657,
+   "land40": 668,
+   "mem41": 683,
+   "p1atk41DeclareAttackers": 690,
+   "mem43": 716,
+   "p1atk43DeclareAttackers": 723,
+   "land44": 734,
+   "mem45": 749,
+   "p1atk45DeclareAttackers": 756,
+   "cast-asc46": 767,
+   "cast-bump46": 770,
+   "mem47": 790,
+   "p1atk47DeclareAttackers": 797,
+   "land48": 808,
+   "cast-bump48": 808,
+   "mem49": 829,
+   "p1atk49DeclareAttackers": 836,
+   "land50": 847,
+   "cast-bump50": 847,
+   "mem51": 868,
+   "p1atk51DeclareAttackers": 875,
+   "cast-torment": 886,
+   "p1atk53DeclareAttackers": 937,
+   "p1atk55DeclareAttackers": 969,
+   "land56": 980,
+   "p1atk57DeclareAttackers": 1002,
+   "land58": 1013,
+   "p1atk59DeclareAttackers": 1035,
+   "p1atk61DeclareAttackers": 1067,
+   "land62": 1078,
+   "p1atk63DeclareAttackers": 1100,
+   "land64": 1111,
+   "p1atk65DeclareAttackers": 1133
+  },
+  "ascension_cast": true,
+  "bumps_cast": 3,
+  "bump_in_flight": false,
+  "bump_turn": 50,
+  "quest_counters": 4,
+  "quest_offers": 4,
+  "quest_accepts": 4,
+  "torment_cast": true,
+  "torment_x": 10,
+  "x_last_try": 1789372464.566206,
+  "x_tries": 1,
+  "x_confirmed": true,
+  "unless_prompts": 10,
+  "unless_reps": [
+   {
+    "rep": 1,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 32,
+    "p1_hand": 0,
+    "p1_gy_memnites": 0,
+    "p1_life": 11,
+    "sacrificed_oid": 62
+   },
+   {
+    "rep": 2,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 31,
+    "p1_hand": 0,
+    "p1_gy_memnites": 1,
+    "p1_life": 11,
+    "sacrificed_oid": 72
+   },
+   {
+    "rep": 3,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 30,
+    "p1_hand": 0,
+    "p1_gy_memnites": 2,
+    "p1_life": 11,
+    "sacrificed_oid": 84
+   },
+   {
+    "rep": 4,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 29,
+    "p1_hand": 0,
+    "p1_gy_memnites": 3,
+    "p1_life": 11,
+    "sacrificed_oid": 89
+   },
+   {
+    "rep": 5,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 28,
+    "p1_hand": 0,
+    "p1_gy_memnites": 4,
+    "p1_life": 11,
+    "sacrificed_oid": 95
+   },
+   {
+    "rep": 6,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 27,
+    "p1_hand": 0,
+    "p1_gy_memnites": 5,
+    "p1_life": 11,
+    "sacrificed_oid": 101
+   },
+   {
+    "rep": 7,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 26,
+    "p1_hand": 0,
+    "p1_gy_memnites": 6,
+    "p1_life": 11,
+    "sacrificed_oid": 117
+   },
+   {
+    "rep": 8,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 25,
+    "p1_hand": 0,
+    "p1_gy_memnites": 7,
+    "p1_life": 11,
+    "sacrificed_oid": 109
+   },
+   {
+    "rep": 9,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 24,
+    "p1_hand": 0,
+    "p1_gy_memnites": 8,
+    "p1_life": 11,
+    "sacrificed_oid": 103
+   },
+   {
+    "rep": 10,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 23,
+    "p1_hand": 0,
+    "p1_gy_memnites": 9,
+    "p1_life": 11,
+    "sacrificed_oid": 61,
+    "discarded_oid": 120
+   }
+  ],
+  "unless_loop_started": true,
+  "unless_quiet_ticks": 40,
+  "bc_offers": 1,
+  "bc_answered": 1,
+  "bc_accepted": 1,
+  "bc_log": [
+   {
+    "offer": 1,
+    "iid": "JO63VW.0.912",
+    "accept": true,
+    "p0_life_before": 20,
+    "p1_life_before": 11
+   }
+  ],
+  "expected_triggers": 10,
+  "p1_life_pre_torment": 11,
+  "p0_life_pre_torment": 20,
+  "settle_t0": 1789372572.088382,
+  "game_code": "JO63VW",
+  "game_over": false,
+  "zones_seen": [],
+  "pre_p1_gy_memnites": 0,
+  "pre_p1_bf_memnites": 31,
+  "pre_quest": 3,
+  "pt_lives": [
+   22,
+   9
+  ],
+  "pt_bc_stack": 0,
+  "pt_stack_kinds": []
+ },
+ "notes": [
+  "A1: asc_bf=1 quest=3 p1_memnites_bf=31 life=20/11 (expect 20/11; bumps=3)",
+  "A2: torment_cast=True x_confirmed=True x=10 resolved_to_gy=True",
+  "A3: unless-pay prompts offered=10 (expect 10); branches=['sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice']",
+  "A4: p1 gy memnites 0->10 (delta 10, expect 10); p1 bf memnites 31->23 (delta 8, expect -10); sacrifice reps=10/10",
+  "A5: bloodchief may-offers=1 (expect 10 = gy moves); answered=1 accepted=1; stack had 0 bloodchief TriggeredAbility entries at post_torment (kinds=[])",
+  "A6: accepted=1 (declined=0) life post=22/9 (expect 22/9)",
+  "A7: stack_empty=True winner=None game_over_flag=False",
+  "verdict=reproduced: sacrifices chosen but memnites did not move to graveyard as expected",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post_torment.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7143.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense test decks are a harness convenience (engine accepts >4-of for custom games); P1's 60x Memnite deck exists to supply 10 sacrifice fodder.",
+  "P1 never attacks; P0 never attacks. Life changes come only from Bump in the Night, Torment unless-pay declines, and Bloodchief trigger accepts.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 386.6
+}
