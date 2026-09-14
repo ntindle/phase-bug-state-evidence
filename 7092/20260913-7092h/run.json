@@ -1,0 +1,239 @@
+{
+ "run_id": "20260913-7092h",
+ "issue": 7092,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-13",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-13",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_run_note": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run; its games.db holds only this run)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c3049956cd4eb2494b7432827223ffba31282e220d1e4ced0f782417e6e20cd5",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "terminus",
+    28
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "plains",
+    10
+   ],
+   [
+    "forest",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_miracle_offer": "passed",
+  "A4_miracle_cast": "passed",
+  "A5_order_completable": "passed",
+  "A6_creatures_bottomed": "passed",
+  "A7_no_softlock": "passed",
+  "A8_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "life_trace": [],
+  "order_batches": [
+   {
+    "who": "P0",
+    "iid": "X0IY2L.0.234",
+    "n": 3,
+    "submitted_oids": [
+     "24",
+     "16",
+     "38"
+    ],
+    "submitted_names": [
+     "grizzly bears",
+     "grizzly bears",
+     "grizzly bears"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "X0IY2L.0.235",
+    "n": 3,
+    "submitted_oids": [
+     "102",
+     "92",
+     "71"
+    ],
+    "submitted_names": [
+     "grizzly bears",
+     "grizzly bears",
+     "grizzly bears"
+    ]
+   }
+  ],
+  "stall_watch": []
+ },
+ "driver_state": {
+  "pre_exported": true,
+  "mid_exported": true,
+  "post_exported": true,
+  "miracle_offered": true,
+  "miracle_iid": null,
+  "miracle_accepted": true,
+  "castoffer_seen": true,
+  "terminus_cast": true,
+  "terminus_on_stack_seen": true,
+  "terminus_resolved": true,
+  "terminus_resolved_at": 1789345227.918607,
+  "terminus_oid": null,
+  "cast_path": "miracle",
+  "normal_cast_pending": false,
+  "order_batches_done": 2,
+  "order_batches": [
+   {
+    "who": "P0",
+    "iid": "X0IY2L.0.234",
+    "n": 3,
+    "submitted_oids": [
+     "24",
+     "16",
+     "38"
+    ],
+    "submitted_names": [
+     "grizzly bears",
+     "grizzly bears",
+     "grizzly bears"
+    ]
+   },
+   {
+    "who": "P1",
+    "iid": "X0IY2L.0.235",
+    "n": 3,
+    "submitted_oids": [
+     "102",
+     "92",
+     "71"
+    ],
+    "submitted_names": [
+     "grizzly bears",
+     "grizzly bears",
+     "grizzly bears"
+    ]
+   }
+  ],
+  "pre_creatures": [
+   [
+    16,
+    0,
+    0
+   ],
+   [
+    24,
+    0,
+    0
+   ],
+   [
+    38,
+    0,
+    0
+   ],
+   [
+    71,
+    1,
+    1
+   ],
+   [
+    92,
+    1,
+    1
+   ],
+   [
+    102,
+    1,
+    1
+   ]
+  ],
+  "pre_lib_counts": {
+   "0": 46,
+   "1": 48
+  },
+  "stuck_observed": false,
+  "stuck_since": null,
+  "rejections": 0,
+  "p1_bear_cast": true,
+  "p0_bears_cast": 3,
+  "last_turn_seen": 16,
+  "p0_turns": 8,
+  "declined_unpayable": 1,
+  "declined_small_board": 2,
+  "finished": true
+ },
+ "notes": [
+  "A1_parse -> passed (ChangeZoneAll->Library Bottom, Typed Creature, Miracle {W})",
+  "A2: pre creatures P0-owned=3 P1-owned=3 path=miracle",
+  "A3: MiracleReveal raised (declined_unpayable=1; accepted=True)",
+  "A4: miracle_accepted=True castoffer=True on_stack=True resolved=True",
+  "A5: batches_done=2 stuck=False rejections=0",
+  "A6: bf_creatures_post=0 moved_to_library=6/6 lib_delta=[2,1] expected=[3,3]",
+  "A7: stuck=False stack_empty=True post_wf=Priority",
+  "A8: Terminus in P0 gy=True",
+  "verdict=blocked: incomplete assertion chain",
+  "verdict=blocked",
+  "A6 recompute (finalize_7092.py): bf_bears_post=0 moved_to_library=6/6; P0: lib_delta=2 expected=2 (creatures=3, drawn_between=1 {'Hand': 1}); P0: bottom 3 of library in order=[24, 16, 38] matches submitted order; set matches pre creatures; P1: lib_delta=1 expected=1 (creatures=3, drawn_between=2 {'Hand': 2}); P1: bottom 3 of library in order=[102, 92, 71] matches submitted order; set matches pre creatures",
+  "verdict=not-reproduced (recomputed by finalize_7092.py: miracle-cast Terminus completed every owner batch of the mass library-order choice via the viewer interaction; all 6 creatures reached the bottom of their owners' libraries in the submitted order; no EffectZoneChoice stall; game returned to priority)"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7092.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "28x Terminus / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Miracle path depends on RNG: Terminus must be the first card drawn in a turn. If no miracle cast materializes by P0 turn 12, a normal-cast control exercises the same mass-order completion path.",
+  "Bottom-of-library ORDER is submitted per CR 401.4 and recorded; zone/count assertions verify placement, not exact stack positions within the library list.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 76.4,
+ "result": "A1_parse: passed (ChangeZoneAll->Library Bottom, Typed Creature, Miracle {W}); A2_setup: passed (3 P0-owned + 3 P1-owned Bears on BF at miracle accept); A3_miracle_offer: passed (MiracleReveal + CastOffer; one early reveal declined while board unready); A4_miracle_cast: passed (reveal accepted, CastOffer accepted, Terminus on stack, resolved to P0 gy, {W} auto-paid); A5_order_completable: passed (2 owner batches, n=3+3, select submissions accepted, 0 rejections, no stall); A6_creatures_bottomed: passed (6/6 pre creatures in Library at post; draw-adjusted lib deltas exact: P0 +2 = 3-1 drawn, P1 +1 = 3-2 drawn; bottom 3 of each owner's library in the submitted order); A7_no_softlock: passed (stack empty, wf=Priority); A8_cleanup: passed (Terminus in P0 gy, game proceeds).",
+ "driver_notes": [
+  "A6 was recomputed post-run by finalize_7092.py: the inline check compared raw library counts, but P0 drew 1 and P1 drew 2 cards between pre and post exports, so unadjusted deltas (+2/+1 vs +3/+3) failed spuriously. Draw-adjusted deltas match exactly and the bottom-3 of each owner's players[].library equal the submitted order.",
+  "Three P1 ActionRejected(wrong_player) warnings appeared right after Terminus resolved (stale-tick race on the auto-advance); the game proceeded normally (post wf=Priority, stack empty). Benign.",
+  "MiracleReveal for the opening hand fired at turn 1 PreCombatMain; draw-step miracles surfaced as CastOffer with castSpellAsMiracle accept candidates. The CastOffer accept is gated on board-ready + {W} payable (run 20260913-7092e accepted blindly on an empty board and was inconclusive)."
+ ]
+}
