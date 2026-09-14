@@ -1,0 +1,49 @@
+oracle: At the beginning of your end step, if you control a creature, look at the top seven cards of your library. Then you may 
+A1_parse: passed (Phase/End -> Dig7 prior-look -> optional Sacrifice(1 creature you control) -> EffectOutcome/OptionalEffectPerformed -> Dig(keep1 up_to Battlefield, Creature mv<=CostPaidObject+1, source prior_look), else Dig(0 keep, rest->Library))
+game BZYA8X; seats P0=0 P1=1 RUN_ID=20260914-7163d
+[P1] mulligan: keep
+[P0] mulligan: keep
+[P0] cast Birthing Ritual (turn 3)
+[P1] cast Bears (turn 4)
+[P0] cast Bears (turn 5)
+[P0] Birthing Ritual trigger inferred from may-sacrifice prompt (turn 5)
+[P0] optional 'ritual may-sacrifice (bears_bf=1)' answered accept=False
+[P0] declined may-sacrifice with 1 bear(s) on BF; waiting for 2+
+[P0] ritual trigger left the stack (sac_done=False bf_prompt_seen=False)
+[P1] cast Bears (turn 6)
+[P0] cast Bears (turn 7)
+[P0] cast Bears (turn 7)
+exported PRE
+[P0] pre (may-sacrifice decision point): bears_bf=3 lib=50
+[P0] optional 'ritual may-sacrifice (bears_bf=3)' answered accept=True
+[P0] sacrifice selection: 3 bear candidates of 3 choices
+[P0] sacrificed bear oid=6
+[P0] sacrificed bear oid=6 reached Graveyard
+[P0] STUCK: sacrifice done, no BF-pick prompt (turn 8)
+exported MID
+[P1] cast Bears (turn 8)
+[P1] cast Bears (turn 8)
+exported POST
+loaded pre.json
+loaded mid.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_trigger_fired: passed
+A4_sacrifice: passed
+A5_sacrifice_effect: passed
+A6_bf_pick: failed
+A7_cleanup: failed
+note: A1_parse: passed (Phase/End -> Dig7 prior-look -> optional Sacrifice(1 creature you control) -> EffectOutcome/OptionalEffectPerformed -> Dig(keep1 up_to Battlefield, Creature mv<=CostPaidObject+1, source prior_look), else Dig(0 keep, rest->Library))
+note: A2: ritual_bf=True pre_bears_bf=3 (>=2 needed) pre_lib=50
+note: A3: trigger_fired at turn 5, resolved=True inferred_from_prompt=True (trigger left the stack between 0.8s stack samples; the may-sacrifice prompt proves it resolved)
+note: A4: sac_prompt_seen=True sac_accepted=True sac_declines=1 sac_candidates_n=3 (>=2 required for the reported multi-creature case)
+note: A5: sac_chosen_oid=6 zone=Graveyard (X = 1 + sacrificed bear mv 2 = 3)
+note: A6: bf_prompt_seen=False bf_candidates_n=0 (REPORTED BUG: put-a-creature-onto-BF step never happens after the sacrifice)
+note: A7 failed: ability stalled after the sacrifice - no BF-pick prompt, game moved on with the 7 cards unresolved
+VERDICT: reproduced
+wrote run.json
+server.log copy failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/20260914-7163d/server.log'
+wrote summary.png
+manifest: MISSING server.log
+wrote manifest.sha256
