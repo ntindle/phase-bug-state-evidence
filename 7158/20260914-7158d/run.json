@@ -1,0 +1,105 @@
+{
+ "issue": 7158,
+ "title": "Protection bug \u2014 Protection only applies to permanents and players.",
+ "run_id": "20260914-7158d",
+ "validated_at": "2026-09-14",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034205ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh for run 20260914-7158; ServerHello verified v0.82.0/060b5d2/protocol 70) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello_observed": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.82.0",
+   "build_commit": "060b5d2",
+   "protocol_version": 70,
+   "mode": "Full",
+   "lobby_protocol_version": 8,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "protocol_version": 70,
+ "scope": "Teysa, Envoy of Ghosts (protection from creatures) as a target of Scavenging Ooze's {G} 'Exile target card from a graveyard' ability: graveyard leg (reported bug) + battlefield control leg; native engine, two human-client seats",
+ "decks": {
+  "P0": [
+   [
+    "Teysa, Envoy of Ghosts",
+    20
+   ],
+   [
+    "Entomb",
+    12
+   ],
+   [
+    "Plains",
+    14
+   ],
+   [
+    "Swamp",
+    14
+   ]
+  ],
+  "P1": [
+   [
+    "Scavenging Ooze",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_ok": "passed",
+  "A2_setup_gy": "passed",
+  "A3_offer_gy": "passed",
+  "A4_candidates_gy": "failed",
+  "A5_exile_resolves": "failed",
+  "A6_setup_bf": "passed",
+  "A7_candidates_bf": "not-run",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "A1: Teysa Protection{CardType: creatures} parsed, no Unimplemented nodes: passed",
+  "A2: gy_teysa=1 ooze_ready=1 green_available=True",
+  "A3: gy offer scans=7 offered=True clean_no_offer_turns=1 activated=True",
+  "A4: NO TargetSelection prompt ever surfaced (wire log has 7 gy offer scans, zero TargetSelection waiting_for); engine auto-selected Entomb oid=13 while Teysa, Envoy of Ghosts sat in the gy -> Teysa was excluded from the legal target set",
+  "A5: auto-select path exiled Entomb oid=13 (gy -> Exile) while Teysa, Envoy of Ghosts remained in the gy (oids ['20']): the protection-bearing card was never a legal target",
+  "A6: bf_teysa=1 gy_teysa=3",
+  "A7: bf activation never submitted",
+  "A8: post stack depth=0 phase=PreCombatMain turn=41"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_parse_ok: passed; A2_setup_gy: passed; A3_offer_gy: passed; A4_candidates_gy: failed; A5_exile_resolves: failed; A6_setup_bf: passed; A7_candidates_bf: not-run; A8_cleanup: passed",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Only the activated-ability targeting path was tested; spell targeting of graveyard cards was not exercised."
+ ],
+ "evidence_files": [
+  "mid_gy.json",
+  "parse_teysa.json",
+  "post.json",
+  "pre_bf.json",
+  "pre_gy.json",
+  "scenario_7158.py",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "wire_log.jsonl"
+ ],
+ "done_reason": "bf leg: no ActivateAbility offer across 6 clean turns"
+}
