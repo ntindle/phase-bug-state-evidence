@@ -1,0 +1,62 @@
+{
+ "issue": 7162,
+ "run_id": "20260914-7162",
+ "title": "Lazav, Familiar Stranger is not prompted to become exiled creatures",
+ "validated_at": "2026-09-14",
+ "server": {
+  "server_version": "v0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (observed ServerHello; started with --single-user)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d603420bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (started fresh by this run) + verified pin (minisign prehashed verify of binary + signed data manifest with the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY)."
+ },
+ "scope": "Lazav CommitCrime trigger: counter + optional exile + optional BecomeCopy when a creature is exiled; native engine, two human-client seats",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_crime_trigger": "passed",
+  "A4_exile_offered": "passed",
+  "A5_copy_offered": "failed",
+  "A6_copy_effect": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (CommitCrime -> PutCounter(SelfRef) -> optional Graveyard>Exile -> optional BecomeCopy(ParentTarget, UntilEndOfTurn, ZoneChangedThisWay Typed[Creature]))",
+  "A2: lazav_bf=[12] p1bears_bf=[83] blade_in_hand=True",
+  "A4: exile_prompt_seen=True exile_accepted=True bears_in_exile=[]",
+  "A4-DIAG: the accepted may-exile produced NO target selection (wire wf_transition log shows OptionalEffectChoice -> Priority with no TargetSelection) and NO card reached Exile - the engine silently dropped the accepted exile.",
+  "A5: copy_prompt_seen=False (expected prompt never appears per report; the accepted exile produced no Exile zone change, so the ZoneChangedThisWay condition could never hold)",
+  "A6 not-run: no copy prompt was ever offered",
+  "A7: stack_empty=True",
+  "A3: trigger_fired stack-observation was missed between driver ticks, but Lazav's +1/+1 counter went 0 (pre) -> 1 (mid/post): the CommitCrime trigger demonstrably fired and its PutCounter effect resolved."
+ ],
+ "driver_state": {
+  "blade_cast": true,
+  "blade_target_answered": false,
+  "trigger_fired": false,
+  "trigger_resolved": false,
+  "exile_prompt_seen": true,
+  "exile_accepted": true,
+  "exile_target_answered": false,
+  "exile_done": false,
+  "copy_prompt_seen": false,
+  "copy_answered": false,
+  "copy_done": false,
+  "lazav_oid": 12,
+  "bears_oid": 83
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Zero-attacker combat was scripted on both seats so combat could not mask the trigger.",
+  "Copy was exercised from P1's graveyard only (the Doom Blade kill); exile-from-own-graveyard not separately run."
+ ],
+ "evidence_dir": "7162/20260914-7162"
+}

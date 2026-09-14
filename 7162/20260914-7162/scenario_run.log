@@ -1,0 +1,34 @@
+oracle: Whenever you commit a crime, put a +1/+1 counter on Lazav. Then you may exile a card from a graveyard. If a creature card was exiled this way, you may have Laza
+A1_parse: passed (CommitCrime -> PutCounter(SelfRef) -> optional Graveyard>Exile -> optional BecomeCopy(ParentTarget, UntilEndOfTurn, ZoneChangedThisWay Typed[Creature]))
+game 5VDX0S; seats P0=0 P1=1 RUN_ID=20260914-7162
+[P1] mulligan: keep
+[P0] mulligan: keep
+[P0] cast Lazav (turn 5)
+[P1] cast Bears (turn 8)
+exported PRE
+[P0] cast Doom Blade targeting Bears oid=83 (turn 9)
+[P0] optional 'lazav may-exile' answered accept=True
+exported MID
+exported POST
+loaded pre.json
+loaded mid.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_crime_trigger: failed
+A4_exile_offered: passed
+A5_copy_offered: failed
+A6_copy_effect: not-run
+A7_cleanup: passed
+note: A1_parse: passed (CommitCrime -> PutCounter(SelfRef) -> optional Graveyard>Exile -> optional BecomeCopy(ParentTarget, UntilEndOfTurn, ZoneChangedThisWay Typed[Creature]))
+note: A2: lazav_bf=[12] p1bears_bf=[83] blade_in_hand=True
+note: A3: trigger_fired=False trigger_resolved=False lazav_oid=12 p1p1=1
+note: A4: exile_prompt_seen=True exile_accepted=True bears_in_exile=[]
+note: A4-DIAG: the accepted may-exile produced NO target selection (wire wf_transition log shows OptionalEffectChoice -> Priority with no TargetSelection) and NO card reached Exile - the engine silently dropped the accepted exile.
+note: A5: copy_prompt_seen=False (expected prompt never appears per report; the accepted exile produced no Exile zone change, so the ZoneChangedThisWay condition could never hold)
+note: A6 not-run: no copy prompt was ever offered
+note: A7: stack_empty=True
+VERDICT: blocked
+wrote run.json
+wrote summary.png
+wrote manifest.sha256
