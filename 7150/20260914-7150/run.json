@@ -1,0 +1,40 @@
+{
+ "issue": 7150,
+ "title": "Infinite loop does not complete after end-step discard/damage/draw cycle",
+ "run_id": "20260914-7150",
+ "started_at": "2026-09-14T08:12:00-05:00",
+ "validated_at": "2026-09-14",
+ "verdict": "blocked",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "serverhello_observed": true,
+  "note": "Running server (PID-owned run 20260914-7145h, port 9374) matches the pinned v0.82.0 release; no game was started for this blocked run."
+ },
+ "assertions": {
+  "A1_card_identification": "not-run (no card names in report; classifier cannot_determine)",
+  "A2_attachment_recovery": "not-run (game-state zip and screenshot both HTTP 404)",
+  "A3_cycle_exercise": "not-run (blocked before scenario construction)",
+  "A4_first_missing_trigger": "not-run (blocked before scenario construction)"
+ },
+ "result": "blocked: no participating cards identified and both report attachments expired (HTTP 404); no trustworthy scenario can be built without inventing a card clause. Diligence recorded in blocked_report.json.",
+ "scope": "Pre-scenario diligence only: issue refresh, attachment fetch attempts, card/clause identification. No engine game was driven.",
+ "limitations": [
+  "No game states exist for this run; there is nothing to restore.",
+  "Discord thread not fetchable from this host (no discord skill, thread requires auth).",
+  "If the reporter names the cards or re-attaches the game state, revisit this issue."
+ ],
+ "publication": {
+  "status": "pending",
+  "comment_id": null,
+  "comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}

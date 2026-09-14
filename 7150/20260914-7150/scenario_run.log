@@ -1,0 +1,11 @@
+[2026-09-14 08:12 CDT] run 20260914-7150 start: phase-rs/phase #7150
+title: Infinite loop does not complete after end-step discard/damage/draw cycle
+step 1: deps present (websockets 17.1, pillow, pynacl).
+step 2: release check: latest stable phase-rs/phase release is v0.82.0 (2026-09-13), matches pinned release; no advance.
+step 3: server on 127.0.0.1:9374 is pinned v0.82.0 (060b5d2, protocol 70), binary sha256 0068db2e... verified against ledger pin; ServerHello observed.
+step 4: issue refresh via GitHub API: state=open, labels include status:needs-repro, area:engine, mechanic:triggers, classifier:cannot-determine; 2 comments (triage + classifier).
+step 5: attachment fetch: game-state zip -> HTTP 404 (36 bytes); screenshot jpg -> HTTP 404 (36 bytes). Signed URLs expired.
+step 6: workspace grep for cached discord thread 1535814760485093526: no hits.
+step 7: diligence complete. Verdict: blocked (missing setup information that materially changes the test).
+step 8: blocked evidence bundle built; manifest written last.
+next unblock: reporter names the discard, 1-damage, and end-step draw sources (or re-attaches the game state); then build the scenario per the triage acceptance criteria.

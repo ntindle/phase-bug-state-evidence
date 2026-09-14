@@ -1,0 +1,17 @@
+{
+ "issue": 7150,
+ "title": "Infinite loop does not complete after end-step discard/damage/draw cycle",
+ "reported_text": "You must pass on attacking with 8 cards in hand. The discard triggers 1 damage, which triggers you to draw a card on your end step, which triggers the cycle. But it's not working.",
+ "diligence": [
+  "Refreshed live issue body/labels/state and all 2 comments via GitHub API (issue_refresh.json).",
+  "Both report attachments (game-state zip, screenshot) fetched via curl: HTTP 404, 36 bytes each (attachment_attempts.json).",
+  "No card names in the issue body ('Cards: none detected'); the bug-coverage-classifier comment verdict is cannot_determine.",
+  "The issue's own triage comment (2026-08-10) states: 'Without a card/clause mapping, coverage classification cannot distinguish unsupported text from a runtime trigger-loss defect' and its acceptance criteria require reporter follow-up to name the discard, damage, and draw sources.",
+  "Searched the workspace for a cached copy of the Discord thread (report id discord:1535814760485093526): none found.",
+  "No Discord read capability on this host (no discord skill; thread URL requires authenticated session)."
+ ],
+ "verdict": "blocked",
+ "reason": "Missing setup information that materially changes the test: no participating cards are identified, the attached saved game state and screenshot have expired (HTTP 404), and the Discord thread cannot be fetched from this host. Inventing a card clause or combo is explicitly forbidden by the playbook, so no trustworthy scenario can be constructed.",
+ "next_unblock": "Reporter (or a maintainer with Discord access) names the discard source, the 1-damage source, and the end-step draw source; or the saved game state is re-attached with a live link. Then a scenario can be built per the triage acceptance criteria: identify every card, record the first missing trigger and its preceding event, replay the full expected chain.",
+ "webhook": "not sent (blocked verdicts send nothing)"
+}

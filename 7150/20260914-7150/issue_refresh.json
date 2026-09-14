@@ -1,0 +1,34 @@
+{
+ "fetched_at": "2026-09-14T08:15:00-05:00",
+ "issue": {
+  "number": 7150,
+  "title": "Infinite loop does not complete after end-step discard/damage/draw cycle",
+  "state": "open",
+  "created_at": "2026-08-10T02:47:27Z",
+  "html_url": "https://github.com/phase-rs/phase/issues/7150",
+  "labels": [
+   "bug",
+   "status:needs-repro",
+   "area:engine",
+   "mechanic:triggers",
+   "priority:p2-wrong-game-result",
+   "source:discord",
+   "classifier:cannot-determine"
+  ],
+  "body": "<!-- phase-discord-thread-id: 1535814760485093526 -->\n<!-- phase-discord-message-id: 1535814760485093526 -->\n\nReported in Discord: https://discord.com/channels/1485498006781427802/1535814760485093526/1535814760485093526\n\n**Thread:** Game not letting me complete infinite loop\n**Discord thread id:** `1535814760485093526`\n**Cards:** _none detected_\n\n## Summary\nAn end-step discard \u2192 damage \u2192 draw sequence that should repeat does not complete as an infinite loop.\n\n## Reported text\n\"You must pass on attacking with 8 cards in hand. The discard triggers 1 damage, which triggers you to draw a card on your end step, which triggers the cycle. But it\u2019s not working.\"\n\n## Attachments\n- [game state](https://cdn.discordapp.com/attachments/1535814760485093526/1535814760908726282/game-state-turn-12-2026-08-09T00-58-35-963Z.zip?ex=6a7a73f5&is=6a792275&hm=0e7ef915bbcceaf6eaa152690743ee339e0a1e273e7cce07fb93178ddca8548e&)\n- [screenshot](https://cdn.discordapp.com/attachments/1535814760485093526/1535814761613103214/Screenshot_20260808_175856_Chrome.jpg?ex=6a7a73f5&is=6a792275&hm=5f6ea7d929a4989bd78d6e11ad33e4bdc41442f03085a59412209fc21f045045&)\n\n## Oracle text (verified from `client/public/card-data.json`)\n_No card names were detected for this report._\n\n---\n<sub>report_id: `discord:1535814760485093526:1535814760485093526:0` \u00b7 discord: `1535814760485093526/1535814760485093526`</sub>"
+ },
+ "comments": [
+  {
+   "id": 5245527055,
+   "user": "mike-theDude",
+   "created_at": "2026-08-10T20:22:38Z",
+   "body": "<!-- issue-cleanup:triage -->\n## Triage analysis\n\n**Clarified summary**\nAn end-step discard \u2192 damage \u2192 draw trigger cycle fails to continue as expected.\n\n**Expected behavior**\nEvery event in the mandatory chain creates the next eligible trigger until a rules-valid stopping condition occurs.\n\n**Observed behavior**\nThe imported report says the cycle is not working but does not identify the cards or the exact stack state where it stops.\n\n**Reproduction status**\nA saved state and screenshot are linked, but the card names and expected iteration count were not extracted.\n\n**Investigation findings**\nWithout a card/clause mapping, coverage classification cannot distinguish unsupported text from a runtime trigger-loss defect.\n\n**Likely scope**\nEngine trigger collection and end-step resolution, pending card identification.\n\n**Acceptance criteria**\n- Identify every card participating in the cycle.\n- Record the first missing trigger and its preceding event.\n- Replay the attached state through the full expected chain.\n\n**Related issues**\nNo exact duplicate was found. Reporter follow-up should name the discard, damage, and draw sources."
+  },
+  {
+   "id": 5245527276,
+   "user": "mike-theDude",
+   "created_at": "2026-08-10T20:22:39Z",
+   "body": "## Classifier analysis\n\n**Verdict**: `cannot_determine`\n\n**Matched clause**: (none)  (supported: not applicable)\n\n**Reasoning**: The report describes an interaction but preserves no card names, so no Oracle clause can be matched safely.\n\n---\n_Posted by bug-coverage-classifier skill._"
+  }
+ ]
+}
