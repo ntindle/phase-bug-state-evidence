@@ -1,0 +1,47 @@
+{
+ "abilities": [
+  {
+   "index": 0,
+   "desc": "{T}: ~ deals 1 damage to any target.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "DealDamage",
+   "params": "{\"type\": \"Fixed\", \"value\": 1}/{\"type\": \"Any\"}"
+  },
+  {
+   "index": 1,
+   "desc": "{U}, {T}: Target creature gains flying until end of turn.",
+   "cost": "{\"costs\": [{\"cost\": {\"generic\": 0, \"shards\": [\"Blue\"], \"type\": \"Cost\"}, \"type\": \"Mana\"}, {\"type\": \"Tap\"}], \"type\": \"Composite\"}",
+   "effect": "GenericEffect",
+   "params": "[{\"active_zones\": [], \"affected\": {\"type\": \"ParentTarget\"}, \"affected_zone\": null, \"characteristic_defining\": false, \"condition\": null, \"description\": \"gain flying\", \"effect_zone\": null, \"mode\": \"Continuous\", \"modifications\": [{\"keyword\": \"Flying\", \"type\": \"AddKeyword\"}]}]"
+  },
+  {
+   "index": 2,
+   "desc": "{B}, {T}: Target creature gets -2/-0 until end of turn.",
+   "cost": "{\"costs\": [{\"cost\": {\"generic\": 0, \"shards\": [\"Black\"], \"type\": \"Cost\"}, \"type\": \"Mana\"}, {\"type\": \"Tap\"}], \"type\": \"Composite\"}",
+   "effect": "Pump",
+   "params": "{\"type\": \"Fixed\", \"value\": -2}/{\"type\": \"Fixed\", \"value\": 0}"
+  },
+  {
+   "index": 3,
+   "desc": "{G}: Exile target card from a graveyard. If it was a creature card, put a +1/+1 counter on ~ and you gain 1 life.",
+   "cost": "{\"cost\": {\"generic\": 0, \"shards\": [\"Green\"], \"type\": \"Cost\"}, \"type\": \"Mana\"}",
+   "effect": "ChangeZone",
+   "params": "{\"destination\": \"Exile\", \"enter_tapped\": false, \"enter_transformed\": false, \"enters_attacking\": false, \"origin\": \"Graveyard\", \"owner_library\": false, \"target\": {\"controller\": null, \"properties\": [{\"type\": \"InZone\", \"zone\": \"Graveyard\"}], \"type\": \"Typed\", \"type_filters\": [\"Card\"]}, \"type\": \"ChangeZon"
+  },
+  {
+   "index": 4,
+   "desc": "{T}: Add {G}.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "Mana",
+   "params": "{\"colors\": [\"Green\"], \"type\": \"Fixed\"}"
+  },
+  {
+   "index": 5,
+   "desc": "{T}: Destroy target tapped creature.",
+   "cost": "{\"type\": \"Tap\"}",
+   "effect": "Destroy",
+   "params": "{\"controller\": null, \"properties\": [{\"type\": \"Tapped\"}], \"type\": \"Typed\", \"type_filters\": [\"Creature\"]}"
+  }
+ ],
+ "n_offers": 0
+}
