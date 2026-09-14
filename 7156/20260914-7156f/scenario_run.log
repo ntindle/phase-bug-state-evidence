@@ -1,0 +1,82 @@
+A1 parse: triumph_chain=['ChangeZone', 'ExileTop', 'Shuffle', 'PutAtLibraryPosition'] unimplemented=False; reflection=CopyTokenOf/CreateDelayedTrigger/AtNextPhase/Sacrifice; fable_ch3=ChangeZone/ChangeZone transformed=True -> passed
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game WOG26Z; seats P0=0 P1=1 RUN_ID=20260914-7156f
+[P1] mulligan decision: Keep
+[P0] mulligan decision: Keep
+[P0] mulligan decision: Keep
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays land
+[P0] declining miracle cast (MiracleReveal)
+[P0] submitting interaction iid=WOG26Z.0.19 choice=WOG26Z.0.19.c2 (WOG26Z.0.19.c2)
+[P0] plays land Mountain
+[P0] plays land Mountain
+[P0] plays land Mountain
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [20]}}
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [20]}}
+[P1] plays land
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [28]}}
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [28]}}
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [28]}}
+[P1] plays land
+[P0] plays land Mountain
+[P0] plays land Mountain
+[P0] plays land Mountain
+[P0] casts Fable (turn 6)
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [35]}}
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [35]}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [75]}}
+[P0] declining optional prompt (OptionalEffectChoice)
+[P0] submitting interaction iid=WOG26Z.0.119 choice=WOG26Z.0.119.c0 (WOG26Z.0.119.c0)
+[P0] declares no attackers
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [72]}}
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [24]}}
+[P0] TRANSFORMED: Reflection oid=2 (turn 10)
+exported mid_transform.json
+[P0] declares no attackers
+[P1] plays land
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] plays land Plains
+[P0] casts Triumph (turn 12)
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [18]}}
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [18]}}
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] declares no attackers
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [65]}}
+exported pre_activation.json
+[P0] ACTIVATION SUBMITTED (target Triumph oid=44)
+[P0] target prompt: 2 candidates
+[P0] targeting Triumph oid=44
+[P0] submitting interaction iid=WOG26Z.0.218 choice=WOG26Z.0.218.t1 (WOG26Z.0.218.t1)
+[P0] activation accepted (target answered)
+[P0] TOKEN created: oid=126 (turn 14) lib=46
+exported mid_token.json
+[P0] declares no attackers
+[P0] token left battlefield (zone=None, turn 14); pre lib=46 top6=['Hidden Card', 'Hidden Card', 'Hidden Card', 'Hidden Card', 'Hidden Card', 'Hidden Card'] exile=[]
+[P0] TRIUMPH DIES TRIGGER FIRED via EffectZoneChoice (source=token 126); pile=['Plains', 'Plains', 'Mountain', 'Plains', 'Mountain', 'Fable of the Mirror-Breaker']
+exported pre_trigger.json
+[P0] EffectZoneChoice opp: 6 choices rtype=schema effect=PutAtLibraryPosition
+[P0] answering EffectZoneChoice with WOG26Z.0.234.s0 (Plains)
+[P0] engine accepted the choice and moved on; exile now=['Fable of the Mirror-Breaker', 'Mountain', 'Mountain', 'Plains', 'Plains'] lib=41 top=Hidden Card
+exported post.json
+main loop ended: stop=True reason=choice answered and accepted by engine
+finalizing...
+scenario source copied to evidence
+run.json written; verdict=reproduced
+summary.png rendered
