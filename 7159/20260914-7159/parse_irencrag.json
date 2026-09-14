@@ -1,0 +1,42 @@
+{
+ "n_triggers": 1,
+ "mode": "ChangesZone",
+ "optional": true,
+ "valid_card": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "controller": "You",
+  "properties": [
+   {
+    "type": "HasSupertype",
+    "value": "Legendary"
+   }
+  ]
+ },
+ "main_effect_modifications": [
+  "SetTextName",
+  "AddSupertype",
+  "AddType",
+  "RemoveAllSubtypes",
+  "AddSubtype"
+ ],
+ "sub_condition": {
+  "type": "EffectOutcome",
+  "signal": "OptionalEffectPerformed"
+ },
+ "sub_ability_modifications": [
+  "RemoveAllAbilities",
+  "GrantStaticAbility",
+  "GrantAbility",
+  "GrantAbility"
+ ],
+ "equip_grant_descriptions": [
+  "equip {3}",
+  "equip {3} and"
+ ],
+ "duplicated_equip_grant": true,
+ "static_grant_present": true,
+ "no_unimplemented_nodes": true
+}
