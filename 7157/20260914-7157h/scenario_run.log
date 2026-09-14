@@ -1,0 +1,65 @@
+A1 parse: emperor_boc=ChangeZone up_to_one=True; emperor_adapt=Adapt; emperor_counters=ChangeZone->Battlefield finality=True haste=True sac=True unimplemented=False; pk_entry=['Choose(Opponent)', 'RevealHand', 'Choose(CardName)']; pk_statics=['ModifyCost', 'ReduceAbilityCost'] -> passed
+ServerHello: {"type": "ServerHello", "data": {"server_version": "0.82.0", "build_commit": "060b5d2", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}}
+game Z6YSYN; seats P0=0 P1=1 RUN_ID=20260914-7157h
+[P1] mulligan decision: Keep
+[P0] mulligan decision: Keep
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [67]}}
+[P0] discards 1 to hand size: ['Anointed Peacekeeper']
+[P1] plays land
+[P0] plays Swamp
+[P0] plays Swamp
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [3]}}
+[P1] plays land
+[P0] plays Swamp
+[P0] plays Swamp
+[P0] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [5]}}
+[P0] casts Emperor of Bones (turn 7)
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported setup.json
+[P0] exile target prompt (first=True): 1 candidates
+[P0] answering exile target: Anointed Peacekeeper
+[P0] submitting interaction iid=Z6YSYN.0.101 choice=Z6YSYN.0.101.t0 (Z6YSYN.0.101.t0)
+[P0] Peacekeeper exiled (auto=False, prompted=True)
+exported post_exile.json
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [82]}}
+[P0] plays Swamp
+[P0] plays Swamp
+[P0] plays Swamp
+exported pre_adapt.json
+[P0] ADAPT 2 ACTIVATED (turn 9)
+[P0] counters-trigger card choice: 5 candidates
+[P0] WARNING: exiled Peacekeeper not among candidates: ['Z6YSYN.0.132.c0', 'Emperor of Bones', 'Swamp', 'Swamp', 'Swamp']
+[P0] counters-trigger card choice: 2 candidates
+[P0] WARNING: exiled Peacekeeper not among candidates: ['Z6YSYN.0.133.c0', 'Swamp']
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] counters-trigger card choice: 2 candidates
+[P0] WARNING: exiled Peacekeeper not among candidates: ['Z6YSYN.0.135.c0', 'Swamp']
+[P0] counters-trigger card choice: 1 candidates
+[P0] WARNING: exiled Peacekeeper not among candidates: ['Z6YSYN.0.137.n0']
+[P0] PEACEKEEPER RETURNED oid=51 finality=True haste=False
+exported post_return.json
+[P0] NamedChoice full opportunity dumped (rtype=schema spec=text n_cand=1)
+[P0] submitting name choice shape=text_value value='1' cid='Z6YSYN.0.137.n0'
+[P0] NamedChoice full opportunity dumped (rtype=schema spec=text n_cand=0)
+[P0] submitting name choice shape=free_text value=None cid=None
+[P0] name choice accepted; entry event complete
+exported post_entry.json
+[P0] declares no attackers
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [85]}}
+[P0] declares no attackers
+[P1] plays land
+[P1] plays land
+[P1] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": [94]}}
+[P0] ENDSTEP_WATCH concluded: Peacekeeper still on battlefield at turn 13 (no end-step sacrifice)
+exported post_endstep.json
+main loop ended: stop=True reason=end-step watch concluded
+finalizing...
+scenario source copied to evidence
+run.json written; verdict=reproduced
+summary.png rendered

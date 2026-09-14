@@ -1,0 +1,175 @@
+{
+ "issue": 7157,
+ "title": "Emperor of Bones didn't grant creature haste nor trigger its etb",
+ "run_id": "20260914-7157h",
+ "validated_at": "2026-09-14",
+ "validated_version": "v0.82.0",
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb77135c35b2",
+  "card_data_sha256": "5fccabe821311c81ce2fe8f7b9b1e0998f2724d6034202bdf67b283b5805ce73",
+  "draft_pools_sha256": "1c3405bb03f185c01c9821655e957b9cbfa138418135025629b92052d040eed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-14",
+  "source": "isolated v0.82.0 single-user server on 127.0.0.1:9374 (already running from prior run; ServerHello verified v0.82.0/060b5d2/protocol 70) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "scope": "Emperor of Bones exile trigger + Adapt 2 + whenever-counters return of Anointed Peacekeeper; native engine, two human-client seats",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_exile_ok": "passed",
+  "A4_adapt_trigger": "passed",
+  "A5_returned": "passed",
+  "A6_haste": "failed",
+  "A7_entry_choice": "passed",
+  "A8_endstep_sacrifice": "failed",
+  "A9_cleanup": "passed"
+ },
+ "assertion_notes": [
+  "A1: emperor boc/adapt/counters-trigger + peacekeeper entry replacement + statics parse: passed",
+  "A2: emperor_on_bf=True pk_in_gy=True cast_turn=7",
+  "A3: pk_exiled=True (prompted=True answered=True auto=False)",
+  "A4: adapt_submitted=True emperor_+1/+1=2 counters_trigger_seen=False card_choice_prompted=True",
+  "A5: pk_entered=True (oid=51 turn=9) finality=True",
+  "A6: returned Peacekeeper gained haste: False",
+  "A7: name_prompted=True submitted=True accepted=True shapes_tried=['free_text'] invalid_name_rejections=0",
+  "A8: pk_left_bf=False end_zone=None (turn=None; finality counter exiles instead of dying) emperor_zone=Graveyard watch_concluded=True",
+  "A9: stack_empty=True turn=13",
+  "verdict rule: reproduced (done_reason=end-step watch concluded)"
+ ],
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      67
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      3
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      5
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "EXILE_WAIT"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      82
+     ]
+    }
+   },
+   "stage": "ADAPT_READY"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "ADAPTED"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      85
+     ]
+    }
+   },
+   "stage": "ENDSTEP_WATCH"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      94
+     ]
+    }
+   },
+   "stage": "ENDSTEP_WATCH"
+  }
+ ],
+ "wf_types_seen": [
+  "NamedChoice",
+  "Priority",
+  "TriggerTargetSelection"
+ ],
+ "unhandled_prompt": null,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (60x Swamp; plays land, never casts/attacks/blocks); P1's hand holds Swamps for the entry 'look'.",
+  "P0 plays no lands until a Peacekeeper reaches the graveyard, so the first 8-card cleanup bins one even after mulligans; P0 mulligans until the opening hand holds a Peacekeeper."
+ ]
+}
