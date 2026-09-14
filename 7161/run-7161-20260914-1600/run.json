@@ -1,0 +1,81 @@
+{
+ "issue": 7161,
+ "run_id": "run-7161-20260914-1600",
+ "validated_at": "2026-09-14",
+ "verdict": "reproduced",
+ "scope": "Abyssal Harvester {T} ability: exile a creature card from a graveyard (put there this turn) -> create a Nightmare copy token -> exile other Nightmare tokens. 2 human seats, native engine, Bolt kill on P0's turn.",
+ "result": "Abyssal Harvester exiled the Bolted Grizzly Bears from P1's graveyard (turn 7) but created no Nightmare copy token: post state shows the Bear card in Exile, zero is_token objects on P0's battlefield, empty stack. A second activation the next turn exiled a second Bear with the same no-token outcome. Matches the reported no-token-after-exile defect.",
+ "limitations": [
+  "Browser UI not exercised",
+  "Attached turn-34 Discord state (Cloudthresher game) not restored; equivalent fixture with Grizzly Bears used",
+  "Opponent-graveyard targeting only (per triage the reported failure is exile-result forwarding, not ownership)",
+  "Single-activation leg is the primary defect test; trailing 'exile other Nightmares' covered by the optional leg2"
+ ],
+ "server": {
+  "server_version": "0.82.0",
+  "build_commit": "060b5d2",
+  "protocol_version": 70,
+  "mode": "Full"
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_bear_died": "passed",
+  "A3_bear_exiled": "passed",
+  "A4_token_created": "failed",
+  "A5_others_exiled": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: harvester pre-activation: zone=Battlefield tapped=False",
+  "A2: bear 62 pre: zone=Graveyard (killed turn 7, activated turn 7)",
+  "A3: bear 62 post: zone=Exile (engine auto-targeted the single legal graveyard target; no TargetSelection prompt appeared)",
+  "A4: is_token objects on P0 BF post: NONE (the only 'Nightmare'-text match is the Harvester card itself, is_token=False \u2014 first run's detector false-positived on its oracle text; corrected here)",
+  "A5: second activation also exiled bear2 (70 -> Exile) with no token; the trailing 'exile all other Nightmare tokens' clause is untestable because no token was ever created (A4 defect). is_token objects post-leg2: NONE",
+  "A6: stack empty at both post exports; game advanced to turn 9 with no stall"
+ ],
+ "deck_lists": {
+  "p0": [
+   [
+    "Abyssal Harvester",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Mountain",
+    16
+   ]
+  ],
+  "p1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ]
+ },
+ "game_code": "CIQNWK",
+ "wire_log": "wire_log.jsonl",
+ "run_log": "scenario_run.log",
+ "exports": {
+  "pre": "pre.json",
+  "post": "post.json",
+  "post_leg2": "post_leg2.json"
+ },
+ "rejections": [],
+ "target_record": {
+  "harv_target_oid": null,
+  "harv_choice_id": null,
+  "harv_choice_text": null,
+  "bolt_target_oid": "62"
+ }
+}
