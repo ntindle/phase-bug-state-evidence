@@ -1,0 +1,72 @@
+===== GAME A: Cabal Ritual {1}{B} =====
+[A] game R8NJWD; P0 seat=0 P1 seat=1
+[A] P0 mulligans #1
+[A] P0 keeps (spell in hand=True, mulls=1)
+[A] P0 bottoms 1 after mulligan
+[A] P0 casts Diregraf Ghoul
+[A] P0 casts Phyrexian Altar
+[A] setup complete -> assert phase
+[A] PRE exported; setup ready (turn 8)
+[A] gate assertion A2a_gate_offers_1B: offered_seen=True want_offered=True -> passed (obs=4)
+[A] -> act phase
+[A] activating Phyrexian Altar
+[A] sacrificed for Phyrexian Altar (#1): candidate | Diregraf Ghoul
+[A] chose mana color: candidate
+[A] casting Cabal Ritual
+[A] A2b: ritual resolved; ghoul in gy=True; black pool=3 (want 3) -> passed
+[A] POST exported
+===== GAME B: Sign in Blood {B}{B} =====
+[B] game CQ6DYD; P0 seat=0 P1 seat=1
+[B] P0 keeps (spell in hand=True, mulls=0)
+[B] P0 casts Memnite
+[B] P0 casts Memnite
+[B] P0 discards to hand size: ?
+[B] P0 casts Phyrexian Altar
+[B] setup complete -> assert phase
+[B] PRE exported; setup ready (turn 30)
+[B] gate assertion A3a_gate_offers_BB: offered_seen=False want_offered=True -> failed (obs=4)
+[B] -> act phase
+[B] activating Phyrexian Altar
+[B] sacrificed for Phyrexian Altar (#1): candidate | Memnite
+[B] chose mana color: candidate
+[B] activating Phyrexian Altar
+[B] sacrificed for Phyrexian Altar (#2): candidate | Memnite
+[B] chose mana color: candidate
+[B] both activations done; pool={'black': 2}
+[B] MID exported; pool={'black': 2}
+[B] A3b: with {B}{B} floating, gate now offers Sign in Blood -> passed (bug confirmed: feasibility analysis, not resources, blocked the offer)
+[B] casting Sign in Blood
+[B] targeted P1 for Sign in Blood
+[B] Sign in Blood resolved: P1 life=20 (want 18) -> failed
+[B] POST exported
+===== GAME C: Dark Ritual {B} =====
+[C] game 223AR1; P0 seat=0 P1 seat=1
+[C] P0 mulligans #1
+[C] P0 mulligans #2
+[C] P0 keeps (spell in hand=True, mulls=2)
+[C] P0 bottoms 2 after mulligan
+[C] P0 casts Phyrexian Altar
+[C] setup complete -> assert phase
+[C] PRE exported; setup ready (turn 6)
+[C] gate assertion A4_gate_rejects_B: offered_seen=False want_offered=False -> passed (obs=4)
+[C] POST exported (observe-only)
+===== GAME D: Steel Overseer {2} =====
+[D] game 3PQC5C; P0 seat=0 P1 seat=1
+[D] P0 keeps (spell in hand=True, mulls=0)
+[D] P0 casts Memnite
+[D] P0 casts Memnite
+[D] P0 discards to hand size: ?
+[D] P0 discards to hand size: ?
+[D] P0 discards to hand size: ?
+[D] P0 discards to hand size: ?
+[D] P0 discards to hand size: ?
+[D] P0 casts Krark-Clan Ironworks
+[D] setup complete -> assert phase
+[D] PRE exported; setup ready (turn 59)
+[D] gate assertion A5a_gate_offers_2: offered_seen=True want_offered=True -> passed (obs=4)
+[D] -> act phase
+[D] activating Krark-Clan Ironworks
+[D] sacrificed for Krark-Clan Ironworks (#1): candidate | Memnite
+[D] casting Steel Overseer
+[D] A5b: Overseer on battlefield; Memnite in gy=True -> passed
+[D] POST exported
