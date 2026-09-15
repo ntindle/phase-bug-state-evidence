@@ -1,0 +1,121 @@
+{
+  "name": "Mr. House, President and CEO",
+  "oracle_text": "Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.\n{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.",
+  "triggers": [
+    {
+      "mode": "RolledDieOnce",
+      "execute": {
+        "kind": "Spell",
+        "effect": {
+          "type": "Token",
+          "name": "Robot",
+          "power": {
+            "type": "Fixed",
+            "value": 3
+          },
+          "toughness": {
+            "type": "Fixed",
+            "value": 3
+          },
+          "types": [
+            "Artifact",
+            "Creature",
+            "Robot"
+          ],
+          "colors": [],
+          "keywords": [],
+          "tapped": false,
+          "count": {
+            "type": "Fixed",
+            "value": 1
+          },
+          "owner": {
+            "type": "Controller"
+          },
+          "enters_attacking": false
+        },
+        "cost": null,
+        "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+            "type": "Unimplemented",
+            "name": "instead_condition",
+            "description": "If you rolled 6 or higher, instead create that token and a Treasure token"
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+      },
+      "valid_card": null,
+      "origin": null,
+      "destination": null,
+      "trigger_zones": [
+        "Battlefield"
+      ],
+      "phase": null,
+      "optional": false,
+      "damage_kind": "Any",
+      "secondary": false,
+      "valid_target": {
+        "type": "Controller"
+      },
+      "valid_source": null,
+      "description": "Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.",
+      "constraint": null,
+      "condition": null,
+      "batched": false,
+      "die_result": {
+        "AtLeast": 4
+      }
+    }
+  ],
+  "abilities": [
+    {
+      "kind": "Activated",
+      "effect": {
+        "type": "Unimplemented",
+        "name": "unparsed_quantity",
+        "description": "Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability"
+      },
+      "cost": {
+        "type": "Composite",
+        "costs": [
+          {
+            "type": "Mana",
+            "cost": {
+              "type": "Cost",
+              "shards": [],
+              "generic": 4
+            }
+          },
+          {
+            "type": "Tap"
+          }
+        ]
+      },
+      "sub_ability": null,
+      "duration": null,
+      "description": "{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.",
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+    }
+  ]
+}
