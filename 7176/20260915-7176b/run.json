@@ -1,0 +1,158 @@
+{
+ "issue": 7176,
+ "title": "Circuits act -- [[Circuits Act]] does not make the artifact creatures for each different result of the roll.",
+ "run_id": "20260915-7176b",
+ "server": {
+  "server_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c51cb38db94466c85",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key); server already running on 127.0.0.1:9374 (run 20260915-7173-server), reused."
+ },
+ "validated_version": "v0.83.0",
+ "verdict": "reproduced",
+ "scope": "Circuits Act dice-roll spell: parse check (RollDie typed, token half Unimplemented) + up to 3 native-engine casts; aggregate Clown Robot token count vs Oracle minimum (1 per cast); native engine, two human-client seats",
+ "result": "A1_parse: passed; A2_setup: passed; A3_cast: passed; A4_resolved: passed; A5_tokens: failed; A6_cleanup: passed",
+ "notes": [
+  "A1: effect=RollDie count=3 sides=6; sub=Unimplemented/unparsed_quantity",
+  "A2: circuits_in_hand=True p0_untapped_mountains=3 p1_present=True",
+  "A3: casts_completed=3 cast_rejections=0",
+  "A4: resolved=3/3 (gy deltas: leg1:0->1, leg2:1->2, leg3:2->3)",
+  "A5: completed_casts=3 clown_tokens_final=0 (expected >= 3, Oracle min 1/cast); per-leg post tokens: [(1, 0), (2, 0), (3, 0)]",
+  "roll sightings: 3",
+  "A6: stack_empty=True post_wf=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7, 8, 9] stop=3 casts resolved",
+  "verdict=reproduced: casts complete and resolve but zero Clown Robot tokens are ever created"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "20x/40x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is fully passive (land drops only, never attacks) so the cast windows stay clean.",
+  "The engine RNG is not controllable from the driver: the exact per-roll acceptance criteria (1 vs 2 vs 3 tokens for 1/2/3 distinct results) cannot be targeted; the asserted outcome is the aggregate Oracle minimum (>=1 token per completed cast).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5dd77e3b5cbfb5f3697719f468bdc63c13cb9f26c3b6854d1f5e3ba25f911a3f",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "circuits act",
+    20
+   ],
+   [
+    "mountain",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_cast": "passed",
+  "A4_resolved": "passed",
+  "A5_tokens": "failed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "prompts": []
+ },
+ "driver_state": {
+  "finished": true,
+  "post_exported": true,
+  "casts": [
+   {
+    "i": 1,
+    "pre_gy": 0,
+    "cast": true,
+    "cast_oid": 2,
+    "cast_rev": 67,
+    "resolved": true,
+    "post_gy": 1,
+    "tokens": 0
+   },
+   {
+    "i": 2,
+    "pre_gy": 1,
+    "cast": true,
+    "cast_oid": 18,
+    "cast_rev": 99,
+    "resolved": true,
+    "post_gy": 2,
+    "tokens": 0
+   },
+   {
+    "i": 3,
+    "pre_gy": 2,
+    "cast": true,
+    "cast_oid": 22,
+    "cast_rev": 132,
+    "resolved": true,
+    "post_gy": 3,
+    "tokens": 0
+   }
+  ],
+  "in_flight": false,
+  "rejections": [],
+  "game_code": "SEWEUY",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p0pass": 133,
+   "p1pass": 134,
+   "P0land": 102,
+   "P1land": 117,
+   "cast": 132
+  },
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "roll_sightings": [
+   "{'id': 2, 'source_id': 2, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 2, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 2, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white Clown Robot artifact creature t",
+   "{'id': 18, 'source_id': 18, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 18, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 18, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white Clown Robot artifact creatu",
+   "{'id': 22, 'source_id': 22, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 22, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 22, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white Clown Robot artifact creatu"
+  ],
+  "stop_reason": "3 casts resolved"
+ },
+ "evidence_files": [
+  "pre_1.json",
+  "post_1.json",
+  "pre_2.json",
+  "post_2.json",
+  "pre_3.json",
+  "post_3.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7176.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "duration_s": 31.4
+}
