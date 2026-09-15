@@ -1,0 +1,41 @@
+both clients connected
+game created: IX151R
+P1 joined
+[P0] mulligan: keep 7
+[P1] mulligan: keep 7
+[diag] t=1s stage=setup turn=1 phase=PreCombatMain wf=Priority balancer=None p0creatures=0
+[P0] casting bear (ramp) untapped_before=2
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 2->0)
+[P0] bear (ramp) ENTERED
+[P1] casting Grizzly Bears
+[P0] casting bear (ramp) untapped_before=4
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 4->2)
+[P0] bear (ramp) ENTERED
+[P0] casting bear (ramp) untapped_before=5
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 5->3)
+[P0] bear (ramp) ENTERED
+[P0] casting Witherbloom, the Balancer (creatures=3)
+[P0] Balancer ENTERED oid=22 turn=12
+[diag] t=61s stage=setup turn=15 phase=DeclareAttackers wf=DeclareAttackers balancer=22 p0creatures=4
+[P1] casting Grizzly Bears
+[diag] t=121s stage=setup turn=30 phase=Upkeep wf=Priority balancer=22 p0creatures=4
+[P0] casting bear (control) untapped_before=15
+[P0] bear (control) on stack: tapped_delta=2 (untapped 15->13)
+[P0] bear (control) ENTERED
+[P0] stage -> test5 (5 creatures)
+exported pre_cast5.json (turn=32)
+saved cast5_detail.json
+[P0] TEST5: casting Beseech the Queen at 5 creatures, untapped_before=13 (expect 1 land tapped)
+[P0] cast5: Beseech ON STACK tapped_delta=3 (expect 1; untapped 13->10)
+exported post_cast5.json (turn=32)
+[P0] search prompt answered: tutored 'swamp'
+[P0] REJECTION in stage test5_resolving: {"type": "ActionRejected", "data": {"rejection": {"code": "invalid_interaction_response", "disposition": "invalid", "message": "That response is not valid for this interaction.", "related_object_ids": []}}}
+[P0] cast5: Beseech RESOLVED, tutored 'swamp'
+[diag] t=181s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=241s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=301s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=361s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=421s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=481s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=541s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
+[diag] t=601s stage=test6setup turn=32 phase=PreCombatMain wf=SearchChoice balancer=22 p0creatures=5
