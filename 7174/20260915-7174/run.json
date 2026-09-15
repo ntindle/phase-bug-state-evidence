@@ -1,0 +1,73 @@
+{
+ "issue": 7174,
+ "run_id": "20260915-7174",
+ "title": "Landfall triggering 2x on Bristly Bill, Spine Sower for (only) cracking fetch land",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "pinned v0.83.0 (minisign-verified binary + signed data manifest, ledger server pin 2026-09-15); reusing the live v0.83.0 server on 127.0.0.1:9374 started for the 7173 run (run dir discovered live from the server process); ServerHello re-checked by this run."
+ },
+ "scope": "Bill landfall trigger count for (a) playing a fetch land from hand [control] and (b) cracking the fetch for a Forest [reported bug]; native engine, two human-client seats, P1 fully passive",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_control_play": "passed",
+  "A4_fetch": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)",
+  "A2: Bill on P0 BF in pre.json=True, control trigger resolved=True, counters(before control)=0, (after control)=1, (before fetch)=1",
+  "A3: control play counter delta=1 (expected 1) -> passed",
+  "A4: fetch counter delta=1 (expected 1; 2 = the reported double-trigger) -> passed",
+  "A5: post stack empty=True"
+ ],
+ "driver_state": {
+  "bill_oid": 35,
+  "bill_cast_turn": 3,
+  "c_before_control": 0,
+  "c_after_control": 1,
+  "c_before_fetch": 1,
+  "c_after_fetch": 2,
+  "control_played": true,
+  "control_resolved": true,
+  "fetch_activated": true,
+  "search_answered": true,
+  "search_choice": "HJFEZR.0.77.s0",
+  "last_target_oid": null,
+  "trigger_sightings": [
+   {
+    "id": 121,
+    "turn": 5,
+    "phase": "PreCombatMain",
+    "stage": "CONTROL_WAIT"
+   },
+   {
+    "id": 123,
+    "turn": 5,
+    "phase": "PreCombatMain",
+    "stage": "FETCH_TRIGGERS"
+   }
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (4x Bill, 8x Foothills) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (lands, passes; no attacks or blocks).",
+  "The reporter's UI-timing note (fetched-basic triggers surfacing only after Pass/combat with an untapped fetch target) is a display observation; this run counts engine-level trigger instances on the stack and final counter deltas."
+ ],
+ "evidence_dir": "7174/20260915-7174",
+ "server_run_note": "reused the live v0.83.0 server on 127.0.0.1:9374 started for the 7173 run (games.db + server.log in runs/20260915-7173-server/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 80.2
+}

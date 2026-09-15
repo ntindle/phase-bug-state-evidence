@@ -1,0 +1,38 @@
+ServerHello: {'server_version': '0.83.0', 'build_commit': 'b7a59d4', 'protocol_version': 70, 'mode': 'Full'}
+bill oracle: Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature. | {3}{G}{G}: Double the number of +1/+1 counters on each creature you control.
+foothills oracle: {T}, Pay 1 life, Sacrifice this land: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.
+A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)
+game HJFEZR; P0 seat=0 P1 seat=1 RUN_ID=20260915-7174
+[P1] keeps (lands=7, bill=False)
+[P0] mulligans (lands=7, bill=False)
+[P0] keeps (lands=6, bill=True)
+[P0] bottoms 1 after mulligan
+[P0] cast Bill (turn 3)
+[P0] plays Foothills (control, turn 5); bill counters before=0
+TRIGGER SIGHTING: Bill landfall on stack (stage CONTROL_WAIT, turn 5, phase PreCombatMain)
+control trigger resolved: counters 0 -> 1
+exported PRE
+[P0] activates Foothills (turn 5); bill counters before=1
+[P0] search pick: HJFEZR.0.77.s0
+[P0] submitting interaction iid=HJFEZR.0.77 choice=HJFEZR.0.77.s0 (HJFEZR.0.77.s0)
+TRIGGER SIGHTING: Bill landfall on stack (stage FETCH_TRIGGERS, turn 5, phase PreCombatMain)
+exported MID
+fetch triggers resolved: counters 1 -> 2
+exported POST
+loaded pre.json
+loaded mid.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_control_play: passed
+A4_fetch: passed
+A5_cleanup: passed
+note: A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)
+note: A2: Bill on P0 BF in pre.json=True, control trigger resolved=True, counters(before control)=0, (after control)=1, (before fetch)=1
+note: A3: control play counter delta=1 (expected 1) -> passed
+note: A4: fetch counter delta=1 (expected 1; 2 = the reported double-trigger) -> passed
+note: A5: post stack empty=True
+VERDICT: not-reproduced
+wrote run.json
+copied server.log from runs/20260915-7173-server/
+wrote summary.png
