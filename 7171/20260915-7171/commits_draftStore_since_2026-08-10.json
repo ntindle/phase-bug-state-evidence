@@ -1,0 +1,658 @@
+[
+  {
+    "sha": "e13ff6f989b54d6b4215a370567301623a2b44a7",
+    "node_id": "C_kwDORjr0ktoAKGUxM2ZmNmY5ODliNTRkNmI0MjE1YTM3MDU2NzMwMTYyM2EyYjQ0YTc",
+    "commit": {
+      "author": {
+        "name": "traemyn",
+        "email": "traemyn@gmail.com",
+        "date": "2026-09-11T19:37:43Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-09-11T19:37:43Z"
+      },
+      "message": "Use the original Cube draft pool for Booster Tutor packs (#8734)\n\n* Use the original cube card pool for Booster Tutor packs\n\n* Keep Cube booster pools host-private\n\n* Preserve private Cube launch metadata\n\n* Complete Cube pool WASM binding\n\n* Fix Cube draft CI type errors\n\n* Preserve native Cube pools privately\n\n* Ignore missing legacy Cube pool metadata\n\n* Fail closed for invalid public draft backups\n\n* Fail closed public draft session shapes\n\n* fix(draft): preserve Cube pool for match authority\n\n* fix: retain CR733 authority matrix entries after rebase\n\n* Keep the Cube source private and type the pack origin\n\n- BoosterShelf is now an enum (Products | Cube), since a game opens packs from\n  exactly one kind of source. open_pack returns a typed PackOrigin (Set(code) |\n  Cube) instead of the \"CUBE\" string, and OutsideGameChoiceSource::BoosterPack\n  carries that origin. PROTOCOL_VERSION 69 -> 70, WIRE_PROTOCOL_VERSION\n  52 -> 53, MIN_SUPPORTED 68 -> 69.\n- The original Cube multiset stays off client wires: client_state_wire_value\n  drops booster_pack_pool, and a P2P pairing whose match authority is a guest\n  seat launches with no source, so a guest never learns undealt entries or\n  their counts.\n- A ranked room refuses any supplied booster_pack_pool, empty included.\n- The full-card-db scan no longer walks booster_pack_pool, so a Cube that\n  merely contains an opener does not widen an AI worker to the whole database.\n- The booster shelf is carried between Bo3 games for every source, not only\n  Cube, so a pack opener in game two still opens a pack.\n\nTests: wire redaction for both viewer shapes, the ranked dispatch guard, the\nP2P guest-authority launch, and the booster tutor integration tests on the\nenum shelf.\n\n---------\n\nCo-authored-by: matthewevans <matt.evans.dev@gmail.com>",
+      "tree": {
+        "sha": "bbadce75f514bcd0217fa0ce3cf7711c8dfc7c1a",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/bbadce75f514bcd0217fa0ce3cf7711c8dfc7c1a"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/e13ff6f989b54d6b4215a370567301623a2b44a7",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqpFiWCRC1aQ7uu5UhlAAAj/0QAHO0pbozNWxTFEcIfs7MC/v7\nzxIoMZMDquGv4RNlngCsUedc2Tiu5H9FSMnfRD79oyhzH8CjRqwtyZ6EnB0x77hA\nVCb7epYHEp3lXKO0x0CEJiRoypaAPtFhnSa4IxlPagQ3B8WKL7USkquBRhBpk7uZ\n+staR5oPM/nhpvWrgiTO+TzEnd16HNQmc8bcH6zFaNEFl1+5cyNVcW5DhlZ2XLje\n7NQeO+ycUSs4WfN+ucLkTst/g6WgY8VKtrQDwoQdINFceh0mHxmYHJSt/JGGQV+Y\n3Q7+5bc1HaVWe06CoRLxPV+FHBuDMyHKEy7wa2ef8/5PC7gkUTk+56MFsk5n7BMl\nNjsRcxqG1eVtrBJ1sOLxIuEZKji4xtpGfg4f24mV7prNg6mNGixM7j6Osca2PqzP\nVtrpMaZaChhlmL73rq9fePCMBTp3wfjz1bP3FFHhcce2IANLoc4agLneVlLYMA1V\nEo84ou+jdjybX+o/lt1FpdRLnjY62GxjQ9+9KCYQqlZy/sJ1PkpUTTSdEnkO5i61\nChzaY7NQXLq5u6Opp8QPdDLa/pjHo0MY83uztNHD0lfuGIKKj0HA5vi75qo4pRWn\nme0Z58+wljU8K30W0VOM1bhkj26y8P81wgE5Br94IWzqO9E/mND+h/wuOeNOjp6L\nyOUcoiKfxeqdfx+vGurv\n=FrsK\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree bbadce75f514bcd0217fa0ce3cf7711c8dfc7c1a\nparent b00ba514793dca75167491dd37fedef1c6dbccd9\nauthor traemyn <traemyn@gmail.com> 1789155463 +0000\ncommitter GitHub <noreply@github.com> 1789155463 +0000\n\nUse the original Cube draft pool for Booster Tutor packs (#8734)\n\n* Use the original cube card pool for Booster Tutor packs\n\n* Keep Cube booster pools host-private\n\n* Preserve private Cube launch metadata\n\n* Complete Cube pool WASM binding\n\n* Fix Cube draft CI type errors\n\n* Preserve native Cube pools privately\n\n* Ignore missing legacy Cube pool metadata\n\n* Fail closed for invalid public draft backups\n\n* Fail closed public draft session shapes\n\n* fix(draft): preserve Cube pool for match authority\n\n* fix: retain CR733 authority matrix entries after rebase\n\n* Keep the Cube source private and type the pack origin\n\n- BoosterShelf is now an enum (Products | Cube), since a game opens packs from\n  exactly one kind of source. open_pack returns a typed PackOrigin (Set(code) |\n  Cube) instead of the \"CUBE\" string, and OutsideGameChoiceSource::BoosterPack\n  carries that origin. PROTOCOL_VERSION 69 -> 70, WIRE_PROTOCOL_VERSION\n  52 -> 53, MIN_SUPPORTED 68 -> 69.\n- The original Cube multiset stays off client wires: client_state_wire_value\n  drops booster_pack_pool, and a P2P pairing whose match authority is a guest\n  seat launches with no source, so a guest never learns undealt entries or\n  their counts.\n- A ranked room refuses any supplied booster_pack_pool, empty included.\n- The full-card-db scan no longer walks booster_pack_pool, so a Cube that\n  merely contains an opener does not widen an AI worker to the whole database.\n- The booster shelf is carried between Bo3 games for every source, not only\n  Cube, so a pack opener in game two still opens a pack.\n\nTests: wire redaction for both viewer shapes, the ranked dispatch guard, the\nP2P guest-authority launch, and the booster tutor integration tests on the\nenum shelf.\n\n---------\n\nCo-authored-by: matthewevans <matt.evans.dev@gmail.com>",
+        "verified_at": "2026-09-11T19:37:59Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/e13ff6f989b54d6b4215a370567301623a2b44a7",
+    "html_url": "https://github.com/phase-rs/phase/commit/e13ff6f989b54d6b4215a370567301623a2b44a7",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/e13ff6f989b54d6b4215a370567301623a2b44a7/comments",
+    "author": {
+      "login": "traemyn",
+      "id": 16594843,
+      "node_id": "MDQ6VXNlcjE2NTk0ODQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16594843?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/traemyn",
+      "html_url": "https://github.com/traemyn",
+      "followers_url": "https://api.github.com/users/traemyn/followers",
+      "following_url": "https://api.github.com/users/traemyn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/traemyn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/traemyn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/traemyn/subscriptions",
+      "organizations_url": "https://api.github.com/users/traemyn/orgs",
+      "repos_url": "https://api.github.com/users/traemyn/repos",
+      "events_url": "https://api.github.com/users/traemyn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/traemyn/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "b00ba514793dca75167491dd37fedef1c6dbccd9",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/b00ba514793dca75167491dd37fedef1c6dbccd9",
+        "html_url": "https://github.com/phase-rs/phase/commit/b00ba514793dca75167491dd37fedef1c6dbccd9"
+      }
+    ]
+  },
+  {
+    "sha": "247ab1defc16052de0fe172a0f680676a3570b5a",
+    "node_id": "C_kwDORjr0ktoAKDI0N2FiMWRlZmMxNjA1MmRlMGZlMTcyYTBmNjgwNjc2YTM1NzBiNWE",
+    "commit": {
+      "author": {
+        "name": "traemyn",
+        "email": "traemyn@gmail.com",
+        "date": "2026-09-03T14:07:58Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-09-03T14:07:58Z"
+      },
+      "message": "Polish draft pick placement and selection (#8267)\n\n* Polish draft pick placement and highlights\n\n* Restore desktop draft card selection\n\n* Handle captured desktop draft card clicks\n\n* Cover captured draft card clicks\n\n* Fix locked draft card selection",
+      "tree": {
+        "sha": "286396cb2a9b83f7b8344c635985ff8379aad658",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/286396cb2a9b83f7b8344c635985ff8379aad658"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/247ab1defc16052de0fe172a0f680676a3570b5a",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqmYtACRC1aQ7uu5UhlAAATrQQAC4LcPyOGMTJErdJhN8MCsLf\n3FUbHtbO5vIR+Le9IAz8la9F8zfawHdAtohwrJQEq6NXsAqisPAz0VT7xunYIchV\nAsTVvasdVlkRCv3lDNueza7wMV+qOpoaxN+jrQDCb0zlHXwccRnw0ToMdI/efFZM\nci0RtDd144HveGfoHFdLBg9R5vLiLh5CK+N9FXRzctzE2y4st+Q01mxk8zZU4pD7\n4yOtGhHB0bNCw4hCLB4pTf6jMnEbvvWXQOpeoIw/e4OPo5ZlaTbkgOWif1TQLKJJ\n2zgrOS7+FdEJIgDV/awfOdWswCeD763ZzbNJj1ifFwJ4kGyL5IKWaV9HXDYxN8xu\nR1oMtlXroJKz5JxNziCCSEbGuOak1RtZ6jwUWR2AGMEAYk7wG0R/EWJvotBv5nEN\nGfKYuh9qWSSb2h5jpuYaM3HvRGMeto6RhTMHFY/yfiHuNUdgJ7golVj6tv+X31bs\nDwIOQjrkQQXxeCKilOmsqJRXgcW1EWZ1bujKNNxotPQ22q0HtMXfA8OOWytg8wmt\nJZbGKDM58X0EcVScKokc87J5uvmj4u+/BsvS2HC6qqit8IaBuu1Sfq4iXUR0sdSY\n+LO1eL+nZeswD//sAN9xt230T/9tm8xVbnl78sKQuLlvV+uDQ1kmw6gtE2N2PB4K\noObyUpS1DBTODtZF2bf+\n=L/Uj\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 286396cb2a9b83f7b8344c635985ff8379aad658\nparent ddcc530bad7e65b96a3c2c71ca324e8a90f70413\nauthor traemyn <traemyn@gmail.com> 1788444478 +0000\ncommitter GitHub <noreply@github.com> 1788444478 +0000\n\nPolish draft pick placement and selection (#8267)\n\n* Polish draft pick placement and highlights\n\n* Restore desktop draft card selection\n\n* Handle captured desktop draft card clicks\n\n* Cover captured draft card clicks\n\n* Fix locked draft card selection",
+        "verified_at": "2026-09-03T14:59:12Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/247ab1defc16052de0fe172a0f680676a3570b5a",
+    "html_url": "https://github.com/phase-rs/phase/commit/247ab1defc16052de0fe172a0f680676a3570b5a",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/247ab1defc16052de0fe172a0f680676a3570b5a/comments",
+    "author": {
+      "login": "traemyn",
+      "id": 16594843,
+      "node_id": "MDQ6VXNlcjE2NTk0ODQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16594843?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/traemyn",
+      "html_url": "https://github.com/traemyn",
+      "followers_url": "https://api.github.com/users/traemyn/followers",
+      "following_url": "https://api.github.com/users/traemyn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/traemyn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/traemyn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/traemyn/subscriptions",
+      "organizations_url": "https://api.github.com/users/traemyn/orgs",
+      "repos_url": "https://api.github.com/users/traemyn/repos",
+      "events_url": "https://api.github.com/users/traemyn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/traemyn/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "ddcc530bad7e65b96a3c2c71ca324e8a90f70413",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/ddcc530bad7e65b96a3c2c71ca324e8a90f70413",
+        "html_url": "https://github.com/phase-rs/phase/commit/ddcc530bad7e65b96a3c2c71ca324e8a90f70413"
+      }
+    ]
+  },
+  {
+    "sha": "c03671ffa03a19000bc1c75589def75d205e4b7f",
+    "node_id": "C_kwDORjr0ktoAKGMwMzY3MWZmYTAzYTE5MDAwYmMxYzc1NTg5ZGVmNzVkMjA1ZTRiN2Y",
+    "commit": {
+      "author": {
+        "name": "Christopher Galpin",
+        "email": "52485+CodeOptimist@users.noreply.github.com",
+        "date": "2026-08-31T06:06:50Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-31T06:06:50Z"
+      },
+      "message": "fix(draft): keep sealed run phase and format on resume (#8219)\n\n* fix(draft): keep sealed run phase and format on resume\n\nAfter a Sealed Full Run match finishes, the game-over button routes back\nthrough /draft/quick?resume=1 to show the between-matches screen. The\nrestore path corrupted that flow two ways:\n\n- A solo Sealed draft session sits in DraftStatus::Pairing once its deck\n  is submitted (PostDraftPlay::TournamentPairings), unlike Quick drafts\n  which reach Complete. phaseForView mapped that status to the\n  \"launching\" phase unconditionally, so resuming a run rebuilt the\n  format picker instead of BetweenMatches/RunComplete. Run phases are\n  owned by the run record now and returned unchanged.\n\n- resumeDraft forced runFormat to \"single\" for every Sealed kind,\n  discarding the Full Run format the player chose. The persisted run's\n  format is now authoritative, with the meta's remembered choice as the\n  pre-first-match fallback.\n\nAdds draftStore resume regression tests covering Sealed/Quick runs in\nboth run phases plus the pre-first-match launching resume.\n\n* fix(draft): derive resumed run phase from the durable run record\n\nThe run and its metadata are persisted as separate writes (publishInitialDraftMatch saves session+run then meta; recordDraftMatchResult saves run then meta), so a browser crash between them leaves the meta stale: \"launching\" for an already active match, or \"playing\" for a terminal run. resumeDraft trusted the meta's phase, which could restore the editable format picker mid-run, or Between Matches for a finished run whose Next Match is rejected as complete.\n\nAdd draftRunPhase(run) as the single authority for run terminality (wins/losses vs the format's limits) and derive the resumed phase from the durable run before falling back to the meta. Route the two other terminality decisions through it: recordMatchResult's makeMeta phase and launchNextMatch's run-complete guard, which previously inlined the same arithmetic.\n\nFocused interrupted-write fixtures: stale launching meta + committed active staged match resumes to playing; stale playing meta + 3-loss run resumes to complete. Both fail on the previous code.\n\n* fix(draft): record results for legacy metadata lacking runFormat\n\nActiveQuickDraftMeta deliberately permits an absent runFormat (legacy\nshape), and resumeDraft restores the format from the durable run \u2014 but\nrecordMatchResult gated on the metadata field and returned early, so a\nresumed match's result was silently dropped and the replacement metadata\nnever learned the run's format.\n\nGate on metadata presence only (the durable writer itself validates the\nrun, gameId, and dedup) and write run.format into the replacement\nmetadata, consistent with the run-authority direction of the resume\npath. Regression: resume a valid persisted run under legacy metadata\nand record a result \u2014 asserts the durable writer is reached, the result\nis forwarded, and the produced metadata carries the run's format.",
+      "tree": {
+        "sha": "3914f6a0ad0a15dc3e5454560d0977e0b51e38a5",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/3914f6a0ad0a15dc3e5454560d0977e0b51e38a5"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/c03671ffa03a19000bc1c75589def75d205e4b7f",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqlR9qCRC1aQ7uu5UhlAAAdocQAFK0m1KPRCCJJGlfO9Fal/pX\nyo2YhfSi6N/tX3/yEzl9TvifA3EjRZFc7cPIoD6OVrR/U/hCcg3VRoemwCyAmEYk\na8M30FtIS6NHJp8VTCOW8xWKK65KGpxzfG3rVf1KS36EdKNg8h51F6tFNSAxlpgJ\nUaj+zlu4XaR/qgcQl8p3LQZPnJg0tLaUP1NLSQNMKSHx6pE0tJiSvZMrWgvXCixP\ncq/pu9+Owmm/KxglZv2RO8iH0vI2eAba9FafG/dy1oLT42eyLIikGJ+ea31Z3GZj\nd0E1fUZ5PXfltuiU/Sn11ZWJ+75y2+VknCv4v3W3/dNmpJZplfmSlBJQIqzLieuw\nGj1+09P6gH3J0sHFBciNRoZ9WOpPeZUSN8eHEXneOYiuVUCYuD153PR85RgiPtrJ\nOCAYJyaSVtacMtfgJQLsoqaBIjUbblOXTLPJX0SqMunwkbBIdKtFsI4R/Z0+p19L\nm7/M/4UsXI5z91z5rua3aHQTMx4QP7HaT8u0jsOgfv3zY5/rQBxILmAfLfcBnZWG\ntA43RBz1lpROsfB4Yyg2bE7QPp0MES5Xaod70rSk0fxfeRCgmf/STRAGCufob5vF\n6wcl1Mpd1OLQA0ItHOzcj8UpqEg6n/J32LN/7JbUJYkiUsCmSgR5XkBxpc4ZkZF+\nLnTyGqNR9V705ewaDAn6\n=DpBO\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 3914f6a0ad0a15dc3e5454560d0977e0b51e38a5\nparent 73889a20cb3c4a56992b4cae0bb7166a540e429f\nauthor Christopher Galpin <52485+CodeOptimist@users.noreply.github.com> 1788156410 +0000\ncommitter GitHub <noreply@github.com> 1788156410 +0000\n\nfix(draft): keep sealed run phase and format on resume (#8219)\n\n* fix(draft): keep sealed run phase and format on resume\n\nAfter a Sealed Full Run match finishes, the game-over button routes back\nthrough /draft/quick?resume=1 to show the between-matches screen. The\nrestore path corrupted that flow two ways:\n\n- A solo Sealed draft session sits in DraftStatus::Pairing once its deck\n  is submitted (PostDraftPlay::TournamentPairings), unlike Quick drafts\n  which reach Complete. phaseForView mapped that status to the\n  \"launching\" phase unconditionally, so resuming a run rebuilt the\n  format picker instead of BetweenMatches/RunComplete. Run phases are\n  owned by the run record now and returned unchanged.\n\n- resumeDraft forced runFormat to \"single\" for every Sealed kind,\n  discarding the Full Run format the player chose. The persisted run's\n  format is now authoritative, with the meta's remembered choice as the\n  pre-first-match fallback.\n\nAdds draftStore resume regression tests covering Sealed/Quick runs in\nboth run phases plus the pre-first-match launching resume.\n\n* fix(draft): derive resumed run phase from the durable run record\n\nThe run and its metadata are persisted as separate writes (publishInitialDraftMatch saves session+run then meta; recordDraftMatchResult saves run then meta), so a browser crash between them leaves the meta stale: \"launching\" for an already active match, or \"playing\" for a terminal run. resumeDraft trusted the meta's phase, which could restore the editable format picker mid-run, or Between Matches for a finished run whose Next Match is rejected as complete.\n\nAdd draftRunPhase(run) as the single authority for run terminality (wins/losses vs the format's limits) and derive the resumed phase from the durable run before falling back to the meta. Route the two other terminality decisions through it: recordMatchResult's makeMeta phase and launchNextMatch's run-complete guard, which previously inlined the same arithmetic.\n\nFocused interrupted-write fixtures: stale launching meta + committed active staged match resumes to playing; stale playing meta + 3-loss run resumes to complete. Both fail on the previous code.\n\n* fix(draft): record results for legacy metadata lacking runFormat\n\nActiveQuickDraftMeta deliberately permits an absent runFormat (legacy\nshape), and resumeDraft restores the format from the durable run \u2014 but\nrecordMatchResult gated on the metadata field and returned early, so a\nresumed match's result was silently dropped and the replacement metadata\nnever learned the run's format.\n\nGate on metadata presence only (the durable writer itself validates the\nrun, gameId, and dedup) and write run.format into the replacement\nmetadata, consistent with the run-authority direction of the resume\npath. Regression: resume a valid persisted run under legacy metadata\nand record a result \u2014 asserts the durable writer is reached, the result\nis forwarded, and the produced metadata carries the run's format.",
+        "verified_at": "2026-08-31T06:30:02Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/c03671ffa03a19000bc1c75589def75d205e4b7f",
+    "html_url": "https://github.com/phase-rs/phase/commit/c03671ffa03a19000bc1c75589def75d205e4b7f",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/c03671ffa03a19000bc1c75589def75d205e4b7f/comments",
+    "author": {
+      "login": "CodeOptimist",
+      "id": 52485,
+      "node_id": "MDQ6VXNlcjUyNDg1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/52485?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/CodeOptimist",
+      "html_url": "https://github.com/CodeOptimist",
+      "followers_url": "https://api.github.com/users/CodeOptimist/followers",
+      "following_url": "https://api.github.com/users/CodeOptimist/following{/other_user}",
+      "gists_url": "https://api.github.com/users/CodeOptimist/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/CodeOptimist/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/CodeOptimist/subscriptions",
+      "organizations_url": "https://api.github.com/users/CodeOptimist/orgs",
+      "repos_url": "https://api.github.com/users/CodeOptimist/repos",
+      "events_url": "https://api.github.com/users/CodeOptimist/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/CodeOptimist/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "73889a20cb3c4a56992b4cae0bb7166a540e429f",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/73889a20cb3c4a56992b4cae0bb7166a540e429f",
+        "html_url": "https://github.com/phase-rs/phase/commit/73889a20cb3c4a56992b4cae0bb7166a540e429f"
+      }
+    ]
+  },
+  {
+    "sha": "ef0ada6a1917028543e55af2c436ea033d051c8c",
+    "node_id": "C_kwDORjr0ktoAKGVmMGFkYTZhMTkxNzAyODU0M2U1NWFmMmM0MzZlYTAzM2QwNTFjOGM",
+    "commit": {
+      "author": {
+        "name": "traemyn",
+        "email": "traemyn@gmail.com",
+        "date": "2026-08-28T01:03:18Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-28T01:03:18Z"
+      },
+      "message": "feat(draft): add responsive draft workspace (#7985)\n\n* feat(draft): add responsive draft workspace\n\n* fix(draft): preserve source when grouping player pool\n\n* fix(draft): migrate single-set source fixtures\n\n* style(draft): format source fixtures\n\n* fix(PR-7985): remove unrelated workflow artifact\n\n---------\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+      "tree": {
+        "sha": "e4416e09d6432ead79e67d08d9a46b2af8ed3499",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/e4416e09d6432ead79e67d08d9a46b2af8ed3499"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/ef0ada6a1917028543e55af2c436ea033d051c8c",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqkN5mCRC1aQ7uu5UhlAAA+a8QACeBDLmLumdzIpkKFT2wGlN9\noa/zzHfwotS1VmT7swLQs7Vk8vWBmCGgamTDB1uYeSXhrnFv6IhVm+4ukyilykiZ\nJt1344+ewhAVho/ckMkdfDtgk+LpKfJlpZ2or8qlSyGJBgPvXH9+iJkW3Es46IHI\nKuv5Yhg4w4T7Es1il5ygtWbQ02msqLUGLLbqvLUv6r+WR492aoYvmA1n+pgXI531\nKkW0dwewvz7dg23VpxFjju1eVOXZ6/MPt1NeHijpNzBSk8yRDSmflWSfFC0eFqJ0\nmmeB/KU5uKinZUwh17A3IXX2pQE2PuAtPnYopMFe6VyoMbpSwkQCOH0o6aVWBiNA\nwWQx9AoLxaaJ5K6yRmSB+T58d7Dcnsqgm7YR/c8nYI5zoR0ri2K1m/+TipsftI6N\nSK64aoitIyBIvMcu09s4aeAZDCeVX2R6ygMQ1HW8KdD74557YkAH5FfJGiPKbNYP\nSUXmYi/zy7zr8Mqc8/s5iyGMgzWWbPhpQXaYKaC/7DElkO3taESTVZBv6/eNDsdS\nzfc1gajMFrpy0g12hd9nGNSm/rpAyFfi5Tr9wgOdc9w2xEk9M0fm8EiRJEAdW2hQ\nNN/BcGAcLh7tQGWmJ7U1/5WBBLmTncmn8zN1mKYlEGiOIEvKzgWl1+X+HyuvEPH7\nm4B9zUv7EC5zQQ6SA2Ef\n=ylT5\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree e4416e09d6432ead79e67d08d9a46b2af8ed3499\nparent 5a00943db0ab8795c8a303183787d2d9f6138970\nauthor traemyn <traemyn@gmail.com> 1787878998 +0000\ncommitter GitHub <noreply@github.com> 1787878998 +0000\n\nfeat(draft): add responsive draft workspace (#7985)\n\n* feat(draft): add responsive draft workspace\n\n* fix(draft): preserve source when grouping player pool\n\n* fix(draft): migrate single-set source fixtures\n\n* style(draft): format source fixtures\n\n* fix(PR-7985): remove unrelated workflow artifact\n\n---------\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+        "verified_at": "2026-08-28T01:03:35Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/ef0ada6a1917028543e55af2c436ea033d051c8c",
+    "html_url": "https://github.com/phase-rs/phase/commit/ef0ada6a1917028543e55af2c436ea033d051c8c",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/ef0ada6a1917028543e55af2c436ea033d051c8c/comments",
+    "author": {
+      "login": "traemyn",
+      "id": 16594843,
+      "node_id": "MDQ6VXNlcjE2NTk0ODQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16594843?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/traemyn",
+      "html_url": "https://github.com/traemyn",
+      "followers_url": "https://api.github.com/users/traemyn/followers",
+      "following_url": "https://api.github.com/users/traemyn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/traemyn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/traemyn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/traemyn/subscriptions",
+      "organizations_url": "https://api.github.com/users/traemyn/orgs",
+      "repos_url": "https://api.github.com/users/traemyn/repos",
+      "events_url": "https://api.github.com/users/traemyn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/traemyn/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "5a00943db0ab8795c8a303183787d2d9f6138970",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/5a00943db0ab8795c8a303183787d2d9f6138970",
+        "html_url": "https://github.com/phase-rs/phase/commit/5a00943db0ab8795c8a303183787d2d9f6138970"
+      }
+    ]
+  },
+  {
+    "sha": "270485fe864a6e86177b63c7f1fd1a8d11c83027",
+    "node_id": "C_kwDORjr0ktoAKDI3MDQ4NWZlODY0YTZlODYxNzdiNjNjN2YxZmQxYThkMTFjODMwMjc",
+    "commit": {
+      "author": {
+        "name": "Dsteele",
+        "email": "derrick.l.steele@gmail.com",
+        "date": "2026-08-27T19:03:47Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-27T19:03:47Z"
+      },
+      "message": "Add multi-set draft: select the set filling each booster (#7964)\n\n* Added support for selecting sets in a draft\n\n* Address final review-impl findings on the multi-set merge\n\nTwo gaps the post-merge review found, both in code this merge introduced:\n\n- `pack_pick_steps` shipped with no test at the seam that computes it. The\n  only coverage was a frontend component test fed a hand-built literal, so\n  the `div_ceil` derivation never ran through `filter_for_player` \u2014 and the\n  case the field exists for (a CommanderDraft whose boosters differ in size)\n  was untested. Adds an engine test asserting [10, 7, 8] for pack sizes\n  [20, 14, 16] at two cards per step, which no competing implementation\n  reproduces: publishing `pack_sizes` gives the card counts, and broadcasting\n  the scalar `pick_steps_per_pack` gives [7, 7, 7]. Verified discriminating \u2014\n  the revert-probe reds it at [10, 10, 10].\n\n- `concession_set_code` contradicted CR 903.13e, which grants on what the\n  draft CONTAINED rather than on the draft being exclusively one set: a mixed\n  CMM+CLB Commander draft should concede both The Prismatic Piper and\n  Faceless One. `DraftSetConcessions` holds a single filler and cannot express\n  the union without an engine-crate change, so the restrictive answer stands\n  for now. Documents the gap against the rule text and pins both sides of the\n  all-equal guard, including the repeated-code case that proves the guard\n  reads set identity rather than sequence length. Unreachable in production:\n  `create_multiplayer_draft` always builds `DraftSource::single_set`.\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* Carry CR 903.13 draft concessions as a per-set union\n\nCompletes the multi-set draft work and makes the Commander Draft\ndeck-construction concessions rules-correct for a draft whose boosters\ncame from several sets.\n\nCR 903.13e/f state each concession as an independent containment\ncondition (\"If the draft contained draft boosters from ...\"), so a draft\nthat opened Commander Masters and Battle for Baldur's Gate boosters\nsatisfies two of them: it concedes The Prismatic Piper AND Faceless One,\nand keeps CR 903.13f(3)'s partner grant because it contained Commander\nMasters. The previous model could name only one set and answered with no\nconcession at all, which multi-set selection made reachable.\n\nEngine:\n- DraftSetConcessions.filler becomes fillers, plus a union that does not\n  stack either axis: a repeated filler name keeps the larger cap\n  (CR 903.13e grants \"up to two\" once per name), and the CR 903.13f(3)\n  colour bound takes the widest any contained set grants.\n- draft_set_concessions_for is the new union authority, driven by the\n  concession table rather than the caller's sequence, so order,\n  repetition, casing and unnamed neighbours cannot move the answer.\n\nCarried to the deck-validation boundary:\n- draft_set_code becomes draft_set_codes on DeckCompatibilityRequest,\n  DeckList, validate_name_deck_for_format_full and the player/spectator\n  views; validate_limited_deck caps each grant on its own name.\n- One shared deserializer accepts the array, the legacy single string and\n  null, so stored decks and pre-multi-set payloads restore correctly.\n\nFrontend renders one grant line per filler and passes the full code list\nto commanderPartnerCandidates. DRAFT_PROTOCOL_VERSION 19 -> 20: this is a\nrename in both directions, and silently losing a grant the rules make is\nthe defect the bump exists to refuse.\n\nAlso includes the remaining multi-set draft work from concurrent sessions\n(set selection UI, pack-order persistence, pod wire guards, i18n), which\nshares several files with the above and could not be split by pathspec.\n\nVerified: cargo fmt/clippy clean; engine lib 19813 and integration 5586\ntests; draft-core, server-core, draft-wasm, engine-wasm 689 tests;\nfrontend type-check and affected suites. WASM bundles rebuilt and the\nfull Quick Draft flow driven end to end in a browser through to a running\nmatch, which the compiled test suites do not cover.\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* fix(PR-7964): port draft view fixture across pack metadata\n\n* fix(PR-7964): cap retained draft pack selections\n\n---------\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+      "tree": {
+        "sha": "4215d4d7af3e51e51012181382640d252f558c78",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/4215d4d7af3e51e51012181382640d252f558c78"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/270485fe864a6e86177b63c7f1fd1a8d11c83027",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqkIoaCRC1aQ7uu5UhlAAAki4QAF1LM5Sa1bSkk5Jhbhw58dfh\nhTbq/+4/T6URPX+glB+GE3aOExhB1VmS0HOvfTWgzzU4EN5Vk9K3NfBaPBO0hPGH\nrFqd333Xm/1wWhZ5+mmMWsrggUtxkHyckNpCcJXEuZUh8xHAB/Q+zI9R3d6yZOI7\nFTPjk4B+D+Sv0wZ2qzxKDQaikTBOj5fh8M0uebrXYo/Fjdy8nCzbZwzmmgXzNkDC\ngdO3G+BG6IrLS4AlJz9M+U/gX9p1VlNl/v+PEHMJiisHqksFXiHeAap/lQoByw7O\n9CVpQWeqVzS+qO23VRcP2+r7lEzIqoy3MKbqn42IehHsbV4uSRq6GWACxRVh3aMv\nqbnwWcwq3epP6Fgnnpbela4BModnzax1NKVdJmsCaWgAISVuaO0kZLkPIYL/hbGM\nfbQqTAH463/NLxyEuhGKif8yGR4+YfJ5bHtnO9wqvCeyeYghQqLpSdSLYQeNIeTA\n4B5BsMtcrcBpUHcc0POiI9mYBIqxe4NTr9/sabqVjLEtngxhc+wSqFbJh4//9pKE\nSlEQk0HmQSTabxJ6ekgMBy8/czoGtqrm3EW4CJoUFEfWzQEJrec0ztvaFcMw9auP\nqJWBZd5PJ5JRYe8oXAHSVWOBJaPTfmPy4YR+fL6lcjWwdpNpFHQ/p8dDxqIqQCIk\nJ5yAoPuq9+4N1U9NpT9R\n=8Dtz\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 4215d4d7af3e51e51012181382640d252f558c78\nparent c81498cc701fb0d8abfcef5b7a9744d1c329c178\nauthor Dsteele <derrick.l.steele@gmail.com> 1787857427 +0000\ncommitter GitHub <noreply@github.com> 1787857427 +0000\n\nAdd multi-set draft: select the set filling each booster (#7964)\n\n* Added support for selecting sets in a draft\n\n* Address final review-impl findings on the multi-set merge\n\nTwo gaps the post-merge review found, both in code this merge introduced:\n\n- `pack_pick_steps` shipped with no test at the seam that computes it. The\n  only coverage was a frontend component test fed a hand-built literal, so\n  the `div_ceil` derivation never ran through `filter_for_player` \u2014 and the\n  case the field exists for (a CommanderDraft whose boosters differ in size)\n  was untested. Adds an engine test asserting [10, 7, 8] for pack sizes\n  [20, 14, 16] at two cards per step, which no competing implementation\n  reproduces: publishing `pack_sizes` gives the card counts, and broadcasting\n  the scalar `pick_steps_per_pack` gives [7, 7, 7]. Verified discriminating \u2014\n  the revert-probe reds it at [10, 10, 10].\n\n- `concession_set_code` contradicted CR 903.13e, which grants on what the\n  draft CONTAINED rather than on the draft being exclusively one set: a mixed\n  CMM+CLB Commander draft should concede both The Prismatic Piper and\n  Faceless One. `DraftSetConcessions` holds a single filler and cannot express\n  the union without an engine-crate change, so the restrictive answer stands\n  for now. Documents the gap against the rule text and pins both sides of the\n  all-equal guard, including the repeated-code case that proves the guard\n  reads set identity rather than sequence length. Unreachable in production:\n  `create_multiplayer_draft` always builds `DraftSource::single_set`.\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* Carry CR 903.13 draft concessions as a per-set union\n\nCompletes the multi-set draft work and makes the Commander Draft\ndeck-construction concessions rules-correct for a draft whose boosters\ncame from several sets.\n\nCR 903.13e/f state each concession as an independent containment\ncondition (\"If the draft contained draft boosters from ...\"), so a draft\nthat opened Commander Masters and Battle for Baldur's Gate boosters\nsatisfies two of them: it concedes The Prismatic Piper AND Faceless One,\nand keeps CR 903.13f(3)'s partner grant because it contained Commander\nMasters. The previous model could name only one set and answered with no\nconcession at all, which multi-set selection made reachable.\n\nEngine:\n- DraftSetConcessions.filler becomes fillers, plus a union that does not\n  stack either axis: a repeated filler name keeps the larger cap\n  (CR 903.13e grants \"up to two\" once per name), and the CR 903.13f(3)\n  colour bound takes the widest any contained set grants.\n- draft_set_concessions_for is the new union authority, driven by the\n  concession table rather than the caller's sequence, so order,\n  repetition, casing and unnamed neighbours cannot move the answer.\n\nCarried to the deck-validation boundary:\n- draft_set_code becomes draft_set_codes on DeckCompatibilityRequest,\n  DeckList, validate_name_deck_for_format_full and the player/spectator\n  views; validate_limited_deck caps each grant on its own name.\n- One shared deserializer accepts the array, the legacy single string and\n  null, so stored decks and pre-multi-set payloads restore correctly.\n\nFrontend renders one grant line per filler and passes the full code list\nto commanderPartnerCandidates. DRAFT_PROTOCOL_VERSION 19 -> 20: this is a\nrename in both directions, and silently losing a grant the rules make is\nthe defect the bump exists to refuse.\n\nAlso includes the remaining multi-set draft work from concurrent sessions\n(set selection UI, pack-order persistence, pod wire guards, i18n), which\nshares several files with the above and could not be split by pathspec.\n\nVerified: cargo fmt/clippy clean; engine lib 19813 and integration 5586\ntests; draft-core, server-core, draft-wasm, engine-wasm 689 tests;\nfrontend type-check and affected suites. WASM bundles rebuilt and the\nfull Quick Draft flow driven end to end in a browser through to a running\nmatch, which the compiled test suites do not cover.\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\n\n* fix(PR-7964): port draft view fixture across pack metadata\n\n* fix(PR-7964): cap retained draft pack selections\n\n---------\n\nCo-authored-by: Claude Opus 5 <noreply@anthropic.com>\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+        "verified_at": "2026-08-27T19:03:55Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/270485fe864a6e86177b63c7f1fd1a8d11c83027",
+    "html_url": "https://github.com/phase-rs/phase/commit/270485fe864a6e86177b63c7f1fd1a8d11c83027",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/270485fe864a6e86177b63c7f1fd1a8d11c83027/comments",
+    "author": {
+      "login": "dsteele101",
+      "id": 20018502,
+      "node_id": "MDQ6VXNlcjIwMDE4NTAy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/20018502?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/dsteele101",
+      "html_url": "https://github.com/dsteele101",
+      "followers_url": "https://api.github.com/users/dsteele101/followers",
+      "following_url": "https://api.github.com/users/dsteele101/following{/other_user}",
+      "gists_url": "https://api.github.com/users/dsteele101/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/dsteele101/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/dsteele101/subscriptions",
+      "organizations_url": "https://api.github.com/users/dsteele101/orgs",
+      "repos_url": "https://api.github.com/users/dsteele101/repos",
+      "events_url": "https://api.github.com/users/dsteele101/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/dsteele101/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "c81498cc701fb0d8abfcef5b7a9744d1c329c178",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/c81498cc701fb0d8abfcef5b7a9744d1c329c178",
+        "html_url": "https://github.com/phase-rs/phase/commit/c81498cc701fb0d8abfcef5b7a9744d1c329c178"
+      }
+    ]
+  },
+  {
+    "sha": "7f52cfed6f36f2186f5e39a28da8fe6b34c57bf0",
+    "node_id": "C_kwDORjr0ktoAKDdmNTJjZmVkNmYzNmYyMTg2ZjVlMzlhMjhkYThmZTZiMzRjNTdiZjA",
+    "commit": {
+      "author": {
+        "name": "Matt Evans",
+        "email": "1388610+matthewevans@users.noreply.github.com",
+        "date": "2026-08-27T02:36:25Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-27T02:36:25Z"
+      },
+      "message": "feat(draft): add Commander Draft (CR 903.13) (#7957)\n\nCommander Draft as a first-class format: a pod drafts, designates its\ncommanders, and launches the multiplayer Commander game it earned.\n\nEngine and draft-core:\n  - `GameFormat::CommanderDraft` with a typed deck-size rule, replacing\n    the per-format literals; CR 903.13f routes deck construction through\n    CR 903.5, so CR 903.3 commander eligibility applies unchanged.\n  - `DraftProcedure` becomes the single authority for per-kind axes, and\n    a new `PackDistribution` is an E0004 rather than a silent `else`.\n  - The two-card pick step (CR 903.13b), the pod seat floor (CR 903.13a\n    + CR 800.1), and the commander designation floor (CR 903.3).\n  - The CMM partner grant (CR 702.124g/h) and singleton suppression on\n    the summary path.\n\nWire: Commander Draft is reachable across both encodings, and the deck\nsubmission carries its commander designation. `validateSubmitDeck` is\nthe single authority for that message, enforcing the idempotency\n`submissionId` and the CR 903.3 `commanders` field together.\n\nClient: a reachable entry point, pod lobby, two-card pick UI, commander\npanel, and a legality-honest refusal when a pod has not earned its\nlaunch. Strings for all seven locales.\n\nProtocol bumps this change owes: full-game 41 -> 42, P2P wire 31 -> 32,\nlobby 1 -> 2, draft 14 -> 18.\n\nClaude-Session: https://claude.ai/code/session_01BT4WMBPwomvbddBcvTTG83\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+      "tree": {
+        "sha": "95690b68b6836e89756888cf3cf8123981c11b3a",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/95690b68b6836e89756888cf3cf8123981c11b3a"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/7f52cfed6f36f2186f5e39a28da8fe6b34c57bf0",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqj6KpCRC1aQ7uu5UhlAAAt7wQAHgUJAGX+t3KX/rAEQN9lwHs\nKtmKhOdaoidXoChCfHeBMlf4qItVMKPiD4MR5r8mRO3cDTJ5YBmfCv/wA3ZcdXRE\n1r5E4WgV/H8YdF+h13NRZqhqChwdLRG7EJjZ0x0MK5T9HvBG4vqAMv2C4eCb1mNu\n7qLpzFZ6yEUk2R9JO7Ei0eKdhZ0QEmmOQX6ntxEOwcTLJ4GjNH/DgNlabHjGBKY1\nido0NuZXAmKnRepXCcd+y9kd7TeT9qysdEvldxqdCBEl+bkZiPMV13Kn/avP8u8X\nWIUNpTO9O7b9loEoZIMc9iyJOVzDCkpyaYf0fTFAxA3+eQAsY2afYQykkbtLyIjU\n7VhXJaCk6aPbeO48UfJRHcfXEq5WyMyilO+shopUCC7UTN+AX5903ugLAANLhDjc\nkqOlPMNqU7n79tQD6A837V6i72V6Sqf2YA3ucG9aIMlfOwhbod02UxF5perdlmwx\nfDcGQ6TTpJMX93p9amGnXA/4cQ8Mg7ULp6/IUe0dJrg/Y95HPWaWBOWvQYUr6dKT\ndYrIigwfyMMTcvDM6s62lkEnyxi9hxq7RfiXeDmNHd05WyfBaZEQTWX+SUiX57bo\nE4kh2gp9B4ckd0zCyhDfZBrGSu5B9WnsUl9MdwNKxv6IfcE6OvGYEiQp5PChmOZD\nZMR/aWgDkFerXYT7Vi/S\n=wlWr\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 95690b68b6836e89756888cf3cf8123981c11b3a\nparent edc82609112f3617e0c7a25d903406870e592eba\nauthor Matt Evans <1388610+matthewevans@users.noreply.github.com> 1787798185 -0700\ncommitter GitHub <noreply@github.com> 1787798185 -0700\n\nfeat(draft): add Commander Draft (CR 903.13) (#7957)\n\nCommander Draft as a first-class format: a pod drafts, designates its\ncommanders, and launches the multiplayer Commander game it earned.\n\nEngine and draft-core:\n  - `GameFormat::CommanderDraft` with a typed deck-size rule, replacing\n    the per-format literals; CR 903.13f routes deck construction through\n    CR 903.5, so CR 903.3 commander eligibility applies unchanged.\n  - `DraftProcedure` becomes the single authority for per-kind axes, and\n    a new `PackDistribution` is an E0004 rather than a silent `else`.\n  - The two-card pick step (CR 903.13b), the pod seat floor (CR 903.13a\n    + CR 800.1), and the commander designation floor (CR 903.3).\n  - The CMM partner grant (CR 702.124g/h) and singleton suppression on\n    the summary path.\n\nWire: Commander Draft is reachable across both encodings, and the deck\nsubmission carries its commander designation. `validateSubmitDeck` is\nthe single authority for that message, enforcing the idempotency\n`submissionId` and the CR 903.3 `commanders` field together.\n\nClient: a reachable entry point, pod lobby, two-card pick UI, commander\npanel, and a legality-honest refusal when a pod has not earned its\nlaunch. Strings for all seven locales.\n\nProtocol bumps this change owes: full-game 41 -> 42, P2P wire 31 -> 32,\nlobby 1 -> 2, draft 14 -> 18.\n\nClaude-Session: https://claude.ai/code/session_01BT4WMBPwomvbddBcvTTG83\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+        "verified_at": "2026-08-27T02:36:25Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/7f52cfed6f36f2186f5e39a28da8fe6b34c57bf0",
+    "html_url": "https://github.com/phase-rs/phase/commit/7f52cfed6f36f2186f5e39a28da8fe6b34c57bf0",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/7f52cfed6f36f2186f5e39a28da8fe6b34c57bf0/comments",
+    "author": {
+      "login": "matthewevans",
+      "id": 1388610,
+      "node_id": "MDQ6VXNlcjEzODg2MTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1388610?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/matthewevans",
+      "html_url": "https://github.com/matthewevans",
+      "followers_url": "https://api.github.com/users/matthewevans/followers",
+      "following_url": "https://api.github.com/users/matthewevans/following{/other_user}",
+      "gists_url": "https://api.github.com/users/matthewevans/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/matthewevans/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/matthewevans/subscriptions",
+      "organizations_url": "https://api.github.com/users/matthewevans/orgs",
+      "repos_url": "https://api.github.com/users/matthewevans/repos",
+      "events_url": "https://api.github.com/users/matthewevans/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/matthewevans/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "edc82609112f3617e0c7a25d903406870e592eba",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/edc82609112f3617e0c7a25d903406870e592eba",
+        "html_url": "https://github.com/phase-rs/phase/commit/edc82609112f3617e0c7a25d903406870e592eba"
+      }
+    ]
+  },
+  {
+    "sha": "e02897391d64e9c1df288c14a84f620918a00956",
+    "node_id": "C_kwDORjr0ktoAKGUwMjg5NzM5MWQ2NGU5YzFkZjI4OGMxNGE4NGY2MjA5MThhMDA5NTY",
+    "commit": {
+      "author": {
+        "name": "traemyn",
+        "email": "traemyn@gmail.com",
+        "date": "2026-08-13T21:04:48Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-13T21:04:48Z"
+      },
+      "message": "Add Cogwork Librarian (#7370)\n\n* Add Cogwork Librarian draft effect\n\n* Show face-up draft cards to pod players\n\n* fix: normalize draft effect P2P views\n\n* fix: route draft effects through P2P pods\n\n* fix: validate draft effect picks\n\n* fix: guard draft effect action payloads",
+      "tree": {
+        "sha": "f2b22cf621ef396d20d1f5f122b7b644d3904fde",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/f2b22cf621ef396d20d1f5f122b7b644d3904fde"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/e02897391d64e9c1df288c14a84f620918a00956",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqfjWMCRC1aQ7uu5UhlAAAg7YQAFo/4co1D1Qw9ck2NAY8ByZB\nKcym7z6NzL+4tFEtHZ235QjtQJozB8o0J6rQuaWg1AHNg6IzYsaxF6gU4yIbdogB\nqx6IjRiQDYbzWYgX37VOnxJM35Pmv4Ulo/evA//xEC+/FUX75k3GryXCzhu+tkIl\nh/LkrKV+6+ckFFmwpIkyUwD9KqHpJ3QLoI1z8HwLot0KcLXqExnhBRc9VMUWXLpx\nWhj3cUKGJXIaIoYP1P/Pf4mjt4I/V1s95PhrN9EjOgDxh979CFZhg3QzTfkmkj3w\n6B0ZRNN3XRekmcS/CUsZaxvWhQLle7BswDHvhdvfzd+qrn91t3QL1hMRBH9kG3L5\nh6CdRie3xDFVxh8gR0pCyeryxXg6ufnzHb77O2lDm8g7QC+J3iojO9XOj4/GiT25\nX8SiF5pic7OnkqxKNV+e4twV3WuxU+FQW3te8dbG7iPqsO8RCPj1bZMRqRdyBo0n\nboS9u2jHR4Rl+3NbvqOqbcrjwCp8bfGaAO1Nvo7oyizJ+d9kNvLKj4KW/RmC+U+N\nO/83Uss+5RWbQ1ayiLMMPdm/qUEkab6dO7PnsSgKqz6yhC5baxtMndiiXQi+zXPj\nRjwswTTlO/4hU18/7hujcv/Qih2eAIJN2iHl/yPyhOIW7GnoFEmpZ9KeKZy2Brtb\nNxb4VGHXWp9YZ18EdS8p\n=Jjn9\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree f2b22cf621ef396d20d1f5f122b7b644d3904fde\nparent 7b865ac678ac0915a94782a902b8fb928e062e93\nauthor traemyn <traemyn@gmail.com> 1786655088 +0000\ncommitter GitHub <noreply@github.com> 1786655088 +0000\n\nAdd Cogwork Librarian (#7370)\n\n* Add Cogwork Librarian draft effect\n\n* Show face-up draft cards to pod players\n\n* fix: normalize draft effect P2P views\n\n* fix: route draft effects through P2P pods\n\n* fix: validate draft effect picks\n\n* fix: guard draft effect action payloads",
+        "verified_at": "2026-08-13T21:27:24Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/e02897391d64e9c1df288c14a84f620918a00956",
+    "html_url": "https://github.com/phase-rs/phase/commit/e02897391d64e9c1df288c14a84f620918a00956",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/e02897391d64e9c1df288c14a84f620918a00956/comments",
+    "author": {
+      "login": "traemyn",
+      "id": 16594843,
+      "node_id": "MDQ6VXNlcjE2NTk0ODQz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16594843?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/traemyn",
+      "html_url": "https://github.com/traemyn",
+      "followers_url": "https://api.github.com/users/traemyn/followers",
+      "following_url": "https://api.github.com/users/traemyn/following{/other_user}",
+      "gists_url": "https://api.github.com/users/traemyn/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/traemyn/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/traemyn/subscriptions",
+      "organizations_url": "https://api.github.com/users/traemyn/orgs",
+      "repos_url": "https://api.github.com/users/traemyn/repos",
+      "events_url": "https://api.github.com/users/traemyn/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/traemyn/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "7b865ac678ac0915a94782a902b8fb928e062e93",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/7b865ac678ac0915a94782a902b8fb928e062e93",
+        "html_url": "https://github.com/phase-rs/phase/commit/7b865ac678ac0915a94782a902b8fb928e062e93"
+      }
+    ]
+  },
+  {
+    "sha": "0880698736f9a7d222edbeb731170babfd3772e9",
+    "node_id": "C_kwDORjr0ktoAKDA4ODA2OTg3MzZmOWE3ZDIyMmVkYmViNzMxMTcwYmFiZmQzNzcyZTk",
+    "commit": {
+      "author": {
+        "name": "Matt Evans",
+        "email": "1388610+matthewevans@users.noreply.github.com",
+        "date": "2026-08-10T03:53:45Z"
+      },
+      "committer": {
+        "name": "GitHub",
+        "email": "noreply@github.com",
+        "date": "2026-08-10T03:53:45Z"
+      },
+      "message": "ship/sealed pack opening (#7149)\n\n* feat(draft): reveal sealed packs before deckbuilding\n\n* chore(changelog): publish entry #189 \u2014 Sealed packs and Marvel heroes\n\n* fix(draft): address sealed pool review feedback\n\n* test(draft): complete pool view fixture\n\n* test(draft): cover grouped pool transport\n\n---------\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+      "tree": {
+        "sha": "2e3ffc3d1aaad2416271d4bfa194dcffffd52856",
+        "url": "https://api.github.com/repos/phase-rs/phase/git/trees/2e3ffc3d1aaad2416271d4bfa194dcffffd52856"
+      },
+      "url": "https://api.github.com/repos/phase-rs/phase/git/commits/0880698736f9a7d222edbeb731170babfd3772e9",
+      "comment_count": 0,
+      "verification": {
+        "verified": true,
+        "reason": "valid",
+        "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqeUtZCRC1aQ7uu5UhlAAAg3kQAKm97yP/OT6WiXuxDo/TPtzg\nOSJsSMfCY95Y8nXCdEfaxPGPt2mFCy2ZXXbWLdkL6miLwvCZ9x767lXbdH1NQpe2\nVO9Mff/wf9n9R2OAfCCPitHFp7VGx0S3kzPSv69DMeWEE7VY/yEXOUtE8oEIcXT/\n/PAXEv3qqMBIJM+7+glfogKqmxCzp82L+erruwmHoEygOv7mocKT5zXBhX6b8mAD\nQNQkimaxXZYevDf6iFRH9Hlp7PVleZ6mPVVeaSZaYlQBGGq2ta26InceMe2a66q2\npFaQo0PIq/CPfA7sg/XD+cT2gF7gZnRQYf1mNysEG00x2Ebt1FNMHaA97RG4kptA\nEDlRhKuYke28CWmQJlXH8OwGABRwOZ59EOrf37neGFAh5O9PVq/62Vzw64yuPf0Q\ne+SY0mtT2i8D6SKWKmjAyl+9KyqHIr22rvYGM8/fVDjJBPpx446nQT68ERXkqo+3\nbSsg03KsnIV51fphR/aaJiaVylxkwtawhroBpG3xdSLacJjNMgX5RFwdSLI8WPmN\nqRNBgFpxXOcFN4BwCPRMyUaV1tkFjiVQPTv75bpaku9Nw8eb3PpwE4Ixrz+X9W+/\nKhWVWKXOAIS2cdjjRfOvL/lFQK8Jx3uiKer+gcTWBEPoKtJdJotEsBiV9WXj8SV2\n4zBnEoI3dEDuSC75XzH4\n=zUpX\n-----END PGP SIGNATURE-----\n",
+        "payload": "tree 2e3ffc3d1aaad2416271d4bfa194dcffffd52856\nparent d7d589597589e24f75a74f30b4ab14f04c597b80\nauthor Matt Evans <1388610+matthewevans@users.noreply.github.com> 1786334025 -0700\ncommitter GitHub <noreply@github.com> 1786334025 +0000\n\nship/sealed pack opening (#7149)\n\n* feat(draft): reveal sealed packs before deckbuilding\n\n* chore(changelog): publish entry #189 \u2014 Sealed packs and Marvel heroes\n\n* fix(draft): address sealed pool review feedback\n\n* test(draft): complete pool view fixture\n\n* test(draft): cover grouped pool transport\n\n---------\n\nCo-authored-by: matthewevans <matthewevans@users.noreply.github.com>",
+        "verified_at": "2026-08-10T04:13:54Z"
+      }
+    },
+    "url": "https://api.github.com/repos/phase-rs/phase/commits/0880698736f9a7d222edbeb731170babfd3772e9",
+    "html_url": "https://github.com/phase-rs/phase/commit/0880698736f9a7d222edbeb731170babfd3772e9",
+    "comments_url": "https://api.github.com/repos/phase-rs/phase/commits/0880698736f9a7d222edbeb731170babfd3772e9/comments",
+    "author": {
+      "login": "matthewevans",
+      "id": 1388610,
+      "node_id": "MDQ6VXNlcjEzODg2MTA=",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1388610?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/matthewevans",
+      "html_url": "https://github.com/matthewevans",
+      "followers_url": "https://api.github.com/users/matthewevans/followers",
+      "following_url": "https://api.github.com/users/matthewevans/following{/other_user}",
+      "gists_url": "https://api.github.com/users/matthewevans/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/matthewevans/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/matthewevans/subscriptions",
+      "organizations_url": "https://api.github.com/users/matthewevans/orgs",
+      "repos_url": "https://api.github.com/users/matthewevans/repos",
+      "events_url": "https://api.github.com/users/matthewevans/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/matthewevans/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "web-flow",
+      "id": 19864447,
+      "node_id": "MDQ6VXNlcjE5ODY0NDQ3",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19864447?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/web-flow",
+      "html_url": "https://github.com/web-flow",
+      "followers_url": "https://api.github.com/users/web-flow/followers",
+      "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+      "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+      "organizations_url": "https://api.github.com/users/web-flow/orgs",
+      "repos_url": "https://api.github.com/users/web-flow/repos",
+      "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/web-flow/received_events",
+      "type": "User",
+      "user_view_type": "public",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "d7d589597589e24f75a74f30b4ab14f04c597b80",
+        "url": "https://api.github.com/repos/phase-rs/phase/commits/d7d589597589e24f75a74f30b4ab14f04c597b80",
+        "html_url": "https://github.com/phase-rs/phase/commit/d7d589597589e24f75a74f30b4ab14f04c597b80"
+      }
+    ]
+  }
+]

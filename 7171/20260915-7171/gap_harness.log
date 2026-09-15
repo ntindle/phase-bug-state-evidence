@@ -1,0 +1,11 @@
+PASS A1_panel_gate_verbatim: section gate '{companionCandidates !== null && (' present=true, default 'companionCandidates = null,' present=true
+PASS A2_draft_never_passes_companion_props: found 2 <CommanderPanel/> blocks; companion-token occurrences across blocks: 0,0
+PASS A3_gate_evaluates_false: with no companionCandidates prop passed, default null makes the gate evaluate to false
+PASS A4_single_hardcoded_null: "companion" occurrences in LimitedDeckBuilder.tsx: 1 (expect 1, the hardcoded 'companion: null' compatibility key)
+PASS A5_store_has_no_companion: "companion" occurrences in draftStore.ts: 0
+PASS A6_submit_never_carries_companion: verbatim local submit call present=true; companion on any submitDeck line=false
+PASS A7_control_constructed_has_companion: handleSetCompanion=true, companionCandidates(request)=true, handleRemoveCompanion=true
+PASS A8_control_transport_supports_companion: DeckSeatPayload declares optional 'companion?: string[]'=true
+PASS A9_no_companion_fix_LimitedDeckBuildertsx: 9 commits to LimitedDeckBuilder.tsx since 2026-08-10; companion-mentioning: 0
+PASS A9_no_companion_fix_draftStorets: 8 commits to draftStore.ts since 2026-08-10; companion-mentioning: 0
+ALL CHECKS PASSED

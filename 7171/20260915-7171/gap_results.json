@@ -1,0 +1,42 @@
+{
+  "A1_panel_gate_verbatim": {
+    "status": "passed",
+    "detail": "section gate '{companionCandidates !== null && (' present=true, default 'companionCandidates = null,' present=true"
+  },
+  "A2_draft_never_passes_companion_props": {
+    "status": "passed",
+    "detail": "found 2 <CommanderPanel/> blocks; companion-token occurrences across blocks: 0,0"
+  },
+  "A3_gate_evaluates_false": {
+    "status": "passed",
+    "detail": "with no companionCandidates prop passed, default null makes the gate evaluate to false"
+  },
+  "A4_single_hardcoded_null": {
+    "status": "passed",
+    "detail": "\"companion\" occurrences in LimitedDeckBuilder.tsx: 1 (expect 1, the hardcoded 'companion: null' compatibility key)"
+  },
+  "A5_store_has_no_companion": {
+    "status": "passed",
+    "detail": "\"companion\" occurrences in draftStore.ts: 0"
+  },
+  "A6_submit_never_carries_companion": {
+    "status": "passed",
+    "detail": "verbatim local submit call present=true; companion on any submitDeck line=false"
+  },
+  "A7_control_constructed_has_companion": {
+    "status": "passed",
+    "detail": "handleSetCompanion=true, companionCandidates(request)=true, handleRemoveCompanion=true"
+  },
+  "A8_control_transport_supports_companion": {
+    "status": "passed",
+    "detail": "DeckSeatPayload declares optional 'companion?: string[]'=true"
+  },
+  "A9_no_companion_fix_LimitedDeckBuildertsx": {
+    "status": "passed",
+    "detail": "9 commits to LimitedDeckBuilder.tsx since 2026-08-10; companion-mentioning: 0"
+  },
+  "A9_no_companion_fix_draftStorets": {
+    "status": "passed",
+    "detail": "8 commits to draftStore.ts since 2026-08-10; companion-mentioning: 0"
+  }
+}

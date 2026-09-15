@@ -1,0 +1,35 @@
+{
+ "assertions": "see gap_results.json (10 checks, all passed)",
+ "client_commit": "b7a59d460cc157f781257688387acd4bbec6679f",
+ "client_tag": "v0.83.0",
+ "component": "client/src/components/draft/LimitedDeckBuilder.tsx",
+ "component_sha256": "d7a5c8812df1f4623ee04447c0ba718decfa366b7f54ebb692d5e1b8e73cc67e",
+ "issue": 7171,
+ "limitations": [
+  "No game-state pair exists for this frontend/state gap; verdict rests on shipped component source plus execution of its exact prop-gating logic, not an end-to-end browser drive.",
+  "Engine server not exercised for this run; server pin v0.83.0 recorded for provenance.",
+  "Whether the engine's DraftAction::SubmitDeck honors a companion slot in the local (non-P2P) draft path was not exercised; the client never supplies one."
+ ],
+ "related_sources": {
+  "client/src/adapter/p2p-adapter.ts": "edc66151486d3a9fe8316db61a3bd5b65f3069ddd1dae0e0a3ce1593966d622a",
+  "client/src/components/deck-builder/CommanderPanel.tsx": "a4c98b0033932f3b8621dbb49bb30a091c9789128a7ec85202adc758442a1bdc",
+  "client/src/components/deck-builder/useDeckBuilder.ts": "b301df083f614f211f515a5948d180e25f90be0c085e0dde7c787c0d17d6d368",
+  "client/src/pages/DraftPage.tsx": "f00440d9abc5467046e748f6e6358ffe83980a2b03948c8ac02b665cdc03954f",
+  "client/src/stores/draftStore.ts": "132302c33bac315159632f4a36c246921400339cf76c016a7722e5b6feef74d0"
+ },
+ "result": "The reported gap is present on v0.83.0: LimitedDeckBuilder renders CommanderPanel twice with commander props only; CommanderPanel's companion section ({companionCandidates !== null && (...)}) defaults companionCandidates to null, so the section is unreachable. draftStore.ts has zero companion mentions; the local submitDeck path calls lease.submitDeck(names, []) with commanders only. No commit since the 2026-08-10 report touches companion on this path.",
+ "run_id": "20260915-7171",
+ "scope": "Post-draft 'Build Deck' screen (DraftPage phase=deckbuilding -> LimitedDeckBuilder local path); shipped client source at tag v0.83.0 + executed prop-gating logic; Node v24.",
+ "server_pin": {
+  "build_commit": "b7a59d4",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "pinned_version": "v0.83.0",
+  "protocol_version": 70,
+  "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f"
+ },
+ "title": "No way to add/set Companion in Build Deck after Draft \u2014 start Cube Draft draft Lutri",
+ "validated_at": "2026-09-15",
+ "validated_version": "client v0.83.0 (engine server pin v0.83.0 for provenance)",
+ "verdict": "reproduced"
+}
