@@ -1,0 +1,79 @@
+{
+ "issue": 650,
+ "run_id": "20260915-650",
+ "started_at": "2026-09-15T15:53:57",
+ "duration_s": 54.7,
+ "server": {
+  "server_version": "0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "Full",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "ServerHello + minisign verification against repo-pinned key (pin_release.py)"
+ },
+ "server_run_dir": "runs/run-650-20260915-1542",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "46b561b23b4b5817e57ebc5cc20bcd4d89421d408a5dd24e4b4692ee2eed0b45",
+ "decks": {
+  "P0": [
+   [
+    "Tyvar the Bellicose",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ],
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Swamp",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "mulligans": "P0 mulliganed 0x seeking Elves in opener; P1 kept 7",
+ "setup_line": "P0: 12x Tyvar the Bellicose + 8x Llanowar Elves + 20 Forest + 20 Swamp | P1: 60 Island (draw-go)",
+ "contract_line": "Tap Elves for {G} with Tyvar out: granted trigger must put 1 +1/+1 counter on the tapped creature (once per turn, per creature).",
+ "stats": {
+  "max_turn": 16,
+  "pre_turn": 11,
+  "b_turn": null,
+  "activated": true,
+  "b_activated": false
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_mana_produced": "passed",
+  "A3_counters_added": "failed",
+  "A4_per_creature": "not-run"
+ },
+ "notes": [
+  "mid: Elves A tapped=True pool_g=1 (pre pool_g=0)",
+  "post: Elves A counters raw sample: {\"counters\": {}}",
+  "post: Elves A tapped=False",
+  "BUG: no +1/+1 counters on Elves A after granted trigger window",
+  "A4 not-run: granted trigger never fires (A3 failed), per-creature throttling cannot be evaluated",
+  "parser corroboration: card-data.json (v0.83.0) parses Tyvar's granted trigger as mode {Unknown: 'Whenever a mana ability of ~ resolves'} with effect {Unimplemented: unparsed_quantity}; constraint {OncePerTurn} recorded"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ]
+}
