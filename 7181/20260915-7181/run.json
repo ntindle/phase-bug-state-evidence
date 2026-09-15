@@ -1,0 +1,149 @@
+{
+ "run_id": "20260915-7181",
+ "issue": 7181,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "single-user",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-15; data digests match the signed manifest; digests recomputed against on-disk files this run; release v0.84.0 confirmed latest stable via GitHub releases API 2026-09-15",
+  "observed_at": "2026-09-15",
+  "handshake": "ServerHello observed pre-run: v0.84.0 / eb7e93e / protocol 71 / mode Full on 127.0.0.1:9375",
+  "source": "verified pin; isolated server on 127.0.0.1:9375 started by this run under runs/20260915-7181/"
+ },
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py",
+  "finalizer": "driver/finalize_7181.py (manual; driver stopped after search stall, assertions recomputed from exports)"
+ },
+ "scenario_sha256": "3ac31badb654693237ad5a3851fbdc5243fa6e2140eed45abb06f16f10a7a41d",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "witherbloom, the balancer",
+    8
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "beseech the queen",
+    8
+   ],
+   [
+    "forest",
+    16
+   ],
+   [
+    "swamp",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_bear_control": "passed",
+  "A3_five_cost": "failed",
+  "A4_six_cost": "not-run",
+  "A5_resolution": "not-run"
+ },
+ "observations": {
+  "rejections": [
+   "invalid_interaction_response on the Beseech#1 SearchChoice answer (driver-submitted sequence/choiceIds; see wire_log.jsonl)"
+  ],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "search_stall": "after Beseech#1, waiting_for stayed SearchChoice (player 0, count 1) with the spell in the graveyard and no card tutored; game soft-locked; driver stopped, remaining legs recorded not-run"
+ },
+ "driver_state": {
+  "game_code": "IX151R",
+  "balancer_oid": 22,
+  "balancer_cast_turn": 12,
+  "pre_cast5": {
+   "turn": 32,
+   "phase": "PreCombatMain",
+   "p0_creatures": 5,
+   "p0_untapped_lands": 13
+  },
+  "post_cast5": {
+   "turn": 32,
+   "phase": "PreCombatMain",
+   "p0_creatures": 5,
+   "p0_untapped_lands": 10,
+   "tapped_delta": 3,
+   "mana_spent_to_cast_amount": 3,
+   "colors_spent_to_cast": {
+    "black": 3
+   },
+   "mana_source_ids": [
+    36,
+    19,
+    16
+   ],
+   "cast_spell_keywords": [
+    {
+     "Affinity": {
+      "controller": null,
+      "properties": [],
+      "type_filters": [
+       "Creature"
+      ]
+     }
+    }
+   ]
+  },
+  "bear_control_tapped_delta": 2
+ },
+ "notes": [
+  "A0: card-data beseech the queen: mana_cost shards=['TwoBlack', 'TwoBlack', 'TwoBlack']; witherbloom, the balancer: own_affinity_keyword=True, grants_affinity_to_instant_sorcery=True (CastWithKeyword static ability)",
+  "A1: balancer_oid=22 entered turn=12; pre_cast5 turn=32 phase=PreCombatMain creatures=5 untapped_lands=13; post_cast5 turn=32 creatures=5 untapped_lands=10",
+  "A2: control bear tapped_delta=2 (expect 2 = full {1}{G}; untapped 15->13)",
+  "A3: Beseech#1 at 5 creatures: untapped 13->10 (delta=3, expect 1 = 6 generic - 5 affinity); spell object records mana_spent_to_cast_amount=3 colors_spent_to_cast={'black': 3} sources=[36, 19, 16]; cast_spell_keywords=[{\"Affinity\": {\"controller\": null, \"properties\": [], \"type_filters\": [\"Creature\"]}}]",
+  "A4 not-run: the 6-creature ('free') leg never executed - after Beseech#1 the game stalled on its SearchChoice prompt (see A5).",
+  "A5 not-run: Beseech#1 reached the graveyard but its SearchLibrary never completed - no card was tutored (P0 library 37->37, hand gained nothing), the driver's search answer was rejected invalid_interaction_response, and a SearchChoice prompt (player 0, library_owner 0, count 1) was left dangling, soft-locking the game. Not attributed to the engine: the answer format may be a driver limitation.",
+  "verdict=reproduced: the granted affinity is attached to the spell (cast_spell_keywords shows Affinity for creatures) but the cost computation ignored it - Beseech the Queen cost {B}{B}{B} (3 mana) with 5 creatures out instead of {1}. This is exactly the reported 'not recognizing the Witherbloom's affinity mechanic'.",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre_cast5.json",
+  "cast5_detail.json",
+  "post_cast5.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7181.py",
+  "finalize_7181.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is passive (land drops + up to 2 bears, no attacks) so the cost-measurement window stays clean.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Mana paid is measured as the untapped-land delta between the pre-cast and stack-sighting exports (same turn 32), corroborated by the spell object's own mana_spent_to_cast_amount / colors_spent_to_cast / mana_spent_source_snapshots; no other P0 actions were in flight.",
+  "The 6-creature ('should be free') leg was not executed: after Beseech#1, its SearchLibrary choice prompt stayed unanswered (driver answer rejected) and the game soft-locked; A4/A5 are not-run, not engine verdicts.",
+  "The reporter's '5 creatures -> {B} or {2}' phrasing is tested as 'pay {1} generic' per CR 601.2f (affinity reduces the generic portion of {2/B}{2/B}{2/B})."
+ ],
+ "duration_s": null
+}
