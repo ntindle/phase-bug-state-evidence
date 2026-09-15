@@ -1,0 +1,343 @@
+{
+ "issue": 7175,
+ "title": "Insatiable Avarice bug -- Insatiable Avarice is impossible to cast when the targeting mode is chosen",
+ "run_id": "20260915-7175",
+ "server": {
+  "server_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c51cb38db94466c85",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key); server already running on 127.0.0.1:9374 (run 20260915-7173-server), reused."
+ },
+ "validated_version": "v0.83.0",
+ "verdict": "not-reproduced",
+ "scope": "Insatiable Avarice Spree targeting mode ({B}{B}): mode choice + player target selection + resolution; search-only mode control + both-modes composition; native engine, two human-client seats",
+ "result": "A1_parse: passed; A2_setup: passed; A3_mode_chosen: passed; A4_target_accepted: passed; A5_resolution: passed; B1_search_control: passed; C1_both_modes: passed; A6_cleanup: passed",
+ "notes": [
+  "A1: modal min/max/count=1/2/2, costs=2/['Black', 'Black'], draw_target=Player",
+  "A2: avarice_in_hand=True p0_untapped_swamps=3 p1_present=True",
+  "A3: mode_offered=True unavailable=None chosen_ids=['PJPLLF.0.83.o1'] n_choices=3",
+  "A4: target_prompted=True candidates=2 seats=[0, 1] accepted=True rejected=False (code=None)",
+  "A5: p1 life 20->17, hand 6->9",
+  "B1: leg2 resolved=True search_answered=False (None) rejections=0",
+  "C1: leg3 p1 life 17->14 (at-resolution 17, final 14), hand 7->10, target_accepted=True, search answered post-resolution (orphan SearchChoice, wired)",
+  "A6: stack_empty=True post_wf=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+  "verdict=not-reproduced: targeting mode casts, target accepted, draw+life loss land on P1"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "30x/30x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is fully passive (land drops only, never attacks) so the cast window stays clean.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "36003014efec42602baa76753d7bbb283e7cbac1a6d254b1a0a069003830ccee",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "insatiable avarice",
+    30
+   ],
+   [
+    "swamp",
+    30
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_mode_chosen": "passed",
+  "A4_target_accepted": "passed",
+  "A5_resolution": "passed",
+  "B1_search_control": "passed",
+  "C1_both_modes": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "prompts": [
+   {
+    "kind": "SpreeModeChoice",
+    "leg": "leg1",
+    "wf_type": "ModeChoice",
+    "modes": [
+     "Search your library for a card, then shuffle and put that card on top.",
+     "Target player draws three cards and loses 3 life."
+    ]
+   },
+   {
+    "kind": "AvariceTargetSelection",
+    "leg": "leg1",
+    "seats": [
+     0,
+     1
+    ]
+   },
+   {
+    "kind": "SpreeModeChoice",
+    "leg": "leg2",
+    "wf_type": "ModeChoice",
+    "modes": [
+     "Search your library for a card, then shuffle and put that card on top.",
+     "Target player draws three cards and loses 3 life."
+    ]
+   },
+   {
+    "kind": "OrphanSearchChoice",
+    "wtype": "SearchChoice"
+   },
+   {
+    "kind": "SpreeModeChoice",
+    "leg": "leg3",
+    "wf_type": "ModeChoice",
+    "modes": [
+     "Search your library for a card, then shuffle and put that card on top.",
+     "Target player draws three cards and loses 3 life."
+    ]
+   },
+   {
+    "kind": "AvariceTargetSelection",
+    "leg": "leg3",
+    "seats": [
+     0,
+     1
+    ]
+   },
+   {
+    "kind": "OrphanSearchChoice",
+    "wtype": "SearchChoice"
+   }
+  ],
+  "stage_timeouts": []
+ },
+ "driver_state": {
+  "finished": true,
+  "pre_exported": true,
+  "post_exported": true,
+  "prompt_first_seen": {
+   "PJPLLF.0.83": {
+    "t0": 1789476011.2788398,
+    "done": true
+   },
+   "PJPLLF.0.84": {
+    "t0": 1789476011.532087,
+    "done": true
+   },
+   "PJPLLF.0.118": {
+    "t0": 1789476017.8722138,
+    "done": true
+   },
+   "search-PJPLLF.0.121": {
+    "t0": 1789476018.461029,
+    "done": true
+   },
+   "PJPLLF.0.154": {
+    "t0": 1789476026.5304513,
+    "done": true
+   },
+   "PJPLLF.0.155": {
+    "t0": 1789476026.7824485,
+    "done": true
+   },
+   "search-PJPLLF.0.158": {
+    "t0": 1789476027.6266174,
+    "done": true
+   }
+  },
+  "legs": {
+   "leg1": {
+    "modes": [
+     1
+    ],
+    "need": 3,
+    "kind": "target",
+    "cast": true,
+    "cast_rev": 82,
+    "cast_oid": 15,
+    "mode_offered": true,
+    "mode_unavailable": null,
+    "mode_choices_n": 3,
+    "mode_iid": "PJPLLF.0.83",
+    "mode_chosen": true,
+    "chosen_mode_ids": [
+     "PJPLLF.0.83.o1"
+    ],
+    "target_prompted": true,
+    "target_candidates_n": 2,
+    "target_candidate_seats": [
+     0,
+     1
+    ],
+    "target_choice_id": "PJPLLF.0.84.t1",
+    "target_sub_rev": 84,
+    "target_rejected": false,
+    "target_rejection_code": null,
+    "target_accepted": true,
+    "pay_taps": 0,
+    "pay_spends": 0,
+    "pay_finalized": false,
+    "search_prompted": false,
+    "search_answered": false,
+    "search_chosen_card": null,
+    "p1_life_pre": 20,
+    "p1_hand_pre": 6,
+    "p1_life_post": 17,
+    "p1_hand_post": 9,
+    "resolved": true,
+    "done": true,
+    "done_reason": "resolved",
+    "target_choice_seat": 1,
+    "target_rej_mark": 0
+   },
+   "leg2": {
+    "modes": [
+     0
+    ],
+    "need": 3,
+    "kind": "search",
+    "cast": true,
+    "cast_rev": 117,
+    "cast_oid": 20,
+    "mode_offered": true,
+    "mode_unavailable": null,
+    "mode_choices_n": 3,
+    "mode_iid": "PJPLLF.0.118",
+    "mode_chosen": true,
+    "chosen_mode_ids": [
+     "PJPLLF.0.118.o0"
+    ],
+    "target_prompted": false,
+    "target_candidates_n": null,
+    "target_candidate_seats": null,
+    "target_choice_id": null,
+    "target_sub_rev": null,
+    "target_rejected": false,
+    "target_rejection_code": null,
+    "target_accepted": false,
+    "pay_taps": 0,
+    "pay_spends": 0,
+    "pay_finalized": false,
+    "search_prompted": false,
+    "search_answered": false,
+    "search_chosen_card": null,
+    "p1_life_pre": 17,
+    "p1_hand_pre": 7,
+    "p1_life_post": 17,
+    "p1_hand_post": 7,
+    "resolved": true,
+    "done": true,
+    "done_reason": "resolved"
+   },
+   "leg3": {
+    "modes": [
+     0,
+     1
+    ],
+    "need": 5,
+    "kind": "both",
+    "cast": true,
+    "cast_rev": 153,
+    "cast_oid": 2,
+    "mode_offered": true,
+    "mode_unavailable": null,
+    "mode_choices_n": 3,
+    "mode_iid": "PJPLLF.0.154",
+    "mode_chosen": true,
+    "chosen_mode_ids": [
+     "PJPLLF.0.154.o0",
+     "PJPLLF.0.154.o1"
+    ],
+    "target_prompted": true,
+    "target_candidates_n": 2,
+    "target_candidate_seats": [
+     0,
+     1
+    ],
+    "target_choice_id": "PJPLLF.0.155.t1",
+    "target_sub_rev": 155,
+    "target_rejected": false,
+    "target_rejection_code": null,
+    "target_accepted": true,
+    "pay_taps": 0,
+    "pay_spends": 0,
+    "pay_finalized": false,
+    "search_prompted": false,
+    "search_answered": false,
+    "search_chosen_card": null,
+    "p1_life_pre": 17,
+    "p1_hand_pre": 7,
+    "p1_life_post": 17,
+    "p1_hand_post": 7,
+    "resolved": true,
+    "done": true,
+    "done_reason": "resolved",
+    "target_choice_seat": 1,
+    "target_rej_mark": 0
+   }
+  },
+  "leg_order": [],
+  "cur": null,
+  "cast_oid": null,
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "rejections": [],
+  "game_code": "PJPLLF",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p1pass": 157,
+   "p0pass": 159,
+   "P1land": 137,
+   "P0land": 152,
+   "discPJPLLF.0.112": 112
+  },
+  "stuck_since": 1789476026.2755468
+ },
+ "evidence_files": [
+  "pre.json",
+  "leg1_pre_target.json",
+  "leg1_mid.json",
+  "leg1_post.json",
+  "leg2_post.json",
+  "leg3_pre_target.json",
+  "leg3_mid.json",
+  "leg3_post.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7175.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "duration_s": 37.5
+}
