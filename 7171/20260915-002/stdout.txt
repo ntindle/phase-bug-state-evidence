@@ -1,0 +1,25 @@
+ServerHello: {"server_version": "0.83.0", "build_commit": "b7a59d4", "protocol_version": 70, "mode": "Full", "lobby_protocol_version": 8, "wire_formats": ["GzipEnvelopeV1"]}
+DraftCreated draft_code=RQVEPN seat=0
+saved draft_created.json (47 bytes)
+sent StartDraft
+status -> Deckbuilding
+reached Deckbuilding (Sealed: packs dealt directly, no pick step)
+saved deckbuilding_view.json (218080 bytes)
+pool size=90
+Lutri never appeared in the human's packs; A2 not-run
+deckbuilding view keys: ['addable_cards', 'cards_per_pack', 'commanders_required', 'current_pack', 'current_pack_number', 'current_round', 'draft_effects', 'draft_set_codes', 'grantable_commander_fillers', 'kind', 'launch_capability', 'match_config', 'min_deck_size', 'next_pairing_round', 'pack_count', 'pack_pick_steps', 'pack_set_codes', 'pack_sizes', 'pairings', 'pass_direction', 'pick_number', 'pick_selection_mode', 'pick_steps_per_pack', 'pod_policy', 'pool', 'pool_groups', 'required_pick_count', 'sealed_packs', 'seats', 'source', 'standings', 'status', 'timer_remaining_ms', 'tournament_format']
+'companion' anywhere in deckbuilding view: False
+sent SubmitDeck WITH extra 'companions' field
+probe response: DraftStateUpdate {"view": {"status": "Deckbuilding", "kind": "Sealed", "source": {"type": "Set", "data": {"layout": {"UniformByRound": {"codes": ["iko", "iko", "iko", "iko", "iko", "iko"]}}}}, "launch_capability": "None", "commanders_required": 0, "current_pack_number": 0, "pick_number": 0, "pass_direction": "Left", "current_pack": null, "required_pick_count": 0, "pick_selection_mode": "Direct", "pool": [{"instance_id": "IKO-0-0-0", "name": "Swiftwater Cliffs", "set_code": "IKO", "collector_number": "255", "rari
+saved companion_probe.json (272309 bytes)
+server accepted update but 'companions' is not a protocol field: no companion designation path exists
+sent plain valid SubmitDeck (control)
+control response: DraftStateUpdate {"view": {"status": "Deckbuilding", "kind": "Sealed", "source": {"type": "Set", "data": {"layout": {"UniformByRound": {"codes": ["iko", "iko", "iko", "iko", "iko", "iko"]}}}}, "launch_capability": "None", "commanders_required": 0, "current_pack_number": 0, "pick_number": 0, "pass_direction": "Left", "current_pack": null, "required_pick_count": 0, "pick_selection_mode": "Direct", "pool": [{"instanc
+saved valid_submitdeck.json (252549 bytes)
+plain SubmitDeck accepted: submission path works; companion designation is the only missing piece
+source control: engine DeckList has `companion: Vec<String>` (deck_loading.rs); gap is confined to the draft submission path
+saved wire_transcript.json (3266 bytes)
+saved assertions.json (3086 bytes)
+saved server_hello.json (182 bytes)
+VERDICT: reproduced  assertions={'A1_draft_reaches_deckbuilding': 'passed', 'A2_lutri_drafted': 'not-run', 'A3_no_companion_control_in_view': 'passed', 'A4_companion_designation_no_path': 'passed', 'A5_valid_submitdeck_accepted': 'passed', 'A6_engine_companion_capable': 'passed'}
+VERDICT: reproduced
