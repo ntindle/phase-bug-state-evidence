@@ -1,0 +1,40 @@
+{
+  "name": "Rooftop Storm",
+  "oracle_text": "You may pay {0} rather than pay the mana cost for Zombie creature spells you cast.",
+  "static_abilities": [
+    {
+      "mode": {
+        "CastWithAlternativeCost": {
+          "cost": {
+            "type": "Mana",
+            "cost": {
+              "type": "Cost",
+              "shards": [],
+              "generic": 0
+            }
+          }
+        }
+      },
+      "affected": {
+        "type": "Typed",
+        "type_filters": [
+          "Creature",
+          {
+            "Subtype": "Zombie"
+          }
+        ],
+        "controller": "You",
+        "properties": []
+      },
+      "modifications": [],
+      "condition": null,
+      "affected_zone": null,
+      "effect_zone": null,
+      "active_zones": [
+        "Battlefield"
+      ],
+      "characteristic_defining": false,
+      "description": "You may pay {0} rather than pay the mana cost for Zombie creature spells you cast."
+    }
+  ]
+}

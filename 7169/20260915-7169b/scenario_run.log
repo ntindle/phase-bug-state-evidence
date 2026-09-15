@@ -1,0 +1,50 @@
+server identity pinned: v0.83.0 (b7a59d4) protocol 70, mode Full
+game TRK7E4; P0 seat=0 P1 seat=1
+[P0] mulligan: 3 lands -> keep
+[P1] mulligan: 7 lands -> keep
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 stage=SETUP storm=None ghoul=None crawler_gy=None window=False offers={'hand': False, 'gy': False, 'nonz': False} P0hand=['gravecrawler', 'rooftop storm', 'diregraf ghoul', 'augur of bolas', 'island', 'island']
+[P1] playing land forest
+[P0] playing land island
+[P1] playing land forest
+[P0] playing land island
+[P1] playing land forest
+[P0] playing land island
+[P1] playing land forest
+[P0] playing land swamp
+[P1] playing land forest
+[P0] playing land swamp
+[P1] playing land forest
+[P0] discarding 1 to hand size (deliberate crawler)
+[P0] Gravecrawler stocked to GY (hand oid=14)
+[P1] playing land forest
+[P0] playing land island
+[P0] casting rooftop storm (oid=17) leg=storm
+[P0] casting diregraf ghoul (oid=23) leg=hand
+Storm on BF oid=17
+[P0] alt-cost offer ACCEPTED (pay={0}) leg=hand choice=TRK7E4.0.212.c1
+[P0] submitting interaction iid=TRK7E4.0.212 choice=TRK7E4.0.212.c1 (true)
+[P0] cast window closed leg=hand offer_seen=True accepted=True on_stack=True left_origin=False
+Ghoul on BF oid=23
+HAND leg complete; entering STOCK
+STOCK complete; entering GY
+exported pre.json
+[P1] playing land forest
+[P0] playing land swamp
+[P0] casting gravecrawler from GRAVEYARD (oid=14)
+[P0] cast window closed leg=gy offer_seen=False accepted=False on_stack=True left_origin=True
+exported mid.json
+GY leg resolved: offer_seen=False
+[P0] casting augur of bolas (oid=18) leg=nonz
+[P0] cast window closed leg=nonz offer_seen=False accepted=False on_stack=True left_origin=True
+Augur on BF oid=18
+exported post.json
+NONZ leg resolved; exporting post and stopping
+A1: storm_bf=True ghoul_bf=True crawler_gy=True pre_exported=True
+A4: crawler_bf=True (mid=True)
+A5: nonz_offer_seen=False augur_bf=True
+FINAL verdict=reproduced assertions={'A1_setup_ok': 'passed', 'A2_hand_offer': 'passed', 'A3_gy_offer_absent': 'passed', 'A4_gy_cast_completes': 'passed', 'A5_nonz_unaffected': 'passed', 'A6_cleanup': 'passed'}
+A1: storm_bf=True ghoul_bf=True crawler_gy=True pre_exported=True
+A4: crawler_bf=True (mid=True)
+A5: nonz_offer_seen=False augur_bf=True
+wrote run.json verdict=reproduced
+wrote summary.png

@@ -1,0 +1,57 @@
+{
+  "issue": 7169,
+  "run_id": "20260915-7169b",
+  "verdict": "reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hand_offer": "passed",
+    "A3_gy_offer_absent": "passed",
+    "A4_gy_cast_completes": "passed",
+    "A5_nonz_unaffected": "passed",
+    "A6_cleanup": "passed"
+  },
+  "server_identity": {
+    "validated_version": "v0.83.0",
+    "build_commit": "b7a59d4",
+    "protocol_version": 70,
+    "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+    "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+    "signature_verified": true
+  },
+  "fixture": {
+    "storm_oid": 17,
+    "ghoul_oid": 23,
+    "crawler_gy_oid": 14,
+    "augur_oid": 18,
+    "offer_seen": {
+      "hand": true,
+      "gy": false,
+      "nonz": false
+    },
+    "offer_accepted": {
+      "hand": true,
+      "gy": false,
+      "nonz": false
+    },
+    "submitted_choice": {
+      "hand": "TRK7E4.0.212.c1",
+      "gy": null,
+      "nonz": null
+    },
+    "wf_seen": {
+      "hand": [
+        "OptionalCostChoice"
+      ],
+      "gy": [],
+      "nonz": []
+    }
+  },
+  "notes": [
+    "pre: turn 14 storm_oid=17 ghoul_oid=23 crawler_gy_oid=14",
+    "mid: turn 16 gy_offer_seen=False crawler resolved to BF",
+    "post: turn 16 nonz_offer_seen=False life=20/20",
+    "final stage=DONE offers={'hand': True, 'gy': False, 'nonz': False} accepted={'hand': True, 'gy': False, 'nonz': False}"
+  ],
+  "finished_at": "2026-09-15T06:44:22Z"
+}

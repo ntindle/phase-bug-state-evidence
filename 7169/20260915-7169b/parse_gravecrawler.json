@@ -1,0 +1,56 @@
+{
+  "name": "Gravecrawler",
+  "oracle_text": "This creature can't block.\nYou may cast this card from your graveyard as long as you control a Zombie.",
+  "static_abilities": [
+    {
+      "mode": "CantBlock",
+      "affected": {
+        "type": "SelfRef"
+      },
+      "modifications": [],
+      "condition": null,
+      "affected_zone": null,
+      "effect_zone": null,
+      "active_zones": [],
+      "characteristic_defining": false,
+      "description": "~ can't block."
+    },
+    {
+      "mode": {
+        "GraveyardCastPermission": {
+          "frequency": "Unlimited",
+          "play_mode": "Cast"
+        }
+      },
+      "affected": {
+        "type": "SelfRef"
+      },
+      "modifications": [],
+      "condition": {
+        "type": "IsPresent",
+        "filter": {
+          "type": "Typed",
+          "type_filters": [
+            {
+              "Subtype": "Zombie"
+            }
+          ],
+          "controller": "You",
+          "properties": [
+            {
+              "type": "InZone",
+              "zone": "Battlefield"
+            }
+          ]
+        }
+      },
+      "affected_zone": null,
+      "effect_zone": null,
+      "active_zones": [
+        "Graveyard"
+      ],
+      "characteristic_defining": false,
+      "description": "You may cast this card from your graveyard as long as you control a Zombie."
+    }
+  ]
+}
