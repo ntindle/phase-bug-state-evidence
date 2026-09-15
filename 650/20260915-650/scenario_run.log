@@ -1,0 +1,35 @@
+game=5AUINZ run=20260915-650
+P0 mulligan decision: Keep
+P1 mulligan decision: Keep
+P0 casting Llanowar Elves
+P0 casting Llanowar Elves
+P0 declares no DeclareAttackers
+P0 declares no DeclareAttackers
+P0 declares no DeclareAttackers
+P0 declares no DeclareAttackers
+P0 casting Tyvar the Bellicose
+setup ok at turn 11 (Tyvar + 2 Elves)
+PRE export at turn 11; activating Elves A mana ability (oid 9)
+exported pre.json
+exported mid.json
+P0 declares no DeclareAttackers
+P0 declares no DeclareAttackers
+P0 declares no DeclareAttackers
+exported post.json
+{
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_mana_produced": "passed",
+  "A3_counters_added": "failed",
+  "A4_per_creature": "not-run"
+ },
+ "notes": [
+  "mid: Elves A tapped=True pool_g=1 (pre pool_g=0)",
+  "post: Elves A counters raw sample: {\"counters\": {}}",
+  "post: Elves A tapped=False",
+  "BUG: no +1/+1 counters on Elves A after granted trigger window",
+  "A4 not-run: granted trigger never fires (A3 failed), per-creature throttling cannot be evaluated",
+  "parser corroboration: card-data.json (v0.83.0) parses Tyvar's granted trigger as mode {Unknown: 'Whenever a mana ability of ~ resolves'} with effect {Unimplemented: unparsed_quantity}; constraint {OncePerTurn} recorded"
+ ]
+}
