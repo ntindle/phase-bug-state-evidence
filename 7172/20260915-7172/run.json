@@ -1,0 +1,170 @@
+{
+ "run_id": "20260915-7172",
+ "issue": 7172,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed0",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key); server already running on 127.0.0.1:9374 by this run's session."
+ },
+ "server_run_note": "isolated v0.83.0 single-user server on 127.0.0.1:9374 (already running for this run's session; this game's states are isolated per game code)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c38e526ea1802987784673ec5c4dab4bbd07bfb1a6523e9509bc289f4bac1b83",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "deadpool, trading card",
+    12
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "swamp",
+    12
+   ],
+   [
+    "mountain",
+    12
+   ],
+   [
+    "lightning bolt",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    24
+   ],
+   [
+    "lightning bolt",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_no_exchange_choice": "passed",
+  "A4_enters_unchanged": "passed",
+  "A5_card_otherwise_live": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "entry_window_wf": []
+ },
+ "driver_state": {
+  "finished": true,
+  "stage": "done",
+  "pre_exported": true,
+  "entry_exported": true,
+  "post_exported": true,
+  "land_turn": 8,
+  "p1_bears_cast": true,
+  "deadpool_cast": true,
+  "deadpool_cast_turn": 8,
+  "deadpool_entered": true,
+  "deadpool_oid": 36,
+  "entry_detected_at": 1789462553.4389565,
+  "exchange_prompt_seen": false,
+  "entry_window_prompts": [],
+  "exchange_candidates": [
+   {
+    "name": "Grizzly Bears",
+    "oid": 63,
+    "controller": 1,
+    "power": 2,
+    "toughness": 2
+   }
+  ],
+  "upkeep_trigger_seen": true,
+  "upkeep_life_before": 20,
+  "upkeep_life_after": 17,
+  "sac_ability_advertised": true,
+  "activated_abilities_seen": [
+   {
+    "ability_index": 1,
+    "source_id": 36
+   }
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10
+  ],
+  "cleanup_from_turn": 10,
+  "game_code": "OLORT8",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p1pass": 145,
+   "pass": 144,
+   "p1land": 69,
+   "land": 115,
+   "p1bears": 37,
+   "p1_DeclareAttackers": 137,
+   "deadpool": 116,
+   "pass_ew": 139
+  },
+  "upkeep_from_turn": 9
+ },
+ "notes": [
+  "A1: effect.type=Unimplemented (name=unknown), replacements=[], exchange-in-desc=True",
+  "A2: p1_bears_bf=1 deadpool_in_hand=True p0_untapped_lands=4",
+  "A3: deadpool_entered=True, exchange_prompt_seen=False, entry_window_wf_kinds=[]",
+  "A4: deadpool_bf=1 pt=(5,3); p1_bears_bf=1 pt=(2,2)",
+  "A5: upkeep_trigger=True life 20->17; sac_ability_advertised=True ([{'ability_index': 1, 'source_id': 36}])",
+  "A6: stack_empty=True post_wf=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+  "verdict=reproduced: Deadpool entered with a legal exchange candidate on the battlefield, but the controller was never offered the optional text-box exchange - the exact reported symptom",
+  "verdict=reproduced",
+  "server.log excerpts captured post-hoc from runs/run-7171-20260915-0211/server.log (298 lines, filtered by game code OLORT8); SERVER_RUN_ID env was unset during the run so the in-run excerpt path missed."
+ ],
+ "evidence_files": [
+  "pre.json",
+  "entry.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7172.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is near-passive (lands + one Grizzly Bears, never attacks/blocks) so the entry window stays clean.",
+  "The accept-branch (choosing to exchange) and the decline control are not-run: no exchange choice exists to answer.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 37.4
+}
