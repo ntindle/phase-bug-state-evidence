@@ -1,0 +1,175 @@
+{
+ "run_id": "20260915-7178b",
+ "issue": 7178,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "mode": "single-user",
+  "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key); server already running on 127.0.0.1:9374 by this run's session."
+ },
+ "server_run_note": "isolated v0.83.0 single-user server on 127.0.0.1:9374 (started by this run's session under runs/20260915-7178/)",
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "70bf650b9e1e0eba73bc754472c784002b3d9768145a34be91687b4e35ba50b4",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "charismatic conqueror",
+    12
+   ],
+   [
+    "plains",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_option_offered": "passed",
+  "A4_accept_leg": "passed",
+  "A5_decline_leg": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "finished": true,
+  "stage": "done",
+  "pre_exported": true,
+  "post_exported": true,
+  "conqueror_cast": true,
+  "conqueror_entered": true,
+  "conqueror_oid": 20,
+  "bears_cast_count": 2,
+  "bears1_oid": 72,
+  "bears2_oid": 76,
+  "legA_open": true,
+  "legA_answered": true,
+  "legA_accept": true,
+  "legA_prompt_seen": true,
+  "legA_mid_exported": true,
+  "legA_opened_at": 1789484012.7617147,
+  "legB_open": true,
+  "legB_answered": true,
+  "legB_accept": false,
+  "legB_prompt_seen": true,
+  "legB_mid_exported": true,
+  "legB_opened_at": 1789484042.0041316,
+  "answered_iids": [
+   "BEN4NG.0.122",
+   "BEN4NG.0.255"
+  ],
+  "optional_seen": [
+   {
+    "iid": "BEN4NG.0.122",
+    "player": 1,
+    "leg": "A"
+   },
+   {
+    "iid": "BEN4NG.0.255",
+    "player": 1,
+    "leg": "B"
+   }
+  ],
+  "wf_types_seen": [
+   "Priority",
+   "DeclareAttackers",
+   "OptionalEffectChoice"
+  ],
+  "trigger_stack_seen": false,
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17
+  ],
+  "cleanup_from_turn": 16,
+  "game_code": "BEN4NG",
+  "last_rev_acted": {
+   "mull0": 2,
+   "mull1": 2,
+   "p0pass": 266,
+   "p1pass": 265,
+   "p0land": 233,
+   "p1land": 249,
+   "conqueror": 37,
+   "P0_DeclareAttackers": 238,
+   "bears1": 117,
+   "P1_DeclareAttackers": 260,
+   "bears2": 250
+  }
+ },
+ "notes": [
+  "A6: stack_empty=True post_wf=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]",
+  "A6: stack_empty=True post_wf=Priority",
+  "finalize_7178.py: A1/A2 recomputed with corrected assertion code; server.log excerpts copied from the real server run dir (runs/20260915-7178/); summary.png re-rendered; manifest regenerated. Superseded attempt 20260915-7178 (P0 DeclareAttackers stall, local-only, evidence dir retained) and this run's original run.json (blocked on scenario assertion bugs) are not published.",
+  "A1: execute.optional=True, optional_player={'type': 'TriggeringPlayer'}, main_effect=SetTapState, sub_effect=Token, sub_condition={\"type\": \"Not\", \"condition\": {\"type\": \"EffectOutcome\", \"signal\": \"OptionalEffectPerformed\"}}",
+  "A2: conqueror_in_p0_hand(pre)=3, conqueror_entered=True, bears1_oid=72 bears2_oid=76 (both Bears legally cast and entered)",
+  "A3: trigger_on_stack=False, legA_prompt=True legB_prompt=True",
+  "A4: bears1 tapped=True (expect True), p0_vampire_tokens=0 (expect 0)",
+  "A5: bears2 tapped=False (expect False), p0_vampire_tokens=1 (expect 1), stats=[{'power': 1, 'toughness': 1, 'tapped': False, 'keywords': ['lifelink'], 'is_token': True}]",
+  "A6: stack_empty=True post_wf=Priority",
+  "verdict=not-reproduced: the may-tap option was offered to the triggering player on v0.83.0; accept tapped the entrant with no token, decline left it untapped and created the 1/1 lifelink Vampire token. Both Oracle branches behave correctly.",
+  "verdict=not-reproduced",
+  "finalize_7178.py: A1/A2 recomputed with corrected assertion code; server.log excerpts copied from the real server run dir (runs/20260915-7178/); summary.png re-rendered; manifest regenerated. Superseded attempt 20260915-7178 (P0 DeclareAttackers stall, local-only, evidence dir retained) and this run's original run.json (blocked on scenario assertion bugs) are not published."
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid_accept.json",
+  "mid_decline.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7178.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is near-passive (lands + two Grizzly Bears, never attacks/blocks) so the trigger windows stay clean.",
+  "Only creatures (Grizzly Bears) exercised the trigger; the artifact half of the clause was not separately tested.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 56.4
+}
