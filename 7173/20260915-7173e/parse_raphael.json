@@ -1,0 +1,86 @@
+[
+ {
+  "mode": "DamageDone",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "SetTapState",
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": [
+      {
+       "type": "Attacking"
+      }
+     ]
+    },
+    "scope": {
+     "type": "All"
+    },
+    "state": {
+     "type": "Untap"
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "AdditionalPhase",
+     "target": {
+      "type": "Controller"
+     },
+     "phase": "BeginCombat",
+     "after": "EndCombat",
+     "followed_by": [],
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "attacker_restriction": null
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "valid_card": null,
+  "origin": null,
+  "destination": null,
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": null,
+  "optional": false,
+  "damage_kind": "CombatOnly",
+  "secondary": false,
+  "valid_target": {
+   "type": "Player"
+  },
+  "valid_source": {
+   "type": "SelfRef"
+  },
+  "description": "Whenever ~ deals combat damage to a player for the first time each turn, untap all attacking creatures. After this combat phase, there is an additional combat phase.",
+  "constraint": {
+   "type": "OncePerTurn"
+  },
+  "condition": null,
+  "batched": false
+ }
+]
