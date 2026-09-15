@@ -1,0 +1,286 @@
+{
+ "issue": 7166,
+ "run_id": "20260914-7166f",
+ "title": "Tibalt's Trickery does not work at all, other than countering a spell",
+ "validated_at": "2026-09-14",
+ "server": {
+  "validated_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_verified": true
+ },
+ "scope": "Native engine, two human-client seats; P1 casts Lightning Bolt at P0, P0 counters with Tibalt's Trickery targeting the Bolt; the post-counter chain (random mill, exile-until, free cast, bottom rest) is exercised to explicit assertions",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_countered": "passed",
+  "A3_mill": "failed",
+  "A4_exile_until": "failed",
+  "A5_free_cast": "not-run",
+  "A6_bottom_rest": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "A1: P1 cast Bolt (oid=93) targeting P0; P0 cast Trickery (oid=19); pre_trickery.json stack shows Trickery selected_target_incarnations=[{incarnation:2, object_id:93}] (the Bolt) - the engine auto-targeted the single legal spell, no target prompt was raised",
+  "A2: Bolt countered to P1 gy; Trickery resolved to P0 gy; P0 life=20 (no 3 damage)",
+  "A3 FAILED: P1 milled 0 cards - the chain stopped after the counter (reported bug)",
+  "A4 FAILED: no cards exiled - the chain stopped after the counter (reported bug)",
+  "A5 not-run: exile-until leg not established",
+  "A6 not-run: exile-until leg not established",
+  "A7: stall=False turns_seen=8 stack_empty=True"
+ ],
+ "driver_state": {
+  "bolt_oid": 93,
+  "trickery_oid": 19,
+  "trickery_target_choice": null,
+  "trickery_target_note": "engine auto-targeted the single legal spell on the stack (no TargetSelection prompt raised); pre_trickery.json shows selected_target_incarnations object_id=93 (the Bolt)",
+  "resolve_turn": 4,
+  "mill_count": 0,
+  "exile_events": [],
+  "exile_stop_name": null,
+  "exile_library_owner": null,
+  "bears_exiled_oid": null,
+  "free_cast_offered": false,
+  "free_cast_offer_shape": null,
+  "bears_cast_free": false,
+  "bears_on_battlefield": false,
+  "p1_discards": 0,
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "rejections": [],
+  "prompt_shapes": [
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.4",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.4.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P1",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.5",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.5.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.6",
+    "rtype": "exactChoices",
+    "n_choices": 3,
+    "texts": [
+     "D19BJ5.0.6.c0",
+     "D19BJ5.0.6.c1",
+     "D19BJ5.0.6.c2"
+    ],
+    "seats": [
+     null,
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11",
+     "42"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.7",
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "texts": [
+     "D19BJ5.0.7.c0",
+     "D19BJ5.0.7.c1"
+    ],
+    "seats": [
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11"
+    ]
+   },
+   {
+    "who": "P1",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.8",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.8.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.9",
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "texts": [
+     "D19BJ5.0.9.c0",
+     "D19BJ5.0.9.c1"
+    ],
+    "seats": [
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11"
+    ]
+   },
+   {
+    "who": "P1",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.10",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.10.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.11",
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "texts": [
+     "D19BJ5.0.11.c0",
+     "D19BJ5.0.11.c1"
+    ],
+    "seats": [
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11"
+    ]
+   },
+   {
+    "who": "P1",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.12",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.12.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.13",
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "texts": [
+     "D19BJ5.0.13.c0",
+     "D19BJ5.0.13.c1"
+    ],
+    "seats": [
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11"
+    ]
+   },
+   {
+    "who": "P1",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.14",
+    "rtype": "exactChoices",
+    "n_choices": 1,
+    "texts": [
+     "D19BJ5.0.14.c0"
+    ],
+    "seats": [
+     null
+    ],
+    "refs": [
+     "None"
+    ]
+   },
+   {
+    "who": "P0",
+    "purpose": "ambient",
+    "iid": "D19BJ5.0.15",
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "texts": [
+     "D19BJ5.0.15.c0",
+     "D19BJ5.0.15.c1"
+    ],
+    "seats": [
+     null,
+     null
+    ],
+    "refs": [
+     "None",
+     "11"
+    ]
+   }
+  ]
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The 'random order' of bottomed cards is not verifiable from state; A6 asserts exile-empty + card conservation only.",
+  "No combat occurs; both seats decline all attacks/blocks."
+ ],
+ "evidence_dir": "7166/20260914-7166f"
+}
