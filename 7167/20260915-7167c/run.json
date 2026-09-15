@@ -1,0 +1,232 @@
+{
+  "issue": 7167,
+  "run_id": "20260915-7167c",
+  "verdict": "not-reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_pre_copy_state": "passed",
+    "A3_refresh_ok": "passed",
+    "A4_copy_preserved": "passed",
+    "A5_legend_rule": "passed",
+    "A6_cleanup": "passed"
+  },
+  "server_identity": {
+    "validated_version": "v0.83.0",
+    "build_commit": "b7a59d4",
+    "protocol_version": 70,
+    "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+    "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+    "signature_verified": true
+  },
+  "copy_signals": {
+    "pre": {
+      "found": true,
+      "oid": 182,
+      "base_name": "sakashima of a thousand faces",
+      "name": "krark, the thumbless",
+      "is_commander": true,
+      "controller": 0,
+      "zone": "Battlefield",
+      "tapped": false,
+      "power": 2,
+      "toughness": 2,
+      "mana_cost": "{\"generic\": 1, \"shards\": [\"Red\"], \"type\": \"Cost\"}",
+      "static_count": 1,
+      "replacement_count": 0,
+      "has_legend_exempt": true,
+      "obj_sha": "aa74adb8dd239b05"
+    },
+    "post": {
+      "found": true,
+      "oid": 182,
+      "base_name": "sakashima of a thousand faces",
+      "name": "krark, the thumbless",
+      "is_commander": true,
+      "controller": 0,
+      "zone": "Battlefield",
+      "tapped": false,
+      "power": 2,
+      "toughness": 2,
+      "mana_cost": "{\"generic\": 1, \"shards\": [\"Red\"], \"type\": \"Cost\"}",
+      "static_count": 1,
+      "replacement_count": 0,
+      "has_legend_exempt": true,
+      "obj_sha": "aa74adb8dd239b05"
+    }
+  },
+  "refresh": [
+    {
+      "level": 1,
+      "ok": true
+    },
+    {
+      "level": 2,
+      "ok": true
+    }
+  ],
+  "legend_events": [],
+  "notes": [
+    "command_zone pre: [183, 184]",
+    "final stage=REFRESHED pre_exported=True post_exported=True post2_exported=True",
+    "L2 adjacent finding: after server restart (full rehydration from games.db), oid 182's BASE layer was rewritten to the copy target: base_name 'Sakashima of a Thousand Faces' -> 'Krark, the Thumbless'; base_static_definitions 1->0 (Sakashima's legend-exemption static gone from base); base_replacement_definitions 1->0 (enter-as-copy replacement gone from base); base_printed_ref oracle_id now Krark's. Effective static_definitions still carry the legend exemption and is_commander stayed true, so no legend sacrifice was forced and no commander was lost in this run - the REPORTED outcome did not occur. Verdict stays not-reproduced per the pre-written contract (A1-A5 pass); the base-identity collapse is recorded as an adjacent serialization defect in the same copy-persistence subsystem."
+  ],
+  "observations": {
+    "n_unexpected_prompts": 81,
+    "n_auto_answered": 0,
+    "mulligans": [
+      {
+        "who": "P0",
+        "n_lands": 7,
+        "keep": true
+      },
+      {
+        "who": "P1",
+        "n_lands": 7,
+        "keep": true
+      },
+      {
+        "who": "P2",
+        "n_lands": 7,
+        "keep": true
+      }
+    ],
+    "unexpected_prompts": [
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 1,
+        "texts": [
+          ""
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 9,
+        "texts": [
+          "",
+          "Island",
+          "Island",
+          "Mountain",
+          "Island",
+          "Island"
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 2,
+        "texts": [
+          "",
+          "Mountain"
+        ],
+        "wf": "Priority"
+      },
+      {
+        "who": "P0",
+        "iid": "NDCM75.0",
+        "n_choices": 2,
+        "texts": [
+          "",
+          "Mountain"
+        ],
+        "wf": "Priority"
+      }
+    ]
+  },
+  "finished_at": "2026-09-15T04:51:07Z",
+  "assertions_l2": {
+    "B1_base_identity": "failed",
+    "B2_overlay_intact": "passed",
+    "B3_no_sacrifice": "passed"
+  },
+  "l2_finding": {
+    "base_name_post2": "Krark, the Thumbless",
+    "base_name_pre": "Sakashima of a Thousand Faces",
+    "base_static_definitions_post2": 0,
+    "base_static_definitions_pre": 1,
+    "base_replacement_definitions_post2": 0,
+    "base_replacement_definitions_pre": 1,
+    "effective_static_legend_exempt_post2": true,
+    "is_commander_post2": true,
+    "krark_named_on_p0_bf_post2": [
+      "181",
+      "182"
+    ]
+  }
+}
