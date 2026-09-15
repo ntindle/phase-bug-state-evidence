@@ -1,0 +1,190 @@
+{
+ "issue": 7165,
+ "run_id": "20260914-7165l",
+ "title": "AI put Crown of Skemfar on my card and spends all of its mana to get it back",
+ "validated_at": "2026-09-14",
+ "server": {
+  "validated_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_verified": true
+ },
+ "scope": "Native Medium AI target choice for the beneficial Aura Crown of Skemfar + the {2}{G} graveyard-return activation policy; native engine, one human-client seat + one native AI seat",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_correct_target": "passed",
+  "A3_return_observed": "passed",
+  "A4_no_return_loop": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: Crown observed on AI BF oid=101 turn=7",
+  "A2: enchanted creature oid=104 (Llanowar Elves) controlled by the AI itself (seat 1) - correct target choice",
+  "A3: 2 AI return activation(s) observed: [{'turn': 9, 'stack_id': 121, 'via': 'stack', 'ai_hand': 2, 'ai_untapped_forests': 1, 'p0_life': 20, 'p1_life': 20}, {'turn': 11, 'stack_id': 122, 'via': 'stack', 'ai_hand': 2, 'ai_untapped_forests': 2, 'p0_life': 20, 'p1_life': 20}]",
+  "A4 FAILED: AI returned the Crown 2 times in 12 turns - the reported mana-spend loop: [{'turn': 9, 'stack_id': 121, 'via': 'stack', 'ai_hand': 2, 'ai_untapped_forests': 1, 'p0_life': 20, 'p1_life': 20}, {'turn': 11, 'stack_id': 122, 'via': 'stack', 'ai_hand': 2, 'ai_untapped_forests': 2, 'p0_life': 20, 'p1_life': 20}]",
+  "A5: stall=False turns_seen=21 stack_empty=True game_over=False"
+ ],
+ "driver_state": {
+  "crown_oid": 101,
+  "attach_turn": 7,
+  "attach_controller": 1,
+  "attach_creature_oid": 104,
+  "attach_creature_name": "Llanowar Elves",
+  "gy_turn": 8,
+  "return_count": 2,
+  "return_events": [
+   {
+    "turn": 9,
+    "stack_id": 121,
+    "via": "stack",
+    "ai_hand": 2,
+    "ai_untapped_forests": 1,
+    "p0_life": 20,
+    "p1_life": 20
+   },
+   {
+    "turn": 11,
+    "stack_id": 122,
+    "via": "stack",
+    "ai_hand": 2,
+    "ai_untapped_forests": 2,
+    "p0_life": 20,
+    "p1_life": 20
+   }
+  ],
+  "ai_mana_samples": [
+   [
+    [
+     9,
+     "PreCombatMain"
+    ],
+    0,
+    2
+   ],
+   [
+    [
+     9,
+     "PostCombatMain"
+    ],
+    0,
+    2
+   ],
+   [
+    [
+     11,
+     "PreCombatMain"
+    ],
+    0,
+    3
+   ],
+   [
+    [
+     11,
+     "PostCombatMain"
+    ],
+    0,
+    3
+   ],
+   [
+    [
+     13,
+     "PreCombatMain"
+    ],
+    4,
+    3
+   ],
+   [
+    [
+     13,
+     "PostCombatMain"
+    ],
+    0,
+    2
+   ],
+   [
+    [
+     15,
+     "PreCombatMain"
+    ],
+    2,
+    1
+   ],
+   [
+    [
+     15,
+     "PostCombatMain"
+    ],
+    0,
+    0
+   ],
+   [
+    [
+     17,
+     "PreCombatMain"
+    ],
+    7,
+    0
+   ],
+   [
+    [
+     17,
+     "PostCombatMain"
+    ],
+    7,
+    0
+   ],
+   [
+    [
+     19,
+     "PreCombatMain"
+    ],
+    8,
+    0
+   ],
+   [
+    [
+     19,
+     "PostCombatMain"
+    ],
+    8,
+    0
+   ]
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via one human-client seat and one native Medium AI seat.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P0 never attacks or blocks; combat interaction is minimized by fixture design.",
+  "The {2}{G} return is detected as a Graveyard->Hand zone transition of an AI-controlled Crown (no other graveyard recursion exists in either deck)."
+ ],
+ "evidence_dir": "7165/20260914-7165l"
+}

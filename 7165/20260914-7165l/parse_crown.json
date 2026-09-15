@@ -1,0 +1,174 @@
+{
+ "name": "Crown of Skemfar",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Green",
+   "Green"
+  ],
+  "generic": 2
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Aura"
+  ]
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Enchant creature\nEnchanted creature gets +1/+1 for each Elf you control and has reach.\n{2}{G}: Return this card from your graveyard to your hand.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [
+  {
+   "Enchant": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "ChangeZone",
+    "origin": "Graveyard",
+    "destination": "Hand",
+    "target": {
+     "type": "SelfRef"
+    },
+    "owner_library": false,
+    "enter_transformed": false,
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "Green"
+     ],
+     "generic": 2
+    }
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{2}{G}: Return this card from your graveyard to your hand.",
+   "target_prompt": null,
+   "activation_zone": "Graveyard",
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "target_choice_timing": "Resolution",
+   "forward_result": false
+  }
+ ],
+ "triggers": [],
+ "static_abilities": [
+  {
+   "mode": "Continuous",
+   "affected": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": [
+     {
+      "type": "EnchantedBy"
+     }
+    ]
+   },
+   "modifications": [
+    {
+     "type": "AddDynamicPower",
+     "value": {
+      "type": "Ref",
+      "qty": {
+       "type": "ObjectCount",
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         {
+          "Subtype": "Elf"
+         }
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      }
+     }
+    },
+    {
+     "type": "AddDynamicToughness",
+     "value": {
+      "type": "Ref",
+      "qty": {
+       "type": "ObjectCount",
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         {
+          "Subtype": "Elf"
+         }
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      }
+     }
+    },
+    {
+     "type": "AddKeyword",
+     "keyword": "Reach"
+    }
+   ],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Enchanted creature gets +1/+1 for each Elf you control and has reach."
+  }
+ ],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Green"
+ ],
+ "scryfall_oracle_id": "db961314-fe78-4362-902f-aa0dbf6c487d",
+ "metadata": {
+  "source_printing_ids": [
+   "e6297586-8953-408e-a38c-2239d45807e1"
+  ]
+ },
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "KHC"
+ ],
+ "rulings": [
+  {
+   "date": "2021-02-05",
+   "text": "The power/toughness bonus given by Crown of Skemfar will change as the number of Elves you control changes."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
