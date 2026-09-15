@@ -1,0 +1,90 @@
+{
+  "name": "Ivy, Gleeful Spellthief",
+  "oracle_text": "Flying\nWhenever a player casts a spell that targets only a single creature other than Ivy, you may copy that spell. The copy targets Ivy. (A copy of an Aura spell becomes a token.)",
+  "triggers": [
+    {
+      "mode": "SpellCast",
+      "execute": {
+        "kind": "Spell",
+        "effect": {
+          "type": "CopySpell",
+          "target": {
+            "type": "TriggeringSource"
+          },
+          "retarget": {
+            "type": "KeepOriginalTargets"
+          },
+          "starting_loyalty_from_casualty_sacrifice": false
+        },
+        "cost": null,
+        "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+            "type": "Unimplemented",
+            "name": "unrecognized_clause_head",
+            "description": "The copy targets ~"
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": true,
+        "forward_result": false
+      },
+      "valid_card": {
+        "type": "Typed",
+        "type_filters": [
+          "Card"
+        ],
+        "controller": null,
+        "properties": [
+          {
+            "type": "TargetsOnly",
+            "filter": {
+              "type": "Typed",
+              "type_filters": [
+                "Creature"
+              ],
+              "controller": null,
+              "properties": [
+                {
+                  "type": "Another"
+                }
+              ]
+            }
+          },
+          {
+            "type": "HasSingleTarget"
+          }
+        ]
+      },
+      "origin": null,
+      "destination": null,
+      "trigger_zones": [
+        "Battlefield"
+      ],
+      "phase": null,
+      "optional": true,
+      "damage_kind": "Any",
+      "secondary": false,
+      "valid_target": null,
+      "valid_source": null,
+      "description": "Whenever a player casts a spell that targets only a single creature other than ~, you may copy that spell. The copy targets ~.",
+      "constraint": null,
+      "condition": null,
+      "batched": false
+    }
+  ]
+}
