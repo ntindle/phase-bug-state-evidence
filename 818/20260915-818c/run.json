@@ -1,0 +1,101 @@
+{
+  "issue": 818,
+  "run_id": "20260915-818c",
+  "started_at": "2026-09-15T05:39:53",
+  "duration_s": 132.4,
+  "server": {
+    "server_version": "0.83.0",
+    "build_commit": "b7a59d4",
+    "protocol_version": 70,
+    "mode": "Full",
+    "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+    "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+    "signature_verified": true,
+    "observed_at": "2026-09-15",
+    "source": "ServerHello (version/build/protocol/mode) + sha256 match of pinned verified artifacts; server process already listening on 9374 (verified: /proc exe = pinned v0.83.0 binary)"
+  },
+  "driver": {
+    "protocol_advertised": 70,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "d9cb6b44406be274e93cc0eb838419559f588f9c61b0cce34346878dad83931d",
+  "decks": {
+    "P0": [
+      [
+        "Writhing Chrysalis",
+        4
+      ],
+      [
+        "Gixian Infiltrator",
+        4
+      ],
+      [
+        "Swamp",
+        20
+      ],
+      [
+        "Forest",
+        16
+      ],
+      [
+        "Mountain",
+        16
+      ]
+    ],
+    "P1": [
+      [
+        "Clockwork Percussionist",
+        4
+      ],
+      [
+        "Goblin Bushwhacker",
+        4
+      ],
+      [
+        "Blazing Rootwalla",
+        4
+      ],
+      [
+        "Mountain",
+        48
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_sac_offered": "passed",
+    "A3_sac_resolves": "passed",
+    "A4_triggers": "passed",
+    "A5_no_strand": "passed"
+  },
+  "notes": [
+    "setup complete at turn 46",
+    "blockers declared per report: [('Eldrazi Spawn', 'Clockwork Percussionist'), ('Gixian Infiltrator', 'Goblin Bushwhacker'), ('Writhing Chrysalis', 'Blazing Rootwalla')]",
+    "Spawn sacrificed; {C} added to pool",
+    "sac triggers resolved: exactly +1/+1 on every Infiltrator and Chrysalis",
+    "second Spawn still on BF (1); game proceeding (phase=DeclareBlockers, wf=Priority)",
+    "Adjacent observation (not the reported bug): during setup the engine's auto-mana-payment sacrificed Eldrazi Spawn tokens to cast P0's creatures, firing Infiltrator/Chrysalis sacrifice triggers mid-setup (see OrderTriggers events in wire_log.jsonl)."
+  ],
+  "verdict": "not-reproduced",
+  "sac_offered_via": "offered:ActivateAbility",
+  "sac_submission": {
+    "type": "ActivateAbility",
+    "data": {
+      "source_id": 122,
+      "ability_index": 0
+    },
+    "via": "offered legal action (legal_actions_by_object), submitted as advertised"
+  },
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Report's 'Human Soldier' attacker represented by Blazing Rootwalla (no such card in pinned card-data.json).",
+    "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+    "State restoration: pre.json/post.json are authoritative ExportAuthoritativeState envelopes (parse data.state once). The engine has no standalone import path for these envelopes; replay the exact game from the pinned card data + decks in run.json using the included scenario_818.py driver against phase-server v0.83.0."
+  ],
+  "setup_line": "P0: 4x Writhing Chrysalis + 4x Gixian Infiltrator + lands; P1: 4x Clockwork Percussionist + 4x Goblin Bushwhacker + 4x Blazing Rootwalla + 48x Mountain",
+  "contract_line": "P1 attacks with all three; P0 blocks Chrysalis->Rootwalla, Infiltrator->Bushwhacker, Spawn->Percussionist; P0 saccing Spawn for {C} during DeclareBlockers",
+  "stats": {},
+  "scope": "Reproduce phase-rs/phase#818: declare the report's blockers, then activate the blocking Eldrazi Spawn's mana ability ('Sacrifice: Add {C}') during DeclareBlockers.",
+  "result": "not-reproduced on v0.83.0: blockers declared exactly as reported; the Spawn's sac ability was offered and accepted; the Spawn was sacrificed, {C} was added, all 6 sacrifice triggers resolved putting exactly one +1/+1 counter on each Gixian Infiltrator and Writhing Chrysalis on the battlefield; game proceeded."
+}
