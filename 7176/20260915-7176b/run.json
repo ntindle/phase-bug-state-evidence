@@ -9,7 +9,7 @@
   "mode": "single-user",
   "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
   "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
-  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
   "signature_verified": true,
   "observed_at": "2026-09-15",
   "source": "verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key); server already running on 127.0.0.1:9374 (run 20260915-7173-server), reused."
@@ -26,7 +26,8 @@
   "A5: completed_casts=3 clown_tokens_final=0 (expected >= 3, Oracle min 1/cast); per-leg post tokens: [(1, 0), (2, 0), (3, 0)]",
   "roll sightings: 3",
   "A6: stack_empty=True post_wf=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7, 8, 9] stop=3 casts resolved",
-  "verdict=reproduced: casts complete and resolve but zero Clown Robot tokens are ever created"
+  "verdict=reproduced: casts complete and resolve but zero Clown Robot tokens are ever created",
+  "post-run correction: draft_pools_sha256 in this file was a copy typo (fixed to the on-disk verified value); the issue comment already carried the correct hash."
  ],
  "limitations": [
   "Browser UI not exercised; native engine via two human-client seats.",
