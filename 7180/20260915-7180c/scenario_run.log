@@ -1,0 +1,48 @@
+both clients connected
+game created: 4LQ5KT
+P1 joined
+[P0] mulligan: keep 7
+[P1] mulligan: keep 7
+[diag] t=1s stage=setup turn=1 phase=PreCombatMain wf=Priority altisaur=None p1bears=0
+[P1] casting Grizzly Bears oid=69
+[P1] casting Grizzly Bears oid=102
+[diag] t=61s stage=setup turn=16 phase=PreCombatMain wf=Priority altisaur=None p1bears=2
+exported pre_etb.json (turn=17)
+[P0] casting Apex Altisaur (P1 bears=2)
+[P0] Apex Altisaur oid=21 (from ETB trigger source)
+saved etb_prompt_detail.json
+exported etb_prompt.json (turn=17)
+[P0] etb PROMPT recorded: wf=TriggerTargetSelection stack_id=121 candidates=2 bears=['69', '102'] explicit_zero=False schema_min=None schema_max=None
+[P0] etb: NO zero-target option offered -> answered bear oid=69 (bug shape recorded)
+[P0] enrage trigger seen: stack id 122
+[P0] enrage supporting prompt tid=122: candidates=1 bears=['102'] explicit_zero=False
+[P0] enrage_122: NO zero-target option offered -> answered bear oid=102 (bug shape recorded)
+exported post_etb.json (turn=17)
+[P0] ETB trigger (stack id 121) resolved turn=17; enrage leg armed
+[P1] casting Grizzly Bears oid=117
+[diag] t=121s stage=bolt_setup turn=30 phase=Upkeep wf=Priority altisaur=21 p1bears=1
+[P1] casting Grizzly Bears oid=67
+exported pre_bolt.json (turn=32)
+[P0] casting Lightning Bolt at own Apex Altisaur
+[P0] Bolt target answered: own Apex Altisaur oid=21
+[P0] enrage trigger seen: stack id 124
+saved enrage_prompt_detail.json
+exported enrage_prompt.json (turn=32)
+[P0] enrage PRIMARY prompt tid=124 inducer=bolt: wf=TriggerTargetSelection candidates=2 bears=['117', '67'] explicit_zero=False schema_min=None schema_max=None
+[P0] enrage_124: NO zero-target option offered -> answered bear oid=117 (bug shape recorded)
+[P0] Bolt resolved turn=32: bolt in graveyard, altisaur marked damage=3
+[P0] enrage trigger seen: stack id 125
+[P0] enrage supporting prompt tid=125: candidates=1 bears=['67'] explicit_zero=False
+[P0] enrage_125: NO zero-target option offered -> answered bear oid=67 (bug shape recorded)
+[P0] primary enrage trigger (stack id 124) resolved turn=32; cleanup armed
+exported post.json (turn=35)
+[P0] post-cascade state exported turn=35
+loaded pre_etb.json
+loaded etb_prompt.json
+loaded post_etb.json
+loaded pre_bolt.json
+loaded enrage_prompt.json
+loaded post.json
+server run dir: runs/20260915-01
+wrote server.log excerpts (1170 lines)
+wrote summary.png

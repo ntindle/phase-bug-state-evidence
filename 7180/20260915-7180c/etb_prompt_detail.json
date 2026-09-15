@@ -1,0 +1,2639 @@
+{
+ "name": "etb_prompt",
+ "captured_at": 1789503830.5851984,
+ "turn_number": 17,
+ "phase": "PreCombatMain",
+ "waiting_for": {
+  "type": "TriggerTargetSelection",
+  "data": {
+   "player": 0,
+   "trigger_controller": 0,
+   "trigger_event": {
+    "type": "ZoneChanged",
+    "data": {
+     "object_id": 21,
+     "from": "Stack",
+     "to": "Battlefield",
+     "record": {
+      "object_id": 21,
+      "name": "Apex Altisaur",
+      "core_types": [
+       "Creature"
+      ],
+      "subtypes": [
+       "Dinosaur"
+      ],
+      "supertypes": [],
+      "keywords": [],
+      "trigger_definitions": [
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        },
+        "definition": {
+         "mode": "ChangesZone",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "Fight",
+           "target": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature"
+            ],
+            "controller": "Opponent",
+            "properties": []
+           },
+           "subject": {
+            "type": "SelfRef"
+           }
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "multi_target": {
+           "min": 0,
+           "max": {
+            "type": "Fixed",
+            "value": 1
+           }
+          },
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": "Battlefield",
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": false,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "When ~ enters, it fights up to one target creature you don't control.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       },
+       {
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 1
+         }
+        },
+        "definition": {
+         "mode": "DamageReceived",
+         "execute": {
+          "kind": "Spell",
+          "effect": {
+           "type": "Fight",
+           "target": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature"
+            ],
+            "controller": "Opponent",
+            "properties": []
+           },
+           "subject": {
+            "type": "SelfRef"
+           }
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "multi_target": {
+           "min": 0,
+           "max": {
+            "type": "Fixed",
+            "value": 1
+           }
+          },
+          "forward_result": false
+         },
+         "valid_card": {
+          "type": "SelfRef"
+         },
+         "origin": null,
+         "destination": null,
+         "trigger_zones": [
+          "Battlefield"
+         ],
+         "phase": null,
+         "optional": false,
+         "damage_kind": "Any",
+         "secondary": false,
+         "valid_target": null,
+         "valid_source": null,
+         "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+         "constraint": null,
+         "condition": null,
+         "batched": false
+        }
+       }
+      ],
+      "trigger_source_context": {
+       "identity": {
+        "reference": {
+         "object_id": 21,
+         "incarnation": 2
+        },
+        "expected_zone": "Stack"
+       },
+       "lki": {
+        "name": "Apex Altisaur",
+        "power": 10,
+        "toughness": 10,
+        "base_power": 10,
+        "base_toughness": 10,
+        "mana_value": 9,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Dinosaur"
+        ],
+        "supertypes": [],
+        "keywords": [],
+        "colors": [
+         "Green"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 21,
+       "printed_ref": {
+        "oracle_id": "fc467fe5-85ab-4c95-8d21-49096778b107",
+        "face_name": "Apex Altisaur"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "ChangesZone",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": "Battlefield",
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "When ~ enters, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        },
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 1
+          }
+         },
+         "definition": {
+          "mode": "DamageReceived",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 0,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "red": 2,
+        "green": 7
+       },
+       "mana_spent_to_cast_amount": 9,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 10,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 55,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 11,
+         "lki": {
+          "name": "Mountain",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Mountain"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 54,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 22,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 52,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 25,
+         "lki": {
+          "name": "Mountain",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Mountain"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 33,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 23,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "power": 10,
+      "toughness": 10,
+      "base_power": 10,
+      "base_toughness": 10,
+      "colors": [
+       "Green"
+      ],
+      "mana_value": 9,
+      "controller": 0,
+      "owner": 0,
+      "from_zone": "Stack",
+      "cast_from_zone": "Hand",
+      "played_from_zone": null,
+      "to_zone": "Battlefield",
+      "attachments": [],
+      "linked_exile_snapshot": [],
+      "is_token": false,
+      "combat_status": {
+       "attacking": false,
+       "blocking": false,
+       "blocked": false,
+       "attacking_alone": false,
+       "blocking_alone": false,
+       "defending_player": null
+      },
+      "co_departed": [],
+      "entered_incarnation": 3,
+      "attached_to": null,
+      "turn_zone_change_index": 3,
+      "recorded_turn_number": 17,
+      "is_suspected": false
+     }
+    }
+   },
+   "trigger_events": [
+    {
+     "type": "ZoneChanged",
+     "data": {
+      "object_id": 21,
+      "from": "Stack",
+      "to": "Battlefield",
+      "record": {
+       "object_id": 21,
+       "name": "Apex Altisaur",
+       "core_types": [
+        "Creature"
+       ],
+       "subtypes": [
+        "Dinosaur"
+       ],
+       "supertypes": [],
+       "keywords": [],
+       "trigger_definitions": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "ChangesZone",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": "Battlefield",
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "When ~ enters, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        },
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 1
+          }
+         },
+         "definition": {
+          "mode": "DamageReceived",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "trigger_source_context": {
+        "identity": {
+         "reference": {
+          "object_id": 21,
+          "incarnation": 2
+         },
+         "expected_zone": "Stack"
+        },
+        "lki": {
+         "name": "Apex Altisaur",
+         "power": 10,
+         "toughness": 10,
+         "base_power": 10,
+         "base_toughness": 10,
+         "mana_value": 9,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Dinosaur"
+         ],
+         "supertypes": [],
+         "keywords": [],
+         "colors": [
+          "Green"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": false,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 21,
+        "printed_ref": {
+         "oracle_id": "fc467fe5-85ab-4c95-8d21-49096778b107",
+         "face_name": "Apex Altisaur"
+        },
+        "is_token": false,
+        "face_down": false,
+        "transformed": false,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "ChangesZone",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Fight",
+             "target": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "Opponent",
+              "properties": []
+             },
+             "subject": {
+              "type": "SelfRef"
+             }
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "multi_target": {
+             "min": 0,
+             "max": {
+              "type": "Fixed",
+              "value": 1
+             }
+            },
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": "Battlefield",
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "When ~ enters, it fights up to one target creature you don't control.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         },
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 1
+           }
+          },
+          "definition": {
+           "mode": "DamageReceived",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Fight",
+             "target": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "Opponent",
+              "properties": []
+             },
+             "subject": {
+              "type": "SelfRef"
+             }
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "multi_target": {
+             "min": 0,
+             "max": {
+              "type": "Fixed",
+              "value": 1
+             }
+            },
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 0,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": true,
+        "colors_spent_to_cast": {
+         "red": 2,
+         "green": 7
+        },
+        "mana_spent_to_cast_amount": 9,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 10,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 55,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 11,
+          "lki": {
+           "name": "Mountain",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Mountain"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 54,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 22,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 52,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 25,
+          "lki": {
+           "name": "Mountain",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Mountain"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 33,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 23,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "power": 10,
+       "toughness": 10,
+       "base_power": 10,
+       "base_toughness": 10,
+       "colors": [
+        "Green"
+       ],
+       "mana_value": 9,
+       "controller": 0,
+       "owner": 0,
+       "from_zone": "Stack",
+       "cast_from_zone": "Hand",
+       "played_from_zone": null,
+       "to_zone": "Battlefield",
+       "attachments": [],
+       "linked_exile_snapshot": [],
+       "is_token": false,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "co_departed": [],
+       "entered_incarnation": 3,
+       "attached_to": null,
+       "turn_zone_change_index": 3,
+       "recorded_turn_number": 17,
+       "is_suspected": false
+      }
+     }
+    }
+   ],
+   "target_slots": [
+    {
+     "legal_targets": [
+      {
+       "Object": 69
+      },
+      {
+       "Object": 102
+      }
+     ],
+     "optional": false,
+     "effect_kind": "Fight",
+     "effect_detail": {
+      "type": "None"
+     }
+    }
+   ],
+   "selection": {
+    "current_slot": 0,
+    "current_legal_targets": [
+     {
+      "Object": 69
+     },
+     {
+      "Object": 102
+     }
+    ]
+   },
+   "source_id": 21,
+   "description": "When ~ enters, it fights up to one target creature you don't control."
+  }
+ },
+ "viewer_interaction": {
+  "waitingForKind": {
+   "simultaneous": null,
+   "terminal": false,
+   "code": "sequence"
+  },
+  "authorizedSubmitters": [
+   0
+  ],
+  "canSubmit": true,
+  "autoPassRecommended": false,
+  "opportunities": [
+   {
+    "interactionId": "4LQ5KT.0.262",
+    "response": {
+     "type": "schema",
+     "data": {
+      "spec": {
+       "type": "sequence",
+       "data": {
+        "min": 1,
+        "max": 1,
+        "unique": true,
+        "includeAll": false,
+        "engineValidated": false,
+        "escape": null,
+        "confirm": "explicit"
+       }
+      },
+      "candidates": [
+       {
+        "id": "4LQ5KT.0.262.t0",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "object",
+          "data": {
+           "role": "candidate",
+           "index": null,
+           "reference": "69",
+           "name": "Grizzly Bears",
+           "zone": "battlefield",
+           "controller": 1,
+           "power": 2,
+           "tapped": false
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       },
+       {
+        "id": "4LQ5KT.0.262.t1",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "object",
+          "data": {
+           "role": "candidate",
+           "index": null,
+           "reference": "102",
+           "name": "Grizzly Bears",
+           "zone": "battlefield",
+           "controller": 1,
+           "power": 2,
+           "tapped": false
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       }
+      ]
+     }
+    },
+    "surfaces": [
+     {
+      "type": "summary",
+      "data": {
+       "code": "decision"
+      }
+     },
+     {
+      "type": "selection",
+      "data": {
+       "intent": "fight",
+       "constraint": {
+        "type": "count",
+        "data": {
+         "min": 1,
+         "max": 1
+        }
+       },
+       "confirm": "explicit"
+      }
+     }
+    ],
+    "progress": {
+     "selected": 0,
+     "minimum": 1,
+     "maximum": 1,
+     "aggregate": null,
+     "confirmable": false
+    }
+   }
+  ],
+  "attachmentFans": {},
+  "attachmentViews": {},
+  "availability": {
+   "type": "inputRequired"
+  }
+ },
+ "legal_actions": [
+  {
+   "type": "ChooseTarget",
+   "data": {
+    "target": {
+     "Object": 69
+    }
+   }
+  },
+  {
+   "type": "ChooseTarget",
+   "data": {
+    "target": {
+     "Object": 102
+    }
+   }
+  }
+ ],
+ "legal_actions_by_object": null,
+ "stack": [
+  {
+   "id": 121,
+   "source_id": 21,
+   "controller": 0,
+   "kind": {
+    "type": "TriggeredAbility",
+    "data": {
+     "source_id": 21,
+     "ability": {
+      "effect": {
+       "type": "Fight",
+       "target": {
+        "type": "Typed",
+        "type_filters": [
+         "Creature"
+        ],
+        "controller": "Opponent",
+        "properties": []
+       },
+       "subject": {
+        "type": "SelfRef"
+       }
+      },
+      "targets": [],
+      "source_id": 21,
+      "source_incarnation": 3,
+      "trigger_source": {
+       "identity": {
+        "reference": {
+         "object_id": 21,
+         "incarnation": 3
+        },
+        "expected_zone": "Battlefield"
+       },
+       "lki": {
+        "name": "Apex Altisaur",
+        "power": 10,
+        "toughness": 10,
+        "base_power": 10,
+        "base_toughness": 10,
+        "mana_value": 9,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Dinosaur"
+        ],
+        "supertypes": [],
+        "keywords": [],
+        "colors": [
+         "Green"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 21,
+       "printed_ref": {
+        "oracle_id": "fc467fe5-85ab-4c95-8d21-49096778b107",
+        "face_name": "Apex Altisaur"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "ChangesZone",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": "Battlefield",
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "When ~ enters, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        },
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 1
+          }
+         },
+         "definition": {
+          "mode": "DamageReceived",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Fight",
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "Opponent",
+             "properties": []
+            },
+            "subject": {
+             "type": "SelfRef"
+            }
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 20,
+       "entered_battlefield_turn": 17,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "red": 2,
+        "green": 7
+       },
+       "mana_spent_to_cast_amount": 9,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 10,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 55,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 11,
+         "lki": {
+          "name": "Mountain",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Mountain"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 54,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 22,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 52,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 25,
+         "lki": {
+          "name": "Mountain",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Mountain"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 33,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 23,
+         "lki": {
+          "name": "Forest",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Forest"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "trigger_definition_ref": {
+       "source": {
+        "object_id": 21,
+        "incarnation": 3
+       },
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 1,
+         "printed_index": 0
+        }
+       }
+      },
+      "controller": 0,
+      "original_controller": 0,
+      "kind": "Spell",
+      "sub_ability": null,
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "cast_from_zone": "Hand"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "multi_target": {
+       "min": 0,
+       "max": {
+        "type": "Fixed",
+        "value": 1
+       }
+      },
+      "description": "When ~ enters, it fights up to one target creature you don't control.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false,
+      "ability_index": 0,
+      "may_trigger_origin": {
+       "type": "Definition",
+       "definition_ref": {
+        "source": {
+         "object_id": 21,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        }
+       }
+      }
+     },
+     "condition": null,
+     "trigger_event": {
+      "type": "ZoneChanged",
+      "data": {
+       "object_id": 21,
+       "from": "Stack",
+       "to": "Battlefield",
+       "record": {
+        "object_id": 21,
+        "name": "Apex Altisaur",
+        "core_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Dinosaur"
+        ],
+        "supertypes": [],
+        "keywords": [],
+        "trigger_definitions": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "ChangesZone",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Fight",
+             "target": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "Opponent",
+              "properties": []
+             },
+             "subject": {
+              "type": "SelfRef"
+             }
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "multi_target": {
+             "min": 0,
+             "max": {
+              "type": "Fixed",
+              "value": 1
+             }
+            },
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": "Battlefield",
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "When ~ enters, it fights up to one target creature you don't control.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         },
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 1
+           }
+          },
+          "definition": {
+           "mode": "DamageReceived",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Fight",
+             "target": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "Opponent",
+              "properties": []
+             },
+             "subject": {
+              "type": "SelfRef"
+             }
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "multi_target": {
+             "min": 0,
+             "max": {
+              "type": "Fixed",
+              "value": 1
+             }
+            },
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "trigger_source_context": {
+         "identity": {
+          "reference": {
+           "object_id": 21,
+           "incarnation": 2
+          },
+          "expected_zone": "Stack"
+         },
+         "lki": {
+          "name": "Apex Altisaur",
+          "power": 10,
+          "toughness": 10,
+          "base_power": 10,
+          "base_toughness": 10,
+          "mana_value": 9,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Creature"
+          ],
+          "subtypes": [
+           "Dinosaur"
+          ],
+          "supertypes": [],
+          "keywords": [],
+          "colors": [
+           "Green"
+          ],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": false,
+          "is_suspected": false,
+          "attachments": []
+         },
+         "card_id": 21,
+         "printed_ref": {
+          "oracle_id": "fc467fe5-85ab-4c95-8d21-49096778b107",
+          "face_name": "Apex Altisaur"
+         },
+         "is_token": false,
+         "face_down": false,
+         "transformed": false,
+         "is_renowned": false,
+         "is_saddled": false,
+         "trigger_entries": [
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 0
+            }
+           },
+           "definition": {
+            "mode": "ChangesZone",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Fight",
+              "target": {
+               "type": "Typed",
+               "type_filters": [
+                "Creature"
+               ],
+               "controller": "Opponent",
+               "properties": []
+              },
+              "subject": {
+               "type": "SelfRef"
+              }
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "multi_target": {
+              "min": 0,
+              "max": {
+               "type": "Fixed",
+               "value": 1
+              }
+             },
+             "forward_result": false
+            },
+            "valid_card": {
+             "type": "SelfRef"
+            },
+            "origin": null,
+            "destination": "Battlefield",
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": null,
+            "description": "When ~ enters, it fights up to one target creature you don't control.",
+            "constraint": null,
+            "condition": null,
+            "batched": false
+           }
+          },
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 1
+            }
+           },
+           "definition": {
+            "mode": "DamageReceived",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Fight",
+              "target": {
+               "type": "Typed",
+               "type_filters": [
+                "Creature"
+               ],
+               "controller": "Opponent",
+               "properties": []
+              },
+              "subject": {
+               "type": "SelfRef"
+              }
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "multi_target": {
+              "min": 0,
+              "max": {
+               "type": "Fixed",
+               "value": 1
+              }
+             },
+             "forward_result": false
+            },
+            "valid_card": {
+             "type": "SelfRef"
+            },
+            "origin": null,
+            "destination": null,
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": null,
+            "description": "Whenever ~ is dealt damage, it fights up to one target creature you don't control.",
+            "constraint": null,
+            "condition": null,
+            "batched": false
+           }
+          }
+         ],
+         "timestamp": 0,
+         "combat_status": {
+          "attacking": false,
+          "blocking": false,
+          "blocked": false,
+          "attacking_alone": false,
+          "blocking_alone": false,
+          "defending_player": null
+         },
+         "cast_from_zone": "Hand",
+         "cast_controller": 0,
+         "phase_status": {
+          "status": "PhasedIn"
+         },
+         "mana_spent_to_cast": true,
+         "colors_spent_to_cast": {
+          "red": 2,
+          "green": 7
+         },
+         "mana_spent_to_cast_amount": 9,
+         "mana_spent_source_snapshots": [
+          {
+           "source_id": 10,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 55,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 11,
+           "lki": {
+            "name": "Mountain",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Mountain"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 54,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 22,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 52,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 25,
+           "lki": {
+            "name": "Mountain",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Mountain"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 33,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 23,
+           "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Forest"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          }
+         ]
+        },
+        "power": 10,
+        "toughness": 10,
+        "base_power": 10,
+        "base_toughness": 10,
+        "colors": [
+         "Green"
+        ],
+        "mana_value": 9,
+        "controller": 0,
+        "owner": 0,
+        "from_zone": "Stack",
+        "cast_from_zone": "Hand",
+        "played_from_zone": null,
+        "to_zone": "Battlefield",
+        "attachments": [],
+        "linked_exile_snapshot": [],
+        "is_token": false,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "co_departed": [],
+        "entered_incarnation": 3,
+        "attached_to": null,
+        "turn_zone_change_index": 3,
+        "recorded_turn_number": 17,
+        "is_suspected": false
+       }
+      }
+     },
+     "description": "When ~ enters, it fights up to one target creature you don't control.",
+     "source_name": "Apex Altisaur"
+    }
+   }
+  }
+ ]
+}
