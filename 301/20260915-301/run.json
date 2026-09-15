@@ -1,0 +1,69 @@
+{
+ "issue": 301,
+ "run_id": "20260915-301",
+ "started_at": "2026-09-15T14:19:27",
+ "duration_s": 111.8,
+ "server_identity": {
+  "validated_version": "v0.83.0",
+  "build_commit": "b7a59d4",
+  "protocol_version": 70,
+  "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+  "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+  "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 70,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "37eedda8528273ee41a6f34205a0c0b6f2b1ec793075cf97a2baf30447649b44",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Chaos Wand",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    59
+   ],
+   [
+    "Lightning Bolt",
+    1
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_paid": "passed",
+  "A3_exile_observed": "passed",
+  "A4_accept_target_pending": "passed",
+  "A5_exile_returned_early": "passed",
+  "A6_advertised_target_rejected": "passed",
+  "A7_no_damage_no_cast": "passed",
+  "A8_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] activation ok=True; wand tapped=True untapped islands 13->9",
+  "[accept] P1 library 37->30; bolt zone=Exile",
+  "[accept] pre-target: P1 lib=37 (pre-exile 37); bolt zone=Library in-library-membership=True",
+  "[accept] rejection={\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}}; still_pending=True",
+  "[accept] post: life=20/20 bolt zone=missing",
+  "[decline] activation ok=True; wand tapped=True untapped islands 12->8",
+  "[decline] P1 library 42->7; bolt zone=Exile",
+  "[decline] decline: visible bolts=[] life=20/20 waiting={\"type\": \"Priority\", \"data\": {\"player\": 0}}",
+  "protocol-70 driver (v0.83.0): mulligan answered via advertised MulliganDecision action as-is (data.decision='keep', gated on waiting_for.data.pending[]); activation via advertised ActivateAbility action (source_id/ability_index); optional-cast accept/decline from viewer_interaction exactChoices surfaces role/value; target submission per the advertised response schema."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 56x Island + 4x Chaos Wand; P1: 59x Island + 1x Lightning Bolt (draw-go)",
+ "contract_line": "Accept: free Bolt cast must finish targeting/resolve for 3 dmg; Decline: no cast, cards to bottom"
+}
