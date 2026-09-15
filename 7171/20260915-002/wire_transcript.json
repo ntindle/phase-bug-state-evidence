@@ -1,0 +1,58 @@
+[
+  {
+    "dir": "recv",
+    "summary": {
+      "build_commit": "b7a59d4",
+      "lobby_protocol_version": 8,
+      "mode": "Full",
+      "protocol_version": 70,
+      "server_version": "0.83.0",
+      "wire_formats": [
+        "GzipEnvelopeV1"
+      ]
+    },
+    "type": "ServerHello"
+  },
+  {
+    "dir": "send",
+    "type": "ClientHello"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"display_name\": \"backfill-7171\", \"source\": {\"type\": \"Uniform\", \"data\": {\"set_codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}, \"kind\": \"Sealed\", \"public\": false, \"password\": null, \"timer_seconds\": null, \"tournament_format\": \"Swiss\", \"pod_policy\": \"Casual\", \"pod_size\": 8}",
+    "type": "CreateDraftWithSettings"
+  },
+  {
+    "dir": "recv",
+    "summary": {
+      "draft_code": "RQVEPN",
+      "seat_index": 0
+    },
+    "type": "DraftCreated"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"RQVEPN\", \"action\": {\"type\": \"StartDraft\"}}",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"RQVEPN\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Swiftwater Cliffs\", \"Excavation Mole\", \"Greater Sandwurm\", \"Fully Grown\", \"Rumbling Rockslide\", \"Fire Prophecy\", \"Essence Symbiote\", \"Raking Claws\", \"Dreamtail Heron\", \"Crystacean\", \"Farfinder\", \"Ketria Triome\", \"Mystic Subdual\", \"Charge of the Forever-Beast\", \"Sprite Dragon\", \"Swamp\", \"Go for Blood\", \"Pat",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\": \"Direct\", \"pool\": [{\"instance_id\": \"IKO-0-0-0\", \"name\": \"Swiftwater Cliffs\", \"set_code\": \"IKO\", \"collector_number\": \"255\", \"rari",
+    "type": "DraftStateUpdate"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"RQVEPN\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Swiftwater Cliffs\", \"Excavation Mole\", \"Greater Sandwurm\", \"Fully Grown\", \"Rumbling Rockslide\", \"Fire Prophecy\", \"Essence Symbiote\", \"Raking Claws\", \"Dreamtail Heron\", \"Crystacean\", \"Farfinder\", \"Ketria Triome\", \"Mystic Subdual\", \"Charge of the Forever-Beast\", \"Sprite Dragon\", \"Swamp\", \"Go for Blood\", \"Pat",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\": \"Direct\", \"pool\": [{\"instanc",
+    "type": "DraftStateUpdate"
+  }
+]
