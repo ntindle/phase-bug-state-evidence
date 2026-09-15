@@ -1,0 +1,32 @@
+game BQGHXD; P0 seat=0 P1 seat=1 RUN_ID=20260915-845
+[P1] keeps (lands=7, bearer=False)
+[P0] keeps (lands=6, bearer=True)
+[P0] cast Bearer (turn 4)
+[P0] Bearer <redacted> (oid 47); stage -> UPKEEP_WAIT
+exported PRE
+UPKEEP entered (turn 6); pre exported; life_before=20, tokens_before=[]
+TRIGGER SIGHTING: Bearer upkeep trigger on stack (turn 6, phase Upkeep)
+exported MID_TRIGGER_PENDING
+exported POST
+trigger resolved; post exported; DONE
+loaded pre.json
+loaded mid_trigger_pending.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_trigger_fired: passed
+A4_life_lost: passed
+A5_token_created: passed
+A6_no_duplicates: passed
+A7_cleanup: passed
+note: A1_parse: passed (exactly one trigger, Upkeep LoseLife->Token, not optional)
+note: A2: Bearer <redacted> P0's BF in pre.json=True
+note: A3: passed (Bearer upkeep trigger on stack; sightings=1, triggers_fired delta=0)
+note: A4: P0 life 20 -> 19 (expected 19)
+note: A5: Faerie tokens on P0 BF pre=[] post=[122]; 1/1 blue+black=True
+note: A6: passed (exactly one trigger cycle)
+note: A7: post stack empty=True
+VERDICT: not-reproduced
+wrote run.json
+copied server.log from runs/20260915-845/
+wrote summary.png

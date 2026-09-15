@@ -1,0 +1,69 @@
+{
+ "issue": 845,
+ "run_id": "20260915-845",
+ "title": "Bitterbloom Bearer <redacted> not trigger on beginning of upkeep",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest",
+  "observed_at": "2026-09-15",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run's session under runs/20260915-845/; ServerHello re-checked by this run."
+ },
+ "scope": "Bitterbloom Bearer upkeep trigger ('At the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black Faerie creature token with flying'): card-data parse + runtime trigger/stack/resolution assertions on P0's upkeep; native engine, two human-client seats, P1 fully passive",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_trigger_fired": "passed",
+  "A4_life_lost": "passed",
+  "A5_token_created": "passed",
+  "A6_no_duplicates": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (exactly one trigger, Upkeep LoseLife->Token, not optional)",
+  "A2: Bearer <redacted> P0's BF in pre.json=True",
+  "A3: passed (Bearer upkeep trigger on stack; sightings=1, triggers_fired delta=0)",
+  "A4: P0 life 20 -> 19 (expected 19)",
+  "A5: Faerie tokens on P0 BF pre=[] post=[122]; 1/1 blue+black=True",
+  "A6: passed (exactly one trigger cycle)",
+  "A7: post stack empty=True"
+ ],
+ "driver_state": {
+  "bearer_oid": 47,
+  "bearer_cast_turn": 4,
+  "upkeep_turn": 6,
+  "trigger_sightings": [
+   {
+    "id": 121,
+    "turn": 6,
+    "phase": "Upkeep"
+   }
+  ],
+  "triggers_fired_at_pre": [],
+  "triggers_fired_at_post": [],
+  "life_before": 20,
+  "life_after": 19,
+  "tokens_before": [],
+  "tokens_after": [
+   122
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (12x Bitterbloom Bearer) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (lands, passes; no attacks or blocks)."
+ ],
+ "evidence_dir": "845/20260915-845",
+ "server_run_note": "isolated v0.84.0 server on 127.0.0.1:9374 started by this run's session (games.db + server.log in runs/20260915-845/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 85.6
+}
