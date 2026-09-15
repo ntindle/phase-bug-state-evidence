@@ -1,0 +1,70 @@
+{
+  "name": "Adorable Kitten",
+  "oracle_text": "When this creature enters, roll a six-sided die. You gain life equal to the result.",
+  "triggers": [
+    {
+      "mode": "ChangesZone",
+      "execute": {
+        "kind": "Spell",
+        "effect": {
+          "type": "RollDie",
+          "count": {
+            "type": "Fixed",
+            "value": 1
+          },
+          "sides": 6,
+          "results": []
+        },
+        "cost": null,
+        "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+            "type": "GainLife",
+            "amount": {
+              "type": "Ref",
+              "qty": {
+                "type": "EventContextAmount"
+              }
+            }
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+      },
+      "valid_card": {
+        "type": "SelfRef"
+      },
+      "origin": null,
+      "destination": "Battlefield",
+      "trigger_zones": [
+        "Battlefield"
+      ],
+      "phase": null,
+      "optional": false,
+      "damage_kind": "Any",
+      "secondary": false,
+      "valid_target": null,
+      "valid_source": null,
+      "description": "When ~ enters, roll a six-sided die. You gain life equal to the result.",
+      "constraint": null,
+      "condition": null,
+      "batched": false
+    }
+  ],
+  "abilities": []
+}
