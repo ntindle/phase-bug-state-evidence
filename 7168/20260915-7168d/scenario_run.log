@@ -1,0 +1,47 @@
+server identity pinned: v0.83.0 (b7a59d4) protocol 70, mode Full
+game 9TJQFS; P0 seat=0 P1 seat=1
+[P0] mulligan: 4 lands -> keep
+[P1] mulligan: 4 lands -> keep
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 stage=SETUP ivy=None bear=None bolt_cast=False copy_acc=False two_bolts=False P0hand=['forest', 'ivy, gleeful spellthief', 'forest', 'grizzly bears', 'forest'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land forest
+[P1] playing land mountain
+[P0] playing land island
+[P0] casting ivy, gleeful spellthief (oid=24)
+[P0] casting ivy, gleeful spellthief (oid=24)
+[P0] casting grizzly bears (oid=54)
+Ivy on BF oid=24
+Bear on BF oid=54
+[P1] playing land mountain
+exported pre.json
+[P1] casting lightning bolt (oid=75)
+[P1] test Bolt cast; awaiting target selection
+[P1] Bolt target: Bear oid=54 (choice 9TJQFS.0.245.t3)
+Ivy trigger on stack: None
+[P0] Ivy copy decision: ACCEPT (wf=OptionalEffectChoice)
+[P0] submitting interaction iid=9TJQFS.0.248 choice=9TJQFS.0.248.c1 (true)
+COPY DETECTED: new stack entry id=122 kind=Spell targets=null
+exported mid.json
+exported post.json
+RESOLVED: ivy_alive=True bear_zone=Graveyard
+A4: copy entry targets ints include ivy(24)=False; bear(54)=False
+A6: post ivy_alive=True bear_zone=Graveyard
+FINAL verdict=reproduced assertions={'A1_setup_ok': 'passed', 'A2_trigger_offered': 'passed', 'A3_copy_created': 'passed', 'A4_copy_targets_ivy': 'failed', 'A5_no_retarget_prompt': 'passed', 'A6_outcome': 'passed', 'A7_cleanup': 'failed'}
+A4: copy entry targets ints include ivy(24)=False; bear(54)=False
+A6: post ivy_alive=True bear_zone=Graveyard
+wrote run.json verdict=reproduced
+wrote summary.png
+copied scenario_7168.py into EVDIR
+wrote manifest.sha256 (9 files)
+DONE issue=7168 run=20260915-7168d verdict=reproduced
