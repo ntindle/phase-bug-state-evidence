@@ -1,0 +1,195 @@
+{
+  "issue": 7177,
+  "run_id": "20260915-7177",
+  "verdict": "reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_rolls_valid": "passed",
+    "A3_low_clean": "passed",
+    "A4_mid_robot": "passed",
+    "A5_six_treasure": "failed",
+    "A6_cleanup": "passed"
+  },
+  "server_identity": {
+    "validated_version": "v0.83.0",
+    "build_commit": "b7a59d4",
+    "protocol_version": 70,
+    "server_binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
+    "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
+    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
+    "signature_verified": true,
+    "server_run_id": "20260915-7173-server"
+  },
+  "fixture": {
+    "house_oid": 44,
+    "n_rolls": 20,
+    "rolls": [
+      {
+        "turn": 23,
+        "kitten_oid": 7,
+        "result": 3,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 25,
+        "kitten_oid": 2,
+        "result": 1,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 27,
+        "kitten_oid": 9,
+        "result": 5,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 27,
+        "kitten_oid": 17,
+        "result": 4,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 29,
+        "kitten_oid": 19,
+        "result": 1,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 31,
+        "kitten_oid": 25,
+        "result": 6,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 33,
+        "kitten_oid": 14,
+        "result": 5,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 35,
+        "kitten_oid": 36,
+        "result": 3,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 37,
+        "kitten_oid": 42,
+        "result": 1,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 37,
+        "kitten_oid": 43,
+        "result": 5,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 39,
+        "kitten_oid": 45,
+        "result": 2,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 43,
+        "kitten_oid": 24,
+        "result": 5,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 45,
+        "kitten_oid": 23,
+        "result": 5,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 57,
+        "kitten_oid": 53,
+        "result": 6,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 63,
+        "kitten_oid": 18,
+        "result": 1,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 71,
+        "kitten_oid": 1,
+        "result": 1,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 73,
+        "kitten_oid": 11,
+        "result": 4,
+        "robots_delta": 1,
+        "treasures_delta": 0,
+        "house_trigger_seen": true
+      },
+      {
+        "turn": 75,
+        "kitten_oid": 52,
+        "result": 3,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 77,
+        "kitten_oid": 39,
+        "result": 3,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      },
+      {
+        "turn": 79,
+        "kitten_oid": 12,
+        "result": 2,
+        "robots_delta": 0,
+        "treasures_delta": 0,
+        "house_trigger_seen": false
+      }
+    ]
+  },
+  "notes": [
+    "pre: turn 23 house_oid=44 life=20/20",
+    "post: turn 79 rolls=20 life=86/20 robots=9 treasures=0",
+    "final stage=ROLLING n_rolls=20 pending=no"
+  ],
+  "finished_at": "2026-09-15T13:57:50Z"
+}
