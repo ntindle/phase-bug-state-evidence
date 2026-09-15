@@ -1,0 +1,93 @@
+{
+ "issue": 7174,
+ "run_id": "run-20260915-7174b",
+ "title": "Landfall triggering 2x on Bristly Bill, Spine Sower for (only) cracking fetch land",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest",
+  "observed_at": "2026-09-15",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run's session under runs/run-20260915-7174b/ (started with --single-user); ServerHello re-checked by this run and reported mode Full."
+ },
+ "scope": "Bill landfall trigger count for (a) playing two fetch lands from hand [control legs] and (b) cracking each fetch: once fetching Zagoth Triome (the reporter's primary case), once fetching a basic Forest [reported bug]; native engine, two human-client seats, P1 fully passive",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_ctrl1": "passed",
+  "A3b_ctrl2": "passed",
+  "A4_triome": "passed",
+  "A5_forest": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)",
+  "A2: Bill on P0 BF in pre.json=True, ctrl1 resolved=True, ctrl2 resolved=True",
+  "A3_ctrl1: playing Foothills#1 counter delta=1 (expected 1)",
+  "A3b_ctrl2: playing Foothills#2 counter delta=1 (expected 1)",
+  "A4_triome: cracking Foothills#1 (Zagoth Triome entering) counter delta=1 (expected 1; 2 = the reported double-trigger); search_choice=QNGEVO.0.123.s10",
+  "A5_forest: cracking Foothills#2 (Forest entering) counter delta=1 (expected 1; 2 = the reported double-trigger); search_choice=QNGEVO.0.129.s0",
+  "A6: post stack empty=True"
+ ],
+ "driver_state": {
+  "bill_oid": 24,
+  "bill_cast_turn": 4,
+  "ctrl1_oid": 3,
+  "ctrl2_oid": 10,
+  "c_before_ctrl1": 0,
+  "c_after_ctrl1": 1,
+  "c_before_ctrl2": 1,
+  "c_after_ctrl2": 2,
+  "c_before_f1": 2,
+  "c_after_f1": 3,
+  "c_before_f2": 3,
+  "c_after_f2": 4,
+  "search_choice1": "QNGEVO.0.123.s10",
+  "search_choice2": "QNGEVO.0.129.s0",
+  "last_target_oid": null,
+  "trigger_sightings": [
+   {
+    "id": 121,
+    "turn": 6,
+    "phase": "PreCombatMain",
+    "stage": "CTRL1_WAIT"
+   },
+   {
+    "id": 122,
+    "turn": 8,
+    "phase": "PreCombatMain",
+    "stage": "CTRL2_WAIT"
+   },
+   {
+    "id": 124,
+    "turn": 8,
+    "phase": "PreCombatMain",
+    "stage": "F1_TRIG"
+   },
+   {
+    "id": 126,
+    "turn": 8,
+    "phase": "PreCombatMain",
+    "stage": "F2_TRIG"
+   }
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (4x Bill, 8x Foothills) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (lands, passes; no attacks or blocks).",
+  "The reporter's UI-timing note (fetched-basic triggers surfacing only after Pass/combat with an untapped fetch target) is a display observation; this run counts engine-level trigger instances on the stack and final counter deltas."
+ ],
+ "evidence_dir": "7174/run-20260915-7174b",
+ "server_run_note": "isolated v0.84.0 server on 127.0.0.1:9374 started by this run's session (games.db + server.log in runs/run-20260915-7174b/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 132.8
+}

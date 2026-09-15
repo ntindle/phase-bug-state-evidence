@@ -1,0 +1,52 @@
+ServerHello: {'server_version': '0.84.0', 'build_commit': 'eb7e93e', 'protocol_version': 71, 'mode': 'Full'}
+bill oracle: Landfall — Whenever a land you control enters, put a +1/+1 counter on target creature. | {3}{G}{G}: Double the number of +1/+1 counters on each creature you control.
+foothills oracle: {T}, Pay 1 life, Sacrifice this land: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.
+A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)
+game QNGEVO; P0 seat=0 P1 seat=1 RUN_ID=run-20260915-7174b
+[P1] keeps (lands=7, bill=False)
+[P0] keeps (lands=6, bill=True)
+[P0] cast Bill (turn 4)
+[P0] Bill on BF (oid 24); stage -> CTRL1
+[P0] plays Foothills (oid 3, turn 6); bill counters before=0
+TRIGGER SIGHTING: Bill landfall on stack (stage CTRL1_WAIT, turn 6, phase PreCombatMain)
+ctrl1 trigger resolved: counters 0 -> 1
+[P0] plays Foothills (oid 10, turn 8); bill counters before=1
+TRIGGER SIGHTING: Bill landfall on stack (stage CTRL2_WAIT, turn 8, phase PreCombatMain)
+ctrl2 trigger resolved: counters 1 -> 2
+exported PRE
+[P0] activates Foothills#1 (turn 8); bill counters before=2
+[P0] search pick (leg 1): QNGEVO.0.123.s10
+[P0] submitting interaction iid=QNGEVO.0.123 choice=QNGEVO.0.123.s10 (QNGEVO.0.123.s10)
+TRIGGER SIGHTING: Bill landfall on stack (stage F1_TRIG, turn 8, phase PreCombatMain)
+exported MID1
+fetch1 trigger resolved: counters 2 -> 3
+[P0] activates Foothills#2 (turn 8); bill counters before=3
+[P0] search pick (leg 2): QNGEVO.0.129.s0
+[P0] submitting interaction iid=QNGEVO.0.129 choice=QNGEVO.0.129.s0 (QNGEVO.0.129.s0)
+TRIGGER SIGHTING: Bill landfall on stack (stage F2_TRIG, turn 8, phase PreCombatMain)
+exported MID2
+fetch2 trigger resolved: counters 3 -> 4
+all legs complete
+exported POST
+loaded pre.json
+loaded mid1.json
+loaded mid2.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_ctrl1: passed
+A3b_ctrl2: passed
+A4_triome: passed
+A5_forest: passed
+A6_cleanup: passed
+note: A1_parse: passed (Bill carries exactly one landfall trigger: ChangesZone->Battlefield, valid_card Land/You; Foothills carries the SearchLibrary fetch ability)
+note: A2: Bill on P0 BF in pre.json=True, ctrl1 resolved=True, ctrl2 resolved=True
+note: A3_ctrl1: playing Foothills#1 counter delta=1 (expected 1)
+note: A3b_ctrl2: playing Foothills#2 counter delta=1 (expected 1)
+note: A4_triome: cracking Foothills#1 (Zagoth Triome entering) counter delta=1 (expected 1; 2 = the reported double-trigger); search_choice=QNGEVO.0.123.s10
+note: A5_forest: cracking Foothills#2 (Forest entering) counter delta=1 (expected 1; 2 = the reported double-trigger); search_choice=QNGEVO.0.129.s0
+note: A6: post stack empty=True
+VERDICT: not-reproduced
+wrote run.json
+copied server.log from runs/run-20260915-7174b/
+wrote summary.png

@@ -1,0 +1,113 @@
+{
+ "oracle_text": "{T}, Pay 1 life, Sacrifice this land: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "SearchLibrary",
+    "filter": {
+     "type": "Or",
+     "filters": [
+      {
+       "type": "Typed",
+       "type_filters": [
+        "Land",
+        {
+         "Subtype": "Mountain"
+        }
+       ],
+       "controller": null,
+       "properties": []
+      },
+      {
+       "type": "Typed",
+       "type_filters": [
+        "Land",
+        {
+         "Subtype": "Forest"
+        }
+       ],
+       "controller": null,
+       "properties": []
+      }
+     ]
+    },
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "reveal": false
+   },
+   "cost": {
+    "type": "Composite",
+    "costs": [
+     {
+      "type": "Tap"
+     },
+     {
+      "type": "PayLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     {
+      "type": "Sacrifice",
+      "target": {
+       "type": "SelfRef"
+      },
+      "count": 1
+     }
+    ]
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Library",
+     "destination": "Battlefield",
+     "target": {
+      "type": "Any"
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Shuffle",
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": "{T}, Pay 1 life, Sacrifice ~: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}
