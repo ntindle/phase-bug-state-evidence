@@ -102,7 +102,7 @@ SERVER_IDENTITY = {
     "mode": "single-user",
     "binary_sha256": "33437c6c057c98bd4ce2a4c64e2d3e3e401c138099469c0a61d9145ae4fdb00f",
     "card_data_sha256": "569d35fe7169b2bb7d9a781478afdacffde423cbccf5926c51cb38db94466c85",
-    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c51cb38db94466c85",
+    "draft_pools_sha256": "6dd9c4950bec6c7da9d1205c64f47e564eb202b7369ac4449d6c708f0fb2ed16",
     "signature_verified": True,
     "observed_at": "2026-09-15",
     "source": "verified pin (minisign-verify of binary + signed data "
