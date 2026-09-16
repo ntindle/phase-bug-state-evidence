@@ -1,0 +1,31 @@
+game SR9C91; P0 seat=0 P1 seat=1
+P0 keeps (Krang, Utrom Warlord=2, lands=5)
+P1 mulligans #1 (Windborn Muse=0, lands=7)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0krang=0 P1muse=0 life0=20 life1=20 taxwaits=0 mode=pay
+P1 mulligans #2 (Windborn Muse=0, lands=7)
+P1 keeps (Windborn Muse=2, lands=5)
+P1 bottoms 2: ['plains', 'plains']
+P1 casts Windborn Muse
+P1 submits DeclareAttackers attacks=[]
+P1 submits DeclareAttackers attacks=[]
+P1 submits DeclareAttackers attacks=[]
+P1 submits DeclareAttackers attacks=[]
+P0 casts Krang, Utrom Warlord
+P0 DeclareAttackers vs Windborn Muse with attack-ready Krang (haste); exporting PRE
+P0 submits DeclareAttackers attacks=[]
+P0 holds attack: only 0 untapped Forests
+P1 submits DeclareAttackers attacks=[]
+P0 submits DeclareAttackers attacks=[1]
+P0 CombatTaxPayment wait (mode=pay): 2 actions: ['PayCombatTax'] vi_can_submit=False
+exported mid_tax.json
+P0 submits payCombatTax accept=True (pay) via interaction
+P1 declares no blockers
+switched to DECLINE mode
+P1 submits DeclareAttackers attacks=[]
+P0 submits DeclareAttackers attacks=[1]
+P0 CombatTaxPayment wait (mode=decline): 2 actions: ['PayCombatTax'] vi_can_submit=False
+P0 submits payCombatTax accept=False (decline) via interaction
+P0 submits DeclareAttackers attacks=[]
+P0 declares no attackers (decline test complete)
+exported POST
+post exported; finishing
