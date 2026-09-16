@@ -1,0 +1,324 @@
+{
+ "run_id": "20260915-7184f",
+ "issue": 7184,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "single-user",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-15; data digests match the signed manifest; digests recomputed against on-disk files this run; release v0.84.0 confirmed latest stable via GitHub releases API 2026-09-15",
+  "observed_at": "2026-09-15",
+  "handshake": "ServerHello observed pre-run: v0.84.0 / eb7e93e / protocol 71 / mode Full on 127.0.0.1:9374",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run under runs/20260915-7184/"
+ },
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "036f4568ecadd2fed233786056774fbf9d7ef67e6950e4ef9777232be257176f",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "rot-curse rakshasa",
+    8
+   ],
+   [
+    "plumb the forbidden",
+    12
+   ],
+   [
+    "swamp",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "walking corpse",
+    12
+   ],
+   [
+    "swamp",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sac_observed": "passed",
+  "A3_priority_pause": "passed",
+  "A4_response_cast": "passed",
+  "A5_post_state": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "sac_prompt_shapes": [
+   {
+    "wtype": "OptionalCostChoice",
+    "full_choices": "[{\"id\": \"YJ5YHK.0.79.c0\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"action\", \"data\": {\"code\": \"cancelCast\", \"actionId\": \"ab615c952d0f6bdb093dce9ec26fbb69edbbb980708253ddf0ded6bbabc7a28eb\"}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"YJ5YHK.0.79.c1\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"action\", \"data\": {\"code\": \"decideOptionalCost\", \"actionId\": \"afd45ec727396864f35e2127a372861e75744afd3b0c86008a561bd74e7df8f92\"}}, {\"type\": \"value\", \"data\": {\"role\": \"pay\", \"index\": null, \"value\": \"false\"}}], \"status\": {\"type\": \"available\"}}, {\"id\": \"YJ5YHK.0.79.c2\", \"surfaces\": [{\"type\": \"summary\", \"data\": {\"code\": \"candidate\"}}, {\"type\": \"action\", \"data\": {\"code\": \"decideOptionalCost\", \"actionId\": \"ab1316861f140305b8738b7fdd55b24bad31f3af4ed01e58bbfb1dc027a108488\"}}, {\"type\": \"value\", \"data\": {\"role\": \"pay\", \"index\": null, \"value\": \"true\"}}], \"status\": {\"type\": \"available\"}}]"
+   },
+   {
+    "wtype": "OptionalCostChoice",
+    "n_choices": 3,
+    "picked": "pay"
+   }
+  ]
+ },
+ "driver_state": {
+  "stage": "done",
+  "rak_oid": 18,
+  "rak_entered": 3,
+  "attacked": true,
+  "attack_turn": 5,
+  "trigger": {
+   "stack_id": 121,
+   "source_oid": 18,
+   "turn": 5,
+   "ability_text": ""
+  },
+  "pause_seen": true,
+  "pause_details": {
+   "turn": 5,
+   "phase": "DeclareAttackers",
+   "plumb_in_hand": [
+    16,
+    54
+   ],
+   "cast_advertised": true,
+   "stack_depth": 1
+  },
+  "plumb_cast": {
+   "turn": 5,
+   "trigger_on_stack_at_cast": true,
+   "object_oid": 16
+  },
+  "sac_choice": null,
+  "auto_sac": false,
+  "life_before_plumb": 20,
+  "wf_types_seen": [
+   "Priority",
+   "DeclareAttackers",
+   "OptionalCostChoice",
+   "DeclareBlockers"
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "exports": {
+   "pre_combat": true,
+   "trigger_stack": true,
+   "pause": true,
+   "post_response": true
+  },
+  "window_samples": 24,
+  "window_pause_samples": 1,
+  "window_head": [
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 1,
+    "plumb_hand_n": 0,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 1,
+    "plumb_hand_n": 2,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "OptionalCostChoice",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 2,
+    "plumb_hand_n": 0,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "OptionalCostChoice",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 2,
+    "plumb_hand_n": 2,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 2,
+    "plumb_hand_n": 0,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 2,
+    "plumb_hand_n": 1,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 1,
+    "rak_zone": "Battlefield",
+    "stack_n": 2,
+    "plumb_hand_n": 0,
+    "life0": 20
+   },
+   {
+    "turn": 5,
+    "phase": "DeclareAttackers",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 1,
+    "plumb_hand_n": 1,
+    "life0": 19
+   }
+  ],
+  "window_tail": [
+   {
+    "turn": 5,
+    "phase": "CombatDamage",
+    "wf": "Priority",
+    "pp": 1,
+    "rak_zone": "Battlefield",
+    "stack_n": 0,
+    "plumb_hand_n": 0,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "EndCombat",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Battlefield",
+    "stack_n": 1,
+    "plumb_hand_n": 1,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "EndCombat",
+    "wf": "Priority",
+    "pp": 1,
+    "rak_zone": "Battlefield",
+    "stack_n": 1,
+    "plumb_hand_n": 0,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "EndCombat",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Graveyard",
+    "stack_n": 0,
+    "plumb_hand_n": 1,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "EndCombat",
+    "wf": "Priority",
+    "pp": 1,
+    "rak_zone": "Graveyard",
+    "stack_n": 0,
+    "plumb_hand_n": 0,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "EndCombat",
+    "wf": "Priority",
+    "pp": 1,
+    "rak_zone": "Graveyard",
+    "stack_n": 0,
+    "plumb_hand_n": 1,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "PostCombatMain",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Graveyard",
+    "stack_n": 0,
+    "plumb_hand_n": 0,
+    "life0": 19
+   },
+   {
+    "turn": 5,
+    "phase": "PostCombatMain",
+    "wf": "Priority",
+    "pp": 0,
+    "rak_zone": "Graveyard",
+    "stack_n": 0,
+    "plumb_hand_n": 1,
+    "life0": 19
+   }
+  ]
+ },
+ "notes": [
+  "A1: rak_oid=18 attacked=True pre_combat_exported=True plumb_in_hand_at_attack=True",
+  "A2: decayed_trigger_seen=True (stack_id=121) auto_sac_flag=False rakshasa_zone_post=Graveyard",
+  "A3-corroboration: 1 window samples with P0 priority + Rakshasa on BF in post-damage phases; 2 samples with Rakshasa on BF in post-damage phases at all; 24 total samples",
+  "A3: pause_seen=True pause_exported=True details={\"turn\": 5, \"phase\": \"DeclareAttackers\", \"plumb_in_hand\": [16, 54], \"cast_advertised\": true, \"stack_depth\": 1} auto_sac_flag=False",
+  "A4: plumb_cast=True trigger_on_stack_at_cast=True sac_choice=None life_before=20 hand_before=5",
+  "A5: post_response present=True rakshasa_zone=Graveyard (expect Graveyard) stack_empty=True life_before=20 life_after=19 plumb_in_gy=[16]",
+  "verdict=not-reproduced: the decayed trigger paused for P0 priority with Plumb the Forbidden in hand; P0 cast Plumb in response to the trigger (its additional-cost sacrifice selection never appeared - see observations); the Rakshasa was then sacrificed by the decayed trigger at end of combat",
+  "verdict=not-reproduced"
+ ],
+ "evidence_files": [
+  "pre_combat.json",
+  "trigger_stack.json",
+  "pause.json",
+  "post_response.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7184.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Decayed is exercised through Rot-Curse Rakshasa, the only non-token Decayed card in the pinned card data; token-granted Decayed (e.g. Jadar tokens) not exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 is a passive second seat (lands, unblocked, no instants) - opponent interaction with the decayed trigger is not exercised."
+ ],
+ "duration_s": 22.3
+}
