@@ -1,0 +1,422 @@
+{
+ "issue": 5653,
+ "run_id": "20260916-5653",
+ "started_at": "2026-09-16T18:46:52",
+ "duration_s": 28.1,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "4544436711b6a2d3",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "ServerHello + sha256 re-verified against pinned v0.85.0 release artifacts (binary+data+sigs under server/releases/v0.85.0/, minisign signatures present and key id decoded from .minisig); fresh isolated server on 127.0.0.1:9374 (runs/run-20260916-134141) for run 20260916-5653"
+ },
+ "server_run_dir": "runs/run-20260916-134141",
+ "chains_parse": {
+  "event": "Draw",
+  "condition": "ExceptFirstDrawInDrawStep",
+  "scope": "IndividualDraw",
+  "valid_player": "AnyPlayer",
+  "mode": "Mandatory",
+  "chain": [
+   {
+    "effect": "Discard",
+    "count": 1,
+    "condition": null
+   },
+   {
+    "effect": "Draw",
+    "count": 1,
+    "condition": "EffectOutcome{signal: OptionalEffectPerformed}"
+   },
+   {
+    "effect": "Mill",
+    "count": 1,
+    "condition": "Not(EffectOutcome{signal: OptionalEffectPerformed})"
+   }
+  ],
+  "verified_from": "pinned v0.85.0 card-data.json replacements[0]"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "097d2b72123eeb99b10180db133ec7acdf8161ba4c2c6261535c79206177f66e",
+ "decks": {
+  "P0": [
+   [
+    "chains of mephistopheles",
+    8
+   ],
+   [
+    "blue sun's zenith",
+    8
+   ],
+   [
+    "island",
+    22
+   ],
+   [
+    "swamp",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_first_draw_untouched": "passed",
+  "A3_replacement_fires": "passed",
+  "A4_draw_branch_fires": "failed",
+  "A5_mill_exactly_once": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "P0 chose X=1 on the Zenith X-choice prompt (deterministic test policy)",
+  "pre.json: P0 main phase, Chains on BF, Zenith in hand, 5 untapped lands, P1 hand H=6, life 20/20",
+  "P1 hand at pre == 6 (expected 6 = 7 kept + 5 draws - 6 lands; P1 went first), gy empty: draw-step first draws never replaced",
+  "replacement fired: 1 discard(s), no normal draw (hand 6->5)",
+  "draw branch broken: only 1/6 discarded, hand 6->5 (predicted buggy parse: exactly 1 discard, draw never fires)",
+  "mill branch broken: mills=0 with hand_after=5 (predicted buggy parse: mill always fires, even with cards in hand)",
+  "post.json: stack empty, Zenith resolved (shuffled into P0 library per its text)",
+  "Oracle-mandated discard->draw / discard->mill branching is broken: result-referential conditions do not gate the Draw/Mill sub-actions",
+  "mid_resolution.json is byte-identical to post.json: after P1 answered the single DiscardChoice prompt, the engine completed the replacement in one step with no further prompts (neither the Draw nor the Mill branch fired), so no distinct mid-resolution state exists to capture. This is itself part of the symptom: the chain ends after the single unconditional discard."
+ ],
+ "observations": {
+  "chains_cast": true,
+  "chains_turn": 10,
+  "cast_submitted": true,
+  "cast_turn": 12,
+  "cast_phase": "PreCombatMain",
+  "x_chosen": 1,
+  "target_chosen": "P1",
+  "discard_events": [
+   {
+    "turn": 12,
+    "phase": "PreCombatMain",
+    "discarded": [
+     "island"
+    ],
+    "hand_before": 6
+   }
+  ],
+  "mill_events": [],
+  "draw_events_p1": [],
+  "interaction_shapes": [
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Swamp",
+     "Island",
+     "Island",
+     "Swamp",
+     "Swamp"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Swamp"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Swamp",
+     "Swamp",
+     "Swamp"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Swamp",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Swamp",
+     "Island"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Swamp",
+     "Swamp",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Swamp"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Swamp",
+     "Island"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Swamp",
+     "Swamp",
+     "Swamp",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Blue Sun's Zenith",
+     "Blue Sun's Zenith",
+     "Island",
+     "Swamp",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "spec": null,
+    "choices": [
+     "",
+     "Swamp",
+     "Swamp",
+     "Swamp",
+     "Swamp",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Chains of Mephistopheles",
+     "Blue Sun's Zenith",
+     "Blue Sun's Zenith",
+     "Chains of Mephistopheles"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "schema",
+    "spec": "sequence",
+    "choices": [
+     "",
+     ""
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "schema",
+    "spec": "number",
+    "choices": []
+   },
+   {
+    "who": "P1",
+    "rtype": "schema",
+    "spec": "select",
+    "choices": [
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island",
+     "Island"
+    ]
+   }
+  ],
+  "hand_trace": [
+   [
+    12,
+    6,
+    0,
+    48
+   ]
+  ],
+  "p1_turns": [
+   1,
+   3,
+   5,
+   7,
+   9,
+   11
+  ],
+  "pre_p1_gy": 0,
+  "p1_turns_at_pre": [
+   1,
+   3,
+   5,
+   7,
+   9,
+   11
+  ],
+  "resolution": {
+   "H": 6,
+   "discards": 1,
+   "discard_names": [
+    "island"
+   ],
+   "mills": 0,
+   "mill_names": [],
+   "hand_after": 5,
+   "lib_before": 48,
+   "lib_after": 48
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Chains / 8x Zenith deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Magus of the Chains carries the same Oracle text and parse class; only Chains of Mephistopheles was driven (same-class coverage).",
+  "The correct-behavior trace assumes each chained draw is itself a non-first draw subject to replacement (standard rules reading); the decisive observed facts are the discard/mill counts.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x chains of mephistopheles + 8x blue sun's zenith + 22x island + 22x swamp (mulligan to chains + 2 lands); P1: 60x island dummy",
+ "contract_line": "P0 casts Blue Sun's Zenith X=1 targeting P1 with Chains of Mephistopheles on the battlefield: the draw is replaced by discard-1; per Oracle, discarding must chain into another draw (until the hand is empty) and mill exactly once, only when no card was discarded"
+}
