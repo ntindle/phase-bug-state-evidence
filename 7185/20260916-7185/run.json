@@ -1,0 +1,146 @@
+{
+ "run_id": "20260916-7185",
+ "issue": 7185,
+ "verdict": "reproduced",
+ "validated_at": "2026-09-16",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "single-user",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-15; data digests match the signed manifest; digests recomputed against on-disk files this run (AGENTS.md: never copy SERVER_IDENTITY hashes); release v0.84.0 confirmed latest stable via GitHub releases API 2026-09-16",
+  "observed_at": "2026-09-16",
+  "handshake": "ServerHello observed pre-run: v0.84.0 / eb7e93e / protocol 71 / mode Full on 127.0.0.1:9374",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run under runs/20260916-7185/"
+ },
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0356a1de927d69cff2d9b4697dae07dcda9700f2fb4c05f5a099cf3dfe57e265",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "master biomancer",
+    8
+   ],
+   [
+    "grizzly bears",
+    8
+   ],
+   [
+    "forest",
+    22
+   ],
+   [
+    "island",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "swamp",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A0_parse_gap": "passed",
+  "A1_setup_ok": "passed",
+  "A2_counters": "failed",
+  "A4_cleanup": "passed",
+  "A3_mutant": "failed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "stage": "done",
+  "biomancer_oid": 31,
+  "biomancer_power": 2,
+  "bears_spell_oid": 6,
+  "bears_oid": 6,
+  "bears_cast_turn": 16,
+  "bears_mid_counters": 1,
+  "bears_mid_power": 3,
+  "wf_types_seen": [
+   "Priority"
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17
+  ],
+  "exports": {
+   "pre": true,
+   "mid": true,
+   "post": true
+  },
+  "bears_mid_obj_dump": "{\"id\": 6, \"card_id\": 6, \"owner\": 0, \"base_controller\": 0, \"controller\": 0, \"zone\": \"Battlefield\", \"display_visible_to_viewer\": true, \"tapped\": false, \"face_down\": false, \"flipped\": false, \"transformed\": false, \"modal_back_face\": false, \"cast_face_committed\": false, \"damage_marked\": 0, \"dealt_deathtouch_damage\": false, \"attached_to\": null, \"attachments\": [], \"counters\": {\"P1P1\": 1}, \"intensity\": 0, \"name\": \"Grizzly Bears\", \"power\": 3, \"toughness\": 3, \"layer_base_power\": 2, \"layer_base_toughness\": 2, \"loyalty\": null, \"card_types\": {\"supertypes\": [], \"core_types\": [\"Creature\"], \"subtypes\": [\"Bear\"]}, \"in_attraction_deck\": false, \"in_contraption_deck\": false, \"mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 1}, \"keywords\": [], \"abilities\": [], \"trigger_definitions\": [], \"replacement_definitions\": [], \"static_definitions\": [], \"color\": [\"Green\"], \"printed_ref\": {\"oracle_id\": \"14c8f55d-d177-4c25-a931-ebeb9e6062a0\", \"face_name\": \"Grizzly Bears\"}, \"back_face\": null, \"base_power\": 2, \"base_toughness\": 2, \"base_name\": \"Grizzly Bears\", \"base_loyalty\": null, \"base_defense\": null, \"base_card_types\": {\"supertypes\": [], \"core_types\": [\"Creature\"], \"subtypes\": [\"Bear\"]}, \"base_mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 1}, \"base_keywords\": [], \"base_abilities\": [], \"base_trigger_definitions\": [], \"trigger_base_set_instance\": 1, \"next_trigger_base_set_instance\": 2, \"trigger_occurrence_state\": {\"next_grant_instance\": 1, \"active_grants\": []}, \"base_replacement_definitions\": [], \"base_static_definitions\": [], \"base_color\": [\"Green\"], \"base_printed_ref\": {\"oracle_id\": \"14c8f55d-d177-4c25-a931-ebeb9e6062a0\", \"face_name\": \"Grizzly Bears\"}, \"base_characteristics_initialized\": true, \"timestamp\": 18, \"incarnation\": 3, \"entered_battlefield_turn\": 16, \"summoning_sick\": true, \"echo_due\": false, \"has_summoning_sickness\": true, \"has_mana_ability\": false, \"available_mana_pips\": [], \"loyalty_activations_this_turn\": 0, \"is_commander\": false, \"is_renowned\": false, \"is_emblem\": false, \"is_token\": false, \"display_source\": \"Card\", \"foretold\": false, \"is_suspected\": false, \"monstrous\": false, \"harnessed\": false, \"is_saddled\": false, \"saddled_by\": [], \"assigns_damage_from_toughness\": false, \"assigns_damage_as_though_unblocked\": false, \"assigns_no_combat_damage\": false, \"cast_from_zone\": \"Hand\", \"cast_controller\": 0, \"mana_spent_to_cast\": true, \"colors_spent_to_cast\": {\"blue\": 1, \"green\": 1}, \"mana_spent_to_cast_amount\": 2, \"mana_spent_source_snapshots\": [{\"source_id\": 1, \"lki\": {\"name\": \"Forest\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 0, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Land\"], \"subtypes\": [\"Forest\"], \"supertypes\": [\"Basic\"], \"keywords\": [], \"colors\": [], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": true, \"is_suspected\": false, \"attachments\": []}}, {\"source_id\": 51, \"lki\": {\"name\": \"Island\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 0, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Land\"], \"subtypes\": [\"Island\"], \"supertypes\": [\"Basic\"], \"keywords\": [], \"colors\": [], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": true, \"is_suspected\": false, \"attachments\": []}}], \"phase_status\": {\"status\": \"PhasedIn\"}}",
+  "bears_subtypes_mid": [
+   "bear"
+  ],
+  "biomancer_subtypes_mid": [
+   "elf",
+   "wizard"
+  ]
+ },
+ "notes": [
+  "A0: parse gap present=False detail={\"effect_type\": \"PutCounter\", \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"warnings\": [[\"SwallowedClause\", \"DynamicQty\"]], \"mutant_in_replacement\": true}",
+  "A1: biomancer_oid=31 power_at_pre=2 (expect 2); bears_oid=6 on_bf_at_mid=True; pre_exported=True mid_exported=True",
+  "A2: bears p1p1 counters at mid=1 (counters_seen=True), power=3; expect 2 (Biomancer power 2); obj dump: {\"id\": 6, \"card_id\": 6, \"owner\": 0, \"base_controller\": 0, \"controller\": 0, \"zone\": \"Battlefield\", \"display_visible_to_viewer\": true, \"tapped\": false, \"face_down\": false, \"flipped\": false, \"transformed\": false, \"modal_back_face\": false, \"cast_face_committed\": false, \"damage_marked\": 0, \"dealt_deathtouch_damage\": false, \"attached_to\": null, \"attachments\": [], \"counters\": {\"P1P1\": 1}, \"intensity\": 0, \"name\": \"Grizzly Bears\", \"power\": 3, \"toughness\": 3, \"layer_base_power\": 2, \"layer_base_toughness\": 2, \"loyalty\": null, \"card_types\": {\"supertypes\": [], \"core_types\": [\"Creature\"], \"subtypes\": [\"Bear",
+  "A3: bears subtypes at mid=[] mutant_seen=False; biomancer subtypes (sanity)=[]",
+  "A3 not-run: state view exposes no subtype fields at all (card_type NULL); Mutant assertion unevaluable from state",
+  "A4: post present=True stack_empty=True turn_post=17 cast_turn=16",
+  "verdict=reproduced: Biomancer (power 2) on the battlefield, but the entering Grizzly Bears carried 1 +1/+1 counter(s) instead of 2 (power 3, expect 4) and mutant subtype unevaluable - the reported 'just adds 1 +1/+1 counter' behavior",
+  "verdict=reproduced",
+  "A0 re-evaluated (finalize_7185): parse gap present=True - PutCounter count={'type': 'Fixed', 'value': 1}, warnings=[('SwallowedClause', 'DynamicQty')], mutant type-addition effect in replacement=False",
+  "A2 re-checked: bears p1p1=1 (seen=True), power=3; expect 2 counters / power 4",
+  "A3 re-evaluated (finalize_7185): bears subtypes at mid=['bear'] mutant_seen=False; biomancer subtypes (sanity)=['elf', 'wizard']",
+  "verdict=reproduced: with Master Biomancer (power 2) on the battlefield, the entering Grizzly Bears carried 1 +1/+1 counter (power 3, expect 4) instead of 2, and gained no Mutant subtype (subtypes ['bear']) - the reported 'just adds 1 +1/+1 counter' behavior. The Mutant half of the replacement is missing too: the parsed replacement carries no type-addition effect at all.",
+  "verdict=reproduced",
+  "finalize note: A0/A3 were re-evaluated 2026-09-16 from the saved states (driver/finalize_7185.py) after fixing obj_subtypes (card_types plural) and the A0 description-strip; no new game run was needed. EVDIR/scenario_7185.py overwritten with the fixed file."
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7185.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a passive second seat (lands only, no attacks) - opponent interaction with the replacement is not exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Master Biomancer's power is fixed at 2 in this fixture; the dynamic-power quantity is asserted as 2 counters, not across a range of powers."
+ ],
+ "duration_s": 62.4
+}
