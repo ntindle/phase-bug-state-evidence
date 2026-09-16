@@ -1,0 +1,98 @@
+{
+  "issue": 5186,
+  "client": {
+    "repo": "phase-rs/phase",
+    "mainline_commit": "cb58ef5dde00978e2b3b829308fd256125ff8271",
+    "local_checkout_commit": "aa1fb24ad08863eedf6a00493f1e2865050ccc2d",
+    "file": "client/src/components/deck-builder/commanderUtils.ts",
+    "file_sha256": "d7b55c92af47a6e0dc7da36689ca3d0996623f401f3b5916fdf344516d994f0f",
+    "file_identical_between_commits": true
+  },
+  "scryfall_color_identities": [
+    {
+      "name": "Kozilek, Butcher of Truth",
+      "color_identity": [],
+      "mana_cost": "{10}",
+      "type_line": "Legendary Creature — Eldrazi"
+    },
+    {
+      "name": "Lightning Bolt",
+      "color_identity": [
+        "R"
+      ],
+      "mana_cost": "{R}",
+      "type_line": "Instant"
+    },
+    {
+      "name": "Wastes",
+      "color_identity": [],
+      "mana_cost": "",
+      "type_line": "Basic Land"
+    },
+    {
+      "name": "Sol Ring",
+      "color_identity": [],
+      "mana_cost": "{1}",
+      "type_line": "Artifact"
+    },
+    {
+      "name": "Krenko, Mob Boss",
+      "color_identity": [
+        "R"
+      ],
+      "mana_cost": "{2}{R}{R}",
+      "type_line": "Legendary Creature — Goblin Warrior"
+    },
+    {
+      "name": "Counterspell",
+      "color_identity": [
+        "U"
+      ],
+      "mana_cost": "{U}{U}",
+      "type_line": "Instant"
+    }
+  ],
+  "assertions": {
+    "M1": "failed",
+    "M2": "passed",
+    "M3": "passed",
+    "M4": "passed"
+  },
+  "assertion_details": [
+    {
+      "id": "M1",
+      "desc": "colorless-commander flags off-color card",
+      "expected": [
+        "Lightning Bolt"
+      ],
+      "actual": [],
+      "status": "failed"
+    },
+    {
+      "id": "M2",
+      "desc": "colored-commander control still flags only off-color",
+      "expected": [
+        "Counterspell"
+      ],
+      "actual": [
+        "Counterspell"
+      ],
+      "status": "passed"
+    },
+    {
+      "id": "M3",
+      "desc": "uncached-commander (loading window) yields no violations",
+      "expected": [],
+      "actual": [],
+      "status": "passed"
+    },
+    {
+      "id": "M4",
+      "desc": "colorless cards legal under colorless commander",
+      "expected": [],
+      "actual": [],
+      "status": "passed"
+    }
+  ],
+  "verdict": "reproduced"
+}
