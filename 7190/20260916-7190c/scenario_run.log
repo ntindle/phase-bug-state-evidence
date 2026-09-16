@@ -1,0 +1,65 @@
+server identity: v0.85.0 (cb58ef5) protocol 72, mode Full; live server runs/20260916-7190c
+===== game start: mode=accept =====
+game KLQMY4 mode=accept; P0 seat=0 P1 seat=1
+[P0] mulligan: keep (lands=4, mulls=0)
+[P1] mulligan #1 (lands=7, want=('naturalize',))
+DIAG[accept] turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P1] mulligan #2 (lands=7, want=('naturalize',))
+[P1] mulligan: keep (lands=5, mulls=2)
+[P1] bottoming 2: ['forest', 'forest']
+[P0] casting Sword of the Meek (turn 4)
+[P1] casting Naturalize targeting Sword (oids [28])
+[P0] casting Llanowar Elves; Sword in GY (oids [28])
+[accept] Sword trigger observed on stack (id=121)
+[accept] exporting pre_accept.json (trigger on stack)
+[accept] triggering Elves on BF: oid 21
+[P0] optional 'you may return' offered; answering ACCEPT
+[P0] submitting iid=KLQMY4.0.96 choice=KLQMY4.0.96.c1 (true)
+DIAG[accept] turn=24 active=0 phase=PostCombatMain wf=Priority pp=1 stage=SETTLE stack=0 sword_cast=True nat=True elves=True trig=True choice=True shock=False
+[P1] discarding 1 to hand size
+DIAG[accept] turn=48 active=0 phase=Draw wf=Priority pp=0 stage=SETTLE stack=0 sword_cast=True nat=True elves=True trig=True choice=True shock=False
+[P1] discarding 1 to hand size
+[P0] discarding 1 to hand size
+[P1] discarding 1 to hand size
+[P0] discarding 1 to hand size
+[accept] exporting post_accept.json (quiet board)
+game accept done: A1_setup_ok=passed, A2_choice_offered=passed, A3_return_ok=passed, A4_attach_correct=passed
+===== game start: mode=decline =====
+game QIYPEM mode=decline; P0 seat=0 P1 seat=1
+[P0] mulligan: keep (lands=3, mulls=0)
+[P1] mulligan: keep (lands=5, mulls=0)
+DIAG[decline] turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P0] casting Sword of the Meek (turn 3)
+[P1] casting Naturalize targeting Sword (oids [17])
+[P0] casting Llanowar Elves; Sword in GY (oids [17])
+[decline] Sword trigger observed on stack (id=121)
+[decline] exporting pre_decline.json (trigger on stack)
+[decline] triggering Elves on BF: oid 16
+[P0] optional 'you may return' offered; answering DECLINE
+[P0] submitting iid=QIYPEM.0.78 choice=QIYPEM.0.78.c0 (false)
+[decline] exporting post_decline.json (quiet board)
+game decline done: A5_decline_ok=passed
+===== game start: mode=kill =====
+game SSQ22N mode=kill; P0 seat=0 P1 seat=1
+[P0] mulligan: keep (lands=4, mulls=0)
+[P1] mulligan: keep (lands=2, mulls=0)
+DIAG[kill] turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P0] casting Sword of the Meek (turn 3)
+[P1] casting Naturalize targeting Sword (oids [16])
+[P0] casting Llanowar Elves; Sword in GY (oids [16])
+[kill] Sword trigger observed on stack (id=121)
+[kill] exporting pre_kill.json (trigger on stack)
+[kill] triggering Elves on BF: oid 3
+[P1] casting Shock in response to Sword trigger; Elves oids [3]
+[P1] answering Shock target selection -> Elves oid 3
+[P1] submitting iid=SSQ22N.0.108 choice=SSQ22N.0.108.t2 (Llanowar Elves)
+[P0] optional 'you may return' offered; answering ACCEPT
+[P0] submitting iid=SSQ22N.0.113 choice=SSQ22N.0.113.c1 (true)
+[P1] discarding 1 to hand size
+DIAG[kill] turn=25 active=0 phase=Upkeep wf=Priority pp=0 stage=SETTLE stack=0 sword_cast=True nat=True elves=True trig=True choice=True shock=True
+[P1] discarding 1 to hand size
+[kill] exporting post_kill.json (quiet board)
+game kill done: A6_unattached_ok=passed
+wrote run.json verdict=not-reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7190/20260916-7190c/summary.png
+wrote server_excerpts.log (300 lines)
