@@ -1,0 +1,200 @@
+{
+ "run_id": "20260916-7188",
+ "issue": 7188,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-16",
+ "server": {
+  "server_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "single-user",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-16; binary digest also matched GitHub asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run (AGENTS.md: never copy SERVER_IDENTITY hashes); release v0.85.0 confirmed latest stable via GitHub releases API 2026-09-16",
+  "observed_at": "2026-09-16",
+  "handshake": "ServerHello observed pre-run on 127.0.0.1:9374: v0.85.0 / cb58ef5 / protocol 72",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run under runs/20260916-7188/ (prior v0.84.0 server replaced after the release advanced)"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3b6a410dcbd1844ee8fc6fe41a551ce8cd0ca6bdd13c0b866d30b1e99cac21ba",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "three visits",
+    12
+   ],
+   [
+    "forest",
+    12
+   ],
+   [
+    "swamp",
+    12
+   ],
+   [
+    "llanowar elves",
+    12
+   ],
+   [
+    "mountain",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_search_prompted": "passed",
+  "A3_filter_applied": "passed",
+  "A4_forest_enters": "passed",
+  "A5_shuffle": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "search_candidates": [
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s0",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s1",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s2",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s3",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s4",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s5",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s6",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s7",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s8",
+    "status": "available",
+    "is_forest": true
+   },
+   {
+    "name": "Forest",
+    "id": "8M9200.0.85.s9",
+    "status": "available",
+    "is_forest": true
+   }
+  ],
+  "search_shapes": [
+   [
+    "schema",
+    10
+   ]
+  ]
+ },
+ "driver_state": {
+  "stage": "done",
+  "visits_cast_turn": 6,
+  "visits_spell_oid": 12,
+  "chosen_name": "Forest",
+  "lib_count_at_search": 50,
+  "forest_on_bf_turn": 6,
+  "search_answer_rejected": false,
+  "wf_types_seen": [
+   "Priority",
+   "SearchChoice"
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7
+  ],
+  "exports": {
+   "pre": true,
+   "mid": true,
+   "post": true
+  },
+  "mull_count": {
+   "0": 0,
+   "1": 0
+  }
+ },
+ "notes": [
+  "A1: pre_exported=True visits_in_hand=True phase=PreCombatMain life=[20, 20]",
+  "A2: search opportunity advertised=True candidates=10 shapes=[('schema', 10)]",
+  "A3: available=10 forest_avail=10 non_forest_avail=0 unknown_avail=0",
+  "A4: chosen=Forest forest_on_p0_bf_at_post=[32, 33] search_answer_rejected=False",
+  "A5: lib_at_search=50 lib_mid=50 lib_post=49 delta=1 (expect 1) stack_empty=True turn_post=7 cast_turn=6",
+  "A6: post present=True stack_empty=True wf_post=Priority turns_seen=[1, 2, 3, 4, 5, 6, 7]",
+  "verdict=not-reproduced: only Forest cards selectable; chosen Forest entered; library shuffled (count -1)",
+  "verdict=not-reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7188.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a passive second seat (lands only, no attacks) - opponent interaction is not exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Shuffle verified by library-count delta (-1) and game progression, not by order randomness (library order is not asserted).",
+  "Candidate Forest classification uses the pinned card-data.json subtypes; a candidate whose name is not in card data would be counted as unknown, not Forest."
+ ],
+ "duration_s": 25.1
+}
