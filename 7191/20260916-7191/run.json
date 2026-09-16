@@ -1,0 +1,148 @@
+{
+ "issue": 7191,
+ "run_id": "20260916-7191",
+ "started_at": "2026-09-16T22:59:06",
+ "duration_s": 104.6,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "minisign verification against repo-pinned key at pin time; hashes recomputed from on-disk release files this run; v0.85.0 confirmed latest stable release (not shell-*)"
+ },
+ "server_run_dir": "runs/20260916-7191",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7191_085.py",
+ "scenario_sha256": "3fb42e5a9409c4de5abba0d95d7f243c663042c28f7f5ec4bf7b7a611ba59bbb",
+ "decks": {
+  "A_P0": [
+   [
+    "Acorn Catapult",
+    8
+   ],
+   [
+    "Island",
+    52
+   ]
+  ],
+  "A_P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "B_P0": [
+   [
+    "Acorn Catapult",
+    8
+   ],
+   [
+    "Island",
+    52
+   ]
+  ],
+  "B_P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "C_P0": [
+   [
+    "Acorn Catapult",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Island",
+    26
+   ],
+   [
+    "Forest",
+    18
+   ]
+  ],
+  "C_P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "A": true,
+  "B": true,
+  "C": true
+ },
+ "parse_summary": {
+  "acorn catapult": {
+   "oracle_text": "{1}, {T}: This artifact deals 1 damage to any target. That permanent's controller or that player creates a 1/1 green Squirrel creature token.",
+   "activated_effect": "DealDamage",
+   "activated_amount": 1,
+   "activated_target": "Any",
+   "activated_cost": [
+    "Mana",
+    "Tap"
+   ],
+   "sub_effect": "Unimplemented",
+   "sub_name": "unbound_subject",
+   "sub_description": "That permanent's controller or that player creates a 1/1 green Squirrel creature token"
+  }
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_resolved": "passed",
+  "A3_token": "failed",
+  "A4_recipient": "not-run",
+  "B1_setup": "passed",
+  "B2_resolved": "passed",
+  "B3_token": "failed",
+  "B4_recipient": "not-run",
+  "C1_setup": "passed",
+  "C2_resolved": "passed",
+  "C3_token": "failed",
+  "C4_recipient": "not-run"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): activated_effect=DealDamage target=Any cost=['Mana', 'Tap']; token clause sub_effect=Unimplemented (unbound_subject: That permanent's controller or that player creates a 1/1 green Squirrel creature): UNBOUND-SUBJECT GAP PRESENT as reported",
+  "A1_setup: catapult_on_bf_untapped=True, target_present=True, life=20/20: ok",
+  "A2_resolved: catapult_tapped=True, stack_empty=True, bear_info={'tapped': False, 'damage_marked': 1, 'pt': (2, 2)}: ok",
+  "A3_token FAILED: no Squirrel token on the battlefield after resolution",
+  "A4_recipient not-run (no token created)",
+  "B1_setup: catapult_on_bf_untapped=True, target_present=True, life=20/20: ok",
+  "B2_resolved: catapult_tapped=True, stack_empty=True, P1 life 20->19: ok",
+  "B3_token FAILED: no Squirrel token on the battlefield after resolution",
+  "B4_recipient not-run (no token created)",
+  "C1_setup: catapult_on_bf_untapped=True, target_present=True, life=20/20: ok",
+  "C2_resolved: catapult_tapped=True, stack_empty=True, bear_info={'tapped': False, 'damage_marked': 1, 'pt': (2, 2)}: ok",
+  "C3_token FAILED: no Squirrel token on the battlefield after resolution",
+  "C4_recipient not-run (no token created)",
+  "verdict: REPRODUCED (related failure) - the Squirrel clause produced no token at all (unbound-subject gap)"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-16",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Game C (own creature) cannot distinguish the fallback from correct behavior; it validates the harness token detection only.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "A: P0 8x Acorn Catapult + 52 Island vs P1 12x Grizzly Bears + 48 Forest (P0 activates targeting P1's bear). B: same P0 deck vs P1 60 Forest (P0 activates targeting P1). C: P0 8x Catapult + 8x Bears + 26 Island + 18 Forest vs P1 60 Forest (P0 activates targeting own bear).",
+ "contract_line": "Per Oracle, the damaged permanent's controller (A/C) or the damaged player (B) creates the 1/1 Squirrel. Reported defect: the token goes to the Catapult's controller instead."
+}
