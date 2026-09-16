@@ -1,0 +1,215 @@
+{
+ "issue": 1488,
+ "run_id": "20260915-1488",
+ "started_at": "2026-09-16T01:17:35",
+ "duration_s": 233.5,
+ "server": {
+  "server_version": "0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-15",
+  "source": "digests recomputed via sha256sum against the pinned v0.84.0 release files under server/releases/v0.84.0/; ServerHello on 127.0.0.1:9375 for run 20260915-1488 confirmed server_version 0.84.0 / build eb7e93e / protocol 71"
+ },
+ "server_run_dir": "runs/20260915-1488",
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8b0573646c327043ea018d300a6d941333677fde1410057eee0b48ac0aeebcb0",
+ "decks": {
+  "P0": [
+   [
+    "fateful tempest",
+    12
+   ],
+   [
+    "mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_vote_prompted": "failed",
+  "A3_mill": "failed",
+  "A4_damage": "failed",
+  "A5_exile": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 main phase, Tempest in hand, 3 untapped Mountains, life 20/20",
+  "NO past/present vote opportunity was advertised to any player during the Tempest cast/resolution (REPORTED BUG: council's dilemma vote never happens)",
+  "mill during resolution: 0 card(s) [] (Oracle: 1 per past vote)",
+  "no mill and no damage to P1 during resolution (vote/mill/damage portion did nothing)",
+  "exiled during resolution: 0 card(s) [] (Oracle: 1 per present vote)",
+  "post.json: Tempest in P0 graveyard, stack empty, game advanced (turn 6, phase BeginCombat)"
+ ],
+ "observations": {
+  "vote_seen": false,
+  "vote_opportunities": [],
+  "interaction_shapes": [
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     ""
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P1",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "who": "P0",
+    "rtype": "exactChoices",
+    "vote_like": false,
+    "choices": [
+     "",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Fateful Tempest",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   }
+  ],
+  "cast_submitted": true,
+  "cast_turn": 6,
+  "cast_phase": "PreCombatMain",
+  "cast_oid": 29,
+  "milled": [],
+  "exiled": [],
+  "life_pre": [
+   20,
+   20
+  ],
+  "life_post": [
+   20,
+   20
+  ],
+  "damage_to_p1": 0,
+  "mv_sum_milled": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Fateful Tempest deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "If a vote prompt had appeared, the driver would have voted 'past' for both seats (deterministic test policy); no vote prompt appeared."
+ ],
+ "setup_line": "P0: 12x fateful tempest + 48x mountain (mulligan to tempest + 2 lands); P1: 60x mountain dummy",
+ "contract_line": "Cast Fateful Tempest: council's-dilemma vote (past/present) offered to each player, then mill 1 per past vote, damage each opponent = total MV milled, exile top 1 per present vote, may play exiled cards until end of next turn"
+}
