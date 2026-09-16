@@ -1,0 +1,103 @@
+{
+ "issue": "4509",
+ "run_id": "20260916-4509c",
+ "started_at": "2026-09-16T06:34:00",
+ "duration_s": 180.0,
+ "game_code": "49U1NQ",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "single-user",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true
+ },
+ "server_run_dir": "runs/run-20260916-4509b",
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "2c5787203da76592a5b68d9355c039d2f46a0f60f3f82f290fccfc79d9ddd853",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": "12x lost in thought + 12x thought scour + 36x island",
+  "P1": "12x llanowar elves + 12x grizzly bears + 36x forest"
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_restricted": "failed",
+  "A3_activation_restricted": "failed",
+  "A4_escape_offered": "failed",
+  "A5_escape_effective": "not-run",
+  "A6_control_binding": "not-run"
+ },
+ "notes": [
+  "A1: aura_oid=23 attached to Elves 84 (Battlefield, controller=1), P1 gy=4 at pre.json (turn 5).",
+  "A2: enchanted Elves 84 declared as attacker and ACCEPTED; P0 life 20->19 (1 damage dealt). cant-attack restriction dropped.",
+  "A3: ActivateAbility (ability_index 0) OFFERED for enchanted Elves 84 at P1 priority; attempt submitted; P1 green mana pool = 1 after resolution (pool_after_capture). cant-activate restriction dropped.",
+  "A4: no exile-3-to-ignore escape action offered at P1 priority with gy>=3 (scanned P1 action types: ['ActivateAbility', 'PassPriority']). Escape clause dropped.",
+  "A5: escape payment path not driven (A4 failed - no escape offered).",
+  "A6: bear control attack not-run; driver stalled on P0's cleanup DiscardToHandSize interaction (invalid_interaction_response rejection) after all bug assertions were captured.",
+  "Aura object 23 on battlefield: static_definitions=[], unimplemented=['Effect: static_structure'] - the combined restriction/escape line is not implemented as a static ability.",
+  "rejections=1 target_prompts=2 escape_offered=False elves_attacked=True",
+  "Lost in Thought's combined restriction/escape clause is dropped end-to-end on this build; see assertion notes"
+ ],
+ "observations": {
+  "rejections": 1,
+  "tick_errors": []
+ },
+ "driver_state": {
+  "stage": "control (stalled)",
+  "enchant_target_oid": 84,
+  "aura_oid": 23,
+  "scours_cast": 2,
+  "attack1": {
+   "submitted": true,
+   "turn": 7,
+   "accepted": true,
+   "rejected": false,
+   "elves_attacked": true,
+   "p0_life_pre": 20,
+   "p0_life_post": 19
+  },
+  "activation": {
+   "attempted": true,
+   "offered": true,
+   "rejected": false,
+   "candidates_seen": [
+    {
+     "ability_index": 0
+    }
+   ],
+   "pool_before": null,
+   "pool_after": {
+    "green": 1
+   }
+  },
+  "escape": {
+   "offered": false,
+   "scan_done": true,
+   "p1_action_types": [
+    "ActivateAbility",
+    "PassPriority"
+   ]
+  },
+  "bear": {
+   "submitted": false,
+   "oid": null,
+   "accepted": false,
+   "p0_life_pre": null,
+   "p0_life_post": null
+  },
+  "target_prompts_seen": 2,
+  "exports": [
+   "pre",
+   "post_attack"
+  ]
+ },
+ "verdict": "reproduced",
+ "finalization_note": "Run did not complete via finish() (driver stalled on P0 cleanup discard after bug assertions captured). run.json reconstructed manually from pre.json, post_attack.json, wire_log.jsonl, and scenario_run.log. All A1-A4 assertions grounded in captured artifacts."
+}
