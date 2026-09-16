@@ -1,0 +1,22 @@
+1,3d0
+< // Driver test for phase-rs/phase#5184: corrupt preset storage must not throw.
+< // Mirrors the PR's own presets.test.ts cases (content identical) so the
+< // mainline outcome directly demonstrates the bug the PR claims to fix.
+14,15c11,12
+< describe("loadPresets (driver, #5184)", () => {
+<   it("D1 returns the defaults when storage is empty", () => {
+---
+> describe("loadPresets", () => {
+>   it("returns the defaults when storage is empty", () => {
+21c18
+<   it("D2 falls back to the defaults on corrupt storage instead of throwing", () => {
+---
+>   it("falls back to the defaults on corrupt storage instead of throwing", () => {
+31c28
+<   it("D3 does not let corrupt storage crash savePreset/deletePreset", () => {
+---
+>   it("does not let corrupt storage crash savePreset/deletePreset", () => {
+47c44
+<   it("D4 returns saved presets when storage holds a valid non-empty array", () => {
+---
+>   it("returns saved presets when storage holds a valid non-empty array", () => {
