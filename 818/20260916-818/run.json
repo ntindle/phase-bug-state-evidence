@@ -1,0 +1,98 @@
+{
+ "issue": 818,
+ "run_id": "20260916-818",
+ "prior_runs_unpublished": [
+  "20260915-818",
+  "20260915-818b",
+  "20260915-818c"
+ ],
+ "scenario_adapted_from": "driver/scenario_818d.py (v0.84.0/protocol 71 run 20260915-818d)",
+ "prior_result_summary": "20260915-818d: not-reproduced on v0.84.0/protocol 71 (A1..A5 passed; published, evidence 818/20260915-818d). Earlier: 818c not-reproduced on v0.83.0/70 (unpublished); 818/818b reproduced on A4 trigger stall (never published); 20260909-818 A1..A3 passed, A4 120s stall (unpublished).",
+ "started_at": "2026-09-16T20:20:35",
+ "duration_s": 109.6,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "ServerHello (version/build/protocol/mode) + sha256 match of pinned verified artifacts; server process already listening on 9374 (raw-WS ServerHello probe 2026-09-16: v0.85.0/cb58ef5/72/Full)"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9f2dbbc6ecb4082fa6d434a1429ba8bd2e4fe9dba547351fc4793bf94072dd87",
+ "decks": {
+  "P0": [
+   [
+    "Writhing Chrysalis",
+    4
+   ],
+   [
+    "Gixian Infiltrator",
+    4
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Forest",
+    16
+   ],
+   [
+    "Mountain",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Clockwork Percussionist",
+    4
+   ],
+   [
+    "Goblin Bushwhacker",
+    4
+   ],
+   [
+    "Blazing Rootwalla",
+    4
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sac_offered": "passed",
+  "A3_sac_resolves": "passed",
+  "A4_triggers": "passed",
+  "A5_no_strand": "passed"
+ },
+ "notes": [
+  "setup complete at turn 39",
+  "blockers declared per report: [('Eldrazi Spawn', 'Clockwork Percussionist'), ('Gixian Infiltrator', 'Goblin Bushwhacker'), ('Writhing Chrysalis', 'Blazing Rootwalla')]",
+  "Spawn sacrificed; {C} added to pool",
+  "sac triggers resolved: exactly +1/+1 on every Infiltrator and Chrysalis",
+  "second Spawn still on BF (1); game proceeding (phase=DeclareBlockers, wf=Priority)"
+ ],
+ "verdict": "not-reproduced",
+ "sac_offered_via": "offered:ActivateAbility",
+ "sac_submission": null,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Report's 'Human Soldier' attacker represented by Blazing Rootwalla (no such card in pinned card-data.json).",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "State restoration: pre.json/post.json are authoritative ExportAuthoritativeState envelopes (parse data.state once). The engine has no standalone import path for these envelopes; replay the exact game from the pinned card data + decks in run.json using the included scenario_818e.py driver against phase-server v0.85.0."
+ ],
+ "setup_line": "P0: 4x Writhing Chrysalis + 4x Gixian Infiltrator + lands; P1: 4x Clockwork Percussionist + 4x Goblin Bushwhacker + 4x Blazing Rootwalla + 48x Mountain",
+ "contract_line": "P1 attacks with all three; P0 blocks Chrysalis->Rootwalla, Infiltrator->Bushwhacker, Spawn->Percussionist; P0 saccing Spawn for {C} during DeclareBlockers",
+ "stats": {}
+}
