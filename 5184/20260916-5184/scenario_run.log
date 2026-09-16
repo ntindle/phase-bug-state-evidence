@@ -1,0 +1,69 @@
+phase-rs/phase#5184 corroboration run (2026-09-16)
+=================================================
+Issue: fix(client): fall back to defaults when preset storage is corrupt
+       (open, unmerged fix PR by jeffrey701; branch fix/load-presets-corrupt-storage;
+        head d059c301951e910370a2a2ba0f43ddbfbff37888; labels: bug, defer-fe)
+Run id: 20260916-5184
+Context: ledger-repair + corroboration. A 2026-09-10 run (20260909-5184) already
+validated this PR as `reproduced` on mainline aa1fb24, published evidence under
+5184/20260909-5184/ (evidence commit b3fee804b4d7dfac0312e972b3e672921107c4d5)
+and posted the maintained backfill comment (ntindle, comment 5610957892) — only
+the ledger entry was lost (VM-replacement pattern, cf. #4192/#5175/#5178).
+This run corroborates on the SAME mainline commit and verifies the 09-10 evidence.
+
+08:41 CDT - run start; backfill.lock written (run_id 20260916-0841)
+08:41 CDT - pip deps present (websockets, pillow, pynacl); no reinstall needed
+08:41 CDT - release check: latest stable phase-rs/phase release is v0.84.0
+           (published 2026-09-15T16:03:25Z) — matches the pinned release.
+           No advancement. phase-server NOT started: this is a client-subsystem
+           case (no engine session involved).
+08:42 CDT - mainline checkout: client-test/phase-main @ aa1fb24ad08863eedf6a00493f1e2865050ccc2d
+           (client/ subtree copy of phase-rs/phase mainline, 2026-09-10)
+08:43 CDT - fetched PR #5184 files via GitHub API; the local PR-variant tree
+           (client-test/phase-5184-pr, non-git copy) holds presets.ts and
+           presets.test.ts BYTE-IDENTICAL to the literal PR head blobs
+           (presets.ts sha256 bdd8b608295fe2cff84e684789a54612bf3a14e1da199b436fbbfbc069230ee)
+08:45 CDT - driver test on mainline (vitest 4.1.0, happy-dom localStorage):
+             src/services/__tests__/presets-5184.driver.test.ts
+             D1 empty->defaults: PASS
+             D2 corrupt storage ("{oops") loadPresets: FAIL — SyntaxError thrown
+                (Expected property name or '}' in JSON at position 1)
+             D3 corrupt storage ("not json") savePreset: FAIL — SyntaxError thrown
+                (Unexpected token 'o', "not json" is not valid JSON)
+             D4 valid storage round-trip: PASS
+             => the reported defect reproduces on unpatched mainline.
+08:47 CDT - full services/__tests__ suite on mainline: 50 files, 827 passed / 14 failed.
+           12 of the 14 failures are scryfall.test.ts (pre-existing, generation-script
+           tests unrelated to presets); 2 are serverDirectory/serverMetrics ENOENT
+           (checkout artifact: lobby-worker/src/directory.ts not in the client-only
+           subtree copy). None presets-related.
+08:49 CDT - PR's own presets.test.ts on the PR variant (literal PR-head bytes,
+           --coverage.enabled=false): 4/4 PASS, EXIT=0.
+           (An earlier run without the flag also passed 4/4 but exited 1 on the
+           repo-wide coverage threshold gate — config artifact, not a test failure.)
+08:50 CDT - full services/__tests__ suite on PR variant: 51 files, 833 passed / 12 failed;
+           the 12 failures are exactly the pre-existing scryfall + ENOENT ones —
+           identical on both trees, zero presets regressions.
+08:51 CDT - 2026-09-10 evidence re-verified: manifest/run.json/client_observations.json/
+           summary.png downloaded from commit-pinned raw URLs against b3fee804b4d7;
+           hashes match the manifest; JSON parses; PNG readable (1100x1000).
+           Comment 5610957892 re-fetched: contains <!-- BACKFILL-EVIDENCE --> marker,
+           reproduced verdict, commit-pinned links.
+
+Assertion mapping (renderer contract):
+  D1 mainline empty->defaults: passed (control)
+  D2 mainline corrupt loadPresets throws SyntaxError: failed (bug reproduced)
+  D3 mainline corrupt savePreset throws SyntaxError: failed (bug reproduced)
+  D4 mainline valid round-trip: passed (control)
+  P1 PR variant corrupt->defaults, no throw: passed
+  P2 PR variant savePreset/deletePreset no throw: passed
+  P3 PR variant empty->defaults: passed
+  P4 PR variant valid round-trip: passed
+  R1 scryfall + ENOENT failures identical on both trees (pre-existing): passed
+  R2 no production consumers of services/presets (only __tests__ import it;
+      FlexEditOverlay.tsx imports ./presets.ts, a different module): passed
+
+Verdict: reproduced (corroborated; same mainline commit aa1fb24 as the 09-10 run).
+The PR's try/catch fallback resolves the defect with no regressions observed.
+This is not a fix claim for the repo — the PR remains open and unmerged
+(review deferred by maintainer intake policy).
