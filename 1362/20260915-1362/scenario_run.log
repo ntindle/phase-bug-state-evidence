@@ -1,0 +1,29 @@
+game ADZVPW; seats P0=0 P1=1 P2=2
+P0 mulligans #1
+P1 mulligans #1
+P2 keeps (key=n/a, lands=7)
+DIAG turn=1 active=2 phase=Untap wf=MulliganDecision pp=2 P0hand=['Mountain', 'Forest', 'Mountain', 'Forest', 'Mountain', 'Mountain', 'Mountain'] zil=[] ked=[] elves=[] life=[40, 40, 40] stack=0 pre=False attacked=False post=False trig=False stackhist=0
+P0 mulligans #2
+P1 mulligans #2
+P0 keeps (key=True, lands=6)
+P0 bottoms 1: ['Kediss, Emberclaw Familiar']
+P1 mulligans #3
+P1 keeps (key=True, lands=6)
+P1 bottoms 2: ['Llanowar Elves', 'Forest']
+P0 PreCombatMain action types: ['PassPriority']
+Zilortha objects: [('Zilortha, Strength Incarnate', True, 'Command')]
+P0 casts Kediss via CastSpell
+P1 casts Llanowar Elves
+P0 casts Zilortha (commander) via CastSpell
+P0 declares no attackers (waiting: zil=181 ked=48 elves_p1=1)
+DIAG turn=16 active=2 phase=Draw wf=Priority pp=2 P0hand=['Forest', 'Forest', 'Forest', 'Mountain', 'Forest'] zil=[181] ked=[48] elves=[115] life=[40, 40, 40] stack=0 pre=False attacked=False post=False trig=False stackhist=0
+PRE: exporting at DeclareAttackers (Zilortha+Kediss ready, P1 has 1 blocker(s))
+P0 attacks P1 with Zilortha (oid 181)
+P1 blocks Zilortha (oid 181) with Elves (oid 115)
+AssignCombatDamage advertised: {"mode": "Normal", "assignments": [[115, 1]], "trample_damage": 6, "controller_damage": 0}
+P0 assigns combat damage (advertised default): blockers=[[115, 1]] trample_damage=6
+KEDISS TRIGGER observed on stack
+exported MID (Kediss trigger pending)
+post-combat reached with empty stack; exporting POST
+exported POST
+post exported; finishing
