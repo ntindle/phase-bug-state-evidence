@@ -1,0 +1,31 @@
+starting issue #5654 run 20260916-5654 (pinned v0.85.0, protocol 72)
+parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Unimplemented", "execute_desc": "that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller", "valid_player": "Opponent"}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller", "valid_player": null}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null, "valid_player": "Opponent"}}
+[A] game=9EBA76
+[A-P0] mulligan: mulligan
+[A-P1] mulligan: keep
+[A] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0
+[A-P0] mulligan: mulligan
+[A-P0] mulligan: keep
+[A-P0] bottoms 2 after mulligan
+[A-P0] casts Notion Thief (turn 14)
+[A-P1] main phase: exporting PRE_A, then casting Divination
+exported pre_A.json
+[A-P1] casts Divination (turn 15)
+[A] Divination resolved; exporting POST_A
+exported post_A.json
+[A] contract complete; finishing game
+game A finished ok=True
+[B] game=X1E49T
+[B-P0] mulligan: keep
+[B-P1] mulligan: keep
+[B] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0
+[B-P0] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+exported pre_B.json
+[B-P0] casts Plagiarize targeting P1 (turn 9)
+[B] P1 past draw step; exporting POST_B
+exported post_B.json
+[B] contract complete; finishing game
+game B finished ok=True
+[A] deltas P0 hand 4->6 lib 48->46; P1 hand 7->6 lib 46->46
+[B] deltas P0 hand 7->6 lib 49->49; P1 hand 6->7 lib 50->49
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/5654/20260916-5654/summary.png
