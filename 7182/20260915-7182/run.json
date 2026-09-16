@@ -1,0 +1,153 @@
+{
+ "run_id": "20260915-7182",
+ "issue": 7182,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "single-user",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-15; data digests match the signed manifest; digests recomputed against on-disk files this run; release v0.84.0 confirmed latest stable via GitHub releases API 2026-09-15",
+  "observed_at": "2026-09-15",
+  "handshake": "ServerHello observed pre-run: v0.84.0 / eb7e93e / protocol 71 / mode Full on 127.0.0.1:9374",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run under runs/20260915-7182/"
+ },
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "f7556e526b59692d51270dd2ce79649df459c19b6e440ce86f2f1f2201822865",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "rite of passage",
+    8
+   ],
+   [
+    "colossal dreadmaw",
+    12
+   ],
+   [
+    "grizzly bears",
+    8
+   ],
+   [
+    "forest",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_recipient_correct": "passed",
+  "A4_dealer_no_counter": "passed",
+  "A5_survived": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "stage": "done",
+  "rite_oid": 49,
+  "dreadmaw_oid": 23,
+  "attack_bear_oid": 79,
+  "attacked": true,
+  "blocked": true,
+  "trigger": {
+   "stack_id": 121,
+   "source_oid": 49,
+   "turn": 18,
+   "dmg_marked": 2,
+   "counters_before": 0,
+   "ability_text": ""
+  },
+  "resolved": true,
+  "counters_after": {
+   "dreadmaw": 1,
+   "bear": 0,
+   "dreadmaw_zone": "Battlefield"
+  },
+  "wf_types_seen": [
+   "Priority",
+   "DeclareAttackers",
+   "DeclareBlockers"
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18
+  ],
+  "exports": {
+   "pre_combat": true,
+   "trigger_stack": true,
+   "post_trigger": true
+  }
+ },
+ "notes": [
+  "A0: card-data rite of passage: mode=DamageReceived, valid_card={'type': 'Typed', 'type_filters': ['Creature'], 'controller': 'You', 'properties': []}, effect=PutCounter target={'type': 'EventTarget'}, oracle='Whenever a creature you control is dealt damage, put a +1/+1 counter on it. (It must survive the damage to get the count'",
+  "A1: rite_oid=49 dreadmaw_oid=23 attacked=True (bear 79) blocked=True pre_combat_exported=True",
+  "A2: trigger_seen=True stack_id=121 source_oid=49 dmg_marked=2 trigger_stack_exported=True ability=''",
+  "A3: post_trigger dreadmaw P1P1=1 (expect 1; counters_before=0)",
+  "A4: post_trigger attacking-bear P1P1=0 (expect 0); bear zone=Graveyard",
+  "A5: post_trigger dreadmaw zone=Battlefield (expect Battlefield)",
+  "A6: post_trigger stack_empty=True damage_dealt=True (dmg_marked=2)",
+  "verdict=not-reproduced: the damaged Dreadmaw received exactly one +1/+1 counter, the attacking bear received none",
+  "verdict=not-reproduced"
+ ],
+ "evidence_files": [
+  "pre_combat.json",
+  "trigger_stack.json",
+  "post_trigger.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7182.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The damage event is combat damage (P1 bear blocked by P0 Dreadmaw); non-combat damage paths not exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Only one damage event / one trigger instance is exercised; the 'must survive' clause is covered by the Dreadmaw surviving 2 damage (A5)."
+ ],
+ "duration_s": 77.6
+}
