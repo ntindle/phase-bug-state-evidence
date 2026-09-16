@@ -1,0 +1,262 @@
+{
+ "issue": 4823,
+ "facet": 1,
+ "run_id": "20260916-0511",
+ "started_at": "2026-09-16T10:34:58",
+ "duration_s": 142.2,
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "sha256 match of pinned verified release artifacts (AGENTS.md, 2026-09-16); fresh isolated server on 127.0.0.1:9374 from this run's run dir; ServerHello v0.84.0/eb7e93e/protocol 71 observed"
+ },
+ "server_run_dir": "runs/20260916-0511",
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b00981c8f1e3faa04f92a9c3df518c0ae96c3b76efe5d0dc9b684c6162dd817d",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    36
+   ],
+   [
+    "Upwelling",
+    8
+   ],
+   [
+    "Horizon Stone",
+    8
+   ],
+   [
+    "Elvish Spirit Guide",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parked_choice": "passed",
+  "A2_concede_eliminates": "passed",
+  "A3_ppt_stranded": "failed",
+  "A4_phase_frozen": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pre.json shows WaitingFor::ReplacementChoice{chooser 0} at turn 13 phase BeginCombat; ChooseReplacement advertised with 2 choices; pending_phase_transition_progress present, remaining_players=[1, 2]",
+  "A2 passed: Concede accepted (no rejection); eliminated_players=[0]; waiting_for rewritten to Priority (parked choice gone)",
+  "A3 failed (no bug on this build): pending_phase_transition_progress is None in post.json - the engine drained/finalized it",
+  "A4 failed (no bug on this build): game advanced after the concede (turns=[13, 15, 17, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30, 31, 33, 34, 35, 36], phases=['BeginCombat', 'Draw', 'End', 'EndCombat', 'PostCombatMain', 'PreCombatMain', 'Upkeep'])",
+  "A5 passed: post.json exported (turn=37 phase=Upkeep active=2 wf=Priority)",
+  "verdict=not-reproduced: the parked choice and elimination happened, but the phase/turn advanced - the engine resumed the drain on v0.84.0"
+ ],
+ "observations": {
+  "parked_choice": {
+   "turn": 13,
+   "phase": "BeginCombat",
+   "revision": 289,
+   "chooser": 0,
+   "choose_replacement_advertised": true,
+   "opportunity": {
+    "rtype": "exactChoices",
+    "n_choices": 2,
+    "choices": [
+     "0",
+     "1"
+    ],
+    "interactionId": "U20IJT.0.288"
+   }
+  },
+  "concede_sent": true,
+  "concede_accepted": true,
+  "concede_rejections": [],
+  "concede_at": 1789554947.9795532,
+  "freeze_watch": {
+   "start_turn": 13,
+   "start_phase": "BeginCombat",
+   "start_active": 0,
+   "t0": 1789554949.9822912,
+   "samples": [
+    {
+     "t": 1789554949.9847827,
+     "turn": 13,
+     "phase": "BeginCombat",
+     "active": 0,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554955.1352248,
+     "turn": 15,
+     "phase": "End",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554960.1980805,
+     "turn": 17,
+     "phase": "PreCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554965.2621562,
+     "turn": 19,
+     "phase": "Upkeep",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554970.3709102,
+     "turn": 20,
+     "phase": "BeginCombat",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554975.4014208,
+     "turn": 22,
+     "phase": "Upkeep",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554980.42518,
+     "turn": 23,
+     "phase": "PostCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789554985.4333124,
+     "turn": 24,
+     "phase": "PostCombatMain",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 2
+    },
+    {
+     "t": 1789554990.4591467,
+     "turn": 26,
+     "phase": "Draw",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 2
+    },
+    {
+     "t": 1789554995.4886098,
+     "turn": 27,
+     "phase": "PreCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555000.6343944,
+     "turn": 28,
+     "phase": "EndCombat",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555005.770254,
+     "turn": 29,
+     "phase": "PostCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555010.8054867,
+     "turn": 30,
+     "phase": "EndCombat",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555015.9466805,
+     "turn": 31,
+     "phase": "PostCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555021.0768893,
+     "turn": 33,
+     "phase": "Upkeep",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555026.2069657,
+     "turn": 34,
+     "phase": "PreCombatMain",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555031.2140007,
+     "turn": 35,
+     "phase": "PreCombatMain",
+     "active": 2,
+     "wf": "Priority",
+     "pp": 1
+    },
+    {
+     "t": 1789555036.3472652,
+     "turn": 36,
+     "phase": "EndCombat",
+     "active": 1,
+     "wf": "Priority",
+     "pp": 1
+    }
+   ]
+  },
+  "p1_passes": 251,
+  "p2_passes": 252,
+  "floated": true,
+  "mid_ppt": null,
+  "post_ppt": null
+ },
+ "verdict": "not-reproduced",
+ "setup_line": "3-player game. P0: 36x Forest + 8x Upwelling + 8x Horizon Stone + 8x Elvish Spirit Guide (engine accepts >4-of). P1/P2: 60x Forest, do-nothing. P0 casts Upwelling then Horizon Stone, exiles an Elvish Spirit Guide from hand to float {G} in PreCombatMain, passes; the BeginCombat entry's APNAP empty-mana drain parks a CR 616.1 EmptyManaPool ordering choice for P0 (Upwelling retain vs Horizon Stone transform); P0 concedes instead of answering.",
+ "contract_line": "Facet 1 of #4823: after the chooser's mid-choice elimination, the stranded pending_phase_transition_progress must not freeze the phase transition - the game must keep advancing. A frozen turn/phase while priority passes flow is the reported soft-lock.",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "Only facet 1 (pending_phase_transition_progress -> phase-advance freeze via a step-end empty-mana CR 616.1 choice) is tested. Facet 2 was tested 2026-09-09 on v0.78.0 (not-reproduced, comment published, not re-run here). Facet 3 (pending_continuation -> deferred-trigger drain freeze) is not exercised.",
+  "The parked choice is the CR 616.1 ordering of Upwelling's retain vs Horizon Stone's transform on the same EmptyManaPool event; engine behavior for other 616.1 pairs may differ.",
+  "Not tested on the original 2026-07-01 build; verdict is scoped to v0.84.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ]
+}
