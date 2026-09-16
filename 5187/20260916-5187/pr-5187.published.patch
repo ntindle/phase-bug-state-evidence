@@ -1,0 +1,124 @@
+From 1af899c916a2a33d65bb23082f2862d95a37680b Mon Sep 17 00:00:00 2001
+From: jeffrey701 <jeffreyconradtucker@gmail.com>
+Date: Mon, 6 Jul 2026 01:30:45 -0400
+Subject: [PATCH] fix(client): count opponents correctly when the local seat is
+ eliminated
+
+The resumable-match summary computed opponentCount as Math.max(0, liveCount - 1), where liveCount already excludes eliminated players. The -1 assumes the local human (seat 0) is always alive; if seat 0 is eliminated but the match is still resumable (multi-seat local/FFA), seat 0 isn't in liveCount, so subtracting 1 undercounts opponents. Extract the pure counting into countLiveOpponents (unit-tested) and only subtract the local seat when it is alive.
+---
+ .../src/hooks/__tests__/liveOpponents.test.ts | 49 +++++++++++++++++++
+ client/src/hooks/liveOpponents.ts             | 22 +++++++++
+ client/src/hooks/useResumables.ts             |  4 +-
+ 3 files changed, 73 insertions(+), 2 deletions(-)
+ create mode 100644 client/src/hooks/__tests__/liveOpponents.test.ts
+ create mode 100644 client/src/hooks/liveOpponents.ts
+
+diff --git a/client/src/hooks/__tests__/liveOpponents.test.ts b/client/src/hooks/__tests__/liveOpponents.test.ts
+new file mode 100644
+index 0000000000..1951e643a0
+--- /dev/null
++++ b/client/src/hooks/__tests__/liveOpponents.test.ts
+@@ -0,0 +1,49 @@
++import { describe, expect, it } from "vitest";
++
++import { countLiveOpponents } from "../liveOpponents";
++
++describe("countLiveOpponents", () => {
++  it("counts the live seats other than the local human", () => {
++    expect(
++      countLiveOpponents([
++        { id: 0, is_eliminated: false },
++        { id: 1, is_eliminated: false },
++        { id: 2, is_eliminated: false },
++      ]),
++    ).toBe(2);
++  });
++
++  it("does not subtract the local seat when seat 0 is eliminated", () => {
++    // Regression: the old `Math.max(0, liveCount - 1)` undercounted this to 1.
++    expect(
++      countLiveOpponents([
++        { id: 0, is_eliminated: true },
++        { id: 1, is_eliminated: false },
++        { id: 2, is_eliminated: false },
++      ]),
++    ).toBe(2);
++  });
++
++  it("excludes eliminated opponents", () => {
++    expect(
++      countLiveOpponents([
++        { id: 0, is_eliminated: false },
++        { id: 1, is_eliminated: true },
++        { id: 2, is_eliminated: false },
++      ]),
++    ).toBe(1);
++  });
++
++  it("is zero when only the local human remains", () => {
++    expect(countLiveOpponents([{ id: 0, is_eliminated: false }])).toBe(0);
++  });
++
++  it("is zero when everyone is eliminated", () => {
++    expect(
++      countLiveOpponents([
++        { id: 0, is_eliminated: true },
++        { id: 1, is_eliminated: true },
++      ]),
++    ).toBe(0);
++  });
++});
+diff --git a/client/src/hooks/liveOpponents.ts b/client/src/hooks/liveOpponents.ts
+new file mode 100644
+index 0000000000..99eeeaef74
+--- /dev/null
++++ b/client/src/hooks/liveOpponents.ts
+@@ -0,0 +1,22 @@
++/** A player as the resumable-match summary sees it (a structural subset of the
++ *  engine `Player`, whose `is_eliminated` is optional on the wire — an absent
++ *  flag means "not eliminated"). */
++export interface ResumableSummaryPlayer {
++  id: number;
++  is_eliminated?: boolean;
++}
++
++/**
++ * Number of live opponents for the local human (seat 0) in a resumable match.
++ *
++ * Per CR 800.4 an eliminated player is out, so opponents are the live seats
++ * other than you. Only subtract the local seat when it is itself still alive:
++ * if seat 0 has been eliminated but the match is still resumable (a multi-seat
++ * local / FFA game), it is not among the live seats, so every live seat is an
++ * opponent and there is nothing to subtract.
++ */
++export function countLiveOpponents(players: ResumableSummaryPlayer[]): number {
++  const you = players.find((p) => p.id === 0);
++  const liveCount = players.filter((p) => !p.is_eliminated).length;
++  return liveCount - (you && !you.is_eliminated ? 1 : 0);
++}
+diff --git a/client/src/hooks/useResumables.ts b/client/src/hooks/useResumables.ts
+index c1ea14cb28..3993027601 100644
+--- a/client/src/hooks/useResumables.ts
++++ b/client/src/hooks/useResumables.ts
+@@ -1,6 +1,7 @@
+ import { useEffect, useState } from "react";
+ import { useNavigate } from "react-router";
+ 
++import { countLiveOpponents } from "./liveOpponents";
+ import { loadP2PSession } from "../services/p2pSession";
+ import { loadWsSession } from "../services/multiplayerSession";
+ import {
+@@ -86,12 +87,11 @@ export function useResumables(): Resumables {
+           // CR 800.4: eliminated players are out — only live seats count as
+           // opponents. Seat 0 is the local human in AI/host matches.
+           const you = state.players.find((p) => p.id === 0);
+-          const liveCount = state.players.filter((p) => !p.is_eliminated).length;
+           setMatchSummary({
+             turn: state.turn_number,
+             isYourTurn: state.active_player === 0,
+             yourLife: you && !you.is_eliminated ? you.life : null,
+-            opponentCount: Math.max(0, liveCount - 1),
++            opponentCount: countLiveOpponents(state.players),
+           });
+         } else {
+           clearActiveGame();
