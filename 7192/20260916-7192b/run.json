@@ -1,0 +1,152 @@
+{
+ "issue": 7192,
+ "run_id": "20260916-7192b",
+ "started_at": "2026-09-16T23:28:06",
+ "duration_s": 160.6,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "reused live server on 127.0.0.1:9374 (run 20260916-818); ServerHello confirms v0.85.0/cb58ef5/protocol 72; hashes recomputed from on-disk release files this run; v0.85.0 confirmed latest stable release (not shell-*)"
+ },
+ "server_run_dir": "runs/20260916-818",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7192_085.py",
+ "scenario_sha256": "153bbb1ef1990d27439f76aa7d4e1eccc57d17ba7ef412a215b2182e89534f4f",
+ "decks": {
+  "A_P0": [
+   [
+    "Maralen, Fae Ascendant",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Faerie Miscreant",
+    4
+   ],
+   [
+    "Swamp",
+    14
+   ],
+   [
+    "Forest",
+    14
+   ],
+   [
+    "Island",
+    12
+   ]
+  ],
+  "A_P1": [
+   [
+    "Flametongue Kavu",
+    60
+   ]
+  ],
+  "B_P0": [
+   [
+    "Maralen, Fae Ascendant",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Faerie Miscreant",
+    4
+   ],
+   [
+    "Swamp",
+    14
+   ],
+   [
+    "Forest",
+    14
+   ],
+   [
+    "Island",
+    12
+   ]
+  ],
+  "B_P1": [
+   [
+    "Grizzly Bears",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "A": true,
+  "B": true
+ },
+ "offers": {
+  "A": "legal_action",
+  "B": "legal_action"
+ },
+ "parse_summary": {
+  "maralen, fae ascendant": {
+   "oracle_text": "Flying\nWhenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.\nOnce each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.",
+   "subtypes": [
+    "Elf",
+    "Faerie",
+    "Noble"
+   ],
+   "etb_trigger_filter": "Or(SelfRef,Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))",
+   "etb_effect": "ExileTop",
+   "static_mode": [
+    "ExileCastPermission"
+   ],
+   "static_frequency": "OncePerTurn",
+   "static_pool": "ThisTurn",
+   "cmc_comparator": "LE",
+   "count_qty_type": "ObjectCount",
+   "count_filter": "Or(Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))"
+  }
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_offered": "passed",
+  "A3_cast_ok": "passed",
+  "A4_no_pay": "passed",
+  "B1_setup": "passed",
+  "B2_offered": "passed",
+  "B3_cast_ok": "passed",
+  "B4_no_pay": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): etb_filter=Or(SelfRef,Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You)) effect=ExileTop; static_mode=['ExileCastPermission'] freq=OncePerTurn pool=ThisTurn; limit=Cmc LE ObjectCount(Or(Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))) -- AST is the faithful Elf-or-Faerie union, matching the triage finding that the defect is at runtime.",
+  "A1_setup: maralen=True, elves=2, faeries=1 (combined=4, faeries-only=2), exiled=['Flametongue Kavu', 'Flametongue Kavu'] (expect 2x Flametongue Kavu): ok",
+  "A2_offered: CastSpell advertised for exiled Flametongue Kavu via legal_actions (the only cast authority for an exiled card is Maralen's permission)",
+  "A3_cast_ok: Flametongue Kavu on P0 battlefield, stack empty",
+  "A4_no_pay: tapped lands 6->6; no mana paid for the free cast",
+  "B1_setup: maralen=True, elves=2, faeries=1 (combined=4, faeries-only=2), exiled=['Grizzly Bears', 'Grizzly Bears'] (expect 2x Grizzly Bears): ok",
+  "B2_offered: CastSpell advertised for exiled Grizzly Bears via legal_actions (the only cast authority for an exiled card is Maralen's permission)",
+  "B3_cast_ok: Grizzly Bears on P0 battlefield, stack empty",
+  "B4_no_pay: tapped lands 6->6; no mana paid for the free cast",
+  "verdict: not-reproduced - MV-4 Kavu offered and cast for free with 2 Elves + 1 Faerie + Maralen on board"
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-16",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "The test discriminates combined-count 4 vs faeries-only 2; it cannot distinguish a correct combined count from double-counting Maralen (5). No MV-5 exiled spell was in the pool.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 4x Maralen + 12x Llanowar Elves + 4x Faerie Miscreant + 14 Swamp/14 Forest/12 Island vs P1 60x Flametongue Kavu (A) / 60x Grizzly Bears (B). P0 completes the tribe (2 Elves + 1 Faerie), casts Maralen, answers the exile trigger (P1), holds main-phase priority for the free-cast offer.",
+ "contract_line": "With Maralen + 2 Elves + 1 Faerie (combined 4), the once-per-turn free cast must be offered for an exiled MV-4 spell; MV-2 is the control (offered under both behaviors)."
+}
