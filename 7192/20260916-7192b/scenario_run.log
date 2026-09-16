@@ -1,0 +1,81 @@
+starting issue #7192 run 20260916-7192b (pinned v0.85.0, protocol 72)
+parse: {"maralen, fae ascendant": {"oracle_text": "Flying\nWhenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.\nOnce each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.", "subtypes": ["Elf", "Faerie", "Noble"], "etb_trigger_filter": "Or(SelfRef,Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))", "etb_effect": "ExileTop", "static_mode": ["ExileCastPermission"], "static_frequency": "OncePerTurn", "static_pool": "ThisTurn", "cmc_comparator": "LE", "count_qty_type": "ObjectCount", "count_filter": "Or(Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))"}}
+[A] game=KLQP3R
+[A-P0] mulligan: keep
+[A-P1] mulligan: keep
+[A] DIAG turn=1 active=0 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0 maralen=False exiled=None holding=False
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] casts Faerie Miscreant
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] casts Llanowar Elves
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A] DIAG turn=19 active=0 phase=End wf=Priority P0hand=4 P1hand=7 stack=0 maralen=False exiled=None holding=False
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] declares no DeclareAttackers
+[A-P1] discards ['Flametongue Kavu']
+[A-P0] casts Llanowar Elves
+[A-P0] casts Maralen, Fae Ascendant (tribe complete)
+[A-P0] Maralen on battlefield (turn 27)
+[A-P0] exile observed: ['Flametongue Kavu', 'Flametongue Kavu'] (turn 27, P1 library 40->38)
+exported pre_A.json
+[A-P0] FREE CAST OFFERED via legal_action: {"type": "CastSpell", "data": {"object_id": 91, "card_id": 91, "targets": [], "payment_mode": {"type": "Auto"}}}
+[A-P0] submitted free cast as-is
+[A-P0] answers TriggerTargetSelection (kavu_etb_target)
+[A-P0] free-cast creature on battlefield; exporting POST
+exported post_A.json
+[A] contract complete; finishing game
+game A finished ok=True
+game A finished ok=True
+[B] game=1UPD2U
+[B-P0] mulligan: keep
+[B-P1] mulligan: keep
+[B] DIAG turn=1 active=0 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0 maralen=False exiled=None holding=False
+[B-P1] discards ['Grizzly Bears']
+[B-P1] discards ['Grizzly Bears']
+[B-P0] casts Llanowar Elves
+[B-P1] discards ['Grizzly Bears']
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] casts Llanowar Elves
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] declares no DeclareAttackers
+[B-P1] discards ['Grizzly Bears']
+[B-P0] casts Faerie Miscreant
+[B-P0] casts Maralen, Fae Ascendant (tribe complete)
+[B-P0] Maralen on battlefield (turn 19)
+[B-P0] exile observed: ['Grizzly Bears', 'Grizzly Bears'] (turn 19, P1 library 44->42)
+exported pre_B.json
+[B] DIAG turn=19 active=0 phase=PreCombatMain wf=Priority P0hand=3 P1hand=7 stack=0 maralen=True exiled=['103', '110'] holding=True
+[B-P0] FREE CAST OFFERED via legal_action: {"type": "CastSpell", "data": {"object_id": 103, "card_id": 103, "targets": [], "payment_mode": {"type": "Auto"}}}
+[B-P0] submitted free cast as-is
+[B-P0] free-cast creature on battlefield; exporting POST
+exported post_B.json
+[B] contract complete; finishing game
+game B finished ok=True
+game B finished ok=True
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7192/20260916-7192b/summary.png
