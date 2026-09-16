@@ -1,0 +1,126 @@
+{
+ "run_id": "20260915-3233b",
+ "issue": 3233,
+ "verdict": "blocked",
+ "validated_at": "2026-09-15",
+ "server": {
+  "server_version": "v0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-09-15; data digests match the signed manifest; digests recomputed against on-disk files this run; release v0.84.0 confirmed latest stable via GitHub releases API 2026-09-15",
+  "observed_at": "2026-09-15",
+  "handshake": "ServerHello observed pre-run: v0.84.0 / eb7e93e / protocol 71 / mode Full on 127.0.0.1:9374",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run under runs/20260915-3233/"
+ },
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e3f10df7d208a7ccb7f40cee7f5eac1e00d38274e5c06903c4c2e9260648aa2f",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_declared": "passed",
+  "A3_combat_completes": "passed",
+  "A4_empty_declares": "passed",
+  "A5_no_softlock": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "declare_waits": [
+   {
+    "turn": 5,
+    "active": 0,
+    "who": "P0",
+    "action_offered": true,
+    "attack_oids": [
+     12
+    ],
+    "submitted": true
+   },
+   {
+    "turn": 6,
+    "active": 1,
+    "who": "P1",
+    "action_offered": true,
+    "attack_oids": [],
+    "submitted": true
+   }
+  ],
+  "stall_observed": false,
+  "rejections": [],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "game_code": "FSUFIG",
+  "p0_attack_oid": 12,
+  "attacked": true,
+  "p1_empty_done": true,
+  "exports": {
+   "pre": true,
+   "post": true
+  },
+  "turns_seen": [],
+  "rejection_count": 0
+ },
+ "notes": [
+  "A1: pre.json exported at P0 DeclareAttackers (turn 5); attack-ready bears=[12]",
+  "pre: turn=5 phase=DeclareAttackers active=P0 wf=DeclareAttackers P0 bears=2 P1 life=20",
+  "post: turn=6 phase=End active=P1 wf=Priority P1 life=18",
+  "A2/A3: P0 attacked with Bear oid 12; P1 life 20 -> 18 (unblocked 2/2); combat completed",
+  "A4: P1 empty DeclareAttackers submitted; game advanced (post wf=Priority, phase=End, active=P1)",
+  "A5: 2 DeclareAttackers wait(s); the advertised action was offered to the acting player every time and every decision advanced; no >60s stall",
+  "A6: post.json stack empty, game proceeding (turn=6, phase=End, active=P1)",
+  "verdict=blocked: the report has no testable premise (no board, steps, or save; reporter never answered the maintainer's 2026-07-19 questions; still open, status:needs-repro). Generic DeclareAttackers path on v0.84.0 completes normally. A native engine test of the reported bug would require inventing the premise.",
+  "verdict=blocked"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_3233.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "No goad/tax/restriction or attack-requirement effects on the board; the report names none, so only the generic DeclareAttackers path is exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original v0.1.56 build."
+ ],
+ "setup_line": "P0: 12x Grizzly Bears + 48x Forest (keep 7, cast Bear when able, attack P1 when ready); P1: same deck, deliberately declares no attackers",
+ "contract_line": "DeclareAttackers always offers a submittable action; an attack declaration and an empty declaration both complete; combat damage resolves normally; no >60s stall with no offered action",
+ "duration_s": 24.4
+}
