@@ -1,0 +1,20 @@
+{
+ "maralen, fae ascendant": {
+  "oracle_text": "Flying\nWhenever Maralen or another Elf or Faerie you control enters, exile the top two cards of target opponent's library.\nOnce each turn, you may cast a spell with mana value less than or equal to the number of Elves and Faeries you control from among cards exiled with Maralen this turn without paying its mana cost.",
+  "subtypes": [
+   "Elf",
+   "Faerie",
+   "Noble"
+  ],
+  "etb_trigger_filter": "Or(SelfRef,Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))",
+  "etb_effect": "ExileTop",
+  "static_mode": [
+   "ExileCastPermission"
+  ],
+  "static_frequency": "OncePerTurn",
+  "static_pool": "ThisTurn",
+  "cmc_comparator": "LE",
+  "count_qty_type": "ObjectCount",
+  "count_filter": "Or(Typed(subtypes=['Elf'],controller=You),Typed(subtypes=['Faerie'],controller=You))"
+ }
+}
