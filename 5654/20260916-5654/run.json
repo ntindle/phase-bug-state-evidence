@@ -1,0 +1,147 @@
+{
+ "issue": 5654,
+ "run_id": "20260916-5654",
+ "started_at": "2026-09-16T20:53:11",
+ "duration_s": 74.3,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "ServerHello + minisign verification against repo-pinned key (hashes recomputed from on-disk release files; verified v0.85.0 is the latest stable release, not shell-*)"
+ },
+ "server_run_dir": "runs/20260916-5654",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_5654_085.py",
+ "scenario_sha256": "520c366549b544a3fe41d6055a59e578c08ed93f3ff9b6ad43e88c5811e23158",
+ "decks": {
+  "A_P0": [
+   [
+    "Notion Thief",
+    8
+   ],
+   [
+    "Island",
+    26
+   ],
+   [
+    "Swamp",
+    26
+   ]
+  ],
+  "A_P1": [
+   [
+    "Divination",
+    8
+   ],
+   [
+    "Island",
+    52
+   ]
+  ],
+  "B_P0": [
+   [
+    "Plagiarize",
+    8
+   ],
+   [
+    "Island",
+    52
+   ]
+  ],
+  "B_P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "A": {
+   "ok": true
+  },
+  "B": {
+   "ok": true
+  }
+ },
+ "parse_summary": {
+  "notion thief": {
+   "event": "Draw",
+   "condition": "ExceptFirstDrawInDrawStep",
+   "execute_effect": "Unimplemented",
+   "execute_desc": "that player skips that draw",
+   "sub_effect": "Draw",
+   "sub_count": 1,
+   "sub_target": "Controller",
+   "valid_player": "Opponent"
+  },
+  "plagiarize": {
+   "event": "Draw",
+   "condition": null,
+   "execute_effect": "Unimplemented",
+   "execute_desc": "if target player would draw a card, instead that player skips that draw",
+   "sub_effect": "Draw",
+   "sub_count": 1,
+   "sub_target": "Controller",
+   "valid_player": null
+  },
+  "hullbreacher": {
+   "event": "Draw",
+   "condition": "ExceptFirstDrawInDrawStep",
+   "execute_effect": "Token",
+   "execute_desc": null,
+   "sub_effect": null,
+   "sub_count": null,
+   "sub_target": null,
+   "valid_player": "Opponent"
+  }
+ },
+ "assertions": {
+  "A2A_parse_notion": "passed",
+  "A2B_parse_plagiarize": "passed",
+  "A1A_setup": "passed",
+  "A4A_skip_holds": "passed",
+  "A5A_ctrl_draws": "passed",
+  "A6A_cleanup": "passed",
+  "A1B_setup": "passed",
+  "A3B_target_offered": "failed",
+  "A4B_skip_holds": "failed",
+  "A5B_ctrl_draws": "failed",
+  "A6B_cleanup": "passed"
+ },
+ "notes": [
+  "parse notion thief (pinned v0.85.0 card-data): execute=Unimplemented (that player skips that draw), sub=Drawx1->Controller, cond=ExceptFirstDrawInDrawStep, valid_player=Opponent: GAP PRESENT as reported",
+  "parse plagiarize (pinned v0.85.0 card-data): execute=Unimplemented (if target player would draw a card, instead that player skips that draw), sub=Drawx1->Controller, valid_player=None: GAP PRESENT as reported",
+  "parse hullbreacher control: execute=Token (single-action substitute fully parsed: yes)",
+  "pre_A: thief_on_bf=True, div_in_hand=True, P1_untapped_islands=7, life=20/20: ok",
+  "A4A skip holds: P1 hand 7->6 (-1 = cast Divination, +0 draws), library 46->46 (both draws skipped)",
+  "A5A controller draws: P0 hand 4->6, library 48->46 (both replaced draws drawn)",
+  "A6A cleanup: Divination in P1 gy, stack empty, game proceeding",
+  "pre_B: plag_in_hand=True, P0_untapped_islands=4, active=1 phase=Upkeep, life=20/20: ok",
+  "A3B target: Plagiarize cast completed but NO target prompt was ever offered (target binding gap)",
+  "A4B skip DEVIATES: P1 hand 6->7, library 50->49 (expected unchanged)",
+  "A5B controller draw DEVIATES: P0 hand 7->6 (expected 7), library 49->49 (expected -1)",
+  "A6B cleanup: Plagiarize in P0 gy, stack empty, game proceeding",
+  "verdict: reported parse gap present in pinned v0.85.0 card-data; in-engine deviation=yes"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-16",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Magus of the Chains shares the same Oracle text and parse class but was not driven (same-class coverage via Plagiarize/Notion Thief).",
+  "Verdict is scoped to v0.85.0; this is a reproduction, not a fix claim.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "A: P0 8x Notion Thief + 26 Island + 26 Swamp vs P1 8x Divination + 52 Island (P1 casts Divination with Thief on board). B: P0 8x Plagiarize + 52 Island vs P1 60 Island (P0 casts Plagiarize @P1 during P1's Upkeep).",
+ "contract_line": "Per Oracle, each affected draw is skipped by the victim and drawn by the controller instead. The reported defect is the parser dropping the compound substitute's skip half to Unimplemented."
+}
