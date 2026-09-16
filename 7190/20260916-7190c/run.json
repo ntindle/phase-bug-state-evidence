@@ -1,0 +1,102 @@
+{
+ "issue": 7190,
+ "run_id": "20260916-7190c",
+ "started_at": "2026-09-16T21:47:02",
+ "duration_s": 349.4,
+ "server": {
+  "server_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "this-run setup: sha256 recomputed on disk; minisign+manifest verified at pin time 2026-09-16"
+ },
+ "server_run_dir": "runs/20260916-7190c",
+ "game_codes": [
+  "KLQMY4",
+  "QIYPEM",
+  "SSQ22N"
+ ],
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d72fa6d9e9f188685c8578e87c50548385fd1eb26889b3201853a8122c6c1314",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    44
+   ],
+   [
+    "Sword of the Meek",
+    8
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ]
+  ],
+  "P1_accept_decline": [
+   [
+    "Forest",
+    44
+   ],
+   [
+    "Naturalize",
+    16
+   ]
+  ],
+  "P1_kill": [
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Mountain",
+    16
+   ],
+   [
+    "Naturalize",
+    8
+   ],
+   [
+    "Shock",
+    12
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_return_ok": "passed",
+  "A4_attach_correct": "passed",
+  "A5_decline_ok": "passed",
+  "A6_unattached_ok": "passed"
+ },
+ "notes": [
+  "[accept] A4: sword oid 28 attached_to=21; triggering Elves oid 21 pt=(2, 3)",
+  "[decline] A5: post GY swords=[17] BF swords=[]",
+  "[kill] A6: sword oid 16 attached_to=None; Elves in GY=[3]"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post JSON are authoritative exports restorable only via full game replay, not direct load.",
+  "Dense playsets (8x Sword/Elves, 16x Naturalize) are a test-harness convenience; the engine accepts >4-of for custom games."
+ ],
+ "setup_line": "P0: 44 Forest + 8 Sword of the Meek + 8 Llanowar Elves; P1: 44 Forest + 16 Naturalize (accept/decline) or 24 Forest + 16 Mountain + 8 Naturalize + 12 Shock (kill); kill leg delays Elves to T7 so P1 untaps between T4 Naturalize and T7 Shock",
+ "contract_line": "Sword cast T3, Naturalized T4 (-> GY), Elves T5 (-> trigger); accept/decline the 'you may return'; kill leg Shocks the Elves in response",
+ "stats": {
+  "seen_wf_types": [],
+  "game_codes": [
+   "KLQMY4",
+   "QIYPEM",
+   "SSQ22N"
+  ]
+ }
+}
