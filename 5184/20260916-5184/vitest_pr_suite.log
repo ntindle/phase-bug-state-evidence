@@ -1,0 +1,562 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [31m❯[39m src/services/__tests__/scryfall.test.ts [2m([22m[2m67 tests[22m[2m | [22m[31m12 failed[39m[2m)[22m[33m 730[2mms[22m[39m
+     [32m✓[39m rejects malformed primary payloads, coalesces a valid retry, and preserves text fallback without URLs[32m 109[2mms[22m[39m
+     [32m✓[39m accepts omitted primary image URLs without publishing image data[32m 3[2mms[22m[39m
+     [32m✓[39m rejects malformed printings payloads and keeps a valid retry cached[32m 4[2mms[22m[39m
+     [32m✓[39m strips set code brackets[32m 1[2mms[22m[39m
+     [32m✓[39m strips angle-bracket treatment tags[32m 1[2mms[22m[39m
+     [32m✓[39m strips collector numbers in angle brackets[32m 1[2mms[22m[39m
+     [32m✓[39m strips foil markers[32m 1[2mms[22m[39m
+     [32m✓[39m strips combined decorators[32m 1[2mms[22m[39m
+     [32m✓[39m leaves plain card names unchanged[32m 1[2mms[22m[39m
+     [32m✓[39m uses Scryfall legality keys for constructed formats[32m 1[2mms[22m[39m
+     [32m✓[39m maps commander variants to Scryfall legality keys[32m 2[2mms[22m[39m
+     [32m✓[39m returns undefined for formats without a Scryfall legality key[32m 1[2mms[22m[39m
+     [32m✓[39m picks the earliest release date and lowest collector number on ties[32m 11[2mms[22m[39m
+     [32m✓[39m returns card data from local JSON[32m 2[2mms[22m[39m
+     [32m✓[39m throws when card is not in local data (no API fallback)[32m 3[2mms[22m[39m
+     [32m✓[39m normalizes decorated names before local lookup[32m 1[2mms[22m[39m
+     [32m✓[39m resolves ASCII names to diacritic local data keys (issue #1497)[32m 3[2mms[22m[39m
+     [32m✓[39m resolves a hand-typed glued double-faced name via the front face[32m 1[2mms[22m[39m
+     [32m✓[39m resolves the canonical spaced double-faced name directly[32m 1[2mms[22m[39m
+     [32m✓[39m resolves_an_alternate_face_from_a_cube_front_face_name[32m 2[2mms[22m[39m
+     [32m✓[39m does not mis-split a single-faced card whose name contains "//" (issue #4790)[32m 1[2mms[22m[39m
+     [32m✓[39m does_not_treat_adventure_components_as_physical_card_faces[32m 1[2mms[22m[39m
+     [32m✓[39m maps W/U to the exact Scryfall filename WU[32m 1[2mms[22m[39m
+     [32m✓[39m maps W/U/P to the exact Scryfall filename WUP[32m 1[2mms[22m[39m
+     [32m✓[39m maps 2/G to the exact Scryfall filename 2G[32m 1[2mms[22m[39m
+     [32m✓[39m maps ∞ to the exact Scryfall filename INFINITY[32m 1[2mms[22m[39m
+     [32m✓[39m maps ½ to the exact Scryfall filename HALF[32m 1[2mms[22m[39m
+     [32m✓[39m maps 1000000 to the exact Scryfall filename 1000000[32m 0[2mms[22m[39m
+     [32m✓[39m returns image URL from local data[32m 1[2mms[22m[39m
+     [32m✓[39m falls back to a real local printing when canonical image data is Scryfall's soon placeholder[32m 27[2mms[22m[39m
+     [32m✓[39m throws when card image is not in local data (no API fallback)[32m 2[2mms[22m[39m
+     [32m✓[39m normalizes decorated names for image lookup[32m 1[2mms[22m[39m
+     [32m✓[39m resolves front-face art keyed by face oracle_id[32m 2[2mms[22m[39m
+[31m     [31m×[31m keys image data by face oracle_id when reversible cards omit root oracle_id[39m[32m 30[2mms[22m[39m
+[31m     [31m×[31m groups printings by face oracle_id when reversible cards omit root oracle_id[39m[32m 16[2mms[22m[39m
+     [32m✓[39m Test 1 — a vanilla token query carries is:vanilla[32m 6[2mms[22m[39m
+     [32m✓[39m Test 2 — is:vanilla is added only when hasAbilities === false[32m 11[2mms[22m[39m
+     [32m✓[39m Test 3 — a vanilla-narrowed query resolves to a vanilla printing[32m 2[2mms[22m[39m
+     [32m✓[39m Test 4 — a 404 on the first is:vanilla rung advances to the next rung[32m 101[2mms[22m[39m
+     [32m✓[39m retries on network error with backoff[32m 10[2mms[22m[39m
+     [32m✓[39m derives every size from every other size[32m 7[2mms[22m[39m
+     [32m✓[39m preserves the query string[32m 1[2mms[22m[39m
+     [32m✓[39m derives back faces[32m 1[2mms[22m[39m
+     [32m✓[39m returns non-derivable input unchanged, without throwing[32m 1[2mms[22m[39m
+     [32m✓[39m serves a real small asset from the stored normal URL[32m 1[2mms[22m[39m
+     [32m✓[39m collapses large to normal[32m 4[2mms[22m[39m
+     [32m✓[39m serves art_crop untouched[32m 1[2mms[22m[39m
+     [32m✓[39m serves a real small asset for local token images[32m 1[2mms[22m[39m
+     [32m✓[39m serves a real small asset from printings, and still rejects placeholders[32m 1[2mms[22m[39m
+[31m     [31m×[31m case 1: mv fails, destination exists and passes the default validator -> rc 0, tmp cleaned, destination byte-identical to before[39m[32m 54[2mms[22m[39m
+[31m     [31m×[31m case 2: mv fails, destination absent -> rc 1, tmp cleaned[39m[32m 57[2mms[22m[39m
+[31m     [31m×[31m case 3: mv fails, destination is invalid JSON -> rc 1, tmp cleaned[39m[32m 18[2mms[22m[39m
+[31m     [31m×[31m case 4: mv fails, destination is valid JSON but fails the caller-supplied validator -> rc 1, validator actually invoked[39m[32m 20[2mms[22m[39m
+[31m     [31m×[31m case 4b (positive control for case 4): mv fails, destination is valid JSON and PASSES the caller-supplied validator -> rc 0, destination unchanged[39m[32m 16[2mms[22m[39m
+[31m     [31m×[31m case 5: mv succeeds -> normal path, destination written from the download, no recovery marker[39m[32m 39[2mms[22m[39m
+[31m     [31m×[31m case 5b: freshly-downloaded content fails the caller-supplied validator -> rc 1, destination never written[39m[32m 41[2mms[22m[39m
+[31m     [31m×[31m case 6: gen-scryfall-sets.sh discards an invalid cached sets file and refetches from SCRYFALL_SETS_URL[39m[32m 16[2mms[22m[39m
+[31m     [31m×[31m case 6b (empty data array): a cached sets file that is valid JSON but fails the .data array-shape check is discarded and refetched[39m[32m 11[2mms[22m[39m
+[31m     [31m×[31m case 6b (non-array data): a cached sets file that is valid JSON but fails the .data array-shape check is discarded and refetched[39m[32m 36[2mms[22m[39m
+     [32m✓[39m swaps the image to the localized printing, keeping the chosen printing[32m 4[2mms[22m[39m
+     [32m✓[39m falls back to English art when a v2 locale entry is invalid[32m 1[2mms[22m[39m
+     [32m✓[39m keeps English art when the printing has no localized sibling[32m 3[2mms[22m[39m
+     [32m✓[39m localizes the back face and the art crop[32m 6[2mms[22m[39m
+     [32m✓[39m is a no-op for English[32m 5[2mms[22m[39m
+     [32m✓[39m never rewrites the card back or the placeholder[32m 4[2mms[22m[39m
+     [32m✓[39m reports readiness and tolerates a missing locale file[32m 1[2mms[22m[39m
+     [32m✓[39m dedupes concurrent loads of one locale into a single fetch[32m 3[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/presets-5184.driver.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [31m❯[39m src/services/__tests__/serverDirectory.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [31m❯[39m src/services/__tests__/serverMetrics.test.ts [2m([22m[2m0 test[22m[2m)[22m
+ [32m✓[39m src/services/__tests__/tournamentClient.test.ts [2m([22m[2m89 tests[22m[2m)[22m[33m 652[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/nativeEngineSocket.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 520[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/offlineAssets.test.ts [2m([22m[2m30 tests[22m[2m)[22m[33m 852[2mms[22m[39m
+     [33m[2m✓[22m[39m reports ready assets when the Deck Catalog is selected [33m 735[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/openPhaseSocket.test.ts [2m([22m[2m30 tests[22m[2m)[22m[33m 405[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/externalLinks.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 187[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:267:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:267:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:267:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:287:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:287:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:287:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:291:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:291:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:291:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:303:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:303:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:303:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "starter-decks": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-standard": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-modern": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-pioneer": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-commander": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:98:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/feedService.ts:220:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/feedService.test.ts:470:5
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+ [32m✓[39m src/services/__tests__/feedService.test.ts [2m([22m[2m45 tests[22m[2m)[22m[32m 173[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/offlinePreparation.test.ts [2m([22m[2m50 tests[22m[2m)[22m[32m 123[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/openExternal.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 114[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/engineRuntime.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 85[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/gameStateExport.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/draftPersistence.test.ts[2m > [22m[2mdraftPersistence[2m > [22m[2mhost session[2m > [22m[2mrethrows a host write failure so callers cannot continue on a lost receipt
+[22m[39m[saveDraftHostSession] IDB write failed: Error: IndexedDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/client/[39msrc/services/__tests__/draftPersistence.test.ts:123:37
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel (file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10)
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout (file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10)
+    at file:///home/hatch/workspace/dev/phase-backfill/client-test/phase-main/client/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+ [32m✓[39m src/services/__tests__/draftPersistence.test.ts [2m([22m[2m70 tests[22m[2m)[22m[32m 63[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/nativeEngine.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 56[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/brokerClient.test.ts[2m > [22m[2mlookupJoinTargetOver[2m > [22m[2mresolves with JoinTargetInfo for the matching code
+[22m[39m[broker] dropping a malformed format_config from a lobby frame; the room's format will be treated as unknown
+
+ [32m✓[39m src/services/__tests__/brokerClient.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 101[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/lan.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/platform.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckParser.test.ts [2m([22m[2m77 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/quickDraftPersistence.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckUrlImport.test.ts [2m([22m[2m35 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/aiDeckCatalog.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/changelog.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/randomDeckSelection.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/copyText.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/audioHealth.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/serverDetection.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/backup.test.ts [2m([22m[2m15 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/gamePersistence.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/feedPersistence.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/draftSpectatorSession.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/telemetryEvents.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cubeCobra.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/socketKeepalive.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/customFormats.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/legacyMigration.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/fullTerminalResult.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/presets.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/status.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/multiplayerSession.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/channelPreference.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 10[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/artSelection.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckParser.visualPacks.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/intergameCommandLedger.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/p2pTerminalResult.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/manaSymbolCatalog.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckCatalog.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cardImageLookup.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/p2pSession.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cedhLock.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Suites 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/serverDirectory.test.ts[2m [ src/services/__tests__/serverDirectory.test.ts ][22m
+[31m[1mError[22m: ENOENT: no such file or directory, open '/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/lobby-worker/src/directory.ts'[39m
+[36m [2m❯[22m src/services/__tests__/workerSourceExtractors.ts:[2m24:32[22m[39m
+    [90m 22|[39m
+    [90m 23|[39m [90m/** `lobby-worker/src/directory.ts` — the contract declarations. */[39m
+    [90m 24|[39m [35mexport[39m [35mconst[39m workerDirectory [33m=[39m [34mreadFileSync[39m(
+    [90m   |[39m                                [31m^[39m
+    [90m 25|[39m   [34mresolve[39m(repoRoot[33m,[39m [32m"lobby-worker/src/directory.ts"[39m)[33m,[39m
+    [90m 26|[39m   [32m"utf8"[39m[33m,[39m
+[90m [2m❯[22m src/services/__tests__/serverDirectory.test.ts:[2m30:1[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/serverMetrics.test.ts[2m [ src/services/__tests__/serverMetrics.test.ts ][22m
+[31m[1mError[22m: ENOENT: no such file or directory, open '/home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/lobby-worker/src/directory.ts'[39m
+[36m [2m❯[22m src/services/__tests__/workerSourceExtractors.ts:[2m24:32[22m[39m
+    [90m 22|[39m
+    [90m 23|[39m [90m/** `lobby-worker/src/directory.ts` — the contract declarations. */[39m
+    [90m 24|[39m [35mexport[39m [35mconst[39m workerDirectory [33m=[39m [34mreadFileSync[39m(
+    [90m   |[39m                                [31m^[39m
+    [90m 25|[39m   [34mresolve[39m(repoRoot[33m,[39m [32m"lobby-worker/src/directory.ts"[39m)[33m,[39m
+    [90m 26|[39m   [32m"utf8"[39m[33m,[39m
+[90m [2m❯[22m src/services/__tests__/serverMetrics.test.ts:[2m19:1[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/14]⎯[22m[39m
+
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 12 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mScryfall generation scripts — reversible cards (issue #2031)[2m > [22mkeys image data by face oracle_id when reversible cards omit root oracle_id
+[31m[1mError[22m: Command failed: bash /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-images.sh
+bash: /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-images.sh: No such file or directory
+[39m
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m724:7[22m[39m
+    [90m722|[39m       )[33m;[39m
+    [90m723|[39m
+    [90m724|[39m       execFileSync("bash", [path.join(REPO_ROOT, "scripts/gen-scryfall…
+    [90m   |[39m       [31m^[39m
+    [90m725|[39m         cwd[33m:[39m [33mREPO_ROOT[39m[33m,[39m
+    [90m726|[39m         env[33m:[39m {
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m687:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mScryfall generation scripts — reversible cards (issue #2031)[2m > [22mgroups printings by face oracle_id when reversible cards omit root oracle_id
+[31m[1mError[22m: Command failed: bash /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-printings.sh
+bash: /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-printings.sh: No such file or directory
+[39m
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m795:7[22m[39m
+    [90m793|[39m       )[33m;[39m
+    [90m794|[39m
+    [90m795|[39m       execFileSync("bash", [path.join(REPO_ROOT, "scripts/gen-scryfall…
+    [90m   |[39m       [31m^[39m
+    [90m796|[39m         cwd[33m:[39m [33mREPO_ROOT[39m[33m,[39m
+    [90m797|[39m         env[33m:[39m {
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m746:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 1: mv fails, destination exists and passes the default validator -> rc 0, tmp cleaned, destination byte-identical to before
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'MV_CALLED=1'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- MV_CALLED=[7m1[27m[39m
+[31m+ RC=127[39m
+[31m+ MV_CALLED=[7m0[27m[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1281:19[22m[39m
+    [90m1279|[39m       const { out, dest } = runMvFailureScript(dir, { destContent: bef…
+    [90m1280|[39m
+    [90m1281|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1282|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=0"[39m)[33m;[39m
+    [90m1283|[39m       [34mexpect[39m(out)[33m.[39m[34mtoMatch[39m([36m/TMP_COUNT=0/[39m)[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1277:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 2: mv fails, destination absent -> rc 1, tmp cleaned
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'MV_CALLED=1'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- MV_CALLED=[7m1[27m[39m
+[31m+ RC=127[39m
+[31m+ MV_CALLED=[7m0[27m[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1292:19[22m[39m
+    [90m1290|[39m       [35mconst[39m { out[33m,[39m dest[33m,[39m stderr } [33m=[39m [34mrunMvFailureScript[39m(dir[33m,[39m {})[33m;[39m
+    [90m1291|[39m
+    [90m1292|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1293|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=1"[39m)[33m;[39m
+    [90m1294|[39m       [34mexpect[39m(out)[33m.[39m[34mtoMatch[39m([36m/TMP_COUNT=0/[39m)[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1289:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 3: mv fails, destination is invalid JSON -> rc 1, tmp cleaned
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'MV_CALLED=1'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- MV_CALLED=[7m1[27m[39m
+[31m+ RC=127[39m
+[31m+ MV_CALLED=[7m0[27m[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1307:19[22m[39m
+    [90m1305|[39m       })[33m;[39m
+    [90m1306|[39m
+    [90m1307|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1308|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=1"[39m)[33m;[39m
+    [90m1309|[39m       [34mexpect[39m(out)[33m.[39m[34mtoMatch[39m([36m/TMP_COUNT=0/[39m)[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1301:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 4: mv fails, destination is valid JSON but fails the caller-supplied validator -> rc 1, validator actually invoked
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'MV_CALLED=1'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- MV_CALLED=[7m1[27m[39m
+[31m+ RC=127[39m
+[31m+ MV_CALLED=[7m0[27m[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1332:19[22m[39m
+    [90m1330|[39m       })[33m;[39m
+    [90m1331|[39m
+    [90m1332|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1333|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=1"[39m)[33m;[39m
+    [90m1334|[39m       [90m// The tmp gate and the failed-rename recovery check both run the[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1318:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 4b (positive control for case 4): mv fails, destination is valid JSON and PASSES the caller-supplied validator -> rc 0, destination unchanged
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'MV_CALLED=1'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- MV_CALLED=[7m1[27m[39m
+[31m+ RC=127[39m
+[31m+ MV_CALLED=[7m0[27m[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1352:19[22m[39m
+    [90m1350|[39m       })[33m;[39m
+    [90m1351|[39m
+    [90m1352|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1353|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=0"[39m)[33m;[39m
+    [90m1354|[39m       [34mexpect[39m([34mreadFileSync[39m(dest[33m,[39m [32m"utf8"[39m))[33m.[39m[34mtoBe[39m(before)[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1342:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 5: mv succeeds -> normal path, destination written from the download, no recovery marker
+[31m[1mAssertionError[22m: expected 'RC=127\nMV_CALLED=0\nTMP_COUNT=0\n' to contain 'RC=0'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- RC=[7m0[27m[39m
+[31m+ RC=[7m127[27m[39m
+[31m+ MV_CALLED=0[39m
+[31m+ TMP_COUNT=0[39m
+[31m+[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1369:19[22m[39m
+    [90m1367|[39m
+    [90m1368|[39m       [34mexpect[39m(out)[33m.[39mnot[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m1369|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=0"[39m)[33m;[39m
+    [90m   |[39m                   [31m^[39m
+    [90m1370|[39m       [34mexpect[39m([34mreadFileSync[39m(dest[33m,[39m [32m"utf8"[39m))[33m.[39m[34mtoBe[39m(payload)[33m;[39m
+    [90m1371|[39m     })[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1361:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 5b: freshly-downloaded content fails the caller-supplied validator -> rc 1, destination never written
+[31m[1mAssertionError[22m: expected +0 to be 1 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 1[39m
+[31m+ 0[39m
+
+[36m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1390:30[22m[39m
+    [90m1388|[39m
+    [90m1389|[39m       [34mexpect[39m(out)[33m.[39mnot[33m.[39m[34mtoContain[39m([32m"MV_CALLED=1"[39m)[33m;[39m
+    [90m1390|[39m       [34mexpect[39m(validatorCalls)[33m.[39m[34mtoBe[39m([34m1[39m)[33m;[39m
+    [90m   |[39m                              [31m^[39m
+    [90m1391|[39m       [34mexpect[39m(out)[33m.[39m[34mtoContain[39m([32m"RC=1"[39m)[33m;[39m
+    [90m1392|[39m       [34mexpect[39m([34mexistsSync[39m(dest))[33m.[39m[34mtoBe[39m([35mfalse[39m)[33m;[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1375:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 6: gen-scryfall-sets.sh discards an invalid cached sets file and refetches from SCRYFALL_SETS_URL
+[31m[1mAssertionError[22m: expected 'bash: /home/hatch/workspace/dev/phase…' to contain 'stub-curl: refusing non-file:// URL'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- stub-curl: refusing non-file:// URL[39m
+[31m+ bash: /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-sets.sh: No such file or directory[39m
+[31m+[39m
+
+[36m [2m❯[22m runSetsScript src/services/__tests__/scryfall.test.ts:[2m1485:26[22m[39m
+    [90m1483|[39m       const err = threw as { stderr?: Buffer | string; stdout?: Buffer…
+    [90m1484|[39m       [35mconst[39m stderrText [33m=[39m err[33m.[39mstderr[33m?.[39m[34mtoString[39m() [33m??[39m [32m""[39m[33m;[39m
+    [90m1485|[39m       expect(stderrText).toContain("stub-curl: refusing non-file:// UR…
+    [90m   |[39m                          [31m^[39m
+    [90m1486|[39m     }
+    [90m1487|[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1494:25[22m[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1493:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[12/14]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 6b (empty data array): a cached sets file that is valid JSON but fails the .data array-shape check is discarded and refetched
+[41m[1m FAIL [22m[49m src/services/__tests__/scryfall.test.ts[2m > [22mscryfall-fetch mv-failure recovery (PR #6775 review)[2m > [22mcase 6b (non-array data): a cached sets file that is valid JSON but fails the .data array-shape check is discarded and refetched
+[31m[1mAssertionError[22m: expected 'bash: /home/hatch/workspace/dev/phase…' to contain 'stub-curl: refusing non-file:// URL'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- stub-curl: refusing non-file:// URL[39m
+[31m+ bash: /home/hatch/workspace/dev/phase-backfill/client-test/phase-5184-pr/scripts/gen-scryfall-sets.sh: No such file or directory[39m
+[31m+[39m
+
+[36m [2m❯[22m runSetsScript src/services/__tests__/scryfall.test.ts:[2m1485:26[22m[39m
+    [90m1483|[39m       const err = threw as { stderr?: Buffer | string; stdout?: Buffer…
+    [90m1484|[39m       [35mconst[39m stderrText [33m=[39m err[33m.[39mstderr[33m?.[39m[34mtoString[39m() [33m??[39m [32m""[39m[33m;[39m
+    [90m1485|[39m       expect(stderrText).toContain("stub-curl: refusing non-file:// UR…
+    [90m   |[39m                          [31m^[39m
+    [90m1486|[39m     }
+    [90m1487|[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1510:27[22m[39m
+[90m [2m❯[22m withTempDir src/services/__tests__/scryfall.test.ts:[2m26:5[22m[39m
+[90m [2m❯[22m src/services/__tests__/scryfall.test.ts:[2m1505:7[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[13/14]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m48 passed[39m[22m[90m (51)[39m
+[2m      Tests [22m [1m[31m12 failed[39m[22m[2m | [22m[1m[32m833 passed[39m[22m[90m (845)[39m
+[2m   Start at [22m 08:47:07
+[2m   Duration [22m 61.59s[2m (transform 3.82s, setup 7.55s, import 4.54s, tests 4.66s, environment 16.78s)[22m
+
+EXIT=1
