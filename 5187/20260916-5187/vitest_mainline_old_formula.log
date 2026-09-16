@@ -1,0 +1,36 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-mainline/client[39m
+
+ [31m❯[39m src/harness-5187/old_formula.driver.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 14[2mms[22m[39m
+[31m     [31m×[31m PR-body example: seat 0 eliminated, two live opponents -> reports 2[39m[32m 10[2mms[22m[39m
+     [32m✓[39m control: seat 0 alive with two live opponents -> 2 (no undercount)[32m 1[2mms[22m[39m
+     [32m✓[39m control: lone surviving local human -> 0[32m 0[2mms[22m[39m
+     [32m✓[39m control: everyone eliminated -> 0 (no negative)[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/harness-5187/old_formula.driver.test.ts[2m > [22mmainline opponentCount formula (useResumables.ts)[2m > [22mPR-body example: seat 0 eliminated, two live opponents -> reports 2
+[31m[1mAssertionError[22m: expected 1 to be 2 // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- 2[39m
+[31m+ 1[39m
+
+[36m [2m❯[22m src/harness-5187/old_formula.driver.test.ts:[2m39:7[22m[39m
+    [90m 37|[39m         { id[33m:[39m [34m2[39m[33m,[39m is_eliminated[33m:[39m [35mfalse[39m }[33m,[39m
+    [90m 38|[39m       ])[33m,[39m
+    [90m 39|[39m     )[33m.[39m[34mtoBe[39m([34m2[39m)[33m;[39m
+    [90m   |[39m       [31m^[39m
+    [90m 40|[39m   })[33m;[39m
+    [90m 41|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 16:17:11
+[2m   Duration [22m 742ms[2m (transform 114ms, setup 217ms, import 16ms, tests 14ms, environment 282ms)[22m
+
