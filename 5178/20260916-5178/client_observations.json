@@ -1,0 +1,33 @@
+{
+ "issue": 5178,
+ "generated_at": "2026-09-16T13:18:03.531Z",
+ "variants": {
+  "mainline": "parseJoinCode extracted verbatim from client/src/services/serverDetection.ts @ base d6197d0d (blob 27177fbf), type-erased only",
+  "pr": "same + the PR #5178 patch (endsWith(\"]\") guard), applied byte-identical to the published diff"
+ },
+ "expected_correct": "wss://[::1]/ws",
+ "mainline_malformed_output": "wss://[::1/ws",
+ "bug_mechanics": "hostPort \"[::1]\": lastIndexOf(\":\")==2 < len-1, so hasPort=true; host=\"[:\", port=parseInt(\"1]\")=1; URL \"wss://\"+\"[:\"+\" :1\"+\"/ws\" renders as \"wss://[::1/ws\"",
+ "assertions": {
+  "A1_mainline_bug": {
+   "status": "passed",
+   "detail": "mainline -> {\"code\":\"ABC123\",\"serverAddress\":\"wss://[::1/ws\"} (expected-correct would be wss://[::1]/ws)"
+  },
+  "A2_mainline_with_port_control": {
+   "status": "passed",
+   "detail": "mainline -> {\"code\":\"ABC123\",\"serverAddress\":\"wss://[::1]:9000/ws\"}"
+  },
+  "A3_pr_fix": {
+   "status": "passed",
+   "detail": "pr variant -> {\"code\":\"ABC123\",\"serverAddress\":\"wss://[::1]/ws\"}"
+  },
+  "A4_pr_no_regression": {
+   "status": "passed",
+   "detail": "ABC123@[::1]:9000 -> wss://[::1]:9000/ws ; ABC123@play.example.com -> wss://play.example.com/ws ; ABC123@192.168.1.5:9374 -> wss://192.168.1.5:9374/ws ; ABC123@ws://192.168.1.5:9374 -> ws://192.168.1.5:9374/ws ; ABC123@localhost -> ws://localhost:9374/ws"
+  },
+  "A5_bare_code": {
+   "status": "passed",
+   "detail": "both variants return {code:\"ABC123\"} with no serverAddress"
+  }
+ }
+}

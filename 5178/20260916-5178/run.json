@@ -1,0 +1,50 @@
+{
+ "assertions": {
+  "A1_mainline_bug": "passed — mainline parseJoinCode('ABC123@[::1]') returns serverAddress 'wss://[::1/ws' (host '[:', port 1) instead of 'wss://[::1]/ws'; bug reproduced on mainline, matching the PR test's expectation exactly",
+  "A2_mainline_with_port_control": "passed — mainline parseJoinCode('ABC123@[::1]:9000') returns 'wss://[::1]:9000/ws' (bracketed IPv6 WITH a port already splits correctly)",
+  "A3_pr_fix": "passed — PR-head variant returns 'wss://[::1]/ws' for 'ABC123@[::1]'",
+  "A4_pr_no_regression": "passed — PR variant matches mainline on 5 other documented formats (bracketed IPv6 with port, bare hostname, IPv4:port, explicit ws:// scheme, localhost)",
+  "A5_bare_code": "passed — both variants return {code:'ABC123'} with no serverAddress for a bare code"
+ },
+ "driver_notes": [
+  "Behavioral contract written before running: reproduced iff mainline mangles the port-less bracketed IPv6 host (A1) while the PR-head variant produces the PR's expected address (A3) with no regressions (A4).",
+  "The malformed output 'wss://[::1/ws' visually resembles the correct address — it is scheme + broken host '[:' + port suffix ':1' + '/ws'; the concatenation is exactly why the bug is easy to miss.",
+  "Interactive node -e debugging was initially confounded by bash ${} expansion inside double quotes; all final observations come from file-based harnesses (harness_5178.js) with no shell interpolation."
+ ],
+ "engine_exercised": false,
+ "issue": 5178,
+ "kind": "pull_request (unmerged fix PR treated as client-subsystem bug report; labeled bug + defer-fe)",
+ "limitations": [
+  "Client-subsystem test only: no engine game session; parseJoinCode is a pure viewmodel/service function and the defect is in string parsing, not engine behavior.",
+  "Only parseJoinCode exercised; the PR's added vitest block (serverDetection.test.ts) was not run under the repo's own vitest — the same assertions were re-implemented against the extracted functions in node.",
+  "Only the bracketed-IPv6 shapes plus the doc-comment's documented formats; other exotic hosts (unbracketed IPv6, IDN) not driven.",
+  "No DOM/browser involved: parseJoinCode has no DOM dependencies."
+ ],
+ "protocol_version": null,
+ "release_check_2026_09_16": {
+  "advanced": false,
+  "latest_stable": "v0.84.0",
+  "note": "client-only case; engine release irrelevant (cf. #5175 precedent)"
+ },
+ "result": "Reproduced on mainline (d6197d0d): parseJoinCode('ABC123@[::1]') yields serverAddress 'wss://[::1/ws' — the last-colon split treats the colon inside '[::1]' as a host:port separator (host='[:', port=parseInt('1]')=1), producing a malformed URL. The PR-head variant yields the correct 'wss://[::1]/ws' with no regressions on the other join-code formats.",
+ "run_id": "20260916-5178",
+ "scope": "phase-rs/phase#5178 (open, unmerged PR by jeffrey701): parseJoinCode splits host:port on the last colon, mangling a port-less bracketed IPv6 host. Real parseJoinCode extracted from client/src/services/serverDetection.ts at the PR base (d6197d0d, blob 27177fbf2095a5d7ad1eefd5fdbad82519abdc5c) vs the PR-head implementation (bfc031af, blob 35198cbcdcb560e61b2901d99df0d8666ec0899b), each type-erased to JS (no logic changes) and driven in headless node v24.20.0; no engine session involved.",
+ "server_version": null,
+ "source_provenance": {
+  "base_file": "client/src/services/serverDetection.ts @ d6197d0d, blob sha 27177fbf2095a5d7ad1eefd5fdbad82519abdc5c, fetched via GitHub Contents API",
+  "node_version": "v24.20.0",
+  "pr_head_file": "same path @ PR head bfc031af, blob sha 35198cbcdcb560e61b2901d99df0d8666ec0899b",
+  "variant_fidelity": "parseJoinCode extracted programmatically (regex from export line to the following doc comment); type erasure only (two annotated lets + signature); PR variant built from the PR-head file directly — head-minus-base diff is exactly the published patch"
+ },
+ "title": "fix(client): parse a port-less bracketed IPv6 host in parseJoinCode",
+ "underlying_pr": {
+  "number": 5178,
+  "state": "open",
+  "merged": false,
+  "base": "d6197d0d5be7a6a5d532a33729e13e2e68a2e5a5",
+  "head": "bfc031af83f695a586d47c7f52472ff7ba82a071"
+ },
+ "validated_at": "2026-09-16",
+ "validated_version": "client-mainline@d6197d0d",
+ "verdict": "reproduced"
+}

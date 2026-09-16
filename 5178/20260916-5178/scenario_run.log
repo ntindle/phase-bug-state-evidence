@@ -1,0 +1,6 @@
+PASS A1_mainline_bug — mainline -> {"code":"ABC123","serverAddress":"wss://[::1/ws"} (expected-correct would be wss://[::1]/ws)
+PASS A2_mainline_with_port_control — mainline -> {"code":"ABC123","serverAddress":"wss://[::1]:9000/ws"}
+PASS A3_pr_fix — pr variant -> {"code":"ABC123","serverAddress":"wss://[::1]/ws"}
+PASS A4_pr_no_regression — ABC123@[::1]:9000 -> wss://[::1]:9000/ws ; ABC123@play.example.com -> wss://play.example.com/ws ; ABC123@192.168.1.5:9374 -> wss://192.168.1.5:9374/ws ; ABC123@ws://192.168.1.5:9374 -> ws://192.168.1.5:9374/ws ; ABC123@localhost -> ws://localhost:9374/ws
+PASS A5_bare_code — both variants return {code:"ABC123"} with no serverAddress
+ALL ASSERTIONS PASSED
