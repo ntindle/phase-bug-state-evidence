@@ -1,0 +1,118 @@
+{
+ "issue": 4392,
+ "run_id": "20260916-4392",
+ "started_at": "2026-09-16T05:48:16",
+ "duration_s": 33.7,
+ "server": {
+  "server_version": "0.84.0",
+  "build_commit": "eb7e93e",
+  "protocol_version": 71,
+  "mode": "Full",
+  "binary_sha256": "a73f671c840398ab31834621caae6ba7be2d5265355ae793717af3cbdda6e336",
+  "card_data_sha256": "6980906a6fef33b37f3ba4b5356ecfb8e89d4e6aa7407a585797b6f5a67d0c35",
+  "draft_pools_sha256": "c9745019c2c7b933c4b4b2cbeed8b9ff2de75e0a15fe0f46e12b4633e1a47fbe",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "ServerHello + minisign-verified + sha256 re-verified against pinned v0.84.0 release artifacts (binary+data+sigs under server/releases/v0.84.0/); fresh isolated server on 127.0.0.1:9374 for run 20260916-4392"
+ },
+ "server_run_dir": "runs/20260916-4392",
+ "driver": {
+  "protocol_advertised": 71,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "345b802b6bea3452aa1d3e737d935f25a9ba1c3088c781470c75e6f72727b099",
+ "decks": {
+  "P0": [
+   [
+    "strike it rich",
+    20
+   ],
+   [
+    "goldspan dragon",
+    12
+   ],
+   [
+    "mountain",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_plain_treasure": "passed",
+  "A3_goldspan_setup": "passed",
+  "A4_goldspan_treasure": "passed",
+  "A5_no_stuck": "passed"
+ },
+ "notes": [
+  "RE-VALIDATION RUN on pinned v0.84.0 (protocol 71, build eb7e93e): prior run 20260909-03 validated this issue on v0.78.0 (protocol 68); the release pin advanced, so all assertions re-run on the current pin per the playbook's staleness rule. Driver conventions otherwise unchanged (see original run notes below).",
+  "driver fix vs first attempt of the 20260909-03 run: an early 'active_player != 0 -> return' guard in p0_tick deadlocked P1's upkeep (P0 holds priority there after P1 passes and must pass it back). Rewrote p0_tick 1488-style: P0 passes priority on any turn, test activations only on own main phase. First attempt produced no engine behavior; restarted fresh in the same run dir.",
+  "color_choice_seen=True answered=2 rejections=0",
+  "A1: pre_plain has 1 untapped treasure(s), phase=PreCombatMain, life=20/20",
+  "A2: plain treasure red-delta=1 (want 1), treasures 1->0, choice_answered=True, post waiting_for=Priority",
+  "A3: pre_gold goldspan_on_bf=True, untapped treasures=4",
+  "A4: goldspan treasure red-delta=2 (want 2), treasures 4->3, choice_answered=True, post waiting_for=Priority",
+  "A5: final waiting_for=Priority, stuck_evidence=[], rejections=0"
+ ],
+ "observations": {
+  "color_choice_seen": true,
+  "color_choice_answered": 2,
+  "color_choice_submissions": [
+   {
+    "who": "P0",
+    "interactionId": "8U6NXJ.0.13",
+    "choice": "red"
+   },
+   {
+    "who": "P0",
+    "interactionId": "8U6NXJ.0.150",
+    "choice": "red"
+   }
+  ],
+  "rejections": [],
+  "test1": {
+   "activated_oid": 121,
+   "choice_answered": true,
+   "pool_before": {},
+   "pool_after": {
+    "red": 1
+   },
+   "treasure_count_before": 1,
+   "treasure_count_after": 0,
+   "done": false,
+   "ability_index": 0,
+   "answered_rev": 0
+  },
+  "test2": {
+   "activated_oid": 122,
+   "choice_answered": true,
+   "pool_before": {},
+   "pool_after": {
+    "red": 2
+   },
+   "treasure_count_before": 4,
+   "treasure_count_after": 3,
+   "done": false,
+   "ability_index": 1,
+   "answered_rev": 0
+  },
+  "goldspan_cast": true,
+  "stuck_evidence": [],
+  "color_choice_opportunity_count": 2
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Color choice answered with 'Red' as the deterministic test policy; only the reported two-mana (Goldspan-style) and the one-mana (plain) treasure paths were exercised."
+ ],
+ "setup_line": "P0: 12x strike it rich + 12x goldspan dragon + 36x mountain; P1: 60x mountain dummy",
+ "contract_line": "Activate plain Treasure ('{T}, sac: add one mana of any color') and Goldspan-style Treasure ('{T}, sac: add two mana of any one color'): answer the color choice, confirm the mana arrives and the game is not stuck at ChooseManaColor"
+}
