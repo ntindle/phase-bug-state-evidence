@@ -1,0 +1,6 @@
+{
+ "note": "Source reference only; the authoritative evidence is the live HTTP behavior in assertions.json/wire_log.json against the pinned v0.85.0 release binary.",
+ "file": "crates/phase-server/src/admin.rs (phase-src-v0.82.0 checkout)",
+ "function": "fn is_valid_draft_code(code: &str) -> bool { code.len() == 6 && code.chars().all(|c| c.is_ascii_uppercase() || c.is_ascii_digit()) }",
+ "observed_behavior": "POST /p2p-draft-backup with draft_code 'draft-abc12345' -> 400 'Invalid draft code'; with 'Q7KX2P' -> 200 'Stored'"
+}
