@@ -1,0 +1,25 @@
+{
+ "client_checkout_commit": "12a8ef4a76fe8d70a35bdc7575988a40436aac8c",
+ "checked_files_sha256": {
+  "client/src/adapter/p2p-draft-host.ts": "54de94e20ca846be607bbbead8eb3b99c9a1f27c379d8c6efbb0c0dd546593c6",
+  "client/src/adapter/draftPodHostAdapter.ts": "34ec5126962b863ddf64fc7182e118322e774cf531b3be2408b23ddd0030afcf",
+  "client/src/stores/draftPodStore.ts": "8731109747b9306604685f622fcbe6bfc332a25e120194aa51e86e7899c0091b"
+ },
+ "findings": {
+  "C1_identifier_generator_still_client_shaped": {
+   "file": "client/src/adapter/p2p-draft-host.ts:337-340",
+   "claim": "hostDraftCode() still emits `draft-` + 8 lowercase hex; comment notes parseInt(code.slice(6),16) recovers the seed",
+   "verbatim": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}"
+  },
+  "C2_upload_still_ignores_http_status": {
+   "file": "client/src/adapter/p2p-draft-host.ts:3713-3733",
+   "claim": "uploadBackupSnapshot awaits fetch without checking response status; only network-level throws are caught and console.warn'ed; a 400 from the server is swallowed silently",
+   "verbatim": "private async uploadBackupSnapshot(snapshot: PersistedDraftHostSession): Promise<void> {\n    if (!this.backupEndpoint || !this.draftCode) return;\n    try {\n      const publicSnapshot = sanitizePublicBackup(snapshot);\n      await fetch(`${this.backupEndpoint}/p2p-draft-backup`, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n          draft_code: this.draftCode,\n          host_peer_id: this.hostPeer.id,\n          snapshot_json: JSON.stringify(publicSnapshot),\n        }),\n      });\n    } catch (err) {\n      console.warn(\"[P2PDraftHost] server backup upload failed:\", err);\n    }\n  }"
+  },
+  "C3_endpoint_now_forwarded": {
+   "file": "client/src/adapter/draftPodHostAdapter.ts:293-305; client/src/stores/draftPodStore.ts:45-51,640,700,918",
+   "claim": "CHANGE since the issue commit (9da919f): the production adapter now forwards config.backupEndpoint as the 12th P2PDraftHost ctor arg, and draftPodStore passes configuredBackupEndpoint() (the multiplayer hosting server's HTTP origin, undefined when no hosting server is configured). Blocker #1 in the report (endpoint never supplied) appears addressed at this checkout; blockers #2/#3 (server-invalid identifier, unchecked status) persist per C1/C2.",
+   "verbatim": "const host = new P2PDraftHost(\n        hostResult.peer,\n        hostResult.onGuestConnected,\n        config.poolInput,\n        config.kind,\n        config.podSize,\n        config.hostDisplayName,\n        config.tournamentFormat,\n        config.podPolicy,\n        undefined, // default grace period\n        config.persistenceId,\n        hostResult.roomCode,\n        config.backupEndpoint,\n      );"
+  }
+ }
+}
