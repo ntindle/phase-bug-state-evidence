@@ -1,0 +1,26 @@
+server identity pinned: v0.86.0 (2cc8c28) protocol 72, mode Full; using live server runs/run-20260916-1311
+game DVC9XJ; P0 seat=0 P1 seat=1
+[P0] mulligan: 7 lands -> keep (56x Mountain deck)
+[P1] mulligan: 7 lands -> keep (56x Mountain deck)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 stage=SETUP dualcaster_cast=False stack=0 P0untapM=0 P0mage_in_hand=False P1bolt_in_hand=False
+[P1] casting Lightning Bolt (P0 untapped mountains: 5, mage in P0 hand)
+[P1] bolt target opportunity DVC9XJ.0.157: 2 player candidates
+  candidate: seat=0 text=
+  candidate: seat=1 text=
+exporting PRE (bolt on stack, P0 responding)
+[P0] casting Dualcaster Mage in response (active P1, phase=PreCombatMain)
+[OBS] Dualcaster on P0 battlefield
+[P0] holding on CopyRetarget (interaction pending)
+[OBS] waiting_for -> CopyRetarget: {"type": "CopyRetarget", "data": {"player": 0, "copy_id": 122, "target_slots": [{"current": {"Player": 0}, "legal_alternatives": [{"Player": 0}, {"Player": 1}, {"Object": 7}]}], "effect_kind": "CopySpell", "effect_source_id": 122, "current_slot": 0}}
+[OBS] copy on stack: ids=[92, 122]
+[OBS] CopyRetarget: copy_id=122
+  retarget candidate: action=chooseTarget seat=None text=Dualcaster Mage
+  retarget candidate: action=chooseTarget seat=0 text=
+  retarget candidate: action=chooseTarget seat=1 text=
+[retarget_p1] submitting iid=DVC9XJ.0.164 choice=DVC9XJ.0.164.c3 ()
+[OBS] retarget submitted (retarget_p1) seat 1 ()
+[OBS] retarget confirmed (prompt gone): (retarget_p1) seat 1 ()
+exporting POST (stack empty, nothing pending)
+wrote run.json verdict=not-reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/658/20260917-658c/summary.png
+no server.log at runs/20260917-658b; skipping excerpts
