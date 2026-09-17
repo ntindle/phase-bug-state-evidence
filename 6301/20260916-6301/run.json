@@ -1,0 +1,101 @@
+{
+ "issue": 6301,
+ "run_id": "20260916-6301",
+ "started_at": "2026-09-17T04:45:24",
+ "duration_s": 32.1,
+ "server_identity": {
+  "validated_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "server_binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_verified": true
+ },
+ "server_run_dir": "runs/20260916-6301",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "642678a0cbac826faea7799233df78928d426f7e04d870a0957dd1c5ee17cfef",
+ "decks": {
+  "P0": [
+   [
+    "Force of Will",
+    12
+   ],
+   [
+    "Brainstorm",
+    10
+   ],
+   [
+    "Murktide Regent",
+    10
+   ],
+   [
+    "Memnite",
+    8
+   ],
+   [
+    "Underground Sea",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Fatal Push",
+    12
+   ],
+   [
+    "Underground Sea",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_offered": "passed",
+  "A3_alt_cost_paid": "passed",
+  "A4_exile_answered": "passed",
+  "A5_target_prompted": "passed",
+  "A6_fow_resolves": "passed",
+  "A7_no_stall": "passed"
+ },
+ "notes": [
+  "pre.json: stack=['Brainstorm', 'Fatal Push'], pp=0, P0 hand has FoW=True Murktide=True, Memnite on BF=True, life=20/20",
+  "CastSpell(Force of Will) advertised to P0 with Brainstorm + Fatal Push on stack",
+  "OptionalCostChoice pay=true submitted; P0 life 20 -> 19",
+  "exile prompt offered ['Force of Will', 'Murktide Regent']; answered Murktide Regent; exactly one Murktide Regent in Exile",
+  "FoW TargetSelection candidates: ['Brainstorm', 'Fatal Push'] (want both [Fatal Push, Brainstorm])",
+  "post.json: FatalPush in P1 GY=True, Brainstorm in P0 GY=True, FoW in P0 GY=True, Memnite on BF=True, life=19/20",
+  "post.json: stack empty, waiting_for=Priority; game proceeded",
+  "finish reason: all assertions resolvable: FoW + Fatal Push + Brainstorm in graveyards, stack empty",
+  "protocol-72 driver: mulligan via advertised MulliganDecision as-is (decision=keep, gated on pending[] Declare); bottom via SelectCards count from pending[].phase; DiscardToHandSize via advertised SelectCards action; OptionalCostChoice pay=true via decideOptionalCost value surface; exile via schema select (intent=exile, one choiceId); FoW target via schema one-slot choice (Fatal Push stack entry); priority-gated passes; per-revision action gating; stale-client watchdog."
+ ],
+ "observations": {
+  "cast_offered": true,
+  "target_candidates": [
+   "Brainstorm",
+   "Fatal Push"
+  ],
+  "exile_candidates": [
+   "Force of Will",
+   "Murktide Regent"
+  ],
+  "rejections": [],
+  "fow_target_choice": "Fatal Push",
+  "alt_cost_seen": true,
+  "exile_answered": "Murktide Regent"
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Memnite stands in for the reporter's crewed The Fantasticar as Fatal Push's victim (documented deviation; the bug is in FoW's cost flow, not the victim's identity).",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P0 plays exactly 2 lands so 3UU stays unpayable and the alternative cost is the only path, matching the reporter's board.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x Force of Will + 10x Brainstorm + 10x Murktide Regent + 8x Memnite + 20x Underground Sea; P1: 12x Fatal Push + 48x Underground Sea. P0: T1 Sea+Memnite, T2 Sea, then Brainstorm once FoW+Murktide in hand; P1 responds with Fatal Push; P0 responds with Force of Will (alt cost).",
+ "contract_line": "FoW alt-cost cast with 2 spells on stack: OptionalCostChoice pay=true (1 life), exile Murktide Regent, TargetSelection offering both stack spells -> choose Fatal Push; Fatal Push countered, Brainstorm resolves, Memnite survives."
+}
