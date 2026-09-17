@@ -1,0 +1,33 @@
+game PV3TMD; P0 seat=0 P1 seat=1
+P0 keeps (lands=4, mulls=0)
+[vi wf-MulliganDecision/P0] iid=PV3TMD.0.1 rtype=exactChoices spec=None prompt=''
+P1 keeps (lands=7, mulls=0)
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 slinza_bf=False untapped_forests=0 phase=A A_done=False B_done=False
+P1 casts Grizzly Bears
+P1 casts Grizzly Bears
+[vi wf-DeclareAttackers/P1] iid=PV3TMD.0.92 rtype=schema spec=relations prompt=''
+P1 casts Grizzly Bears
+[vi wf-DeclareAttackers/P1] iid=PV3TMD.0.126 rtype=schema spec=relations prompt=''
+P0 casts Slinza with 5 untapped (will leave 0 for the cannot-pay branch)
+exported pre_A.json
+[vi trig/P0] iid=PV3TMD.0.141 rtype=exactChoices spec=None prompt=''
+[vi trig/P1] iid=PV3TMD.0.142 rtype=exactChoices spec=None prompt=''
+[P0] OptionalEffectChoice: accept trigger (phase A)
+[vi trig/P0] iid=PV3TMD.0.143 rtype=exactChoices spec=None prompt=''
+exported post_A.json
+PHASE A complete (cannot-pay branch resolved); moving to B
+P1 casts Grizzly Bears
+[vi wf-DeclareAttackers/P1] iid=PV3TMD.0.166 rtype=schema spec=relations prompt=''
+P0 casts Baloth with 6 untapped (keep >=3 for the pay branch)
+exported pre_B.json
+[vi trig/P0] iid=PV3TMD.0.181 rtype=exactChoices spec=None prompt=''
+[vi trig/P1] iid=PV3TMD.0.182 rtype=exactChoices spec=None prompt=''
+[P0] OptionalEffectChoice: accept trigger (phase B)
+[vi trig/P0] iid=PV3TMD.0.183 rtype=exactChoices spec=None prompt=''
+[P0] fight target: Bears oid=71
+[vi trig/P0] iid=PV3TMD.0.184 rtype=schema spec=sequence prompt=''
+[vi trig/P0] iid=PV3TMD.0.185 rtype=exactChoices spec=None prompt=''
+[vi trig/P1] iid=PV3TMD.0.186 rtype=exactChoices spec=None prompt=''
+exported post_B.json
+PHASE B complete (fight resolved, Bears dead); finishing
+both phases complete; finishing
