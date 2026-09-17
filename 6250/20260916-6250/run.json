@@ -1,0 +1,135 @@
+{
+ "issue": 6250,
+ "run_id": "20260916-6250",
+ "started_at": "2026-09-17T02:52:07",
+ "duration_s": 191.4,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "fresh isolated server on 127.0.0.1:9374 for run 6250-20260916-2141; ServerHello confirms v0.85.0/cb58ef5/protocol 72; hashes recomputed from on-disk release files this run; v0.85.0 confirmed latest stable release (not shell-*)"
+ },
+ "server_run_dir": "runs/6250-20260916-2141",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_6250_085.py",
+ "scenario_sha256": "6d90bf71bbfa283eeb84a1dc1ef60bb6012b9462a6eeeaa59aa4a59aabac8b34",
+ "decks": {
+  "A_P0": [
+   [
+    "ardenn, intrepid archaeologist",
+    8
+   ],
+   [
+    "holy strength",
+    8
+   ],
+   [
+    "plate armor",
+    8
+   ],
+   [
+    "colossus hammer",
+    8
+   ],
+   [
+    "Plains",
+    28
+   ]
+  ],
+  "A_P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ],
+  "B_P0": [
+   [
+    "ardenn, intrepid archaeologist",
+    8
+   ],
+   [
+    "holy strength",
+    8
+   ],
+   [
+    "plate armor",
+    8
+   ],
+   [
+    "colossus hammer",
+    8
+   ],
+   [
+    "Plains",
+    28
+   ]
+  ],
+  "B_P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "A": true,
+  "B": true
+ },
+ "parse_summary": {
+  "ardenn, intrepid archaeologist": {
+   "oracle_text": "At the beginning of combat on your turn, you may attach any number of Auras and Equipment you control to target permanent or player.\nPartner (You can have two commanders if both have partner.)",
+   "trigger_condition": "None",
+   "effect_type": "Attach",
+   "effect_optional": null,
+   "effect_attachment": "Or(Typed(subtypes=['Aura'],controller=You),Typed(subtypes=['Equipment'],controller=You))",
+   "effect_target": "Or(Typed(subtypes=[],controller=None),Player)"
+  }
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_decision": "passed",
+  "A3_result": "failed",
+  "A4_cleanup": "passed",
+  "B1_setup": "passed",
+  "B2_decision": "passed",
+  "B3_result": "passed",
+  "B4_cleanup": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): effect=Attach optional=None; attachment=Or(Typed(subtypes=['Aura'],controller=You),Typed(subtypes=['Equipment'],controller=You)); target=Or(Typed(subtypes=[],controller=None),Player) -- the 'any number' choice is not reflected in the AST, matching the triage finding that the defect is at runtime/prompt level.",
+  "A1_setup (accept): ardenn=True, atts=['colossus hammer', 'holy strength', 'plate armor'], on_ardenn=['holy strength'], phase=PreCombatMain: ok",
+  "A2_decision: optional trigger accepted (target=ardenn)",
+  "A: attachment prompt shape(s): schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=3",
+  "A: attachment prompt caps selection at max=1 with 3 attachments available -- the 'any number' choice is restricted in the prompt itself",
+  "A3_result FAILED: attachments on Ardenn = ['colossus hammer', 'holy strength'] (expected all of ['holy strength', 'plate armor', 'colossus hammer']); moved=['colossus hammer'] -- matches the reported single-attachment collapse",
+  "A4_cleanup: stack empty, life 20/20 (phase=BeginCombat)",
+  "B1_setup (decline): ardenn=True, atts=['colossus hammer', 'holy strength', 'plate armor'], on_ardenn=['holy strength'], phase=PreCombatMain: ok",
+  "B2_decision: optional trigger declined (target=ardenn)",
+  "B: attachment prompt shape(s): schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=2; schema/sequence max=1 n_avail=3",
+  "B: attachment prompt caps selection at max=1 with 3 attachments available -- the 'any number' choice is restricted in the prompt itself",
+  "B3_result (decline control): no attachment moved (['holy strength']); control OK",
+  "B4_cleanup: stack empty, life 20/20 (phase=BeginCombat)",
+  "verdict: REPRODUCED - accepting the trigger attached fewer than all 3 attachments (single-attachment collapse), matching the report"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-16",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x copies per card is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "No second card in the same class (e.g. Brass Squire) exercised; acceptance criterion noted for the fix, not the repro.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Ardenn + 8x holy strength + 8x plate armor + 8x colossus hammer + 28x plains; P1: 60x mountain dummy. Mulligan to Ardenn + lands; cast Ardenn, then holy strength (targeting Ardenn), plate armor, colossus hammer; move to combat with all three attachments controlled by P0.",
+ "contract_line": "Game A: accept the beginning-of-combat trigger, target Ardenn, select attachments -- expect all 3 attached to Ardenn after resolution. Game B: decline the trigger -- expect no attachment moves."
+}
