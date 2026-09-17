@@ -1,0 +1,102 @@
+{
+ "issue": 6757,
+ "run_id": "20260917-6757",
+ "game_code": "K9LMEV",
+ "started_at": "2026-09-17T15:20:29",
+ "duration_s": 54.3,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_path": "/home/hatch/workspace/dev/phase-backfill/server/releases/v0.85.0/phase-server-slim-x86_64-unknown-linux-musl",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "ServerHello handshake on 127.0.0.1:9374 + sha256 of on-disk pinned v0.85.0 release artifacts (minisign-verified 2026-09-16 per ledger server pin)",
+  "server_run_dir": "runs/20260917-6753 (shared live server, started by the 20260917-6753 run; not stopped)"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6757_085.py"
+ },
+ "scenario_sha256": "5224b1d1401cb80352648f35615fd33504a915e6bb207cf542963e61ae9a62e5",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    16
+   ],
+   [
+    "Island",
+    16
+   ],
+   [
+    "Plains",
+    12
+   ],
+   [
+    "Jackal, Genius Geneticist",
+    4
+   ],
+   [
+    "Bofur, Reliable Guardian",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_copy_created": "passed",
+  "A4_copy_nonlegendary": "passed",
+  "A5_both_resolve": "passed",
+  "A6_no_legend_rule": "passed",
+  "A7_jackal_counter": "passed",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "Bofur cast; Jackal on BF id=50 power=1",
+  "copy id=122 is_token=True supertypes=[] -> non-legendary OK",
+  "original spell id=41 supertypes=['Legendary'] is_token=False",
+  "waiting_for types during resolution: ['Priority']; Bofur in graveyard: 0",
+  "Jackal counters={\"P1P1\": 1} power=2",
+  "post: stack entries=0 phase=PreCombatMain turn=14 waiting=Priority",
+  "Card-data (pinned v0.85.0) encodes the fix as CopySpell.additional_modifications=[RemoveSupertype Legendary]; this run tests whether the engine applies it at copy creation.",
+  "Zero ActionRejected/Error events in scenario_run.log; no unhandled waiting_for prompts for either seat."
+ ],
+ "waiting_for_seen": [
+  "Priority"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x/12x deck densities are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.85.0, not a fix claim."
+ ],
+ "setup_line": "P0: 16 Forest/16 Island/12 Plains + 4x Jackal, Genius Geneticist + 12x Bofur, Reliable Guardian; P1: 60 Island (draw-go)",
+ "contract_line": "Cast 1-MV legendary Bofur with Jackal (power 1) out: copy must be a non-legendary token, both permanents survive, Jackal gets +1/+1",
+ "history": [
+  {
+   "release": "v0.79.0",
+   "run_id": "20260910-6757",
+   "verdict": "not-reproduced",
+   "evidence_commit": "7c0cc5f7f2cd2ab9375e0230b3da72fe81881ec1",
+   "note": "prior validation; published comment https://github.com/phase-rs/phase/issues/6757#issuecomment-5623026953; no ledger entry was ever written for it, recorded here"
+  }
+ ],
+ "publication": {
+  "status": "pending"
+ }
+}
