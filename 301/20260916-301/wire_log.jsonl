@@ -1,0 +1,45 @@
+{"t": 1789616704.975966, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1789616704.9761372, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1789616743.9731205, "event": "activate_ability_action", "payload": {"action": {"type": "ActivateAbility", "data": {"source_id": 3, "ability_index": 0}}}}
+{"t": 1789616745.321736, "event": "optional_cast_opportunity_accept", "payload": {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "choose"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "O4RBQ9.0.343", "response": {"type": "exactChoices", "data": {"choices": [{"id": "O4RBQ9.0.343.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "a21597a222451f334797f81dca5f18326bda34e8410993aa92644113a12ae7ea4"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "false"}}], "status": {"type": "available"}}, {"id": "O4RBQ9.0.343.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "afe7ffdd7a65ab9fb0fe13fbfa5dadb0892a0da13e1b40a0ed0cbadc8c58d9b12"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "true"}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "progressAvailable", "data": {"witness": {"interactionId": "O4RBQ9.0.343", "response": {"type": "choose", "data": {"choiceId": "O4RBQ9.0.343.c0"}}}}}}}
+{"t": 1789616745.3219173, "event": "accept_submission", "payload": {"interactionId": "O4RBQ9.0.343", "response": {"type": "choose", "data": {"choiceId": "O4RBQ9.0.343.c1"}}}}
+{"t": 1789616747.642702, "event": "target_opportunity", "payload": {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "sequence"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "O4RBQ9.0.344", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 1, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "O4RBQ9.0.344.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "O4RBQ9.0.344.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "damage", "constraint": {"type": "count", "data": {"min": 1, "max": 1}}, "confirm": "explicit"}}], "progress": {"selected": 0, "minimum": 1, "maximum": 1, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "inputRequired"}}}
+{"t": 1789616747.6430502, "event": "target_candidates", "payload": [["vi/opportunities[0]/response/data/candidates", [{"id": "O4RBQ9.0.344.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "O4RBQ9.0.344.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}]]]}
+{"t": 1789616747.6430986, "event": "target_submission", "payload": {"interactionId": "O4RBQ9.0.344", "response": {"type": "sequence", "data": {"choiceIds": ["O4RBQ9.0.344.t1"]}}}}
+{"t": 1789616748.144694, "event": "target_rejection", "payload": {"type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}}}
+{"t": 1789616750.5347855, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1789616750.534912, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1789616798.1611302, "event": "activate_ability_action", "payload": {"action": {"type": "ActivateAbility", "data": {"source_id": 30, "ability_index": 0}}}}
+{"t": 1789616815.8350296, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [65]}}}
+{"t": 1789616820.3598394, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [43]}}}
+{"t": 1789616825.1319327, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [61]}}}
+{"t": 1789616829.1507363, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [28]}}}
+{"t": 1789616834.200694, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [85]}}}
+{"t": 1789616839.477373, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [50]}}}
+{"t": 1789616844.0026057, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [104]}}}
+{"t": 1789616848.7769513, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [9]}}}
+{"t": 1789616853.8009965, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [105]}}}
+{"t": 1789616859.629481, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [46]}}}
+{"t": 1789616864.6520743, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [107]}}}
+{"t": 1789616870.177424, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [42]}}}
+{"t": 1789616875.200427, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [109]}}}
+{"t": 1789616880.725588, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [37]}}}
+{"t": 1789616885.746054, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [77]}}}
+{"t": 1789616892.048428, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [6]}}}
+{"t": 1789616897.070863, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [78]}}}
+{"t": 1789616902.5999455, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [15]}}}
+{"t": 1789616907.6257262, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [75]}}}
+{"t": 1789616913.1521416, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [38]}}}
+{"t": 1789616918.1732872, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [90]}}}
+{"t": 1789616923.7098043, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [33]}}}
+{"t": 1789616930.1099715, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [81]}}}
+{"t": 1789616935.6433456, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [31]}}}
+{"t": 1789616935.8970695, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [31]}}}
+{"t": 1789616941.1697278, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [83]}}}
+{"t": 1789616946.6939301, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [49]}}}
+{"t": 1789616951.971237, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [82]}}}
+{"t": 1789616957.4973662, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [5]}}}
+{"t": 1789616962.7719374, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [97]}}}
+{"t": 1789616968.2960594, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [3]}}}
+{"t": 1789616968.5472927, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [3]}}}
+{"t": 1789616974.0717788, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [106]}}}
