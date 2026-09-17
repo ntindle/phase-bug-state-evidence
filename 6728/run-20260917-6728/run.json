@@ -1,0 +1,44 @@
+{
+ "run_id": "run-20260917-6728",
+ "issue": 6728,
+ "date": "2026-09-17",
+ "driver": "driver/scenario_6728.py",
+ "scenario": "Empirical server-side integration test of POST/GET/DELETE /p2p-draft-backup on the pinned v0.85.0 binary with client-shaped (draft-xxxxxxxx) and contract-valid (Q7KX2P) codes, plus client-source inspection at current checkout 12a8ef4. Re-validation of prior run 20260910-6728 (v0.78.0), whose verdict was `reproduced` and published 2026-09-10 but whose ledger entry was never written.",
+ "server": {
+  "validated_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "data_dir": "server/releases/v0.85.0/data",
+  "endpoint": "http://127.0.0.1:9375",
+  "games_db": "runs/run-20260917-6728/games.db",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828"
+ },
+ "assertions": {
+  "total": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "verdict": "reproduced",
+ "result": "On v0.85.0 the server still rejects the client-generated `draft-xxxxxxxx` identifier with 400 Invalid draft code (no row created); a contract-valid 6-char uppercase code completes create/retrieve/update/delete. Current client checkout (12a8ef4) now forwards backupEndpoint from production config, but the generator still emits draft-xxxxxxxx and uploadBackupSnapshot still never checks the HTTP status, so the failure stays silent.",
+ "scope": "P2P draft server-backup HTTP handler on the pinned release binary + client source-path inspection",
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at commit 12a8ef4a76fe8d70a35bdc7575988a40436aac8c (sha256 recorded in client_path_evidence.json), not on running the client.",
+  "No game-state pair exists for this report; evidence is HTTP exchanges + source excerpts, per playbook subsystem-equivalent contract."
+ ],
+ "prior_run": {
+  "run_id": "20260910-6728",
+  "validated_version": "v0.78.0",
+  "verdict": "reproduced",
+  "published": true,
+  "note": "ledger entry for that run was never written; this run backfills it"
+ },
+ "evidence_dir": "6728/run-20260917-6728",
+ "server_log": "runs/run-20260917-6728/server.log",
+ "verdict_key_check": null
+}
