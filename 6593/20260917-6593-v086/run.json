@@ -1,0 +1,78 @@
+{
+ "issue": 6593,
+ "run_id": "20260917-6593-v086",
+ "started_at": "2026-09-17T20:26:28",
+ "duration_s": 6.5,
+ "server": {
+  "server_version": "0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479e5785824b86e",
+  "signature_verified": true,
+  "signature_note": "minisign-verify (prehashed BLAKE2b-512, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data files match manifest SHA-256. All three digests recomputed against the on-disk release files this run (2026-09-17); they match the previously recorded v0.86.0 pins.",
+  "observed_at": "2026-09-17",
+  "source": "ServerHello handshake vs pinned v0.86.0 release artifacts (server/releases/v0.86.0/); reused live pinned v0.86.0 server on 127.0.0.1:9374 (owner run 20260917-6762, not restarted by this run)"
+ },
+ "server_run_dir": "runs/20260917-6593-v086",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "f77a45735cd7bea239d551781db3b1ebd910eb5f5414022f7392910abbda9077",
+ "decks": {
+  "P0": [
+   [
+    "disruptor flute",
+    12
+   ],
+   [
+    "island",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_name_prompt": "passed",
+  "A2_name_accepted": "passed",
+  "A3_game_proceeds": "passed",
+  "A4_name_recorded": "passed"
+ },
+ "notes": [
+  "pre.json: NamedChoice (CardName) pending for P0 (source Disruptor Flute, options=[]), P0 cast the Flute, life 20/20",
+  "name submission 'Ghostly Prison' accepted: no invalid-card-name rejection; NamedChoice decision completed",
+  "post.json: Flute on P0 battlefield (oid [32]), no NamedChoice pending, game advanced (turn 3, phase PreCombatMain)",
+  "post.json: 'Ghostly Prison' recorded on Flute object(s) ['32']"
+ ],
+ "observations": {
+  "flute_cast": true,
+  "namedchoice_seen": true,
+  "namedchoice_iid": "B2UO52.0.40",
+  "namedchoice_options": [],
+  "namedchoice_candidates": [],
+  "name_submitted": true,
+  "name_submit_time": 1789676794.5401385,
+  "rejections": [],
+  "namedchoice_resolved": true,
+  "namedchoice_turn": 3,
+  "post_turn": 3
+ },
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Disruptor Flute deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The AI card-name-candidate path (related issue #6627) is not exercised; only the reported human dialog path."
+ ],
+ "setup_line": "P0: 12x disruptor flute + 48x island (T1: island, cast Disruptor Flute {2}); P1: 60x forest",
+ "contract_line": "Disruptor Flute ETB: submit legal name 'Ghostly Prison' -> accepted, decision completes, name recorded"
+}
