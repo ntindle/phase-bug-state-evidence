@@ -1,0 +1,121 @@
+{
+  "run_id": "20260917-6594",
+  "issue": 6594,
+  "started_at": "2026-09-17T07:16:46Z",
+  "server": {
+    "server_version": "0.85.0",
+    "build_commit": "cb58ef5",
+    "protocol_version": 72,
+    "mode": "Full",
+    "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+    "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+    "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+    "signature_verified": true,
+    "signature_note": "minisign-verify (prehashed BLAKE2b-512, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data files match manifest SHA-256 (verified 2026-09-16; digests recomputed and matched this run)",
+    "observed_at": "2026-09-17",
+    "source": "ServerHello handshake (observed by this run, asserted to match) vs pinned v0.85.0 release artifacts (server/releases/v0.85.0/); isolated server on 127.0.0.1:9374 (started by this run, verified listening before driving)"
+  },
+  "verdict": "reproduced",
+  "assertions": {
+    "A1_atraxa_cast": "passed",
+    "A2_choice_pending": "passed",
+    "A3_choice_resolves": "failed",
+    "A4_zones_sane": "not-run"
+  },
+  "observations": {
+    "atraxa_cast": true,
+    "atraxa_cast_turn": 14,
+    "choice_seen": true,
+    "choice_first_t": 1789629442.10324,
+    "choice_last_rev": 209,
+    "choice_last_rev_t": 1789629442.1952586,
+    "choice_iid": null,
+    "choice_waiting_for": {
+      "type": "ChooseFromZoneChoice",
+      "data": {
+        "player": 1,
+        "cards": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "count": 8,
+        "up_to": true,
+        "constraint": {
+          "type": "DistinctCardTypes",
+          "categories": [
+            "Artifact",
+            "Battle",
+            "Creature",
+            "Enchantment",
+            "Instant",
+            "Land",
+            "Planeswalker",
+            "Sorcery"
+          ]
+        },
+        "source_id": 75
+      }
+    },
+    "choice_resolved": false,
+    "stall_detected": true,
+    "rejections": [],
+    "p0_acts": 101
+  },
+  "notes": [],
+  "setup_line": "P0: 60x island (human driver). P1: AI Medium, 12x Atraxa, Grand Unifier + 12x each Forest/Plains/Island/Swamp.",
+  "contract_line": "AI casts Atraxa -> ETB reveals 10 -> AI must submit a legal ChooseFromZoneChoice (one card per type, optional) and the game advances.",
+  "limitations": [
+    "Browser/UI not exercised; the separate frontend 'Maximum call stack size exceeded' (multiplayerDraftStore) defect is out of scope for this engine+AI test",
+    "Server-side AI (phase-ai) policy tested, not the browser WASM AI driver path"
+  ],
+  "stats": {
+    "states_seen": 737,
+    "trigger_observations": 1
+  },
+  "scenario": {
+    "file": "scenario_6594.py",
+    "sha256": "76b466a85ab840a7df1a1b56262cc4c3fc7b215a137c967d9bf91b1f54f754d2"
+  },
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "island",
+          60
+        ]
+      ]
+    },
+    "P1_AI": {
+      "main": [
+        [
+          "atraxa, grand unifier",
+          12
+        ],
+        [
+          "forest",
+          12
+        ],
+        [
+          "plains",
+          12
+        ],
+        [
+          "island",
+          12
+        ],
+        [
+          "swamp",
+          12
+        ]
+      ]
+    }
+  }
+}
