@@ -1,0 +1,124 @@
+{
+ "issue": 7196,
+ "run_id": "20260917-7196f",
+ "game_code": "HKZQZG",
+ "started_at": "2026-09-17T16:00:29",
+ "duration_s": 142.9,
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "failed",
+  "A3_damage_dealt": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "pre_attack: slayer 40 attached_to=18, bear=18 power=2, life=20/20",
+  "stack_history: 6 non-empty stack samples, slayer-trigger samples=0",
+  "mid_hold (priority held post-attack): life=20/20 stack=[]",
+  "post_combat: life=20/18, mid_trigger_life=None, expected P1=16 (2 combat + 2 trigger)",
+  "post: stack entries=0 phase=PreCombatMain turn=36 waiting=Priority",
+  "VERDICT NOTE: the reported defect (no damage from Mage Slayer's attack trigger) reproduces on v0.85.0. Stronger than reported: the trigger is never placed on the stack at all -- mid_hold.json (turn 34, DeclareAttackers, P0 holding priority, bear 18 declared attacking P1) shows stack=[] and life 20/20; post_combat life 20/18 is the bear's 2 combat damage only. 83 cards in the pinned data share the AttachedTo+Attacks trigger shape, so the defect class may be broad."
+ ],
+ "server": {
+  "server_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "live server on 127.0.0.1:9374 started this run from the pinned v0.85.0 release dir; hashes recomputed from on-disk release files; v0.85.0 confirmed latest stable release (not shell-*) via GitHub releases API"
+ },
+ "server_run_dir": "runs/20260917-7196f",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7196.py",
+ "scenario_sha256": "a3355332b1abe0cfe8cd9cb042ab8a6f8825303432b780c370a2d60f004d1e08",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    22
+   ],
+   [
+    "Mountain",
+    22
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Mage Slayer",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "parse": {
+  "mage_slayer_trigger": {
+   "mode": "Attacks",
+   "valid_card": {
+    "type": "AttachedTo"
+   },
+   "effect": "DealDamage amount=Power(EventSource) target=Or(ParentTarget, Planeswalker-any) damage_source=TriggeringSource",
+   "trigger_zones": [
+    "Battlefield"
+   ]
+  }
+ },
+ "mid_hold": {
+  "turn": 34,
+  "phase": "DeclareAttackers",
+  "priority_player": 0,
+  "waiting_for": {
+   "data": {
+    "player": 0
+   },
+   "type": "Priority"
+  },
+  "life": [
+   20,
+   20
+  ],
+  "stack": [],
+  "attackers": [
+   {
+    "attack_target": {
+     "data": 1,
+     "type": "Player"
+    },
+    "band_id": null,
+    "blocked": false,
+    "defending_player": 1,
+    "object_id": 18
+   }
+  ]
+ },
+ "wf_seen": [
+  "Priority",
+  "DeclareAttackers",
+  "Priority"
+ ],
+ "rejections": [],
+ "validated_at": "2026-09-17",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Only the attack trigger was exercised; the Equip activation itself worked normally.",
+  "Whether other Attacks-mode triggers (1640 in card data, 83 with the AttachedTo shape) are affected was not tested; noted as a follow-up question.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 8x Grizzly Bears + 8x Mage Slayer + 22x Forest + 22x Mountain vs P1 60x Island (draw-go, no blockers). P0 casts a bear, casts Mage Slayer, activates Equip {3} targeting the bear, then attacks P1 with the equipped 2/2 bear.",
+ "contract_line": "When the equipped creature attacks, Mage Slayer's trigger must deal damage equal to its power (2) to the defending player: P1 20 -> 16 total (2 combat + 2 trigger). Observed: P1 20 -> 18 (combat only); the trigger never appeared on the stack."
+}
