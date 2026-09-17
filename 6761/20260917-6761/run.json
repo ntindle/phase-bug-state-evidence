@@ -1,0 +1,82 @@
+{
+ "issue": 6761,
+ "run_id": "20260917-6761",
+ "started_at": "2026-09-17T18:18:54",
+ "duration_s": 27.0,
+ "server": {
+  "server_version": "0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "ServerHello + sha256 match of pinned verified artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "adff388ad0b86d3f513d340cfb321ea338b59ae7fe15beb1bf5e7d270ab68676",
+ "decks": {
+  "P0": [
+   [
+    "Esix, Fractal Bloom",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Saproling Migration",
+    12
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Island",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_accept_path": "passed",
+  "A4_second_no_offer": "not-run",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "Esix correctly excluded from valid copy targets",
+  "second-Migration control not attempted (turn 13 vs cast turn 12)",
+  "protocol-72 driver (v0.86.0): mulligan answered as-is with decision='keep'; Saproling Migration kicker declined at OptionalCostChoice (decideOptionalCost + (pay,false)); Esix offer detected via viewer_interaction exactChoices/schema prompts or waiting_for=ReplacementChoice; copy target chosen via schema {type:<spec.type>, data:{choiceIds:[...]}} or exactChoices choose.",
+  "P0 deck 12x Esix, Fractal Bloom + 12x Llanowar Elves + 12x Saproling Migration + 12x Forest + 12x Island; P1 60x Island draw-go (engine accepts >4-of for custom games).",
+  "Pinned card-data.json prices Esix at {4}{G}{U} (generic 4); printed cost is {3}{G}{U}. Driver pays whatever the engine asks."
+ ],
+ "rejections": [],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.86.0, not a fix claim.",
+  "Discord thread (report source) is login-gated; scenario is built from the issue's triage summary and acceptance criteria."
+ ],
+ "setup_line": "P0: 12x Esix, Fractal Bloom + 12x Llanowar Elves + 12x Saproling Migration + 12x Forest + 12x Island; P1: 60x Island",
+ "contract_line": "First token creation of P0's turn with Esix on the battlefield offers the optional replacement: choose a creature other than Esix, create that many tokens as copies of it",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
