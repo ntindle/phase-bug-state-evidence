@@ -1,0 +1,43 @@
+{"t": 1789677883.767865, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1789677883.7680633, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1789677922.1097202, "event": "activate_ability_action", "payload": {"action": {"type": "ActivateAbility", "data": {"source_id": 41, "ability_index": 0}}}}
+{"t": 1789677923.4535935, "event": "optional_cast_opportunity_accept", "payload": {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "choose"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "59Y0UG.0.343", "response": {"type": "exactChoices", "data": {"choices": [{"id": "59Y0UG.0.343.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "a21597a222451f334797f81dca5f18326bda34e8410993aa92644113a12ae7ea4"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "false"}}], "status": {"type": "available"}}, {"id": "59Y0UG.0.343.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "decideOptionalEffect", "actionId": "afe7ffdd7a65ab9fb0fe13fbfa5dadb0892a0da13e1b40a0ed0cbadc8c58d9b12"}}, {"type": "value", "data": {"role": "accept", "index": null, "value": "true"}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "progressAvailable", "data": {"witness": {"interactionId": "59Y0UG.0.343", "response": {"type": "choose", "data": {"choiceId": "59Y0UG.0.343.c0"}}}}}}}
+{"t": 1789677923.4537861, "event": "accept_submission", "payload": {"interactionId": "59Y0UG.0.343", "response": {"type": "choose", "data": {"choiceId": "59Y0UG.0.343.c1"}}}}
+{"t": 1789677925.7607954, "event": "target_opportunity", "payload": {"waitingForKind": {"simultaneous": null, "terminal": false, "code": "sequence"}, "authorizedSubmitters": [0], "canSubmit": true, "autoPassRecommended": false, "opportunities": [{"interactionId": "59Y0UG.0.344", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 1, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "59Y0UG.0.344.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "59Y0UG.0.344.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "damage", "constraint": {"type": "count", "data": {"min": 1, "max": 1}}, "confirm": "explicit"}}], "progress": {"selected": 0, "minimum": 1, "maximum": 1, "aggregate": null, "confirmable": false}}], "attachmentFans": {}, "attachmentViews": {}, "availability": {"type": "inputRequired"}}}
+{"t": 1789677925.761017, "event": "target_candidates", "payload": [["vi/opportunities[0]/response/data/candidates", [{"id": "59Y0UG.0.344.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "59Y0UG.0.344.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}]]]}
+{"t": 1789677925.7610643, "event": "target_submission", "payload": {"interactionId": "59Y0UG.0.344", "response": {"type": "sequence", "data": {"choiceIds": ["59Y0UG.0.344.t1"]}}}}
+{"t": 1789677926.2622857, "event": "target_rejection", "payload": {"type": "ActionRejected", "data": {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}}}
+{"t": 1789677928.647455, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1789677928.6475878, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1789677980.7134275, "event": "activate_ability_action", "payload": {"action": {"type": "ActivateAbility", "data": {"source_id": 50, "ability_index": 0}}}}
+{"t": 1789677997.8270822, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [65]}}}
+{"t": 1789678001.844714, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [21]}}}
+{"t": 1789678006.3639452, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [69]}}}
+{"t": 1789678010.6361866, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [26]}}}
+{"t": 1789678016.204251, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [95]}}}
+{"t": 1789678021.7273812, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [8]}}}
+{"t": 1789678026.75178, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [61]}}}
+{"t": 1789678032.2764893, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [43]}}}
+{"t": 1789678037.321233, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [87]}}}
+{"t": 1789678043.8297036, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [1]}}}
+{"t": 1789678048.8660822, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [93]}}}
+{"t": 1789678054.3878427, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [49]}}}
+{"t": 1789678059.4092247, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [99]}}}
+{"t": 1789678064.9335825, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [47]}}}
+{"t": 1789678069.9559414, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [81]}}}
+{"t": 1789678076.3462403, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [6]}}}
+{"t": 1789678081.3696127, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [101]}}}
+{"t": 1789678086.900105, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [28]}}}
+{"t": 1789678091.922675, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [105]}}}
+{"t": 1789678097.4494433, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [40]}}}
+{"t": 1789678102.9736688, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [97]}}}
+{"t": 1789678108.49875, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [3]}}}
+{"t": 1789678115.1344962, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [106]}}}
+{"t": 1789678120.6553183, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [38]}}}
+{"t": 1789678125.6772208, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [98]}}}
+{"t": 1789678131.198755, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [9]}}}
+{"t": 1789678136.2154412, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [107]}}}
+{"t": 1789678141.737708, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [2]}}}
+{"t": 1789678146.7571092, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [84]}}}
+{"t": 1789678152.280046, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [33]}}}
+{"t": 1789678157.301382, "event": "discard_action", "payload": {"type": "SelectCards", "data": {"cards": [88]}}}
