@@ -1,0 +1,21 @@
+===== attempt 1 =====
+game DS8RD6 attempt=1; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P0 casts Ojer Kaslem, Deepest Growth
+Ojer Kaslem on battlefield at turn 9
+P0 attacks P1 with Ojer Kaslem (turn 11)
+select prompt: spec={"type": "select", "data": {"constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}} n_candidates=6
+  candidate DS8RD6.0.171.s0: Forest (Land) ref=60
+  candidate DS8RD6.0.171.s1: Forest (Land) ref=4
+  candidate DS8RD6.0.171.s2: Llanowar Elves (Creature) ref=37
+  candidate DS8RD6.0.171.s3: Llanowar Elves (Creature) ref=19
+  candidate DS8RD6.0.171.s4: Forest (Land) ref=54
+  candidate DS8RD6.0.171.s5: Llanowar Elves (Creature) ref=48
+submitted 2-card selection (creature DS8RD6.0.171.s2 + land DS8RD6.0.171.s0)
+[P0] REJECTION ActionRejected: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+submitted 1-card fallback selection (creature DS8RD6.0.171.s2)
+select outcome path=one_accepted: entered=['Llanowar Elves'] bottomed=5/6
+attempt 1 assertions: {"A1_setup_ok": "passed", "A4_both_categories": "passed", "A2_damage_and_reveal": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A4_both_categories": "passed", "A2_damage_and_reveal": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
