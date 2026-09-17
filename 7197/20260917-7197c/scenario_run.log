@@ -1,0 +1,19 @@
+game GEM1UB; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P0 plays Mountain (turn 1)
+P0 plays Mountain (turn 3)
+P0 plays Mountain (turn 5)
+P0 plays Mountain (turn 7)
+P0 plays Mountain (turn 9)
+P0 plays Mountain (turn 11)
+P0 plays Mountain (turn 13)
+P0 casts Moraug, Fury of Akoum (hand oid 9, turn 13)
+pre_landfall exported; waiting for a post-cast PreCombatMain to play the landfall land
+P0 LANDFALL: plays Mountain with Moraug out (turn 15)
+Moraug landfall trigger observed on stack: [{"id": 121, "kind": "TriggeredAbility", "source_id": 9, "controller": 0, "desc": ""}]
+trigger checkpoint hit; exporting mid_trigger
+P0 attacks with Moraug 9 (turn 15)
+post_turn: life=20/14 phase=PreCombatMain turn=17
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_additional_combat": "failed", "A4_cleanup": "passed"}
+exit=0
