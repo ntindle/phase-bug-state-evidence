@@ -1,0 +1,10 @@
+ServerHello OK: {'server_version': '0.85.0', 'build_commit': 'cb58ef5', 'protocol_version': 72, 'mode': 'Full'}
+game JIV7DZ; P0 seat=0; P1 = AI Medium seat
+P0 mulligan: Keep
+OBSERVED: AI cast Atraxa (turn 14, rev 208)
+OBSERVED: ChooseFromZoneChoice pending for AI (player 1), rev 209
+exported pre.json
+STALL: revision static at 209 for >150s while AI's ChooseFromZoneChoice pending -> reproduced
+exported post.json
+VERDICT: reproduced
+assertions: {"A1_atraxa_cast": "passed", "A2_choice_pending": "passed", "A3_choice_resolves": "failed", "A4_zones_sane": "not-run"}
