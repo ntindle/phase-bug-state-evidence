@@ -1,0 +1,16 @@
+diff --git a/client/src/adapter/p2p-draft-host.ts b/client/src/adapter/p2p-draft-host.ts
+index db102e0..a45170d 100644
+--- a/client/src/adapter/p2p-draft-host.ts
++++ b/client/src/adapter/p2p-draft-host.ts
+@@ -1380,6 +1380,11 @@ export class P2PDraftHost {
+       throw err;
+     }
+ 
++    // Force the first persisted state to upload immediately so the host
++    // claims the backup row before any guest can observe the started draft.
++    this.picksSinceLastBackup = P2PDraftHost.BACKUP_INTERVAL_PICKS;
++    await this.persistSessionStrict();
++
+     // Send each guest their filtered view
+     for (const [seat, session] of this.guestSessions) {
+       try {

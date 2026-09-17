@@ -1,0 +1,151 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client[39m
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mreuses the host deck receipt after a failed immutable snapshot
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:712:30
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mretains a guest deck command after a failed save and replays it once after host recovery
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:780:48
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mrestores a leave's live recovery state when its durability fence fails
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1118:48
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mopens reconnect grace when the guest closes during a failed leave save
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1170:31
+    at Mock [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+spy@4.1.0/node_modules/[4m@vitest/spy[24m/dist/index.js:332:34[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/p2p-draft-host.ts:3654:15
+[90m    at processTicksAndRejections (node:internal/process/task_queues:104:5)[39m
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mpauses a started draft when leave recovery's follow-up save also fails
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1228:33
+    at Mock [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+spy@4.1.0/node_modules/[4m@vitest/spy[24m/dist/index.js:332:34[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/p2p-draft-host.ts:3654:15
+[90m    at processTicksAndRejections (node:internal/process/task_queues:104:5)[39m
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mpauses a started draft when leave recovery's follow-up save also fails
+[22m[39m[P2PDraftHost] persist failed: Error: IDB still unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1230:32
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+[P2PDraftHost] leave disconnect recovery failed: Error: IDB still unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1230:32
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mretains an existing reconnect deadline when a failed leave session closes
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1277:31
+    at Mock [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+spy@4.1.0/node_modules/[4m@vitest/spy[24m/dist/index.js:332:34[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/p2p-draft-host.ts:3654:15
+[90m    at processTicksAndRejections (node:internal/process/task_queues:104:5)[39m
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mdoes not replay a rolled-back leave snapshot on the next save
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1313:48
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mretains recovery state and reports a rejected engine rollback
+[22m[39m[P2PDraftHost] persist failed: Error: IDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1393:48
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostPersistence.test.ts[2m > [22m[2mP2PDraftHost persistence disposal[2m > [22m[2mretains recovery state and reports a rejected engine rollback
+[22m[39m[P2PDraftHost] leave rollback connectivity failed: Error: reconnect rejected
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostPersistence.test.ts:1388:30
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:296:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1681:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1678:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1660:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1627:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:2309:64
+
+ [32m✓[39m src/adapter/__tests__/p2pDraftHostPersistence.test.ts [2m([22m[2m44 tests[22m[2m)[22m[33m 461[2mms[22m[39m
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostStartRecovery.test.ts[2m > [22m[2mP2PDraftHost start recovery[2m > [22m[2mretries a start whose durable snapshot failed
+[22m[39m[P2PDraftHost] persist failed: Error: IndexedDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostStartRecovery.test.ts:88:30
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostStartRecovery.test.ts[2m > [22m[2mP2PDraftHost start recovery[2m > [22m[2mdoes not resurrect the abandoned draft on a later save
+[22m[39m[P2PDraftHost] persist failed: Error: IndexedDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostStartRecovery.test.ts:131:30
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+[90mstderr[2m | src/adapter/__tests__/p2pDraftHostStartRecovery.test.ts[2m > [22m[2mP2PDraftHost start recovery[2m > [22m[2mdrops a snapshot queued before the failed start
+[22m[39m[P2PDraftHost] persist failed: Error: IndexedDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39msrc/adapter/__tests__/p2pDraftHostStartRecovery.test.ts:175:30
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/client-src/phase-main/client/[39mnode_modules/[4m.pnpm[24m/@vitest+runner@4.1.0/node_modules/[4m@vitest/runner[24m/dist/index.js:1258:20
+
+ [32m✓[39m src/adapter/__tests__/p2pDraftHostStartRecovery.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/adapter/__tests__/p2pDraftHostBotFill.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/adapter/__tests__/p2pDraftHostAdvanceRound.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 6[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m59 passed[39m[22m[90m (59)[39m
+[2m   Start at [22m 20:25:30
+[2m   Duration [22m 4.24s[2m (transform 815ms, setup 762ms, import 1.01s, tests 511ms, environment 1.16s)[22m
+
