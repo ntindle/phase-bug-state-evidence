@@ -1,0 +1,138 @@
+{
+ "the beamtown bullies": {
+  "oracle_text": "Vigilance, haste\n{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it. (Until your next turn, that creature attacks each combat if able and attacks a player other than you if able.)",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black",
+    "Red",
+    "Green"
+   ],
+   "generic": 1
+  },
+  "n_activated_abilities": 1,
+  "activated_ability": {
+   "kind": "Activated",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "change_zone_enters_under_anaphor",
+    "description": "under their control"
+   },
+   "cost": {
+    "type": "Tap"
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "GenericEffect",
+     "static_abilities": [
+      {
+       "mode": "Continuous",
+       "affected": {
+        "type": "SelfRef"
+       },
+       "modifications": [
+        {
+         "type": "AddKeyword",
+         "keyword": "Haste"
+        }
+       ],
+       "condition": null,
+       "affected_zone": null,
+       "effect_zone": null,
+       "active_zones": [],
+       "characteristic_defining": false,
+       "description": "gain haste"
+      }
+     ],
+     "duration": null,
+     "target": null
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Goad",
+      "target": {
+       "type": "ParentTarget"
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "CreateDelayedTrigger",
+       "condition": {
+        "type": "AtNextPhase",
+        "phase": "End"
+       },
+       "effect": {
+        "kind": "Activated",
+        "effect": {
+         "type": "ChangeZone",
+         "origin": null,
+         "destination": "Exile",
+         "target": {
+          "type": "ParentTarget"
+         },
+         "owner_library": false,
+         "enter_transformed": false,
+         "enter_tapped": false,
+         "enters_attacking": false
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+       },
+       "uses_tracked_set": false
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ },
+ "structural_scan": {
+  "scope": "all activated abilities in pinned v0.85.0 card data: player/opponent ability target + chained ChangeZone targeting the controller's graveyard (controller:'You' + InZone Graveyard)",
+  "hits": [],
+  "n_hits": 0
+ }
+}

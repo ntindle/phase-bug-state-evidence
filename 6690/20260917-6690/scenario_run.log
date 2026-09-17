@@ -1,0 +1,52 @@
+starting issue #6690 run 20260917-6690 (pinned v0.85.0, protocol 72)
+parse: bullies ability top_effect= {"type": "Unimplemented", "name": "change_zone_enters_under_anaphor"} ; structural scan hits = 0
+[game] game=Q4XA86
+[P0] mulligan: mulligan (mulls=0)
+[P1] mulligan: keep (mulls=0)
+[game] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0 stage=develop bullies=no gy_bears=0
+[P0] mulligan: keep (mulls=1)
+[P0] bottoms 1 after mulligan (legacy action)
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] casts Beamtown Bullies (t10); stage=armed
+[P0] declares no DeclareAttackers
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] declares no DeclareAttackers
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] casts Faithless Looting (t14)
+[P0] discard(looting) prompt: wf=DiscardChoice rtype=schema n_choices=8
+[P0] discard(looting): submits ['grizzly bears', 'grizzly bears']
+[P0] declares no DeclareAttackers
+[P0] PROBE POINT t15 Upkeep: bullies=33 untapped, bears_in_gy=2, P1's turn, P0 priority (cast on t10)
+exported pre.json (531105 bytes)
+[P0] ActivateAbility candidates for bullies 33: 1
+[P0] attempting activation: {"source_id": 33, "ability_index": 0}
+[P0] after attempt: stack=1 tapped=True wait=Priority
+exported post.json (537781 bytes)
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] declares no DeclareAttackers
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] declares no DeclareAttackers
+[game] DIAG turn=18 active=0 phase=PostCombatMain wf=Priority P0hand=6 P1hand=7 stack=0 stage=settle bullies=bf gy_bears=2
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] declares no DeclareAttackers
+[P1] discard(cleanup) prompt: wf=DiscardToHandSize rtype=schema n_choices=8
+[P1] discard(cleanup): submits ['island']
+[P0] declares no DeclareAttackers
+[P0] settle complete; finishing
+[game] contract complete; finishing
+game finished ok=True
+game finished ok=True
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/6690/20260917-6690/summary.png
+server excerpts: 698 lines for Q4XA86

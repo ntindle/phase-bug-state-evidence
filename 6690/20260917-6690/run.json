@@ -1,0 +1,288 @@
+{
+ "issue": 6690,
+ "run_id": "20260917-6690",
+ "started_at": "2026-09-17T12:25:30",
+ "duration_s": 75.8,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "ServerHello probed live (0.85.0/cb58ef5/proto 72/Full) on 127.0.0.1:9374 this run; hashes recomputed from on-disk release files; v0.85.0 confirmed latest stable phase-rs/phase release (not shell-*) this run"
+ },
+ "server_run_dir": "runs/20260917-6690",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_6690.py",
+ "scenario_sha256": "aefde60fa1b34e50bc865b915017943c7928788f09a4ddcac31e9a6847db19f0",
+ "decks": {
+  "P0": [
+   [
+    "the beamtown bullies",
+    4
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "faithless looting",
+    8
+   ],
+   [
+    "forest",
+    12
+   ],
+   [
+    "mountain",
+    12
+   ],
+   [
+    "swamp",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "game_code": "Q4XA86",
+ "game_ok": true,
+ "parse_summary": {
+  "bullies_oracle": "Vigilance, haste\n{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, ",
+  "bullies_ability": {
+   "cost": {
+    "type": "Tap"
+   },
+   "target": null,
+   "top_effect": {
+    "type": "Unimplemented",
+    "name": "change_zone_enters_under_anaphor"
+   }
+  },
+  "structural_scan_hits": 0
+ },
+ "probe": {
+  "probe_turn": 15,
+  "bullies_oid": "33",
+  "bullies_cast_turn": 10,
+  "offered": true,
+  "offered_data": {
+   "source_id": 33,
+   "ability_index": 0
+  },
+  "attempted": true,
+  "stack_after": 1,
+  "tapped_after": true,
+  "wait_after": "Priority",
+  "stack_detail": [
+   {
+    "id": 121,
+    "source_id": 33,
+    "controller": 0,
+    "kind": {
+     "type": "ActivatedAbility",
+     "data": {
+      "source_id": 33,
+      "ability": {
+       "effect": {
+        "type": "Unimplemented",
+        "name": "change_zone_enters_under_anaphor",
+        "description": "under their control"
+       },
+       "targets": [],
+       "source_id": 33,
+       "source_incarnation": 3,
+       "controller": 0,
+       "kind": "Activated",
+       "sub_ability": {
+        "effect": {
+         "type": "GenericEffect",
+         "static_abilities": [
+          {
+           "mode": "Continuous",
+           "affected": {
+            "type": "SelfRef"
+           },
+           "modifications": [
+            {
+             "type": "AddKeyword",
+             "keyword": "Haste"
+            }
+           ],
+           "condition": null,
+           "affected_zone": null,
+           "effect_zone": null,
+           "active_zones": [],
+           "characteristic_defining": false,
+           "description": "gain haste"
+          }
+         ],
+         "duration": null,
+         "target": null
+        },
+        "targets": [],
+        "source_id": 33,
+        "source_incarnation": 3,
+        "controller": 0,
+        "kind": "Spell",
+        "sub_ability": {
+         "effect": {
+          "type": "Goad",
+          "target": {
+           "type": "ParentTarget"
+          }
+         },
+         "targets": [],
+         "source_id": 33,
+         "source_incarnation": 3,
+         "controller": 0,
+         "kind": "Spell",
+         "sub_ability": {
+          "effect": {
+           "type": "CreateDelayedTrigger",
+           "condition": {
+            "type": "AtNextPhase",
+            "phase": "End"
+           },
+           "effect": {
+            "kind": "Activated",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Exile",
+             "target": {
+              "type": "ParentTarget"
+             },
+             "owner_library": false,
+             "enter_transformed": false,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "uses_tracked_set": false
+          },
+          "targets": [],
+          "source_id": 33,
+          "source_incarnation": 3,
+          "controller": 0,
+          "kind": "Spell",
+          "sub_ability": null,
+          "duration": null,
+          "condition": null,
+          "context": {
+           "additional_cost_paid": false,
+           "alternative_mana_cost_paid": false,
+           "optional_effect_performed": false
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "detached_remainder": "NoProducer",
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+         },
+         "duration": null,
+         "condition": null,
+         "context": {
+          "additional_cost_paid": false,
+          "alternative_mana_cost_paid": false,
+          "optional_effect_performed": false
+         },
+         "optional_targeting": false,
+         "optional": false,
+         "detached_remainder": "NoProducer",
+         "forward_result": false,
+         "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "condition": null,
+        "context": {
+         "additional_cost_paid": false,
+         "alternative_mana_cost_paid": false,
+         "optional_effect_performed": false
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "detached_remainder": "NoProducer",
+        "forward_result": false,
+        "sub_link": "SequentialSibling"
+       },
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "ability_index": 0
+      }
+     }
+    }
+   }
+  ]
+ },
+ "rejections": {},
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_offered": "passed",
+  "A3_no_target_block": "passed",
+  "A4_announced": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): Bullies activated ability cost={\"type\": \"Tap\"} target=null top_effect={\"type\": \"Unimplemented\", \"name\": \"change_zone_enters_under_anaphor\"}",
+  "structural scan: 0 activated abilities in the pinned data have a player/opponent ability target + chained ChangeZone from the controller's graveyard (the issue's trigger structure)",
+  "A1 passed: probe point reached on turn 15 (P1's turn, P0 priority): Bullies oid 33 untapped on P0 battlefield (cast turn 10, past summoning sickness), >=1 Grizzly Bears in P0 graveyard",
+  "A2 passed: ActivateAbility advertised for the Bullies (source_id=33, ability_index=0)",
+  "A3 passed: no 'No legal targets available' rejection on the activation attempt",
+  "A4 passed: activation accepted; stack=1 after the attempt, Bullies tapped=True, waiting_for=Priority",
+  "A5 passed: settle phase completed with the game advancing; no stall observed",
+  "verdict: not-reproduced - the {T} activation was offered and accepted on the opponent's turn with a nonlegendary creature in the controller's graveyard; the reported activation block is absent on v0.85.0. The pinned parse carries no graveyard target slot (top-level Unimplemented), so the described relative_controller_kind mechanism is not reachable from this card's runtime parse."
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-17",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P1 is a passive second seat (lands only, no attacks, no spells).",
+  "The pinned v0.85.0 parse of the Bullies' ability carries no graveyard target slot (top-level Unimplemented change_zone_enters_under_anaphor): this run tests the ACTIVATION GATE (the reported 'not activatable' failure), not the relative_controller_kind target-slot machinery, which is not reachable from this card's runtime parse. Resolution of the reanimation itself is not asserted.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "history": [
+  {
+   "run_id": "20260910-6690",
+   "release": "v0.78.0",
+   "protocol": 68,
+   "verdict": "not-reproduced",
+   "evidence_commit": "847768678deee21deabc25fd64e34aa48bcff0e7",
+   "note": "prior run; activation accepted on the opponent's turn, no 'No legal targets available'; ledger entry lost in a VM replacement, restored here; stale vs the v0.85.0 pin"
+  }
+ ],
+ "setup_line": "P0 4x The Beamtown Bullies + 12x Grizzly Bears + 8x Faithless Looting + 12x Forest/Mountain/Swamp vs P1 60x Island. P0 bins Bears with Looting, casts the Bullies, and on a later P1 turn (past summoning sickness) with P0 priority attempts the {T} activation.",
+ "contract_line": "The {T} activation must be offered and accepted on the opponent's turn with a nonlegendary creature in the controller's graveyard; a 'No legal targets available' rejection is the reported failure signature."
+}
