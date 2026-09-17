@@ -1,0 +1,198 @@
+{
+ "issue": 6201,
+ "run_id": "20260916-6201",
+ "started_at": "2026-09-17T00:46:08",
+ "duration_s": 107.7,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-09-16",
+  "source": "ServerHello + sha256 re-verified against pinned v0.85.0 release artifacts (binary+data+sigs under server/releases/v0.85.0/); fresh isolated server on 127.0.0.1:9374 for run 20260910-6201b"
+ },
+ "server_run_dir": "runs/20260916-6201",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "66028a97b565a7cb3f8c5c102922cf2bc1c2af4051ce6ada0ade3a146d426602",
+ "decks": {
+  "P0": [
+   [
+    "thor, god of thunder",
+    8
+   ],
+   [
+    "too evil to stay dead",
+    8
+   ],
+   [
+    "faithless looting",
+    8
+   ],
+   [
+    "grizzly bears",
+    6
+   ],
+   [
+    "mountain",
+    15
+   ],
+   [
+    "swamp",
+    15
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_illegal_timing": "passed",
+  "A3_offered_next_turn": "passed",
+  "A4_cast_completes": "passed",
+  "A5_permission_expires": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: thor_on_bf=True, evil_in_exile=True",
+  "A2: not offered at illegal timing (draw checked)",
+  "A3: offered at next-turn PreCombatMain=True",
+  "A4: P1 life=17 (want 17), bears_on_P0_bf=True, evil_in_P0_gy=True, stack_empty=True, wf=Priority, game-A rejections=0",
+  "A5: evil still in exile=True, offered at turn+2 PreCombatMain=False",
+  "A6: final states clean=True, stuck_watch=False",
+  "decisions=9 rejections=0"
+ ],
+ "observations": {
+  "snapA": {
+   "etb_seen": true,
+   "etb_answered": true,
+   "exiled_oids": [
+    35
+   ],
+   "thor_turn": 24,
+   "t_next": 26,
+   "t_next2": null,
+   "looting_pending_discard": false,
+   "cast_submitted": true,
+   "evil_target_chosen": true,
+   "thor_target_chosen": true,
+   "cast_done": true,
+   "a2_draw_checked": true,
+   "a2_draw_offered": false,
+   "a2_combat_checked": false,
+   "a2_combat_offered": false,
+   "a3_offered": true,
+   "a3_checked": true,
+   "a5_checked": false,
+   "a5_offered": false,
+   "b_hold_logged": false
+  },
+  "snapB": {
+   "etb_seen": true,
+   "etb_answered": true,
+   "exiled_oids": [
+    39
+   ],
+   "thor_turn": 11,
+   "t_next": 13,
+   "t_next2": 15,
+   "looting_pending_discard": false,
+   "cast_submitted": false,
+   "evil_target_chosen": false,
+   "thor_target_chosen": false,
+   "cast_done": false,
+   "a2_draw_checked": false,
+   "a2_draw_offered": false,
+   "a2_combat_checked": false,
+   "a2_combat_offered": false,
+   "a3_offered": false,
+   "a3_checked": false,
+   "a5_checked": true,
+   "a5_offered": false,
+   "b_hold_logged": false
+  },
+  "rejections": [],
+  "stuck_watch_fired": false
+ },
+ "decisions": [
+  {
+   "game": "A",
+   "why": "looting_discard",
+   "interactionId": "E8SCUK.0.27",
+   "choice": "Too Evil to Stay Dead"
+  },
+  {
+   "game": "A",
+   "why": "looting_discard",
+   "interactionId": "E8SCUK.0.361",
+   "choice": "Grizzly Bears"
+  },
+  {
+   "game": "A",
+   "why": "etb_exile_evil",
+   "interactionId": "E8SCUK.0.365",
+   "choice": "Too Evil to Stay Dead"
+  },
+  {
+   "game": "A",
+   "why": "teamwork_decline",
+   "interactionId": "E8SCUK.0.399",
+   "choice": ""
+  },
+  {
+   "game": "A",
+   "why": "evil_target_bears",
+   "interactionId": "E8SCUK.0.400",
+   "choice": "Grizzly Bears"
+  },
+  {
+   "game": "A",
+   "why": "thor_damage_p1",
+   "interactionId": "E8SCUK.0.401",
+   "choice": ""
+  },
+  {
+   "game": "B",
+   "why": "looting_discard",
+   "interactionId": "9LMIDF.0.40",
+   "choice": "Grizzly Bears"
+  },
+  {
+   "game": "B",
+   "why": "looting_discard",
+   "interactionId": "9LMIDF.0.133",
+   "choice": "Too Evil to Stay Dead"
+  },
+  {
+   "game": "B",
+   "why": "etb_exile_evil",
+   "interactionId": "9LMIDF.0.167",
+   "choice": "Too Evil to Stay Dead"
+  }
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x key-card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The reporter's attached turn-14 state (build 0.30.0, Draw phase) cannot be imported into the pinned v0.85.0 prebuilt server (no ImportAuthoritativeState on the release binary); the scenario replays the reported sequence fresh instead.",
+  "Not tested on the original 2026-07-19 build 0.30.0; verdict is scoped to v0.85.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 8x Thor, God of Thunder + 8x Too Evil to Stay Dead + 8x Faithless Looting + 6x Grizzly Bears + 20x Mountain + 10x Swamp; P1: 12x Bears + 48x Forest",
+ "contract_line": "Thor ETB exiles Too Evil to Stay Dead; it must not be offered at illegal timing, must be offered and castable on the next turn (P1 20->17 via Thor trigger, Bears reanimated), and the permission must expire the turn after"
+}
