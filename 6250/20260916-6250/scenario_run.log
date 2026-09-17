@@ -1,0 +1,121 @@
+starting issue #6250 run 20260916-6250 (pinned v0.85.0, protocol 72)
+parse: {"ardenn, intrepid archaeologist": {"oracle_text": "At the beginning of combat on your turn, you may attach any number of Auras and Equipment you control to target permanent or player.\nPartner (You can have two commanders if both have partner.)", "trigger_condition": "None", "effect_type": "Attach", "effect_optional": null, "effect_attachment": "Or(Typed(subtypes=['Aura'],controller=You),Typed(subtypes=['Equipment'],controller=You))", "effect_target": "Or(Typed(subtypes=[],controller=None),Player)"}}
+[A] game=FI7NUH
+[A-P0] mulligan: keep
+[A-P1] mulligan: keep
+[A] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 stack=0 stage=setup obs={}
+[A-P0] casts Ardenn (turn 6)
+[A-P0] casts Holy Strength (targets Ardenn)
+[A-P0] casts Colossus Hammer
+[A-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Colossus Hammer'])
+[A-P0] attachment choice -> ['Colossus Hammer']
+[A-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=True)
+[A-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[A-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[A-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[A-P0] declares no DeclareAttackers
+[A-P0] casts Plate Armor
+[A-P0] setup complete (turn 10): on_ardenn=['holy strength']; exporting PRE
+exported pre_A.json
+[A-P0] attachment prompt: schema/sequence max=1 n_avail=3 (['Holy Strength', 'Colossus Hammer', 'Plate Armor'])
+[A-P0] attachment choice -> ['Colossus Hammer']
+[A-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=combat, holy_pending=False)
+[A-P0] optional 'you may' -> ACCEPT
+[A-P0] post: optional=accept on_ardenn=['colossus hammer', 'holy strength'] phase=BeginCombat turn=10
+exported post_A.json
+[A] contract complete; finishing game
+game A finished ok=True
+game A finished ok=True
+[B] game=4JFT4N
+[B-P0] mulligan: keep
+[B-P1] mulligan: keep
+[B] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 stack=0 stage=setup obs={}
+[B-P0] casts Ardenn (turn 6)
+[B-P0] casts Holy Strength (targets Ardenn)
+[B-P0] casts Plate Armor
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=True)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B] DIAG turn=14 active=0 phase=Upkeep wf=Priority P0hand=4 stack=0 stage=setup obs={"attachment_shapes": ["schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2"], "cap_note": "attachment prompt caps selection at max=1 with 2 attachmen
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B] DIAG turn=23 active=1 phase=EndCombat wf=Priority P0hand=6 stack=0 stage=setup obs={"attachment_shapes": ["schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2", "schema/sequence max=1 n_avail=2", "s
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=2 (['Holy Strength', 'Plate Armor'])
+[B-P0] attachment choice -> ['Plate Armor']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE (setup-stage, not the verdict decision)
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] Error: {"message": "Invalid message: missing field `relations` at line 1 column 157"}
+[B-P0] declares no DeclareAttackers
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=setup, holy_pending=False)
+[B-P0] casts Colossus Hammer
+[B-P0] setup complete (turn 28): on_ardenn=['holy strength']; exporting PRE
+exported pre_B.json
+[B-P0] attachment prompt: schema/sequence max=1 n_avail=3 (['Holy Strength', 'Plate Armor', 'Colossus Hammer'])
+[B-P0] attachment choice -> ['Colossus Hammer']
+[B-P0] target -> 'Ardenn, Intrepid Archaeologist' (stage=combat, holy_pending=False)
+[B-P0] optional 'you may' -> DECLINE
+[B-P0] post: optional=decline on_ardenn=['holy strength'] phase=BeginCombat turn=28
+exported post_B.json
+[B] contract complete; finishing game
+game B finished ok=True
+game B finished ok=True
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/6250/20260916-6250/summary.png
