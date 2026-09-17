@@ -1,0 +1,167 @@
+{
+ "issue": 7195,
+ "run_id": "20260917-7195b",
+ "started_at": "2026-09-17T15:03:25",
+ "duration_s": 25.3,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "reused live server on 127.0.0.1:9374 (run 20260917-6753 games.db); ServerHello confirms v0.85.0/cb58ef5/protocol 72; hashes recomputed from on-disk release files this run; v0.85.0 confirmed latest stable release (not shell-*)"
+ },
+ "server_run_dir": "runs/20260917-7195b",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7195.py",
+ "scenario_sha256": "d811ee3b6d334671911d4715cb444bb6ea3260f66e548b225314965f3667a5f0",
+ "decks": {
+  "P0": [
+   [
+    "Transforming Flourish",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Sol Ring",
+    4
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    44
+   ]
+  ]
+ },
+ "game_ok": true,
+ "parse_summary": {
+  "transforming flourish": {
+   "name": "Transforming Flourish",
+   "oracle_text": "Demonstrate (When you cast this spell, you may copy it. If you do, choose an opponent to also copy it. Players may choose new targets for their copies.)\nDestroy target artifact or creature you don't control. If that permanent is destroyed this way, its controller exiles cards from the top of their library until they exile a nonland card, then they may cast that card without paying its mana cost.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Red"
+    ],
+    "generic": 2
+   }
+  },
+  "sol ring": {
+   "name": "Sol Ring",
+   "oracle_text": "{T}: Add {C}{C}.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [],
+    "generic": 1
+   }
+  },
+  "lightning bolt": {
+   "name": "Lightning Bolt",
+   "oracle_text": "Lightning Bolt deals 3 damage to any target.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Red"
+    ],
+    "generic": 0
+   }
+  }
+ },
+ "cast_action": {
+  "type": "CastSpell",
+  "data": {
+   "object_id": 49,
+   "card_id": 49,
+   "targets": [],
+   "payment_mode": {
+    "type": "Auto"
+   }
+  }
+ },
+ "demonstrate": {
+  "done": true,
+  "iid": "LWCRVZ.0.72"
+ },
+ "flourish_target": {
+  "oid": null,
+  "iid": null
+ },
+ "post_destroy_snapshot": {
+  "turn": 5,
+  "phase": "PreCombatMain",
+  "exiled": [
+   [
+    "115",
+    "Lightning Bolt"
+   ]
+  ],
+  "exiled_nonland": {
+   "oid": "115",
+   "name": "Lightning Bolt"
+  },
+  "p1_untapped_forests": 1,
+  "p0_life": 20,
+  "p1_life": 20,
+  "p1_lib": 50
+ },
+ "exiled_cards": [
+  [
+   "115",
+   "Lightning Bolt"
+  ]
+ ],
+ "exiled_nonland": {
+  "oid": "115",
+  "name": "Lightning Bolt"
+ },
+ "cast_offer_seen": null,
+ "exiled_cast_iid": null,
+ "bolt_target_iid": null,
+ "lands_before": 1,
+ "lands_after": null,
+ "resolution": null,
+ "rejections": {},
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_destroyed": "passed",
+  "A3_exile_done": "passed",
+  "A4_cast_offered": "failed",
+  "A5_free_cast_resolved": "not-run"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): transforming flourish oracle=\"Demonstrate (When you cast this spell, you may copy it. If you do, choose an opponent to also copy it. Players may choose new targets for their copies.)\\nDestroy target artifact or creature you don't control. If that permanent is destroyed this way, its controller exiles cards from the top of their library until they exile a nonland card, then they may cast that card without paying its mana cost.\"",
+  "A1 passed: pre_cast on P0 turn 5 PreCombatMain; Transforming Flourish in hand; 3 untapped Mountains; Sol Ring on P1's battlefield",
+  "A2 passed: Sol Ring left P1's battlefield on turn 5 (Flourish resolved; the destroy half worked)",
+  "A3 passed: P1 exiled [('115', 'Lightning Bolt')]; first exiled nonland = Lightning Bolt (oid 115) -- the 'exiles correctly' half of the report",
+  "A4 FAILED (THE REPORTED SYMPTOM): P1 exiled cards correctly but the engine never offered a cast of the exiled nonland (Lightning Bolt); the may-cast window closed with no CastSpell legal action and no may-cast interaction for P1",
+  "A5 not-run: no cast was offered",
+  "verdict: REPRODUCED - the destroy half and the exile half both worked, but P1 was never offered the free cast of the exiled card: exactly the reported symptom"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-09-17",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Only the non-demonstrate path is exercised (demonstrate declined); the demonstrate-copy branch is not tested.",
+  "P1 is scripted (one Forest, Sol Ring, then passive); opponent interaction with the spell is not exercised.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 12x Transforming Flourish + 48x Mountain vs P1 4x Sol Ring + 12x Forest + 44x Lightning Bolt. P1 casts Sol Ring on turn 1 and then holds zero untapped mana; P0 casts Transforming Flourish targeting the Sol Ring on its main phase (declining demonstrate) and passes priority to resolution.",
+ "contract_line": "Destroying P1's Sol Ring must make P1 exile cards until a nonland is exiled, and the engine must then offer P1 a free cast of that card; the cast must resolve correctly (Bolt: 3 damage to P0; Sol Ring: onto P1's battlefield) with no mana paid."
+}
