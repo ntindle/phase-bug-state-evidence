@@ -1,0 +1,26 @@
+starting issue #7193 run 20260917-7193 (pinned v0.85.0, protocol 72)
+parse: {"demand answers": {"oracle_text": "As an additional cost to cast this spell, sacrifice an artifact or discard a card.\nDraw two cards.", "mana_cost": {"type": "Cost", "shards": ["Red"], "generic": 1}, "additional_cost_type": "Choice", "additional_cost_branches": ["Sacrifice", "Discard"]}}
+[game] game=OXBNJ6
+[P0] mulligan: keep
+[P1] mulligan: keep
+[game] DIAG turn=1 active=1 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0 stage=develop resolved=False watch_turns=0
+exported pre_cast.json
+[P0] casts Demand Answers (oid 2); pre-cast exported; awaiting additional-cost prompt
+[P0] cost prompt discovered: wf=PayCost rtype=schema n_choices=6
+[P0]   choice OXBNJ6.0.53.s0: {"id": "OXBNJ6.0.53.s0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "31", "name": "Mountain", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"type": 
+[P0]   choice OXBNJ6.0.53.s1: {"id": "OXBNJ6.0.53.s1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "23", "name": "Shock", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"type": "av
+[P0]   choice OXBNJ6.0.53.s2: {"id": "OXBNJ6.0.53.s2", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "44", "name": "Shock", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"type": "av
+[P0]   choice OXBNJ6.0.53.s3: {"id": "OXBNJ6.0.53.s3", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "34", "name": "Mountain", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"type": 
+[P0]   choice OXBNJ6.0.53.s4: {"id": "OXBNJ6.0.53.s4", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "36", "name": "Demand Answers", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"t
+[P0]   choice OXBNJ6.0.53.s5: {"id": "OXBNJ6.0.53.s5", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "37", "name": "Mountain", "zone": "hand", "controller": 0, "power": null, "tapped": false}}], "status": {"type": 
+[P0] WARNING: cost choices carry no identifying text; assuming declared order and picking choice index 1
+[P0] submitted DISCARD branch via declared-order-fallback (card-data Choice data order [Sacrifice, Discard]; NO identifying text found) (choice id OXBNJ6.0.53.s1)
+[P0] discard(cost): submits ['Shock'] (choice ids ['OXBNJ6.0.95.s1'])
+[P0] cost discard answered (['Shock']); spell should be on stack
+exported post_resolution.json
+[P0] RESOLVED on turn 7: Demand Answers in P0 graveyard, stack empty; post-resolution exported; watching until turn 15
+[P0] watch window complete: 9 turns observed, 0 post-resolution sightings
+[game] contract complete; finishing
+game finished ok=True
+game finished ok=True
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7193/20260917-7193/summary.png

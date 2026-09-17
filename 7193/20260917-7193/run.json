@@ -1,0 +1,188 @@
+{
+ "issue": 7193,
+ "run_id": "20260917-7193",
+ "started_at": "2026-09-17T09:25:47",
+ "duration_s": 50.7,
+ "server": {
+  "server_version": "0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "reused live server on 127.0.0.1:9374 (run 20260917-7193); ServerHello confirms v0.85.0/cb58ef5/protocol 72; hashes recomputed from on-disk release files this run; v0.85.0 confirmed latest stable release (not shell-*)"
+ },
+ "server_run_dir": "runs/20260917-7193",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7193.py",
+ "scenario_sha256": "c7d3f72472a0e04d0df302f446146ba56c948abcd957e1b643f0595e76a73252",
+ "decks": {
+  "P0": [
+   [
+    "Demand Answers",
+    12
+   ],
+   [
+    "Mountain",
+    24
+   ],
+   [
+    "Shock",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "game_ok": true,
+ "parse_summary": {
+  "demand answers": {
+   "oracle_text": "As an additional cost to cast this spell, sacrifice an artifact or discard a card.\nDraw two cards.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Red"
+    ],
+    "generic": 1
+   },
+   "additional_cost_type": "Choice",
+   "additional_cost_branches": [
+    "Sacrifice",
+    "Discard"
+   ]
+  }
+ },
+ "cast_action": {
+  "type": "CastSpell",
+  "data": {
+   "object_id": 2,
+   "card_id": 2,
+   "targets": [],
+   "payment_mode": {
+    "type": "Auto"
+   }
+  }
+ },
+ "cost_decision": {
+  "wf_type": "PayCost",
+  "response_type": "schema",
+  "branch": "discard",
+  "method": "declared-order-fallback (card-data Choice data order [Sacrifice, Discard]; NO identifying text found)",
+  "interaction_id": "OXBNJ6.0.53",
+  "choice_id": "OXBNJ6.0.53.s1",
+  "choice_json": {
+   "id": "OXBNJ6.0.53.s1",
+   "surfaces": [
+    {
+     "type": "summary",
+     "data": {
+      "code": "candidate"
+     }
+    },
+    {
+     "type": "object",
+     "data": {
+      "role": "candidate",
+      "index": null,
+      "reference": "23",
+      "name": "Shock",
+      "zone": "hand",
+      "controller": 0,
+      "power": null,
+      "tapped": false
+     }
+    }
+   ],
+   "status": {
+    "type": "available"
+   }
+  },
+  "forced_path": false
+ },
+ "discard": {
+  "interaction_id": "OXBNJ6.0.95",
+  "discarded": [
+   "Shock"
+  ]
+ },
+ "resolution": {
+  "resolved": true,
+  "turn": 7,
+  "saw_on_stack": false
+ },
+ "watch": {
+  "turns_observed": [
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15
+  ],
+  "stack_samples": 120,
+  "sightings": []
+ },
+ "rejections": {},
+ "assertions": {
+  "A1_cost_branch": "passed",
+  "A2_single_discard": "failed",
+  "A3_resolve_once": "passed",
+  "A4_stack_clean": "passed",
+  "A5_no_later_stack": "passed",
+  "A6_no_rejects": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.85.0 card-data): Demand Answers {1}{R} Instant -- 'As an additional cost to cast this spell, sacrifice an artifact or discard a card. Draw two cards.' additional_cost=Choice[Sacrifice, Discard].",
+  "A1 passed: NO separate sacrifice-vs-discard branch choice was ever offered (P0 controlled no artifacts, so only the discard branch was payable); the engine went straight to waiting_for=PayCost (kind=Discard, 6 hand-card candidates, iid OXBNJ6.0.53). The driver answered with the engine-issued choice id for Shock (choice OXBNJ6.0.53.s1, oid 23) via {\"type\":\"select\",\"data\":{\"choiceIds\":[...]}} -- accepted, no rejection. (The driver's live 'branch choice' framing was wrong; the submitted selection was still a valid discard payment.)",
+  "A2 FAILED (related defect, precisely characterized): the engine charged the discard additional cost TWICE for the single cast. Payment #1: PayCost prompt OXBNJ6.0.53 -> Shock oid 23 discarded. The cast then stalled (both seats passing priority, turns 4->7, spell never on the stack in any sample). Payment #2: a SECOND engine-issued discard prompt (OXBNJ6.0.95) ~10s later -> Shock oid 44 discarded. Post-resolution state confirms BOTH Shock oid 23 and Shock oid 44 in P0's graveyard. The spell resolved 0.3s after the second payment. Both prompts were answered with engine-issued choice ids; zero rejections -- this is engine behavior, not a driver artifact.",
+  "A3 passed: the spell resolved EXACTLY once -- Demand Answers oid 2 in P0's graveyard post-resolution; P0 library 51->48 (drew 2 from the spell plus 1 P0 draw step during the turn-4->7 stall).",
+  "A4 passed: post-resolution export shows zero Demand Answers entries on the stack.",
+  "A5 passed: 9 post-resolution turns observed (turns 7-15, 120 stack samples on every state revision), ZERO Demand Answers entries on any later stack. The reported 'added to every stack' symptom did NOT occur.",
+  "A6 passed: zero rejections on any interaction; the announced cast completed.",
+  "verdict: not-reproduced -- the reported symptom (Demand Answers reappearing on later stacks after a discard-branch cast) did NOT occur across 4+ full turn cycles of per-revision stack sampling. RELATED DEFECT OBSERVED (single run, needs confirmation): the engine charged the discard additional cost twice for one cast (two engine-issued discard prompts, both paid; cast stalled across turns 4->7 until the second payment). This violates the triage criterion 'casting requires exactly one of the additional costs' and is documented here with full evidence; it is a distinct defect from the reported stack-reappearance."
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-17",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P1 is a passive second seat (lands only, no attacks, no spells) - opponent interaction with the spell is not exercised.",
+  "Only the DISCARD branch of the additional cost is exercised (the reported path); the sacrifice branch is not tested.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 12x Demand Answers + 24x Mountain + 24x Shock vs P1 60x Mountain. P0 casts Demand Answers on its main phase with 2 untapped Mountains, answers the additional-cost branch choice with DISCARD, discards a Shock, draws two, then both seats pass while the driver samples the stack every revision for 4 full turn cycles.",
+ "contract_line": "A discard-branch Demand Answers cast must resolve exactly once (draw 2, spell to graveyard) and must never reappear on a later stack without a new cast.",
+ "assertions_initial": {
+  "A1_cost_branch": "passed",
+  "A2_discard": "failed",
+  "A3_resolve": "failed",
+  "A4_stack_clean": "passed",
+  "A5_no_later_stack": "passed",
+  "A6_no_rejects": "passed"
+ },
+ "notes_initial": [
+  "parse (pinned v0.85.0 card-data): oracle='As an additional cost to cast this spell, sacrifice an artifact or discard a card.\\nDraw two cards.'; additional_cost=Choice['Sacrifice', 'Discard']",
+  "A1 passed: additional-cost prompt appeared (wf=PayCost, rtype=schema); DISCARD branch submitted via declared-order-fallback (card-data Choice data order [Sacrifice, Discard]; NO identifying text found) (choice id OXBNJ6.0.53.s1); no rejection on the interaction",
+  "A2 FAILED: discarded_names=['Shock'], gy_shock 0->2",
+  "A3 FAILED: turn 4->7, lib 51->48, gy_da 0->1",
+  "A4 passed: post-resolution export shows zero Demand Answers entries on the stack",
+  "A5 passed: 9 post-resolution turns observed (120 stack samples, turns [7, 8, 9, 10]...), zero Demand Answers entries on any later stack",
+  "A6 passed: no rejections on the cost-branch or discard interactions; the announced cast completed",
+  "verdict: blocked - inconclusive observations (see assertion notes)"
+ ],
+ "evaluation_correction": "Assertions re-evaluated post-run by driver/finalize_7193.py: the live driver's 'branch choice' framing was corrected (the PayCost prompt WAS the discard-card selection; no branch choice exists when only one branch is payable), and the double-discard observation was verified against pre_cast.json/post_resolution.json (both Shock oids 23+44 in P0 graveyard). Originals preserved under assertions_initial/notes_initial. No new game was run."
+}
