@@ -1,0 +1,44 @@
+ServerHello: {"server_version": "0.86.0", "build_commit": "2cc8c28", "protocol_version": 72, "mode": "Full", "lobby_protocol_version": 9, "wire_formats": ["GzipEnvelopeV1"]}
+P0 creating game...
+P1 joining...
+game N2LKKZ; P0 seat=0 P1 seat=1
+P1 keeps opening hand (lands=7 mulls=0 hand=7 shock=False)
+P0 mulligans opening hand (lands=5 mulls=0 hand=7 shock=False)
+P0 mulligans opening hand (lands=6 mulls=1 hand=7 shock=False)
+P0 keeps opening hand (lands=5 mulls=2 hand=7 shock=True)
+P0 bottoms 2: ['Forest', 'Forest']
+mulligans done: P0 hand=['Island', 'Island', 'Shock', 'Yidris, Maelstrom Wielder', 'Mountain']
+P0 casts Yidris, Maelstrom Wielder on turn 13
+A1 passed: Yidris on battlefield
+attack turn = 15 (hunt window staged)
+exported pre_shock_cast.json (1063061 bytes)
+P0 casts Shock (oid 61)
+P0 answers shock_target: seat=1 candidate=N2LKKZ.0.223.t1 (<id N2LKKZ.0.223.t1>)
+shock target answered: True
+P0 declares attackers: Yidris, Maelstrom Wielder -> P1
+A3: cascade before damage = False (expect False)
+exporting PRE_DAMAGE state
+exported pre_damage.json (1078168 bytes)
+YIDRIS TRIGGER ON STACK: {"id": 307, "source_id": 2, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 2, "ability": {"effect": {"type": "Unimplemented", "name": "unrecognized_clause_head", "description": "as you cast spells from your hand"}, "targe
+A2: combat damage dealt=True, life 18->13
+exporting POST_DAMAGE state (grant window should be active)
+exported post_damage.json (1098691 bytes)
+Yidris stood down (attack_live=False); P1 must survive for A5
+exported pre_cast.json (1098691 bytes)
+P0 casts Shock (oid 96)
+P0 answers shock_target: seat=1 candidate=N2LKKZ.0.243.t1 (<id N2LKKZ.0.243.t1>)
+shock target answered: True
+P0 discards ['Forest'] (legacy)
+A4: cascade after Yidris damage = False (expect True per Oracle text)
+exporting POST_CAST state
+exported post_cast.json (1064192 bytes)
+P0 discards ['Island'] (legacy)
+exported pre_control.json (1064021 bytes)
+P0 casts Bloodbraid Elf (native cascade control)
+A5: native cascade works = True (expect True)
+TIMEOUT in wait_cond: control settle
+exporting POST_CONTROL state
+exported post_control.json (1090344 bytes)
+TIMEOUT in wait_cond: cleanup settle
+DONE verdict=reproduced assertions={"A0_connect": "passed", "A1_setup_ok": "passed", "A3_pre_damage_control": "passed", "A2_combat_damage": "passed", "A4_yidris_grant": "failed", "A5_control_cascade": "passed", "A6_cleanup": "failed"}
+server excerpts captured from runs/run-20260917-174146
