@@ -1,0 +1,93 @@
+{
+ "issue": 647,
+ "run_id": "20260917-647b",
+ "started_at": "2026-09-17T22:15:43",
+ "duration_s": 44.7,
+ "server": {
+  "server_version": "v0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "ServerHello + minisign verification against repo-pinned key (hashes recomputed from on-disk release files)"
+ },
+ "server_run_dir": "runs/20260917-647b",
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a0f751976d761dae003c4690b99191b2470940533891261d6a1972ada8260375",
+ "decks": {
+  "P0": [
+   [
+    "Asmoranomardicadaistinaculdacar",
+    4
+   ],
+   [
+    "Faithless Looting",
+    4
+   ],
+   [
+    "Swamp",
+    26
+   ],
+   [
+    "Mountain",
+    26
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "stats": {
+  "states_seen": 413,
+  "neg_observations": 4,
+  "pos_observations": 0,
+  "max_turn": 14,
+  "looting_turn": 13,
+  "discard_turns": [
+   11,
+   13
+  ],
+  "offer_turns": [],
+  "asmo_cast_turn": null,
+  "all_discarded": [
+   "Mountain",
+   "Swamp",
+   "Mountain",
+   "Swamp"
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_neg_no_cast_offered": "passed",
+  "A3_neg_no_viewer_cast": "passed",
+  "A4_looting_resolved": "passed",
+  "A5_cast_offered_after_discard": "failed",
+  "A6_asmo_cast_paid": "not-run"
+ },
+ "notes": [
+  "discard turn 11 ended without CastSpell(Asmo) offered (1 observations)",
+  "discard turn 13 ended without CastSpell(Asmo) offered (3 observations)",
+  "Asmo never offered on any of 2 discard turns (turns [11, 13])",
+  "A6 not-run: Asmo was never cast",
+  "no interaction rejections observed on protocol 72",
+  "parse check (pinned card-data.json): mana_cost={\"type\": \"NoCost\"}; parse_warnings=[{\"type\": \"SwallowedClause\", \"detector\": \"Optional_YouMay\", \"description\": \"As long as you've discarded a card this turn, you may pay {B/R} to cast this spell.\", \"line_index\": 0, \"unit_span\": {\"first_line\": 0, \"last_line\": 0, \"start_byte\": 0, \"end_byte\": 83, \"precision\": \"Exact\", \"ordinal_within_spa; static_abilities=[{\"mode\": \"Continuous\", \"affected\": {\"type\": \"SelfRef\"}, \"modifications\": [], \"condition\": {\"type\": \"QuantityComparison\", \"lhs\": {\"type\": \"Ref\", \"qty\": {\"type\": \"CardsDiscardedThisTurn\", \"player\": {\"type\": \"Controller\"}}}, \"comparator\": \"GE\", \"rhs\": {\"type\": \"Fixed\", \"value\": 1}}, \"affected_zone\": null, \"effect_zone\": null, \"active_zones\": [], \"characteristic_defining\": false, \"description\": \"As l"
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-17",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ]
+}
