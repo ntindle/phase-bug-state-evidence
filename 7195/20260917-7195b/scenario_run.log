@@ -1,0 +1,21 @@
+starting issue #7195 run 20260917-7195b (pinned v0.85.0, protocol 72)
+parse: transforming flourish / sol ring / lightning bolt loaded
+[game] game=LWCRVZ
+[P0] mulligan: keep
+[P1] mulligan: keep
+[game] DIAG turn=1 active=0 phase=Untap wf=MulliganDecision P0hand=7 P1hand=7 stack=0 stage=develop offer=False
+[P1] plays Forest
+[P1] casts Sol Ring (oid 66)
+exported pre_cast.json
+[P0] casts Transforming Flourish (oid 49); pre-cast exported
+[P0] demonstrate prompt choices: [('LWCRVZ.0.72.c0', 'candidate / decideOptionalEffect / false'), ('LWCRVZ.0.72.c1', 'candidate / decideOptionalEffect / true')]
+[P0] demonstrate DECLINED (choice LWCRVZ.0.72.c0)
+[P0] *** Sol Ring destroyed; exile observed: [('115', 'Lightning Bolt')]; nonland={'oid': '115', 'name': 'Lightning Bolt'} ***
+exported post_destroy.json
+[P0] UNKNOWN P0 prompt DiscardToHandSize; wf_data={"player": 1, "count": 1, "cards": [113, 100, 114, 86, 110, 94, 106, 63]}; opps=0
+[P1] cleanup discard: ['Forest']
+[P0] may-cast window closed (turn advanced to 8) with NO cast offered
+[game] contract complete; finishing
+game finished ok=True
+game finished ok=True
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7195/20260917-7195b/summary.png
