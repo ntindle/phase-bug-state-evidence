@@ -1,0 +1,99 @@
+{
+  "issue": 6763,
+  "run_id": "20260917-6763",
+  "started_at": "2026-09-17T19:56:16",
+  "duration_s": 13.8,
+  "server": {
+    "server_version": "0.86.0",
+    "build_commit": "2cc8c28",
+    "protocol_version": 72,
+    "mode": "Full",
+    "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+    "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+    "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+    "observed_at": "2026-09-17",
+    "source": "ServerHello + sha256 of pinned verified artifacts"
+  },
+  "server_run_dir": "runs/20260917-6763",
+  "driver": {
+    "protocol_advertised": 72,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "9e68d5f5ca70eec022d88e04d21c7a0e1d5b7c684b87acba8b3892bffa6e4326",
+  "decks": {
+    "P0": [
+      [
+        "Walking Ballista",
+        12
+      ],
+      [
+        "Forest",
+        48
+      ]
+    ],
+    "P1": [
+      [
+        "Emperor of Bones",
+        4
+      ],
+      [
+        "Swamp",
+        56
+      ]
+    ]
+  },
+  "assertions": {
+    "setup_started": "passed",
+    "E1_setup_ok": "passed",
+    "E2_trigger_targeted": "passed",
+    "E3_identity_distinct": "passed",
+    "E4_snapshot_captured": "passed",
+    "E5_cleanup": "passed",
+    "U1_rendered_setup": "passed",
+    "U2_target_identity_ui": "passed",
+    "U3_label_indistinguishable": "passed",
+    "U4_arc_indistinguishable": "passed",
+    "U5_viewer_indistinguishable": "passed"
+  },
+  "notes": [
+    "E1: gy_ballistas=[22, 32, 44, 55] emperor_bf=105 trigger_entry=121",
+    "E2: entry targets=[55] chosen=55",
+    "E3: chosen=55 other=22 names={'Walking Ballista'}",
+    "E4: viewer target=[55] A->55 B->22",
+    "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat",
+    "U2: variant A targets 55, variant B targets 22",
+    "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+    "U4: arc endpoints identical (48.234375, 67.53125); start-point jitter ['M 136.06978607177734 828.125 Q 171.62390753615264 438.65050476160945 48.234375 67.53125'] vs ['M 136.25271797180176 828.125 Q 171.71319303013834 438.63164316540883 48.234375 67.53125'] is <0.1px noise",
+    "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '22 32 44 55', 'rect': {'x': 0, 'y': 0, 'w': 96.5, 'h': 135.1}} arcs_A=['M 136.06978607177734 828.125 Q 171.62390753615264 438.65050476160945 48.234375 67.53125']"
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "12x Walking Ballista deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "UI harness mocks: multiplayerStore, useCardImage, useEngineCardData, useGameDispatch (payload capture), wasmStub. The real StackDisplay + GraveyardPile + ZoneViewer components from the mainline client tree were rendered (real framer-motion stack arcs), driven in headless Chromium via CDP.",
+    "Variant B snapshot is token-replaced from variant A (same engine state, target swapped 55->22); the engine input really differed (U2 confirms the two oids).",
+    "Not tested on the report's 2026-07-29 build; verdict scoped to v0.86.0 engine + current mainline client, not a fix claim.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "UI rendered in Playwright's chromium headless shell 151.0.7922.34 because the box's meta-chromium 152.0.7977.82 blocks loopback navigation (ERR_BLOCKED_BY_LOCAL_NETWORK_ACCESS_CHECKS, kLocalNetworkAccessForNavigations) on this VM; the rendered components are the same real client code."
+  ],
+  "setup_line": "P0: 12x Walking Ballista + 48x Forest; P1: 4x Emperor of Bones + 56x Swamp. P1's Emperor trigger targets one of >=2 Walking Ballistas in P0's graveyard.",
+  "contract_line": "Every player must be able to identify the exact graveyard object targeted by the trigger before responding: the two Ballista oids are distinct objects with the same name, so a name-only label cannot disambiguate them.",
+  "browser": {
+    "binary": "~/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+    "version": "Google Chrome for Testing 151.0.7922.34",
+    "mode": "headless, driven via CDP (harness manages vite + chrome)"
+  },
+  "client": {
+    "mainline_commit": "aa1fb24",
+    "origin_main": "10d8e40 (2026-09-17; no changes to StackDisplay, StackTargetArcs, GraveyardPile, ZoneViewer vs aa1fb24)",
+    "tested_components": [
+      "StackDisplay",
+      "GraveyardPile",
+      "ZoneViewer"
+    ]
+  },
+  "revalidation_of": {
+    "run_id": "20260910-6763",
+    "evidence_commit": "a327200af22bdf2b2c462200659382ae8e7d43ea",
+    "prior_verdict": "reproduced"
+  }
+}

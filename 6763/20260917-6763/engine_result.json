@@ -1,0 +1,62 @@
+{
+ "issue": 6763,
+ "run_id": "20260917-6763",
+ "started_at": "2026-09-17T19:56:16",
+ "duration_s": 13.8,
+ "server": {
+  "server_version": "0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+  "observed_at": "2026-09-17",
+  "source": "ServerHello + sha256 of pinned verified artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9e68d5f5ca70eec022d88e04d21c7a0e1d5b7c684b87acba8b3892bffa6e4326",
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "chosen_oid": 55,
+ "other_oid": 22,
+ "trigger_entry_id": 121,
+ "assertions": {
+  "setup_started": "passed",
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed"
+ },
+ "notes": [
+  "E1: gy_ballistas=[22, 32, 44, 55] emperor_bf=105 trigger_entry=121",
+  "E2: entry targets=[55] chosen=55",
+  "E3: chosen=55 other=22 names={'Walking Ballista'}",
+  "E4: viewer target=[55] A->55 B->22",
+  "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat"
+ ]
+}
