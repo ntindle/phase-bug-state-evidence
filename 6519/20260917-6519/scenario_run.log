@@ -1,0 +1,19 @@
+game RCEI7S; P0 seat=0 P1 seat=1
+P0 keeps (delver=True, islands=3)
+P1 keeps opening hand
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['divination', 'delver of secrets', 'island', 'divination', 'island', 'island', 'divination'] delver=[] stack=0 upkeeps=0 cast=False
+P0 casts delver of secrets
+--- P0 upkeep #1: Delver oid 60 on BF; exporting upkeep pre
+upkeep #1: trigger stack ids [121], reveals so far []
+accepting optional reveal: RCEI7S.0.67 choice RCEI7S.0.67.c1
+upkeep #1: trigger resolved; exporting upkeep post
+upkeep #1: newly revealed oids [23] -> ['Delver of Secrets']
+upkeep #1: revealed Delver of Secrets types=['Creature']
+--- P0 upkeep #2: Delver oid 60 on BF; exporting upkeep pre
+upkeep #2: trigger stack ids [], reveals so far [23]
+P0 declares no attackers
+accepting optional reveal: RCEI7S.0.101 choice RCEI7S.0.101.c1
+upkeep #2: trigger resolved; exporting upkeep post
+upkeep #2: newly revealed oids [43] -> ['Divination']
+upkeep #2: revealed Divination types=['Sorcery']
+DECISIVE upkeep #2: Divination revealed; finishing
