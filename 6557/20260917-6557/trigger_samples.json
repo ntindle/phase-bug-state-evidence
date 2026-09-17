@@ -1,0 +1,785 @@
+[
+ {
+  "turn": 5,
+  "phase": "PreCombatMain",
+  "entry": {
+   "id": 121,
+   "source_id": 16,
+   "controller": 0,
+   "kind": {
+    "type": "TriggeredAbility",
+    "data": {
+     "source_id": 16,
+     "ability": {
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Exile",
+       "target": {
+        "type": "SelfRef"
+       },
+       "owner_library": false,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "targets": [],
+      "source_id": 16,
+      "source_incarnation": 3,
+      "trigger_source": {
+       "identity": {
+        "reference": {
+         "object_id": 16,
+         "incarnation": 3
+        },
+        "expected_zone": "Battlefield"
+       },
+       "lki": {
+        "name": "Tamiyo, Inquisitive Student",
+        "power": 0,
+        "toughness": 3,
+        "base_power": 0,
+        "base_toughness": 3,
+        "mana_value": 1,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Moonfolk",
+         "Wizard"
+        ],
+        "supertypes": [
+         "Legendary"
+        ],
+        "keywords": [
+         "Flying"
+        ],
+        "colors": [
+         "Blue"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 16,
+       "printed_ref": {
+        "oracle_id": "1ed9e351-0000-4b75-8ecb-d15bd88df68a",
+        "face_name": "Tamiyo, Inquisitive Student"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": false,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "Attacks",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Investigate"
+           },
+           "cost": null,
+           "sub_ability": null,
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false
+          },
+          "valid_card": {
+           "type": "SelfRef"
+          },
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": null,
+          "description": "Whenever ~ attacks, investigate.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        },
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 1
+          }
+         },
+         "definition": {
+          "mode": "Drawn",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "ChangeZone",
+            "origin": null,
+            "destination": "Exile",
+            "target": {
+             "type": "SelfRef"
+            },
+            "owner_library": false,
+            "enter_transformed": false,
+            "enter_tapped": false,
+            "enters_attacking": false
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Battlefield",
+             "target": {
+              "type": "SelfRef"
+             },
+             "owner_library": false,
+             "enter_transformed": true,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "forward_result": false
+          },
+          "valid_card": null,
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": {
+           "type": "Typed",
+           "type_filters": [],
+           "controller": "You",
+           "properties": []
+          },
+          "valid_source": null,
+          "description": "When you draw your third card in a turn, exile ~, then return her to the battlefield transformed under her owner's control.",
+          "constraint": {
+           "type": "NthDrawThisTurn",
+           "n": 3
+          },
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 2,
+       "entered_battlefield_turn": 1,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "blue": 1
+       },
+       "mana_spent_to_cast_amount": 1,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 6,
+         "lki": {
+          "name": "Island",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Island"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "trigger_definition_ref": {
+       "source": {
+        "object_id": 16,
+        "incarnation": 3
+       },
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 1,
+         "printed_index": 1
+        }
+       }
+      },
+      "controller": 0,
+      "original_controller": 0,
+      "kind": "Spell",
+      "sub_ability": {
+       "effect": {
+        "type": "ChangeZone",
+        "origin": null,
+        "destination": "Battlefield",
+        "target": {
+         "type": "SelfRef"
+        },
+        "owner_library": false,
+        "enter_transformed": true,
+        "enter_tapped": false,
+        "enters_attacking": false
+       },
+       "targets": [],
+       "source_id": 16,
+       "source_incarnation": 3,
+       "trigger_source": {
+        "identity": {
+         "reference": {
+          "object_id": 16,
+          "incarnation": 3
+         },
+         "expected_zone": "Battlefield"
+        },
+        "lki": {
+         "name": "Tamiyo, Inquisitive Student",
+         "power": 0,
+         "toughness": 3,
+         "base_power": 0,
+         "base_toughness": 3,
+         "mana_value": 1,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Moonfolk",
+          "Wizard"
+         ],
+         "supertypes": [
+          "Legendary"
+         ],
+         "keywords": [
+          "Flying"
+         ],
+         "colors": [
+          "Blue"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": false,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 16,
+        "printed_ref": {
+         "oracle_id": "1ed9e351-0000-4b75-8ecb-d15bd88df68a",
+         "face_name": "Tamiyo, Inquisitive Student"
+        },
+        "is_token": false,
+        "face_down": false,
+        "transformed": false,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "Attacks",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Investigate"
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "Whenever ~ attacks, investigate.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         },
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 1
+           }
+          },
+          "definition": {
+           "mode": "Drawn",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Exile",
+             "target": {
+              "type": "SelfRef"
+             },
+             "owner_library": false,
+             "enter_transformed": false,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "ChangeZone",
+              "origin": null,
+              "destination": "Battlefield",
+              "target": {
+               "type": "SelfRef"
+              },
+              "owner_library": false,
+              "enter_transformed": true,
+              "enter_tapped": false,
+              "enters_attacking": false
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": null,
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": {
+            "type": "Typed",
+            "type_filters": [],
+            "controller": "You",
+            "properties": []
+           },
+           "valid_source": null,
+           "description": "When you draw your third card in a turn, exile ~, then return her to the battlefield transformed under her owner's control.",
+           "constraint": {
+            "type": "NthDrawThisTurn",
+            "n": 3
+           },
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 2,
+        "entered_battlefield_turn": 1,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": true,
+        "colors_spent_to_cast": {
+         "blue": 1
+        },
+        "mana_spent_to_cast_amount": 1,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 6,
+          "lki": {
+           "name": "Island",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Island"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "trigger_definition_ref": {
+        "source": {
+         "object_id": 16,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 1
+         }
+        }
+       },
+       "controller": 0,
+       "original_controller": 0,
+       "kind": "Spell",
+       "sub_ability": null,
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "source_transformation_count": 0
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "may_trigger_origin": {
+        "type": "Definition",
+        "definition_ref": {
+         "source": {
+          "object_id": 16,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 1
+          }
+         }
+        }
+       }
+      },
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "cast_from_zone": "Hand",
+       "source_transformation_count": 0
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "description": "When you draw your third card in a turn, exile ~, then return her to the battlefield transformed under her owner's control.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false,
+      "ability_index": 1,
+      "may_trigger_origin": {
+       "type": "Definition",
+       "definition_ref": {
+        "source": {
+         "object_id": 16,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 1
+         }
+        }
+       }
+      }
+     },
+     "condition": null,
+     "trigger_event": {
+      "type": "CardDrawn",
+      "data": {
+       "player_id": 0,
+       "object_id": 27,
+       "nth_in_turn": 3,
+       "nth_in_step": 2
+      }
+     },
+     "description": "When you draw your third card in a turn, exile ~, then return her to the battlefield transformed under her owner's control.",
+     "source_name": "Tamiyo, Inquisitive Student"
+    }
+   }
+  }
+ },
+ {
+  "turn": 6,
+  "phase": "DeclareAttackers",
+  "entry": {
+   "id": 123,
+   "source_id": 16,
+   "controller": 0,
+   "kind": {
+    "type": "TriggeredAbility",
+    "data": {
+     "source_id": 16,
+     "ability": {
+      "effect": {
+       "type": "Pump",
+       "power": {
+        "type": "Fixed",
+        "value": -1
+       },
+       "toughness": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "target": {
+        "type": "SelfRef"
+       }
+      },
+      "targets": [],
+      "source_id": 16,
+      "source_incarnation": 5,
+      "trigger_source": {
+       "identity": {
+        "reference": {
+         "object_id": 16,
+         "incarnation": 5
+        },
+        "expected_zone": "Battlefield"
+       },
+       "lki": {
+        "name": "Tamiyo, Seasoned Scholar",
+        "power": null,
+        "toughness": null,
+        "base_power": null,
+        "base_toughness": null,
+        "mana_value": 0,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Planeswalker"
+        ],
+        "subtypes": [
+         "Tamiyo"
+        ],
+        "supertypes": [
+         "Legendary"
+        ],
+        "keywords": [],
+        "colors": [
+         "Green",
+         "Blue"
+        ],
+        "chosen_attributes": [],
+        "counters": {
+         "loyalty": 4
+        },
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 16,
+       "printed_ref": {
+        "oracle_id": "1ed9e351-0000-4b75-8ecb-d15bd88df68a",
+        "face_name": "Tamiyo, Seasoned Scholar"
+       },
+       "is_token": false,
+       "face_down": false,
+       "transformed": true,
+       "is_renowned": false,
+       "is_saddled": false,
+       "timestamp": 9,
+       "entered_battlefield_turn": 5,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "entered_via_ability_source": 16,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": false
+      },
+      "controller": 0,
+      "original_controller": 0,
+      "kind": "Spell",
+      "sub_ability": null,
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "source_transformation_count": 1
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "detached_remainder": "NoProducer",
+      "forward_result": false
+     },
+     "condition": null,
+     "trigger_event": {
+      "type": "AttackersDeclared",
+      "data": {
+       "attacker_ids": [
+        101
+       ],
+       "defending_player": 0,
+       "attacks": [
+        [
+         101,
+         {
+          "type": "Player",
+          "data": 0
+         }
+        ]
+       ],
+       "declaration_records": [
+        {
+         "object_id": 101,
+         "lki": {
+          "name": "Grizzly Bears",
+          "power": 2,
+          "toughness": 2,
+          "base_power": 2,
+          "base_toughness": 2,
+          "mana_value": 2,
+          "controller": 1,
+          "owner": 1,
+          "card_types": [
+           "Creature"
+          ],
+          "subtypes": [
+           "Bear"
+          ],
+          "supertypes": [],
+          "keywords": [],
+          "colors": [
+           "Green"
+          ],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         },
+         "is_token": false,
+         "is_commander": false
+        }
+       ]
+      }
+     },
+     "source_name": "Tamiyo, Seasoned Scholar"
+    }
+   }
+  }
+ }
+]

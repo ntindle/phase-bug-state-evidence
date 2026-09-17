@@ -1,0 +1,23 @@
+game EQCV5P; P0 seat=0 P1 seat=1
+P0 keeps (tamiyo=True, mulls=0)
+P1 keeps opening hand
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 P0hand=['tamiyo, inquisitive student', 'tamiyo, inquisitive student', 'tamiyo, inquisitive student', 'island', 'island', 'divination'] pw_loyalty=None life=20/20 stack=0 plus2=False atk1=False atk2=False exp={"pre": false, "mid": false, "post": false, "p0next": false, "post2": false}
+P0 casts Tamiyo (turn 1)
+P0 declares no attackers (turn 3)
+P0 casts Divination (turn 5)
+TRIGGER on stack (turn 5 PreCombatMain): {"id": 121, "source_id": 16, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 16, "ability": {"effect": {"type": "ChangeZone", "origin": null, "destination": "Exile", "target": {"type": "SelfRef"}, "owner_library": false, "enter_transformed": false, "enter_tapped": false, "enters_attacking": false}, "targets": [], "source_id": 16, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 16, "incarnation": 3}, "expected_zone": "Battlefield"}, 
+proof: exporting PRE, activating Tamiyo +2 (turn 5 phase PreCombatMain)
+exported pre.json
+P0 activates Tamiyo +2 (turn 5)
+MID: +2 resolved, loyalty 4 (turn 5)
+exported mid.json
+P1 attack1: attacks P0 with Bear oid 101 (turn 6)
+TRIGGER on stack (turn 6 DeclareAttackers): {"id": 123, "source_id": 16, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 16, "ability": {"effect": {"type": "Pump", "power": {"type": "Fixed", "value": -1}, "toughness": {"type": "Fixed", "value": 0}, "target": {"type": "SelfRef"}}, "targets": [], "source_id": 16, "source_incarnation": 5, "trigger_source": {"identity": {"reference": {"object_id": 16, "incarnation": 5}, "expected_zone": "Battlefield"}, "lki": {"name": "Tamiyo, Seasoned Scholar", "power": null, "tou
+exported post.json
+POST: attack1 turn 6 phase EndCombat; bear oid 101 power=2, P0 life=18
+P0NEXT: P0 turn 7 phase Upkeep; bear powers=[2, 2]
+exported p0next.json
+P1 attack2: attacks P0 with Bear oid 101 (turn 8)
+exported post2.json
+POST2: attack2 turn 8 phase EndCombat; bear oid 101 power=2, P0 life=16
+post2 exported; finishing

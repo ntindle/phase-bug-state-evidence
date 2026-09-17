@@ -1,0 +1,20 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_plus2": "passed",
+  "A3_weakened": "failed",
+  "A4_wears_off": "passed",
+  "A5_expired": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 PreCombatMain turn 5, Tamiyo PW loyalty 2, 1 bear(s) on P1 BF, life 20/20",
+  "mid.json: +2 resolved, Tamiyo loyalty 2->4, stack empty (turn 5), delayed-trigger installed=True",
+  "post.json: attacking Bear oid 101 power == 2 (expected 1), P0 life == 18 (expected 19) -- REPORTED BUG: -1/-0 not applied",
+  "p0next.json (P0 turn 7): bears back to 2 power [2, 2] (-1/-0 wore off)",
+  "post2.json: second attack (after P0's next turn began) Bear oid 101 power == 2, P0 life 18->16 (full 2 damage; watching effect expired)",
+  "final: stack empty, Tamiyo PW on BF (turn 8, phase EndCombat), game proceeding",
+  "at least one required outcome failed while the setup was valid"
+ ],
+ "verdict": "reproduced"
+}

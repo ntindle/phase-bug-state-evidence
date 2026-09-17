@@ -1,0 +1,101 @@
+{
+ "issue": 6557,
+ "run_id": "20260917-6557",
+ "started_at": "2026-09-17T06:25:08",
+ "duration_s": 40.1,
+ "server": {
+  "server_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e"
+ },
+ "server_run_dir": "runs/20260917-6557",
+ "server_port": 9375,
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "19ecaf9198f401e315b8c8cfa13052f1681fbf5961f489fddde30b453cdc002a",
+ "decks": {
+  "P0": [
+   [
+    "tamiyo, inquisitive student",
+    12
+   ],
+   [
+    "divination",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    20
+   ],
+   [
+    "forest",
+    40
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_plus2": "passed",
+  "A3_weakened": "failed",
+  "A4_wears_off": "passed",
+  "A5_expired": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 PreCombatMain turn 5, Tamiyo PW loyalty 2, 1 bear(s) on P1 BF, life 20/20",
+  "mid.json: +2 resolved, Tamiyo loyalty 2->4, stack empty (turn 5), delayed-trigger installed=True",
+  "post.json: attacking Bear oid 101 power == 2 (expected 1), P0 life == 18 (expected 19) -- REPORTED BUG: -1/-0 not applied",
+  "p0next.json (P0 turn 7): bears back to 2 power [2, 2] (-1/-0 wore off)",
+  "post2.json: second attack (after P0's next turn began) Bear oid 101 power == 2, P0 life 18->16 (full 2 damage; watching effect expired)",
+  "final: stack empty, Tamiyo PW on BF (turn 8, phase EndCombat), game proceeding",
+  "at least one required outcome failed while the setup was valid"
+ ],
+ "observations": {
+  "tamiyo_cast": true,
+  "div_cast": true,
+  "plus2_submitted": true,
+  "plus2_turn": 5,
+  "plus2_phase": "PreCombatMain",
+  "attack1": true,
+  "attack1_turn": 6,
+  "attack1_bear": 101,
+  "attack2": true,
+  "attack2_turn": 8,
+  "attack2_bear": 101,
+  "loyalty_pre": 2,
+  "loyalty_mid": 4,
+  "bear1_power_post": 2,
+  "bear1_life_post": 18,
+  "bear2_power_post2": 2,
+  "bear2_life_post2": 16
+ },
+ "trigger_samples": 2,
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Tamiyo / 12x Divination / 20x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Transform is produced by the printed Tamiyo, Inquisitive Student trigger (draw 3rd card in a turn via Divination), not a debug fixture.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0: 12x tamiyo inquisitive student + 12x divination + 36x island (mulligan to Tamiyo + 2 islands; T1 Tamiyo; Divination -> transform; +2 on main phase); P1: 20x grizzly bears + 40x forest (attacks P0 with one bear after +2)",
+ "contract_line": "Tamiyo +2: until P0's next turn, each creature attacking P0 gets -1/-0 until end of turn (incl. on P1's turn)",
+ "prior_validation": {
+  "run": "2026-09-10-v0.78.0-6557d",
+  "verdict": "reproduced",
+  "comment_url": "https://github.com/phase-rs/phase/issues/6557#issuecomment-5617016250",
+  "evidence_commit": "f0aae358b25d5fedfa25864584c4dbaa808f6c43"
+ },
+ "evaluation_note": "assertions re-evaluated post-run from saved authoritative states with the corrected A5 (damage-delta control: life_post - 2) and live-recorded attacker oids (EndCombat clears the 'attacking' flag); saved states, wire log, and scenario log are unchanged from the live run"
+}
