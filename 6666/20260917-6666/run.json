@@ -1,0 +1,99 @@
+{
+ "issue": 6666,
+ "run_id": "20260917-6666",
+ "started_at": "2026-09-17T10:46:48",
+ "duration_s": 182.0,
+ "server_identity": {
+  "validated_version": "v0.85.0",
+  "build_commit": "cb58ef5",
+  "protocol_version": 72,
+  "server_binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+  "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "397023a3c479e604b976581a59daa71d0d629054fe957e0cdab7c1a10465b11e",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    12
+   ],
+   [
+    "Swamp",
+    10
+   ],
+   [
+    "Mountain",
+    8
+   ],
+   [
+    "Hidetsugu and Kairi",
+    6
+   ],
+   [
+    "Mystical Tutor",
+    6
+   ],
+   [
+    "Murder",
+    6
+   ],
+   [
+    "<staged: Lightning Bolt|Divination>",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "legs": [
+  {
+   "leg": "instant",
+   "staged": "Lightning Bolt",
+   "verdict": "reproduced",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "passed",
+    "A4_hk_died": "passed",
+    "A5_exile_and_lifeloss": "passed",
+    "A6_free_cast_offered": "passed",
+    "A7_accept_resolves": "failed",
+    "A8_no_dangling": "passed"
+   },
+   "notes": [
+    "waiting_for types seen: ['OptionalEffectChoice']",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=Lightning Bolt (want Lightning Bolt)",
+    "A4: hk_dead tick=True, in GY in pre_trigger=True",
+    "A5: exile=['Lightning Bolt'] (want [Lightning Bolt]); P1 life 20->19 (want 19)",
+    "A6: free-cast offer reached P0=True",
+    "A7: Bolt in P0 GY=True; P1 life=19 (want 16); exile empty=False",
+    "A8: end waiting_for=Priority, stack=0",
+    "VERDICT CORRECTION (post-run 2026-09-17, run 20260917_0641): original in-run verdict was 'blocked'; wire-log + state review shows the accepted free cast was the reported failure itself \u2014 engine advertised OptionalEffectChoice accept=true, driver accepted, engine surfaced no cast/target prompt for the exiled Bolt, trigger resolved with Bolt stranded in Exile and P1 at 19 life (drain 1 only, expected 16 after a free Bolt). No engine rejection was recorded; the game continued normally. That is the reported outcome: the free cast never reaches the player."
+   ]
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0 casts Hidetsugu and Kairi, stages the top of library with Mystical Tutor, then Murders it; P1 draw-go",
+ "contract_line": "dies trigger must exile top + drain MV life, then offer the optional free cast; accept must resolve fully",
+ "correction": {
+  "corrected_at": "2026-09-17T06:45:00-05:00",
+  "by": "backfill run 20260917_0641",
+  "from": "blocked",
+  "to": "reproduced",
+  "reason": "in-run verdict mislabeled the confirmed accept-path failure as blocked"
+ }
+}
