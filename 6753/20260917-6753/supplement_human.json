@@ -1,0 +1,43 @@
+{
+  "run_id": "20260917-6753",
+  "purpose": "wrong-library secondary-defect re-test on v0.85.0 with a HUMAN-driven caster (owner 0 != caster 1); the v0.85.0 AI policy targets only its own permanents, so AI-driven runs cannot distinguish the defect",
+  "p1_acts": 1,
+  "rejections": [],
+  "pair": {
+    "swap_oid": "72",
+    "target_moved": [
+      {
+        "oid": "1",
+        "name": "island",
+        "controller": 0,
+        "owner": 0
+      }
+    ],
+    "target_owner": 0,
+    "exiled_candidates": [
+      {
+        "oid": "10",
+        "name": "island",
+        "source_library": 0,
+        "post_zone": "Battlefield",
+        "post_controller": 0
+      }
+    ],
+    "swap_in_caster_graveyard": 1,
+    "library_deltas": {
+      "0": [
+        15,
+        15
+      ],
+      "1": [
+        15,
+        15
+      ]
+    },
+    "turn": 77,
+    "resolve_s": 0.58
+  },
+  "captured_at": "2026-09-17T14:46:05Z",
+  "wrong_library_defect": "not-observed (fixed)",
+  "explanation": "P1 cast Audacious Swap targeting P0's island (owner 0): target -> P0's library; exiled island came from P0's library (source_library=0) -> Battlefield. Oracle-correct on v0.85.0."
+}

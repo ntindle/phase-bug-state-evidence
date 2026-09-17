@@ -1,0 +1,340 @@
+{
+  "run_id": "20260917-6753",
+  "issue": 6753,
+  "started_at": "2026-09-17T14:20:01Z",
+  "server": {
+    "server_version": "0.85.0",
+    "build_commit": "cb58ef5",
+    "protocol_version": 72,
+    "mode": "Full",
+    "binary_sha256": "263de0397ed915fc20ece1df1bf82d2ff6ef91f0c95e4d5856760783ca566a5f",
+    "card_data_sha256": "a0b6e76bba31eace8cc6044164bc79e2b60b29244e4fdde63f21a27cbae67fed",
+    "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+    "signature_verified": true,
+    "signature_note": "minisign-verify (prehashed BLAKE2b-512, sigalg ED) of phase-server + signed data manifest with repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (verified 2026-09-16; digests recomputed against on-disk release files this run, never copied)",
+    "observed_at": "2026-09-17",
+    "source": "ServerHello handshake vs pinned v0.85.0 release artifacts (server/releases/v0.85.0/); isolated server on 127.0.0.1:9374 (started by this run, verified live before driving)"
+  },
+  "verdict": "not-reproduced",
+  "assertions": {
+    "A1_swap_cast": "passed",
+    "A2_target_chosen": "passed",
+    "A3_no_target_loop": "passed",
+    "A4_swap_resolves": "passed",
+    "A5_cleanup": "passed"
+  },
+  "assertion_detail": {
+    "A4": {
+      "target_bf_to_owner_library": {
+        "passed": true,
+        "moved": [
+          [
+            "119",
+            "island",
+            1,
+            1
+          ]
+        ],
+        "advertised_targets": []
+      },
+      "exile_source": {
+        "candidates": [
+          [
+            "83",
+            "island",
+            1,
+            "Battlefield",
+            1
+          ]
+        ],
+        "target_owner": 1
+      },
+      "exile_from_owner_library": {
+        "passed": true,
+        "correct_candidates": [
+          [
+            "83",
+            "island",
+            1,
+            "Battlefield",
+            1
+          ]
+        ]
+      },
+      "swap_in_ai_graveyard": {
+        "passed": true,
+        "count": 1
+      },
+      "nothing_stuck_on_stack": {
+        "passed": true,
+        "stuck": []
+      },
+      "library_deltas": {
+        "0": [
+          50,
+          50
+        ],
+        "1": [
+          52,
+          52
+        ]
+      }
+    }
+  },
+  "observations": {
+    "rejections": [],
+    "p0_acts": 814,
+    "casts": [
+      {
+        "oid": 73,
+        "cast_t": 1789654821.676709,
+        "cast_rev": 109,
+        "cast_turn": 7,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654821.9759798,
+        "resolve_s": 0.3
+      },
+      {
+        "oid": 75,
+        "cast_t": 1789654827.8104084,
+        "cast_rev": 137,
+        "cast_turn": 9,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654828.3158846,
+        "resolve_s": 0.51
+      },
+      {
+        "oid": 101,
+        "cast_t": 1789654838.932704,
+        "cast_rev": 186,
+        "cast_turn": 12,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654839.1860564,
+        "resolve_s": 0.25
+      },
+      {
+        "oid": 79,
+        "cast_t": 1789654858.5776882,
+        "cast_rev": 299,
+        "cast_turn": 19,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654858.8311458,
+        "resolve_s": 0.25
+      },
+      {
+        "oid": 100,
+        "cast_t": 1789654961.1457405,
+        "cast_rev": 905,
+        "cast_turn": 59,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654966.16028,
+        "resolve_s": 5.01
+      },
+      {
+        "oid": 66,
+        "cast_t": 1789654966.16028,
+        "cast_rev": 910,
+        "cast_turn": 59,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789654966.666557,
+        "resolve_s": 0.51
+      },
+      {
+        "oid": 85,
+        "cast_t": 1789655004.694165,
+        "cast_rev": 1060,
+        "cast_turn": 69,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789655004.9551618,
+        "resolve_s": 0.26
+      },
+      {
+        "oid": 111,
+        "cast_t": 1789655057.0318139,
+        "cast_rev": 1250,
+        "cast_turn": 81,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789655059.0405512,
+        "resolve_s": 2.01
+      },
+      {
+        "oid": 103,
+        "cast_t": 1789655115.443707,
+        "cast_rev": 1459,
+        "cast_turn": 95,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789655115.9487526,
+        "resolve_s": 0.51
+      },
+      {
+        "oid": 97,
+        "cast_t": 1789655133.0314124,
+        "cast_rev": 1495,
+        "cast_turn": 97,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789655133.28949,
+        "resolve_s": 0.26
+      },
+      {
+        "oid": 113,
+        "cast_t": 1789655157.9373868,
+        "cast_rev": 1559,
+        "cast_turn": 101,
+        "target_wait_seen": false,
+        "resolved": true,
+        "resolve_t": 1789655158.441591,
+        "resolve_s": 0.5
+      }
+    ],
+    "ws_target_wait_seen": false,
+    "ai_target_waits": 0,
+    "ai_stall_signature": false,
+    "target_waits": []
+  },
+  "notes": [
+    "WRONG-LIBRARY RE-TEST (v0.85.0): the v0.78.0 secondary defect is FIXED -- human-driven P1 cast targeting P0's island (owner 0 != caster 1): target -> P0's library; exiled island came from P0's library (source_library=0) -> battlefield under P0. Oracle-correct. P0 library 15->15 (+1 target, -1 exiled); P1 library untouched.",
+    "11 AI cast(s): #1 turn 7 resolved=True (0.3s), #2 turn 9 resolved=True (0.51s), #3 turn 12 resolved=True (0.25s), #4 turn 19 resolved=True (0.25s), #5 turn 59 resolved=True (5.01s), #6 turn 59 resolved=True (0.51s), #7 turn 69 resolved=True (0.26s), #8 turn 81 resolved=True (2.01s), #9 turn 95 resolved=True (0.51s), #10 turn 97 resolved=True (0.26s), #11 turn 101 resolved=True (0.5s)",
+    "all casts resolved within 5.01s (window 150s); ws-visible AI TargetSelection waits: 0 (caught-target-wait=False); AI stall signature in server log: False",
+    "A4 detail: {\"target_bf_to_owner_library\": {\"passed\": true, \"moved\": [[\"119\", \"island\", 1, 1]], \"advertised_targets\": []}, \"exile_source\": {\"candidates\": [[\"83\", \"island\", 1, \"Battlefield\", 1]], \"target_owner\": 1}, \"exile_from_owner_library\": {\"passed\": true, \"correct_candidates\": [[\"83\", \"island\", 1, \"Battlefield\", 1]]}, \"swap_in_ai_graveyard\": {\"passed\": true, \"count\": 1}, \"nothing_stuck_on_stack\": {\"passed\": true, \"stuck\": []}, \"library_deltas\": {\"0\": [50, 50], \"1\": [52, 52]}}",
+    "game state after resolution: turn 7 phase PostCombatMain waiting_for=Priority"
+  ],
+  "setup_line": "P0: 60x island (human driver, passive). P1: AI Medium, 12x Audacious Swap + 24x island + 24x mountain.",
+  "contract_line": "AI casts Audacious Swap -> target selection must complete (spell leaves the stack) within the stall window; the spell resolves per Oracle (incl. exile from the target owner's library) and the game continues. Repeat casts watched for the same loop.",
+  "limitations": [
+    "Browser/UI not exercised; server-side AI (phase-ai) policy tested, not any browser/client AI driver path",
+    "Casualty 2 not exercised (AI deck has no creatures to sacrifice)",
+    "Not tested on the original 2026-07-29 build; verdict is scoped to v0.85.0, not a fix claim",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)"
+  ],
+  "stats": {
+    "states_seen": 1749,
+    "casts_observed": 11
+  },
+  "scenario": {
+    "file": "scenario_6753_085.py",
+    "sha256": "9e5c3a6665650d42a10dc30cd05c800923627a6b1a662e9eeea0470b3e2e09c8"
+  },
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "island",
+          60
+        ]
+      ]
+    },
+    "P1_AI": {
+      "main": [
+        [
+          "audacious swap",
+          12
+        ],
+        [
+          "island",
+          24
+        ],
+        [
+          "mountain",
+          24
+        ]
+      ]
+    }
+  },
+  "supplement_human": {
+    "run_id": "20260917-6753",
+    "purpose": "wrong-library secondary-defect re-test on v0.85.0 with a HUMAN-driven caster (owner 0 != caster 1); the v0.85.0 AI policy targets only its own permanents, so AI-driven runs cannot distinguish the defect",
+    "p1_acts": 1,
+    "rejections": [],
+    "pair": {
+      "swap_oid": "72",
+      "target_moved": [
+        {
+          "oid": "1",
+          "name": "island",
+          "controller": 0,
+          "owner": 0
+        }
+      ],
+      "target_owner": 0,
+      "exiled_candidates": [
+        {
+          "oid": "10",
+          "name": "island",
+          "source_library": 0,
+          "post_zone": "Battlefield",
+          "post_controller": 0
+        }
+      ],
+      "swap_in_caster_graveyard": 1,
+      "library_deltas": {
+        "0": [
+          15,
+          15
+        ],
+        "1": [
+          15,
+          15
+        ]
+      },
+      "turn": 77,
+      "resolve_s": 0.58
+    },
+    "captured_at": "2026-09-17T14:46:05Z",
+    "wrong_library_defect": "not-observed (fixed)",
+    "explanation": "P1 cast Audacious Swap targeting P0's island (owner 0): target -> P0's library; exiled island came from P0's library (source_library=0) -> Battlefield. Oracle-correct on v0.85.0."
+  },
+  "wrong_library_retest": {
+    "v0780_finding": "Audacious Swap exiled the top card of the caster's (P1) library instead of the targeted permanent's owner's (P0) library (run 20260910-6753).",
+    "v0850_method": "Human-driven P1 cast Audacious Swap targeting P0's island (owner 0 != caster 1); the v0.85.0 AI policy targets only its own permanents, so AI-driven casts cannot distinguish the defect. The defect is in the engine's ExileTop/ParentTarget resolution, identical for AI and human casters.",
+    "v0850_result": "not-observed (fixed)",
+    "v0850_pair": {
+      "target": [
+        {
+          "oid": "1",
+          "name": "island",
+          "controller": 0,
+          "owner": 0
+        }
+      ],
+      "target_owner": 0,
+      "exiled": [
+        {
+          "oid": "10",
+          "name": "island",
+          "source_library": 0,
+          "post_zone": "Battlefield",
+          "post_controller": 0
+        }
+      ],
+      "swap_in_caster_graveyard": 1,
+      "library_deltas": {
+        "0": [
+          15,
+          15
+        ],
+        "1": [
+          15,
+          15
+        ]
+      },
+      "resolve_s": 0.58,
+      "turn": 77
+    },
+    "v0850_explanation": "P1 cast Audacious Swap targeting P0's island (owner 0): target -> P0's library; exiled island came from P0's library (source_library=0) -> Battlefield. Oracle-correct on v0.85.0."
+  },
+  "scenario_files": {
+    "scenario_6753_085.py": "9e5c3a6665650d42a10dc30cd05c800923627a6b1a662e9eeea0470b3e2e09c8",
+    "scenario_6753_085c.py": "2ce1fb3c536fe9b3d91c3e5dd60444757f65bfdfee6ee1e4f43a60b9ccc35ef5"
+  },
+  "evidence_files_note": "pre.json/post.json: AI cast #1 (targeted AI's own island). pre_human.json/post_human.json: human-driven cast targeting P0's island (owner != caster) for the wrong-library re-test. supplement_human.json: re-test analysis. mid_target.json absent: no WS-visible AI TargetSelection wait was caught on v0.85.0 (all casts resolved between 250ms polls)."
+}
