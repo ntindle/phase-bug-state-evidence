@@ -1,0 +1,82 @@
+{
+  "issue": 7197,
+  "run_id": "20260917-7197c",
+  "game_code": "GEM1UB",
+  "started_at": "2026-09-17T21:24:09",
+  "duration_s": 67.2,
+  "verdict": "reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_additional_combat": "failed",
+    "A4_cleanup": "passed"
+  },
+  "notes": [
+    "pre_landfall: moraug oid=9 cast_turn=13 turn=13 phase=PreCombatMain life=20/20 mountains=7",
+    "stack_history: 6 non-empty samples, landfall-trigger samples=4",
+    "mid_trigger (turn 15 PreCombatMain): life=20/20 stack=[{\"id\": 121, \"kind\": \"TriggeredAbility\", \"source_id\": 9, \"controller\": 0, \"desc\": \"\"}]",
+    "landfall turn 15 phase sequence (P0 active): Upkeep -> Draw -> PreCombatMain -> BeginCombat -> DeclareAttackers -> DeclareBlockers -> CombatDamage -> EndCombat -> BeginCombat -> EndCombat -> PostCombatMain -> End",
+    "landfall turn: BeginCombat phases=2, DeclareAttackers phases=1, empty combat shells (BeginCombat->EndCombat)=1 (expected: an additional FULL combat with its own DeclareAttackers step)",
+    "post_turn: life=20/14, phase=PreCombatMain turn=17 waiting=Priority stack=0"
+  ],
+  "wf_seen": [
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "rejections": [],
+  "landfall_turn": 15,
+  "moraug_oid": 9,
+  "server": {
+    "server_version": "0.86.0",
+    "build_commit": "2cc8c28",
+    "protocol_version": 72,
+    "mode": "Full",
+    "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+    "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+    "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+    "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+    "signature_verified": true,
+    "observed_at": "2026-09-17",
+    "source": "live server on 127.0.0.1:9374 started this run from the pinned v0.86.0 release dir; ServerHello probed at finalize; hashes recomputed from on-disk release files; v0.86.0 confirmed latest stable release (not shell-*) via GitHub releases API"
+  },
+  "server_run_dir": "runs/20260917-7197c",
+  "driver": {
+    "protocol_advertised": 72,
+    "client": "driver/client.py"
+  },
+  "scenario": "driver/scenario_7197.py",
+  "scenario_sha256": "aac484987b603750770e852463aec42580d0ed655174f46d3b813ae9733a7971",
+  "decks": {
+    "P0": [
+      [
+        "Moraug, Fury of Akoum",
+        4
+      ],
+      [
+        "Mountain",
+        56
+      ]
+    ],
+    "P1": [
+      [
+        "Island",
+        60
+      ]
+    ]
+  },
+  "setup_line": "P0: 4x Moraug, Fury of Akoum + 56x Mountain; P1: 60x Island draw-go (no blocks, no removal). P0 casts Moraug, then plays one land in a later PreCombatMain.",
+  "contract_line": "Moraug's landfall trigger must grant a USABLE additional combat phase: after the trigger resolves, the turn must contain a second full combat (its own DeclareAttackers step).",
+  "limitations": [
+    "Dense 56x Mountain deck is a test-harness convenience (engine accepts >4-of for custom games).",
+    "Only one landfall event per game (P0 plays no further lands) to keep the phase sequence unambiguous.",
+    "Not tested on the report's build; verdict scoped to v0.86.0 engine, not a fix claim.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Browser/UI not exercised; Discord thread unavailable (login required) \u2014 report text taken from the issue body."
+  ],
+  "stats": {
+    "phase_transitions": 119,
+    "states_seen": "n/a (phase transitions logged instead)",
+    "trigger_observations": "landfall trigger seen live on stack (see mid_trigger.json)"
+  }
+}
