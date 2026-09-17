@@ -1,0 +1,34 @@
+run 20260916-6337 — issue #6337 re-validation on pinned release v0.85.0
+worker: backfill cron run, 2026-09-16 ~23:53 CDT
+
+Ledger gap: the ledger had no entry for #6337 although a maintained comment
+(by ntindle, 2026-09-10) records a reproduced verdict on v0.78.0 with published
+evidence (commit 0e603eb143096caf4a8ad2dd21fd957fe753bebf). This run
+reconstructs the ledger entry and re-validates on the current pinned release.
+
+Steps:
+1. Release check: latest stable = v0.85.0 (published 2026-09-16T15:51:16Z),
+   matches pinned artifacts. Running server on 127.0.0.1:9374 answered
+   ServerHello {server_version 0.85.0, build_commit cb58ef5, protocol 72}.
+2. Fetched v0.85.0 sources: crates/draft-wasm/src/bot_ai.rs,
+   crates/draft-wasm/src/suggest.rs, crates/phase-ai/src/draft_eval.rs.
+3. Source inspection:
+   - find_best_colors (suggest.rs:367): still
+     `sorted.sort_by(|a, b| b.1.partial_cmp(a.1).unwrap_or(Equal))` — no
+     tie-break, byte-identical to the v0.78.0 defective body.
+   - color_preference (bot_ai.rs:304): body REPLACED — now delegates to
+     draft_eval::dominant_colors, which sorts count-desc then name-asc
+     (draft_eval.rs:238), a total order.
+   - distribute_lands house-style tie-break (suggest.rs:713) unchanged.
+4. Compiled harness (rustc 1.98.1 stable, same toolchain as the v0.78.0 run):
+   verbatim find_best_colors + verbatim dominant_colors + tie-break control,
+   with documented stubs (DraftCardInstance -> local stub, score_card -> 1.0,
+   CardDatabase -> ()) reproducing the issue's tied pool.
+5. Ran 30 separate OS processes: find_best_colors top-2 = 17 distinct
+   orderings (W,G / B,R / W,U first three); dominant_colors = B,G in all 30;
+   control = B,G in all 30.
+
+Assertions A1..A6: all passed.
+Verdict: reproduced — the Suggest-deck path (find_best_colors) is still
+non-deterministic on v0.85.0; the draft-bot path (color_preference) is now
+deterministic via dominant_colors.
