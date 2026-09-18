@@ -1,0 +1,29 @@
+both clients connected
+[leg1] game created: Y9QTHU
+[leg1] P1 joined
+[leg1][P0] mulligan: keep
+[leg1][P1] mulligan: keep
+[leg1][diag] t=1s stage=setup turn=1 phase=PreCombatMain wf=Priority gandalf=None targets=[] p1mem=0
+[leg1][P0] casting Gandalf (turn 11)
+[leg1][obs] Gandalf on BF oid=13
+[leg1][obs] Gandalf ETB trigger on stack
+[leg1] exported pre_leg1.json (turn=11)
+[leg1] PROMPT SHAPE trigger_target_slot0 (full JSON in wire log): wf_keys=['player', 'trigger_controller', 'trigger_event', 'trigger_events', 'target_slots', 'selection', 'source_id', 'description']
+[leg1] target slot prompt #1: {"current_slot": 0, "n_slots": 3, "slot_optional": false, "slot_effect": "DealDamage"} chosen=[]
+[leg1] answered target slot -> Memnite oid=68
+[leg1] PROMPT SHAPE trigger_target_slot1 (full JSON in wire log): wf_keys=['player', 'trigger_controller', 'trigger_event', 'trigger_events', 'target_slots', 'selection', 'source_id', 'description']
+[leg1] EXTRA slot prompt with quota filled (wanted=1) - looking for skip
+[leg1] (forced) answered extra slot -> Memnite oid=70
+[leg1] PROMPT SHAPE trigger_target_slot2 (full JSON in wire log): wf_keys=['player', 'trigger_controller', 'trigger_event', 'trigger_events', 'target_slots', 'selection', 'source_id', 'description']
+[leg1] EXTRA slot prompt with quota filled (wanted=1) - looking for skip
+[leg1] (forced) answered extra slot -> Memnite oid=71
+[leg1] PROMPT SHAPE division (full JSON in wire log): wf_keys=['player', 'total', 'targets', 'unit']
+[leg1] division prompt: total=3 targets=[{'Object': 68}, {'Object': 70}, {'Object': 71}]
+[leg1] division submitted: 1/1/1 across the 3 forced targets (assignAmounts)
+[leg1] trigger left the stack; stage -> resolve; targets=[68, 70, 71] forced_extra=True
+[leg1] exported mid_leg1.json (turn=11)
+[leg1][P0] observation window closed; done
+[leg1] game finished: stage=done
+leg 1 not clean (gandalf=13 trigger=True targets=[68, 70, 71] forced_extra=True exports=['mid_leg1', 'pre_leg1']); skipping leg 2
+wrote server.log excerpts (426 lines)
+wrote summary.png
