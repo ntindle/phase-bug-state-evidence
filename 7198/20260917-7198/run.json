@@ -1,0 +1,102 @@
+{
+ "issue": 7198,
+ "run_id": "20260917-7198",
+ "game_code": "QVR3R1",
+ "started_at": "2026-09-18T03:07:04",
+ "duration_s": 95.1,
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_each_offered": "failed",
+  "A4_outcomes_A": "passed",
+  "A5_cross_player_B": "passed"
+ },
+ "notes": [
+  "game A unless_offers=[('A', 0, 0, 'UnlessPayment', 'sacrifice'), ('A', 0, 0, 'WardSacrificeChoice', 'sacrifice'), ('A', 0, 0, 'UnlessPayment', 'decline')] trigger_seen=True endstep_turn=10",
+  "game A pre_trigger: mauler=yes p0_other_creatures=1 p1_creatures=1 life=20/20",
+  "game A: unless choice NAMED seats [0] (expected [0, 1] for independent per-player choices); offers=[('A', 0, 0, 'UnlessPayment', 'sacrifice'), ('A', 0, 0, 'WardSacrificeChoice', 'sacrifice'), ('A', 0, 0, 'UnlessPayment', 'decline')]",
+  "game A post: p0_life=20 (want 20), sacrificed oids [59] (last zone=Graveyard, want Graveyard), p0 corpses left=0, p1_life=16 (want 16), p1_creatures=1 (want >=1 intact)",
+  "game B unless_offers=[('B', 0, 0, 'UnlessPayment', 'sacrifice'), ('B', 0, 0, 'WardSacrificeChoice', 'sacrifice'), ('B', 0, 0, 'UnlessPayment', 'sacrifice'), ('B', 0, 0, 'WardSacrificeChoice', 'sacrifice+selectcards')] trigger_seen=True",
+  "game B: p1 pre creatures=0 (want 0), post p1_life=20 (want 20: spared by P0's second sacrifice), p0_life=20 (want 20), p0 creatures post=0 (want 0), sacrificed oids [34, 30] (last zone=Graveyard), named seats [0] (P1 never named)",
+  "verdict=reproduced"
+ ],
+ "wf_seen": [
+  "DeclareAttackers",
+  "Priority",
+  "UnlessPayment",
+  "WardSacrificeChoice"
+ ],
+ "validated_version": "v0.86.0",
+ "build_commit": "2cc8c28",
+ "protocol_version": 72,
+ "validated_at": "2026-09-17",
+ "server": {
+  "server_version": "0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "Full",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "163e6db8aa936f260e1d8b71d99a7db42caa0274479d80b0afb9e5785824b86e",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-09-17",
+  "source": "live server on 127.0.0.1:9474 started this run from the pinned v0.86.0 release dir; ServerHello probed (0.86.0/2cc8c28/protocol 72); hashes match pinned release record 2026-09-16 (minisign + data digests verified; binary digest matched GitHub asset digest); v0.86.0 confirmed latest stable release (not shell-*) via GitHub releases API this run"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7198.py",
+ "scenario_sha256": "d874bbcd90a42d5dd36a25fbf2a5ecb5795eacddf275a033d0d5fad34745eb9c",
+ "decks": {
+  "P0": [
+   [
+    "Bellowing Mauler",
+    12
+   ],
+   [
+    "Walking Corpse",
+    8
+   ],
+   [
+    "Swamp",
+    40
+   ]
+  ],
+  "P1A": [
+   [
+    "Walking Corpse",
+    12
+   ],
+   [
+    "Swamp",
+    48
+   ]
+  ],
+  "P1B": [
+   [
+    "Swamp",
+    60
+   ]
+  ]
+ },
+ "setup_line": "P0: 12x Bellowing Mauler + 8x Walking Corpse + 40x Swamp. Game A P1: 12x Walking Corpse + 48x Swamp (holds a nontoken creature). Game B P1: 60x Swamp (never holds a creature). P0 casts Mauler; both at 20 life at P0's end step when the trigger fires.",
+ "contract_line": "Each player must receive an independent sacrifice-vs-4-life choice (UnlessPayment naming each seat); a successful sacrifice prevents only that player's life loss.",
+ "scope": "Bellowing Mauler end-step trigger, unless_pay choice routing; native human seats, v0.86.0 engine",
+ "result": "Trigger fires; both player-scope UnlessPayment instances are offered to the triggering player (seat 0 names only), P1 never offered a choice. Game A: P0 sacrifices a corpse (stays 20), declines P1's instance -> P1 loses 4 (16) with creature intact. Game B: P0 sacrifices a corpse then the Mauler itself for P1's instance -> P1 stays 20 with no choice; P0's sacrifice prevented another player's life loss.",
+ "limitations": [
+  "Dense 12x Mauler deck is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Not tested on the report's build; verdict scoped to v0.86.0 engine, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Browser/UI not exercised; Discord thread unavailable (login required) \u2014 report text taken from the issue body.",
+  "Card-data unless_pay.payer is TriggeringPlayer, matching the observed routing; oracle text assigns the choice to each player."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
