@@ -1,0 +1,139 @@
+{
+ "run_id": "20260917-7187",
+ "issue": 7187,
+ "verdict": "not-reproduced",
+ "validated_at": "2026-09-17",
+ "server": {
+  "server_version": "v0.86.0",
+  "build_commit": "2cc8c28",
+  "protocol_version": 72,
+  "mode": "single-user",
+  "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+  "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+  "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-09-17; data digests match the signed manifest; digests recomputed against on-disk files this run (AGENTS.md: never copy SERVER_IDENTITY hashes); release v0.86.0 confirmed latest stable via GitHub releases API 2026-09-17",
+  "observed_at": "2026-09-17",
+  "handshake": "ServerHello observed pre-run on 127.0.0.1:9374: v0.86.0 / 2cc8c28 / protocol 72 / Full",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 reused from runs/run-20260917-224141 (live, started by the 20260917-7198 run; SERVER_RUN_ID points at that run dir for the server.log excerpt)"
+ },
+ "driver": {
+  "protocol_advertised": 72,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8c93c01e79ffb779b1ee57605e1636d2ee44d74fa4701aa35e56fdec56131207",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "the sixth doctor",
+    10
+   ],
+   [
+    "mox amber",
+    12
+   ],
+   [
+    "forest",
+    19
+   ],
+   [
+    "island",
+    19
+   ]
+  ],
+  "P1": [
+   [
+    "swamp",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_token_made": "passed",
+  "A3_not_legendary": "passed",
+  "A4_coexist": "passed",
+  "A5_cleanup": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "stack_copy_sightings": [
+   "98994dcf6e85"
+  ]
+ },
+ "driver_state": {
+  "stage": "done",
+  "doctor_oid": 13,
+  "mox_spell_oid": 28,
+  "mox_cast_turn": 11,
+  "mox_oids": [
+   28,
+   122
+  ],
+  "mox_entered_turn": 11,
+  "saw_two_mox": true,
+  "copy_on_stack_seen": true,
+  "copy_oid": 122,
+  "copy_supertypes": [],
+  "copy_is_token": true,
+  "wf_types_seen": [
+   "Priority"
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "exports": {
+   "pre": true,
+   "mid": true,
+   "post": true
+  },
+  "mull_count": {
+   "0": 0,
+   "1": 0
+  }
+ },
+ "notes": [
+  "A1: doctor_oid=13 on_bf_at_pre=True legendary_at_pre=True supertypes=['legendary'] mox_cast_turn=11 pre_exported=True",
+  "A2: saw_two_mox(tick)=True mox_on_bf at mid=[122, 28] at post=[122, 28]; copy_on_stack_seen=True stack_copy_sightings=1",
+  "A3: copy_oid=122 (original=28) supertypes=[] is_token=True; expect no 'legendary'",
+  "A4: mox_on_bf at post=[122, 28] (expect >=2 objects: original Legendary + nonlegendary copy token)",
+  "A5: post present=True stack_empty=True turn_post=12 mox_cast_turn=11",
+  "verdict=not-reproduced: copy token entered nonlegendary and coexists with the original",
+  "verdict=not-reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7187_086.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "10x/12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a passive second seat (lands only, no attacks) - opponent interaction with the copy is not exercised.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Only the 'copy isn't legendary' exception is asserted; the once-per-turn constraint and copy-of-nonpermanent paths are not exercised."
+ ],
+ "duration_s": 44.5
+}
