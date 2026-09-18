@@ -1,0 +1,190 @@
+{
+  "run_id": "20260917-7208",
+  "issue": 7208,
+  "verdict": "reproduced",
+  "validated_at": "2026-09-17",
+  "server": {
+    "server_version": "v0.86.0",
+    "build_commit": "2cc8c28",
+    "protocol_version": 72,
+    "mode": "single-user",
+    "binary_sha256": "67d495b599cbe7d68c9ab9fddaf2f1a37ec1d392382e31e43963d0653eed6af2",
+    "card_data_sha256": "ab7a4b65e8fba8407a928eae8f261abb078f43c081923e9c0f4af30a9c40ff26",
+    "draft_pools_sha256": "d20d2dbf181b2361c9cdf0e67bef34d996765338f1986bc395477905dfefd13e",
+    "digests_match_pin": true,
+    "signature_note": "minisign signatures on the binary + signed data manifest verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY at v0.86.0 pin time 2026-09-17; binary digest also matches the GitHub release asset digest; digests recomputed against on-disk files this run; v0.86.0 confirmed latest stable via GitHub releases API 2026-09-17 (published 2026-09-17T15:48Z)",
+    "observed_at": "2026-09-17",
+    "handshake": "protocol 72 driver hello accepted by the isolated server on 127.0.0.1:9374 (runs/20260917-7208)",
+    "source": "verified pin; isolated server on 127.0.0.1:9374 started fresh this run under runs/20260917-7208"
+  },
+  "driver": {
+    "protocol_advertised": 72,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "377d0bc7e83c0fb2aad4d5654f7f42c696254b6d98f350ed577dcb44b53c8f2c",
+  "format_config": "default Bo1 (2 human-client seats, life 20)",
+  "decks": {
+    "P0": [
+      [
+        "gandalf, spark starter",
+        10
+      ],
+      [
+        "mountain",
+        50
+      ]
+    ],
+    "P1": [
+      [
+        "memnite",
+        40
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_one_target": "failed",
+    "A3_division": "failed",
+    "A4_damage": "not-run",
+    "B1_two_targets": "not-run",
+    "B2_leg2_damage": "not-run"
+  },
+  "observations": {
+    "leg1": {
+      "rejections": [],
+      "unexpected_prompts": [
+        {
+          "leg": 1,
+          "key": "trigger_target_slot0",
+          "wtype": "TriggerTargetSelection"
+        },
+        {
+          "leg": 1,
+          "key": "trigger_target_slot1",
+          "wtype": "TriggerTargetSelection"
+        },
+        {
+          "leg": 1,
+          "key": "trigger_target_slot2",
+          "wtype": "TriggerTargetSelection"
+        },
+        {
+          "leg": 1,
+          "key": "division",
+          "wtype": "DistributeAmong"
+        }
+      ],
+      "tick_errors": [],
+      "target_prompts": [
+        {
+          "leg": 1,
+          "wtype": "TriggerTargetSelection",
+          "slot_info": {
+            "current_slot": 0,
+            "n_slots": 3,
+            "slot_optional": false,
+            "slot_effect": "DealDamage"
+          },
+          "chosen_so_far": []
+        }
+      ],
+      "division_prompts": [
+        {
+          "leg": 1,
+          "wtype": "DistributeAmong",
+          "total": 3,
+          "targets": [
+            {
+              "Object": 68
+            },
+            {
+              "Object": 70
+            },
+            {
+              "Object": 71
+            }
+          ]
+        }
+      ]
+    },
+    "leg2": null
+  },
+  "driver_state": {
+    "leg1": {
+      "stage": "done",
+      "gandalf_oid": 13,
+      "gandalf_cast_turn": 11,
+      "trigger_seen": true,
+      "targets_chosen": [
+        68,
+        70,
+        71
+      ],
+      "target_slots_seen": 1,
+      "forced_extra_slot": true,
+      "skip_attempted": false,
+      "skip_accepted": false,
+      "division_seen": true,
+      "division_shape": "DistributeAmong",
+      "division_submitted": false,
+      "division_rejected": false,
+      "damage_plan": [
+        [
+          68,
+          1
+        ],
+        [
+          70,
+          1
+        ],
+        [
+          71,
+          1
+        ]
+      ],
+      "wf_types_seen": [
+        "Priority",
+        "DeclareAttackers",
+        "TriggerTargetSelection",
+        "DistributeAmong"
+      ],
+      "exports": {
+        "pre_leg1": true,
+        "mid_leg1": true
+      },
+      "mull_count": {
+        "0": 0,
+        "1": 0
+      }
+    },
+    "leg2": null
+  },
+  "notes": [
+    "A1: pre_leg1 present=True gandalf_oid=13 on_bf_at_pre=True p1_memnites_at_pre=12 trigger_seen=True cast_turn=11",
+    "A2: targets_chosen=[68, 70, 71] target_slots_seen=1 forced_extra_slot=True skip_attempted=False skip_accepted=False; expect exactly 1 target and no forced extra slot",
+    "A3: division_seen=True division_shape=DistributeAmong division_submitted=False division_accepted=True division_rejected=False damage_plan=[(68, 1), (70, 1), (71, 1)]",
+    "A4: chosen=68 pre_memnites=[100, 61, 68, 70, 71, 77, 80, 90, 95, 96, 97, 98] post_memnites=[] chosen_gone=True others_alive(>=2)=False stack_empty=False",
+    "B1/B2: leg 2 not run (leg 1 did not pass cleanly)",
+    "verdict=reproduced: the reported Gandalf, Spark Starter defect (targets=[68, 70, 71] forced_extra_slot=True)",
+    "verdict=reproduced"
+  ],
+  "evidence_files": [
+    "mid_leg1.json",
+    "pre_leg1.json",
+    "run.json",
+    "scenario_7208.py",
+    "scenario_run.log",
+    "server.log",
+    "summary.png",
+    "wire_log.jsonl"
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "10x/40x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "P1 is a passive second seat (Memnites only, no attacks) - opponent interaction with the trigger is not exercised.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Only creature targets (P1 Memnites) are exercised; player / planeswalker targets are not.",
+    "Leg 2 runs only when leg 1 passes cleanly."
+  ],
+  "duration_s": 52.3
+}
