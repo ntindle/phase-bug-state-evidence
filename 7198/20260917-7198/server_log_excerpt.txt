@@ -1,0 +1,26 @@
+# server.log excerpt — runs/20260917-7198/server.log (2745 lines)
+# server logs routine INFO only; no game-event detail.
+# 6 WARN lines, all benign 'Full snapshot was no longer current / SupersededOrRetired'
+# (normal during active play; no ERROR or panic lines):
+2026-09-18T02:58:24.625194Z  WARN phase_server: Full snapshot was no longer current game=IMVPIG disposition=SupersededOrRetired
+2026-09-18T03:00:51.643496Z  WARN phase_server: Full snapshot was no longer current game=4AZH6A disposition=SupersededOrRetired
+2026-09-18T03:03:59.586874Z  WARN phase_server: Full snapshot was no longer current game=9QBSTP disposition=SupersededOrRetired
+2026-09-18T03:04:44.969492Z  WARN phase_server: Full snapshot was no longer current game=HORGLX disposition=SupersededOrRetired
+2026-09-18T03:07:04.530042Z  WARN phase_server: Full snapshot was no longer current game=QVR3R1 disposition=SupersededOrRetired
+2026-09-18T03:07:52.864125Z  WARN phase_server: Full snapshot was no longer current game=E81LIL disposition=SupersededOrRetired
+
+## startup (identity)
+2026-09-18T02:55:02.950288Z  INFO phase_server: server mode selected mode=Full
+2026-09-18T02:55:02.950366Z  INFO phase_server: admission limits resolved max_connections=200 max_games=100 replica_ordinal=None
+2026-09-18T02:55:07.817075Z  INFO phase_server: card database loaded cards=35977
+2026-09-18T02:55:07.830332Z  INFO phase_server::persistence: Game database opened at /home/hatch/workspace/dev/phase-backfill/runs/20260917-7198/games.db
+2026-09-18T02:55:08.121467Z  INFO phase_server: draft pools loaded sets=173
+2026-09-18T02:55:08.240761Z  INFO phase_server: restoring persisted session game=QCFPXR bytes=467869
+
+## tail (clean client disconnects at end of both evidence games QVR3R1, E81LIL)
+2026-09-18T03:08:39.191393Z  INFO ws_message:game_session{game=E81LIL player=PlayerId(0)}: server_core::session: action applied game=E81LIL player=PlayerId(0) action_type="PlayLand" event_count=2
+2026-09-18T03:08:39.202046Z  INFO ws_message:game_session{game=E81LIL player=PlayerId(0)}: phase_server: game submission processed (lock held) game=E81LIL kind="action" lock_ms=16 ai_actions=0
+2026-09-18T03:08:39.331779Z  INFO phase_server: client disconnected game=Some("E81LIL") player=Some(PlayerId(0))
+2026-09-18T03:08:39.331913Z  INFO server_core::session: player disconnected game=E81LIL player=PlayerId(0)
+2026-09-18T03:08:39.332623Z  INFO phase_server: client disconnected game=Some("E81LIL") player=Some(PlayerId(1))
+2026-09-18T03:08:39.332689Z  INFO server_core::session: player disconnected game=E81LIL player=PlayerId(1)
