@@ -1,0 +1,32 @@
+P0 creating game...
+P1 joining...
+game SNLGVG; seats 0/1
+[P0] keeps (lands=4)
+[P1] keeps (lands=7)
+[P0] plays Forest
+[P0] casts Manabond
+[decline-armed] turn 1 hand lands=3 nonlands=2
+exported pre_decline.json
+[pre_decline] turn 1: lands=3 nonlands=2
+[P0] answers Manabond may-choice false (choice SNLGVG.0.20.c0)
+exported post_decline.json
+[post_decline] phase=End turn=1; arming ACCEPT for next end step
+exported pre_accept.json
+[pre_accept] turn 3: lands=3 nonlands=3
+[P0] answers Manabond may-choice true (choice SNLGVG.0.52.c1)
+exported post_accept.json
+[post_accept] phase=Upkeep turn=4
+A1_setup_ok: passed
+A2_decline_no_move: passed
+A3_accept_lands_battlefield: failed
+A4_accept_rest_discarded: passed
+A5_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'OptionalEffectChoice', 'Priority', 'OptionalEffectChoice', 'Priority']
+verdict: reproduced
+{
+  "A1_setup_ok": "passed",
+  "A2_decline_no_move": "passed",
+  "A3_accept_lands_battlefield": "failed",
+  "A4_accept_rest_discarded": "passed",
+  "A5_cleanup": "passed"
+}
