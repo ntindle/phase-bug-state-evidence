@@ -1,0 +1,41 @@
+game A: code QVR3R1; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P0 plays Swamp (turn 2)
+P1 casts Walking Corpse (turn 3)
+P0 plays Swamp (turn 4)
+P0 casts Walking Corpse (turn 4)
+P0 plays Swamp (turn 6)
+P0 plays Swamp (turn 8)
+P0 plays Swamp (turn 10)
+P0 casts Bellowing Mauler (turn 10)
+MAULER TRIGGER on stack (game A): [{"id": 121, "kind": "TriggeredAbility", "source_id": 49, "controller": 0, "desc": ""}]
+A pre_trigger: turn 10 life=20/20 p0_creatures=2 p1_creatures=1
+P0 UNLESS prompt shape: {"wf_type": "UnlessPayment", "wf_data": {"player": 0, "cost": {"type": "Sacrifice", "target": {"type": "Typed", "type_filters": ["Creature"], "controller": "You", "properties": [{"type": "NonToken"}]}, "count": 1}, "pending_effect": {"effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "targets": [], "source_id": 49, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 49, "incarnation": 3}, "expected_zone": "Battlefield"}, "lki": {"name": "Bellowing Mauler", "power": 4, "toughness": 6, "base_power": 4, "base_toughness": 6, "mana_value": 5, "controller": 0, "owner": 0, "card_types": ["Creature"], "subtypes": ["Ogre", "Warrior"], "supertypes": [], "keywords": [], "colors": ["Black"], "chosen_attributes": [], "counters": {}, "tapped": false, "is_suspected": false, "attachments": []}, "card_id": 49, "printed_ref": {"oracle_id": "fa0a4765-5799-4464-88b6-6d1b15889eb5", "face_name": "Bellowing Mauler"}, "is_token": false, "face_down": false, "transformed": false, "is_renowned": false, "is_saddled": false, "trigger_entries": [{"occurrence": {"type": "Printed", "data": {"base_set": 1, "printed_index": 0}}, "definition": {"mode": "Phase", "execute": {"kind": "Spell", "effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "cost": null, "sub_ability": null, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false, "player_sc
+P0 unless sacrifice: choose QVR3R1.0.167.c1 (exactChoices UnlessPayment)
+P0 UNLESS prompt shape: {"wf_type": "WardSacrificeChoice", "wf_data": {"player": 0, "permanents": [59, 49], "pending_effect": {"effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "targets": [], "source_id": 49, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 49, "incarnation": 3}, "expected_zone": "Battlefield"}, "lki": {"name": "Bellowing Mauler", "power": 4, "toughness": 6, "base_power": 4, "base_toughness": 6, "mana_value": 5, "controller": 0, "owner": 0, "card_types": ["Creature"], "subtypes": ["Ogre", "Warrior"], "supertypes": [], "keywords": [], "colors": ["Black"], "chosen_attributes": [], "counters": {}, "tapped": false, "is_suspected": false, "attachments": []}, "card_id": 49, "printed_ref": {"oracle_id": "fa0a4765-5799-4464-88b6-6d1b15889eb5", "face_name": "Bellowing Mauler"}, "is_token": false, "face_down": false, "transformed": false, "is_renowned": false, "is_saddled": false, "trigger_entries": [{"occurrence": {"type": "Printed", "data": {"base_set": 1, "printed_index": 0}}, "definition": {"mode": "Phase", "execute": {"kind": "Spell", "effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "cost": null, "sub_ability": null, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false, "player_scope": {"type": "All"}}, "valid_card": null, "origin": null, "destination": null, "trigger_zones": ["Battlefield"], "phase": "End", 
+P0 unless sacrifice: select creature oid 59 (choice QVR3R1.0.168.s0)
+P0 unless decline: choose QVR3R1.0.169.c0 (exactChoices UnlessPayment)
+A post_trigger: life=20/16
+game B: code E81LIL; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+P0 plays Swamp (turn 1)
+P0 plays Swamp (turn 3)
+P0 casts Walking Corpse (turn 3)
+P0 plays Swamp (turn 5)
+P0 plays Swamp (turn 7)
+P0 plays Swamp (turn 9)
+P0 casts Bellowing Mauler (turn 9)
+MAULER TRIGGER on stack (game B): [{"id": 121, "kind": "TriggeredAbility", "source_id": 30, "controller": 0, "desc": ""}]
+B pre_trigger: turn 9 life=20/20 p0_creatures=2 p1_creatures=0
+P0 UNLESS prompt shape: {"wf_type": "UnlessPayment", "wf_data": {"player": 0, "cost": {"type": "Sacrifice", "target": {"type": "Typed", "type_filters": ["Creature"], "controller": "You", "properties": [{"type": "NonToken"}]}, "count": 1}, "pending_effect": {"effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "targets": [], "source_id": 30, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 30, "incarnation": 3}, "expected_zone": "Battlefield"}, "lki": {"name": "Bellowing Mauler", "power": 4, "toughness": 6, "base_power": 4, "base_toughness": 6, "mana_value": 5, "controller": 0, "owner": 0, "card_types": ["Creature"], "subtypes": ["Ogre", "Warrior"], "supertypes": [], "keywords": [], "colors": ["Black"], "chosen_attributes": [], "counters": {}, "tapped": false, "is_suspected": false, "attachments": []}, "card_id": 30, "printed_ref": {"oracle_id": "fa0a4765-5799-4464-88b6-6d1b15889eb5", "face_name": "Bellowing Mauler"}, "is_token": false, "face_down": false, "transformed": false, "is_renowned": false, "is_saddled": false, "trigger_entries": [{"occurrence": {"type": "Printed", "data": {"base_set": 1, "printed_index": 0}}, "definition": {"mode": "Phase", "execute": {"kind": "Spell", "effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "cost": null, "sub_ability": null, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false, "player_sc
+P0 unless sacrifice: choose E81LIL.0.146.c1 (exactChoices UnlessPayment)
+P0 UNLESS prompt shape: {"wf_type": "WardSacrificeChoice", "wf_data": {"player": 0, "permanents": [34, 30], "pending_effect": {"effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "targets": [], "source_id": 30, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 30, "incarnation": 3}, "expected_zone": "Battlefield"}, "lki": {"name": "Bellowing Mauler", "power": 4, "toughness": 6, "base_power": 4, "base_toughness": 6, "mana_value": 5, "controller": 0, "owner": 0, "card_types": ["Creature"], "subtypes": ["Ogre", "Warrior"], "supertypes": [], "keywords": [], "colors": ["Black"], "chosen_attributes": [], "counters": {}, "tapped": false, "is_suspected": false, "attachments": []}, "card_id": 30, "printed_ref": {"oracle_id": "fa0a4765-5799-4464-88b6-6d1b15889eb5", "face_name": "Bellowing Mauler"}, "is_token": false, "face_down": false, "transformed": false, "is_renowned": false, "is_saddled": false, "trigger_entries": [{"occurrence": {"type": "Printed", "data": {"base_set": 1, "printed_index": 0}}, "definition": {"mode": "Phase", "execute": {"kind": "Spell", "effect": {"type": "LoseLife", "amount": {"type": "Fixed", "value": 4}}, "cost": null, "sub_ability": null, "duration": null, "description": null, "target_prompt": null, "condition": null, "optional_targeting": false, "optional": false, "forward_result": false, "player_scope": {"type": "All"}}, "valid_card": null, "origin": null, "destination": null, "trigger_zones": ["Battlefield"], "phase": "End", 
+P0 unless sacrifice: select creature oid 34 (choice E81LIL.0.147.s0)
+P0 unless sacrifice: choose E81LIL.0.148.c1 (exactChoices UnlessPayment)
+P0 SelectCards shape (WardSacrificeChoice): {"cards": [30]}
+P0 unless sacrifice via SelectCards: oid 30 (WardSacrificeChoice)
+P0 plays Swamp (turn 11)
+B post_trigger: life=20/20
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_each_offered": "failed", "A4_outcomes_A": "passed", "A5_cross_player_B": "passed"}
