@@ -1,0 +1,61 @@
+game H7K1MA; P0 seat=0 P1 seat=1
+P0 keeps (sanar=True, lands=2)
+P1 keeps opening hand
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 P0hand=['Island', 'Lightning Bolt', 'Sanar, Innovative First-Year', 'Divination', 'Divination', 'Lightning Bolt', 'Mountain'] lands=0 sanarBF=False acts=['MulliganDecision', 'MulliganDecision', 'MulliganDecision', 'MulliganDecision'] exile_done=False mixed=False
+P1 casts Grizzly Bears
+P1 casts Grizzly Bears
+P0 discards candidate | Lightning Bolt
+P1 casts Grizzly Bears
+P1 casts Grizzly Bears
+P0 discards candidate | Divination
+P1 casts Grizzly Bears
+P1 casts Grizzly Bears
+P0 discards candidate | Divination
+P0 discards candidate | Lightning Bolt
+P1 casts Grizzly Bears
+P0 casts Sanar, Innovative First-Year
+A1 setup: colors=['Blue', 'Red']
+Sanar resolved on battlefield
+exported PRE (first exile prompt)
+A2: Vivid trigger evidence via exile selection flow
+exile tracking reset for turn 18 (trigger turn #1)
+ChooseFromZoneChoice opportunity rtype=schema: {"interactionId": "H7K1MA.0.293", "response": {"type": "schema", "data": {"spec": {"type": "select", "data": {"constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}}, "candidates": [{"id": "H7K1MA.0.293.s0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "10", "name": "Sanar, Innovative First-Year", "zone": "library", "controller": 0, "power": 2, "tapped": false}}], "status": {"type": "available"}}, {"id": "H7K1MA.0.293.s1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "18", "name": "Divination", "zone": "library", "controller": 0, "power": null, "tapped": false}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "choose", "constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}}, {"type": "object", "data": {"role": "source", "index": null, "reference": "1", "name": "Sanar, Innovative First-Year", "zone": "battlefield", "controller": 0, "power": 2, "tapped": false}}], "progress": {"selected": 0, "minimum": 0, "maximum": 1, "aggregate": null, "confirmable": true}}
+ChooseFromZoneChoice SelectCards action: {"type": "SelectCards", "data": {"cards": [10]}}
+ChooseFromZoneChoice turn=18 cards=[('Sanar, Innovative First-Year', ['Blue', 'Red']), ('Divination', ['Blue'])] count=1
+answering CFZ via opportunity: pick Sanar, Innovative First-Year (oid 10)
+MIXED REVEAL: red+blue both available
+turn 18 exile check: mixed=True chosen={10: 'Sanar, Innovative First-Year'} exiled=['Sanar, Innovative First-Year']
+mixed turn complete; mixed_bolt_oid=None
+A6: strays=[] unchosen_this=[(18, 'Hidden Card')] lib_ok=True
+exported POST (post exile+shuffle)
+P0 declares no attackers
+DIAG turn=19 active=1 phase=DeclareAttackers wf=DeclareAttackers pp=1 P0hand=['Divination', 'Lightning Bolt', 'Lightning Bolt', 'Divination', 'Lightning Bolt', 'Lightning Bolt', 'Sanar, Innovative First-Year'] lands=4 sanarBF=True acts=[] exile_done=True mixed=True
+exile tracking reset for turn 20 (trigger turn #2)
+ChooseFromZoneChoice turn=20 cards=[('Divination', ['Blue']), ('Sanar, Innovative First-Year', ['Blue', 'Red'])] count=1
+answering CFZ via opportunity: pick Divination (oid 5)
+ChooseFromZoneChoice turn=20 cards=[('Sanar, Innovative First-Year', ['Blue', 'Red'])] count=1
+answering CFZ via opportunity: pick Sanar, Innovative First-Year (oid 30)
+turn 20 exile check: mixed=True chosen={5: 'Divination', 30: 'Sanar, Innovative First-Year'} exiled=['Divination', 'Sanar, Innovative First-Year', 'Sanar, Innovative First-Year']
+mixed turn complete; mixed_bolt_oid=None
+A6: strays=[] unchosen_this=[] lib_ok=True
+P0 declares no attackers
+exile tracking reset for turn 22 (trigger turn #3)
+ChooseFromZoneChoice turn=22 cards=[('Lightning Bolt', ['Red']), ('Lightning Bolt', ['Red'])] count=1
+answering CFZ via opportunity: pick Lightning Bolt (oid 4)
+turn 22 exile check: mixed=False chosen={4: 'Lightning Bolt'} exiled=['Divination', 'Lightning Bolt', 'Sanar, Innovative First-Year', 'Sanar, Innovative First-Year']
+P0 declares no attackers
+P1 casts Grizzly Bears
+exile tracking reset for turn 24 (trigger turn #4)
+ChooseFromZoneChoice turn=24 cards=[('Divination', ['Blue'])] count=1
+answering CFZ via opportunity: pick Divination (oid 14)
+ChooseFromZoneChoice turn=24 cards=[('Lightning Bolt', ['Red'])] count=1
+answering CFZ via opportunity: pick Lightning Bolt (oid 9)
+turn 24 exile check: mixed=True chosen={14: 'Divination', 9: 'Lightning Bolt'} exiled=['Divination', 'Divination', 'Lightning Bolt', 'Lightning Bolt', 'Sanar, Innovative First-Year', 'Sanar, Innovative First-Year']
+mixed turn complete; mixed_bolt_oid=9
+A6: strays=[] unchosen_this=[] lib_ok=True
+P0 casts exiled Lightning Bolt at P1 (oid 9)
+Bolt TargetSelection opportunity: {"interactionId": "H7K1MA.0.403", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 1, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "H7K1MA.0.403.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 0}}], "status": {"type": "available"}}, {"id": "H7K1MA.0.403.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "player", "data": {"role": "candidate", "index": null, "seat": 1}}], "status": {"type": "available"}}, {"id": "H7K1MA.0.403.t2", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "69", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1, "power": 2, "tapped": false}}], "status": {"type": "available"}}, {"id": "H7K1MA.0.403.t3", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "65", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1,
+targeting P1 with exiled Bolt: H7K1MA.0.403.t1
+exiled Bolt resolved: zone=Graveyard P1life=17 P0gy=['Lightning Bolt', 'Lightning Bolt', 'Divination', 'Divination', 'Lightning Bolt']
+exported CAST
+cast-permission leg done; finishing
