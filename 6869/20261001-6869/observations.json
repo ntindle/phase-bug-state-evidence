@@ -1,0 +1,100 @@
+{
+  "per_leg": [
+    {
+      "leg": "Medium",
+      "assertions": {
+        "A1_ai_cast": "passed",
+        "A2_no_freeze": "passed",
+        "A3_draws": "passed",
+        "A4_control": "passed",
+        "A5_cleanup": "passed"
+      },
+      "notes": [
+        "AI casts (Medium): #1 turn 15 resolved=True (2.46s) target_wait=None, #2 turn 15 resolved=True (0.84s) target_wait=None",
+        "all AI casts resolved within 2.46s (window 150s); ai target waits seen: 0",
+        "first AI cast (Medium): pre turn 15 -> post turn 15; P0 hand 10->13, P1 hand 10->13; drew P0=3 P1=3",
+        "P0 control (Medium): target mode=auto (prompt_seen=None); P0 drew 3, P1 drew 3",
+        "A5 (Medium): stack_empty=True game_over=False"
+      ]
+    }
+  ],
+  "legs": [
+    {
+      "difficulty": "Medium",
+      "suffix": "none",
+      "game_code": "V9O1X1",
+      "casts": [
+        {
+          "oid": 47,
+          "cast_t": 1790864581.9446757,
+          "cast_rev": 202,
+          "cast_turn": 14,
+          "controller": 0,
+          "resolved": true,
+          "resolve_t": 1790864582.1984391,
+          "resolve_s": 0.25,
+          "target_wait": null
+        },
+        {
+          "oid": 98,
+          "cast_t": 1790864587.5033355,
+          "cast_rev": 222,
+          "cast_turn": 15,
+          "controller": 1,
+          "resolved": true,
+          "resolve_t": 1790864589.9604006,
+          "resolve_s": 2.46,
+          "target_wait": null
+        },
+        {
+          "oid": 116,
+          "cast_t": 1790864589.9604006,
+          "cast_rev": 225,
+          "cast_turn": 15,
+          "controller": 1,
+          "resolved": true,
+          "resolve_t": 1790864590.79817,
+          "resolve_s": 0.84,
+          "target_wait": null
+        }
+      ],
+      "verdict_bits": {},
+      "notes": [
+        "no AI cast by turn 12; proceeding to P0 control cast"
+      ],
+      "stalled": false,
+      "stall_info": null,
+      "control": {
+        "cast_turn": 14,
+        "cast_oid": 47,
+        "cast_t": 1790864581.692426,
+        "resolved": true,
+        "resolve_t": 1790864582.1984391,
+        "resolve_s": 0.51,
+        "target_mode": "auto",
+        "tail_started": 1790864582.1984391
+      },
+      "wf_sequence": [
+        "MulliganDecision",
+        "Priority",
+        "DiscardToHandSize",
+        "Priority",
+        "DiscardToHandSize",
+        "Priority"
+      ],
+      "p0_acts": 126,
+      "rejections": 0,
+      "stage_end": "PHASE2"
+    }
+  ],
+  "notes": [
+    "AI casts across legs: 2",
+    "A4 (Medium): passed",
+    "[Medium] AI casts (Medium): #1 turn 15 resolved=True (2.46s) target_wait=None, #2 turn 15 resolved=True (0.84s) target_wait=None",
+    "[Medium] all AI casts resolved within 2.46s (window 150s); ai target waits seen: 0",
+    "[Medium] first AI cast (Medium): pre turn 15 -> post turn 15; P0 hand 10->13, P1 hand 10->13; drew P0=3 P1=3",
+    "[Medium] P0 control (Medium): target mode=auto (prompt_seen=None); P0 drew 3, P1 drew 3",
+    "[Medium] A5 (Medium): stack_empty=True game_over=False",
+    "[Medium] no AI cast by turn 12; proceeding to P0 control cast"
+  ]
+}
