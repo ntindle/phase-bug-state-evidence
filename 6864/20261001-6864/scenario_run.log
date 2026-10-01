@@ -1,0 +1,41 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game 8K4EIK; seats 0/1
+P0 mulligan -> Keep
+P1 mulligan -> Mulligan
+P1 mulligan -> Keep
+P1 bottoms 1
+P0 casts Zariel, Archduke of Avernus
+[watch] Zariel loyalty=4 (turn 8)
+P0 casts Grizzly Bears
+=== stage -> LOYAL1 ===
+[P0] Zariel object keys: ['abilities', 'attached_to', 'attachments', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_loyalty', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_loyalty', 'base_printed_ref', 'base_toughness', 'card_id', 'card_types', 'cast_controller', 'cast_from_zone', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_visible_to_viewer', 'entered_battlefield_turn', 'face_down', 'flipped', 'id', 'incarnation', 'keywords', 'loyalty', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast', 'mana_spent_to_cast_amount', 'name', 'owner', 'power', 'printed_loyalty', 'printed_ref', 'replacement_definitions', 'source_related_token_ids', 'static_definitions', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_definitions', 'zone']; loyalty=4
+[P0] ActivateAbility options: []
+[P0] ActivateAbility options: [(0, '{"type": "ActivateAbility", "data": {"source_id": 39, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 39, "ability_index": 1}}')]
+[P0] activates Zariel +1 (ability_index 0), loyalty was 4
+[watch] Zariel loyalty=5 (turn 12)
+=== stage -> LOYAL2 ===
+[P0] activates Zariel +1 (ability_index 0), loyalty was 5
+[watch] Zariel loyalty=6 (turn 14)
+=== stage -> ACTIVATE ===
+[P0] ult ActivateAbility options: []
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] WARNING: -6 (ability_index 2) not advertised!
+[P0] ult ActivateAbility options: [(0, '{"type": "ActivateAbility", "data": {"source_id": 39, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 39, "ability_index": 1}}'), (2, '{"type": "ActivateAbility", "data": {"source_id": 39, "ability_index": 2}}')]
+exported pre_activate.json
+[P0] activates Zariel -6 (ability_index 2)
+exported post_activate.json
+[watch] post-ult emblem scan: []
+=== stage -> COMBAT ===
+P0 declares attackers: [19] -> P1
+exported post.json
+=== DONE (post-combat main reached) ===
+NOTE: WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority']
+NOTE: Zariel loyalty trace: [(8, 4), (12, 5), (14, 6)]
+NOTE: emblem triggers seen: []
+NOTE: target answer: None
+NOTE: combat phases started trace: []
