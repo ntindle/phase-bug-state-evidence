@@ -1,0 +1,86 @@
+{
+  "name": "Overpowering Attack",
+  "oracle_text": "Freerunning {2}{R} (You may cast this spell for its freerunning cost if you dealt combat damage to a player this turn with an Assassin or commander.)\nUntap all creatures you control that attacked this turn. If it's your main phase, there is an additional combat phase after this phase, followed by an additional main phase.",
+  "abilities": [
+    {
+      "kind": "Spell",
+      "effect": {
+        "type": "SetTapState",
+        "target": {
+          "type": "Typed",
+          "type_filters": [
+            "Creature"
+          ],
+          "controller": "You",
+          "properties": [
+            {
+              "type": "AttackedThisTurn"
+            }
+          ]
+        },
+        "scope": {
+          "type": "All"
+        },
+        "state": {
+          "type": "Untap"
+        }
+      },
+      "cost": null,
+      "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+          "type": "AdditionalPhase",
+          "target": {
+            "type": "None"
+          },
+          "phase": "BeginCombat",
+          "after": {
+            "type": "ThisPhase",
+            "data": {
+              "named": null
+            }
+          },
+          "followed_by": [
+            "PostCombatMain"
+          ],
+          "count": {
+            "type": "Fixed",
+            "value": 1
+          },
+          "attacker_restriction": null
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": {
+          "type": "And",
+          "conditions": [
+            {
+              "type": "CurrentPhaseIs",
+              "phases": [
+                "PreCombatMain",
+                "PostCombatMain"
+              ]
+            },
+            {
+              "type": "IsYourTurn"
+            }
+          ]
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false,
+        "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": "Untap all creatures you control that attacked this turn. If it's your main phase, there is an additional combat phase after this phase, followed by an additional main phase.",
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+    }
+  ]
+}
