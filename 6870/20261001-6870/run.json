@@ -1,0 +1,76 @@
+{
+  "issue": 6870,
+  "run_id": "20261001-6870",
+  "started_at": "2026-10-01T11:45:00-05:00",
+  "server": {
+    "server_version": "v0.98.0",
+    "build_commit": "61e8550",
+    "protocol_version": 94,
+    "server_binary_sha256": "15c50bbd3e90b9af49c851d9a56a775f4d74f5874f19e5ea231520816c8170a9",
+    "card_data_sha256": "1a5919f2a50754c7f5e48922390816150a20b703821114adfe08427ff0b11960",
+    "draft_pools_sha256": "bf3316202d84068ac38bcec48c5fc57d38d7834aef5f18c6b410ba9f64afd594",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true
+  },
+  "driver": {
+    "protocol_version": 94,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6870_0980.py"
+  },
+  "scenario_sha256": "2677a3fbcf2d644e550d2b3e2076e03498a91192ae20430c737ce8894ef413ab",
+  "decks": {
+    "P0": [
+      [
+        "Lithoform Engine",
+        8
+      ],
+      [
+        "Chandra Nalaar",
+        8
+      ],
+      [
+        "Mountain",
+        44
+      ]
+    ],
+    "P1": [
+      [
+        "Mountain",
+        60
+      ]
+    ]
+  },
+  "setup_line": "P0: Lithoform Engine + Chandra Nalaar; proof on a P0 main phase after both clear summoning sickness",
+  "contract_line": "Chandra +1 targets P1 (loyalty ability on stack, targets=[{Player:1}]); Lithoform Engine {2},{T} must accept the loyalty ability as its target (StackAbility/You); the copy is created and its may-choose-new-targets prompt answered (P1); both the copy and the original resolve for 1 damage each (P1 20->18), Chandra 6->7 loyalty",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_loyalty_on_stack": "passed",
+    "A3_engine_targets_loyalty": "passed",
+    "A4_copy_damage": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: engine_untapped=True chandra=True p0_main=True turn=11",
+    "A2: loyalty_sid=121 on_stack=True signature_ok=True",
+    "A3: engine_targeted={'auto': True, 'ref': '121'} engine_stack_targets=[{'Object': 121}] rejections=0",
+    "A4: P1 life 20->18 (dmg=2, expected 2 = original 1 + copy 1); chandra loyalty=7 (expected 7)",
+    "retarget: CopyRetarget prompt offered and answered: {'seat': 1, 'at': 1790873244.5751412} (may-choose form: None); copy ids seen on stack: [123]",
+    "A5: stack_empty=True game_over=False",
+    "Re-validation of the 2026-09-11 v0.80.0/protocol-69 run (verdict not-reproduced) on the pinned v0.98.0 (protocol 94); the maintained evidence comment already publishes the v0.80.0 result, so this run adds a v0.98.0 section rather than creating a new comment."
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense playsets (8x) are a test-harness convenience (engine accepts >4-of for custom games).",
+    "Only Chandra Nalaar's +1 (targeted damage) exercised as the loyalty ability; triggered abilities and other planeswalkers not tested.",
+    "The copy's new-target choice was answered P1 (same as original); choosing a different new target was not exercised.",
+    "Not tested on the original 2026-08-02 report build; verdict is scoped to v0.98.0, not a fix claim.",
+    "The prebuilt server has no standalone state import; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "verdict": "not-reproduced",
+  "stats": {
+    "states_seen": 5,
+    "trigger_observations": 0,
+    "wire_events": 189,
+    "rejections": 0
+  }
+}
