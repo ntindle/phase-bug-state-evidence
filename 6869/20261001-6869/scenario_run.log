@@ -1,0 +1,32 @@
+server identity hashes verified against on-disk pinned artifacts
+wrote carddata_excerpt.json (parser gap persists: second Draw is Typed/Opponent scope, target_prompt null)
+===== LEG Medium =====
+[leg Medium] creating game (P1 = AI Medium)...
+[leg Medium] game V9O1X1; P0 seat=0
+[P0] mulligan -> Keep
+[leg Medium] phase 1 timeout: AI never cast by turn 13; arming P0 control cast
+exported pre_control.json
+[P0] CONTROL: casting Secret Rendezvous (oid 47) turn=14
+[leg Medium] OBSERVED cast #1: Secret Rendezvous on stack (oid 47, controller 0, turn 14, rev 202)
+[leg Medium] cast #1 resolved in 0.25s (rev 204)
+[leg Medium] CONTROL resolved in 0.51s (mode=auto)
+exported post_control.json
+[leg Medium] control resolved; tail watch
+[P0] discarding to hand size: ['Plains', 'Plains']
+[leg Medium] OBSERVED cast #2: Secret Rendezvous on stack (oid 98, controller 1, turn 15, rev 222)
+exported pre_ai_cast.json
+[leg Medium] OBSERVED cast #3: Secret Rendezvous on stack (oid 116, controller 1, turn 15, rev 225)
+[leg Medium] cast #2 resolved in 2.46s (rev 225)
+exported post_ai_cast.json
+[leg Medium] cast #3 resolved in 0.84s (rev 227)
+[P0] discarding to hand size: ['Plains', 'Plains', 'Plains', 'Plains', 'Plains', 'Plains']
+[leg Medium] tail watch complete
+AI cast observed in Medium leg; skipping Hard leg
+[Medium] A1_ai_cast: passed
+[Medium] A2_no_freeze: passed
+[Medium] A3_draws: passed
+[Medium] A4_control: passed
+[Medium] A5_cleanup: passed
+VERDICT: not-reproduced
+assertions: {"A1_ai_cast": "passed", "A2_no_freeze": "passed", "A3_draws": "passed", "A4_control": "passed", "A5_cleanup": "passed"}
+wrote run.json
