@@ -1,0 +1,52 @@
+{
+  "name": "Secret Rendezvous",
+  "oracle_text": "You and target opponent each draw three cards.",
+  "abilities": [
+    {
+      "kind": "Spell",
+      "effect": {
+        "type": "Draw",
+        "count": {
+          "type": "Fixed",
+          "value": 3
+        },
+        "target": {
+          "type": "OriginalController"
+        }
+      },
+      "cost": null,
+      "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+          "type": "Draw",
+          "count": {
+            "type": "Fixed",
+            "value": 3
+          },
+          "target": {
+            "type": "Typed",
+            "type_filters": [],
+            "controller": "Opponent",
+            "properties": []
+          }
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+      },
+      "duration": null,
+      "description": "You and target opponent each draw three cards.",
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+    }
+  ]
+}
