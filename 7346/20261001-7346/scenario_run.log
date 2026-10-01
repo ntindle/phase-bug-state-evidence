@@ -1,0 +1,65 @@
+game EJXVGI; P0 seat=0 P1 seat=1
+P0 mulligan -> Mulligan (lands=6)
+P1 mulligan -> Keep (lands=5)
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 life=[20, 20] p0hand=['Mountain', 'Mountain', 'Mountain', 'Pain for All', 'Mountain', 'Mountain', 'Mountain'] p1hand=['Memnite', 'Mountain', 'Memnite', 'Mountain', 'Mountain', 'Mountain', 'Mountain'] p0bf=[] p1bf=[] stage=SETUP
+P0 mulligan -> Keep (lands=4)
+P0 bottoms 1
+waiting_for: Priority player=0 stage=SETUP
+[P0] cast Memnite (oid=21)
+cast in-flight 21 left hand
+[P0] cast Memnite (oid=24)
+cast in-flight 24 left hand
+[P0] land drop Mountain
+[P1] cast Memnite (oid=64)
+cast in-flight 64 left hand
+[P1] cast Memnite (oid=67)
+cast in-flight 67 left hand
+[P1] land drop Mountain
+[P0] cast Memnite (oid=17)
+cast in-flight 17 left hand
+[P0] land drop Mountain
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Mountain
+exported pre.json
+[P0] pre exported (memA 21, memB 24, p1mem 64)
+[P0] cast Pain for All (oid=27)
+[ench1] target prompt seen: 3 candidates
+[ench1] answered target (stype=sequence, cid=EJXVGI.0.87.t0)
+waiting_for: TargetSelection player=0 stage=AURA1
+cast in-flight 27 left hand
+waiting_for: Priority player=0 stage=AURA1
+waiting_for: TriggerTargetSelection player=0 stage=AURA1
+pain1 27 attached to memA 21
+[etb1] target prompt seen: 7 candidates
+[etb1] answered target (stype=sequence, cid=EJXVGI.0.90.t1)
+exported mid1.json
+waiting_for: Priority player=0 stage=TRIGGER1
+waiting_for: DeclareAttackers player=0 stage=TRIGGER1
+waiting_for: Priority player=0 stage=TRIGGER1
+exported post1.json
+post1: P1 life=20 (turn 6)
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=AURA2
+DIAG turn=6 phase=DeclareAttackers wf=DeclareAttackers/p1 stack=0 life=[20, 20] p0hand=['Pain for All'] p1hand=['Mountain', 'Mountain', 'Mountain', 'Mountain', 'Mountain'] p0bf=[('Mountain', True), ('Memnite', False), ('Memnite', False), ('Memnite', False), ('Pain for All', False), ('Mountain', True), ('Mountain', True)] p1bf=[('Memnite', False), ('Mountain', False), ('Memnite', False), ('Mountain', False), ('Mountain', False)] stage=AURA2
+waiting_for: Priority player=1 stage=AURA2
+[P0] cast Pain for All (oid=30)
+[ench2] target prompt seen: 3 candidates
+[ench2] answered target (stype=sequence, cid=EJXVGI.0.125.t1)
+waiting_for: TargetSelection player=0 stage=AURA2
+cast in-flight 30 left hand
+waiting_for: Priority player=0 stage=AURA2
+waiting_for: TriggerTargetSelection player=0 stage=AURA2
+pain2 30 attached to memB 24
+[etb2] target prompt seen: 7 candidates
+[etb2] answered target (stype=sequence, cid=EJXVGI.0.128.t4)
+exported mid2.json
+waiting_for: Priority player=0 stage=TRIGGER2
+waiting_for: DeclareAttackers player=0 stage=TRIGGER2
+waiting_for: Priority player=0 stage=TRIGGER2
+exported post2.json
+post2 exported (turn 8)
