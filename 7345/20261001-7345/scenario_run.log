@@ -1,0 +1,59 @@
+game Z04UI1; P0 seat=0 P1 seat=1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 life=[20, 20] p0hand=['Plains', 'Plains', 'Plains', 'Plains', 'Memnite', 'Plains', 'Plains'] p1hand=['Nyxborn Brute', 'Mountain', 'Mountain', 'Nyxborn Brute', 'Mountain', 'Mountain', 'Mountain'] p0bf=[] p1bf=[] stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P1] land drop Mountain
+[P0] cast Memnite (oid=43)
+cast in-flight 43 left hand
+[P0] land drop Plains
+[P1] land drop Mountain
+[P0] land drop Plains
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Mountain
+[P0] land drop Plains
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Mountain
+[P0] land drop Plains
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+DIAG turn=8 phase=EndCombat wf=Priority/p0 stack=0 life=[20, 20] p0hand=["Pariah's Shield", 'Plains', "Pariah's Shield", 'Plains', 'Plains', 'Plains'] p1hand=['Nyxborn Brute', 'Mountain', 'Nyxborn Brute', 'Mountain', 'Mountain', 'Mountain'] p0bf=[('Plains', False), ('Plains', False), ('Plains', False), ('Plains', False), ('Memnite', False)] p1bf=[('Mountain', False), ('Mountain', False), ('Mountain', False), ('Mountain', False)] stage=SETUP
+[P1] land drop Mountain
+[P1] cast Nyxborn Brute (oid=64)
+cast in-flight 64 left hand
+[P0] land drop Plains
+[P0] cast Pariah's Shield (oid=23)
+cast in-flight 23 left hand
+exported pre.json
+[P0] pre exported (memnite 43, beast 64)
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Mountain
+[P1] attack1 declared with kilnbeast 64 (turn 11)
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] declares no blockers
+waiting_for: DeclareBlockers player=0 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+exported post1.json
+post1: baseline attack resolved, P0 life=13
+[P0] vi (equip_unanswered) wf=Priority stage=EQUIP
+[P0] EQUIP: ActivateAbility (equip) offered - submitting
+[P0] shield object wired for attachment inspection
+[P0] land drop Plains
+exported mid2.json
+mid2: shield equipped to memnite (turn 12)
+waiting_for: DeclareAttackers player=0 stage=ATTACK2
+waiting_for: Priority player=0 stage=ATTACK2
+[P1] land drop Mountain
+[P1] attack2 declared with kilnbeast 64 (turn 13)
+waiting_for: DeclareAttackers player=1 stage=ATTACK2
+waiting_for: Priority player=1 stage=ATTACK2
+[P0] declares no blockers
+waiting_for: DeclareBlockers player=0 stage=ATTACK2
+waiting_for: Priority player=1 stage=ATTACK2
+exported post2.json
+post2: equipped-shield attack resolved, P0 life=13 (turn 14)
