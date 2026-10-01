@@ -1,0 +1,99 @@
+{
+ "oracle_text": "Flash\nFlying\nAt the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black Faerie creature token with flying.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Black"
+  ],
+  "generic": 0
+ },
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "LoseLife",
+     "amount": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Faerie",
+      "power": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "types": [
+       "Creature",
+       "Faerie"
+      ],
+      "colors": [
+       "Blue",
+       "Black"
+      ],
+      "keywords": [
+       "Flying"
+      ],
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "Upkeep",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black Faerie creature token with flying.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
