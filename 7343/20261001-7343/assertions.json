@@ -1,0 +1,21 @@
+{
+ "issue": 7343,
+ "run_id": "20261001-7343",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_offered": "failed",
+  "A3_cost_paid": "not-run",
+  "A4_opponent_sac": "not-run",
+  "A5_draw": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: turn 14 PreCombatMain, P0 holds priority, Fatal Grudge in hand (oid 43), Memnite on P0 BF ['42'], 6 untapped Swamp + 1 untapped Mountain, P1 Memnite on BF ['116'], life 20/20, stack 0",
+  "A2_cast_offered": "4 P0 main-phase observations; every one: flat legal_actions == ['PassPriority'] only (all_pass_only=True); viewer_interaction opportunities carry only the passPriority choice; castspell_advertised events: 0; Grudge CastSpell submissions: 0",
+  "A3_cost_paid": "not-run: cast never offered, additional cost never reached",
+  "A4_opponent_sac": "not-run: cast never offered, opponent choice never reached",
+  "A5_draw": "not-run: cast never offered, resolution never reached",
+  "A6_cleanup": "post: wf=Priority/p0, stack=0, rejections=0; game proceeding"
+ }
+}
