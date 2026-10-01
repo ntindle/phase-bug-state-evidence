@@ -1,0 +1,62 @@
+{
+ "issue": 7346,
+ "title": "Pain for All \u2014 The aura entry did not deal damage to my target (player).",
+ "run_id": "20261001-7346",
+ "validated_at": "2026-10-01T17:32:43.813344-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7346.py",
+  "sha256": "160662695581b63bb192fe233988d024b6cf284dba725ae25b33556eb6f12bde"
+ },
+ "verdict": "reproduced",
+ "scope": "Pain for All ETB trigger ('enchanted creature deals damage equal to its power to any other target'): player-target leg + creature-target control leg; native engine, P0 + P1 human driver seats, protocol-98 driver",
+ "result": "A1 setup passed; A2 aura attached to the 1/1 Memnite. A3 PASSED: the leg-1 ETB prompt advertised P1 (player, seat 1) as an available candidate among 7 (2 players + 5 creatures) - the triage's targeting hypothesis is disproven. A4 FAILED (the reported outcome): the trigger resolved with targets=[{Player: 1}] recorded on the stack entry, stack then empty, but P1 stayed at 20 life - zero damage. A5 control FAILED the same way: P1's Memnite was offered and chosen for leg 2, yet stayed on the battlefield with P1 at 20. Both target classes resolve to no damage, so the defect is in the DealDamage amount resolution - the parsed amount Ref(Power(Anaphoric 'enchanted creature')) - not in target legality. Zero rejections.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_aura1_attached": "passed",
+  "A3_player_target_offered": "passed",
+  "A4_damage_to_player": "failed",
+  "A5_creature_control": "failed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 5 PreCombatMain, P0 holds priority, Memnite 21 + 24 on P0 BF, Memnite 64 on P1 BF, life 20/20, stack 0",
+  "A2_aura1_attached": "mid1: Pain for All 27 on P0 BF, attached_to={data: 21} (enchanted 1/1 Memnite)",
+  "A3_player_target_offered": "etb1 prompt advertised 7 candidates incl. player seat 1 (available): True; driver chose cid EJXVGI.0.90.t1 (Player 1). Targeting is NOT the bug.",
+  "A4_damage_to_player": "post1: P1 life 20 -> 20 (expected 19: 1 damage from the 1-power enchanted Memnite). Trigger resolved with targets=[{'Player': 1}]; stack empty. NO DAMAGE DEALT.",
+  "A5_creature_control": "leg 2: P1's Memnite 64 offered as target: True; chosen; post2: creature zone=Battlefield (expected Graveyard from 1 damage), P1 life 20. Creature path ALSO deals nothing: the failure is in the damage amount/effect, not the target class.",
+  "A6_cleanup": "post2: wf=Priority/p0, stack=0, rejections=0; game proceeding"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense playsets (16x Memnite, 8x Pain for All) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Only 1-power enchanted creatures (Memnite) were tested; the amount expression was not probed with other powers.",
+  "The aura's second ability (damage-received -> damage each opponent) was not exercised.",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7346.py), not direct load.",
+  "Not tested on the report's original build (Discord report, 2026-08-13); verdict scoped to v0.99.0, not a fix claim."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision {\"choice\":{\"type\":\"Keep\"}} gated on pending[] Declare (P0 requires a Memnite in hand); BottomCards/DiscardToHandSize via single SelectCards, both protecting Memnites (bottom/discard lands first).",
+  "Aura cast-time enchant targeting and ETB trigger targeting both arrive as viewer_interaction opportunities (non-menu); submitted via the advertised schema variant (sequence -> {\"type\":\"sequence\",\"data\":{\"choiceIds\":[...]}}).",
+  "Player candidates carry surfaces [{type: summary}, {type: player, data: {role: candidate, seat}}]; creature candidates carry {type: object, data: {reference: <oid>, name, zone, controller, power}}.",
+  "This engine's state reports Title-Case card names; deck lists use Title-Case and match.",
+  "16x Memnite density was needed: an 8x run drew 1 Memnite in 30 turns (deck verified correct via probe); mulligan/bottom/discard now all protect Memnites."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
