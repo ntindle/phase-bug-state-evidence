@@ -1,0 +1,65 @@
+{
+ "issue": 7344,
+ "title": "Goblin Sledder \u2014 Doesn't correctly get +1/+1 until the end of turn when sacrificing Mogg War Marshall",
+ "run_id": "20261001-7344",
+ "validated_at": "2026-10-01T16:31:12.497959-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7344.py",
+  "sha256": "77e20d41feeddbc067731844304629c29d31e2ff1358200721d1ddd033ce96b3"
+ },
+ "verdict": "not-reproduced",
+ "scope": "Goblin Sledder activated ability (Sacrifice a Goblin: target creature gets +1/+1 until end of turn) with Mogg War Marshal as the sacrificed Goblin, plus a plain-token control; native engine, P0 + P1 human driver seats, protocol-98 driver",
+ "result": "A1 setup passed (P0 PreCombatMain holding priority, Sledder + Mogg War Marshal + ETB Goblin token on P0's board, P1 Memnite on board, life 20/20). Leg 1: Sledder activation offered, targeted the Sledder, sacrificed the Marshal (mid1 stack depth 2: dies trigger + pump); the Marshal's dies trigger created a 1/1 red Goblin token and the Sledder went 1/1 -> 2/2 (A4 passed). Leg 2 control: sacrificing a plain Goblin token pumped the Sledder 2/2 -> 3/3 (A6 passed). Zero rejections. The reported 'doesn't correctly get +1/+1 when sacrificing Mogg War Marshal' does NOT reproduce on v0.99.0.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_offered": "passed",
+  "A3_target_and_cost": "passed",
+  "A4_pump_applied": "passed",
+  "A5_token_created": "passed",
+  "A6_control_pump": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 3 PreCombatMain, P0 holds priority, Sledder oid 37 + Marshal oid 35 + ETB Goblin token oid 122 on P0 BF, P1 Memnite oid 72 on BF, life 20/20, stack 0",
+  "A2_activation_offered": "1 activation_advertised (leg 1), 1 ActivateAbility submissions",
+  "A3_target_and_cost": "target_submit leg1 -> Sledder: 1; sacrifice_submit leg1 victim=Marshal: 1; Marshal in P0 graveyard at post1: True; mid1 stack depth was 2 (dies trigger + pump)",
+  "A4_pump_applied": "Sledder P/T pre=(1, 1) -> post1=(2, 2); expected (1,1) -> (2,2)",
+  "A5_token_created": "P0 Goblin tokens pre=['122'] post1=['122', '125']; death-trigger token oid 125",
+  "A6_control_pump": "leg2: target Sledder 1, sacrificed ETB token 122 (ceased to exist, not graveyard) 1; Sledder P/T post1=(2, 2) -> post2=(3, 3); expected (2,2) -> (3,3)",
+  "A7_cleanup": "post2: wf=Priority/p1, stack=0, rejections=0; game proceeding"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense threat playsets (8x) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The 'until end of turn' duration was not verified to wear off at cleanup; only the P/T gain was asserted.",
+  "Echo was not exercised in this run by design: the Marshal was sacrificed the same main phase it was cast, before any upkeep. A separate run confirmed the engine DOES implement Echo via UnlessPayment {1}{R} (observed 2026-10-01), so the reporter's echo theory is testable but the pump works regardless.",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7344.py), not direct load.",
+  "Not tested on the report's original build (Discord report, 2026-08-13); verdict scoped to v0.99.0, not a fix claim."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision {\"choice\":{\"type\":\"Keep\"}} gated on pending[] Declare; BottomCards via single SelectCards; both seats driven (no AI).",
+  "Target vs sacrifice prompt disambiguation: P1 controls a Memnite (not a Goblin); a vi opportunity referencing the Memnite is the Pump's target prompt, one referencing only P0 Goblins is the sacrifice prompt. Holds regardless of prompt order.",
+  "Interaction response types must mirror the spec variant: 'sequence' -> {\"type\":\"sequence\",\"data\":{\"choiceIds\":[...]}}, 'select' -> {\"type\":\"select\",\"data\":{\"choiceIds\":[...]}}; submitting 'choose' for a 'select' spec is rejected invalid_interaction_response (caught on the first 7344 attempt).",
+  "Sacrificed tokens cease to exist instead of hitting the graveyard; sac_done accepts object-gone as paid.",
+  "A rejected interaction submission clears the optimistic prompt flags so the driver re-answers the still-pending prompt.",
+  "Marshal casting is gated on the Sledder already being on the battlefield so leg 1 fires the same main phase, before Echo (UnlessPayment {1}{R}) can trigger at the next upkeep. An UnlessPayment handler (pay when 2+ untapped Mountains, else decline) is kept as a safety net."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
