@@ -1,0 +1,78 @@
+{
+ "run_id": "20261001-7240",
+ "issue": 7240,
+ "started_at": "2026-10-01T15:25:34Z",
+ "server": {
+  "version": "v0.98.0",
+  "build_commit": "61e8550",
+  "protocol_version": 94,
+  "binary_sha256": "15c50bbd3e90b9af49c851d9a56a775f4d74f5874f19e5ea231520816c8170a9",
+  "card_data_sha256": "1a5919f2a50754c7f5e48922390816150a20b703821114adfe08427ff0b11960",
+  "draft_pools_sha256": "bf3316202d84068ac38bcec48c5fc57d38d7834aef5f18c6b410ba9f64afd594",
+  "signature_verified": true,
+  "source": "pinned v0.98.0 binary started fresh on 127.0.0.1:9374 by this run (nothing was listening; prior shared server from the 6865 run had exited); --single-user --no-data-download; games.db isolated to runs/20261001-7240/games.db; digests recomputed from pinned on-disk artifacts at run start; ServerHello confirmed v0.98.0/61e8550/protocol 94/Full"
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_untap_ok": "passed",
+  "A3_extra_combat": "passed",
+  "A4_extra_main": "passed",
+  "A5_cleanup": "passed"
+ },
+ "contract_line": "Cast Overpowering Attack in the controller's postcombat main phase after attacking: creatures that attacked must untap AND an additional combat phase (then an additional main phase) must follow on the same turn.",
+ "parser_corroboration": "v0.98.0 card-data.json parses the spell as SetTapState(Untap, Typed/Creature/You/AttackedThisTurn, All) + SequentialSibling AdditionalPhase{BeginCombat, after: ThisPhase, followed_by: [PostCombatMain], count 1}, gated on And(CurrentPhaseIs[PreCombatMain, PostCombatMain], IsYourTurn). The pinned data shows the ThisPhase anchor (not the EndCombat anchor the issue's classifier attributed to the engine).",
+ "limitations": [
+  "Freerunning alternative cost not exercised (hard-cast only)",
+  "2-player game only; Commander/multiplayer not exercised",
+  "Precombat-main cast branch not exercised (postcombat only, per the report)",
+  "Browser/UI not exercised; native engine only",
+  "Not tested on the original report build; verdict is scoped to v0.98.0, not a fix claim",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)"
+ ],
+ "setup_line": "P0: 12x Goblin Guide + 4x Overpowering Attack + 44x Mountain (human driver). P1: 60x Plains (passive: no lands, passes priority, empty blockers). P0 attacks every combat; OA cast in the first postcombat main with OA in hand, 5+ untapped Mountains, and a Guide that attacked that turn.",
+ "scenario": {
+  "file": "scenario_7240_0980.py",
+  "sha256": "04c27316e9a59aef0571d28ef1b60f9b2cdd13883862dca5973019ae71c8531b"
+ },
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "Goblin Guide",
+     12
+    ],
+    [
+     "Overpowering Attack",
+     8
+    ],
+    [
+     "Mountain",
+     40
+    ]
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "Plains",
+     60
+    ]
+   ]
+  }
+ },
+ "notes": [
+  "A1: pre turn=10 phase=PostCombatMain active=0; OA in P0 hand=1; tapped guides on BF=1; untapped mountains=5",
+  "A2: 1 guide(s) tapped in pre; post: still tapped=[], missing from BF=[]",
+  "A3: oa_turn=10; post-resolution same-turn phases=['PostCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra combat seen=True",
+  "A4: phases after extra combat=['DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra main seen=True",
+  "A5: final turn=11 (oa_turn=10) game_over=False"
+ ],
+ "title": "Overpowering Attack cast in second main untaps creatures but adds no combat",
+ "result": "A1 setup_ok: passed (pre: turn 10 PostCombatMain, OA in P0 hand, 1 tapped Guide that attacked this turn, 5 untapped Mountains); A2 untap_ok: passed (attacked Guide untapped at resolution; only the 5 mana-paid Mountains tapped in post); A3 extra_combat: passed (extra_phases lists anchored Combat then PostCombatMain; same-turn phase trace: PostCombatMain -> BeginCombat -> DeclareAttackers -> DeclareBlockers -> CombatDamage -> EndCombat -> PostCombatMain -> End); A4 extra_main: passed (second PostCombatMain traversed before End); A5 cleanup: passed (final turn 11 Upkeep, game proceeding, OA in graveyard). The pinned v0.98.0 card-data parse anchors the extra combat to ThisPhase (the active main), not EndCombat, so the issue classifier's unreachable-anchor premise does not hold on this release.",
+ "scope": "Overpowering Attack cast in the controller's PostCombatMain (second main) after attacking with creatures; native engine, two human driver seats, protocol-94 driver.",
+ "validated_version": "v0.98.0",
+ "validated_at": "2026-10-01",
+ "finished_at": "2026-10-01T16:17:28Z",
+ "finalization_note": "The 09:41 CDT run (20261001-7240) completed the scenario, all assertions, and the evidence artifacts, then died after writing run.json before upload/publication. The 11:11 CDT run independently re-verified the evidence (manifest hashes, JSON parse, PNG readability, pre/post/final state spot-checks: OA hand->graveyard, attacked Guide untapped, extra_phases anchored Combat+PostCombatMain, phase trace traversed) and completed finalization without re-running the scenario."
+}
