@@ -1,0 +1,72 @@
+game K1TJAM; P0 seat=0 P1 seat=1
+P0 mulligan -> Keep (lands=5)
+P1 mulligan -> Mulligan (lands=5)
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 life=[20, 20] p0hand=['Day of Black Sun', 'Swamp', 'Memnite', 'Swamp', 'Swamp', 'Swamp', 'Swamp'] p1hand=['Memnite', 'Plains', 'Plains', 'Memnite', 'Plains', 'Plains', 'Plains'] bf=0/0 stage=SETUP
+P1 mulligan -> Keep (lands=4)
+P1 bottoms 1
+waiting_for: Priority player=1 stage=SETUP
+[P1] cast Memnite (oid=91)
+cast in-flight 91 left hand
+[P1] land drop Plains
+[P0] cast Memnite (oid=36)
+cast in-flight 36 left hand
+[P0] land drop Swamp
+[P1] land drop Plains
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] cast Memnite (oid=72)
+cast in-flight 72 left hand
+[P1] land drop Plains
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Plains
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+DIAG turn=7 phase=PostCombatMain wf=Priority/p1 stack=0 life=[20, 20] p0hand=['Day of Black Sun', 'Day of Black Sun', 'Swamp', 'Swamp', 'Swamp', 'Swamp'] p1hand=['Serra Angel', 'Serra Angel', 'Serra Angel'] bf=4/6 stage=SETUP
+[P0] land drop Swamp
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] land drop Plains
+[P1] cast Serra Angel (oid=62)
+cast in-flight 62 left hand
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] cast Memnite (oid=116)
+cast in-flight 116 left hand
+[P1] cast Serra Angel (oid=63)
+cast in-flight 63 left hand
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] cast Memnite (oid=1)
+cast in-flight 1 left hand
+[P0] land drop Swamp
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P1] cast Serra Angel (oid=89)
+cast in-flight 89 left hand
+[P1] land drop Plains
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+DIAG turn=14 phase=Draw wf=Priority/p0 stack=0 life=[20, 20] p0hand=['Day of Black Sun', 'Day of Black Sun', 'Day of Black Sun', 'Swamp', 'Swamp', 'Swamp'] p1hand=[] bf=8/12 stage=SETUP
+[P0] land drop Swamp
+exported pre.json
+[P0] pre exported: 2 P0 memnites, 3 P1 memnites, 3 P1 angels (turn 14)
+[P0] cast Day of Black Sun (oid=9)
+[P0] Day of Black Sun cast (oid 9)
+[x] prompt seen: min=None max=None
+[x] answered X=5
+waiting_for: ChooseXValue player=0 stage=CAST
+cast in-flight 9 left hand
+waiting_for: Priority player=0 stage=CAST
+exported post.json
+[P0] post exported: DoBS resolved to GY (turn 14)
