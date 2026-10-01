@@ -1,0 +1,21 @@
+{
+ "issue": 7313,
+ "run_id": "20261001-7313",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_equip_offered": "passed",
+  "A3_life_paid": "passed",
+  "A4_mana_paid": "passed",
+  "A5_attached": "passed",
+  "A6_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: turn 7 PreCombatMain, P0 priority, Precious ['17'] + Memnite ['55'] on BF, 3 untapped Forests, life 20/20, stack 0",
+  "A2_equip_offered": "equip_activation_submit: ActivateAbility source_id=17 ability_index=0 (single offered ability = Equip per card data), 0 rejections",
+  "A3_life_paid": "life 20 -> 18 (exactly -2 for 'Pay 2 life')",
+  "A4_mana_paid": "Forests tapped 0 -> 2 (+2 for the {2}; engine auto-tapped, no manual payment prompt)",
+  "A5_attached": "precious attached_to=Object(55); Memnite keywords=['Hexproof']",
+  "A6_cleanup": "post: wf=Priority/p0, stack=0"
+ }
+}
