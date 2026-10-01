@@ -1,0 +1,61 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_minus3_offered": "passed",
+    "A3_target_resolve": "passed",
+    "A4_kavu_counters": "failed",
+    "A5_bears_counters": "failed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "A1: jared=True kavu=114 colors=['White', 'Blue', 'Black', 'Red', 'Green'] p1bear=73 kavu_keys=['abilities', 'attached_to', 'attachments', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_name', 'base_power', 'base_static_definitions', 'base_toughness', 'card_id', 'card_types', 'color', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'entered_battlefield_turn', 'face_down', 'flipped', 'id', 'incarnation', 'is_token', 'keywords', 'layer_base_power', 'layer_base_toughness', 'loyalty', 'mana_cost', 'name', 'owner', 'power', 'replacement_definitions', 'static_definitions', 'tapped', 'timestamp', 'token_image_ref', 'token_rules_text', 'toughness', 'transformed', 'trigger_definitions', 'zone']",
+    "A2: minus3 offered=True",
+    "A3: answered=True submissions=[{'ref': '114', 'name': 'Kavu'}, {'ref': '73', 'name': 'Grizzly Bears'}] rejections=0 loyalty=3 stack_empty=True",
+    "A4_kavu_counters: counters=0 detail=[] power/toughness=(3, 3) (expected 5; base (3, 3)) counter_fields={'counters': {}}",
+    "A5_bears_counters: counters=0 detail=[] power/toughness=(2, 2) (expected 1; base (2, 2)) counter_fields={'counters': {}}",
+    "A6: stack_empty=True game_over=False",
+    "WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority']",
+    "targets: {'minus3': {'refs': ['114', '73'], 'at': 1790862751.6019702}}"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority"
+  ],
+  "targets": {
+    "minus3": {
+      "refs": [
+        "114",
+        "73"
+      ],
+      "at": 1790862751.6019702
+    }
+  }
+}
