@@ -1,0 +1,58 @@
+{
+ "issue": 7313,
+ "title": "[Card Bug] My Precious: Don't need to pay equip cost of 2 life",
+ "run_id": "20261001-7313",
+ "validated_at": "2026-10-01T15:48:45.758428-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7313.py",
+  "sha256": "411624d508e3ab0ec86e569ba6cc0592d526cdcc14a5d93038bab812f7c492af"
+ },
+ "verdict": "not-reproduced",
+ "scope": "My Precious 'Equip-{2}, Pay 2 life' (ability_index 0); native engine, P0 human driver seat, P1 = native Easy AI; protocol-98 driver",
+ "result": "Activated Equip on My Precious (oid 17) targeting Memnite (oid 55). Engine charged BOTH costs: P0 life 20 -> 18 (the 2-life payment) and 2 Forests tapped (the {2}); payment was fully automatic with no separate prompt. Precious attached to Memnite; Memnite gained Hexproof from the static ability. The reported 0.52.0 behavior (equip requiring only {2}, no life payment) does not occur on v0.99.0.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_equip_offered": "passed",
+  "A3_life_paid": "passed",
+  "A4_mana_paid": "passed",
+  "A5_attached": "passed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 7 PreCombatMain, P0 priority, Precious ['17'] + Memnite ['55'] on BF, 3 untapped Forests, life 20/20, stack 0",
+  "A2_equip_offered": "equip_activation_submit: ActivateAbility source_id=17 ability_index=0 (single offered ability = Equip per card data), 0 rejections",
+  "A3_life_paid": "life 20 -> 18 (exactly -2 for 'Pay 2 life')",
+  "A4_mana_paid": "Forests tapped 0 -> 2 (+2 for the {2}; engine auto-tapped, no manual payment prompt)",
+  "A5_attached": "precious attached_to=Object(55); Memnite keywords=['Hexproof']",
+  "A6_cleanup": "post: wf=Priority/p0, stack=0"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via one human driver seat + native Easy AI.",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7313.py), not direct load.",
+  "Equip targeting was automatic (Memnite was the only legal target); no manual target-selection prompt appeared.",
+  "The CastOffer 'chooseAdventureFace' prompt on casting My Precious reflects a card-data layout mislabel (layout: 'adventure' on a non-Adventure Equipment); the single offered choice was submitted and the card entered as an Equipment. Out of scope for #7313, noted for the record."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision {\"choice\":{\"type\":\"Keep\"}} gated on pending[] Declare; BottomCards via single SelectCards; CastSpell submitted as-is (advertised) or raw with payment_mode Auto; CastOffer answered via viewer_interaction single-choice fallback (choose/choiceId).",
+  "Equip activation found in legal_actions_by_object as minimal ActivateAbility {source_id, ability_index: 0} (no description text); My Precious has exactly one activated ability so ability_index 0 is the Equip.",
+  "Cost payment ({2} + 2 life) was fully automatic on activation: no PayMana actions, no life-payment prompt; verified via tapped-land delta (0->2) and life delta (20->18) between authoritative pre/post exports."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
