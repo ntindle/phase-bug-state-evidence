@@ -1,0 +1,43 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_cast_offered": "passed",
+    "A3_cost_reduced": "passed",
+    "A4_cast_completes": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A3: tapped_delta=4 (expected 4 for affinity-reduced {3}{G}; 6 would mean affinity ignored)",
+    "post: keepers_on_bf=1 stack_empty=True",
+    "WF sequence: ['MulliganDecision', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority', 'DiscardToHandSize', 'Priority', 'DeclareAttackers', 'Priority']",
+    "cast offered=True (source=legal_actions) payment_prompt_costs=None stack=True bf=True rejected=False",
+    "protocol-94 driver (v0.98.0): mulligan as {choice:{type:Keep}} gated on pending Declare; bottom/discard-to-hand-size via single SelectCards(data.cards); DeclareAttackers/Blockers via relations-schema interaction; CastSpell via advertised actions; PayMana* via pay_tick; ManaPayment prompt captured for the affinity cost check; priority-gated passes; stale-client watchdog."
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DiscardToHandSize",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "a2_source": "legal_actions"
+}
