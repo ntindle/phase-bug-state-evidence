@@ -1,0 +1,157 @@
+{
+ "issue": 6866,
+ "run_id": "20261001-6866",
+ "date": "2026-10-01",
+ "started_at": "2026-10-01T13:22:40+0000",
+ "server_identity": {
+  "validated_version": "v0.98.0",
+  "build_commit": "61e8550",
+  "protocol_version": 94,
+  "server_binary_sha256": "15c50bbd3e90b9af49c851d9a56a775f4d74f5874f19e5ea231520816c8170a9",
+  "card_data_sha256": "1a5919f2a50754c7f5e48922390816150a20b703821114adfe08427ff0b11960",
+  "draft_pools_sha256": "bf3316202d84068ac38bcec48c5fc57d38d7834aef5f18c6b410ba9f64afd594",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 94,
+  "client": "driver/client.py"
+ },
+ "scenario": "scenario_6866_0980.py",
+ "scenario_sha256": "db2261ef501211199110abcb476aab7da0c5dea51098dfebf7d66507231f0846",
+ "decks": {
+  "P0": [
+   [
+    "Delina, Wild Mage",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    30
+   ],
+   [
+    "Llanowar Elves",
+    30
+   ]
+  ]
+ },
+ "observed": {
+  "attack_turns": [
+   7,
+   9,
+   11
+  ],
+  "target_answers": [
+   [
+    9,
+    "Grizzly Bears"
+   ],
+   [
+    11,
+    "Grizzly Bears"
+   ]
+  ],
+  "token_deltas": {
+   "9": 0,
+   "11": 1
+  },
+  "low_turn": 11,
+  "high_turn": 9,
+  "reroll_prompts": [],
+  "reroll_answers": [
+   [
+    9,
+    "",
+    "true"
+   ]
+  ],
+  "exile_check": {
+   "11": false
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fires": "passed",
+  "A3_low_branch_token": "passed",
+  "A4_high_branch_observed": "passed",
+  "A5_reroll_offered": "failed",
+  "A6_reroll_works": "not-run",
+  "A7_exile_ok": "failed"
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Die-roll value not exposed to the client; 15-20 identified by effect signature (trigger fired, 0 tokens).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6866_0980.py)."
+ ],
+ "notes": [
+  "attack turns: [7, 9, 11]",
+  "target answers: [(9, 'Grizzly Bears'), (11, 'Grizzly Bears')]",
+  "token deltas: {9: 0, 11: 1}",
+  "low_turn=11 high_turn=9",
+  "reroll prompts: []",
+  "reroll answers: [(9, '', 'true')]",
+  "other may-prompts: [(9, 'QY0U54.0.156')]",
+  "tokens_at_reroll: {}",
+  "exile_check={11: False}",
+  "WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'OptionalEffectChoice', 'Priority', 'DeclareBlockers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'DeclareBlockers', 'Priority']",
+  "P0 casts: [(5, 'Grizzly Bears'), (7, 'Delina, Wild Mage')]",
+  "stage at end: DONE",
+  "A1: phase=PreCombatMain active=0 delina_bf=True bear_bf=True life=[(0, 20), (1, 20)]",
+  "A2: target answers=[[9, 'Grizzly Bears'], [11, 'Grizzly Bears']]",
+  "A3: low_turn=11 new_oids=['123'] token={'oid': '123', 'name': 'Grizzly Bears', 'tapped': True, 'attacking': True, 'is_token': True, 'supertypes': [], 'zone': 'Battlefield'} checks=[True, True, True, True, True, True]",
+  "A4: high_turn=9 trigger_seen=True stack_kinds=['TriggeredAbility'] tokens_at_reroll={} final_deltas={9: 0, 11: 1}",
+  "A5: reroll prompts on high turn 9: [] (all prompts: []; other may-prompts: [[9, 'QY0U54.0.156']])",
+  "A6: reroll answers on high turn: [[9, '', 'true']]; final token delta=0; prompts on turn=0",
+  "A7: exile_check={'11': False} (token gone by PostCombatMain on low turns)"
+ ],
+ "wf_sequence": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "TriggerTargetSelection",
+  "Priority",
+  "OptionalEffectChoice",
+  "Priority",
+  "DeclareBlockers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "TriggerTargetSelection",
+  "Priority",
+  "DeclareBlockers",
+  "Priority"
+ ],
+ "casts": [
+  [
+   5,
+   "Grizzly Bears"
+  ],
+  [
+   7,
+   "Delina, Wild Mage"
+  ]
+ ],
+ "contract": "Delina attacks -> target Bear -> roll d20: 1-14 must create a tapped+attacking non-legendary Bear token with end-of-combat exile; 15-20 must create the token and offer 'you may roll again'."
+}
