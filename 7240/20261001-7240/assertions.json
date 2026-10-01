@@ -1,0 +1,17 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_untap_ok": "passed",
+    "A3_extra_combat": "passed",
+    "A4_extra_main": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: pre turn=10 phase=PostCombatMain active=0; OA in P0 hand=1; tapped guides on BF=1; untapped mountains=5",
+    "A2: 1 guide(s) tapped in pre; post: still tapped=[], missing from BF=[]",
+    "A3: oa_turn=10; post-resolution same-turn phases=['PostCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra combat seen=True",
+    "A4: phases after extra combat=['DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra main seen=True",
+    "A5: final turn=11 (oa_turn=10) game_over=False"
+  ],
+  "verdict": "not-reproduced"
+}
