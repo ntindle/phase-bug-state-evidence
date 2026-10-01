@@ -1,0 +1,39 @@
+{
+  "assertions": {
+    "A1_ai_cast": "passed",
+    "A2_no_freeze": "passed",
+    "A3_draws": "passed",
+    "A4_control": "passed",
+    "A5_cleanup": "passed"
+  },
+  "per_leg": [
+    {
+      "leg": "Medium",
+      "assertions": {
+        "A1_ai_cast": "passed",
+        "A2_no_freeze": "passed",
+        "A3_draws": "passed",
+        "A4_control": "passed",
+        "A5_cleanup": "passed"
+      },
+      "notes": [
+        "AI casts (Medium): #1 turn 15 resolved=True (2.46s) target_wait=None, #2 turn 15 resolved=True (0.84s) target_wait=None",
+        "all AI casts resolved within 2.46s (window 150s); ai target waits seen: 0",
+        "first AI cast (Medium): pre turn 15 -> post turn 15; P0 hand 10->13, P1 hand 10->13; drew P0=3 P1=3",
+        "P0 control (Medium): target mode=auto (prompt_seen=None); P0 drew 3, P1 drew 3",
+        "A5 (Medium): stack_empty=True game_over=False"
+      ]
+    }
+  ],
+  "notes": [
+    "AI casts across legs: 2",
+    "A4 (Medium): passed",
+    "[Medium] AI casts (Medium): #1 turn 15 resolved=True (2.46s) target_wait=None, #2 turn 15 resolved=True (0.84s) target_wait=None",
+    "[Medium] all AI casts resolved within 2.46s (window 150s); ai target waits seen: 0",
+    "[Medium] first AI cast (Medium): pre turn 15 -> post turn 15; P0 hand 10->13, P1 hand 10->13; drew P0=3 P1=3",
+    "[Medium] P0 control (Medium): target mode=auto (prompt_seen=None); P0 drew 3, P1 drew 3",
+    "[Medium] A5 (Medium): stack_empty=True game_over=False",
+    "[Medium] no AI cast by turn 12; proceeding to P0 control cast"
+  ],
+  "verdict": "not-reproduced"
+}
