@@ -1,0 +1,44 @@
+game 5DD3YD; P0 seat=0 P1 seat=1
+P0 mulligan -> Mulligan
+P1 mulligan -> Keep
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 p0hand=7 p0bf=[] p1bf=[] stage=SETUP leg=0 tgt={} sac={}
+P0 mulligan -> Keep
+P0 bottoms 1
+waiting_for: Priority player=0 stage=SETUP
+[P0] land drop Mountain
+[P0] cast Goblin Sledder (oid=37)
+cast in-flight 37 left hand
+[P1] cast Memnite (oid=72)
+cast in-flight 72 left hand
+[P1] land drop Mountain
+[P0] land drop Mountain
+[P0] cast Mogg War Marshal (oid=35)
+cast in-flight 35 left hand
+[P0] ETB Goblin token detected: 122
+exported pre.json
+[P0] pre exported; Sledder P/T=(1, 1)
+[P0] leg1: Sledder ActivateAbility offered - submitting
+[P0] leg1: target prompt answered -> Sledder 37 (stype=sequence)
+waiting_for: TargetSelection player=0 stage=ACT1
+[P0] leg1: sacrificed 35 (stype=select)
+waiting_for: PayCost player=0 stage=ACT1
+[P0] vi (unanswered) wf=Priority stage=ACT1
+waiting_for: Priority player=0 stage=ACT1
+exported mid1.json
+mid1: Marshal sacrificed, stack=2
+[P0] death-trigger Goblin token detected: 125
+exported post1.json
+post1: leg1 resolved, Sledder P/T=(2, 2)
+waiting_for: DeclareAttackers player=0 stage=BETWEEN
+waiting_for: Priority player=0 stage=BETWEEN
+[P0] leg2 (control): Sledder ActivateAbility offered - submitting
+[P0] leg2: target prompt answered -> Sledder 37 (stype=sequence)
+waiting_for: TargetSelection player=0 stage=ACT2
+[P0] leg2: sacrificed 122 (stype=select)
+waiting_for: PayCost player=0 stage=ACT2
+waiting_for: Priority player=0 stage=ACT2
+exported mid2.json
+mid2: ETB token sacrificed, stack=1
+exported post2.json
+post2: leg2 resolved, Sledder P/T=(3, 3)
