@@ -1,0 +1,100 @@
+{
+ "interactionId": "NREY2F.0.28",
+ "response": {
+  "type": "schema",
+  "data": {
+   "spec": {
+    "type": "relations",
+    "data": {
+     "edges": [
+      {
+       "sourceId": "NREY2F.0.28.r0",
+       "targetIds": [
+        "NREY2F.0.28.d0"
+       ]
+      }
+     ],
+     "min": 0,
+     "max": 1,
+     "sourceConstraint": "atMostOne",
+     "allowGroups": true,
+     "confirm": "explicit"
+    }
+   },
+   "candidates": [
+    {
+     "id": "NREY2F.0.28.r0",
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "candidate"
+       }
+      },
+      {
+       "type": "object",
+       "data": {
+        "role": "attacker",
+        "index": null,
+        "reference": "5",
+        "name": "Goblin Guide",
+        "zone": "battlefield",
+        "controller": 0,
+        "power": 2,
+        "tapped": false
+       }
+      }
+     ],
+     "status": {
+      "type": "available"
+     }
+    },
+    {
+     "id": "NREY2F.0.28.d0",
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "candidate"
+       }
+      },
+      {
+       "type": "player",
+       "data": {
+        "role": "attackTarget",
+        "index": null,
+        "seat": 1
+       }
+      }
+     ],
+     "status": {
+      "type": "available"
+     }
+    }
+   ]
+  }
+ },
+ "surfaces": [
+  {
+   "type": "selection",
+   "data": {
+    "intent": "attack",
+    "constraint": {
+     "type": "engineValidatedCount",
+     "data": {
+      "min": 0,
+      "max": 1
+     }
+    },
+    "confirm": "explicit"
+   }
+  }
+ ],
+ "progress": {
+  "selected": 0,
+  "minimum": 0,
+  "maximum": 1,
+  "aggregate": null,
+  "confirmable": false
+ }
+}
