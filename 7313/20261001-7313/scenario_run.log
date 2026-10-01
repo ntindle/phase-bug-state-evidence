@@ -1,0 +1,25 @@
+game L1CFOX; P0 seat=0; P1 = native AI Easy
+P0 mulligan -> Mulligan
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 hand=7 bf_mem=0 bf_prec=0 untap_forest=0 inflight=None stage=SETUP life=20
+P0 mulligan -> Mulligan
+P0 mulligan -> Keep
+P0 bottoms 2
+waiting_for: Priority player=0 stage=SETUP
+[P0] cast Memnite via advertised CastSpell (oid=55)
+cast in-flight 55 left hand
+[P0] cast My Precious via advertised CastSpell (oid=17)
+CastOffer vi keys: ['waitingForKind', 'authorizedSubmitters', 'canSubmit', 'autoPassRecommended', 'opportunities', 'attachmentFans', 'attachmentViews', 'availability']
+[P0] answered CastOffer (single choice) for oid=17
+waiting_for: CastOffer player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+exported pre.json
+pre: life=20 precious=17 memnite=55
+precious lafo payloads: 1
+equip offers found: 1
+[P0] activated Equip (precious oid=17) type=ActivateAbility
+EQUIP attached detected (precious 17 -> memnite 55)
+exported post.json
+post: life=18 attached=True
