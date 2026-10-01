@@ -1,0 +1,72 @@
+server identity hashes verified against on-disk pinned artifacts
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game QY0U54; seats 0/1
+[P0] mulligan -> Keep (prior mulligans: 0)
+[P1] mulligan -> Keep (prior mulligans: 0)
+[P1] casts Elf
+[P1] casts Elf
+[P1] casts Elf
+[P1] casts Elf
+[P0] casts Bear
+[P1] declares empty attackers
+[P0] casts Delina
+Delina on BF at turn 7
+exported pre.json
+=== stage -> ATTACK (bear_bf=True) ===
+exported pre_attack_7.json
+--- attack turn 7 (#1) ---
+[P0] declares attackers: 0 relations (turn 7)
+[P1] declares empty attackers
+exported pre_attack_9.json
+--- attack turn 9 (#2) ---
+[P0] declares attackers: 1 relations (turn 9)
+[P0] Delina trigger targets Grizzly Bears (turn 9)
+[P0] OptionalEffectChoice (turn 9, is_reroll=False): [('QY0U54.0.156.c0', 'accept', 'false', ''), ('QY0U54.0.156.c1', 'accept', 'true', '')]
+[P0] OptionalEffectChoice ACCEPTED (turn 9, is_reroll=False, choice QY0U54.0.156.c1)
+turn 9: token delta = 0 (new oids [])
+turn 9: classified HIGH (initial_delta=0, prompt=no)
+exported mid_high.json
+=== mid_high exported (turn 9, wf=OptionalEffectChoice, phase=DeclareAttackers) ===
+[P1] declares blockers: 1 relations for 1 attackers
+exported post_high.json
+[P1] casts Elf
+[P1] declares empty attackers
+exported pre_attack_11.json
+--- attack turn 11 (#3) ---
+[P0] declares attackers: 1 relations (turn 11)
+[P0] Delina trigger targets Grizzly Bears (turn 11)
+turn 11: token delta = 1 (new oids ['123'])
+turn 11: classified LOW (initial_delta=1)
+[P1] declares blockers: 2 relations for 2 attackers
+exported mid_low.json
+=== mid_low exported (turn 11, phase=DeclareBlockers) ===
+exported post_low.json
+turn 11: low-turn token exiled by PostCombatMain: False
+=== both branches observed; DONE ===
+exported post.json
+copied pre_low.json (turn 11)
+copied pre_high.json (turn 9)
+NOTE: attack turns: [7, 9, 11]
+NOTE: target answers: [(9, 'Grizzly Bears'), (11, 'Grizzly Bears')]
+NOTE: token deltas: {9: 0, 11: 1}
+NOTE: low_turn=11 high_turn=9
+NOTE: reroll prompts: []
+NOTE: reroll answers: [(9, '', 'true')]
+NOTE: other may-prompts: [(9, 'QY0U54.0.156')]
+NOTE: tokens_at_reroll: {}
+NOTE: exile_check={11: False}
+NOTE: WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'OptionalEffectChoice', 'Priority', 'DeclareBlockers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'TriggerTargetSelection', 'Priority', 'DeclareBlockers', 'Priority']
+NOTE: P0 casts: [(5, 'Grizzly Bears'), (7, 'Delina, Wild Mage')]
+NOTE: stage at end: DONE
+assertions: {"A1_setup_ok": "passed", "A2_trigger_fires": "passed", "A3_low_branch_token": "passed", "A4_high_branch_observed": "passed", "A5_reroll_offered": "failed", "A6_reroll_works": "not-run", "A7_exile_ok": "failed"}
+ANOTE: A1: phase=PreCombatMain active=0 delina_bf=True bear_bf=True life=[(0, 20), (1, 20)]
+ANOTE: A2: target answers=[[9, 'Grizzly Bears'], [11, 'Grizzly Bears']]
+ANOTE: A3: low_turn=11 new_oids=['123'] token={'oid': '123', 'name': 'Grizzly Bears', 'tapped': True, 'attacking': True, 'is_token': True, 'supertypes': [], 'zone': 'Battlefield'} checks=[True, True, True, True, True, True]
+ANOTE: A4: high_turn=9 trigger_seen=True stack_kinds=['TriggeredAbility'] tokens_at_reroll={} final_deltas={9: 0, 11: 1}
+ANOTE: A5: reroll prompts on high turn 9: [] (all prompts: []; other may-prompts: [[9, 'QY0U54.0.156']])
+ANOTE: A6: reroll answers on high turn: [[9, '', 'true']]; final token delta=0; prompts on turn=0
+ANOTE: A7: exile_check={'11': False} (token gone by PostCombatMain on low turns)
+VERDICT: reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/6866/20261001-6866/summary.png
