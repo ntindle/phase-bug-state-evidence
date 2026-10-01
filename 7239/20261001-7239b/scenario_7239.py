@@ -941,9 +941,14 @@ async def main():
             except Exception:
                 post = None
             # A3: scope — only suspected/goaded creatures should be gained
-            pre_bears_susp = ST["suspected_seen"]
+            post_bears_susp = None
+            if post is not None:
+                for oid, o in post["objects"].items():
+                    if (o.get("base_name") or "") == BEARS and o.get("zone") == "Battlefield":
+                        post_bears_susp = is_suspected(o)
+                        break
             non_bears_gained = [c for c in fired["changed"] if c["name"] != BEARS]
-            if not non_bears_gained and pre_bears_susp:
+            if not non_bears_gained and post_bears_susp:
                 A["A3_scope_correct"] = "passed"
             elif not non_bears_gained:
                 A["A3_scope_correct"] = "passed"
@@ -951,7 +956,7 @@ async def main():
             else:
                 A["A3_scope_correct"] = "failed"
             obs["notes"].append(f"A3: gained permanents={changed_names} "
-                                f"(bears_suspected_at_cast={pre_bears_susp})")
+                                f"(bears is_suspected in post={post_bears_susp})")
             # A4: untap — tapped gained creatures should untap
             if post is not None:
                 tapped_gained = [c for c in fired["changed"] if c["tapped"]]
@@ -976,8 +981,13 @@ async def main():
                     if "Creature" in core and not has_haste(o):
                         no_haste.append(oname(o) or c["oid"])
                 A["A5_haste_granted"] = "failed" if no_haste else "passed"
+                bkw = None
+                for oid, o in post["objects"].items():
+                    if (o.get("base_name") or "") == BEARS and o.get("zone") == "Battlefield":
+                        bkw = o.get("keywords")
+                        break
                 obs["notes"].append(f"A5: gained creatures missing Haste keyword in post={no_haste}; "
-                                    f"bears keywords={post['objects'].get('81', {}).get('keywords') if '81' in post['objects'] else None}")
+                                    f"bears keywords={bkw}")
             else:
                 A["A4_untap_correct"] = "not-run"
                 A["A5_haste_granted"] = "not-run"
