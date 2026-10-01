@@ -1,0 +1,47 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_mask_attached": "passed",
+    "A3_armor_replaces": "passed",
+    "A4_control_dies": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "mask: name=True totem_armor=True attached=True",
+    "A3 eval error: 'NoneType' object is not subscriptable",
+    "A4: bears in P0 graveyard: 1",
+    "WF sequence: ['MulliganDecision', 'Priority', 'TargetSelection', 'Priority', 'DeclareAttackers', 'Priority']",
+    "FIXUP 20261001: engine issued no TargetSelection for Murder (single legal creature on BF); driver auto-target fallback used masked bears oid 59 from MASKW. A3 re-evaluated from immutable post_murder.json: bear_zone=Battlefield mask=ABSENT",
+    "FIXUP: only creatures on BF at mid_mask: ['59']"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "targets": {
+    "murder": null,
+    "control": null,
+    "estrid_minus1": {
+      "ref": "59",
+      "at": 1790851521.7937255
+    }
+  },
+  "mask": {
+    "oid": "138",
+    "bear_oid": "59",
+    "seen": true
+  },
+  "auto_target": {
+    "murder": {
+      "ref": "59",
+      "auto": true,
+      "only_creature_on_bf": [
+        "59"
+      ]
+    }
+  }
+}
