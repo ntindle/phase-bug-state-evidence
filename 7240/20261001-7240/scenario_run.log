@@ -1,0 +1,82 @@
+server identity hashes verified against on-disk pinned artifacts
+wrote carddata_excerpt.json
+game NREY2F; P0 seat=0
+P1 joined; seat=1
+[P0] mulligan -> Keep
+[P1] mulligan -> Keep
+--- turn 1 (active 1) ---
+--- turn 2 (active 0) ---
+[P0] played Mountain (turn 2)
+[P0] casting Goblin Guide (turn 2)
+[P0] dumped DeclareAttackers opportunity (turn 2)
+[P0] DeclareAttackers: ready guides=[], pairs=[]
+[P0] attacking (attempt 0): []
+[P0] OA diag turn 2: oa_in_hand=True tapped_guides=[] untapped_mtns=0 cast_advertised=False
+--- turn 3 (active 1) ---
+[P1] discarding to hand size: ['Plains']
+--- turn 4 (active 0) ---
+[P0] played Mountain (turn 4)
+[P0] casting Goblin Guide (turn 4)
+[P0] casting Goblin Guide (turn 4)
+[P0] DeclareAttackers: ready guides=['5'], pairs=[('NREY2F.0.65.r0', 'NREY2F.0.65.d0')]
+[P0] attacking (attempt 0): [{"sourceId": "NREY2F.0.65.r0", "targetId": "NREY2F.0.65.d0"}]
+[P0] OA diag turn 4: oa_in_hand=True tapped_guides=['5'] untapped_mtns=0 cast_advertised=False
+--- turn 5 (active 1) ---
+[P1] discarding to hand size: ['Plains', 'Plains']
+--- turn 6 (active 0) ---
+[P0] played Mountain (turn 6)
+[P0] casting Goblin Guide (turn 6)
+[P0] DeclareAttackers: ready guides=['5'], pairs=[('NREY2F.0.107.r0', 'NREY2F.0.107.d0')]
+[P0] attacking (attempt 0): [{"sourceId": "NREY2F.0.107.r0", "targetId": "NREY2F.0.107.d0"}]
+[P0] OA diag turn 6: oa_in_hand=True tapped_guides=['5'] untapped_mtns=2 cast_advertised=False
+--- turn 7 (active 1) ---
+[P1] discarding to hand size: ['Plains', 'Plains']
+--- turn 8 (active 0) ---
+[P0] played Mountain (turn 8)
+[P0] DeclareAttackers: ready guides=['5'], pairs=[('NREY2F.0.146.r0', 'NREY2F.0.146.d0')]
+[P0] attacking (attempt 0): [{"sourceId": "NREY2F.0.146.r0", "targetId": "NREY2F.0.146.d0"}]
+[P0] OA diag turn 8: oa_in_hand=True tapped_guides=['5'] untapped_mtns=4 cast_advertised=False
+--- turn 9 (active 1) ---
+[P1] discarding to hand size: ['Plains', 'Plains']
+--- turn 10 (active 0) ---
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] played Mountain (turn 10)
+[P0] DeclareAttackers: ready guides=['5'], pairs=[('NREY2F.0.185.r0', 'NREY2F.0.185.d0')]
+[P0] attacking (attempt 0): [{"sourceId": "NREY2F.0.185.r0", "targetId": "NREY2F.0.185.d0"}]
+[P0] OA diag turn 10: oa_in_hand=True tapped_guides=['5'] untapped_mtns=5 cast_advertised=True
+exported pre.json
+[P0] PRE exported (turn 10, postcombat main)
+[P0] CASTING Overpowering Attack (oid 3, turn 10)
+[P0] OA on stack at rev 197
+[P0] OA RESOLVED at rev 199, turn 10 phase PostCombatMain
+exported post.json
+[trace] turn=10 phase=PostCombatMain
+[trace] turn=10 phase=BeginCombat
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] DeclareAttackers: ready guides=['5'], pairs=[('NREY2F.0.203.r0', 'NREY2F.0.203.d0')]
+[P0] attacking (attempt 0): [{"sourceId": "NREY2F.0.203.r0", "targetId": "NREY2F.0.203.d0"}]
+[trace] turn=10 phase=DeclareAttackers
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[trace] turn=10 phase=DeclareBlockers
+[trace] turn=10 phase=CombatDamage
+[trace] turn=10 phase=EndCombat
+[trace] turn=10 phase=PostCombatMain
+[trace] turn=10 phase=End
+--- turn 11 (active 1) ---
+[trace] turn=11 phase=Upkeep
+[trace] turn incremented to 11; observation done
+exported final.json
+wrote phase_trace.json, observations.json
+A1_setup_ok: passed
+A2_untap_ok: passed
+A3_extra_combat: passed
+A4_extra_main: passed
+A5_cleanup: passed
+note: A1: pre turn=10 phase=PostCombatMain active=0; OA in P0 hand=1; tapped guides on BF=1; untapped mountains=5
+note: A2: 1 guide(s) tapped in pre; post: still tapped=[], missing from BF=[]
+note: A3: oa_turn=10; post-resolution same-turn phases=['PostCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra combat seen=True
+note: A4: phases after extra combat=['DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain', 'End']; extra main seen=True
+note: A5: final turn=11 (oa_turn=10) game_over=False
+VERDICT: not-reproduced
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7240/20261001-7240/summary.png
+wrote run.json
