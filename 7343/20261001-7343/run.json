@@ -1,0 +1,59 @@
+{
+ "issue": 7343,
+ "title": "Fatal Grudge \u2014 Fatal Grudge was not castable from hand even with basic lands of its colors readily available.",
+ "run_id": "20261001-7343",
+ "validated_at": "2026-10-01T15:58:39.882823-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7343.py",
+  "sha256": "388aebf1c943b6ee28d0f18b188114490c604e3e67b755e57cf91a7fb4506034"
+ },
+ "verdict": "reproduced",
+ "scope": "Fatal Grudge {B}{R} cast gate with Required Sacrifice additional cost; native engine, P0 + P1 human driver seats, protocol-98 driver",
+ "result": "A1 setup passed (P0 PreCombatMain holding priority, Fatal Grudge in hand, untapped Memnite + untapped Swamp + untapped Mountain on P0's board, Memnite on P1's board, life 20/20). Across 4 separate P0 main-phase observations the engine's cast gate advertised ONLY PassPriority - no CastSpell for Fatal Grudge in flat legal_actions or in viewer_interaction (0 castspell_advertised events, 0 CastSpell submissions, 0 rejections). The additional-cost sacrifice was never reached because the cast itself was never offered. The reported 'not castable from hand' reproduces on v0.99.0.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_offered": "failed",
+  "A3_cost_paid": "not-run",
+  "A4_opponent_sac": "not-run",
+  "A5_draw": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 14 PreCombatMain, P0 holds priority, Fatal Grudge in hand (oid 43), Memnite on P0 BF ['42'], 6 untapped Swamp + 1 untapped Mountain, P1 Memnite on BF ['116'], life 20/20, stack 0",
+  "A2_cast_offered": "4 P0 main-phase observations; every one: flat legal_actions == ['PassPriority'] only (all_pass_only=True); viewer_interaction opportunities carry only the passPriority choice; castspell_advertised events: 0; Grudge CastSpell submissions: 0",
+  "A3_cost_paid": "not-run: cast never offered, additional cost never reached",
+  "A4_opponent_sac": "not-run: cast never offered, opponent choice never reached",
+  "A5_draw": "not-run: cast never offered, resolution never reached",
+  "A6_cleanup": "post: wf=Priority/p0, stack=0, rejections=0; game proceeding"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The failure is at the cast gate; the additional-cost sacrifice, opponent choice, and draw were never reached (A3/A4/A5 not-run).",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7343.py), not direct load.",
+  "Not tested on the report's original build (Discord report, 2026-08-13); verdict scoped to v0.99.0, not a fix claim."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision {\"choice\":{\"type\":\"Keep\"}} gated on pending[] Declare; BottomCards via single SelectCards; both seats driven (no AI) for a deterministic opponent board.",
+  "P0 lands: Swamp first then Mountain; P1: Mountains + Memnite. No attacks declared (empty DeclareAttackers) so the board is static.",
+  "The no-offer observation repeated across 4 P0 main phases (turns 14-17) with identical conditions; the driver then exported post.json and stopped rather than retry indefinitely."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
