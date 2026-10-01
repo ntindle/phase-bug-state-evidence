@@ -1,0 +1,373 @@
+{
+  "notes": [
+    "A1: jared=True kavu=114 colors=['White', 'Blue', 'Black', 'Red', 'Green'] p1bear=73 kavu_keys=['abilities', 'attached_to', 'attachments', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_name', 'base_power', 'base_static_definitions', 'base_toughness', 'card_id', 'card_types', 'color', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_source', 'entered_battlefield_turn', 'face_down', 'flipped', 'id', 'incarnation', 'is_token', 'keywords', 'layer_base_power', 'layer_base_toughness', 'loyalty', 'mana_cost', 'name', 'owner', 'power', 'replacement_definitions', 'static_definitions', 'tapped', 'timestamp', 'token_image_ref', 'token_rules_text', 'toughness', 'transformed', 'trigger_definitions', 'zone']",
+    "A2: minus3 offered=True",
+    "A3: answered=True submissions=[{'ref': '114', 'name': 'Kavu'}, {'ref': '73', 'name': 'Grizzly Bears'}] rejections=0 loyalty=3 stack_empty=True",
+    "A4_kavu_counters: counters=0 detail=[] power/toughness=(3, 3) (expected 5; base (3, 3)) counter_fields={'counters': {}}",
+    "A5_bears_counters: counters=0 detail=[] power/toughness=(2, 2) (expected 1; base (2, 2)) counter_fields={'counters': {}}",
+    "A6: stack_empty=True game_over=False",
+    "WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority']",
+    "targets: {'minus3': {'refs': ['114', '73'], 'at': 1790862751.6019702}}"
+  ],
+  "observations": {
+    "minus3_offered": true,
+    "minus3_answered": [
+      "114",
+      "73"
+    ],
+    "target_submissions": [
+      {
+        "ref": "114",
+        "name": "Kavu"
+      },
+      {
+        "ref": "73",
+        "name": "Grizzly Bears"
+      }
+    ],
+    "kavu_post": {
+      "id": 114,
+      "card_id": 0,
+      "owner": 0,
+      "base_controller": 0,
+      "controller": 0,
+      "zone": "Battlefield",
+      "display_visible_to_viewer": true,
+      "tapped": false,
+      "face_down": false,
+      "flipped": false,
+      "transformed": false,
+      "damage_marked": 0,
+      "dealt_deathtouch_damage": false,
+      "attached_to": null,
+      "attachments": [],
+      "counters": {},
+      "name": "Kavu",
+      "power": 3,
+      "toughness": 3,
+      "layer_base_power": 3,
+      "layer_base_toughness": 3,
+      "loyalty": null,
+      "token_rules_text": "This creature is all colors.\nTrample",
+      "card_types": {
+        "supertypes": [],
+        "core_types": [
+          "Creature"
+        ],
+        "subtypes": [
+          "Kavu"
+        ]
+      },
+      "mana_cost": {
+        "type": "Cost",
+        "shards": [],
+        "generic": 0
+      },
+      "keywords": [
+        "Trample"
+      ],
+      "abilities": [],
+      "trigger_definitions": [],
+      "replacement_definitions": [],
+      "static_definitions": [
+        {
+          "mode": "Continuous",
+          "affected": {
+            "type": "SelfRef"
+          },
+          "modifications": [
+            {
+              "type": "SetColor",
+              "colors": [
+                "White",
+                "Blue",
+                "Black",
+                "Red",
+                "Green"
+              ]
+            }
+          ],
+          "condition": null,
+          "affected_zone": null,
+          "effect_zone": null,
+          "active_zones": [
+            "Library",
+            "Hand",
+            "Battlefield",
+            "Graveyard",
+            "Stack",
+            "Exile",
+            "Command"
+          ],
+          "characteristic_defining": true,
+          "description": "~ is all colors."
+        }
+      ],
+      "color": [
+        "White",
+        "Blue",
+        "Black",
+        "Red",
+        "Green"
+      ],
+      "token_image_ref": {
+        "scryfall_id": "e50f89a6-26bd-4144-8c4a-ee9f293bd9c4",
+        "scryfall_oracle_id": "9fef9902-0fbb-4015-922e-ad1ddc771da1",
+        "preset_id": "a8ca4660-7215-509e-97c8-fc5695465520"
+      },
+      "base_power": 3,
+      "base_toughness": 3,
+      "base_name": "Kavu",
+      "base_card_types": {
+        "supertypes": [],
+        "core_types": [
+          "Creature"
+        ],
+        "subtypes": [
+          "Kavu"
+        ]
+      },
+      "base_keywords": [
+        "Trample"
+      ],
+      "base_static_definitions": [
+        {
+          "mode": "Continuous",
+          "affected": {
+            "type": "SelfRef"
+          },
+          "modifications": [
+            {
+              "type": "SetColor",
+              "colors": [
+                "White",
+                "Blue",
+                "Black",
+                "Red",
+                "Green"
+              ]
+            }
+          ],
+          "condition": null,
+          "affected_zone": null,
+          "effect_zone": null,
+          "active_zones": [
+            "Library",
+            "Hand",
+            "Battlefield",
+            "Graveyard",
+            "Stack",
+            "Exile",
+            "Command"
+          ],
+          "characteristic_defining": true,
+          "description": "~ is all colors."
+        }
+      ],
+      "base_color": [
+        "White",
+        "Blue",
+        "Black",
+        "Red",
+        "Green"
+      ],
+      "base_characteristics_initialized": true,
+      "timestamp": 32,
+      "incarnation": 1,
+      "entered_battlefield_turn": 29,
+      "is_token": true,
+      "display_source": "Token"
+    },
+    "bear_post": {
+      "id": 73,
+      "card_id": 73,
+      "owner": 1,
+      "base_controller": 1,
+      "controller": 1,
+      "zone": "Battlefield",
+      "display_visible_to_viewer": true,
+      "tapped": false,
+      "face_down": false,
+      "flipped": false,
+      "transformed": false,
+      "damage_marked": 0,
+      "dealt_deathtouch_damage": false,
+      "attached_to": null,
+      "attachments": [],
+      "counters": {},
+      "name": "Grizzly Bears",
+      "power": 2,
+      "toughness": 2,
+      "layer_base_power": 2,
+      "layer_base_toughness": 2,
+      "loyalty": null,
+      "card_types": {
+        "supertypes": [],
+        "core_types": [
+          "Creature"
+        ],
+        "subtypes": [
+          "Bear"
+        ]
+      },
+      "mana_cost": {
+        "type": "Cost",
+        "shards": [
+          "Green"
+        ],
+        "generic": 1
+      },
+      "keywords": [],
+      "abilities": [],
+      "trigger_definitions": [],
+      "replacement_definitions": [],
+      "static_definitions": [],
+      "color": [
+        "Green"
+      ],
+      "printed_ref": {
+        "oracle_id": "14c8f55d-d177-4c25-a931-ebeb9e6062a0",
+        "face_name": "Grizzly Bears"
+      },
+      "base_power": 2,
+      "base_toughness": 2,
+      "base_name": "Grizzly Bears",
+      "base_card_types": {
+        "supertypes": [],
+        "core_types": [
+          "Creature"
+        ],
+        "subtypes": [
+          "Bear"
+        ]
+      },
+      "base_mana_cost": {
+        "type": "Cost",
+        "shards": [
+          "Green"
+        ],
+        "generic": 1
+      },
+      "base_keywords": [],
+      "base_color": [
+        "Green"
+      ],
+      "base_printed_ref": {
+        "oracle_id": "14c8f55d-d177-4c25-a931-ebeb9e6062a0",
+        "face_name": "Grizzly Bears"
+      },
+      "base_characteristics_initialized": true,
+      "timestamp": 5,
+      "incarnation": 3,
+      "entered_battlefield_turn": 4,
+      "cast_from_zone": "Hand",
+      "cast_controller": 1,
+      "mana_spent_to_cast": true,
+      "colors_spent_to_cast": {
+        "green": 2
+      },
+      "mana_spent_to_cast_amount": 2,
+      "mana_spent_source_snapshots": [
+        {
+          "source_id": 94,
+          "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 1,
+            "owner": 1,
+            "card_types": [
+              "Land"
+            ],
+            "subtypes": [
+              "Forest"
+            ],
+            "supertypes": [
+              "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+          }
+        },
+        {
+          "source_id": 72,
+          "lki": {
+            "name": "Forest",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 1,
+            "owner": 1,
+            "card_types": [
+              "Land"
+            ],
+            "subtypes": [
+              "Forest"
+            ],
+            "supertypes": [
+              "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+          }
+        }
+      ]
+    }
+  },
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority"
+  ],
+  "targets": {
+    "minus3": {
+      "refs": [
+        "114",
+        "73"
+      ],
+      "at": 1790862751.6019702
+    }
+  }
+}
