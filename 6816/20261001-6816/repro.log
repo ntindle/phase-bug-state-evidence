@@ -1,0 +1,29 @@
+=== A1: current ai-gate.yml on main keeps mkdir -p target before both redirects ===
+=== A2: pre-fix semantics (no target/): redirect fails, gate never runs ===
+$ (touch gate_ran.marker; echo "fake ai-gate report") > target/ai-gate-report.md
+bash: line 1: target/ai-gate-report.md: No such file or directory
+exit=1
+MARKER ABSENT - gate never ran (matches issue)
+=== A3: drift step cat against missing report fails under bash -e ===
+$ body="$(cat target/ai-gate-report.md)"; echo "drift: $body"
+cat: target/ai-gate-report.md: No such file or directory
+exit=1
+=== A4: current semantics (mkdir -p target first): gate runs, drift step ok ===
+$ mkdir -p target; (touch gate_ran.marker; echo "fake ai-gate report") > target/ai-gate-report.md
+
+exit=0
+MARKER PRESENT - gate ran
+REPORT NON-EMPTY
+$ body="$(cat target/ai-gate-report.md)"; echo "drift: $body"
+drift: fake ai-gate report
+exit=0
+=== A5: ai-perf-gate step, same ordering ===
+$ mkdir -p target; (touch perf_ran.marker; echo "fake perf report") > target/ai-perf-gate-report.md
+
+exit=0
+
+ALL PASSED
+  A2_prefix_redirect_fails: passed
+  A3_drift_cat_fails: passed
+  A4_current_semantics_ok: passed
+  A5_perf_step_ok: passed
