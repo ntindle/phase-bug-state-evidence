@@ -1,0 +1,55 @@
+{
+ "issue": 7309,
+ "title": "Baxter Building \u2014 '{4}, {T}: Add four mana in any combination of colors' only allows four mana of a single color",
+ "run_id": "20261001-7309",
+ "validated_at": "2026-10-01T14:48:11.114214-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7309.py",
+  "sha256": "4d1326855c9be957f0c5f345e15dd3d8c4c7fe403c8871674f7d6cdcb75e1ca4"
+ },
+ "verdict": "reproduced",
+ "scope": "Baxter Building '{4},{T}: Add four mana in any combination of colors' (ability_index 1); native engine, P0 human driver seat, P1 = native Easy AI; protocol-98 driver",
+ "result": "Activated Baxter Building's any-combination mana ability (oid 56, {4} paid via 4 tapped Mountains, Baxter tapped). Engine offered only 5 pre-expanded single-color TapLandForMana options (White/Blue/Black/Red/Green), no manaGroups mix choice. Submitted White: mana pool became exactly 4x White from Baxter; no opportunity to mix colors. Matches the report: 'only allows you to tap for four mana of a single color and not mix and match as intended'.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_ok": "passed",
+  "A3_single_color_4": "passed",
+  "A4_no_mix_offered": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 12 PreCombatMain, P0 priority, Baxters untapped on BF ['32', '56'], 4 untapped Mountains, pool empty",
+  "A2_activation_ok": "baxter_activation_submit ability_index=1 (White), 0 rejections, Baxter 56 tapped=True, Mountains tapped=4/4, mid pool pips=4",
+  "A3_single_color_4": "post pool = ['White', 'White', 'White', 'White'] (source_ids ['56', '56', '56', '56'])",
+  "A4_no_mix_offered": "activation_offers.json: 5 single-color offers ['Black', 'Blue', 'Green', 'Red', 'White'], no manaGroups in wire log, no mana choice offered",
+  "A5_cleanup": "post: wf=Priority/p0, stack=0, life=[20, 20]"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via one human driver seat + native Easy AI.",
+  "The browser mana-choice UI itself is not exercised; the defect surface under test is the engine-level pre-expansion into 5 single-color taps.",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7309.py), not direct load.",
+  "Only the White single-color branch was driven; the other four pre-expanded colors were not submitted (offers recorded in activation_offers.json)."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision {\"choice\":{\"type\":\"Keep\"}} gated on pending[] Declare; BottomCards via single SelectCards; Baxter ability 1 found in legal_actions_by_object (mana abilities are not in flat legal_actions); {4} paid by tapping Mountains through per-object TapLandForMana; pool captured with priority held for post export.",
+  "Two Baxter Buildings reached the BF (second drawn later); assertions key on the activated oid 56."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
