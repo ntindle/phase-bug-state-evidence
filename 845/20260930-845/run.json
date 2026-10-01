@@ -1,0 +1,70 @@
+{
+ "issue": 845,
+ "run_id": "20260930-845",
+ "title": "Bitterbloom Bearer <redacted> not trigger on beginning of upkeep",
+ "validated_at": "2026-09-30",
+ "server": {
+  "server_version": "0.98.0",
+  "build_commit": "61e8550",
+  "protocol_version": 94,
+  "mode": "Full",
+  "binary_sha256": "15c50bbd3e90b9af49c851d9a56a775f4d74f5874f19e5ea231520816c8170a9",
+  "card_data_sha256": "1a5919f2a50754c7f5e48922390816150a20b703821114adfe08427ff0b11960",
+  "draft_pools_sha256": "bf3316202d84068ac38bcec48c5fc57d38d7834aef5f18c6b410ba9f64afd594",
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest",
+  "observed_at": "2026-09-30",
+  "source": "verified pin; isolated server on 127.0.0.1:9374 started by this run's session under runs/20260930-845/; ServerHello re-checked by this run."
+ },
+ "scope": "Bitterbloom Bearer upkeep trigger ('At the beginning of your upkeep, you lose 1 life and create a 1/1 blue and black Faerie creature token with flying'): card-data parse + runtime trigger/stack/resolution assertions on P0's upkeep; native engine, two human-client seats, P1 fully passive",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_trigger_fired": "passed",
+  "A4_life_lost": "passed",
+  "A5_token_created": "passed",
+  "A6_no_duplicates": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (exactly one trigger, Upkeep LoseLife->Token, not optional)",
+  "A2: Bearer <redacted> P0's BF in pre.json=True",
+  "A3: passed (Bearer upkeep trigger on stack; sightings=1, triggers_fired delta=0)",
+  "A4: P0 life 20 -> 19 (expected 19)",
+  "A5: Faerie tokens on P0 BF pre=[] post=[122]; 1/1 blue+black=True",
+  "A6: passed (exactly one trigger cycle)",
+  "A7: post stack empty=True"
+ ],
+ "driver_state": {
+  "bearer_oid": 30,
+  "bearer_cast_turn": 3,
+  "upkeep_turn": 5,
+  "trigger_sightings": [
+   {
+    "id": 121,
+    "turn": 5,
+    "phase": "Upkeep"
+   }
+  ],
+  "triggers_fired_at_pre": [],
+  "triggers_fired_at_post": [],
+  "life_before": 20,
+  "life_after": 19,
+  "tokens_before": [],
+  "tokens_after": [
+   122
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (12x Bitterbloom Bearer) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (lands, passes; no attacks or blocks)."
+ ],
+ "evidence_dir": "845/20260930-845",
+ "server_run_note": "isolated v0.98.0 server on 127.0.0.1:9374 started by this run's session (games.db + server.log in runs/20260930-845/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 70.6,
+ "driver_protocol_note": "Protocol-94 driver (v0.98.0): HELLO advertises protocol 94 (server enforces exact match: MIN_SUPPORTED_PROTOCOL == PROTOCOL_VERSION); DeckData deck shape {main_deck, sideboard, commander} unchanged; interaction submission shapes unchanged from protocol 71/72 for this scenario. MulliganDecision gated on waiting_for.data.pending[] BottomCards entries; Bearer <redacted> via advertised CastSpell."
+}
