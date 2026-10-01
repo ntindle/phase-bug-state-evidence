@@ -1,0 +1,54 @@
+game 0L89DB; P0 seat=0 P1 seat=1
+P0 mulligan -> Keep
+P1 mulligan -> Keep
+waiting_for: MulliganDecision player=None stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 p0hand=7 p0mem=0 p0grudge_hand=0 p1mem=0 untap_sw=0 untap_mo=0 stage=SETUP sac=False opp=False
+[P1] opp vi wf=Priority stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] cast vi wf=Priority stage=SETUP
+[P1] cast Memnite (oid=116)
+cast in-flight 116 left hand
+[P1] land drop Mountain
+[P0] land drop Swamp
+[P1] land drop Mountain
+[P1] opp vi wf=DeclareAttackers stage=SETUP
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+DIAG turn=8 phase=EndCombat wf=Priority/p1 stack=0 p0hand=7 p0mem=0 p0grudge_hand=1 p1mem=1 untap_sw=4 untap_mo=0 stage=SETUP sac=False opp=False
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] land drop Swamp
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P0] cast Memnite (oid=42)
+cast in-flight 42 left hand
+[P0] land drop Mountain
+exported pre.json
+[P0] Fatal Grudge NOT offered (oid=43) - BUG CANDIDATE
+[P0] Fatal Grudge NOT offered (oid=43) - BUG CANDIDATE
+[P1] land drop Mountain
+waiting_for: DeclareAttackers player=1 stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+DIAG turn=16 phase=Upkeep wf=Priority/p1 stack=0 p0hand=6 p0mem=1 p0grudge_hand=1 p1mem=1 untap_sw=6 untap_mo=1 stage=SETUP sac=False opp=False
+[P0] land drop Mountain
+[P0] Fatal Grudge NOT offered (oid=43) - BUG CANDIDATE
+[P0] cast vi wf=DeclareAttackers stage=SETUP
+waiting_for: DeclareAttackers player=0 stage=SETUP
+waiting_for: Priority player=0 stage=SETUP
+[P0] Fatal Grudge NOT offered (oid=43) - BUG CANDIDATE
+exported post.json
