@@ -1,0 +1,48 @@
+server identity hashes verified against on-disk pinned artifacts
+wrote carddata_excerpt.json (minus3 parse: Unimplemented counter child)
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game VV6WGS; seats 0/1
+[P0] mulligan -> Keep (prior mulligans: 0)
+[P1] mulligan -> Keep (prior mulligans: 0)
+P1 casts Grizzly Bears
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+[P1] declares empty attackers
+P0 casts Jared Carthalion
+=== stage -> PLUS1 ===
+[P0] Jared +1 options: 0
+[P0] Jared +1 options: 1
+[P0] activates Jared +1 (ability_index 0) turn=29
+=== Kavu token on BF; stage -> MINUS3 (turn 29) ===
+[P1] declares empty attackers
+[P0] Jared -3 options: 1
+exported pre_activate.json
+[P0] activates Jared -3 (ability_index 1) turn=31
+[P0] -3 target prompt (iid=VV6WGS.0.480): [('Grizzly Bears', '73', 1), ('Kavu', '114', 0)]
+[P0] -3: targeted ['Kavu'] [1/2]
+[P0] -3 target prompt (iid=VV6WGS.0.481): [('Grizzly Bears', '73', 1)]
+[P0] -3: targeted ['Grizzly Bears'] [2/2]
+[P0] -3: both targets answered
+exported post_activate.json
+exported post.json
+=== DONE: -3 resolved ===
+exported post.json
+A1_setup_ok: passed
+A2_minus3_offered: passed
+A3_target_resolve: passed
+A4_kavu_counters: failed
+A5_bears_counters: failed
+A6_cleanup: passed
+verdict: reproduced
+wrote run.json
