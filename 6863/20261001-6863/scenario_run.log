@@ -1,0 +1,38 @@
+===== ATTEMPT 1 =====
+P0 creating game...
+P1 joining...
+game PFR0YE; seats 0/1
+[P0] mulligan -> Mulligan (prior mulligans: 0)
+[P1] mulligan -> Keep (prior mulligans: 0)
+[P0] mulligan -> Keep (prior mulligans: 1)
+[P0] bottoming 1: ['Island']
+P0 casts Estrid, the Masked
+P0 casts Grizzly Bears
+=== stage -> ACTIVATE ===
+[P0] ActivateAbility options on Estrid: []
+[P0] ALL legal action types: []
+[P0] no advertised ActivateAbility; viewer choices: []
+[P0] ActivateAbility options on Estrid: [(0, '{"type": "ActivateAbility", "data": {"source_id": 44, "ability_index": 0}}'), (1, '{"type": "ActivateAbility", "data": {"source_id": 44, "ability_index": 1}}')]
+[P0] ALL legal action types: ['ActivateAbility', 'PassPriority']
+exported pre_activate.json
+[P0] activates Estrid -1 (ability_index 1) via action, targeting Bears 59
+[P0] estrid_minus1 target prompt: ['Swamp', 'Forest', 'Swamp', 'Forest', 'Forest', 'Forest', 'Plains', 'Forest', 'Plains', 'Forest', 'Island', 'Forest', 'Island', 'Plains', 'Grizzly Bears']
+[P0] estrid_minus1: targeted Grizzly Bears (oid=59)
+exported mid_mask.json
+=== Mask attached to Bears 59; stage -> MURDER ===
+P0 casts Murder (MURDER, oid=11)
+Murder (MURDER) resolved; target=None
+exported post_murder.json
+=== stage -> CONTROL ===
+[P0] declares empty (DeclareAttackers)
+P0 casts Murder (CONTROL, oid=13)
+Murder (CONTROL) resolved; target=None
+exported post_control.json
+exported post.json
+=== DONE ===
+A1_setup_ok: passed
+A2_mask_attached: passed
+A3_armor_replaces: not-run
+A4_control_dies: passed
+A5_cleanup: passed
+verdict: blocked
