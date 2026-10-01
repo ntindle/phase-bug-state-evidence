@@ -1,0 +1,21 @@
+{
+ "issue": 7346,
+ "run_id": "20261001-7346",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_aura1_attached": "passed",
+  "A3_player_target_offered": "passed",
+  "A4_damage_to_player": "failed",
+  "A5_creature_control": "failed",
+  "A6_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: turn 5 PreCombatMain, P0 holds priority, Memnite 21 + 24 on P0 BF, Memnite 64 on P1 BF, life 20/20, stack 0",
+  "A2_aura1_attached": "mid1: Pain for All 27 on P0 BF, attached_to={data: 21} (enchanted 1/1 Memnite)",
+  "A3_player_target_offered": "etb1 prompt advertised 7 candidates incl. player seat 1 (available): True; driver chose cid EJXVGI.0.90.t1 (Player 1). Targeting is NOT the bug.",
+  "A4_damage_to_player": "post1: P1 life 20 -> 20 (expected 19: 1 damage from the 1-power enchanted Memnite). Trigger resolved with targets=[{'Player': 1}]; stack empty. NO DAMAGE DEALT.",
+  "A5_creature_control": "leg 2: P1's Memnite 64 offered as target: True; chosen; post2: creature zone=Battlefield (expected Graveyard from 1 damage), P1 life 20. Creature path ALSO deals nothing: the failure is in the damage amount/effect, not the target class.",
+  "A6_cleanup": "post2: wf=Priority/p0, stack=0, rejections=0; game proceeding"
+ }
+}
