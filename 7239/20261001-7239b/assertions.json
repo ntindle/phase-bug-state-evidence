@@ -7,14 +7,11 @@
     "A5_haste_granted": "passed"
   },
   "notes": [
-    "pre: bears controller=1 tapped=True suspected=False all_alive=True",
-    "BUG: BeginCombat trigger fired with 0 players eliminated (turn=None phase=BeginCombat active=0); control changed: ['Forest', 'Grizzly Bears']",
-    "A3: gained permanents=['Forest', 'Grizzly Bears'] (bears_suspected_at_cast=False)",
+    "pre: bears controller=1 tapped=True suspected=False bf_permanents=16",
+    "BUG: BeginCombat trigger fired with 0 players eliminated (phase=BeginCombat active=0); control changed: ['Forest', 'Grizzly Bears']",
+    "A3: gained permanents=['Forest', 'Grizzly Bears'] (bears is_suspected in post=True)",
     "A4: tapped gained=['Grizzly Bears']; still tapped in post=['Grizzly Bears']",
-    "A5: gained creatures missing Haste keyword in post=[]; bears keywords=[]",
-    "WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority']",
-    "stages reached: OBSERVE; fired=True; p0_mains=7",
-    "protocol-94 driver (v0.98.0): 4 human seats; MulliganDecision as {choice:{type:Keep}}; SelectCards for bottom/discard; relations-schema DeclareAttackers/Blockers; CastSpell via advertised actions; PayMana* via pay_tick; ETB Suspect TargetSelection via choose/sequence; priority-gated passes; stale-client watchdog."
+    "A5: gained creatures missing Haste keyword in post=[]; bears keywords=['Menace', 'Haste']"
   ],
   "wf_sequence": [
     "MulliganDecision",
