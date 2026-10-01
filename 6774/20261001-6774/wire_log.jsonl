@@ -1,0 +1,19 @@
+{"t": 1790832225.032484, "event": "game", "payload": {"code": "UCW5VV", "p0": 0, "p1": 1}}
+{"t": 1790832225.28391, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1790832225.284042, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1790832225.284064, "event": "waiting_for", "payload": {"type": "MulliganDecision", "data": {"pending": [{"player": 0, "mulligan_count": 0, "phase": {"type": "Declare"}}, {"player": 1, "mulligan_count": 0, "phase": {"type": "Declare"}}], "free_first_mulligan": false}}}
+{"t": 1790832225.5349379, "event": "waiting_for", "payload": {"type": "Priority", "data": {"player": 0}}}
+{"t": 1790832226.0381896, "event": "action_submit", "payload": {"who": "P0", "action": "PlayLand/Forest", "test_turn": false}}
+{"t": 1790832233.6162217, "event": "action_submit", "payload": {"who": "P0", "action": "PlayLand/Forest", "test_turn": false}}
+{"t": 1790832233.8671951, "event": "action_submit", "payload": {"who": "P0", "action": "CastSpell/Tifa", "object_id": "5"}}
+{"t": 1790832234.6215, "event": "tifa_on_bf", "payload": {"turn": 3, "oid": "5", "power": 1, "toughness": 2}}
+{"t": 1790832241.9661136, "event": "pre_landfall", "payload": {"turn": 5, "phase": "PreCombatMain", "tifa_oid": "5", "tifa_power": 1, "tifa_toughness": 2, "forests_bf": 2}}
+{"t": 1790832241.966598, "event": "action_submit", "payload": {"who": "P0", "action": "PlayLand/Forest", "test_turn": true}}
+{"t": 1790832242.219021, "event": "first_stack_seen", "payload": {"turn": 5, "phase": "PreCombatMain", "tifa_triggers": 1, "stack_size": 1, "entries": [{"id": 121, "kind": "TriggeredAbility", "desc": "Whenever a land you control enters, double ~'s power until end of turn.", "source_id": 5}]}}
+{"t": 1790832242.219115, "event": "stack_snapshot", "payload": {"turn": 5, "phase": "PreCombatMain", "tifa_triggers": 1, "stack_size": 1}}
+{"t": 1790832242.2951381, "event": "mid_trigger", "payload": {"turn": 5, "tifa_triggers": 1, "stack_size": 1}}
+{"t": 1790832243.8360877, "event": "post_landfall", "payload": {"turn": 5, "phase": "PreCombatMain", "tifa_power": 2, "tifa_toughness": 2, "forests_bf": 3}}
+{"t": 1790832244.841206, "event": "action_submit", "payload": {"who": "P0", "action": "DeclareAttackers/empty"}}
+{"t": 1790832244.8415, "event": "waiting_for", "payload": {"type": "DeclareAttackers", "data": {"player": 0, "valid_attacker_ids": [5], "valid_attack_targets": [{"type": "Player", "data": 1}], "valid_attack_targets_by_attacker": {"5": [{"type": "Player", "data": 1}]}}}}
+{"t": 1790832245.0930605, "event": "waiting_for", "payload": {"type": "Priority", "data": {"player": 0}}}
+{"t": 1790832251.4522007, "event": "cleanup_observed", "payload": {"turn": 7, "phase": "PreCombatMain", "tifa_power": 1}}
