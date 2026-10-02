@@ -1,0 +1,47 @@
+game DGC2LI; P0=0 P1=1 P2=2 RUN_ID=20261002-7189
+[P2] keeps 7 (kara=no)
+[P0] keeps 7 (kara=yes)
+[P1] keeps 7 (kara=no)
+[P0] playing land
+[P1] playing land
+[P0] playing land
+[P1] playing land
+[P1] casting bear (turn 5)
+[P0] playing land
+[P1] playing land
+[P1] casting bear (turn 8)
+[P0] playing land
+[P1] playing land
+[P1] casting bear (turn 11)
+[P0] playing land
+[P0] casting Karazikar (turn 13)
+[P1] playing land
+exported PRE_BUG
+[P1] BUG LEG: 3 bears -> P0 (turn 14)
+[P0] DeclareBlockers: empty
+bug leg closed: life [20, 20, 20] -> [14, 20, 20]; stage -> bug_done
+[P0] playing land
+[P1] playing land
+exported PRE_CONTROL
+[P1] CONTROL LEG: 3 bears -> P2 (turn 17)
+CONTROL LEG TRIGGER SIGHTING: Karazikar trigger on stack (turn 17, phase DeclareAttackers)
+exported MID_CONTROL_PENDING
+exported POST
+control leg closed; post exported; DONE
+loaded pre_bug.json
+loaded pre_control.json
+loaded mid_control_pending.json
+loaded post.json
+A1_parse: passed
+A2_setup_ok: passed
+A3_bug_trigger_fired: failed
+A4_control_trigger_fired: passed
+A5_cleanup: passed
+note: A1_parse: passed (triggers=2; t2.mode=Attacks; valid_source.controller=Opponent; attack_target_filter='Player' - broad: the 'another one of your opponents' qualifier is still not encoded)
+note: A2: kara_on_P0_BF=1 (expect 1) bears_on_P1_BF=3 (expect >=1) life=[20, 20, 20] (expect [20, 20, 20])
+note: A3: bug_trigger_seen=False entries=[] bug_attack_turn=14 life_pre=[20, 20, 20] life_post=[14, 20, 20]
+note: A4: control_trigger_seen=True entries=[{"id": 161, "source_id": 9, "description": "Whenever an opponent attacks another one of your opponents, you and the attacking player each draw a card and lose 1 life."}] control_attack_turn=17
+note: A5: stack_empty=True post_wf=Priority post_turn=18 (control_attack_turn=17)
+VERDICT: not-reproduced
+wrote run.json
+wrote summary.png
