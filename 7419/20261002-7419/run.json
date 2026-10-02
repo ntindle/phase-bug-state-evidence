@@ -1,0 +1,245 @@
+{
+ "issue": 7419,
+ "run_id": "20261002-7419",
+ "started_at": "2026-10-02T18:20:21",
+ "duration_s": 110.1,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (started by this run; ServerHello 0.100.0/bc9ef56/protocol 101 verified this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.100.0 == pinned release dir; hashes recomputed against on-disk artifacts; release advanced past v0.99.0 this run (pin_release.py: minisign-verify binary + data manifest, binary digest vs GitHub asset digest)"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0040621b76d8b374390866e15770a218a60384918f65ea4e30bcd391abf0bc20",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Afterlife from the Loam",
+    4
+   ],
+   [
+    "Go for the Throat",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Swamp",
+    16
+   ],
+   [
+    "Plains",
+    16
+   ],
+   [
+    "Forest",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "failed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolves": "passed",
+  "A4_gy_creatures_moved": "failed",
+  "A5_bf_gains": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.100.0 card-data.json parses Afterlife from the Loam's ability as head Unimplemented(name='unparsed_quantity', description=\"For each player, choose up to one target creature card in that player's graveyar\"...) + sub ChangeZoneAll target={'type': 'TrackedSet', 'id': 0} destination=Battlefield enters_under=You (issue-reported shape: False; head node name differs from the issue's 9b7c66e30 corpus ('for' -> 'unparsed_quantity'), same clause)",
+  "A1 FAILED: the pinned parse does not match the issue-reported shape; see data_evidence.json.",
+  "A2 probe: pre gy bears P0=[30] P1=[66]; P0 BF creatures=0.",
+  "A2 passed: pre.json has >=1 Bear in each player's graveyard and the Loam was castable.",
+  "A3 passed: Afterlife from the Loam was cast and its spell object reached P0's graveyard (no stall, no pending rejection).",
+  "A4 probe: pre-gy bear oid 30 (P0) post zone='Graveyard'.",
+  "A4 probe: pre-gy bear oid 66 (P1) post zone='Graveyard'.",
+  "A4 FAILED: Bears stayed in their graveyards after the Loam resolved: [(30, 0), (66, 1)] -- THE REPORTED BUG (ChangeZoneAll read an empty tracked set and no-op'd).",
+  "A5 probe: P0 BF creatures pre=0 post=0 (want >= 2).",
+  "A5 FAILED: P0's battlefield did not gain the reanimated Bears -- THE REPORTED BUG.",
+  "Casting-phase prompts (expected mana-payment steps): 11.",
+  "Resolution prompts observed (unexpected for an unparsed clause): ['Y4RBDH.0.557', 'Y4RBDH.0.559', 'Y4RBDH.0.561', 'Y4RBDH.0.563', 'Y4RBDH.0.565', 'Y4RBDH.0.568']",
+  "The engine offered a delve payment choice; the driver declined it to preserve the graveyard fixture.",
+  "A6 passed: post stack empty.",
+  "verdict=blocked: the reported Loam-resolution path could not be fully exercised; see assertion notes.",
+  "server.log excerpt: 1198 matching lines (of 3976 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7419/server.log)"
+ ],
+ "observations": {
+  "loam_cast": true,
+  "loam_submitted_at": 1790965321.7078962,
+  "gy_bears_at_pre": [
+   [
+    30,
+    0
+   ],
+   [
+    66,
+    1
+   ]
+  ],
+  "p0_bf_creatures_at_pre": 0,
+  "prompts_seen": [
+   [
+    "casting_loam",
+    "Y4RBDH.0.545"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.546"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.547"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.548"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.549"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.550"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.551"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.552"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.553"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.554"
+   ],
+   [
+    "casting_loam",
+    "Y4RBDH.0.556"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.557"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.559"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.561"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.563"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.565"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.568"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.570"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.573"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.575"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.578"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.580"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.582"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.583"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.585"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.587"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.589"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.591"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.593"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.595"
+   ],
+   [
+    "resolving",
+    "Y4RBDH.0.598"
+   ]
+  ],
+  "delve_offered": true,
+  "cast_rejections": 0
+ },
+ "verdict": "blocked",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (no game state); the scenario replays the reported line (cast the spell with creature cards in each graveyard) from a fresh game and observes the resolution outcome.",
+  "The graveyard-seeding Go for the Throat casts are a test-harness convenience to produce deterministic graveyard contents; the creatures are ordinary Grizzly Bears.",
+  "Delve was declined (paid the full {5}{B}{B}{B}) to preserve the graveyard fixture; the delve payment path itself was not exercised.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Afterlife from the Loam + 8x Go for the Throat + 4x Grizzly Bears + 16x Swamp + 16x Plains + 12x Forest; P1: 12x Grizzly Bears + 48x Forest (lands/bears, never attacks)",
+ "contract_line": "Each graveyard holds >=1 Bear at pre; the Loam must put those Bears onto the battlefield under P0's control. Observed: the clause never parsed, no choice prompt appeared, and the resolution moved nothing.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 1191
+ }
+}
