@@ -1,0 +1,84 @@
+{
+  "name": "Dualcaster Mage",
+  "oracle_text": "Flash\nWhen this creature enters, copy target instant or sorcery spell. You may choose new targets for the copy.",
+  "triggers": [
+    {
+      "mode": "ChangesZone",
+      "execute": {
+        "kind": "Spell",
+        "effect": {
+          "type": "CopySpell",
+          "target": {
+            "type": "Or",
+            "filters": [
+              {
+                "type": "And",
+                "filters": [
+                  {
+                    "type": "StackSpell"
+                  },
+                  {
+                    "type": "Typed",
+                    "type_filters": [
+                      "Instant"
+                    ],
+                    "controller": null,
+                    "properties": []
+                  }
+                ]
+              },
+              {
+                "type": "And",
+                "filters": [
+                  {
+                    "type": "StackSpell"
+                  },
+                  {
+                    "type": "Typed",
+                    "type_filters": [
+                      "Sorcery"
+                    ],
+                    "controller": null,
+                    "properties": []
+                  }
+                ]
+              }
+            ]
+          },
+          "retarget": {
+            "type": "MayChooseNewTargets"
+          },
+          "starting_loyalty_from_casualty_sacrifice": false
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+      },
+      "valid_card": {
+        "type": "SelfRef"
+      },
+      "origin": null,
+      "destination": "Battlefield",
+      "trigger_zones": [
+        "Battlefield"
+      ],
+      "phase": null,
+      "optional": false,
+      "damage_kind": "Any",
+      "secondary": false,
+      "valid_target": null,
+      "valid_source": null,
+      "description": "When ~ enters, copy target instant or sorcery spell. You may choose new targets for the copy.",
+      "constraint": null,
+      "condition": null,
+      "batched": false
+    }
+  ],
+  "abilities": []
+}
