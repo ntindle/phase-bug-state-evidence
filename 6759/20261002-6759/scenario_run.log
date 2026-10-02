@@ -1,0 +1,47 @@
+=== Game 1: Nalia only (no full party) ===
+game YC3ZO2; P0 seat=0 P1 seat=1
+[P0] keep 7
+[P1] keep 7
+[P0] plays land
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P0] casts Nalia de'Arnise
+[g1_noparty] exported pre.json (turn 6, party=['Rogue'])
+[g1_noparty] BeginCombat: stack=[]
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[g1_noparty] exported post.json (turn 8)
+A1_setup_ok: passed
+A2_no_counters: passed
+A3_no_deathtouch: passed
+A4_cleanup: passed
+=== Game 2: full party (Nalia+Cleric+Warrior+Wizard) ===
+game OFKW34; P0 seat=0 P1 seat=1
+[P0] keep 7
+[P1] keep 7
+[P0] plays land
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P0] casts Nalia de'Arnise
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P0] casts Aven Skirmisher
+[P0] casts Augur of Skulls
+[P0] declares no attackers
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P0] declares no attackers
+[P1] discarding to hand size: ['island']
+[P0] plays land
+[P0] casts Acolyte of Xathrid
+[g2_fullparty] exported pre.json (turn 11, party=['Cleric', 'Rogue', 'Warrior', 'Wizard'])
+[g2_fullparty] BeginCombat: stack=[{'id': 129, 'effects': ['PutCounterAll', 'GenericEffect'], 'source': None}]
+[g2_fullparty] exported post.json (turn 11)
+A5_counters: passed
+A6_deathtouch: passed
+A7_cleanup: passed
+VERDICT: not-reproduced -- trigger correctly withheld with party=1 and correctly fired with party=4
