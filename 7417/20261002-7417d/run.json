@@ -1,0 +1,93 @@
+{
+ "issue": 7417,
+ "run_id": "20261002-7417d",
+ "started_at": "2026-10-02T16:28:40",
+ "duration_s": 30.1,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1aae4096a2c07de5b0b076979fc96bf6805e3dee968f856b4f475c950458b59d",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Conqueror's Galleon",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_declared": "passed",
+  "A3_trigger_resolved": "passed",
+  "A4_exiled_at_end_combat": "passed",
+  "A5_never_transformed": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.99.0 card-data.json parses Conqueror's Galleon's attack trigger as CreateDelayedTrigger (exile at end of combat) head + a sibling ChangeZone(Battlefield, TrackedSet 0, enter_transformed=true) (issue-reported shape: True)",
+  "A1 probe: pre galleon_bf=[57], untapped_bears=2, life=(20, 20), crewed_is_creature=True.",
+  "A1 passed: pre assembled (Galleon + >=2 untapped Bears, life 20/20) and the crew activation made the Galleon a creature.",
+  "A2 probe: combat.attackers=[{\"attack_target\": {\"data\": 1, \"type\": \"Player\"}, \"band_id\": null, \"blocked\": false, \"defending_player\": 1, \"object_id\": 57}]",
+  "A2 passed: Conqueror's Galleon declared as an attacker.",
+  "A3 probe: post_trigger galleon_bf=[57], stack_empty=True.",
+  "A3 passed: attack trigger resolved; Galleon still on the battlefield, stack empty -- the misplaced return sibling changed nothing observable.",
+  "A4 probe: post exile galleons=[57].",
+  "A4 passed: the Galleon is in Exile after the end-of-combat delayed trigger resolved.",
+  "A5 probe: post foothold_on_bf=[], galleon_on_bf=[].",
+  "A5 FAILED: no Conqueror's Foothold on P0's battlefield after the end-of-combat exile -- THE REPORTED BUG REPRODUCES (the return clause resolved as a no-op sibling before the exile existed).",
+  "A6 passed: post stack empty.",
+  "verdict=reproduced: the Galleon attacked, its attack trigger resolved (return sibling no-op), it was exiled at end of combat, and it never returned transformed -- Conqueror's Foothold never entered (confirmed on v0.99.0).",
+  "server.log excerpt: 316 matching lines (of 6266 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7416-server/server.log)"
+ ],
+ "observations": {
+  "galleon_bf_oid": 57,
+  "galleon_entered_turn": 7,
+  "crewed": true,
+  "attack_submitted": true,
+  "attack_turn": 9,
+  "trigger_seen": true,
+  "trigger_seen_at": 1790958548.5164638,
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report includes no game state (data-level report); the scenario replays the reported line (Galleon attack + end of combat) from a fresh game.",
+  "Only the P0-crewed attack path was exercised; the crew-by-opponent or non-crewed cases were not.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Conqueror's Galleon + 12x Grizzly Bears + 44x Forest; P1: 60x Plains (lands, passes)",
+ "contract_line": "Galleon attacks (crewed), end-of-combat delayed trigger exiles it -> it must return to the battlefield transformed as Conqueror's Foothold",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 309
+ }
+}
