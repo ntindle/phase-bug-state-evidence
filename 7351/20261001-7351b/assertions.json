@@ -1,0 +1,18 @@
+{
+ "issue": 7351,
+ "run_id": "20261001-7351b",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast1_reduced": "failed",
+  "A3_cast2_full": "passed",
+  "A4_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: P0 BF Samurai=2 (want 2), P0 hand Samurai=1 (want >=1), Peerless triggers seen on stack=2 (want >=2), phase=DeclareAttackers, turn=12",
+  "A1_reduction_records": [],
+  "A2_cast1_reduced": "cast 1 paid 2 mana (pre_untapped=6 -> post=4): only ONE {1} reduction applied -- REPORTED BUG DIRECTION",
+  "A3_cast2_full": "cast 2 paid 3 mana (pre_untapped=9 -> post=6): full {2}{R} cost, no reductions left -- correct",
+  "A4_cleanup": "post: stack=0 wf=Priority/p1 turn=18 phase=PreCombatMain rejections=0"
+ }
+}
