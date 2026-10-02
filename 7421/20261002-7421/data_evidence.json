@@ -1,0 +1,30 @@
+{
+ "name": "Dredge the Mire",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black"
+  ],
+  "generic": 3
+ },
+ "oracle": "Each opponent chooses a creature card in their graveyard. Put those cards onto the battlefield under your control.",
+ "ability_head": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "choose a creature card in their graveyard"
+ },
+ "sub_ability_effect": {
+  "type": "ChangeZoneAll",
+  "origin": "Exile",
+  "destination": "Battlefield",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "enters_under": "You"
+ },
+ "sub_sub_ability": null,
+ "player_scope": {
+  "type": "Opponent"
+ }
+}
