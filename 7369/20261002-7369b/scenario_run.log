@@ -1,0 +1,30 @@
+data-level check: OK
+game 7EKUMM; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (hand: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P1] keep 7 (hand: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[P0] keep 7 (hand: ['mountain', 'brass infiniscope', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P0] bottoming ['mountain']
+[P0] casting Brass Infiniscope (oid 24)
+exported pre.json
+[P0] pre exported: scope oid 24 untapped, Banefire in hand, life (20, 20), hand 5
+[P0] activating Brass Infiniscope oid 24: ActivateAbility
+exported activated.json
+activated exported: pool colorless=2, delayed_triggers=[{"condition": {"type": "WhenNextEvent", "trigger": {"mode": "SpellCast", "execute": null, "valid_card": {"type": "Typed", "type_filters": [], "controller": null, "properties": [{"type": "HasXInManaCo
+[P0] casting Banefire (oid 16) with X=2
+Banefire on stack (oid 16, 1 entries); object keys: ['abilities', 'attached_to', 'attachments', 'base_abilities', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_static_definitions', 'base_toughness', 'card_id', 'card_types', 'color', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'display_visible_to_viewer', 'entered_battlefield_turn', 'face_down', 'flipped', 'id', 'incarnation', 'keywords', 'loyalty', 'mana_cost', 'name', 'owner', 'power', 'printed_ref', 'replacement_definitions', 'static_definitions', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_definitions', 'zone']
+[P0] Banefire target -> P1 (candidate 7EKUMM.0.373.t1)
+[P0] Banefire X-choice -> X=2
+exported cast.json
+cast exported: P0 life 20 hand 4 drawn 1; P1 life 20; entering resolving
+Infiniscope delayed trigger observed ON THE STACK
+exported trigger.json
+settled: stack empty, Priority, 20s idle; exporting post
+exported post.json
+finalizing
+Priority, 20s idle; exporting post
+exported post.json
+finalizing
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_activation_ok": "passed", "A3_cast_ok": "passed", "A4_trigger_pays": "failed", "A5_spell_resolves": "passed", "A6_cleanup": "passed"}
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7369/20261002-7369b/summary.png
+manifest written (12 files); verdict=reproduced
+EXIT:0
