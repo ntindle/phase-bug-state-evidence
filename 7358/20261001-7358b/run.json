@@ -1,0 +1,83 @@
+{
+ "issue": 7358,
+ "run_id": "20261001-7358b",
+ "started_at": "2026-10-02T04:51:48",
+ "duration_s": 54.6,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "runs/20261001-7355 (live v0.99.0 server on 127.0.0.1:9374, reused per task body: already listening with pinned release)",
+  "mode": "Full",
+  "source": "2026-10-01: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a1ea2702d3e280d4678861a4058efc8ed987ce42d47118d3bd89213c3a94541d",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Gwenna, Eyes of Gaea",
+    4
+   ],
+   [
+    "Lupine Prototype",
+    8
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_counter": "passed",
+  "A4_untap": "failed"
+ },
+ "notes": [
+  "pre: gwenna_on_bf=True, tapped=True, counters={}, P0 life=20",
+  "A2 passed: Gwenna TriggeredAbility observed on the stack after the Lupine Prototype cast.",
+  "A3 passed: Gwenna has one +1/+1 counter (counters={'P1P1': 1}).",
+  "A4 FAILED (reported bug): Gwenna is still TAPPED in post.json (tapped=True, counters={'P1P1': 1}).",
+  "verdict=reproduced: Gwenna did not untap after a power-5+ creature spell was cast (reported outcome).",
+  "server.log excerpt: 0 matching lines (of 6283 total)"
+ ],
+ "observations": {
+  "trigger_seen": true,
+  "trigger_entry": "{\"id\": 121, \"source_id\": 37, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 37, \"ability\": {\"effect\": {\"type\": \"PutCounter\", \"counter_type\": \"P1P1\", \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"target\": {\"type\": \"SelfRef\"}}, \"targets\": [], \"source_id\": 37, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 37, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Gwenna, Eyes of Gaea\", \"power\": 2, \"toughness\": 3, \"base_power\": 2, \"base_toughness\": 3, \"mana_value\": 3, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Creature\"], \"subtypes\": [\"Elf\", \"Druid\", \"Scout\"], \"supertypes\": [\"Legendary\"], \"keywords\": [], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": true, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 37, \"printed_ref\": {\"oracle_id\": \"7d95e72a-461e-4993-a190-847466a4b17c\", \"face_name\": \"Gwenna, Eyes of Gaea\"}, \"is_token\": false, \"face_down\": false, \"mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 2}, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"SpellCast\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"PutCounter\", \"counter_type\": \"P1P1\", \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"target\": {\"type\": \"SelfRef\"}}, \"cost\": null, \"sub_ability\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"SetTapState\", \"target\": {\"type\": \"TriggeringSource\"}, \"scope\": {\"type\": \"Single\"}, \"state\": {\"type\": \"Untap\"}}, \"cost\": null, \"sub_ability\": null, \"duration\": null, \"description\": null, \"target_prompt\": null, \"condition\": null, \"optional_targeting\": false, \"optional\": false, \"forward_result\": false}, \"duration\": null, \"description\": null, \"target_prompt\": null, \"condition\": null, \"optional_targeting\": false, \"optional\": false, \"forward_result\": false}, \"valid_card\": {\"type\": \"Typed\", \"type_filters\": [\"Creature\"], \"controller\": null, ",
+  "saw_lupine_on_stack": true,
+  "pre_tapped": true,
+  "pre_counters": {},
+  "post_tapped": true,
+  "post_counters": {
+   "P1P1": 1
+  },
+  "attack_turn": 20,
+  "lupine_cast_turn": 20
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Gwenna is tapped by attacking (driver choice, legal); her {T} mana ability is not exercised.",
+  "8x Lupine Prototype density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Gwenna, Eyes of Gaea + 8x Lupine Prototype ({2} 5/5) + 48x Forest; P1: 60x Forest",
+ "contract_line": "Cast a power-5+ creature spell -> Gwenna gets a +1/+1 counter AND untaps",
+ "prior_runs": []
+}
