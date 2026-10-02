@@ -1,0 +1,380 @@
+{
+  "issue": 7369,
+  "run_id": "20261002-7369b",
+  "started_at": "2026-10-02T12:01:45",
+  "duration_s": 98.1,
+  "server": {
+    "server_version": "v0.99.0",
+    "build_commit": "d919616",
+    "protocol_version": 98,
+    "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+    "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+    "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+    "signature_verified": true,
+    "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; not restarted by this run)",
+    "mode": "Full",
+    "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+  },
+  "driver": {
+    "protocol_advertised": 98,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "50a761e6dd64bc8dff611eadfdbeff01400da5bcc657f5112e89749e16d9bb1b",
+  "format_config": "default Bo1 (2 human-client seats, life 20)",
+  "decks": {
+    "P0": [
+      [
+        "Brass Infiniscope",
+        4
+      ],
+      [
+        "Banefire",
+        4
+      ],
+      [
+        "Mountain",
+        52
+      ]
+    ],
+    "P1": [
+      [
+        "Island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_activation_ok": "passed",
+    "A3_cast_ok": "passed",
+    "A4_trigger_pays": "failed",
+    "A5_spell_resolves": "passed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "data-level: card data parses as expected: True",
+    "A1 passed: pre exported with Brass Infiniscope untapped on P0 BF (oid 24), Banefire in P0 hand (5 cards), life 20/20.",
+    "A2 passed: scope tapped after activation, P0 mana pool holds 2 colorless (raw: [{\"color\": \"Colorless\", \"pip_id\": 5, \"restrictions\": [], \"snow\": false, \"source_id\": 24}, {\"color\": \"Colorless\", \"pip_id\": 6, \"restrictions\": [], \"snow\": false, \"source_id\": 24}]).",
+    "A2 observation (not asserted): state.delayed_triggers right after activation = [{\"ability\": {\"condition\": null, \"context\": {\"additional_cost_paid\": false, \"alternative_mana_cost_paid\": false, \"optional_effect_performed\": false}, \"controller\": 0, \"detached_remainder\": \"NoProducer\", \"duration\": null, \"effect\": {\"count\": {\"type\": \"Fixed\", \"value\": 1}, \"target\": {\"type\": \"Controller\"}, \"type\": \"Draw\"}, \"forward_result\": false, \"kind\": \"Spell\", \"optional\": false, \"optional_targeting\": false, \"original_controller\": 0, \"source_id\": 24, \"sub_ability\": null, \"targets\": [], \"trigger_source\": {\"card_id\": 24, \"cast_controller\": 0, \"cast_from_zone\": \"Hand\", \"colors_spent_to_cast\": {\"",
+    "A3 context: x_value announced=2, target_chosen=True (candidate 7EKUMM.0.373.t1), cast_rejections=0, target_rejections=0, banefire_seen_on_stack=True.",
+    "A3 passed: Banefire cast with X=2 announced, P1 chosen as target, no rejections on the cast path.",
+    "A4 measurements: trigger_seen_on_stack=True, hand cast->4 post->7 (delta 3), cards_drawn delta -1, P0 life cast->20 post->20 (delta 0); expected draw +1 and life +1 (half of X=2, rounded down).",
+    "A4 FAILED (refined by card-conservation audit): the delayed trigger FIRED (observed on the stack) and DREW 1 card -- pre->post library 42->39 with only P0 turn draws on turns 27/29 accounting for 2 of the 3 draws, and hand 5->7 (Banefire to graveyard, +3 draws) confirms the trigger's draw resolved -- but P0 gained NO life (20->20, expected 21 = half of X=2 rounded down). The bug is specifically the missing life gain, not a missing trigger: the draw half works, the 'gain half X life' half does not.",
+    "A5 passed: P1 life 20 -> 18 (Banefire dealt 2).",
+    "A6 passed: post stack empty, game continues.",
+    "verdict=reproduced: Banefire (X=2) was cast after tapping Brass Infiniscope for {C}{C}, but P0 drew no card and gained no life -- exactly the reported failure (confirmed on v0.99.0).",
+    "server.log excerpt: 0 matching lines (of 3893 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-7171-20260915-0211/server.log)"
+  ],
+  "observations": {
+    "scope_oid": 24,
+    "activated": true,
+    "x_value": 2,
+    "target_chosen": true,
+    "target_candidate_id": "7EKUMM.0.373.t1",
+    "cast_rejections": 0,
+    "target_rejections": 0,
+    "trigger_seen": true,
+    "delayed_triggers_at_activation": [
+      {
+        "condition": {
+          "type": "WhenNextEvent",
+          "trigger": {
+            "mode": "SpellCast",
+            "execute": null,
+            "valid_card": {
+              "type": "Typed",
+              "type_filters": [],
+              "controller": null,
+              "properties": [
+                {
+                  "type": "HasXInManaCost"
+                }
+              ]
+            },
+            "origin": null,
+            "destination": null,
+            "trigger_zones": [],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": {
+              "type": "Controller"
+            },
+            "valid_source": null,
+            "description": null,
+            "constraint": null,
+            "condition": null,
+            "batched": false
+          },
+          "or_trigger": null
+        },
+        "ability": {
+          "effect": {
+            "type": "Draw",
+            "count": {
+              "type": "Fixed",
+              "value": 1
+            },
+            "target": {
+              "type": "Controller"
+            }
+          },
+          "targets": [],
+          "source_id": 24,
+          "trigger_source": {
+            "identity": {
+              "reference": {
+                "object_id": 24,
+                "incarnation": 3
+              },
+              "expected_zone": "Battlefield"
+            },
+            "lki": {
+              "name": "Brass Infiniscope",
+              "power": null,
+              "toughness": null,
+              "base_power": null,
+              "base_toughness": null,
+              "mana_value": 4,
+              "controller": 0,
+              "owner": 0,
+              "card_types": [
+                "Artifact"
+              ],
+              "subtypes": [],
+              "supertypes": [],
+              "keywords": [],
+              "colors": [],
+              "chosen_attributes": [],
+              "counters": {},
+              "tapped": true,
+              "is_suspected": false,
+              "attachments": []
+            },
+            "card_id": 24,
+            "printed_ref": {
+              "oracle_id": "f74d8f53-a239-4641-90f1-bf786d57e253",
+              "face_name": "Brass Infiniscope"
+            },
+            "is_token": false,
+            "face_down": false,
+            "mana_cost": {
+              "type": "Cost",
+              "shards": [],
+              "generic": 4
+            },
+            "transformed": false,
+            "is_renowned": false,
+            "is_saddled": false,
+            "timestamp": 8,
+            "entered_battlefield_turn": 7,
+            "combat_status": {
+              "attacking": false,
+              "blocking": false,
+              "blocked": false,
+              "attacking_alone": false,
+              "blocking_alone": false,
+              "defending_player": null
+            },
+            "cast_from_zone": "Hand",
+            "cast_controller": 0,
+            "phase_status": {
+              "status": "PhasedIn"
+            },
+            "mana_spent_to_cast": true,
+            "colors_spent_to_cast": {
+              "red": 4
+            },
+            "mana_spent_to_cast_amount": 4,
+            "mana_spent_source_snapshots": [
+              {
+                "source_id": 26,
+                "lki": {
+                  "name": "Mountain",
+                  "power": null,
+                  "toughness": null,
+                  "base_power": null,
+                  "base_toughness": null,
+                  "mana_value": 0,
+                  "controller": 0,
+                  "owner": 0,
+                  "card_types": [
+                    "Land"
+                  ],
+                  "subtypes": [
+                    "Mountain"
+                  ],
+                  "supertypes": [
+                    "Basic"
+                  ],
+                  "keywords": [],
+                  "colors": [],
+                  "chosen_attributes": [],
+                  "counters": {},
+                  "tapped": true,
+                  "is_suspected": false,
+                  "attachments": []
+                }
+              },
+              {
+                "source_id": 48,
+                "lki": {
+                  "name": "Mountain",
+                  "power": null,
+                  "toughness": null,
+                  "base_power": null,
+                  "base_toughness": null,
+                  "mana_value": 0,
+                  "controller": 0,
+                  "owner": 0,
+                  "card_types": [
+                    "Land"
+                  ],
+                  "subtypes": [
+                    "Mountain"
+                  ],
+                  "supertypes": [
+                    "Basic"
+                  ],
+                  "keywords": [],
+                  "colors": [],
+                  "chosen_attributes": [],
+                  "counters": {},
+                  "tapped": true,
+                  "is_suspected": false,
+                  "attachments": []
+                }
+              },
+              {
+                "source_id": 33,
+                "lki": {
+                  "name": "Mountain",
+                  "power": null,
+                  "toughness": null,
+                  "base_power": null,
+                  "base_toughness": null,
+                  "mana_value": 0,
+                  "controller": 0,
+                  "owner": 0,
+                  "card_types": [
+                    "Land"
+                  ],
+                  "subtypes": [
+                    "Mountain"
+                  ],
+                  "supertypes": [
+                    "Basic"
+                  ],
+                  "keywords": [],
+                  "colors": [],
+                  "chosen_attributes": [],
+                  "counters": {},
+                  "tapped": true,
+                  "is_suspected": false,
+                  "attachments": []
+                }
+              },
+              {
+                "source_id": 3,
+                "lki": {
+                  "name": "Mountain",
+                  "power": null,
+                  "toughness": null,
+                  "base_power": null,
+                  "base_toughness": null,
+                  "mana_value": 0,
+                  "controller": 0,
+                  "owner": 0,
+                  "card_types": [
+                    "Land"
+                  ],
+                  "subtypes": [
+                    "Mountain"
+                  ],
+                  "supertypes": [
+                    "Basic"
+                  ],
+                  "keywords": [],
+                  "colors": [],
+                  "chosen_attributes": [],
+                  "counters": {},
+                  "tapped": true,
+                  "is_suspected": false,
+                  "attachments": []
+                }
+              }
+            ]
+          },
+          "controller": 0,
+          "original_controller": 0,
+          "kind": "Spell",
+          "sub_ability": null,
+          "duration": null,
+          "condition": null,
+          "context": {
+            "additional_cost_paid": false,
+            "alternative_mana_cost_paid": false,
+            "optional_effect_performed": false
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "detached_remainder": "NoProducer",
+          "forward_result": false
+        },
+        "controller": 0,
+        "source_id": 24,
+        "one_shot": true,
+        "provenance": "LegacyDelayed"
+      }
+    ],
+    "draw_observed": false,
+    "life_gain_observed": false,
+    "p1_damaged": true,
+    "checkpoints": {
+      "pre": {
+        "life": [
+          20,
+          20
+        ],
+        "hand_n": 5,
+        "drawn": 1
+      },
+      "cast": {
+        "life0": 20,
+        "life1": 20,
+        "hand0": 4,
+        "drawn0": 1
+      },
+      "post": {
+        "life0": 20,
+        "life1": 18,
+        "hand0": 7,
+        "drawn0": 0
+      }
+    }
+  },
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "The report's attached Discord game state was not imported (the prebuilt server has no standalone state-restore facility); the scenario replays the reported line (tap scope, cast X spell) from a fresh game.",
+    "X=2 was used (expected life gain 1); other X values were not exercised.",
+    "States are authoritative exports, restorable only via full game replay."
+  ],
+  "setup_line": "P0: 4x Brass Infiniscope + 4x Banefire + 52x Mountain; P1: 60x Island",
+  "contract_line": "Tap Brass Infiniscope for {C}{C}, then cast Banefire with X=2 -> P0 must draw a card and gain 1 life (half of X, rounded down)",
+  "prior_runs": [],
+  "stats": {
+    "states_seen": 918,
+    "trigger_observations": 2
+  },
+  "a4_detail": {
+    "trigger_seen_on_stack": true,
+    "draw_observed": true,
+    "draw_proof": "card conservation pre(turn25)->post(turn30): library 42->39 (-3); P0 turn draws only on turns 27/29 (-2); Banefire hand->graveyard; hand 5->7 (+2 net = -1 Banefire +3 draws). The 3rd draw has no other source in either deck (no draw effects) => trigger drew 1.",
+    "life_gain_observed": false,
+    "life_proof": "P0 life 20 (cast, turn 25) -> 20 (post, turn 30); expected 21. No other life-changing effects exist in this game.",
+    "x_value": 2,
+    "expected_life_gain": 1
+  }
+}
