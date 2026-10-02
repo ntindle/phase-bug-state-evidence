@@ -1,0 +1,20 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_attempted": "passed",
+  "A3_expected_return": "failed",
+  "A4_expected_food": "failed",
+  "A6_cleanup": "passed",
+  "A5_card_unimplemented": "passed"
+ },
+ "notes": {
+  "A1_setup_ok": "pre: P0 gy=['Grizzly Bears', 'Grizzly Bears']; SUPPER in P1 hand=True",
+  "A2_cast_attempted": "CastSpell(Supper) submitted=True; never_offered=False; rejections within 3s of the cast=0 (the 25 wrong_player rejections in the wire log are a continuous stale-snapshot PassPriority stream every ~0.15s, none referencing the Supper cast); post.json shows a Supper for Spiders copy in P1's graveyard with an empty stack, so the cast was accepted and resolved as a no-op. NOTE (corrected 2026-10-02): the scenario's first-write note misattributed a stale wrong_player rejection to the cast; timing analysis of wire_log.jsonl refutes that.",
+  "A3_expected_return": "bears on BF under P1=0; P0 gy still holds bears=True; supper post zone=Library",
+  "A4_expected_food": "Food permanents under P1=0",
+  "A6_cleanup": "post stack empty=True; phase=PreCombatMain",
+  "A5_card_unimplemented": "pinned card-data: spell effect Unimplemented/unparsed_verb_arguments, child unbound_subject",
+  "_correction": "2026-10-02: A2 note rewritten after timing analysis; no evidence bytes changed. The Supper cast resolved (graveyard), it was not rejected."
+ },
+ "verdict": "reproduced"
+}
