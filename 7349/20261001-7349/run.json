@@ -1,0 +1,61 @@
+{
+ "issue": 7349,
+ "title": "Time Reaper \u2014 The *Consume Anomaly* effect doesn't appear to work.",
+ "run_id": "20261001-7349",
+ "validated_at": "2026-10-01T19:22:34.232422-05:00",
+ "validated_version": "v0.99.0",
+ "build_commit": "d919616",
+ "protocol_version": 98,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "scenario": {
+  "file": "driver/scenario_7349.py",
+  "sha256": "10f06259bb53bee36efe5e152f7411fd422903830ad26428f7e82a92470d58a1"
+ },
+ "verdict": "reproduced",
+ "scope": "Time Reaper Consume Anomaly trigger: P1 exiles own Memnite face-up via Swords to Plowshares; P0 casts Time Reaper, attacks P1 (haste), P1 blocks nothing; trigger target selection exercised; native engine, P0 + P1 human driver seats, protocol-98 driver",
+ "result": "A1 setup passed (P1 exile holds a face-up Memnite; P0 ready to cast Time Reaper). A2 passed: after 4 combat damage, the Consume Anomaly trigger went on the stack and P0 received a TriggerTargetSelection prompt (sequence, choose 1). A3 FAILED (the reported outcome): the prompt offered exactly 2 candidates, both players (seats 0 and 1) - the face-up exiled Memnite was not offered, so the reported 'would only let me target an opponent' reproduces exactly. A4 failed as the flip side (players offered). A5: taking the only legal target (P1), the trigger resolved with the Memnite still in exile and P1's library unchanged, yet P0 gained 3 life (20->23) - the 'if you do' clause fired although no card moved. Matches the triage: the PutAtLibraryPosition target is parsed as unfiltered 'any', so the selector falls back to offering players.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_target_prompt": "passed",
+  "A3_exiled_offered": "failed",
+  "A4_no_players": "failed",
+  "A5_consequence": "passed",
+  "A6_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "setup: P0 main, P0 priority, 5 untapped Swamps, Time Reaper in P0 hand: True; P1 exile: [('62', 'Memnite', False)] (face-up); life 20/21 (P1 +1 from Swords on own Memnite); stack 0",
+  "A2_target_prompt": "pre: turn 10 phase CombatDamage, wf=TriggerTargetSelection/p0, Time Reaper TriggeredAbility on stack: True; life 20/17 (4 combat damage dealt); opportunity wired: True (iid SKB4XU.0.159, spec sequence min1/max1)",
+  "A3_exiled_offered": "candidates offered: 2; kinds: ['player', 'player']; exiled Memnite offered: False; card candidates: 0; REPORTED OUTCOME: the face-up exiled card cannot be targeted",
+  "A4_no_players": "player candidates offered: [('SKB4XU.0.159.t0', [0]), ('SKB4XU.0.159.t1', [1])] (seats 0 and 1); the reporter saw 'only let me target an opponent'",
+  "A5_consequence": "driver chose the only legal target (P1, SKB4XU.0.159.t1); post: trigger off stack: True; Memnite 62 still in P1's exile face-up: True; P1 library Memnite set unchanged: True; life 20/17 -> 23/17: P0 gained 3 life ALTHOUGH no card moved (the 'if you do' clause fired on a player target)",
+  "A6_cleanup": "post: wf=Priority/p1, stack=0, rejections=0 (1x P1 duplicate Mulligan Keep action_not_allowed; 1x P1 stale Swords prompt invalid_interaction_response); game proceeding"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense playsets (8x Time Reaper, 16x Memnite, 8x Swords) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The Swords-to-Plowshares self-exile used the engine's single-candidate auto-target path (cast with the Memnite as the only creature on the battlefield); manual target prompting for Swords was not exercised.",
+  "Only the 'target the offered player' follow-through was exercised; the reporter's session presumably did the same. No decline/alternative branch exists (the trigger is not optional).",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7349.py), not direct load.",
+  "Not tested on the report's original build (Discord report, 2026-08-13); verdict scoped to v0.99.0, not a fix claim."
+ ],
+ "driver_notes": [
+  "Protocol-98 target selection uses the viewer_interaction 'sequence' schema for this trigger (min 1, max 1, confirm explicit); DeclareAttackers/DeclareBlockers use the 'relations' schema (scenario_6860_0980 pattern).",
+  "A CastSpell for Swords to Plowshares with a single legal target on the battlefield resolved with no driver-answered prompt (engine single-candidate path); a later stale prompt answer was rejected invalid_interaction_response and ignored.",
+  "MulliganDecision gated on pending[] Declare; BottomCards/DiscardToHandSize via single SelectCards protecting Time Reaper/Swords/Memnite.",
+  "This engine's state reports Title-Case card names; deck lists use Title-Case and match. Exiled objects carry face_down=false for face-up."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
