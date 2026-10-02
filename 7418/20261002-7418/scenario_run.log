@@ -1,0 +1,28 @@
+data-level check: head=PutAtLibraryPosition, sub effect=Bounce, sub target={'type': 'TrackedSet', 'id': 0} -> MATCHES ISSUE REPORT
+game 8GVY9O; P0 seat=0 P1 seat=1
+[P0] keep 7 (hand: ['the spot, living portal', 'swamp', 'swamp', 'swamp', 'go for the throat', 'swamp', 'plains'])
+[P1] keep 7 (hand: ['forest', 'forest', 'forest', 'grizzly bears', 'forest', 'grizzly bears', 'forest'])
+[P1] casting Grizzly Bears (oid 100)
+[P1] casting Grizzly Bears (oid 106)
+[P0] early Go for the Throat (oid 2) to seed P1's graveyard
+[P0] target -> candidates ['8GVY9O.0.104.t0'] (needles [['grizzly bears', 'battlefield', '"controller": 1']])
+early Go for the Throat resolved: bear in graveyard; phase -> setup
+[P1] casting Grizzly Bears (oid 107)
+[P1] casting Grizzly Bears (oid 116)
+exported pre_etb.json
+[P0] casting The Spot, Living Portal (oid 3)
+The Spot on P0 battlefield (oid 3); phase -> etb_targeting
+[P0] target -> candidates ['8GVY9O.0.148.t0'] (needles [['grizzly bears', 'battlefield', '"controller": 1']])
+[P0] target -> candidates ['8GVY9O.0.149.t0'] (needles [['grizzly bears', 'graveyard']])
+exported etb_done.json
+ETB resolved: exiled bears=[(100, 'Grizzly Bears', 1, 1), (106, 'Grizzly Bears', 1, 1)]; phase -> etb_done
+exported pre.json
+[P0] pre.json exported; exiled at pre: [(100, 'Grizzly Bears', 1), (106, 'Grizzly Bears', 1)]
+[P0] casting Go for the Throat (oid 15) targeting The Spot
+[P0] target -> candidates ['8GVY9O.0.215.t2'] (needles [['the spot', 'battlefield']])
+The Spot left P0's battlefield
+dies trigger observed ON THE STACK; exporting mid_dies
+exported mid_dies.json
+settled: stack empty, Priority, 8s idle; exporting post
+exported post.json
+finalizing
