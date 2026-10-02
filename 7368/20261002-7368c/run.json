@@ -1,0 +1,104 @@
+{
+ "issue": 7368,
+ "run_id": "20261002-7368c",
+ "started_at": "2026-10-02T11:25:00",
+ "duration_s": 64.6,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; games-db lives under runs/20261002-7366b; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "6dac1f39ea649253ee59ded24c1eb0b7eb38e9d52ab642bc21e9f77beca0b2ad",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Battle at the Helvault",
+    8
+   ],
+   [
+    "Elite Vanguard",
+    16
+   ],
+   [
+    "Plains",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Elite Vanguard",
+    24
+   ],
+   [
+    "Plains",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_prompt_offered": "passed",
+  "A3_decline_accepted": "passed",
+  "A4_iteration_continues": "failed",
+  "A5_accept_exiles": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: card data parses as expected: True",
+  "slot 1: P0-scoped prompt arrived with a fresh chapter trigger on the stack (chapter II); not counted as iteration",
+  "A1 passed: Battle at the Helvault on P0 battlefield (saga keys: ['abilities', 'attached_to', 'attachments', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_replacement_definitions', 'base_toughness', 'base_trigger_definitions', 'card_id', 'card_types', 'cast_controller', 'cast_from_zone', 'color', 'colors_spent_to_cast', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'entered_battlefield_turn', 'face_down', 'flipped', 'id', 'incarnation', 'keywords', 'loyalty', 'mana_cost', 'mana_spent_source_snapshots', 'mana_spent_to_cast_amount', 'name', 'owner', 'parse_warnings', 'power', 'printed_ref', 'replacement_definitions', 'source_related_token_ids', 'static_definitions', 'summoning_sick', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_definitions', 'zone'], lore mention: True); chapter I trigger observed on the stack; eligible permanents P0=[42], P1=[83, 101, 103].",
+  "A2 passed: chapter I target slot advertised to P0 with 1 candidates controlled by [0] (waiting_for=TriggerTargetSelection).",
+  "A3 passed: the slot-0 decline (decision=declined_empty_sequence) was accepted with no rejections; the game moved past the slot.",
+  "A4 FAILED: after the slot-0 decline, the chapter ended with no second slot offered -- the reported bug reproduces: declining ends the chapter instead of continuing around to the next player.",
+  "A5 not-run: no accept leg ran (expected when A4 failed).",
+  "A6 passed: post stack empty, game continues.",
+  "verdict=reproduced: Battle at the Helvault chapter I offered one up-to-one target slot; declining it ended the chapter instead of iterating to the next player -- exactly the reported failure (confirmed on v0.99.0).",
+  "server.log excerpt: 0 matching lines (of 3893 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-7171-20260915-0211/server.log)"
+ ],
+ "observations": {
+  "saga_oid": 28,
+  "trigger_seen": true,
+  "n_slots": 2,
+  "slot_decisions": [
+   "declined_empty_sequence",
+   "declined_empty_sequence"
+  ],
+  "decline_submitted": true,
+  "decline_rejections": 0,
+  "iteration_continued": false,
+  "accept_oid": null,
+  "accepted_exiled": false,
+  "pre_p0_elig": [
+   42
+  ],
+  "pre_p1_elig": [
+   83,
+   101,
+   103
+  ]
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (8x/16x) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The chapter trigger was reached via the saga's own ETB lore counter, not via Satsuki, the Living Lore's {T} ability as in the report; the clause under test is identical.",
+  "The 'exiled until this Saga leaves the battlefield' return was not exercised (the saga was not removed).",
+  "Chapter II was not driven (run finalizes after chapter I).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 8x Battle at the Helvault + 16x Elite Vanguard + 36x Plains; P1: 16x Elite Vanguard + 44x Plains",
+ "contract_line": "Battle at the Helvault chapter I: decline the controller's up-to-one slot -> the trigger must still offer a slot for the next player's permanents",
+ "prior_runs": []
+}
