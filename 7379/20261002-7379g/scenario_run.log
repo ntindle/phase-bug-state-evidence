@@ -1,0 +1,25 @@
+server identity pinned: v0.99.0 (d919616) protocol 98; using live backfill server 127.0.0.1:9374
+game K94CK4; P0 seat=0 P1 seat=1 P2 seat=2
+P0 mulligan -> Keep (lands=5)
+P1 mulligan -> Keep (lands=7)
+P2 mulligan -> Keep (lands=7)
+waiting_for: MulliganDecision player=None stage=SETUP
+P1 mulligan -> Keep (lands=7)
+waiting_for: Priority player=2 stage=SETUP
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+exported pre.json
+pre exported; CAST1 stage
+[P0] casts Jirina from the command zone (oid 181)
+exported mid1.json
+mid1 exported; P0 tokens=1; WIPE stage
+[P0] casts Day of Judgment
+[P0] CommanderZoneChoice shape: wf_data={"player": 0, "commander_id": 181, "current_zone": "Graveyard"} actions=['DecideOptionalEffect', 'DecideOptionalEffect']
+[P0] CommanderZoneChoice answered via DecideOptionalEffect accept=true
+waiting_for: CommanderZoneChoice player=0 stage=REPLACEMENT
+waiting_for: Priority player=0 stage=REPLACEMENT
+exported mid2.json
+mid2 exported; Jirina in CommandZone; CAST2 stage
+[P0] casts Jirina from the command zone, second time (oid 181)
+exported post.json
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7379/20261002-7379g/summary.png
+FINAL verdict=not-reproduced assertions={'A1_setup_ok': 'passed', 'A2_first_count': 'passed', 'A3_kill_ok': 'passed', 'A4_second_count': 'passed', 'A5_cleanup': 'passed'}
