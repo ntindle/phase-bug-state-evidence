@@ -1,0 +1,33 @@
+{
+ "name": "Afterlife from the Loam",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Black",
+   "Black"
+  ],
+  "generic": 5
+ },
+ "oracle": "Delve (Each card you exile from your graveyard while casting this spell pays for {1}.)\nFor each player, choose up to one target creature card in that player's graveyard. Put those cards onto the battlefield under your control. They're Zombies in addition to their other types.",
+ "ability_head": {
+  "type": "Unimplemented",
+  "name": "unparsed_quantity",
+  "description": "For each player, choose up to one target creature card in that player's graveyard"
+ },
+ "sub_ability_effect": {
+  "type": "ChangeZoneAll",
+  "origin": "Exile",
+  "destination": "Battlefield",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "enters_under": "You"
+ },
+ "tail_effect": {
+  "type": "Unimplemented",
+  "name": "unrecognized_clause_head",
+  "description": "They're Zombies in addition to their other types"
+ }
+}
