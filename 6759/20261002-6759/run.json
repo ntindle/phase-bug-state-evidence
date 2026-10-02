@@ -1,0 +1,109 @@
+{
+ "issue": 6759,
+ "run_id": "20261002-6759",
+ "validated_at": "2026-10-02",
+ "started_at": "2026-10-02T08:34:59",
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "runs/20261002-6759 (fresh v0.99.0 server on 127.0.0.1:9374, started by this run; stale 7363-run server stopped)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario": {
+  "file": "scenario_6759_v099.py",
+  "sha256": "b06cf3c860347c3011f348d350cf609a22da1ece480054dc633713e11951f0e1"
+ },
+ "plan": {
+  "g1": {
+   "cast": [
+    "Nalia de'Arnise"
+   ],
+   "want": {
+    "Nalia de'Arnise": 1
+   }
+  },
+  "g2": {
+   "cast": [
+    "Nalia de'Arnise",
+    "Acolyte of Xathrid",
+    "Aven Skirmisher",
+    "Augur of Skulls"
+   ],
+   "want": {
+    "Nalia de'Arnise": 1,
+    "Acolyte of Xathrid": 1,
+    "Aven Skirmisher": 1,
+    "Augur of Skulls": 1
+   }
+  }
+ },
+ "decks": {
+  "g1_P0": {
+   "Plains": 20,
+   "Swamp": 20,
+   "Nalia de'Arnise": 8
+  },
+  "g2_P0": {
+   "Plains": 20,
+   "Swamp": 20,
+   "Nalia de'Arnise": 4,
+   "Acolyte of Xathrid": 8,
+   "Aven Skirmisher": 8,
+   "Augur of Skulls": 8
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_no_counters": "passed",
+  "A3_no_deathtouch": "passed",
+  "A4_cleanup": "passed",
+  "A5_counters": "passed",
+  "A6_deathtouch": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "g1: party_roles_pre=['Rogue'] nalia_trigger_seen_on_stack=False gained_counters=none deathtouch_on=none life=20/20",
+  "g2: party_roles_pre=['Cleric', 'Rogue', 'Warrior', 'Wizard'] per-creature (delta_p1p1, deathtouch)={'Aven Skirmisher': [(1, True)], 'Augur of Skulls': [(1, True)], 'Acolyte of Xathrid': [(1, True)], \"Nalia de'Arnise\": [(1, True)]} nalia_trigger_seen_on_stack=False",
+  "verdict=not-reproduced: trigger correctly withheld with party=1 and correctly fired with party=4"
+ ],
+ "verdict": "not-reproduced",
+ "verdict_reason": "trigger correctly withheld with party=1 and correctly fired with party=4",
+ "elapsed_s": 78.6,
+ "prior_runs": [
+  {
+   "run_id": "20260910-6759",
+   "release": "v0.79.0",
+   "build_commit": "1cde7a2",
+   "protocol_version": 69,
+   "verdict": "not-reproduced",
+   "evidence_commit": "7a334c9468307eb7d5f19fa0610e79d8cee598c6"
+  },
+  {
+   "run_id": "20260917-6759",
+   "release": "v0.86.0",
+   "build_commit": "2cc8c28",
+   "protocol_version": 72,
+   "verdict": "not-reproduced",
+   "note": "release pin advanced since; re-validated here on v0.99.0"
+  }
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  ">4-of deck density is a test-harness convenience (engine accepts custom games).",
+  "Nalia's 'cast from top of library' static is not exercised; only the beginning-of-combat party gate is under test.",
+  "States are authoritative exports, restorable only via full game replay."
+ ]
+}
