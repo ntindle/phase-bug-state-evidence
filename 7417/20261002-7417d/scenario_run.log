@@ -1,0 +1,26 @@
+data-level check: head=CreateDelayedTrigger (cond=AtNextPhase, inner=ChangeZone), sibling=ChangeZone->Battlefield transformed=True target=TrackedSet -> MATCHES ISSUE REPORT
+game 8M0LW2; P0 seat=0 P1 seat=1
+[P0] keep 7 (hand: ['grizzly bears', 'forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest'])
+[P1] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] casting Grizzly Bears (oid 7)
+[P0] casting Grizzly Bears (oid 58)
+[P0] casting Conqueror's Galleon (oid 57)
+Conqueror's Galleon on P0 battlefield (oid 57), turn 7
+exported pre.json
+[P0] activating crew on Conqueror's Galleon (oid 57)
+[P0] crewing interaction: wtype=CrewVehicle pending=null
+[P0] crew: tapping ['grizzly bears', 'grizzly bears'] (total power 4)
+exported crewed.json
+Galleon is now a creature (crewed)
+[P0] attacking P1 with Conqueror's Galleon (oid 57)
+Galleon attack trigger observed ON THE STACK; exporting attack
+exported attack.json
+exported post_trigger.json
+attack trigger resolved; Galleon still on BF; post_trigger exported
+end-of-combat delayed trigger on the stack
+end-of-combat delayed trigger on the stack
+exported end_combat.json
+Galleon in exile at/after end of combat; end_combat exported
+exported post.json
+post exported; finalizing
+finalizing
