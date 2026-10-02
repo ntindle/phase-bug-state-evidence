@@ -1,0 +1,20 @@
+data-level check: head=LoseLife, sub effect=PutCounter, sub count qty=TrackedSetSize -> MATCHES ISSUE REPORT
+game R6KSPA; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (hand: ['mountain', 'island', 'island', 'island', 'island', 'mountain', 'island'])
+[P1] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] keep 7 (hand: ['swamp', 'mountain', 'island', 'mountain', 'mountain', 'blood tyrant', 'mountain'])
+[P0] bottoming ['swamp']
+[P0] casting Blood Tyrant (oid 15)
+Blood Tyrant on stack (oid 15); exporting cast
+exported cast.json
+exported pre.json
+Blood Tyrant on P0 battlefield (oid 15), life (20, 20); pre exported; phase -> tyrant_on_bf
+Blood Tyrant upkeep trigger observed ON THE STACK; exporting trigger
+exported trigger.json
+exported watch_001.json
+watch 1: life=(20, 20) stack=1 tyrant_counters=0 phase=Upkeep
+exported watch_002.json
+watch 2: life=(19, 19) stack=0 tyrant_counters=0 phase=BeginCombat
+decisive post-resolution state captured (life 19/19, stack empty); exporting post
+exported post.json
+finalizing

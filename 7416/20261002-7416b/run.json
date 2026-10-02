@@ -1,0 +1,102 @@
+{
+ "issue": 7416,
+ "run_id": "20261002-7416b",
+ "started_at": "2026-10-02T16:05:21",
+ "duration_s": 50.1,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "f2f5ebecb406d7f40af2e5937b3e6435b96d1c516c6a5d88a06cb77cd49b8567",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Blood Tyrant",
+    4
+   ],
+   [
+    "Island",
+    18
+   ],
+   [
+    "Swamp",
+    19
+   ],
+   [
+    "Mountain",
+    19
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_life_loss": "passed",
+  "A4_two_counters": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.99.0 card-data.json parses Blood Tyrant's upkeep trigger as LoseLife head + PutCounter sub with count qty TrackedSetSize (issue-reported shape: True)",
+  "A1 passed: pre exported with Blood Tyrant (oid 15) on P0's battlefield, life 20/20.",
+  "A2 context: trigger_seen=True (at 1790957166.864321), trigger_exported=True.",
+  "A2 passed: Blood Tyrant's upkeep TriggeredAbility was observed on the stack during P0's Upkeep.",
+  "A3 probe: post life totals = (19, 19) (pre was (20, 20)).",
+  "A3 passed: each player lost 1 life (20->19 both) -- the LoseLife head of the trigger resolved.",
+  "A4 probe: post Blood Tyrant (oid 15) counters raw={} (total=0), P/T=5/5, life=(19, 19).",
+  "A4 FAILED: Blood Tyrant carries 0 +1/+1 counters after both players lost 1 life -- THE REPORTED BUG REPRODUCES (expected 2, the TrackedSetSize count resolves to 0).",
+  "A5 passed: post stack empty, game continues.",
+  "verdict=reproduced: Blood Tyrant's upkeep trigger fired and each player lost 1 life, but the Tyrant gained 0 +1/+1 counters -- the parsed TrackedSetSize quantity resolves to 0 as the issue reports (confirmed on v0.99.0).",
+  "server.log excerpt: 578 matching lines (of 593 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7416-server/server.log)"
+ ],
+ "observations": {
+  "tyrant_cast": true,
+  "tyrant_cast_rejections": 0,
+  "tyrant_stack_oid": 15,
+  "tyrant_bf_oid": 15,
+  "tyrant_on_bf_at": 1790957162.877229,
+  "trigger_seen": true,
+  "trigger_seen_at": 1790957166.864321,
+  "checkpoints": {
+   "pre": {
+    "life": [
+     20,
+     20
+    ],
+    "tyrant_bf_oid": 15
+   }
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report includes no game state (data-level report); the scenario replays the reported line (Blood Tyrant's upkeep trigger in a 2-player game) from a fresh game.",
+  "Only the 2-player case was exercised (expected 2 counters); the 4-player expectation (4 counters) was not tested.",
+  "Only the upkeep trigger was exercised; the LosesGame trigger was not.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Blood Tyrant + 18x Island + 19x Swamp + 19x Mountain; P1: 60x Plains (lands, passes)",
+ "contract_line": "Blood Tyrant's upkeep trigger resolves with each player losing 1 life -> the Tyrant must gain exactly 2 +1/+1 counters",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 572
+ }
+}

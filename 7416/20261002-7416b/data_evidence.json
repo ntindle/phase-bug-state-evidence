@@ -1,0 +1,86 @@
+{
+ "name": "Blood Tyrant",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Blue",
+   "Black",
+   "Red"
+  ],
+  "generic": 4
+ },
+ "oracle": "Flying, trample\nAt the beginning of your upkeep, each player loses 1 life. Put a +1/+1 counter on this creature for each 1 life lost this way.\nWhenever a player loses the game, put five +1/+1 counters on this creature.",
+ "upkeep_trigger_execute": {
+  "kind": "Spell",
+  "effect": {
+   "type": "LoseLife",
+   "amount": {
+    "type": "Fixed",
+    "value": 1
+   }
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "PutCounter",
+    "counter_type": "P1P1",
+    "count": {
+     "type": "Ref",
+     "qty": {
+      "type": "TrackedSetSize"
+     }
+    },
+    "target": {
+     "type": "SelfRef"
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "sub_link": "SequentialSibling"
+  },
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "player_scope": {
+   "type": "All"
+  }
+ },
+ "upkeep_trigger_sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "PutCounter",
+   "counter_type": "P1P1",
+   "count": {
+    "type": "Ref",
+    "qty": {
+     "type": "TrackedSetSize"
+    }
+   },
+   "target": {
+    "type": "SelfRef"
+   }
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ }
+}
