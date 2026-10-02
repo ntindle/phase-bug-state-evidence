@@ -1,0 +1,104 @@
+{
+ "name": "Conqueror's Galleon",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [],
+  "generic": 4
+ },
+ "oracle": "When this Vehicle attacks, exile it at end of combat, then return it to the battlefield transformed under your control.\nCrew 4 (Tap any number of creatures you control with total power 4 or more: This Vehicle becomes an artifact creature until end of turn.)",
+ "attack_trigger_execute": {
+  "kind": "Spell",
+  "effect": {
+   "type": "CreateDelayedTrigger",
+   "condition": {
+    "type": "AtNextPhase",
+    "phase": "EndCombat"
+   },
+   "effect": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": null,
+     "destination": "Exile",
+     "target": {
+      "type": "ParentTarget"
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "uses_tracked_set": false
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "ChangeZone",
+    "origin": null,
+    "destination": "Battlefield",
+    "target": {
+     "type": "TrackedSet",
+     "id": 0
+    },
+    "owner_library": false,
+    "enter_transformed": true,
+    "enters_under": "You",
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ },
+ "attack_trigger_sibling_sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "ChangeZone",
+   "origin": null,
+   "destination": "Battlefield",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "owner_library": false,
+   "enter_transformed": true,
+   "enters_under": "You",
+   "enter_tapped": false,
+   "enters_attacking": false
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ }
+}
