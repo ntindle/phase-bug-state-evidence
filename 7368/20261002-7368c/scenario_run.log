@@ -1,0 +1,25 @@
+data-level check: OK
+game MRUHMH; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (hand: ['elite vanguard', 'plains', 'plains', 'plains', 'plains', 'elite vanguard', 'plains'])
+[P1] keep 7 (hand: ['plains', 'plains', 'plains', 'elite vanguard', 'plains', 'plains', 'plains'])
+[P0] mulligan #2 (hand: ['plains', 'elite vanguard', 'plains', 'plains', 'plains', 'elite vanguard', 'plains'])
+[P0] keep 7 (hand: ['plains', 'elite vanguard', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] bottoming ['plains', 'plains']
+[P0] casting Elite Vanguard
+[P1] casting Elite Vanguard
+[P1] casting Elite Vanguard
+[P1] casting Elite Vanguard
+[P0] casting Battle at the Helvault (oid 28)
+chapter I trigger on stack at turn 11
+exported pre.json (chapter trigger on stack / first slot seen)
+[slot 0] advertised to P0: 1 candidates, controllers=[0]; waiting_for=TriggerTargetSelection
+[slot 0] DECLINED (decision=declined_empty_sequence); awaiting iteration to the next player
+exported mid_decline.json (after the slot-0 decline)
+[P1] casting Elite Vanguard
+[slot 1] advertised to P0: 1 candidates, controllers=[0]; waiting_for=TriggerTargetSelection
+[slot 1] P0-scoped slot while the chapter trigger is back on the stack -- looks like a NEW chapter trigger (chapter II), not iteration; recording and declining to keep the game moving
+[P1] casting Elite Vanguard
+[P1] casting Elite Vanguard
+chapter ended after the decline: no second slot was offered (the reported bug)
+exported post.json
+finalizing
