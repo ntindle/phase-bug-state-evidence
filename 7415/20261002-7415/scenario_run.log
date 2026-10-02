@@ -1,0 +1,54 @@
+data-level check: OK (clause parsed as ChooseObjectsIntoTrackedSet(min 0,max 1)->DestroyAll excl. InTrackedSet) -- the issue premise (unparsed Effect::Unimplemented head) does NOT hold in the pinned v0.99.0 data; this run tests runtime behavior against the current parse
+game 51UK2U; P0 seat=0 P1 seat=1
+[P0] keep 7 (hand: ['forest', 'plains', 'swamp', 'plains', 'swamp', 'swamp', 'forest'])
+[P1] keep 7 (hand: ['plains', 'forest', 'plains', 'savannah lions', 'forest', 'swamp', 'deathrite shaman'])
+[P1] casting savannah lions (oid 95)
+[P1] casting savannah lions (oid 117)
+[P1] casting deathrite shaman (oid 104)
+[P0] casting llanowar elves (oid 24)
+[P1] casting llanowar elves (oid 85)
+[P0] casting llanowar elves (oid 10)
+[P1] casting llanowar elves (oid 74)
+[P1] casting llanowar elves (oid 107)
+exported pre.json
+[P0] casting Duneblast #1 (oid 18); untapped lands=17, creatures on board=8
+Duneblast #1 on stack (oid 18); exporting cast
+exported cast.json
+cast exported
+[probe b1] wf=Priority vi_canSubmit=True vi_opps=1 actions=['ActivateAbility', 'PassPriority', 'TapLandForMana'] stack_n=1
+Duneblast #1 resolved (left the stack)
+[P0] choice opportunity (branch 1): iid 51UK2U.0.570, type schema, 8 candidates, wf=ChooseObjectsSelection
+exported choose1.json
+[P0] Duneblast branch 1: chose candidate 51UK2U.0.570.t3 (rtype schema)
+[P1] casting deathrite shaman (oid 69)
+[probe b1] wf=Priority vi_canSubmit=False vi_opps=0 actions=[] stack_n=0
+[probe b1] wf=Priority vi_canSubmit=True vi_opps=1 actions=['ActivateAbility', 'PassPriority', 'TapLandForMana'] stack_n=0
+branch A settled: stack empty, Priority, 20s idle; exporting post1
+exported post1.json
+branch A quick probe: spare oid 24 zone post1=Battlefield
+[P1] casting llanowar elves (oid 75)
+[P0] casting deathrite shaman (oid 51)
+[P0] casting savannah lions (oid 53)
+[P0] casting llanowar elves (oid 11)
+exported pre2.json
+[P0] casting Duneblast #2 (oid 26); untapped lands=29, creatures on board=6
+Duneblast #2 on stack (oid 26); exporting cast2
+exported cast2.json
+cast2 exported
+[probe b2] wf=Priority vi_canSubmit=True vi_opps=1 actions=['ActivateAbility', 'PassPriority', 'TapLandForMana'] stack_n=1
+[P0] choice opportunity (branch 2): iid 51UK2U.0.970, type schema, 6 candidates, wf=ChooseObjectsSelection
+[P0] Duneblast branch 2: submitted empty choiceIds (rtype schema)
+[P1] casting savannah lions (oid 91)
+[P0] casting deathrite shaman (oid 5)
+[probe b2] wf=Priority vi_canSubmit=True vi_opps=1 actions=['PassPriority', 'TapLandForMana'] stack_n=0
+[probe b2] wf=Priority vi_canSubmit=True vi_opps=1 actions=['ActivateAbility', 'PassPriority', 'TapLandForMana'] stack_n=0
+branch B settled; exporting post
+exported post.json
+finalizing
+0
+branch B settled; exporting post
+exported post.json
+finalizing
+DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_cast_ok": "passed", "A3_choice_ok": "passed", "A4_spare": "passed", "A5_choose_none": "passed", "A6_cleanup": "passed"}
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7415/20261002-7415/summary.png
+manifest written (14 files); verdict=not-reproduced
