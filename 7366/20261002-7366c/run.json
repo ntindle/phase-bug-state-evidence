@@ -1,0 +1,90 @@
+{
+ "issue": 7366,
+ "run_id": "20261002-7366c",
+ "started_at": "2026-10-02T09:54:36",
+ "duration_s": 38.9,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "live v0.99.0 server on 127.0.0.1:9374 (reused per task body: already listening with pinned release)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e1ccedc26e1d494a3217b07e4ea6a0014a0075381958279a7f9ec3c647693d3a",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Dusk",
+    4
+   ],
+   [
+    "Swamp",
+    28
+   ],
+   [
+    "Plains",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_entry": "passed",
+  "A2_corpus": "passed",
+  "A3_deck_reject": "passed",
+  "A4_dusk_cast": "passed",
+  "A5_dusk_gy": "passed",
+  "A6_no_dawn": "passed",
+  "A7_cost_logged": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned card-data.json `dusk` entry holds ONLY the Dusk half (oracle_text is the Dusk half alone, no faces/layout); no `dawn` or `dusk // dawn` key exists.",
+  "A2 passed (class scope recorded): 27/27 split-card back halves missing from pinned data: authority, believe, chance, comply, cooperate, dawn, despair, dust, earth, excess, fame, feed, fight, finish, injury, lead, market, memory, mind, oblivion, return, ribbons, riches, rubble, ruin, survive, victory",
+  "A3 passed: engine rejected the Dawn deck with Error: {\"message\": \"Unresolvable card names: main:Dawn\"}",
+  "A4 passed: Dusk was cast from hand in the live game (front half is a working card).",
+  "A5 passed: Dusk resolved and is in P0's graveyard at post (turn 14).",
+  "A6 passed: with Dusk in P0's graveyard and P0 holding priority with mana available, a full case-insensitive scan of state + legal actions + viewer interaction found ZERO mentions of 'dawn' -- no cast-from-graveyard path exists.",
+  "A7 not-run: no ManaPayment observed",
+  "verdict=reproduced: the Dawn (Aftermath) half is absent from the pinned card data, the engine rejects it as an unresolvable card, and a live game with Dusk in the graveyard offers no Dawn cast path.",
+  "server.log excerpt: 4 matching lines (deck-resolve WARN+ERROR pairs for the Dawn deck reject; ANSI stripped; log=runs/20261002-7366b/server.log; the scenario\\u2019s glob picked a stale log by reverse-sort, excerpt regenerated)",
+  "A7 passed (post-hoc state analysis, method documented): no explicit ManaPayment prompt appeared -- the engine auto-paid. Tapped-land delta at mid_cast (Dusk on stack, turn 14, nothing else cast that turn): {'plains': 3, 'swamp': 1}. 3x Plains + 1x Swamp tapped = {2}{W}{W} (WW + 2 generic), exactly the dusk entry's data mana_cost, NOT the true Dusk cost {2}{B}{B}. The ingestion mixed the faces: name+oracle text from Dusk, mana cost from Dawn's Aftermath half."
+ ],
+ "observations": {
+  "dusk_cast": true,
+  "dusk_on_stack": true,
+  "dusk_resolved": true,
+  "mana_payment_seen": false,
+  "dawn_mentions_at_post": 0,
+  "dusk_payment_tapped": {
+   "plains": 3,
+   "swamp": 1
+  },
+  "dusk_payment_inferred_cost": "{2}{W}{W} (data mana_cost), not {2}{B}{B}"
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Dusk deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The Dawn half's true Oracle text is deliberately not quoted: it is absent from the pinned data, so there is nothing authoritative to quote from (same sourcing rule as the issue triage).",
+  "A6 scans the viewer-filtered post state plus legal actions and interaction opportunities; the authoritative post export is preserved for independent inspection.",
+  "States are authoritative exports, restorable only via full game replay; the data-level finding is restorable by re-reading the pinned card-data.json (sha256 in server identity)."
+ ],
+ "setup_line": "P0: 4x Dusk + 28x Swamp + 28x Plains; P1: 60x Forest",
+ "contract_line": "Dawn (Aftermath) is absent from card data: engine rejects it as unresolvable and no graveyard cast path exists after Dusk resolves",
+ "prior_runs": []
+}
