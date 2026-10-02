@@ -1,0 +1,180 @@
+{
+ "issue": 7353,
+ "run_id": "20261001-7353",
+ "started_at": "2026-10-02T01:56:07",
+ "duration_s": 153.4,
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5cd9c0a3aeb82a308bf6ee10537afeb820c9df38d2af77fda4f228cf035d1fc1",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    48
+   ],
+   [
+    "Blatant Thievery",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P3": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "chosen": {
+  "1": {
+   "opponent": 1,
+   "object_id": "61",
+   "name": "Mountain"
+  },
+  "3": {
+   "opponent": 2,
+   "object_id": "122",
+   "name": "Forest"
+  },
+  "5": {
+   "opponent": 3,
+   "object_id": "191",
+   "name": "Plains"
+  }
+ },
+ "wire_slots": {
+  "current_slot": null,
+  "selected_slots": null,
+  "slot_count": 6,
+  "slots": [
+   {
+    "slot": 0,
+    "kind": "binder",
+    "bound_player": 1,
+    "n_candidates": 1,
+    "candidate_controllers": [],
+    "candidate_names": []
+   },
+   {
+    "slot": 1,
+    "kind": "permanent",
+    "bound_player": 1,
+    "n_candidates": 6,
+    "candidate_controllers": [
+     "1"
+    ],
+    "candidate_names": [
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain",
+     "Mountain"
+    ]
+   },
+   {
+    "slot": 2,
+    "kind": "binder",
+    "bound_player": 2,
+    "n_candidates": 1,
+    "candidate_controllers": [],
+    "candidate_names": []
+   },
+   {
+    "slot": 3,
+    "kind": "permanent",
+    "bound_player": 2,
+    "n_candidates": 7,
+    "candidate_controllers": [
+     "2"
+    ],
+    "candidate_names": [
+     "Forest",
+     "Forest",
+     "Forest",
+     "Forest",
+     "Forest",
+     "Forest",
+     "Forest"
+    ]
+   },
+   {
+    "slot": 4,
+    "kind": "binder",
+    "bound_player": 3,
+    "n_candidates": 1,
+    "candidate_controllers": [],
+    "candidate_names": []
+   },
+   {
+    "slot": 5,
+    "kind": "permanent",
+    "bound_player": 3,
+    "n_candidates": 7,
+    "candidate_controllers": [
+     "3"
+    ],
+    "candidate_names": [
+     "Plains",
+     "Plains",
+     "Plains",
+     "Plains",
+     "Plains",
+     "Plains",
+     "Plains"
+    ]
+   }
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_thievery_cast": "passed",
+  "A3_binder_autofill": "passed",
+  "A4_slot_scoping": "passed",
+  "A5_submissions_accepted": "passed",
+  "A6_resolution": "passed"
+ },
+ "notes": [
+  "board permanent counts at selection: {0: 7, 1: 6, 2: 7, 3: 7}",
+  "binder auto-announced: walk opens on permanent slot (current_slot=1), binder already selected ([{'Player': 1}])",
+  "permanent slot 1: 6 candidates, all controlled by P1",
+  "permanent slot 3: 7 candidates, all controlled by P2",
+  "permanent slot 5: 7 candidates, all controlled by P3",
+  "chosen Mountain (was P1): now controller=0 zone=Battlefield",
+  "chosen Forest (was P2): now controller=0 zone=Battlefield",
+  "chosen Plains (was P3): now controller=0 zone=Battlefield",
+  "stack empty: True; P0 life=20",
+  "pre-cast board captured in mid_target_selection.json (selection pending); cast itself is in wire_log.jsonl",
+  "protocol-98 driver (v0.99.0): 4 human seats; mulligan Keep; SelectCards discard; PlayLand/CastSpell as-advertised + PayMana ticks; empty DeclareAttackers; priority-gated passes; turn boundaries via active_player changes; 45s stale-client watchdog.",
+  "wire slot summary: {\"current_slot\": null, \"selected_slots\": null, \"slot_count\": 6, \"slots\": [{\"slot\": 0, \"kind\": \"binder\", \"bound_player\": 1, \"n_candidates\": 1, \"candidate_controllers\": [], \"candidate_names\": []}, {\"slot\": 1, \"kind\": \"permanent\", \"bound_player\": 1, \"n_candidates\": 6, \"candidate_controllers\": [\"1\"], \"candidate_names\": [\"Mountain\", \"Mountain\", \"Mountain\", \"Mountain\", \"Mountain\", \"Mountain\"]}, {\"slot\":"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via four human-client seats.",
+  "The client overlay banner ('choose target N of 6') reads targetSlots.length from the engine wire data; the banner text itself was not rendered."
+ ],
+ "setup_line": "4-player game; P0: 48x Island + 12x Blatant Thievery; P1/P2/P3: 60x Mountain/Forest/Plains",
+ "contract_line": "Cast Blatant Thievery with 3 opponents; binder slots auto-announced; each permanent slot offers only its own opponent's permanents; resolve: chosen permanents change controller to P0"
+}

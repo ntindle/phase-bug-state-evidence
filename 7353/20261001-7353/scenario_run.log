@@ -1,0 +1,97 @@
+server identity hashes recorded: {'validated_version': 'v0.99.0', 'build_commit': 'd919616', 'protocol_version': 98, 'server_binary_sha256': '37fa78a8db1a...', 'card_data_sha256': 'ccfcf9e6d19d...', 'draft_pools_sha256': '8ce01364ee46...', 'signature_verified': True}
+P0 creating 4-player game
+P1 joined seat=1
+P2 joined seat=2
+P3 joined seat=3
+game 7LAZ35; seats=[0, 1, 2, 3]
+[P0] mulligan keep (hand 7)
+[P1] mulligan keep (hand 7)
+[P2] mulligan keep (hand 7)
+[P3] mulligan keep (hand 7)
+[P0] casting Blatant Thievery
+TargetSelection pending for P0; exporting MID (selection) state
+TargetSelection wf.data= {"pending_cast": {"ability": {"condition": null, "context": {"additional_cost_paid": false, "alternative_mana_cost_paid": false, "optional_effect_performed": false}, "controller": 0, "description": "For each opponent, gain control of target permanent that player controls.", "detached_remainder": "NoProducer", "duration": null, "effect": {"target": {"controller": "TargetPlayer", "properties": [], "type": "Typed", "type_filters": ["Permanent"]}, "type": "GainControl"}, "forward_result": false, "kind": "Spell", "multi_target": {"max": {"qty": {"filter": {"type": "Opponent"}, "type": "PlayerCount"}, "type": "Ref"}, "min": 1}, "optional": false, "optional_targeting": false, "source_id": 42, "sub_ability": null, "targets": []}, "activation_cost_committed": false, "additional_cost_decided": false, "additional_cost_source": "Other", "assist_state": "NotOffered", "base_cost": {"generic": 4, "shards": ["Blue", "Blue", "Blue"], "type": "Cost"}, "card_id": 42, "casting_variant": "Normal", "cost": {"generic": 4, "shards": ["Blue", "Blue", "Blue"], "type": "Cost"}, "crime_candidate": false, "deferred_target_selection": false, "object_id": 42, "origin_zone": "Hand", "payment_mode": {"type": "Auto"}}, "player": 0, "selection": {"current_legal_targets": [{"Object": 61}, {"Object": 62}, {"Object": 86}, {"Object": 70}, {"Object": 80}, {"Object": 92}], "current_slot": 1, "selected_slots": [{"Player": 1}]}, "target_slots": [{"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Player": 1}], "optional": false}, {"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Object": 61}, {"Object": 62}, {"Object": 86}, {"Object": 70}, {"Object": 80}, {"Object": 92}], "optional": false}, {"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Player": 2}], "optional": false}, {"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Object": 122}, {"Object": 123}, {"Object": 151}, {"Object": 133}, {"Object": 138}, {"Object": 152}, {"Object": 155}], "optional": false}, {"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Player": 3}], "optional": false}, {"effect_detail": {"type": "None"}, "effect_kind": "GainControl", "legal_targets": [{"Object": 191}, {"Object": 211}, {"Object": 203}, {"Object": 188}, {"Object": 182}, {"Object": 185}, {"Object": 205}], "optional": false}]}
+slot summaries: [
+ {
+  "slot": 0,
+  "kind": "binder",
+  "bound_player": 1,
+  "n_candidates": 1,
+  "candidate_controllers": [],
+  "candidate_names": []
+ },
+ {
+  "slot": 1,
+  "kind": "permanent",
+  "bound_player": 1,
+  "n_candidates": 6,
+  "candidate_controllers": [
+   "1"
+  ],
+  "candidate_names": [
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain",
+   "Mountain"
+  ]
+ },
+ {
+  "slot": 2,
+  "kind": "binder",
+  "bound_player": 2,
+  "n_candidates": 1,
+  "candidate_controllers": [],
+  "candidate_names": []
+ },
+ {
+  "slot": 3,
+  "kind": "permanent",
+  "bound_player": 2,
+  "n_candidates": 7,
+  "candidate_controllers": [
+   "2"
+  ],
+  "candidate_names": [
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest",
+   "Forest"
+  ]
+ },
+ {
+  "slot": 4,
+  "kind": "binder",
+  "bound_player": 3,
+  "n_candidates": 1,
+  "candidate_controllers": [],
+  "candidate_names": []
+ },
+ {
+  "slot": 5,
+  "kind": "permanent",
+  "bound_player": 3,
+  "n_candidates": 7,
+  "candidate_controllers": [
+   "3"
+  ],
+  "candidate_names": [
+   "Plains",
+   "Plains",
+   "Plains",
+   "Plains",
+   "Plains",
+   "Plains",
+   "Plains"
+  ]
+ }
+]
+current_slot: None selected_slots: null
+first selection.current_slot: 1 selected_slots: [{"Player": 1}]
+[P0] slot 1 (P1): submitting Mountain ref=61 id=7LAZ35.0.770.t0
+[P0] slot 3 (P2): submitting Forest ref=122 id=7LAZ35.0.771.t0
+[P0] slot 5 (P3): submitting Plains ref=191 id=7LAZ35.0.772.t0
