@@ -1,0 +1,15 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_battlefield_untouched": "passed",
+  "A2_libraries_correct": "passed",
+  "A4_cleanup": "passed"
+ },
+ "notes": {
+  "A1_setup_ok": "pre: Excruciator on P0 BF=True; P0 BF=['Doomsday Excruciator', 'Swamp', 'Swamp', 'Swamp', 'Swamp', 'Swamp', 'Swamp']; P1 BF=['Forest', 'Forest', 'Forest', 'Forest', 'Forest', 'Forest', 'Grizzly Bears', 'Grizzly Bears', 'Grizzly Bears', 'Grizzly Bears', 'Grizzly Bears', 'Grizzly Bears']; libraries P0=47 P1=48; stack at pre=[{'kind': 'TriggeredAbility', 'controller': 0}]; library orientation probe=head-is-top; pinned parse: ETB trigger effect ExileTop scope=All",
+  "A3_battlefield_untouched": "pre BF=19 objs, post BF=19 objs; BF set identical=True; pre-BF objects now in exile=0",
+  "A2_libraries_correct": "P0: lib 47->6; kept=tail; exiled_lib_cards=41 all_in_exile=True all_face_down=True; P1: lib 48->6; kept=tail; exiled_lib_cards=42 all_in_exile=True all_face_down=True; orientation probe=head-is-top",
+  "A4_cleanup": "post stack empty=True; phase=PreCombatMain; turn=12"
+ },
+ "verdict": "not-reproduced"
+}
