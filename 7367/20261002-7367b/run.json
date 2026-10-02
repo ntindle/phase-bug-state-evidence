@@ -1,0 +1,89 @@
+{
+ "issue": 7367,
+ "run_id": "20261002-7367b",
+ "started_at": "2026-10-02T11:06:20",
+ "duration_s": 27.3,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; games-db lives under runs/20261002-7366b; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3e9cc64563dbbe54cd48c080f8072d55bf022fdd8468cc82e27aa2bf092df9d7",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Ishgard, the Holy See",
+    4
+   ],
+   [
+    "Sanctum Weaver",
+    4
+   ],
+   [
+    "Exploration",
+    16
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_offer_potential": "passed",
+  "A3_weaver_mana": "failed",
+  "A4_cast_completes": "not-run",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: card data parses as expected: True",
+  "A1 passed: readiness reached -- untapped Sanctum Weaver + >=5 enchantments on board, Ishgard in hand, P0 main-phase priority.",
+  "A2 passed: the Faith & Grief adventure IS offered with potential (unfloated) Weaver mana -- the cast gate and the potential-mana calculation handle the variable-X source correctly.",
+  "A3 FAILED: Sanctum Weaver was activated (tapped) with 5 enchantments controlled and White chosen, but the pool holds [] -- the variable-X mana ability resolved without producing mana. This is the reported failure: Faith & Grief cannot be cast 'with mana from the Sanctum Weaver' because that mana never exists.",
+  "A4 not-run: no cast submitted (expected when A3 failed: no Weaver mana to cast with)",
+  "A5 passed: post stack empty, game continues.",
+  "verdict=reproduced: Sanctum Weaver's '{T}: Add X mana of any one color, where X is the number of enchantments you control' resolves without adding mana to the pool, so Faith & Grief is not castable 'with mana from the Sanctum Weaver' -- the reported failure. (The cast gate itself offers the adventure correctly with potential mana, so neither triage hypothesis (a)/(b) is the mechanism; the defect is in the variable-X mana ability resolution.)",
+  "server.log excerpt: 0 matching lines (of 3893 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-7171-20260915-0211/server.log)"
+ ],
+ "observations": {
+  "offer_potential": true,
+  "weaver_pool": [],
+  "weaver_pool_enchants": 5,
+  "weaver_activated": true,
+  "white_chosen": true,
+  "cast_submitted": false,
+  "faith_on_stack": false,
+  "faith_resolved": false,
+  "ishgard_oid": null
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets (4x/16x) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Faith & Grief was cast with zero targets ('up to two'); the return-to-hand sub-effect was not exercised with live targets.",
+  "The adventure's 'you may play the land later from exile' was not exercised (no second land drop driven).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Ishgard, the Holy See + 4x Sanctum Weaver + 16x Exploration + 36x Forest; P1: 60x Forest",
+ "contract_line": "Faith & Grief (adventure half of Ishgard, the Holy See) is castable with mana from Sanctum Weaver: gate offer with potential mana (Phase A) + the Weaver's variable-X mana ability producing X mana (Phase B)",
+ "prior_runs": []
+}

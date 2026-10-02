@@ -1,0 +1,97 @@
+{
+ "faith_mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "White"
+  ],
+  "generic": 3
+ },
+ "faith_oracle": "Return up to two target artifact and/or enchantment cards from your graveyard to your hand. (Then exile this card. You may play the land later from exile.)",
+ "ishgard_types": {
+  "supertypes": [],
+  "core_types": [
+   "Land"
+  ],
+  "subtypes": [
+   "Town"
+  ]
+ },
+ "ishgard_abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Mana",
+    "produced": {
+     "type": "Fixed",
+     "colors": [
+      "White"
+     ]
+    }
+   },
+   "cost": {
+    "type": "Tap"
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{T}: Add {W}.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "is_mana_ability": true
+  }
+ ],
+ "weaver_mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Green"
+  ],
+  "generic": 1
+ },
+ "weaver_abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Mana",
+    "produced": {
+     "type": "AnyOneColor",
+     "count": {
+      "type": "Ref",
+      "qty": {
+       "type": "ObjectCount",
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         "Enchantment"
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      }
+     },
+     "color_options": [
+      "White",
+      "Blue",
+      "Black",
+      "Red",
+      "Green"
+     ]
+    }
+   },
+   "cost": {
+    "type": "Tap"
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{T}: Add X mana of any one color, where X is the number of enchantments you control.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "is_mana_ability": true
+  }
+ ]
+}
