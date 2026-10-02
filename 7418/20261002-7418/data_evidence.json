@@ -1,0 +1,84 @@
+{
+ "name": "The Spot, Living Portal",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "Black"
+  ],
+  "generic": 3
+ },
+ "oracle": "When The Spot enters, exile up to one target nonland permanent and up to one target nonland permanent card from a graveyard.\nWhen The Spot dies, put him on the bottom of his owner's library. If you do, return the exiled cards to their owners' hands.",
+ "dies_trigger_execute": {
+  "kind": "Spell",
+  "effect": {
+   "type": "PutAtLibraryPosition",
+   "target": {
+    "type": "ParentTarget"
+   },
+   "count": {
+    "type": "Fixed",
+    "value": 1
+   },
+   "position": {
+    "type": "Bottom"
+   }
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Bounce",
+    "target": {
+     "type": "TrackedSet",
+     "id": 0
+    },
+    "destination": null
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": {
+    "type": "EffectOutcome",
+    "signal": "OptionalEffectPerformed"
+   },
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "sub_link": "SequentialSibling"
+  },
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ },
+ "dies_trigger_sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "Bounce",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "destination": null
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": {
+   "type": "EffectOutcome",
+   "signal": "OptionalEffectPerformed"
+  },
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ }
+}
