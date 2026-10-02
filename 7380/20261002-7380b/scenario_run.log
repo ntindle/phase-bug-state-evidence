@@ -1,0 +1,30 @@
+data-level check: OK
+game 5ZZCI6; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P1] mulligan #1 (hand: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P0] mulligan #2 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'savannah lions', 'plains'])
+[P1] mulligan #2 (hand: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P0] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'savannah lions', 'plains'])
+[P1] keep 7 (hand: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P1] bottoming ['mountain', 'mountain']
+[P0] bottoming ['plains', 'plains']
+[P0] casting Savannah Lions (oid 27)
+[P1] casting Lightning Bolt (oid 68) at lion (bf oid 27)
+[P1] target -> candidate 5ZZCI6.0.230.t2 (needles ['savannah lions', 'battlefield'])
+exported pre.json
+[P0] pre exported: Formalwear in hand, lion (oid 27) in P0 graveyard, 7 untapped Plains, life (20, 20)
+Formalwear on stack (oid 54); exporting cast
+exported cast.json
+Formalwear entered the battlefield (oid 54); phase -> targeting
+Formalwear ETB trigger observed ON THE STACK
+exported trigger.json
+trigger exported (target chosen); phase -> resolving
+settled: stack empty, Priority, 20s idle; exporting post
+exported post.json
+finalizing
+Priority, 20s idle; exporting post
+exported post.json
+finalizing
+DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_cast_ok": "passed", "A3_target_ok": "passed", "A4_attach": "passed", "A5_static_bonus": "failed", "A6_cleanup": "passed"}
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7380/20261002-7380b/summary.png
+manifest written (11 files); verdict=not-reproduced
