@@ -1,0 +1,99 @@
+{
+ "issue": 7351,
+ "run_id": "20261001-7351b",
+ "title": "Peerless Samurai may not reduce cost right on multiple triggers",
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "validated_at": "2026-10-01T19:53:13-0500",
+ "verdict": "reproduced",
+ "scope": "Peerless Samurai ReduceNextSpellCost accumulation: 2 Samurais on BF, one attacks alone -> 2 triggers -> two test casts; native engine, two human driver seats, protocol-98 driver",
+ "game_code": "Z2S9AO",
+ "decks": {
+  "p0": [
+   [
+    "Peerless Samurai",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "p1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast1_reduced": "failed",
+  "A3_cast2_full": "passed",
+  "A4_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: P0 BF Samurai=2 (want 2), P0 hand Samurai=1 (want >=1), Peerless triggers seen on stack=2 (want >=2), phase=DeclareAttackers, turn=12",
+  "A1_reduction_records": [],
+  "A2_cast1_reduced": "cast 1 paid 2 mana (pre_untapped=6 -> post=4): only ONE {1} reduction applied -- REPORTED BUG DIRECTION",
+  "A3_cast2_full": "cast 2 paid 3 mana (pre_untapped=9 -> post=6): full {2}{R} cost, no reductions left -- correct",
+  "A4_cleanup": "post: stack=0 wf=Priority/p1 turn=18 phase=PreCombatMain rejections=0"
+ },
+ "notes": [],
+ "rejections": [],
+ "waiting_for_seen": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority"
+ ],
+ "triggers_seen": 2,
+ "cast_mana": {
+  "cast1_pre_untapped": 6,
+  "cast1_post_untapped": 4,
+  "cast2_pre_untapped": 9,
+  "cast2_post_untapped": 6
+ },
+ "evidence_hashes": {
+  "assertions.json": "ef56b857d793a0856ca53bea79ac390911f89e58c31d18558b71ef07c142f087",
+  "mid.json": "349c10c391821d9412fb5896305c9999dfbbe707899deb72773a31ee7d3fba1f",
+  "post.json": "5f031e33687691ad988cb0d2f28acffa56e3b06c523a0511114b537997007e40",
+  "pre.json": "f7e3e537060f20da6e5952782875e95eb455aa98657ca5235a779c814bd2ec4b",
+  "scenario_7351_0990.py": "7d55bb2c12ebc0ad88b94e857d79619558edcc2953f4b09963bb545fa5eafb8d",
+  "scenario_run.log": "878551290a2aa5906d9db66de9d57e318262dc5d01465b31fca8408d07abea56",
+  "setup.json": "f3db2d381b3cab2f0f48e4b61f617aaeeb8a961fbeb6d8f19125d942692742b7",
+  "summary.png": "4736e638bfa63d4bc4e9ef24ac260a625f354b21f1d9ba3fce2c25a4a5b8ab99",
+  "wire_log.jsonl": "70621a4533930a20d879b7b59aa11f10ba6baffb631ab1fe14f043e683fd3687"
+ },
+ "evidence_dir": "evidence/7351/20261001-7351b",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "12x Peerless Samurai deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Two triggers exercised rather than the report's six (Roaming Throne + Raiyuu extra combats); the defect model is identical (N reductions must combine on the same next spell).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports, restorable only via full game replay (scenario_7351_0990.py, game Z2S9AO)."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision Keep gated on pending[] Declare; SelectCards for bottom/discard; PassPriority revision-guarded; CastSpell advertised actions submitted as-is (engine auto-pays).",
+  "DeclareAttackers stage-gated: exactly one Samurai in ATTACK stage, empty otherwise; P1 never blocks.",
+  "Mana paid per cast measured as tapped-Mountain delta between pre-cast live view and the post-resolution export."
+ ]
+}
