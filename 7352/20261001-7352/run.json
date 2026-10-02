@@ -1,0 +1,65 @@
+{
+ "issue": 7352,
+ "run_id": "20261001-7352",
+ "started_at": "2026-10-02T01:43:13",
+ "duration_s": 26.8,
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "eb55965905fc94c96acf380c4f13cc48ad73267454212fb685ea39df193465e2",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    36
+   ],
+   [
+    "Counterbalance",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    36
+   ],
+   [
+    "Lightning Bolt",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cb_on_battlefield": "passed",
+  "A3_trigger_pending": "passed",
+  "A4_reveal_accepted": "passed",
+  "A5_bug_countered": "passed",
+  "A5fx_bolt_resolved": "failed",
+  "A6_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] pre-trigger P0 library size=51 ends={'first': {'name': 'Island', 'mv': 0}, 'last': {'name': 'Island', 'mv': 0}}; Bolt MV=1; every P0 library card has MV in {0,2} by deck construction",
+  "[accept] post: P0 life=20 P1 life=20 bolt_in_gy=True dangling_prompt=False",
+  "[accept] BUG: revealed card MV (0) != Bolt MV (1), yet Bolt was countered (P0 stayed at 20, Bolt in P1 graveyard, no damage dealt)",
+  "[decline] pre-trigger P0 library size=52 ends={'first': {'name': 'Counterbalance', 'mv': 2}, 'last': {'name': 'Island', 'mv': 0}}; Bolt MV=1; every P0 library card has MV in {0,2} by deck construction",
+  "[decline] post: P0 life=17 P1 life=20 bolt_in_gy=True dangling_prompt=False wf={\"data\": {\"player\": 0}, \"type\": \"Priority\"}",
+  "protocol-98 driver (v0.99.0): mulligan Keep; bottom/discard via SelectCards(data.cards); CastSpell as-advertised + PayMana ticks; optional-trigger accept/decline from viewer_interaction exactChoices surfaces role/value; per-game guard reset; priority-gated passes; stale-client watchdog."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 36x Island + 24x Counterbalance; P1: 36x Mountain + 24x Lightning Bolt",
+ "contract_line": "Accept: Bolt (MV 1) must RESOLVE vs revealed MV 0/2 (mismatch); Decline: Bolt resolves, no counter"
+}
