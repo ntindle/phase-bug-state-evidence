@@ -1,0 +1,75 @@
+{
+ "db_name": "Duneblast",
+ "db_mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "Black",
+   "Green"
+  ],
+  "generic": 4
+ },
+ "db_oracle": "Choose up to one creature. Destroy the rest.",
+ "db_abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "ChooseObjectsIntoTrackedSet",
+    "chooser": {
+     "type": "Controller"
+    },
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": []
+    },
+    "min": 0,
+    "max": 1
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "DestroyAll",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "Not",
+        "prop": {
+         "type": "InTrackedSet",
+         "id": 0
+        }
+       }
+      ]
+     },
+     "cant_regenerate": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": "Choose up to one creature. Destroy the rest.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}
