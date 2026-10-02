@@ -1,0 +1,230 @@
+{
+ "issue": 7421,
+ "run_id": "20261002-7421",
+ "started_at": "2026-10-02T20:16:58",
+ "duration_s": 71.4,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (already listening at run start; ServerHello 0.100.0/bc9ef56/protocol 101 verified by the 2026-10-02 pin run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.100.0 == pinned release dir (ledger server.pinned_version 2026-10-02T12:50-05:00); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9061a3241f06ad00508f5518e12766c96f2e66a2bb9a1255b352b05695949248",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Dredge the Mire",
+    4
+   ],
+   [
+    "Go for the Throat",
+    8
+   ],
+   [
+    "Swamp",
+    16
+   ],
+   [
+    "Plains",
+    16
+   ],
+   [
+    "Forest",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolves": "passed",
+  "A4_gy_creature_moved": "failed",
+  "A5_bf_gains": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.100.0 card-data.json parses Dredge the Mire's ability as head Unimplemented(name='unparsed_verb_arguments', description='choose a creature card in their graveyard'...) + sub ChangeZoneAll target={'type': 'TrackedSet', 'id': 0} destination=Battlefield enters_under=You player_scope={'type': 'Opponent'} (issue-reported shape: True; head node name differs from the issue's 9b7c66e30 corpus ('choose' -> 'unparsed_verb_arguments'), same clause)",
+  "A1 passed: pinned v0.100.0 card-data.json parses Dredge the Mire exactly as the issue reports (Unimplemented 'choose a creature card in their graveyard' head + ChangeZoneAll TrackedSet(0) sub; see data_evidence.json).",
+  "A2 probe: pre gy creatures P1=[113]; P0 BF creatures=0.",
+  "A2 passed: pre.json has >=1 creature card in P1's graveyard and the Mire was castable.",
+  "A3 passed: Dredge the Mire was cast and its spell object reached P0's graveyard (no stall, no pending rejection).",
+  "A4 probe: pre-gy creature oid 113 (P1) post zone='Graveyard'.",
+  "A4 FAILED: creatures stayed in P1's graveyard after the Mire resolved: [(113, 1)] -- THE REPORTED BUG (ChangeZoneAll read an empty tracked set and no-op'd).",
+  "A5 probe: P0 BF creatures pre=0 post=0 (want >= 1).",
+  "A5 FAILED: P0's battlefield did not gain the reanimated creature -- THE REPORTED BUG.",
+  "Casting-phase prompts (expected mana-payment steps): 6.",
+  "Resolution prompts observed (unexpected for an unparsed clause): ['VBD8NW.0.376', 'VBD8NW.0.378', 'VBD8NW.0.380', 'VBD8NW.0.382', 'VBD8NW.0.384', 'VBD8NW.0.387']",
+  "A6 passed: post stack empty.",
+  "verdict=reproduced: the Mire resolved but P1's graveyard creature never entered the battlefield under P0's control -- see the failed assertion(s) above (confirmed on v0.100.0). The parse is the reported defect; the runtime no-op is its direct structural consequence. This is not a fix claim.",
+  "server.log excerpt: 856 matching lines (of 3821 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7420/server.log)"
+ ],
+ "observations": {
+  "mire_cast": true,
+  "mire_submitted_at": 1790972280.265039,
+  "gy_creatures_at_pre": [
+   [
+    113,
+    1
+   ]
+  ],
+  "p0_bf_creatures_at_pre": 0,
+  "prompts_seen": [
+   [
+    "casting_mire",
+    "VBD8NW.0.369"
+   ],
+   [
+    "casting_mire",
+    "VBD8NW.0.370"
+   ],
+   [
+    "casting_mire",
+    "VBD8NW.0.371"
+   ],
+   [
+    "casting_mire",
+    "VBD8NW.0.372"
+   ],
+   [
+    "casting_mire",
+    "VBD8NW.0.373"
+   ],
+   [
+    "casting_mire",
+    "VBD8NW.0.375"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.376"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.378"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.380"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.382"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.384"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.387"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.389"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.392"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.394"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.397"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.399"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.401"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.402"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.404"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.406"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.407"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.409"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.411"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.413"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.415"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.418"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.420"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.423"
+   ],
+   [
+    "resolving",
+    "VBD8NW.0.425"
+   ]
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (no game state); the scenario replays the reported line (cast the spell with a creature card in the opponent's graveyard) from a fresh game and observes the resolution outcome.",
+  "The graveyard-seeding Go for the Throat cast is a test-harness convenience to produce a deterministic graveyard creature; the creature is an ordinary Grizzly Bear.",
+  "In a two-player game 'each opponent' is just P1; only P1's graveyard was seeded.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Dredge the Mire + 8x Go for the Throat + 16x Swamp + 16x Plains + 16x Forest; P1: 12x Grizzly Bears + 48x Forest (lands/bears, never attacks)",
+ "contract_line": "P1's graveyard holds >=1 creature card at pre; the Mire must put that card onto the battlefield under P0's control. Observed: the clause never parsed, no choice prompt appeared, and the resolution moved nothing.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 849
+ }
+}
