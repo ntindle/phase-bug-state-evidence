@@ -1,0 +1,81 @@
+{
+ "issue": 7354,
+ "run_id": "20261001-2111",
+ "started_at": "2026-10-02T02:43:57",
+ "duration_s": 13.4,
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3aa7b52d7b3e8e1bf620768ed7f717c3425c67620a4145fba116b2ffc01d729c",
+ "decks": {
+  "P0": [
+   [
+    "Shang-Chi, Master of Kung Fu",
+    12
+   ],
+   [
+    "Badgermole Cub",
+    12
+   ],
+   [
+    "Giant Growth",
+    12
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "observe_transitions": [
+  [
+   0.2,
+   [
+    "Priority",
+    "0",
+    "PreCombatMain",
+    0,
+    0
+   ]
+  ]
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_board_setup": "passed",
+  "A3_no_autopass": "passed",
+  "A4_line_castable": "not-run",
+  "A5_resolution": "not-run"
+ },
+ "notes": [
+  "A2: 2 tapped Forests; Shang-Chi untapped (only unused mana source); Cub on battlefield; pool empty; Giant Growth in hand",
+  "A3: P0 was offered priority after Cub resolved -- autopass did NOT fire",
+  "Giant Growth CastSpell not advertised at P0 priority; acts=['PassPriority']",
+  "verdict not-reproduced: engine offered P0 priority; the reported autopass (priority skipped) did not occur",
+  "protocol-98 driver (v0.99.0): 2 human seats; London mulligan w/ keep condition (SC+Cub+GG+2 Forest); SelectCards bottom/discard; PlayLand/CastSpell as-advertised + PayMana ticks; empty DeclareAttackers/Blockers; priority-gated passes; observe window: P0 answers non-priority decisions only, never passes.",
+  "Leyline of Abundance not separately exercised (same trigger class as Badgermole Cub); browser/UI autopass not exercised."
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Leyline of Abundance not separately exercised (same 'whenever you tap a creature for mana' trigger class as Badgermole Cub).",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post states are authoritative exports restorable only via full game replay (scenario_7354.py)."
+ ],
+ "setup_line": "P0: 12x Shang-Chi + 12x Badgermole Cub + 12x Giant Growth + 24x Forest; T1 Forest; T2 Forest + Shang-Chi; T3 Cub (no 3rd land); earthbend targets Forest",
+ "contract_line": "After Cub resolves on T3 with empty pool and GG in hand, P0 must be offered priority; cast GG with engine payment tapping Shang-Chi; GG resolves -> Cub 5/5"
+}
