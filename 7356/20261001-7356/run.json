@@ -1,0 +1,107 @@
+{
+ "issue": 7356,
+ "run_id": "20261001-7356",
+ "started_at": "2026-10-02T04:26:49",
+ "duration_s": 222.2,
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_hello": {
+   "type": "ServerHello",
+   "data": {
+    "server_version": "0.99.0",
+    "build_commit": "d919616",
+    "protocol_version": 98,
+    "mode": "Full",
+    "lobby_protocol_version": 14,
+    "wire_formats": [
+     "GzipEnvelopeV1"
+    ]
+   }
+  }
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0fc654f72e7316cc726c507388cad6d000e62f66a87c41f93e248e6dd1f44448",
+ "decks": {
+  "P0": [
+   [
+    "Oko, the Ringleader",
+    4
+   ],
+   [
+    "Doubling Season",
+    8
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ],
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Island",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_preconditions": "passed",
+  "A3_no_crash": "passed",
+  "A4_token_accounting": "failed"
+ },
+ "notes": [
+  "A2: Oko on P0 BF loyalty=12 (want >=5); Doubling Seasons=2 (want 2); Elves=1 (want >=1); P0 active -> passed; pre objects=120",
+  "ult_watch timed out without a settle or crash signal (max_objects=192)",
+  "A3: the [-5] resolved without crashing the game (connection alive, server alive, game progressing) -> passed",
+  "A4 FAILED against the asserted expectation: sources=3 (2x DS + 1x Elves); expected 12 tokens (4 per source per the issue's acceptance criteria); observed 72 tokens {'Doubling Season': 68, 'Llanowar Elves': 4}; Oko loyalty 12 -> 7. MECHANISM: the engine re-gathers the applicable CreateToken replacements per copy event, so Doubling Season tokens created by earlier copy events in the same resolution double the later ones (the last DS copy event saw 6 doublers -> 64 tokens; 4+64=68 DS tokens total; the Elf, copied first, got exactly 4). The copied POPULATION was fixed (no token was itself copied) and growth was bounded. RULES NOTE: under a strict CR 616.1 per-event reading this 64 may be CORRECT (each event sees the doublers on the battlefield when it occurs), so this deviation is documented for maintainer adjudication and is NOT claimed as the reported crash.",
+  "protocol-98 driver (v0.99.0): 2 human seats; P0 mulligan keeps >=2 lands + (Oko|Doubling Season|Elves) (<=2 mulligans); SelectCards bottom/discard; PlayLand/CastSpell as-advertised + PayMana ticks; loyalty via ActivateAbility ability_index (0=+1, 2=-5); Oko's beginning-of-combat 'up to one target' trigger declined via viewer_interaction; priority-gated passes; ult_watch monitors transport health, server liveness, and object counts.",
+  "Crash isolation: this run used a DEDICATED phase-server on 127.0.0.1:9375 (own games.db) because the issue is a p0-panic crash repro; the shared :9374 instance was left untouched.",
+  "Card-data ground truth: Oko, the Ringleader {2}{G}{U} loyalty 3, ability[2] = CopyTokenOf{source_filter Typed[Permanent, Non-Land], controller You, properties [Another], count 1}; Doubling Season {4}{G} = CreateToken x2 + AddCounter x2 replacements."
+ ],
+ "verdict": "not-reproduced",
+ "pre_snapshot": {
+  "oko_loyalty": 12,
+  "ds_oids": [
+   "38",
+   "7"
+  ],
+  "elves_oids": [
+   "20"
+  ],
+  "n_objects": 120
+ },
+ "post_snapshot": {
+  "oko_loyalty": 7,
+  "n_objects": 192,
+  "tokens": {
+   "Doubling Season": 68,
+   "Llanowar Elves": 4
+  }
+ },
+ "max_objects_during_ult": 192,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x/8x/20x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Oko's +1 (if needed for loyalty) and the beginning-of-combat copy trigger were declined/avoided; only the [-5] was exercised.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post states are authoritative exports restorable only via full game replay (scenario_7356.py)."
+ ],
+ "setup_line": "P0: 4x Oko + 8x Doubling Season + 8x Llanowar Elves + 40 lands; ramp, cast Elves, cast two Doubling Seasons, cast Oko, activate [-5] (ability_index 2)",
+ "contract_line": "The [-5] must resolve without crashing; with two Doubling Seasons each other nonland permanent yields exactly 4 token copies (fixed population -- new tokens are not re-copied)"
+}
