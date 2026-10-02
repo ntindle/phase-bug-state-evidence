@@ -1,0 +1,51 @@
+game SKB4XU; P0 seat=0 P1 seat=1
+P0 mulligan -> Keep (lands=6)
+P1 mulligan -> Keep (lands=3)
+waiting_for: MulliganDecision player=None stage=SETUP
+stack (0): []
+DIAG turn=1 phase=Untap wf=MulliganDecision/pNone stack=0 life=[20, 20] p0hand=['Swamp', 'Swamp', 'Swamp', 'Swamp', 'Time Reaper', 'Swamp'] p1hand=['Memnite', 'Plains', 'Memnite', 'Plains', 'Plains', 'Memnite'] exiledP1=[] stage=SETUP
+waiting_for: Priority player=1 stage=SETUP
+[P1] cast Memnite (oid=62)
+cast in-flight 62 left hand
+stack (1): ['{"id": 62, "source_id": 62, "controller": 1, "kind": {"type": "Spell", "data": {"card_id": 62, "cast']
+[P1] land drop Plains
+stack (0): []
+[P0] land drop Swamp
+[P1] cast Swords to Plowshares (oid=105)
+[P1] Swords to Plowshares cast targeting own Memnite 62
+cast in-flight 105 left hand
+stack (1): ['{"id": 105, "source_id": 105, "controller": 1, "kind": {"type": "Spell", "data": {"card_id": 105, "a']
+[P1] land drop Plains
+stack (0): []
+[main] exiled Memnite tracked: oid=62 face_down=False
+[P0] land drop Swamp
+[P1] land drop Plains
+[P0] land drop Swamp
+[P0] land drop Swamp
+DIAG turn=8 phase=PreCombatMain wf=Priority/p1 stack=0 life=[20, 21] p0hand=['Swamp', 'Time Reaper', 'Swamp', 'Swamp', 'Swamp', 'Swamp'] p1hand=['Memnite', 'Memnite', 'Memnite', 'Memnite', 'Memnite'] exiledP1=[('62', 'Memnite')] stage=SETUP
+[P1] land drop Plains
+[P0] land drop Swamp
+exported setup.json
+[P0] setup exported: P1 exile has [('62', 'Memnite')]
+[P0] cast Time Reaper (oid=32)
+[P0] Time Reaper cast
+cast in-flight 32 left hand
+stack (1): ['{"id": 32, "source_id": 32, "controller": 0, "kind": {"type": "Spell", "data": {"card_id": 32, "cast']
+[P0] Time Reaper on BF (oid 32); stage=ATTACK
+stack (0): []
+[P0] attacking P1 with Time Reaper 32
+[P0] declare_attackers: submitted 1 relation(s) (iid=SKB4XU.0.154)
+waiting_for: DeclareAttackers player=0 stage=ATTACK
+[P0] attack declared; stage=TRIGGER
+waiting_for: Priority player=0 stage=TRIGGER
+exported pre.json
+[P0] TRIGGER target prompt seen (iid=SKB4XU.0.159, stype=sequence); pre exported; offered=['SKB4XU.0.159.t0', 'SKB4XU.0.159.t1']
+[P0] trigger candidates: [{"id": "SKB4XU.0.159.t0", "kind": "player", "detail": [0], "text": "SKB4XU.0.159.t0", "is_exiled_memnite": false, "available": "available"}, {"id": "SKB4XU.0.159.t1", "kind": "player", "detail": [1], "text": "SKB4XU.0.159.t1", "is_exiled_memnite": false, "available": "available"}]
+[P0] trigger_target: submitted target SKB4XU.0.159.t1 (iid=SKB4XU.0.159, stype=sequence)
+[P0] trigger target answered: only_player_offered (target=SKB4XU.0.159.t1)
+waiting_for: TriggerTargetSelection player=0 stage=TRIGGER
+stack (1): ['{"id": 113, "source_id": 32, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_']
+waiting_for: Priority player=0 stage=TRIGGER
+stack (0): []
+exported post.json
+[P0] post exported: trigger resolved (choice=only_player_offered, turn 10)
