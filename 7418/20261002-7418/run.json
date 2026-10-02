@@ -1,0 +1,117 @@
+{
+ "issue": 7418,
+ "run_id": "20261002-7418",
+ "started_at": "2026-10-02T17:20:33",
+ "duration_s": 48.0,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5dbb1f1c046b536da7ead75b95075f359dfc8fecd4be573b308cf6e79adf4dbc",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "The Spot, Living Portal",
+    4
+   ],
+   [
+    "Go for the Throat",
+    8
+   ],
+   [
+    "Plains",
+    24
+   ],
+   [
+    "Swamp",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_dies_fired": "passed",
+  "A3_spot_to_library": "passed",
+  "A4_exiled_returned": "failed",
+  "A5_spot_not_bounced": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.99.0 card-data.json parses The Spot's dies trigger as PutAtLibraryPosition head + Bounce sub with target {'type': 'TrackedSet', 'id': 0} (issue-reported shape: True)",
+  "A1 probe: pre spot_on_bf=[3], exiled_at_pre=[(100, 'Grizzly Bears', 1), (106, 'Grizzly Bears', 1)].",
+  "A1 passed: pre.json has The Spot on P0's battlefield and >=1 exiled object recorded.",
+  "A2 passed: The Spot left P0's battlefield after the Go for the Throat kill cast (dies trigger seen on stack: True).",
+  "A3 probe: post Spot oid 3 name='The Spot, Living Portal' zone=Library.",
+  "A3 passed: The Spot is in the Library zone at post (the dies trigger's head put it on the bottom of P0's library).",
+  "A4 probe: exiled 'Grizzly Bears' (oid 100, owner P1) post zone='Exile', in_owner_hand=False.",
+  "A4 probe: exiled 'Grizzly Bears' (oid 106, owner P1) post zone='Exile', in_owner_hand=False.",
+  "A4 FAILED: at least one ETB-exiled object did not return to its owner's hand -- THE REPORTED BUG (the Bounce's TrackedSet(0) names The Spot, not the exiled cards).",
+  "A5 probe: post Spot in P0 hand = False.",
+  "A5 passed: The Spot is not in P0's hand at post.",
+  "A6 passed: post stack empty.",
+  "verdict=reproduced: the dies trigger fired but its observable outcome deviates from the printed effect -- see the failed assertion(s) above (confirmed on v0.99.0).",
+  "server.log excerpt: 536 matching lines (of 7678 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7416-server/server.log)"
+ ],
+ "observations": {
+  "early_kill_done": true,
+  "spot_cast": true,
+  "spot_bf_oid": 3,
+  "spot_on_bf_at": 1790961661.5942607,
+  "etb_perm_chosen": true,
+  "etb_gy_chosen": false,
+  "etb_done_at": 1790961662.2082837,
+  "kill_cast": true,
+  "spot_left_bf_at": 1790961672.6083953,
+  "dies_trigger_seen": true,
+  "dies_trigger_seen_at": 1790961672.6083953,
+  "exiled_at_pre": [
+   [
+    100,
+    "Grizzly Bears",
+    1
+   ],
+   [
+    106,
+    "Grizzly Bears",
+    1
+   ]
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report includes no game state (data-level report); the scenario replays the reported line (The Spot's ETB exile x2, then its dies trigger) from a fresh game.",
+  "The graveyard-seeding Go for the Throat is a test-harness convenience to produce the ETB's graveyard target deterministically; the exiled objects are ordinary Grizzly Bears.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x The Spot, Living Portal + 8x Go for the Throat + 24x Plains + 24x Swamp; P1: 12x Grizzly Bears + 48x Forest (lands/bears, never attacks)",
+ "contract_line": "The Spot's ETB exiles a P1 Bear (battlefield) and a Bear card (P1 graveyard); its dies trigger must put The Spot on the bottom of P0's library and return both exiled cards to P1's hand, never bouncing The Spot itself",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 530
+ }
+}
