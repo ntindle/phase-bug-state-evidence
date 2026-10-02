@@ -1,0 +1,112 @@
+{
+ "issue": 7380,
+ "run_id": "20261002-7380b",
+ "started_at": "2026-10-02T14:30:27",
+ "duration_s": 64.7,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "shared pinned v0.99.0 server on 127.0.0.1:9374 (already listening per task body; ServerHello 0.99.0/d919616/protocol 98 verified this run; not restarted by this run)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "76cc9083a27093bafdc5a3f04f1af579a0dc0e25bc27dab2d567859b95de214f",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Pre-War Formalwear",
+    4
+   ],
+   [
+    "Savannah Lions",
+    4
+   ],
+   [
+    "Plains",
+    52
+   ]
+  ],
+  "P1": [
+   [
+    "Lightning Bolt",
+    4
+   ],
+   [
+    "Mountain",
+    56
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_ok": "passed",
+  "A3_target_ok": "passed",
+  "A4_attach": "failed",
+  "A5_static_bonus": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: Pre-War Formalwear {2}{W} / Savannah Lions {W} parse as expected: True",
+  "A1 passed: pre exported with Pre-War Formalwear in P0 hand, Savannah Lions (oid 27) in P0 graveyard, 7 untapped Plains, life 20/20.",
+  "A2 context: fw_seen_on_stack=True, cast_rejections=0, fw_bf_oid=54.",
+  "A2 passed: Formalwear cast with no rejections, seen on the stack (oid 54), then on P0's battlefield (oid 54).",
+  "A3 context: trigger_seen=True, target_offered=False, target_chosen=True (candidate 5ZZCI6.0.230.t2), target_rejections=0.",
+  "A3 passed: the ETB trigger went on the stack and its target selection was answered with the graveyard lion card (candidate 5ZZCI6.0.230.t2), no rejections.",
+  "A4 probe: post lion on P0 BF=[27]; Formalwear on P0 BF=[54]; Formalwear attach/equip fields={'attached_to': None, 'attachments': []}.",
+  "A4 reverse probe: lion object references Formalwear: True via entered_via_ability_source; lion keys=['abilities', 'attached_to', 'attachments', 'base_card_types', 'base_characteristics_initialized', 'base_color', 'base_controller', 'base_keywords', 'base_mana_cost', 'base_name', 'base_power', 'base_printed_ref', 'base_toughness', 'card_id', 'card_types', 'color', 'controller', 'counters', 'damage_marked', 'dealt_deathtouch_damage', 'entered_battlefield_turn', 'entered_via_ability_source', 'face_down', 'flipped', 'id', 'incarnation', 'keywords', 'layer_base_power', 'layer_base_toughness', 'loyalty', 'mana_cost', 'name', 'owner', 'power', 'printed_ref', 'replacement_definitions', 'static_definitions', 'tapped', 'timestamp', 'toughness', 'transformed', 'trigger_definitions', 'zone']",
+  "A4 passed: the returned lion (oid 27) is on P0's battlefield and Pre-War Formalwear (oid 54) references it via lion->entered_via_ability_source -- the Equipment attached.",
+  "A5 FAILED: lion power/toughness=(2, 1), vigilance in keywords=False -- the +2/+2 static is not functioning as expected.",
+  "A6 passed: post stack empty, game continues.",
+  "verdict=not-reproduced: the returned lion entered with Pre-War Formalwear attached. This is not a fix claim.",
+  "server.log excerpt: 0 matching lines (of 3893 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-7171-20260915-0211/server.log)",
+  "CORRECTION A4 (false-positive fix): the first finalize treated the lion's `entered_via_ability_source` provenance field (which records the ETB trigger that returned it to the battlefield) as the attach link. Corrected A4 requires the actual two-sided attach link (Equipment.attached_to == creature oid, creature.attached_to == equipment oid, or either attachments list naming the other). Post state: lion(oid 27) attached_to=None attachments=[]; Formalwear(oid 54) attached_to=None attachments=[].",
+  "CORRECTION A4 FAILED: the lion returned to P0's battlefield but Pre-War Formalwear carries no attach link to it (attached_to=None, attachments=[]) -- the reported bug REPRODUCES on v0.99.0.",
+  "CORRECTION A5: not-run (Formalwear did not attach); observed lion is 2/1 with no vigilance, consistent with an unattached Equipment.",
+  "verdict=reproduced (corrected): Pre-War Formalwear's ETB trigger returned Savannah Lions to P0's battlefield, but the Equipment did not attach to it (attached_to=None on both sides; lion stayed 2/1 without vigilance) -- exactly the reported failure, confirmed on v0.99.0 (d919616, protocol 98).",
+  "CORRECTION server.log excerpt: 762 matching lines (of 7067 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7379f/server.log)"
+ ],
+ "observations": {
+  "lion_cast": true,
+  "bolt_cast": true,
+  "fw_bf_oid": 54,
+  "lion_gy_oid": 27,
+  "target_offered": false,
+  "target_chosen": true,
+  "target_candidate_id": "5ZZCI6.0.230.t2",
+  "target_rejections": 0,
+  "trigger_seen": true,
+  "checkpoints": {
+   "pre": {
+    "life": [
+     20,
+     20
+    ],
+    "hand_n": 5
+   }
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report's attached Discord game state was not imported (the prebuilt server has no standalone state-restore facility); the scenario replays the reported line (cast Formalwear with an MV<=3 creature card in the graveyard) from a fresh game.",
+  "Only Savannah Lions (MV 1) was used as the returned creature; other MV<=3 targets were not exercised.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Pre-War Formalwear + 4x Savannah Lions + 52x Plains; P1: 4x Lightning Bolt + 56x Mountain",
+ "contract_line": "Cast Pre-War Formalwear with Savannah Lions in the graveyard -> the lion must return to the battlefield with the Equipment attached (4/3, vigilance)",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 747
+ },
+ "corrected_by": "refinalize_7380.py (A4 false-positive fix; original wrong-verdict run.json preserved as run-20261002-7380b-v1.json)"
+}
