@@ -1,0 +1,38 @@
+{
+ "run_id": "20261002-7365",
+ "issue": 7365,
+ "server": {
+  "version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "server_hello": {
+  "server_version": "0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98
+ },
+ "game_code": "8IMTHB",
+ "ports": {
+  "server": 9374
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_battlefield_untouched": "passed",
+  "A2_libraries_correct": "passed",
+  "A4_cleanup": "passed"
+ },
+ "scope": "Doomsday Excruciator cast-from-hand ETB trigger: each player should exile all but the bottom six of their library face down; the battlefield must be untouched. Native engine, two human-client seats, protocol-98 driver.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-driver seats.",
+  "Dense test decks (engine accepts >4-of for custom games) are a test-harness convenience.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay, scenario_7365.py).",
+  "Only the ETB exile half is exercised; the upkeep-draw trigger and the 'cast from hand' condition's negative branch are not."
+ ],
+ "started_at": "2026-10-02T09:15:38",
+ "finished_at": "2026-10-02T09:16:15Z"
+}
