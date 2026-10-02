@@ -1,0 +1,228 @@
+{
+ "issue": 7422,
+ "run_id": "20261002-7422",
+ "started_at": "2026-10-02T21:33:44",
+ "duration_s": 36.3,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (already listening at run start; ServerHello 0.100.0/bc9ef56/protocol 101 verified by the 2026-10-02 pin run and re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.100.0 == pinned release dir (ledger server.pinned_version 2026-10-02T12:50-05:00; GitHub /releases confirms v0.100.0 still latest stable); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "4d96e291fbc3897613e3cd40456555488f9ee3ec49fd8489f29bc9dd36ff87ff",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Elrond of the White Council",
+    4
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Island",
+    24
+   ],
+   [
+    "Plains",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolves": "passed",
+  "A4_vote_offered": "passed",
+  "A5_fellowship_choice": "failed",
+  "A6_control_change": "failed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.100.0 card-data.json parses Elrond of the White Council's ETB as Vote{fellowship, aid} (voter_scope {'type': 'AllPlayers'}, tally {'type': 'PerVote'}); fellowship per-choice head Unimplemented(name='unrecognized_clause_head', description='the voter chooses a creature they control'...) + sub GainControlAll target={'type': 'TrackedSet', 'id': 0}; aid branch PutCounterAll (issue-reported shape: True; head node name differs from the issue's 9b7c66e30 corpus ('the' -> 'unrecognized_clause_head'), same clause; the Vote root itself is newly parsed vs the issue corpus)",
+  "A1 passed: pinned v0.100.0 card-data.json parses Elrond of the White Council's ETB as Vote{fellowship, aid} with the fellowship per-choice head Unimplemented('the voter chooses a creature they control') + sub GainControlAll TrackedSet(0) and an aid PutCounterAll branch; see data_evidence.json.",
+  "A2 probe: pre P1 BF creatures=[64, 67, 119]; P0 BF creatures=0.",
+  "A2 passed: pre.json has >=1 creature under P1's control and Elrond was castable.",
+  "A3 passed: Elrond was cast, is on P0's battlefield at post, and the ETB trigger left the stack (no stall, no pending rejection).",
+  "A4 passed: secret-council vote offered to both seats; submitted {'P0': 'fellowship', 'P1': 'fellowship'} (vote iids: ['AKMN42.0.143', 'AKMN42.0.144']).",
+  "Resolution prompts: 27 total during resolution (26 resolution_prompt wire entries + P1's vote opportunity .144, which was answered on P1's tick); 2 expected vote prompts; 25 non-vote prompts, 0 choice-shaped (all 25 were ordinary turn-structure prompts: priority passes, tap-land/cast menus, one DeclareAttackers relations schema). Full JSON in wire_log resolution_prompt/vote_opp entries.",
+  "non-vote prompt iids during resolution: ['AKMN42.0.145', 'AKMN42.0.147', 'AKMN42.0.149', 'AKMN42.0.151', 'AKMN42.0.153', 'AKMN42.0.156', 'AKMN42.0.158', 'AKMN42.0.161'] (full JSON in wire_log resolution_prompt entries)",
+  "A5 FAILED: P1 voted fellowship but no 'choose a creature' choice was ever offered to the voter -- THE REPORTED BUG (the clause never parsed, so the choice step does not exist at runtime).",
+  "A6 probe: pre-P1 creature oid 64 post zone='Battlefield' controller=1.",
+  "A6 probe: pre-P1 creature oid 67 post zone='Battlefield' controller=1.",
+  "A6 probe: pre-P1 creature oid 119 post zone='Battlefield' controller=1.",
+  "A6 FAILED: no pre-P1 creature changed control to P0 ([(64, 'Battlefield', 1), (67, 'Battlefield', 1), (119, 'Battlefield', 1)]) -- THE REPORTED BUG (GainControlAll read an empty tracked set).",
+  "A7 passed: post stack empty.",
+  "The Elrond ETB trigger was observed on the stack during resolution (live tick).",
+  "verdict=reproduced: the fellowship branch's printed effect never happened -- see the failed assertion(s) above (confirmed on v0.100.0). The parse is the reported defect; the missing choice and missing control change are its direct structural consequence. This answers the issue's open consumer-classification question for GainControlAll: on the empty chain tracked set it is filter-only -- a silent no-op, not target-inheriting. This is not a fix claim.",
+  "server.log excerpt: 392 matching lines (of 4225 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7420/server.log)",
+  "CORRECTION 2026-10-02 (resumed run): A5 was originally recorded 'passed' on the lax rule 'any extra prompt is unexpected'; the playbook requires the reported OUTCOME, and none of the 24 non-vote prompts was the 'choose a creature you control' choice (all ordinary turn-structure prompts). A5 corrected to 'failed' from the saved wire_log; verdict reproduced stands (A1-A4 passed, A5 failed, A6 failed)."
+ ],
+ "observations": {
+  "elrond_cast": true,
+  "elrond_submitted_at": 1790976851.8398461,
+  "p1_bf_creatures_at_pre": [
+   64,
+   67,
+   119
+  ],
+  "p0_bf_creatures_at_pre": 0,
+  "votes_submitted": {
+   "P0": "fellowship",
+   "P1": "fellowship"
+  },
+  "vote_iids": [
+   "AKMN42.0.143",
+   "AKMN42.0.144"
+  ],
+  "prompts_seen": [
+   [
+    "resolving",
+    "AKMN42.0.143"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.145"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.147"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.149"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.151"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.153"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.156"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.158"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.161"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.163"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.166"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.168"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.170"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.171"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.173"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.175"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.176"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.178"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.180"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.181"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.183"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.185"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.188"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.190"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.193"
+   ],
+   [
+    "resolving",
+    "AKMN42.0.195"
+   ]
+  ],
+  "wf_types_resolving": [
+   "DeclareAttackers",
+   "Priority",
+   "VoteChoice"
+  ],
+  "stack_saw_trigger": true,
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (no game state); the scenario replays the reported line (Elrond enters with a creature under the opponent's control; both seats vote fellowship) from a fresh game and observes the resolution outcome.",
+  "Vote policy is a deterministic test choice (both seats vote fellowship); the aid branch was not exercised.",
+  "12x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Elrond of the White Council + 24x Forest + 24x Island + 8x Plains; P1: 12x Grizzly Bears + 48x Forest (lands/bears, never attacks)",
+ "contract_line": "Both seats vote fellowship on Elrond's ETB; P1 (a fellowship voter) must be offered the 'choose a creature they control' choice and P0 must gain control of the chosen creature. Observed: the clause never parsed, no choice prompt appeared, and no creature changed control.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 385
+ }
+}
