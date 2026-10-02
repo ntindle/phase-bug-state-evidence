@@ -1,0 +1,188 @@
+{
+ "name": "Doomsday Excruciator",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Black",
+   "Black",
+   "Black",
+   "Black",
+   "Black"
+  ],
+  "generic": 0
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Creature"
+  ],
+  "subtypes": [
+   "Demon"
+  ]
+ },
+ "power": {
+  "type": "Fixed",
+  "value": 6
+ },
+ "toughness": {
+  "type": "Fixed",
+  "value": 6
+ },
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Flying\nWhen this creature enters, if it was cast, each player exiles all but the bottom six cards of their library face down.\nAt the beginning of your upkeep, draw a card.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [
+  "Flying"
+ ],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ExileTop",
+     "player": {
+      "type": "ScopedPlayer"
+     },
+     "count": {
+      "type": "Offset",
+      "inner": {
+       "type": "Ref",
+       "qty": {
+        "type": "ZoneCardCount",
+        "zone": "Library",
+        "card_types": [],
+        "scope": "ScopedPlayer"
+       }
+      },
+      "offset": -6
+     },
+     "position": {
+      "type": "Top"
+     },
+     "face_down": true,
+     "actor": "LibraryPlayer"
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, if it was cast, each player exiles all but the bottom six cards of their library face down.",
+   "constraint": null,
+   "condition": {
+    "type": "WasCast"
+   },
+   "batched": false
+  },
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Draw",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "Upkeep",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of your upkeep, draw a card.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Black"
+ ],
+ "scryfall_oracle_id": "ad0db433-a406-4ef0-8ffa-416af610c4e7",
+ "metadata": {
+  "source_printing_ids": [
+   "50f9cecb-0ff7-4837-a8c5-4af394834e2c",
+   "542c89b6-48c6-4fcb-8a4c-b5ed2fa1d384"
+  ]
+ },
+ "legalities": {
+  "brawl": "legal",
+  "commander": "legal",
+  "duel": "legal",
+  "historic": "legal",
+  "legacy": "legal",
+  "modern": "legal",
+  "oathbreaker": "legal",
+  "pioneer": "legal",
+  "standard": "legal",
+  "standardbrawl": "legal",
+  "timeless": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "DSK",
+  "PDSK"
+ ],
+ "rulings": [
+  {
+   "date": "2024-09-20",
+   "text": "A player with six or fewer cards remaining in their library when Doomsday Excruciator's second ability resolves won't exile any cards."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
