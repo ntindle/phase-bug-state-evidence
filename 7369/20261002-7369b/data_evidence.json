@@ -1,0 +1,78 @@
+{
+ "scope_name": "Brass Infiniscope",
+ "scope_mana_cost": {
+  "type": "Cost",
+  "shards": [],
+  "generic": 4
+ },
+ "scope_oracle": "{T}: Add {C}{C}. When you next cast a spell with {X} in its mana cost this turn, you draw a card and gain half X life, rounded down.",
+ "scope_mana_ability": true,
+ "scope_delayed_trigger_effect": {
+  "type": "CreateDelayedTrigger",
+  "condition": {
+   "type": "WhenNextEvent",
+   "trigger": {
+    "mode": "SpellCast",
+    "execute": null,
+    "valid_card": {
+     "type": "Typed",
+     "type_filters": [],
+     "controller": null,
+     "properties": [
+      {
+       "type": "HasXInManaCost"
+      }
+     ]
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": {
+     "type": "Controller"
+    },
+    "valid_source": null,
+    "description": null,
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   },
+   "or_trigger": null
+  },
+  "effect": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Draw",
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "Controller"
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "uses_tracked_set": false
+ },
+ "banefire_cost": {
+  "type": "Cost",
+  "shards": [
+   "X",
+   "Red"
+  ],
+  "generic": 0
+ },
+ "banefire_oracle": "Banefire deals X damage to any target.\nIf X is 5 or more, this spell can't be countered and the damage can't be prevented."
+}
