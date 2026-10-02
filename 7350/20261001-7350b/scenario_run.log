@@ -1,0 +1,44 @@
+server identity pinned: v0.99.0 (d919616) protocol 98, mode Full; using live backfill server 127.0.0.1:9374 (runs/20261001-7349; backfill-owned, pinned release, per-run game isolation via fresh game code)
+game XW54J5; P0 seat=0 P1 seat=1
+P0 mulligan -> Mulligan
+P1 mulligan -> Mulligan
+waiting_for: MulliganDecision player=None stage=CREATURES
+P0 mulligan -> Keep
+P1 mulligan -> Mulligan
+P0 bottoms 1
+P1 mulligan -> Keep
+P1 mulligan -> Keep
+[P1] ActionRejected: {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}
+P1 bottoms 2
+waiting_for: Priority player=1 stage=CREATURES
+[P0] casts Raise the Alarm
+[P0] casts Grizzly Bears
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=CREATURES
+waiting_for: Priority player=0 stage=CREATURES
+[P0] casts Shambling Ghast
+exported pre.json
+pre exported; OWG_CAST stage. baseline: [('Shambling Ghast', 1, 1, False), ('Plains', None, None, False), ('Soldier', 1, 1, False), ('Soldier', 1, 1, False), ('Grizzly Bears', 2, 2, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Forest', None, None, False), ('Forest', None, None, False), ('Swamp', None, None, False), ('Plains', None, None, False)]
+[P0] declare empty attacks
+waiting_for: DeclareAttackers player=0 stage=OWG_CAST
+waiting_for: Priority player=0 stage=OWG_CAST
+[P0] casts On Wings of Gold
+exported post.json
+post exported: [('Shambling Ghast', 2, 2, True, False), ('Plains', None, None, False, False), ('Soldier', 2, 2, True, True), ('Soldier', 2, 2, True, True), ('Grizzly Bears', 3, 3, True, False), ('On Wings of Gold', None, None, False, False), ('Plains', None, None, False, False), ('Plains', None, None, False, False), ('Plains', None, None, False, False), ('Forest', None, None, False, False), ('Forest', None, None, False, False), ('Swamp', None, None, False, False), ('Plains', None, None, False, False)]
+rendered /home/hatch/workspace/dev/phase-backfill/evidence/7350/20261001-7350b/summary.png
+FINAL verdict=reproduced assertions={'A1_setup_ok': 'passed', 'A2_zombie_buffed': 'passed', 'A3_token_buffed': 'passed', 'A4_plain_excluded': 'failed', 'A5_cleanup': 'passed'}

@@ -1,0 +1,19 @@
+{
+ "issue": 7350,
+ "run_id": "20261001-7350b",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_zombie_buffed": "passed",
+  "A3_token_buffed": "passed",
+  "A4_plain_excluded": "failed",
+  "A5_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "post: OWG=True Bear=True Ghast=True SoldierTokens=2; P0 BF=[('Shambling Ghast', 2, 2, True), ('Plains', None, None, False), ('Soldier', 2, 2, True), ('Soldier', 2, 2, True), ('Grizzly Bears', 3, 3, True), ('On Wings of Gold', None, None, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Forest', None, None, False), ('Forest', None, None, False), ('Swamp', None, None, False), ('Plains', None, None, False)]",
+  "A2_zombie_buffed": "Ghast 2/2 flying=True (base 1/1, Zombie -> legal buff)",
+  "A3_token_buffed": "Soldier token 2/2 flying=True token=True (base 1/1 -> legal buff)",
+  "A4_plain_excluded": "Bear 3/3 flying=True (base 2/2, non-Zombie non-token -> must stay 2/2 without flying; REPORTED OUTCOME: buffed)",
+  "A5_cleanup": "post: stack=0 OWG_pending=False rejections_on_owg_path=0 wf=Priority/p1 turn=18 phase=PostCombatMain"
+ }
+}

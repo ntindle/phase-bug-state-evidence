@@ -1,0 +1,131 @@
+{
+ "issue": 7350,
+ "run_id": "20261001-7350b",
+ "title": "On Wings of Gold gives buff to non-Zombie, non-Token creatures",
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "validated_at": "2026-10-01T19:35:56-0500",
+ "verdict": "reproduced",
+ "scope": "On Wings of Gold static (+1/+1 & flying to Zombies/tokens): P0 BF with Ghast (Zombie), Soldier token, Grizzly Bears (plain); native engine, two human driver seats, protocol-98 driver",
+ "game_code": "XW54J5",
+ "decks": {
+  "p0": [
+   [
+    "On Wings of Gold",
+    4
+   ],
+   [
+    "Shambling Ghast",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Raise the Alarm",
+    4
+   ],
+   [
+    "Plains",
+    20
+   ],
+   [
+    "Swamp",
+    8
+   ],
+   [
+    "Forest",
+    8
+   ]
+  ],
+  "p1": [
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Forest",
+    56
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_zombie_buffed": "passed",
+  "A3_token_buffed": "passed",
+  "A4_plain_excluded": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "post: OWG=True Bear=True Ghast=True SoldierTokens=2; P0 BF=[('Shambling Ghast', 2, 2, True), ('Plains', None, None, False), ('Soldier', 2, 2, True), ('Soldier', 2, 2, True), ('Grizzly Bears', 3, 3, True), ('On Wings of Gold', None, None, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Plains', None, None, False), ('Forest', None, None, False), ('Forest', None, None, False), ('Swamp', None, None, False), ('Plains', None, None, False)]",
+  "A2_zombie_buffed": "Ghast 2/2 flying=True (base 1/1, Zombie -> legal buff)",
+  "A3_token_buffed": "Soldier token 2/2 flying=True token=True (base 1/1 -> legal buff)",
+  "A4_plain_excluded": "Bear 3/3 flying=True (base 2/2, non-Zombie non-token -> must stay 2/2 without flying; REPORTED OUTCOME: buffed)",
+  "A5_cleanup": "post: stack=0 OWG_pending=False rejections_on_owg_path=0 wf=Priority/p1 turn=18 phase=PostCombatMain"
+ },
+ "notes": [
+  "manifest.sha256 regenerated post-run: finalize() wrote v1 before the log files were closed; v2 covers the final bytes of scenario_run.log/wire_log.jsonl. Evidence content unchanged."
+ ],
+ "rejections": [
+  {
+   "at": 1790901279.0487142,
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "invalid_action",
+     "disposition": "invalid",
+     "message": "That action is not valid in the current game state.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "waiting_for_seen": [
+  "MulliganDecision",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority",
+  "DeclareAttackers",
+  "Priority"
+ ],
+ "evidence_hashes": {
+  "assertions.json": "4121ba87a1f0e087a50996f069e1874e62af9c9916ddbb844fe448b46ded6579",
+  "post.json": "42aa1801178112cdcc405cd010ed1387c4f2398ea59a3f971c0a008b164c3822",
+  "pre.json": "a4f4b2f1e1fa3f7da2da48157f9a2beab32aed6dded5012ffb4cf3217aec1da3",
+  "scenario_7350_0990.py": "be0d1176fba4b87f3a59fe303098562505ea27853428577c81b5d107ae276326",
+  "scenario_run.log": "7ef78c8100d95c554300e66e975e18a269fbb2896c466cb86b20f20480467731",
+  "setup.json": "fadb401ffd22bc4bc3ee54b3f5258f6c9ba4b94cf4b2536926afcd6f235586ce",
+  "summary.png": "3231817c343a97c9e2f70c171c5c158f03e66400d65bd34819e0bcdefeb188b7",
+  "wire_log.jsonl": "71304004119c42b33b5dcf4ab17063451f26bfe370138a147e1fa6175b1ee431"
+ },
+ "evidence_dir": "evidence/7350/20261001-7350b",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports, restorable only via full game replay (scenario_7350_0990.py, game XW54J5)."
+ ],
+ "driver_notes": [
+  "Protocol-98 driver: MulliganDecision Keep gated on pending[] Declare; SelectCards for bottom/discard; PassPriority revision-guarded; CastSpell advertised actions submitted as-is (engine auto-pays).",
+  "P0 never attacks; both seats submit empty DeclareAttackers/DeclareBlockers.",
+  "Creatures assembled before OWG so pre.json is a true unbuffed baseline."
+ ]
+}
