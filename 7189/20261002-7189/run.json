@@ -1,0 +1,123 @@
+{
+ "issue": 7189,
+ "run_id": "20261002-7189",
+ "title": "Karazikar, the Eye Tyrant triggering even when its controller is attacked",
+ "validated_at": "2026-10-02",
+ "server": {
+  "server_version": "0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "mode": "Full",
+  "binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "signature_note": "minisign-verified binary + signed data manifest against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (prehashed Ed25519 via pynacl pin_release.py); binary digest matches the GitHub asset digest; data digests match the signed manifest (2026-10-01 pin run).",
+  "observed_at": "2026-10-02",
+  "source": "isolated v0.99.0 server on 127.0.0.1:9374 (started by an earlier session; ServerHello re-checked by this run: server_version 0.99.0, build d919616, protocol 98)."
+ },
+ "server_run_note": "isolated v0.99.0 server on 127.0.0.1:9374 started by an earlier session; ServerHello re-checked by this run; per-game isolation by game code.",
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "15ab369b652d01d6aae5e2146959d5b560f5620340ef63de076cd6000de19ac6",
+ "format_config": "default Bo1, 3 human-client seats, life 20",
+ "decks": {
+  "P0": [
+   [
+    "karazikar, the eye tyrant",
+    4
+   ],
+   [
+    "swamp",
+    18
+   ],
+   [
+    "mountain",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ],
+  "P2": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_bug_trigger_fired": "failed",
+  "A4_control_trigger_fired": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (triggers=2; t2.mode=Attacks; valid_source.controller=Opponent; attack_target_filter='Player' - broad: the 'another one of your opponents' qualifier is still not encoded)",
+  "A2: kara_on_P0_BF=1 (expect 1) bears_on_P1_BF=3 (expect >=1) life=[20, 20, 20] (expect [20, 20, 20])",
+  "A3: bug_trigger_seen=False entries=[] bug_attack_turn=14 life_pre=[20, 20, 20] life_post=[14, 20, 20]",
+  "A4: control_trigger_seen=True entries=[{\"id\": 161, \"source_id\": 9, \"description\": \"Whenever an opponent attacks another one of your opponents, you and the attacking player each draw a card and lose 1 life.\"}] control_attack_turn=17",
+  "A5: stack_empty=True post_wf=Priority post_turn=18 (control_attack_turn=17)",
+  "verdict=not-reproduced: leg 1 completed with no trigger on the attack at Karazikar's controller, while leg 2 fired correctly on the attack at another opponent",
+  "verdict=not-reproduced"
+ ],
+ "driver_state": {
+  "kara_oid": 9,
+  "kara_cast_turn": 13,
+  "bug_attack_turn": 14,
+  "bug_declared": true,
+  "bug_trigger_seen": false,
+  "bug_trigger_entries": [],
+  "bug_life_pre": [
+   20,
+   20,
+   20
+  ],
+  "bug_life_post": [
+   14,
+   20,
+   20
+  ],
+  "control_attack_turn": 17,
+  "control_declared": true,
+  "control_trigger_seen": true,
+  "control_trigger_entries": [
+   {
+    "id": 161,
+    "source_id": 9,
+    "description": "Whenever an opponent attacks another one of your opponents, you and the attacking player each draw a card and lose 1 life."
+   }
+  ],
+  "control_life_pre": [
+   14,
+   20,
+   20
+  ],
+  "control_life_post": [
+   14,
+   20,
+   14
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "4x Karazikar / 12x Grizzly Bears densities are test-harness conveniences (engine accepts >4-of for custom games); P0 mulligans until Karazikar is in the opener.",
+  "P0 never attacks and never blocks; P2 fully passive (lands, passes).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "evidence_dir": "7189/20261002-7189",
+ "duration_s": 425.2
+}
