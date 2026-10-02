@@ -1,0 +1,19 @@
+{
+ "issue": 7379,
+ "run_id": "20261002-7379g",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_first_count": "passed",
+  "A3_kill_ok": "passed",
+  "A4_second_count": "passed",
+  "A5_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: Jirina zone=Command (want Command/CommandZone); mid1: Jirina on BF=1 (want >=1), stack=0 (want 0), cast1_submitted=True",
+  "A2_first_count": "mid1: P0 Human Soldier tokens=1 (want 1: the first command-zone cast of Jirina counts itself per the ruling)",
+  "A3_kill_ok": "mid2: Jirina zone=Command (want Command/CommandZone), tokens=0 (want 0), doj_submitted=True, cz_choice=DecideOptionalEffect accept=true (command zone)",
+  "A4_second_count": "post: P0 Human Soldier tokens=2 (want 2: two command-zone commander casts this game => two tokens)",
+  "A5_cleanup": "post: stack=0 wf=Priority/p1 turn=26 phase=PreCombatMain rejections=1"
+ }
+}
