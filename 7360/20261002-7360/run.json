@@ -1,0 +1,89 @@
+{
+ "issue": 7360,
+ "run_id": "20261002-7360",
+ "started_at": "2026-10-02T07:01:11",
+ "duration_s": 103.3,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "runs/20261002-7360 (live v0.99.0 server on 127.0.0.1:9374, reused per task body: already listening with pinned release)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "fbc2299a948c36205bac9a6c5652ac7f8d610ffd42067b5a51a730243d7f7369",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Prishe's Wanderings",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_land": "passed",
+  "A3_trigger": "failed",
+  "A4_counter": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: Bear on P0 BF (oid 49), library=34, Wanderings cast #2.",
+  "A2 passed (mid_search): library 34->33, BF Forests 18->19 (new one tapped: ['33']).",
+  "A3 FAILED (reported symptom): no Prishe's TriggeredAbility on the stack and no counter target prompt observed from the first cast through the end of the following turn (window 1).",
+  "A4 FAILED (reported outcome): Bear counters at post = [{}]; the +1/+1 counter was never placed.",
+  "A5 passed: stack empty, waiting_for=Priority, turn 40.",
+  "MECHANISM PROBE: no counter prompt even after a second Wanderings search this game (window 2, turn 40-42) -- the delayed trigger never fired on a subsequent SearchedLibrary event either; consistent with CreateDelayedTrigger{WhenNextEvent SearchedLibrary, lifetime Reflexive} never arming from its own resolution.",
+  "verdict=reproduced: the land was found and entered tapped, but the reflexive counter trigger never fired and the Bear has no counter -- the reported outcome.",
+  "server.log excerpt: 0 matching lines (of 6016 total; log=runs/20261002-7359/server.log)"
+ ],
+ "observations": {
+  "wand_casts": 2,
+  "wand_cast_turns": [
+   38,
+   40
+  ],
+  "trigger_seen": false,
+  "target_prompt_seen": false,
+  "target_answers": 0,
+  "search_answers": 2,
+  "probe_prompt_seen": false,
+  "pre_lib_size": 34
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The report's second item ('Inverted selection') never made it across from Discord; only the counter item is tested here.",
+  "The triage's open question (did the reporter have a creature on the battlefield?) is answered affirmatively in this fixture: a Bear is always fielded before the Wanderings cast.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Prishe's Wanderings + 8x Grizzly Bears + 48x Forest; P1: 60x Forest",
+ "contract_line": "Casting Prishe's Wanderings with a creature on the battlefield prompts for the +1/+1 counter target and places the counter",
+ "prior_runs": [],
+ "rescored_at": "2026-10-02T02:40:00-05:00",
+ "rescore_note": "A2 rescored pre->mid_search instead of pre->post (post was confounded by the window-2 probe's second search and intervening untap steps); all other assertions unchanged from the saved states."
+}
