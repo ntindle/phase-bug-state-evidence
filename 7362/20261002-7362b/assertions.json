@@ -1,0 +1,184 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_surveiller_sees": "passed",
+  "A3_opponent_blind": "passed",
+  "A4_choice_completes": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": {
+  "A1_setup_ok": "SurveilChoice reached for P0; 3 card ids captured",
+  "A2_surveiller_sees": "all surveilled cards face-up in P0 view",
+  "A3_opponent_blind": "P1 view hides all surveilled cards; no id leak in P1 payload",
+  "A4_choice_completes": "surveil answered=True; Gaze zone=Graveyard",
+  "A5_cleanup": "post stack empty=True; phase=PreCombatMain"
+ },
+ "verdict": "not-reproduced",
+ "capture_summary": {
+  "revision": 10,
+  "p1_view_revision": 10,
+  "waiting_for_p0": {
+   "type": "SurveilChoice",
+   "data": {
+    "player": 0,
+    "cards": [
+     56,
+     1,
+     39
+    ]
+   }
+  },
+  "waiting_for_p1": {
+   "type": "SurveilChoice",
+   "data": {
+    "player": 0,
+    "cards": [
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  "surveilled_ids": [
+   "56",
+   "1",
+   "39"
+  ],
+  "p0_prompt_opportunities": [
+   {
+    "interactionId": "FBY76Q.0.10",
+    "response": {
+     "type": "schema",
+     "data": {
+      "spec": {
+       "type": "select",
+       "data": {
+        "constraint": {
+         "type": "count",
+         "data": {
+          "min": 0,
+          "max": 3
+         }
+        },
+        "confirm": "explicit"
+       }
+      },
+      "candidates": [
+       {
+        "id": "FBY76Q.0.10.s0",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "object",
+          "data": {
+           "role": "candidate",
+           "index": null,
+           "reference": "56",
+           "name": "Island",
+           "zone": "library",
+           "controller": 0,
+           "power": null,
+           "tapped": false
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       },
+       {
+        "id": "FBY76Q.0.10.s1",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "object",
+          "data": {
+           "role": "candidate",
+           "index": null,
+           "reference": "1",
+           "name": "Island",
+           "zone": "library",
+           "controller": 0,
+           "power": null,
+           "tapped": false
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       },
+       {
+        "id": "FBY76Q.0.10.s2",
+        "surfaces": [
+         {
+          "type": "summary",
+          "data": {
+           "code": "candidate"
+          }
+         },
+         {
+          "type": "object",
+          "data": {
+           "role": "candidate",
+           "index": null,
+           "reference": "39",
+           "name": "Island",
+           "zone": "library",
+           "controller": 0,
+           "power": null,
+           "tapped": false
+          }
+         }
+        ],
+        "status": {
+         "type": "available"
+        }
+       }
+      ]
+     }
+    },
+    "surfaces": [
+     {
+      "type": "summary",
+      "data": {
+       "code": "decision"
+      }
+     },
+     {
+      "type": "selection",
+      "data": {
+       "intent": "choose",
+       "constraint": {
+        "type": "count",
+        "data": {
+         "min": 0,
+         "max": 3
+        }
+       },
+       "confirm": "explicit"
+      }
+     }
+    ],
+    "progress": {
+     "selected": 0,
+     "minimum": 0,
+     "maximum": 3,
+     "aggregate": null,
+     "confirmable": true
+    }
+   }
+  ],
+  "p1_prompt_opportunities": []
+ }
+}

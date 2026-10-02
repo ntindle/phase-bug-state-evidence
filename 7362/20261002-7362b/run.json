@@ -1,0 +1,38 @@
+{
+ "run_id": "20261002-7362b",
+ "issue": 7362,
+ "server": {
+  "version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "server_hello": {
+  "server_version": "0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98
+ },
+ "game_code": "FBY76Q",
+ "ports": {
+  "server": 9375
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_surveiller_sees": "passed",
+  "A3_opponent_blind": "passed",
+  "A4_choice_completes": "passed",
+  "A5_cleanup": "passed"
+ },
+ "scope": "Surveil visibility: SurveilChoice pending for P0 via Otherworldly Gaze; per-viewer redaction check on the native engine, two human-client seats, protocol-98 driver.",
+ "limitations": [
+  "Browser UI not exercised; the visibility check is on the engine's per-viewer StateUpdate projection, which the frontend consumes via display_visible_to_viewer.",
+  "The prebuilt phase-server has no standalone state-restore; states are authoritative exports restorable only via full game replay (scenario_7362.py).",
+  "Single surveil event (Otherworldly Gaze, surveil 3); other surveil sources not exercised."
+ ],
+ "started_at": "2026-10-02T07:17:00",
+ "finished_at": "2026-10-02T07:17:06Z"
+}
