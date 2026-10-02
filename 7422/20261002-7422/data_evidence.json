@@ -1,0 +1,136 @@
+{
+ "name": "Elrond of the White Council",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Green",
+   "Blue"
+  ],
+  "generic": 3
+ },
+ "oracle": "Secret council \u2014 When Elrond enters, each player secretly votes for fellowship or aid, then those votes are revealed. For each fellowship vote, the voter chooses a creature they control. You gain control of each creature chosen this way, and they gain \"This creature can't attack its owner.\" Then for each aid vote, put a +1/+1 counter on each creature you control.",
+ "trigger_mode": "ChangesZone",
+ "trigger_destination": "Battlefield",
+ "vote_effect": {
+  "type": "Vote",
+  "choices": [
+   "fellowship",
+   "aid"
+  ],
+  "per_choice_effect": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unrecognized_clause_head",
+     "description": "the voter chooses a creature they control"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "GainControlAll",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "GenericEffect",
+       "static_abilities": [
+        {
+         "mode": "Continuous",
+         "affected": {
+          "type": "ParentTarget"
+         },
+         "modifications": [
+          {
+           "type": "AddStaticMode",
+           "mode": "CantAttack"
+          }
+         ],
+         "condition": null,
+         "affected_zone": null,
+         "effect_zone": null,
+         "active_zones": [],
+         "characteristic_defining": false,
+         "description": "gain \"~ can't attack its owner.\" Then"
+        }
+       ],
+       "duration": null,
+       "target": null
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounterAll",
+     "counter_type": "P1P1",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "starting_with": "You",
+  "voter_scope": {
+   "type": "AllPlayers"
+  },
+  "tally_mode": {
+   "type": "PerVote"
+  },
+  "subject": {
+   "type": "Named"
+  },
+  "visibility": {
+   "type": "Secret"
+  }
+ }
+}
