@@ -1,0 +1,81 @@
+{
+ "issue": 7355,
+ "run_id": "20261001-7355",
+ "started_at": "2026-10-02T03:48:40",
+ "duration_s": 133.3,
+ "server_identity": {
+  "validated_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "2bc26e8f55daf612ef94eceb2e6b4ccd43b3de623e88b7ded1c867c08edb1d37",
+ "decks": {
+  "P0": [
+   [
+    "Disa the Restless",
+    12
+   ],
+   [
+    "Tarmogoyf",
+    16
+   ],
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Forest",
+    8
+   ],
+   [
+    "Swamp",
+    6
+   ],
+   [
+    "Mountain",
+    6
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_preconditions": "passed",
+  "A3_no_return": "failed",
+  "A4_discard_control": "failed"
+ },
+ "notes": [
+  "A2: goyf P/T=(0, 1) (recorded; dies to 2/2 block); Disa on P0 BF; untapped Bears on P1 BF; P0 active; life 20/20 -> passed",
+  "A3 FAILED (bug reproduced): the goyf returned to the battlefield after dying in combat; Disa's ChangesZone trigger fired despite the battlefield origin (stack sighting: False)",
+  "A4 FAILED: discarded goyf stayed in the graveyard; Disa's trigger did not fire even for a hand origin (stack: False) -- unexpected",
+  "protocol-98 driver (v0.99.0): 2 human seats; P0 mulligan keeps Disa + 2 lands (<=2 mulligans); SelectCards bottom/discard; PlayLand/CastSpell as-advertised + PayMana ticks; P1 passive (lands, one Bears, empty attacks, blocks the goyf); priority-gated passes; combat_watch drives both seats and samples the goyf's zone plus stack entries.",
+  "Disa's second trigger (create a Tarmogoyf token, Unimplemented) was deliberately never armed: no creature dealt combat damage to a player.",
+  "Card-data ground truth: Disa trigger[0] mode=ChangesZone, origin=null (the 'from anywhere other than the battlefield' exclusion absent), destination=Graveyard, valid_card=Typed[Permanent, Subtype Lhurgoyf] controller You; Tarmogoyf card_type.subtypes=[Lhurgoyf]."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x/20x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Disa's second trigger (combat-damage -> Tarmogoyf token, currently Unimplemented) was deliberately not exercised.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post states are authoritative exports restorable only via full game replay (scenario_7355.py)."
+ ],
+ "setup_line": "P0: 12x Disa + 16x Tarmogoyf + 12x Faithless Looting + 20 lands; ramp to {2}{B}{R}{G}, cast Disa, cast one Tarmogoyf, attack into P1's untapped Grizzly Bears (0/1 goyf dies)",
+ "contract_line": "After the goyf's combat death it must stay in P0's graveyard (trigger must not fire for a battlefield origin); control: Faithless Looting discarding a goyf from hand must fire the trigger and return it"
+}
