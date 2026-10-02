@@ -1,0 +1,97 @@
+{
+ "issue": 7363,
+ "run_id": "20261002-7363f",
+ "started_at": "2026-10-02T08:15:34",
+ "duration_s": 150.2,
+ "server": {
+  "server_version": "v0.99.0",
+  "build_commit": "d919616",
+  "protocol_version": 98,
+  "server_binary_sha256": "37fa78a8db1a51fbb950cbdba870021ad718fdf2e259971a1954c130a1a5ba60",
+  "card_data_sha256": "ccfcf9e6d19d9407d207cfbfe95b4ad873cebd878f66b451682e56e991372a4e",
+  "draft_pools_sha256": "8ce01364ee46e55cf2610d6a2dd35abbd3266606cc456af8012433f55bdd034e",
+  "signature_verified": true,
+  "server_run_id": "runs/20261002-7359 (live v0.99.0 server on 127.0.0.1:9374, reused per task body: already listening with pinned release)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.99.0 == pinned release dir; hashes recomputed against on-disk artifacts"
+ },
+ "driver": {
+  "protocol_advertised": 98,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7007db9e8ddcf5fa95b2352e42de89cb929d7f11af2eba7fc9a54f4e581cb177",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Emet-Selch of the Third Seat",
+    4
+   ],
+   [
+    "Ponder",
+    8
+   ],
+   [
+    "Sign in Blood",
+    4
+   ],
+   [
+    "Island",
+    22
+   ],
+   [
+    "Swamp",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_trigger": "passed",
+  "A3_target": "passed",
+  "A4_cast": "failed",
+  "A5_exile": "not-run",
+  "A6_cleanup": "failed"
+ },
+ "notes": [
+  "A1 passed: Emet-Selch on P0 BF, Ponder in P0 graveyard (pre turn 10).",
+  "A2 passed: Emet-Selch TriggeredAbility observed on the stack after P1 lost life.",
+  "A3 passed: trigger TargetSelection answered with Ponder (oid 9).",
+  "A4 FAILED (reported symptom, zone desync): a Spell entry for the targeted Ponder appeared on the stack, but the card object never left the Graveyard (zone=Graveyard, still in P0's graveyard list).",
+  "A5 not-run: A4 failed",
+  "A6 FAILED: stack=1, waiting_for=ManaPayment",
+  "verdict=reproduced: the may-cast was accepted but Ponder did not complete the graveyard -> stack -> exile path.",
+  "server.log excerpt: 0 matching lines (of 3893 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-7171-20260915-0211/server.log)",
+  "ponder zone trace (29 samples): [(10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard')] ... [(10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard'), (10, 'PreCombatMain', 'Graveyard')]"
+ ],
+ "observations": {
+  "emet_cast": true,
+  "sign_cast": true,
+  "sign_resolved": false,
+  "trigger_seen": true,
+  "target_answered": true,
+  "target_ponder_oid": "9",
+  "may_cast_accepted": true,
+  "ponder_on_stack": true,
+  "ponder_on_stack_by_ref_only": true,
+  "ponder_final_zone": null,
+  "ponder_zone_trace_len": 29
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Ponder deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 life loss is dealt by Sign in Blood ({B}{B}); the report does not specify how its opponent lost life, only that the trigger fired.",
+  "Ponder's resolution sub-choices (Dig reorder in presented order, 'may shuffle' declined) are deterministic test-harness answers, not assertions.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Emet-Selch of the Third Seat + 8x Ponder + 4x Sign in Blood + 22x Island + 22x Swamp; P1: 60x Forest",
+ "contract_line": "Accepting Emet-Selch's 'may cast' trigger casts the targeted Ponder from the graveyard: it reaches the stack, resolves, and is exiled instead of returning to the graveyard",
+ "prior_runs": []
+}

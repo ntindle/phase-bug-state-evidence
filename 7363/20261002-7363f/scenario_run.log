@@ -1,0 +1,25 @@
+game A1GRHE; P0 seat=0 P1 seat=1
+[P0] keep 7
+[P0] casting Ponder from hand
+[P0] dig reorder: 3 candidates in presented order (schema)
+[P0] interaction may-shuffle: iid=A1GRHE.0.56 choice=A1GRHE.0.56.c0 (exactChoices)
+[P0] declined optional (shuffle)
+[P0] casting Emet-Selch of the Third Seat
+[P0] casting Sign in Blood (target P1)
+[P0] interaction sign-target: iid=A1GRHE.0.150 choice=A1GRHE.0.150.t1 (schema)
+[P0] Sign in Blood target: P1
+EMET-SELCH TRIGGERED ABILITY observed on stack
+exported pre.json
+[P0] interaction trigger-target: iid=A1GRHE.0.153 choice=A1GRHE.0.153.t0 (schema)
+[P0] trigger target: Ponder (oid 9) -- prompt observed
+[P0] interaction may-cast: iid=A1GRHE.0.156 choice=A1GRHE.0.156.c1 (exactChoices)
+[P0] ACCEPTED Emet-Selch may-cast
+[P0] GraveyardPaidCastChoice opportunity FULL: {"interactionId": "A1GRHE.0.157", "response": {"type": "exactChoices", "data": {"choices": [{"id": "A1GRHE.0.157.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "graveyardPaidCastChoice", "actionId": "aa9d7f5b578f69b0e2c30937805a82200d5a04123b8357bb7cdbfbf0f98038872"}}, {"type": "value", "data": {"role": "castChoice", "index": null, "value": "cast"}}], "status": {"type": "available"}}, {"id": "A1GRHE.0.157.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "graveyardPaidCastChoice", "actionId": "a2683a58dd450ebaaf9a92ebeec00fcf3aeb38d3d28822b603b31f6d77351030d"}}, {"type": "value", "data": {"role": "castChoice", "index": null, "value": "decline"}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}
+[P0] interaction graveyard-paid-cast: iid=A1GRHE.0.157 choice=A1GRHE.0.157.c0 (exactChoices)
+[P0] answered GraveyardPaidCastChoice with choice A1GRHE.0.157.c0
+TARGETED PONDER oid 9 reached the STACK (turn 10; by_zone=False, by_ref=True)
+exported mid_cast.json
+[P0] ManaPayment pending (Ponder should cost {0} with Emet-Selch's {2} reduction); leaving for watchdog
+exported post.json
+may-cast accepted but Ponder never completed the cast within 120s -- stuck state exported
+finalizing
