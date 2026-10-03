@@ -1,0 +1,73 @@
+{
+ "name": "Karn Liberated",
+ "oracle": "[+4]: Target player exiles a card from their hand.\n[\u22123]: Exile target permanent.\n[\u221214]: Restart the game, leaving in exile all non-Aura permanent cards exiled with Karn. Then put those cards onto the battlefield under your control.",
+ "loyalty": "6",
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "abilities_count": 3,
+ "ability0": {
+  "cost": {
+   "type": "Loyalty",
+   "amount": 4
+  },
+  "effect": {
+   "type": "TargetOnly",
+   "target": {
+    "type": "Player"
+   }
+  },
+  "description": "[+4]: Target player exiles a card from their hand."
+ },
+ "ability1": {
+  "cost": {
+   "type": "Loyalty",
+   "amount": -3
+  },
+  "effect": {
+   "type": "ChangeZone",
+   "origin": null,
+   "destination": "Exile",
+   "target": {
+    "type": "Typed",
+    "type_filters": [
+     "Permanent"
+    ],
+    "controller": null,
+    "properties": []
+   },
+   "owner_library": false,
+   "enter_transformed": false,
+   "enter_tapped": false,
+   "enters_attacking": false
+  },
+  "description": "[\u22123]: Exile target permanent."
+ },
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unrecognized_clause_head",
+  "description": "Restart the game, leaving in exile all non-Aura permanent cards exiled with Karn"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "ChangeZoneAll",
+   "origin": "Exile",
+   "destination": "Battlefield",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "enters_under": "You"
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ },
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'restart'; the pinned v0.100.0 corpus names it 'unrecognized_clause_head' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}

@@ -1,0 +1,59 @@
+data-level check: head=Unimplemented/unrecognized_clause_head, sub=ChangeZoneAll/Exile->Battlefield/TrackedSet/0, enters_under=You
+game ERG3HU; P0 seat=0 P1 seat=1
+[P0] keep 7 (lands=7)
+[P1] keep 7 (lands=6)
+[P0] playing Wastes
+[P1] cast grizzly bears via advertised CastSpell (oid=103)
+[P0] playing Wastes
+[P0] playing Wastes
+[P0] playing Wastes
+[P0] playing Wastes
+[P0] playing Wastes
+[P0] playing Wastes
+[P0] cast karn liberated via advertised CastSpell (oid=43)
+[P0] Karn Liberated cast (turn 14)
+[P0] Karn on battlefield, loyalty=6
+[P0] activating Karn loyalty +4
+[P0] answering plus4_player target: pick=ERG3HU.0.214.t1 ref=('player', 1)
+[P0] Karn loyalty 6 -> 10
+[P0] activation applied; step now 1
+[P1] vi discard-to-hand-size: ERG3HU.0.217.s0
+[P0] playing Wastes
+[P0] activating Karn loyalty +4
+[P0] answering plus4_player target: pick=ERG3HU.0.250.t1 ref=('player', 1)
+[P0] Karn loyalty 10 -> 14
+[P0] activation applied; step now 2
+[P1] vi discard-to-hand-size: ERG3HU.0.253.s0
+[P0] playing Wastes
+[P0] activating Karn loyalty -3
+[P0] answering minus3_permanent target: pick=ERG3HU.0.286.t3 ref=('object', 103)
+[P0] Karn loyalty 14 -> 11
+[P0] activation applied; step now 3
+[P0] Karn-exiled permanent recorded: oid 103 (grizzly bears)
+[P0] playing Wastes
+[P0] activating Karn loyalty +4
+[P0] answering plus4_player target: pick=ERG3HU.0.320.t1 ref=('player', 1)
+[P0] Karn loyalty 11 -> 15
+[P0] activation applied; step now 4
+[P1] vi discard-to-hand-size: ERG3HU.0.323.s0
+[P0] playing Wastes
+[-14] window: exporting pre.json before activation
+exported pre.json
+[P0] activating Karn loyalty -14
+window_end.json written from observed state (turn 22, phase PreCombatMain)
+[P0] Karn loyalty 15 -> 1
+[P0] activation applied; step now 5
+[P0] playing Wastes
+[P0] DIAG turn 24: step=5 loyalty=1 act_types=['ActivateAbility', 'CastSpell', 'PassPriority', 'TapLandForMana']
+[P0] DIAG ActivateAbility: {"type": "ActivateAbility", "data": {"source_id": 43, "ability_index": 0}}
+[P0] DIAG ActivateAbility: {"type": "ActivateAbility", "data": {"source_id": 43, "ability_index": 0}, "_src_oid": "43"}
+[P1] cast grizzly bears via advertised CastSpell (oid=114)
+[P0] playing Wastes
+[P0] DIAG turn 26: step=5 loyalty=1 act_types=['ActivateAbility', 'CastSpell', 'PassPriority', 'TapLandForMana']
+[P0] DIAG ActivateAbility: {"type": "ActivateAbility", "data": {"source_id": 43, "ability_index": 0}}
+[P0] DIAG ActivateAbility: {"type": "ActivateAbility", "data": {"source_id": 43, "ability_index": 0}, "_src_oid": "43"}
+[P0] playing Wastes
+settled: stack empty, Priority, 8s idle; exporting post
+exported post.json
+VERDICT: blocked
+run.json written: verdict=blocked
