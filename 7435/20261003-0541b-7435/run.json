@@ -1,0 +1,484 @@
+{
+ "issue": 7435,
+ "run_id": "20261003-0541b-7435",
+ "started_at": "2026-10-03T10:57:03",
+ "duration_s": 27.0,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at ~02:45 CDT 2026-10-03); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7a44f7fb8a8bad03e60e0b1b0e4c1d59c746da2d7f310ceca6ee21288bb850c4",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Pick the Brain",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    4
+   ],
+   [
+    "Ornithopter",
+    4
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Mountain",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Lightning Bolt",
+    20
+   ],
+   [
+    "Mountain",
+    40
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_search_exile": "failed",
+  "A5_first_clause": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Pick the Brain as the issue reports -- abilities[1] head Unimplemented ('unparsed_verb_arguments': 'search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card') + sub Spell ChangeZone { Exile, TrackedSet(0) } + sub-sub Shuffle, all under the delirium QuantityCheck (DistinctCardTypes >= 4); abilities[0] parsed (RevealHand + ChangeZone ParentTarget -> Exile); mana {2}{B}; see data_evidence.json.",
+  "A2 probe: pre P0 GY types=['Artifact', 'Creature', 'Instant', 'Sorcery']; P1 bolts hand/lib/gy=19 ({'Hand': 5, 'Library': 14, 'Graveyard': 0, 'Exile': 1, 'Battlefield': 0, 'other': 0}); phase=PreCombatMain; active=0; stack=0.",
+  "A2 passed: delirium live at the decisive pre (4 card types in P0's graveyard: ['Artifact', 'Creature', 'Instant', 'Sorcery']), P1 holds >= 1 Lightning Bolt across hand/library/graveyard, P0 main phase, stack empty.",
+  "A3 probe: brain2_cast=True; on_stack_seen=True; resolved=True; turn=11; choices=[('brain1', 74, 'lightning bolt'), ('brain2', 80, 'lightning bolt')].",
+  "A3 passed: Pick the Brain #2 was cast, its spell object was observed on the stack, and it left the stack (resolved).",
+  "A4 probe: 0 of 18 available P1 Lightning Bolts (excl. the first-clause choice) in Exile at post ; search_prompt_seen=False; search_choice_answered=False.",
+  "A4 FAILED: 0 further P1 Lightning Bolts exiled by the delirium search -- THE REPORTED BUG: the 'search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card' clause never parsed (Unimplemented head, a runtime no-op), so the chain tracked set was allocated empty and the ChangeZone sub-ability exiled nothing.",
+  "A5 passed: the chosen card (oid 80, Lightning Bolt) is in Exile at post -- the parsed first clause works; only the unparsed search fails.",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 11, post turn 16, phase Upkeep).",
+  "verdict=reproduced: with delirium active, Pick the Brain #2 resolved and its parsed first clause exiled the chosen Lightning Bolt, but the delirium search exiled 0 further same-name cards although copies sat in P1's hand, library, and graveyard. The search clause never parsed (Unimplemented head, runtime no-op), so the chain tracked set was allocated empty and the ChangeZone sub-ability had nothing to exile -- the exact structural defect the issue reports, now measured at runtime. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 480 matching lines (of 3759 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0541/server.log)"
+ ],
+ "observations": {
+  "stage": "brain2",
+  "thopter_cast": true,
+  "bolt_cast": true,
+  "brain1_cast": true,
+  "brain2_cast": true,
+  "brain2_on_stack": true,
+  "brain2_resolved": true,
+  "brain2_turn": 11,
+  "choices": [
+   [
+    "brain1",
+    74,
+    "lightning bolt"
+   ],
+   [
+    "brain2",
+    80,
+    "lightning bolt"
+   ]
+  ],
+  "chosen_oid": 80,
+  "search_exiled": 0,
+  "search_prompt_seen": false,
+  "search_choice_answered": false,
+  "pre_p0_gy_types": [
+   "Artifact",
+   "Creature",
+   "Instant",
+   "Sorcery"
+  ],
+  "pre_p1_bolts": {
+   "Hand": 5,
+   "Library": 14,
+   "Graveyard": 0,
+   "Exile": 1,
+   "Battlefield": 0,
+   "other": 0
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.168"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.169"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.170"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.171"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.172"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.173"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.174"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.175"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.176"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.177"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.178"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.179"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.180"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.181"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.182"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.183"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.184"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.185"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.186"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.187"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.188"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.189"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.190"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.191"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.192"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.193"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.194"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.195"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.196"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.197"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.198"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.199"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.200"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.201"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.202"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.203"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.204"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.205"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.206"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.207"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.208"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.209"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.210"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.211"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.212"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.213"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.214"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.215"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.216"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.217"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.218"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.219"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.220"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.221"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.222"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.223"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.224"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.225"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.226"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.227"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.228"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.229"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.230"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.231"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.232"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.233"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.234"
+   ],
+   [
+    "resolving",
+    "P0",
+    "M0FEDV.0.235"
+   ],
+   [
+    "resolving",
+    "P1",
+    "M0FEDV.0.236"
+   ]
+  ],
+  "wf_types_window": [
+   "Priority",
+   "RevealChoice"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Pick the Brain cast with delirium active) and observes the resolution outcome.",
+  "12x Pick the Brain / 20x Lightning Bolt / 4x Ornithopter deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 12x Pick the Brain + 4x Lightning Bolt + 4x Ornithopter + 20x Swamp + 20x Mountain; P1: 20x Lightning Bolt + 40x Mountain (lands only, never casts, never attacks); default Bo1, life 20",
+ "contract_line": "Pick the Brain cast with delirium active (Instant/Artifact/Creature/Sorcery in P0's graveyard): correct = every remaining same-name card in the opponent's graveyard, hand, and library is exiled. Observed (bug): the search clause never parsed (Unimplemented head, runtime no-op), so 0 further cards are exiled and the ChangeZone sub-ability reads an empty tracked set.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 471
+ }
+}
