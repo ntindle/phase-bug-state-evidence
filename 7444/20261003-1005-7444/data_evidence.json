@@ -1,0 +1,165 @@
+{
+ "storybook_ride_card": {
+  "name": "Storybook Ride",
+  "mana_cost": {
+   "type": "NoCost"
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Artifact"
+   ],
+   "subtypes": [
+    "Attraction"
+   ]
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Visit \u2014 Exile the top X cards of your library, where X is the number of Attractions you've visited this turn (including this one). You may play those cards this turn. At the beginning of the next end step, if any of those cards remain exiled, put them on the bottom of your library in any order.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "VisitAttraction",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "where_x_binding",
+      "description": "where X is the number of Attractions you've visited this turn"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "GrantCastingPermission",
+       "permission": {
+        "type": "PlayFromExile",
+        "duration": "UntilEndOfTurn",
+        "granted_to": 0
+       },
+       "target": {
+        "type": "TrackedSet",
+        "id": 0
+       }
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "CreateDelayedTrigger",
+        "condition": {
+         "type": "AtNextPhase",
+         "phase": "End"
+        },
+        "effect": {
+         "kind": "Spell",
+         "effect": {
+          "type": "PutAtLibraryPosition",
+          "target": {
+           "type": "ParentTarget"
+          },
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "position": {
+           "type": "Bottom"
+          }
+         },
+         "cost": null,
+         "sub_ability": null,
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": null,
+         "optional_targeting": false,
+         "optional": false,
+         "forward_result": false
+        },
+        "uses_tracked_set": false
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": "UntilEndOfTurn",
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": null,
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "scryfall_oracle_id": "53032819-917e-4777-b37f-7cc1ac196940",
+  "metadata": {
+   "source_printing_ids": [
+    "070cf701-53ae-463f-b6ce-47b489557e8a",
+    "a42aeb2e-26ca-49b1-8e4d-1454c3783a84"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "banned",
+   "oathbreaker": "banned"
+  },
+  "printings": [
+   "UNF"
+  ],
+  "rulings": [
+   {
+    "date": "2022-10-07",
+    "text": "Storybook Ride doesn\u2019t change when you can play the exiled cards. For example, if you exile a sorcery card, you can cast it only during your main phase when the stack is empty. If you exile a land card, you can play it only during your main phase and only if you have an available land play remaining."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "head_name_match": {
+  "issue_body_quotes": "where_x_binding",
+  "pinned_data_shows": "where_x_binding"
+ }
+}
