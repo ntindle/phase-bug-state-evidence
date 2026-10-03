@@ -1,0 +1,35 @@
+{
+ "issue": 7694,
+ "run_id": "20261003-7694",
+ "validated_at": "2026-10-03",
+ "validated_version": "frontend-current-main",
+ "frontend_commit": "b68ef5114a2ea2d0423553b780cce229a0096740",
+ "prefx_commit": "97567645b8fd25bf3e009f0a3116b949e5c25321",
+ "fix_pr": 7806,
+ "fix_pr_merged_at": "2026-08-24T17:13:28Z",
+ "verdict": "not-reproduced",
+ "scope": "Frontend i18n targeting prompts (de/it/pt); targeting-overlay caption composition path + shipped locale strings. No game-state pair exists for a UI-only report.",
+ "result": "The reported wrongness (hardcoded gendered article composed at runtime with the noun: 'eine Spieler', 'un creatura', 'um criatura') does not reproduce on current main. PR #7806 replaced the runtime article+noun composition with whole-phrase per-noun keys; de/it/pt now render agreeing articles for the reported nouns (de 'einen Spieler'/'eine Kreatur', it 'una creatura', pt 'uma criatura').",
+ "limitations": [
+  "UI-only subsystem; tested against current main frontend sources, not a pinned engine release.",
+  "Locale-string level verification of actual shipped data and the actual composition code path; no browser render (rendering is irrelevant to grammatical article agreement).",
+  "Agreement judged by standard grammar tables; native-speaker confirmation (requested in the issue) was not performed.",
+  "es/fr/pl/other locales not in the report were not re-checked noun-by-noun."
+ ],
+ "input_identity": {
+  "pre_fix_commit": "97567645b8fd25bf3e009f0a3116b949e5c25321",
+  "current_main_commit": "b68ef5114a2ea2d0423553b780cce229a0096740",
+  "locale_files": "client/src/i18n/locales/{de,it,pt,en}/game.json (pre-<loc> at pre-fix commit, post-<loc> at current main)",
+  "composition_component": "client/src/components/targeting/TargetingOverlay.tsx",
+  "locale_file_sha256": {
+   "pre/de": "ff14851c9f8fd63ae5af4189beefdefdc794835718514f939390a241be7c2aef",
+   "post/de": "1b81f824b427997cb107635780d826b8c4e5f9cf413f990ca5fcbbca2661e798",
+   "pre/it": "c4b855814496ee358f62efd6ae05a1ae756e0d10a61370c388eb084f825e890c",
+   "post/it": "424958bdc37404e02bf774348fa44dd5ef2471de77c9cabc9e4de26a5385a4fd",
+   "pre/pt": "71c2abb9619db1245d6d2f91cc01350e2118bc99cfdbd2322ff1f35717845f4e",
+   "post/pt": "84b2f2df39e710ad655301a2139a6ac582e441eb0212e64fba44363d9a2857bc",
+   "pre/en": "b7d4707afe618b39f4387a2aa71ab62fa1588234b8fdd4fc8bdc7c098f130083",
+   "post/en": "923fb3f8e26bf80c0d04930d7f6c9d3ba75a59b45291dd50eafe66ef8653654d"
+  }
+ }
+}
