@@ -1,0 +1,1728 @@
+{
+ "why": "activation_resolved",
+ "stack": [
+  {
+   "id": 122,
+   "source_id": 15,
+   "controller": 0,
+   "kind": {
+    "type": "TriggeredAbility",
+    "data": {
+     "source_id": 15,
+     "ability": {
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unparsed_verb_arguments",
+       "description": "choose cards you own from outside the game with a moon in their art"
+      },
+      "targets": [],
+      "source_id": 15,
+      "source_incarnation": 3,
+      "trigger_source": {
+       "identity": {
+        "reference": {
+         "object_id": 15,
+         "incarnation": 3
+        },
+        "expected_zone": "Battlefield"
+       },
+       "lki": {
+        "name": "Princess Luna",
+        "power": 4,
+        "toughness": 4,
+        "base_power": 4,
+        "base_toughness": 4,
+        "mana_value": 0,
+        "controller": 0,
+        "owner": 0,
+        "card_types": [
+         "Creature"
+        ],
+        "subtypes": [
+         "Alicorn"
+        ],
+        "supertypes": [
+         "Legendary"
+        ],
+        "keywords": [
+         "Flying"
+        ],
+        "colors": [
+         "Black"
+        ],
+        "chosen_attributes": [],
+        "counters": {},
+        "tapped": false,
+        "is_suspected": false,
+        "attachments": []
+       },
+       "card_id": 15,
+       "printed_ref": {
+        "oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+        "face_name": "Princess Luna"
+       },
+       "is_token": false,
+       "face_down": false,
+       "mana_cost": {
+        "type": "NoCost"
+       },
+       "transformed": true,
+       "is_renowned": false,
+       "is_saddled": false,
+       "trigger_entries": [
+        {
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 2,
+           "printed_index": 0
+          }
+         },
+         "definition": {
+          "mode": "Transformed",
+          "execute": {
+           "kind": "Spell",
+           "effect": {
+            "type": "Unimplemented",
+            "name": "unparsed_verb_arguments",
+            "description": "choose cards you own from outside the game with a moon in their art"
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Exile",
+             "target": {
+              "type": "TrackedSet",
+              "id": 0
+             },
+             "owner_library": false,
+             "enter_transformed": false,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Unimplemented",
+              "name": "unrecognized_clause_head",
+              "description": "As long as those cards remain exiled"
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "CastFromZone",
+               "target": {
+                "type": "ParentTarget"
+               },
+               "without_paying_mana_cost": false,
+               "mode": "Cast"
+              },
+              "cost": null,
+              "sub_ability": null,
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": true,
+              "target_choice_timing": "Resolution",
+              "forward_result": false
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false,
+             "sub_link": "SequentialSibling"
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": null,
+           "optional_targeting": false,
+           "optional": false,
+           "multi_target": {
+            "min": 0,
+            "max": {
+             "type": "Fixed",
+             "value": 6
+            }
+           },
+           "forward_result": false
+          },
+          "valid_card": null,
+          "origin": null,
+          "destination": null,
+          "trigger_zones": [
+           "Battlefield"
+          ],
+          "phase": null,
+          "optional": false,
+          "damage_kind": "Any",
+          "secondary": false,
+          "valid_target": null,
+          "valid_source": {
+           "type": "SelfRef"
+          },
+          "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+          "constraint": null,
+          "condition": null,
+          "batched": false
+         }
+        }
+       ],
+       "timestamp": 15,
+       "entered_battlefield_turn": 12,
+       "combat_status": {
+        "attacking": false,
+        "blocking": false,
+        "blocked": false,
+        "attacking_alone": false,
+        "blocking_alone": false,
+        "defending_player": null
+       },
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "phase_status": {
+        "status": "PhasedIn"
+       },
+       "mana_spent_to_cast": true,
+       "colors_spent_to_cast": {
+        "black": 6
+       },
+       "mana_spent_to_cast_amount": 6,
+       "mana_spent_source_snapshots": [
+        {
+         "source_id": 20,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 27,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 3,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 5,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 39,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        },
+        {
+         "source_id": 13,
+         "lki": {
+          "name": "Swamp",
+          "power": null,
+          "toughness": null,
+          "base_power": null,
+          "base_toughness": null,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Land"
+          ],
+          "subtypes": [
+           "Swamp"
+          ],
+          "supertypes": [
+           "Basic"
+          ],
+          "keywords": [],
+          "colors": [],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": true,
+          "is_suspected": false,
+          "attachments": []
+         }
+        }
+       ]
+      },
+      "trigger_definition_ref": {
+       "source": {
+        "object_id": 15,
+        "incarnation": 3
+       },
+       "occurrence": {
+        "type": "Printed",
+        "data": {
+         "base_set": 2,
+         "printed_index": 0
+        }
+       }
+      },
+      "controller": 0,
+      "original_controller": 0,
+      "kind": "Spell",
+      "sub_ability": {
+       "effect": {
+        "type": "ChangeZone",
+        "origin": null,
+        "destination": "Exile",
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        },
+        "owner_library": false,
+        "enter_transformed": false,
+        "enter_tapped": false,
+        "enters_attacking": false
+       },
+       "targets": [],
+       "source_id": 15,
+       "source_incarnation": 3,
+       "trigger_source": {
+        "identity": {
+         "reference": {
+          "object_id": 15,
+          "incarnation": 3
+         },
+         "expected_zone": "Battlefield"
+        },
+        "lki": {
+         "name": "Princess Luna",
+         "power": 4,
+         "toughness": 4,
+         "base_power": 4,
+         "base_toughness": 4,
+         "mana_value": 0,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Alicorn"
+         ],
+         "supertypes": [
+          "Legendary"
+         ],
+         "keywords": [
+          "Flying"
+         ],
+         "colors": [
+          "Black"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": false,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 15,
+        "printed_ref": {
+         "oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+         "face_name": "Princess Luna"
+        },
+        "is_token": false,
+        "face_down": false,
+        "mana_cost": {
+         "type": "NoCost"
+        },
+        "transformed": true,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 2,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "Transformed",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Unimplemented",
+             "name": "unparsed_verb_arguments",
+             "description": "choose cards you own from outside the game with a moon in their art"
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "ChangeZone",
+              "origin": null,
+              "destination": "Exile",
+              "target": {
+               "type": "TrackedSet",
+               "id": 0
+              },
+              "owner_library": false,
+              "enter_transformed": false,
+              "enter_tapped": false,
+              "enters_attacking": false
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "Unimplemented",
+               "name": "unrecognized_clause_head",
+               "description": "As long as those cards remain exiled"
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "CastFromZone",
+                "target": {
+                 "type": "ParentTarget"
+                },
+                "without_paying_mana_cost": false,
+                "mode": "Cast"
+               },
+               "cost": null,
+               "sub_ability": null,
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": true,
+               "target_choice_timing": "Resolution",
+               "forward_result": false
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false,
+              "sub_link": "SequentialSibling"
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "multi_target": {
+             "min": 0,
+             "max": {
+              "type": "Fixed",
+              "value": 6
+             }
+            },
+            "forward_result": false
+           },
+           "valid_card": null,
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": {
+            "type": "SelfRef"
+           },
+           "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 15,
+        "entered_battlefield_turn": 12,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": true,
+        "colors_spent_to_cast": {
+         "black": 6
+        },
+        "mana_spent_to_cast_amount": 6,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 20,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 27,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 3,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 5,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 39,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 13,
+          "lki": {
+           "name": "Swamp",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Swamp"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "trigger_definition_ref": {
+        "source": {
+         "object_id": 15,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 2,
+          "printed_index": 0
+         }
+        }
+       },
+       "controller": 0,
+       "original_controller": 0,
+       "kind": "Spell",
+       "sub_ability": {
+        "effect": {
+         "type": "Unimplemented",
+         "name": "unrecognized_clause_head",
+         "description": "As long as those cards remain exiled"
+        },
+        "targets": [],
+        "source_id": 15,
+        "source_incarnation": 3,
+        "trigger_source": {
+         "identity": {
+          "reference": {
+           "object_id": 15,
+           "incarnation": 3
+          },
+          "expected_zone": "Battlefield"
+         },
+         "lki": {
+          "name": "Princess Luna",
+          "power": 4,
+          "toughness": 4,
+          "base_power": 4,
+          "base_toughness": 4,
+          "mana_value": 0,
+          "controller": 0,
+          "owner": 0,
+          "card_types": [
+           "Creature"
+          ],
+          "subtypes": [
+           "Alicorn"
+          ],
+          "supertypes": [
+           "Legendary"
+          ],
+          "keywords": [
+           "Flying"
+          ],
+          "colors": [
+           "Black"
+          ],
+          "chosen_attributes": [],
+          "counters": {},
+          "tapped": false,
+          "is_suspected": false,
+          "attachments": []
+         },
+         "card_id": 15,
+         "printed_ref": {
+          "oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+          "face_name": "Princess Luna"
+         },
+         "is_token": false,
+         "face_down": false,
+         "mana_cost": {
+          "type": "NoCost"
+         },
+         "transformed": true,
+         "is_renowned": false,
+         "is_saddled": false,
+         "trigger_entries": [
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 2,
+             "printed_index": 0
+            }
+           },
+           "definition": {
+            "mode": "Transformed",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Unimplemented",
+              "name": "unparsed_verb_arguments",
+              "description": "choose cards you own from outside the game with a moon in their art"
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "ChangeZone",
+               "origin": null,
+               "destination": "Exile",
+               "target": {
+                "type": "TrackedSet",
+                "id": 0
+               },
+               "owner_library": false,
+               "enter_transformed": false,
+               "enter_tapped": false,
+               "enters_attacking": false
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "Unimplemented",
+                "name": "unrecognized_clause_head",
+                "description": "As long as those cards remain exiled"
+               },
+               "cost": null,
+               "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                 "type": "CastFromZone",
+                 "target": {
+                  "type": "ParentTarget"
+                 },
+                 "without_paying_mana_cost": false,
+                 "mode": "Cast"
+                },
+                "cost": null,
+                "sub_ability": null,
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": true,
+                "target_choice_timing": "Resolution",
+                "forward_result": false
+               },
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false,
+               "sub_link": "SequentialSibling"
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "multi_target": {
+              "min": 0,
+              "max": {
+               "type": "Fixed",
+               "value": 6
+              }
+             },
+             "forward_result": false
+            },
+            "valid_card": null,
+            "origin": null,
+            "destination": null,
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": {
+             "type": "SelfRef"
+            },
+            "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+            "constraint": null,
+            "condition": null,
+            "batched": false
+           }
+          }
+         ],
+         "timestamp": 15,
+         "entered_battlefield_turn": 12,
+         "combat_status": {
+          "attacking": false,
+          "blocking": false,
+          "blocked": false,
+          "attacking_alone": false,
+          "blocking_alone": false,
+          "defending_player": null
+         },
+         "cast_from_zone": "Hand",
+         "cast_controller": 0,
+         "phase_status": {
+          "status": "PhasedIn"
+         },
+         "mana_spent_to_cast": true,
+         "colors_spent_to_cast": {
+          "black": 6
+         },
+         "mana_spent_to_cast_amount": 6,
+         "mana_spent_source_snapshots": [
+          {
+           "source_id": 20,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 27,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 3,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 5,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 39,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          },
+          {
+           "source_id": 13,
+           "lki": {
+            "name": "Swamp",
+            "power": null,
+            "toughness": null,
+            "base_power": null,
+            "base_toughness": null,
+            "mana_value": 0,
+            "controller": 0,
+            "owner": 0,
+            "card_types": [
+             "Land"
+            ],
+            "subtypes": [
+             "Swamp"
+            ],
+            "supertypes": [
+             "Basic"
+            ],
+            "keywords": [],
+            "colors": [],
+            "chosen_attributes": [],
+            "counters": {},
+            "tapped": true,
+            "is_suspected": false,
+            "attachments": []
+           }
+          }
+         ]
+        },
+        "trigger_definition_ref": {
+         "source": {
+          "object_id": 15,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 2,
+           "printed_index": 0
+          }
+         }
+        },
+        "controller": 0,
+        "original_controller": 0,
+        "kind": "Spell",
+        "sub_ability": {
+         "effect": {
+          "type": "CastFromZone",
+          "target": {
+           "type": "ParentTarget"
+          },
+          "without_paying_mana_cost": false,
+          "mode": "Cast"
+         },
+         "targets": [],
+         "source_id": 15,
+         "source_incarnation": 3,
+         "trigger_source": {
+          "identity": {
+           "reference": {
+            "object_id": 15,
+            "incarnation": 3
+           },
+           "expected_zone": "Battlefield"
+          },
+          "lki": {
+           "name": "Princess Luna",
+           "power": 4,
+           "toughness": 4,
+           "base_power": 4,
+           "base_toughness": 4,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Creature"
+           ],
+           "subtypes": [
+            "Alicorn"
+           ],
+           "supertypes": [
+            "Legendary"
+           ],
+           "keywords": [
+            "Flying"
+           ],
+           "colors": [
+            "Black"
+           ],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": false,
+           "is_suspected": false,
+           "attachments": []
+          },
+          "card_id": 15,
+          "printed_ref": {
+           "oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+           "face_name": "Princess Luna"
+          },
+          "is_token": false,
+          "face_down": false,
+          "mana_cost": {
+           "type": "NoCost"
+          },
+          "transformed": true,
+          "is_renowned": false,
+          "is_saddled": false,
+          "trigger_entries": [
+           {
+            "occurrence": {
+             "type": "Printed",
+             "data": {
+              "base_set": 2,
+              "printed_index": 0
+             }
+            },
+            "definition": {
+             "mode": "Transformed",
+             "execute": {
+              "kind": "Spell",
+              "effect": {
+               "type": "Unimplemented",
+               "name": "unparsed_verb_arguments",
+               "description": "choose cards you own from outside the game with a moon in their art"
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "ChangeZone",
+                "origin": null,
+                "destination": "Exile",
+                "target": {
+                 "type": "TrackedSet",
+                 "id": 0
+                },
+                "owner_library": false,
+                "enter_transformed": false,
+                "enter_tapped": false,
+                "enters_attacking": false
+               },
+               "cost": null,
+               "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                 "type": "Unimplemented",
+                 "name": "unrecognized_clause_head",
+                 "description": "As long as those cards remain exiled"
+                },
+                "cost": null,
+                "sub_ability": {
+                 "kind": "Spell",
+                 "effect": {
+                  "type": "CastFromZone",
+                  "target": {
+                   "type": "ParentTarget"
+                  },
+                  "without_paying_mana_cost": false,
+                  "mode": "Cast"
+                 },
+                 "cost": null,
+                 "sub_ability": null,
+                 "duration": null,
+                 "description": null,
+                 "target_prompt": null,
+                 "condition": null,
+                 "optional_targeting": false,
+                 "optional": true,
+                 "target_choice_timing": "Resolution",
+                 "forward_result": false
+                },
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": false,
+                "forward_result": false,
+                "sub_link": "SequentialSibling"
+               },
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "multi_target": {
+               "min": 0,
+               "max": {
+                "type": "Fixed",
+                "value": 6
+               }
+              },
+              "forward_result": false
+             },
+             "valid_card": null,
+             "origin": null,
+             "destination": null,
+             "trigger_zones": [
+              "Battlefield"
+             ],
+             "phase": null,
+             "optional": false,
+             "damage_kind": "Any",
+             "secondary": false,
+             "valid_target": null,
+             "valid_source": {
+              "type": "SelfRef"
+             },
+             "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+             "constraint": null,
+             "condition": null,
+             "batched": false
+            }
+           }
+          ],
+          "timestamp": 15,
+          "entered_battlefield_turn": 12,
+          "combat_status": {
+           "attacking": false,
+           "blocking": false,
+           "blocked": false,
+           "attacking_alone": false,
+           "blocking_alone": false,
+           "defending_player": null
+          },
+          "cast_from_zone": "Hand",
+          "cast_controller": 0,
+          "phase_status": {
+           "status": "PhasedIn"
+          },
+          "mana_spent_to_cast": true,
+          "colors_spent_to_cast": {
+           "black": 6
+          },
+          "mana_spent_to_cast_amount": 6,
+          "mana_spent_source_snapshots": [
+           {
+            "source_id": 20,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 27,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 3,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 5,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 39,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 13,
+            "lki": {
+             "name": "Swamp",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Swamp"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           }
+          ]
+         },
+         "trigger_definition_ref": {
+          "source": {
+           "object_id": 15,
+           "incarnation": 3
+          },
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 2,
+            "printed_index": 0
+           }
+          }
+         },
+         "controller": 0,
+         "original_controller": 0,
+         "kind": "Spell",
+         "sub_ability": null,
+         "duration": null,
+         "condition": null,
+         "context": {
+          "additional_cost_paid": false,
+          "alternative_mana_cost_paid": false,
+          "optional_effect_performed": false,
+          "source_transformation_count": 1
+         },
+         "optional_targeting": false,
+         "optional": true,
+         "target_choice_timing": "Resolution",
+         "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+         "detached_remainder": "NoProducer",
+         "forward_result": false,
+         "may_trigger_origin": {
+          "type": "Definition",
+          "definition_ref": {
+           "source": {
+            "object_id": 15,
+            "incarnation": 3
+           },
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 2,
+             "printed_index": 0
+            }
+           }
+          }
+         }
+        },
+        "duration": null,
+        "condition": null,
+        "context": {
+         "additional_cost_paid": false,
+         "alternative_mana_cost_paid": false,
+         "optional_effect_performed": false,
+         "source_transformation_count": 1
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+        "detached_remainder": "NoProducer",
+        "forward_result": false,
+        "may_trigger_origin": {
+         "type": "Definition",
+         "definition_ref": {
+          "source": {
+           "object_id": 15,
+           "incarnation": 3
+          },
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 2,
+            "printed_index": 0
+           }
+          }
+         }
+        },
+        "sub_link": "SequentialSibling"
+       },
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "source_transformation_count": 1
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "may_trigger_origin": {
+        "type": "Definition",
+        "definition_ref": {
+         "source": {
+          "object_id": 15,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 2,
+           "printed_index": 0
+          }
+         }
+        }
+       }
+      },
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "cast_from_zone": "Hand",
+       "source_transformation_count": 1
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "multi_target": {
+       "min": 0,
+       "max": {
+        "type": "Fixed",
+        "value": 6
+       }
+      },
+      "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false,
+      "ability_index": 0,
+      "may_trigger_origin": {
+       "type": "Definition",
+       "definition_ref": {
+        "source": {
+         "object_id": 15,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 2,
+          "printed_index": 0
+         }
+        }
+       }
+      }
+     },
+     "condition": null,
+     "trigger_event": {
+      "type": "Transformed",
+      "data": {
+       "object_id": 15
+      }
+     },
+     "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+     "source_name": "Princess Luna"
+    }
+   }
+  }
+ ]
+}
