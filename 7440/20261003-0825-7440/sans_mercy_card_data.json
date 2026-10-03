@@ -1,0 +1,195 @@
+{
+ "name": "sAnS mERcY",
+ "mana_cost": {
+  "type": "NoCost"
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [],
+  "subtypes": [
+   "sECreT",
+   "LaIR"
+  ]
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "wHeN YoU pLAnESWalK tO tHIs pLAnE, eACh pLAyER cHoOSeS a nOnBlACk cREaTuRE tHEy cONtrOl. dEsTRoy tHOsE cREatUReS.\nwHeNEveR cHoAS EnSUEs, pERfoRm tHe foLLowiNG pROceSs X tiMEs, wHErE X iS tHe nUmBEr oF tImeS yOU'vE roLLeD tHe PlaNAr diE tHIs tuRN. eAcH oPPonENt LOseS 3 LiFE uNLeSs tHAt pLAyEr sAcRiFicEs A nOnLaND pErManENt OR diSCaRds a cArD.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": {
+    "Planeswalked": {
+     "role": "To"
+    }
+   },
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "cHoOSeS a nOnBlACk cREaTuRE tHEy cONtrOl"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Destroy",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "cant_regenerate": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": {
+    "type": "Controller"
+   },
+   "valid_source": null,
+   "description": "wHeN YoU pLAnESWalK tO tHIs pLAnE, eACh pLAyER cHoOSeS a nOnBlACk cREaTuRE tHEy cONtrOl. dEsTRoy tHOsE cREatUReS.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": {
+    "Unknown": "wHeNEveR cHoAS EnSUEs"
+   },
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "where_x_binding",
+     "description": "where X is tHe nUmBEr oF tImeS yOU'vE roLLeD tHe PlaNAr diE tHIs tuRN"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "LoseLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 3
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "unless_pay": {
+      "cost": {
+       "type": "OneOf",
+       "costs": [
+        {
+         "type": "Sacrifice",
+         "target": {
+          "type": "Typed",
+          "type_filters": [
+           "Permanent",
+           {
+            "Non": "Land"
+           }
+          ],
+          "controller": "You",
+          "properties": []
+         },
+         "count": 1
+        },
+        {
+         "type": "Discard",
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "filter": null,
+         "random": false,
+         "self_ref": false
+        }
+       ]
+      },
+      "payer": {
+       "type": "ScopedPlayer"
+      }
+     },
+     "forward_result": false,
+     "player_scope": {
+      "type": "Opponent"
+     },
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "wHeNEveR cHoAS EnSUEs, pERfoRm tHe foLLowiNG pROceSs X tiMEs, wHErE X iS tHe nUmBEr oF tImeS yOU'vE roLLeD tHe PlaNAr diE tHIs tuRN. eAcH oPPonENt LOseS 3 LiFE uNLeSs tHAt pLAyEr sAcRiFicEs A nOnLaND pErManENt OR diSCaRds a cArD.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "scryfall_oracle_id": "acda5786-0a30-4fc4-accb-dd3485d11336",
+ "legalities": {},
+ "printings": [
+  "PSSC"
+ ]
+}
