@@ -1,0 +1,125 @@
+{
+ "issue": 7427,
+ "run_id": "20261002-7427",
+ "started_at": "2026-10-03T05:08:35",
+ "duration_s": 1283.6,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (started by this run; ServerHello 0.100.0/bc9ef56/protocol 101 verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at 23:44 CDT 2026-10-02); signatures re-verified and hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8341f0a765a91aac4dc324681f5030594b7a086ddab3f65be0ccb6c349a4a6df",
+ "format_config": "FreeForAll (2-player, 60-card minimum, no legality check)",
+ "decks": {
+  "P0": [
+   [
+    "Invasive Surgery",
+    4
+   ],
+   [
+    "Chromatic Star",
+    4
+   ],
+   [
+    "Catalog",
+    4
+   ],
+   [
+    "Divination",
+    4
+   ],
+   [
+    "Island",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "Divination",
+    6
+   ],
+   [
+    "Island",
+    54
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_counter_worked": "passed",
+  "A5_shuffle_happened": "passed",
+  "A6_cleanup": "passed",
+  "A4_exile_noop": "failed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Invasive Surgery's delirium ability as head Unimplemented('unparsed_verb_arguments': 'search the graveyard, hand, and library of that spell's controller for any number of cards with the same name as that spell') + sub ChangeZone (destination Exile, target TrackedSet id 0) + sub-sub Shuffle under the delirium QuantityCheck (DistinctCardTypes >= 4); see data_evidence.json.",
+  "A2 probe: Surgery on stack at pre=True; P0 graveyard distinct types=['Artifact', 'Instant', 'Land', 'Sorcery'] (n=4). A2 passed: delirium active (>= 4 types) with Surgery on the stack.",
+  "A3 probe: Divination spell oid=94 zone pre=Stack post=Exile; P1 new hand cards between pre/post=[(102, 'island')]. A3 passed: the targeted spell was countered -- it left the stack without resolving (P1 drew only its normal draw-step card, not 2 from Divination).",
+  "A4 probe: Divinations in exile in post=[94] (oid 94 = the countered spell); P1 Divination counts pre={'hand': 4, 'library': 1, 'graveyard': 0} post={'hand': 4, 'library': 1, 'graveyard': 0}; search/exile choice offered during resolution window=False (2 prompts, all passPriority).",
+  "A4 FAILED: with delirium active, no search/exile choice was offered and the delirium exiled ZERO same-name cards from P1's graveyard/hand/library -- the 5 Divinations there were untouched. Instead the ChangeZone exiled oid 94, the countered spell itself (which belongs in P1's graveyard per CR 701.5a). THE REPORTED BUG: the search clause never parsed, so the dependent ChangeZone did not exile the searched cards; at runtime it consumed the counter's chain tracked set and exiled the just-countered spell.",
+  "A5 probe: P1 library pre=43 post=42; order_changed_beyond_draw=True; cards that left the library=[(102, 'island')]. A5 passed: the delirium Shuffle sub shuffled P1's library (the only multiset change is P1's normal draw-step Island).",
+  "A6 passed: post stack empty, game advanced (turn 24, phase PreCombatMain)."
+ ],
+ "observations": {
+  "p0_ready": true,
+  "surgery_seen": true,
+  "surgery_resolved": true,
+  "target_answered": false,
+  "cast_rejections": 0,
+  "prompts_seen": [
+   [
+    "resolution_window",
+    "P0",
+    "F3YJ6F.0.325"
+   ],
+   [
+    "resolution_window",
+    "P1",
+    "F3YJ6F.0.326"
+   ]
+  ],
+  "wf_types_window": [
+   "Priority"
+  ],
+  "exiled_divination_oids": [
+   94
+  ],
+  "p1_div_counts_pre": {
+   "hand": 4,
+   "library": 1,
+   "graveyard": 0
+  },
+  "p1_div_counts_post": {
+   "hand": 4,
+   "library": 1,
+   "graveyard": 0
+  },
+  "search_choice_offered": false
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Delirium was built with a deterministic 4-card sequence (Star/Catalog/Divination/Island-discard); other 4-type combinations were not exercised.",
+  "States are authoritative exports, restorable only via full game replay.",
+  "Runtime consequence measured beyond the issue's stated scope: the issue asserts only the parse state and empty publish, not a runtime symptom. This run additionally measured that the delirium ChangeZone exiled the just-countered spell (oid 94) via the inherited chain tracked set."
+ ],
+ "setup_line": "P0 builds delirium (Star sac, Catalog, Divination, Island discard = 4 types), holds Surgery; P1 casts Divination once P0 is ready.",
+ "contract_line": "Surgery counters Divination; delirium then searches P1's GY/hand/library for Divinations, exiles them, P1 shuffles.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 735
+ }
+}
