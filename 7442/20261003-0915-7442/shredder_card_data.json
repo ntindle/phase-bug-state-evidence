@@ -1,0 +1,233 @@
+{
+ "name": "Shredder, Shadow Master",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Black"
+  ],
+  "generic": 3
+ },
+ "card_type": {
+  "supertypes": [
+   "Legendary"
+  ],
+  "core_types": [
+   "Creature"
+  ],
+  "subtypes": [
+   "Human",
+   "Ninja"
+  ]
+ },
+ "power": {
+  "type": "Fixed",
+  "value": 5
+ },
+ "toughness": {
+  "type": "Fixed",
+  "value": 5
+ },
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Whenever Shredder attacks a player, for each other opponent, create a token that's a copy of Shredder tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.\nWhenever Shredder deals combat damage to a player, that player loses half their life, rounded up.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "Attacks",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_quantity",
+     "description": "for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CreateDelayedTrigger",
+      "condition": {
+       "type": "AtNextPhase",
+       "phase": "EndCombat"
+      },
+      "effect": {
+       "kind": "Spell",
+       "effect": {
+        "type": "Sacrifice",
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        },
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "uses_tracked_set": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever ~ attacks a player, for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.",
+   "constraint": null,
+   "condition": null,
+   "batched": false,
+   "attack_target_filter": "Player"
+  },
+  {
+   "mode": "DamageDone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "LoseLife",
+     "amount": {
+      "type": "DivideRounded",
+      "inner": {
+       "type": "Ref",
+       "qty": {
+        "type": "LifeTotal",
+        "player": {
+         "type": "ScopedPlayer"
+        }
+       }
+      },
+      "divisor": 2,
+      "rounding": "Up"
+     },
+     "target": {
+      "type": "TriggeringPlayer"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "CombatOnly",
+   "secondary": false,
+   "valid_target": {
+    "type": "Player"
+   },
+   "valid_source": {
+    "type": "SelfRef"
+   },
+   "description": "Whenever ~ deals combat damage to a player, that player loses half their life, rounded up.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Black"
+ ],
+ "scryfall_oracle_id": "ee82947d-1cf0-4c53-84d4-81f81c6201ee",
+ "brawl_commander": true,
+ "is_commander": true,
+ "metadata": {
+  "related_token_ids": [
+   "2a43d4ad-81b6-5f95-b42f-db833ded0112"
+  ],
+  "source_printing_ids": [
+   "ddf4d3c9-bef9-4796-91ef-3d5beebae571",
+   "e11dfc36-0a70-4a7e-8395-854684a81a2c"
+  ]
+ },
+ "legalities": {
+  "brawl": "legal",
+  "commander": "legal",
+  "duel": "legal",
+  "historic": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "timeless": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "TMC"
+ ],
+ "rulings": [
+  {
+   "date": "2026-01-27",
+   "text": "Although the token copies created by Shredder's first ability enter attacking, they were never declared as attacking creatures. Abilities that trigger whenever a creature attacks won't trigger when those tokens enter attacking."
+  },
+  {
+   "date": "2026-01-27",
+   "text": "If Shredder leaves the battlefield before his last ability resolves, the tokens will still enter as a copy of Shredder, using Shredder's copiable values from when he was last on the battlefield."
+  },
+  {
+   "date": "2026-01-27",
+   "text": "In the unusual case where Shredder becomes a copy of something else while his last ability is on the stack but before it resolves, the tokens will enter as a copy of whatever Shredder is copying."
+  },
+  {
+   "date": "2026-01-27",
+   "text": "The token copies will have Shredder's abilities."
+  },
+  {
+   "date": "2026-01-27",
+   "text": "The tokens don't copy whether Shredder is tapped or untapped, whether he has any counters on him or Auras attached to him, or any non-copy effects that have changed his types, color, and so on."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}

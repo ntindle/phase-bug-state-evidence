@@ -1,0 +1,74 @@
+{
+ "issue": 7442,
+ "run_id": "20261003-0915-7442",
+ "started_at": "2026-10-03T14:17:58",
+ "duration_s": 5.8,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (run-20261003-0711; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "823c1b7f51f7ea90287e363030e5cec771c9ee0fe5650376d39f63cd59051c35",
+ "format_config": "FreeForAll (2 seats; P0 deck Shredder x4 + Swamp x56)",
+ "decks": {
+  "P0_main": "Shredder, Shadow Master x4 + Swamp x56 (60)",
+  "P1_main": "Grizzly Bears x20 + Forest x40 (60)",
+  "control_main": "Grizzly Bears x20 + Forest x40 (60)"
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_live_deck": "passed",
+  "A3_control_ok": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Shredder, Shadow Master as the issue reports -- exactly two triggers; t0 mode Attacks, execute kind Spell, head Unimplemented describing 'for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary' (head name 'unparsed_quantity' in pinned data vs 'for' quoted in the issue body; description matches, structural defect identical), sub_ability kind Spell with effect CreateDelayedTrigger (condition AtNextPhase/EndCombat; inner kind Spell with effect Sacrifice targeting TrackedSet(0), count Fixed(1); uses_tracked_set false), sub_link SequentialSibling; t1 mode DamageDone with LoseLife (parses -- only the attack clause is defective); no other abilities/statics/replacements. See data_evidence.json and shredder_card_data.json.",
+  "A2 probe: create_status=ok; game_started=True; shredder_oid=31; zone=Library; live_checks={'live_head_Unimplemented': True, 'live_sub_CreateDelayedTrigger': True, 'live_inner_Sacrifice_TrackedSet0': True, 'live_uses_tracked_set_false': True}.",
+  "A2 passed (defect is live on the running server): the pinned v0.100.0 server accepted the deck with Shredder, Shadow Master x4, reached GameStarted, and the authoritative pre export contains the live Shredder object (oid 31, zone Library) whose trigger definition still carries the Unimplemented head ('unparsed_quantity') with the reported description and the CreateDelayedTrigger sub targeting TrackedSet(0) with uses_tracked_set=false -- the same parse that card-data.json carries. See shredder_live_object.json and pre.json.",
+  "A3 probe: control game_started=True.",
+  "A3 passed: the identical FreeForAll game with an ordinary creature deck created and reached GameStarted -- the create/load machinery works, so the A2 observation is specific to this card's parse. See control_game.json.",
+  "A4 (scope documentation, not a verdict driver): no runtime token-creation test is claimed -- the issue explicitly states no runtime reproduction was run and the consumer-side outcome is not asserted (the delayed-trigger consumer is classified as an unpredictable deferred sentinel, not a plain empty bind). The empty tracked-set publish follows structurally: the Unimplemented head is the chain root (no ancestor to extend), its resolver pushes no GameEvent, and the publish authority therefore allocates a fresh empty set for the CreateDelayedTrigger sub-ability to read.",
+  "verdict=reproduced: the reported parse defect is confirmed on the pinned v0.100.0 release (attack trigger whose head is Unimplemented 'for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary', chaining to CreateDelayedTrigger{EndCombat, uses_tracked_set:false} whose inner Sacrifice reads TrackedSet(0)), and the same parse is live on the running server in a loaded deck. The control (ordinary creature deck) creates and starts, isolating the gap to this card's parse. This is not a fix claim.",
+  "server.log excerpt: 0 matching lines (of 1461 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0711/server.log)"
+ ],
+ "observations": {
+  "head_name_pinned": "unparsed_quantity",
+  "t1_damage_trigger": {
+   "mode": "DamageDone",
+   "effect": "LoseLife"
+  },
+  "create_status": "ok",
+  "game_code": "NPCNRX",
+  "game_started": true,
+  "shredder_oid": "31",
+  "shredder_zone": "Library",
+  "live_checks": {
+   "live_head_Unimplemented": true,
+   "live_sub_CreateDelayedTrigger": true,
+   "live_inner_Sacrifice_TrackedSet0": true,
+   "live_uses_tracked_set_false": true
+  },
+  "control_started": true
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (the issue asserts no runtime consumer symptom). The scenario demonstrates the parse on the pinned card data and shows the same parse live on the running server inside a loaded deck; it does not drive an attack, because the consumer-side outcome is declared unpredictable in the issue classification.",
+  "The empty tracked-set publish is documented structurally from the parsed chain (Unimplemented chain root -> no GameEvent -> fresh empty set), not measured at runtime.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "Phase 1: pinned card-data.json parse walk. Phase 2: live FreeForAll create with Shredder, Shadow Master x4 in P0's deck, mulligans kept, authoritative pre export -- Shredder object must carry the Unimplemented head live. Phase 3: control FreeForAll create with an ordinary creature deck (expect GameStarted).",
+ "contract_line": "Reported defect: 'for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary' is Unimplemented in the parse, so the CreateDelayedTrigger sub-ability's inner Sacrifice reads an empty chain tracked set. Demonstrated: the parse on pinned v0.100.0 matches the report, and the same parse is live on the running server.",
+ "prior_runs": [],
+ "stats": {}
+}

@@ -1,0 +1,390 @@
+{
+ "oid": "31",
+ "object": {
+  "abilities": [],
+  "attached_to": null,
+  "attachments": [],
+  "base_card_types": {
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Human",
+    "Ninja"
+   ],
+   "supertypes": [
+    "Legendary"
+   ]
+  },
+  "base_characteristics_initialized": true,
+  "base_color": [
+   "Black"
+  ],
+  "base_controller": 0,
+  "base_keywords": [],
+  "base_mana_cost": {
+   "generic": 3,
+   "shards": [
+    "Black",
+    "Black"
+   ],
+   "type": "Cost"
+  },
+  "base_name": "Shredder, Shadow Master",
+  "base_power": 5,
+  "base_printed_ref": {
+   "face_name": "Shredder, Shadow Master",
+   "oracle_id": "ee82947d-1cf0-4c53-84d4-81f81c6201ee"
+  },
+  "base_toughness": 5,
+  "base_trigger_definitions": [
+   {
+    "attack_target_filter": "Player",
+    "batched": false,
+    "condition": null,
+    "constraint": null,
+    "damage_kind": "Any",
+    "description": "Whenever ~ attacks a player, for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.",
+    "destination": null,
+    "execute": {
+     "condition": null,
+     "cost": null,
+     "description": null,
+     "duration": null,
+     "effect": {
+      "description": "for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary",
+      "name": "unparsed_quantity",
+      "type": "Unimplemented"
+     },
+     "forward_result": false,
+     "kind": "Spell",
+     "optional": false,
+     "optional_targeting": false,
+     "sub_ability": {
+      "condition": null,
+      "cost": null,
+      "description": null,
+      "duration": null,
+      "effect": {
+       "condition": {
+        "phase": "EndCombat",
+        "type": "AtNextPhase"
+       },
+       "effect": {
+        "condition": null,
+        "cost": null,
+        "description": null,
+        "duration": null,
+        "effect": {
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "target": {
+          "id": 0,
+          "type": "TrackedSet"
+         },
+         "type": "Sacrifice"
+        },
+        "forward_result": false,
+        "kind": "Spell",
+        "optional": false,
+        "optional_targeting": false,
+        "sub_ability": null,
+        "target_prompt": null
+       },
+       "type": "CreateDelayedTrigger",
+       "uses_tracked_set": false
+      },
+      "forward_result": false,
+      "kind": "Spell",
+      "optional": false,
+      "optional_targeting": false,
+      "sub_ability": null,
+      "sub_link": "SequentialSibling",
+      "target_prompt": null
+     },
+     "target_prompt": null
+    },
+    "mode": "Attacks",
+    "optional": false,
+    "origin": null,
+    "phase": null,
+    "secondary": false,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "valid_source": null,
+    "valid_target": null
+   },
+   {
+    "batched": false,
+    "condition": null,
+    "constraint": null,
+    "damage_kind": "CombatOnly",
+    "description": "Whenever ~ deals combat damage to a player, that player loses half their life, rounded up.",
+    "destination": null,
+    "execute": {
+     "condition": null,
+     "cost": null,
+     "description": null,
+     "duration": null,
+     "effect": {
+      "amount": {
+       "divisor": 2,
+       "inner": {
+        "qty": {
+         "player": {
+          "type": "ScopedPlayer"
+         },
+         "type": "LifeTotal"
+        },
+        "type": "Ref"
+       },
+       "rounding": "Up",
+       "type": "DivideRounded"
+      },
+      "target": {
+       "type": "TriggeringPlayer"
+      },
+      "type": "LoseLife"
+     },
+     "forward_result": false,
+     "kind": "Spell",
+     "optional": false,
+     "optional_targeting": false,
+     "sub_ability": null,
+     "target_prompt": null
+    },
+    "mode": "DamageDone",
+    "optional": false,
+    "origin": null,
+    "phase": null,
+    "secondary": false,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "valid_card": null,
+    "valid_source": {
+     "type": "SelfRef"
+    },
+    "valid_target": {
+     "type": "Player"
+    }
+   }
+  ],
+  "card_id": 31,
+  "card_types": {
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Human",
+    "Ninja"
+   ],
+   "supertypes": [
+    "Legendary"
+   ]
+  },
+  "color": [
+   "Black"
+  ],
+  "controller": 0,
+  "counters": {},
+  "damage_marked": 0,
+  "dealt_deathtouch_damage": false,
+  "entered_battlefield_turn": null,
+  "face_down": false,
+  "flipped": false,
+  "id": 31,
+  "keywords": [],
+  "layer_base_power": 5,
+  "layer_base_toughness": 5,
+  "loyalty": null,
+  "mana_cost": {
+   "generic": 3,
+   "shards": [
+    "Black",
+    "Black"
+   ],
+   "type": "Cost"
+  },
+  "name": "Shredder, Shadow Master",
+  "owner": 0,
+  "power": 5,
+  "printed_ref": {
+   "face_name": "Shredder, Shadow Master",
+   "oracle_id": "ee82947d-1cf0-4c53-84d4-81f81c6201ee"
+  },
+  "replacement_definitions": [],
+  "source_related_token_ids": [
+   "2a43d4ad-81b6-5f95-b42f-db833ded0112"
+  ],
+  "static_definitions": [],
+  "tapped": false,
+  "timestamp": 0,
+  "toughness": 5,
+  "transformed": false,
+  "trigger_definitions": [
+   {
+    "definition": {
+     "attack_target_filter": "Player",
+     "batched": false,
+     "condition": null,
+     "constraint": null,
+     "damage_kind": "Any",
+     "description": "Whenever ~ attacks a player, for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary. Sacrifice those tokens at end of combat.",
+     "destination": null,
+     "execute": {
+      "condition": null,
+      "cost": null,
+      "description": null,
+      "duration": null,
+      "effect": {
+       "description": "for each other opponent, create a token that's a copy of ~ tapped and attacking that player, except it isn't legendary",
+       "name": "unparsed_quantity",
+       "type": "Unimplemented"
+      },
+      "forward_result": false,
+      "kind": "Spell",
+      "optional": false,
+      "optional_targeting": false,
+      "sub_ability": {
+       "condition": null,
+       "cost": null,
+       "description": null,
+       "duration": null,
+       "effect": {
+        "condition": {
+         "phase": "EndCombat",
+         "type": "AtNextPhase"
+        },
+        "effect": {
+         "condition": null,
+         "cost": null,
+         "description": null,
+         "duration": null,
+         "effect": {
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "id": 0,
+           "type": "TrackedSet"
+          },
+          "type": "Sacrifice"
+         },
+         "forward_result": false,
+         "kind": "Spell",
+         "optional": false,
+         "optional_targeting": false,
+         "sub_ability": null,
+         "target_prompt": null
+        },
+        "type": "CreateDelayedTrigger",
+        "uses_tracked_set": false
+       },
+       "forward_result": false,
+       "kind": "Spell",
+       "optional": false,
+       "optional_targeting": false,
+       "sub_ability": null,
+       "sub_link": "SequentialSibling",
+       "target_prompt": null
+      },
+      "target_prompt": null
+     },
+     "mode": "Attacks",
+     "optional": false,
+     "origin": null,
+     "phase": null,
+     "secondary": false,
+     "trigger_zones": [
+      "Battlefield"
+     ],
+     "valid_card": {
+      "type": "SelfRef"
+     },
+     "valid_source": null,
+     "valid_target": null
+    },
+    "occurrence": {
+     "data": {
+      "base_set": 1,
+      "printed_index": 0
+     },
+     "type": "Printed"
+    }
+   },
+   {
+    "definition": {
+     "batched": false,
+     "condition": null,
+     "constraint": null,
+     "damage_kind": "CombatOnly",
+     "description": "Whenever ~ deals combat damage to a player, that player loses half their life, rounded up.",
+     "destination": null,
+     "execute": {
+      "condition": null,
+      "cost": null,
+      "description": null,
+      "duration": null,
+      "effect": {
+       "amount": {
+        "divisor": 2,
+        "inner": {
+         "qty": {
+          "player": {
+           "type": "ScopedPlayer"
+          },
+          "type": "LifeTotal"
+         },
+         "type": "Ref"
+        },
+        "rounding": "Up",
+        "type": "DivideRounded"
+       },
+       "target": {
+        "type": "TriggeringPlayer"
+       },
+       "type": "LoseLife"
+      },
+      "forward_result": false,
+      "kind": "Spell",
+      "optional": false,
+      "optional_targeting": false,
+      "sub_ability": null,
+      "target_prompt": null
+     },
+     "mode": "DamageDone",
+     "optional": false,
+     "origin": null,
+     "phase": null,
+     "secondary": false,
+     "trigger_zones": [
+      "Battlefield"
+     ],
+     "valid_card": null,
+     "valid_source": {
+      "type": "SelfRef"
+     },
+     "valid_target": {
+      "type": "Player"
+     }
+    },
+    "occurrence": {
+     "data": {
+      "base_set": 1,
+      "printed_index": 1
+     },
+     "type": "Printed"
+    }
+   }
+  ],
+  "zone": "Library"
+ }
+}
