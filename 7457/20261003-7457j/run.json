@@ -1,0 +1,61 @@
+{
+ "issue": 7457,
+ "run_id": "20261003-7457j",
+ "validated_at": "2026-10-03",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "mode": "Full",
+  "note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828); ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk pinned artifacts by the run (see scenario stdout header)"
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A5_rage_cost_paid": "passed",
+  "A6_rage_pump": "failed",
+  "A3_lotus_sacrifice_paid": "not-run",
+  "A4_lotus_mana_added": "not-run"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json carries both reported consumer shapes (Radiant Lotus Mana{ChosenColor, count Ref(FilteredTrackedSetSize{Artifact, caused_by: Sacrificed})}; Devouring Rage repeat_for Ref(FilteredTrackedSetSize{Spirit, caused_by: Sacrificed})). See data_evidence.json.",
+  "A2 passed: game started for both seats, mulligans done, authoritative pre_rage.json exported inside the submit path.",
+  "A5 passed: sacrificed spirits oids ['44', '41'] (['frostling', 'frostling']) are in P0's graveyard at post_rage.",
+  "A6 probe: target_oid=33 post pt=[1, 1]; memnites receiving exactly the base +3/+0 this cast: ['5']; no creature received the +6/+0 rider.",
+  "A6 FAILED: target memnite 33 is 1/1, expected 10/1 (1/1 base +3/+0 base pump + 2x +3/+0 rider for the 2 sacrificed Spirits). The base +3/+0 landed on memnite 5 instead of the selected target, and the repeat_for rider applied nowhere -- the reported defect (caused_by: Sacrificed consumer produced no pump).",
+  "A3/A4 not-run: the best-effort Lotus leg did not complete (scenario process ended during it); the verdict rests on the Rage leg.",
+  "Verdict reproduced: rests on the Rage leg (Lotus leg not completed)."
+ ],
+ "observations": {
+  "sacrificed_spirits": [
+   44,
+   41
+  ],
+  "sacrificed_spirit_names": [
+   "frostling",
+   "frostling"
+  ],
+  "rage_target_oid": 33,
+  "post_rage_pt": [
+   1,
+   1
+  ],
+  "base_pump_recipient_oid": "5",
+  "sacrificed_memnites": [],
+  "red_delta": null
+ },
+ "result": "Devouring Rage cast with 2 sacrificed Spirits (graveyard-confirmed): target memnite 33 stayed 1/1 (expected 10/1); the base +3/+0 applied to memnite 5 instead of the selected target and the +3/+0-per-Spirit rider applied nowhere.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Deck densities are test-harness conveniences (6x Devouring Rage to shorten setup).",
+  "The best-effort Radiant Lotus leg did not complete (scenario process ended during it); no Lotus activation evidence in this run.",
+  "No standalone state-restore on the prebuilt server; states are authoritative exports restorable via full game replay.",
+  "P1 is passive; no combat was driven."
+ ],
+ "evidence_dir": "7457/20261003-7457j"
+}
