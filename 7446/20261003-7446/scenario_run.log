@@ -1,0 +1,14 @@
+data-level check: shape_ok=True (corrected shape present); unimplemented_present=False; oracle_match=True
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+P0 hello done; P1 hello done
+game created: code=3NLW2T
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 0, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] keep 7 (hand: ['forest', 'island', 'island', 'forest', 'forest', 'island', 'forest'])
+[P1] keep 7 (hand: ['island', 'island', 'forest', 'forest', 'island', 'forest', 'forest'])
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live destiny oid=19 zone=Library tree={"kind": "Spell", "head_type": "ChangeZoneAll", "head_destination": "Exile", "head_target": {"controller": "You", "properties": [], "type": "Typed", "type_filters": ["Creature"]}, "sub_type": "CreateDelayedTrigger", "sub_condition": {"phase": "End", "type": "AtNextPhase"}, "uses_tracked_set": false, "inner_type": "RevealUntil", "inner_player": {"type": "Controller"}, "inner_filter": {"controller": null, "properties": [], "type": "Typed", "type_filters": ["Creature"]}, "inner_count": {"qty": {"type": "EventContextAmount"}, "type": "Ref"}, "kept_destination": "Battlefield", "rest_destination": "
+verdict: not-reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=not-reproduced
