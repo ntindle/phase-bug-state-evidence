@@ -1,0 +1,383 @@
+{
+ "issue": 7429,
+ "run_id": "20261003-7429",
+ "started_at": "2026-10-03T05:28:53",
+ "duration_s": 39.6,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process started 2026-10-02, run 20261002-bf1; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at 00:20 CDT 2026-10-03); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5f15e4067ed1cce10910e13c869599584cc238116aa71e4a83a00a33def21602",
+ "format_config": "Planechase (engine-canonical FormatConfig::planechase())",
+ "decks": {
+  "P0": [
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Forest",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "planar_deck": [
+   "Kharasha Foothills",
+   "Bicycle Rack",
+   "Elvish Impersonation Contest",
+   "Ghirapur Grand Prix",
+   "Jalira's Show",
+   "Shrinking Plane",
+   "Sky Deck",
+   "Stroopwafel Cafe",
+   "The Food Court",
+   "The Pro Tour",
+   "Windmill Farm",
+   "Hedron Fields of Agadeem",
+   "Jund",
+   "Llanowar",
+   "Prahv",
+   "Tazeem",
+   "Windriddle Palaces",
+   "Agyrem",
+   "Esper",
+   "The Eon Fog",
+   "Gavony",
+   "Aretopolis",
+   "Astral Arena",
+   "Academy at Tolaria West",
+   "Edge of Malacol",
+   "Aplan Mortarium",
+   "Sokenzan",
+   "Otaria",
+   "Megaflora Jungle",
+   "Panopticon"
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_attack_trigger_resolved": "passed",
+  "A4_no_tokens": "failed",
+  "A5_exile_noop": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Kharasha Foothills' Attacks trigger as the issue reports -- Typed Creature controller You, attack_target_filter Player, head Unimplemented('unparsed_quantity': 'for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent') + sub CreateDelayedTrigger (AtNextPhase End, uses_tracked_set=false) with inner ChangeZone->Exile target TrackedSet(0); see data_evidence.json.",
+  "A2 probe: Kharasha face-up in command zone=True (oid=209); untapped P0 bears=[20]; P1/P2 present=[1, 2]; life={'0': 20, '1': 20, '2': 20}.",
+  "A2 passed: Kharasha Foothills was the active plane (face-up in the command zone) and P0 had an untapped Grizzly Bears when the attack was declared.",
+  "A3 passed: the Kharasha Foothills attack trigger was observed on the stack after P0's attack declaration (turn 7) and resolved (left the stack).",
+  "A4 probe: P0 token oids at pre=[], at window_end=[]; new 'grizzly bears' objects on P0 battlefield at window_end=none.",
+  "A4 FAILED: the attack trigger resolved but created NO token copies of the attacking creature -- THE REPORTED BUG (the 'for each other opponent, you may create a token ...' clause never parsed; the Unimplemented head is a runtime no-op).",
+  "A5 probe: exile objects pre=0 post=0; delayed-trigger visibly on stack at end step=False.",
+  "A5 passed: the end-step exile moved no objects (exile zone unchanged pre -> post) -- the CreateDelayedTrigger read the empty tracked set, as the issue's structural analysis predicts. Delayed trigger visibly on stack at end step: False.",
+  "A6 passed: post stack empty, game advanced past the attack turn (attack turn 7, post turn 9, phase PreCombatMain).",
+  "verdict=reproduced: Kharasha Foothills was the active plane; P0's Grizzly Bears attacked P1; the attack trigger fired and resolved, but created NO token copies (the antecedent clause never parsed -- Unimplemented head is a runtime no-op), and the end-step CreateDelayedTrigger exiled nothing (empty tracked set). Confirmed on v0.100.0. The parse is the reported defect; the silent no-op + empty exile are its direct structural consequences. This is not a fix claim.",
+  "server.log excerpt: 425 matching lines (of 4293 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-bf1/server.log)"
+ ],
+ "observations": {
+  "rolls": 1,
+  "roll_rejections": 0,
+  "starting_plane_name": "the eon fog",
+  "bears_cast": true,
+  "attack_submitted": true,
+  "attack_turn": 7,
+  "attacker_oid": 20,
+  "trigger_seen": true,
+  "trigger_resolved": true,
+  "endstep_trigger_seen": false,
+  "tokens_at_pre": [],
+  "tokens_at_window_end": [],
+  "exile_at_pre": 0,
+  "exile_at_post": 0,
+  "prompts_seen": [
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.161"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.162"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.163"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.164"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.165"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.166"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.167"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.168"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.169"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.170"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.171"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.172"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.173"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.174"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.175"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.176"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.177"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.178"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.179"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.180"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.181"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.182"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.183"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.184"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.185"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.186"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.187"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.188"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.189"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.190"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.191"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.192"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.193"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.194"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.195"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.196"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.197"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.198"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.199"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.200"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.201"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.202"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.203"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.204"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.205"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.206"
+   ],
+   [
+    "attacking",
+    "P2",
+    "DJ04CE.0.207"
+   ],
+   [
+    "attacking",
+    "P0",
+    "DJ04CE.0.208"
+   ],
+   [
+    "attacking",
+    "P1",
+    "DJ04CE.0.209"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "Priority"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Kharasha Foothills active, a creature you control attacks a player) and observes the resolution outcome. The planar deck is engine-shuffled; P0 planeswalked via the planar die until Kharasha Foothills was the active plane (filler planes chosen for benign, choice-free chaos abilities; planar deck singleton enforced by the engine).",
+  "4x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The 'Whenever chaos ensues' ability was never exercised (no chaos roll occurred while Kharasha Foothills was active).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Grizzly Bears + 56x Forest + planar deck [Kharasha Foothills + 19 benign planes]; P1/P2: 60x Forest (lands, passes, never attack); Planechase, life 20",
+ "contract_line": "Kharasha Foothills active; P0's Grizzly Bears attacks P1: for each other opponent you may create a tapped-and-attacking token copy; exile those tokens at the next end step. Observed (bug): the clause never parsed -- no tokens created, end-step exile moves nothing.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 615
+ }
+}
