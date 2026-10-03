@@ -1,0 +1,54 @@
+{
+ "name": "Eumidian Wastewaker",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Black"
+  ],
+  "generic": 2
+ },
+ "oracle": "Whenever this creature attacks, you and defending player each discard a card or sacrifice a permanent. You draw a card for each land card put into a graveyard this way.\nEncore {6}{B}{B} ({6}{B}{B}, Exile this card from your graveyard: For each opponent, create a token copy that attacks that opponent this turn if able. They gain haste. Sacrifice them at the beginning of the next end step. Activate only as a sorcery.)",
+ "trigger_mode": "Attacks",
+ "trigger_zones": [
+  "Battlefield"
+ ],
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unbound_subject",
+  "description": "you and defending player each discard a card or sacrifice a permanent"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "Draw",
+   "count": {
+    "type": "Ref",
+    "qty": {
+     "type": "FilteredTrackedSetSize",
+     "filter": {
+      "type": "Typed",
+      "type_filters": [
+       "Land"
+      ],
+      "controller": null,
+      "properties": []
+     }
+    }
+   },
+   "target": {
+    "type": "Controller"
+   }
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ }
+}
