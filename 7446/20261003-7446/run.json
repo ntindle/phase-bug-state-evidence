@@ -1,0 +1,90 @@
+{
+ "issue": 7446,
+ "run_id": "20261003-7446",
+ "started_at": "2026-10-03T16:49:01",
+ "finished_at": "2026-10-03T16:49:05",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9375 (started by this run with a fresh games.db; run dir runs/20261003-7446; verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03T16:02:26Z) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "not-reproduced",
+ "scope": "Synthetic Destiny parse state: data-level parse assertion + live-object parse-tree assertion on the pinned server, mirroring the #7447 scenario for the same #6857-census issue family. The issue asserts no runtime consumer symptom (ChangeZoneAll's consumption on the empty tracked set is unmeasured in the census); per the issue, the reported defect is the parse state and its direct structural consequence (Unimplemented reveal head -> empty chain tracked-set publish). No end-step resolution drive was attempted.",
+ "result": "Pinned v0.101.0 card-data.json and the live Synthetic Destiny object on the pinned server both carry the corrected parse: the reveal clause is a count-bound RevealUntil {player Controller, filter Typed Creature, count Ref(EventContextAmount), kept_destination Battlefield, rest_destination Library} followed by Shuffle {target Controller} -- the acceptance shape from the issue's triage comment. No Unimplemented node anywhere in the card's abilities; the issue-reported defect (Unimplemented reveal head -> empty chain tracked set read by ChangeZoneAll) is absent from current release/data.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json parses Synthetic Destiny with the corrected shape -- Spell ChangeZoneAll {destination Exile, target Typed Creature controller You}; sub CreateDelayedTrigger {AtNextPhase End, uses_tracked_set false} whose effect is RevealUntil {player Controller, filter Typed Creature, count Ref(EventContextAmount), kept_destination Battlefield, rest_destination Library}; tail Shuffle {target Controller}. No Unimplemented node anywhere in the card's abilities. The issue-reported defect (Unimplemented reveal head -> empty chain tracked set read by ChangeZoneAll) is absent from current data; see data_evidence.json and synthetic_destiny_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=3NLW2T; post_mulligan_seen=True; pre_exported=True; pre objects=120; wf_types_seen=['MulliganDecision', 'Priority']; pre waiting_for=Priority; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including Synthetic Destiny in P0's main deck), the game started for both seats, mulligans completed, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live Synthetic Destiny object (oid 19, zone Library) with ability definitions carrying the identical corrected tree -- ChangeZoneAll-exile head, CreateDelayedTrigger(AtNextPhase End, uses_tracked_set false), RevealUntil {Controller, Typed Creature, Ref(EventContextAmount), kept Battlefield, rest Library}, Shuffle tail; no Unimplemented anywhere. The corrected parse is live on the pinned server."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: the end-step delayed-trigger resolution was not driven (stated scope in the issue; same contract as the #7447 scenario).",
+  "The live check establishes the parse tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "Browser UI not exercised; native engine only, two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports restorable only via full game replay."
+ ],
+ "observations": {
+  "live_tree": {
+   "kind": "Spell",
+   "head_type": "ChangeZoneAll",
+   "head_destination": "Exile",
+   "head_target": {
+    "controller": "You",
+    "properties": [],
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ]
+   },
+   "sub_type": "CreateDelayedTrigger",
+   "sub_condition": {
+    "phase": "End",
+    "type": "AtNextPhase"
+   },
+   "uses_tracked_set": false,
+   "inner_type": "RevealUntil",
+   "inner_player": {
+    "type": "Controller"
+   },
+   "inner_filter": {
+    "controller": null,
+    "properties": [],
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ]
+   },
+   "inner_count": {
+    "qty": {
+     "type": "EventContextAmount"
+    },
+    "type": "Ref"
+   },
+   "kept_destination": "Battlefield",
+   "rest_destination": "Library",
+   "tail_type": "Shuffle",
+   "tail_target": {
+    "type": "Controller"
+   },
+   "unimplemented_anywhere": false
+  },
+  "pre_objects": 120,
+  "wf_types_seen": [
+   "MulliganDecision",
+   "Priority"
+  ]
+ }
+}
