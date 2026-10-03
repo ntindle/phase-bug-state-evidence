@@ -1,0 +1,628 @@
+{
+ "issue": 7433,
+ "run_id": "20261003-7433",
+ "started_at": "2026-10-03T07:18:40",
+ "duration_s": 19.4,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at 02:15 CDT 2026-10-03); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7bbe9f81cebc4190f1954954856a0220ef1801d1aa1a7f61e36b7a8a41891926",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Mr. Monopoly, On the Go",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activated_resolved": "passed",
+  "A4_exile": "failed",
+  "A5_cast_permission": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Mr. Monopoly, On the Go as the issue reports -- abilities[1] head Unimplemented ('unrecognized_clause_head': 'Heist! -- Exile the top two cards of target opponent's library') + sub Spell GrantCastingPermission { PlayFromExile, UntilEndOfTurn, granted_to 0, mana AnyTypeOrColor } target TrackedSet(0); cost Loyalty -2; loyalty 5; mana {3}{R}; no parsed targets; see data_evidence.json.",
+  "A2 probe: pre monopoly_on_bf=True; loyalty=5; P1 library=50; phase=PreCombatMain; active=0.",
+  "A2 passed: Mr. Monopoly, On the Go on P0's battlefield at loyalty 5 with 50 cards in P1's library, P0 main phase.",
+  "A3 probe: heist_activated=True; heist_on_stack_seen=True; loyalty pre=5 post=3.",
+  "A3 passed: the Heist! [-2] was activated (loyalty 5 -> 3), its ability object was observed on the stack, and it resolved.",
+  "A4 probe: 0 of 50 P1 library-at-pre objects in Exile at post ; P1 library pre=50 post=47; total exile objects at post=0.",
+  "A5 probe: 105 total prompts in window; exile-cast-shaped opportunities=none; wf types in window=['DiscardToHandSize', 'Priority']; opponent_choice_answered=False.",
+  "A5 FAILED: the [-2] resolved but P0 was never offered the PlayFromExile cast -- THE REPORTED BUG: the Unimplemented head pushed no GameEvent, the publish authority allocated an empty tracked set, and the GrantCastingPermission consumer had nothing to grant permission for.",
+  "A4 FAILED: 0 P1 cards exiled by the Heist! [-2] -- THE REPORTED BUG: the 'Heist! -- Exile the top two cards of target opponent's library' clause never parsed (Unimplemented head, a runtime no-op), so the exile never happened and the dependent GrantCastingPermission reads an empty tracked set.",
+  "A6 passed: post stack empty, game advanced past the activation turn (activation turn 7, post turn 14, phase Upkeep).",
+  "PlayFromExile/GrantCastingPermission residue in post state: True",
+  "verdict=reproduced: the Heist! [-2] activated (loyalty 5 -> 3) and resolved, but 0 cards were exiled from P1's library and P0 was never offered the PlayFromExile cast. The 'Heist! -- Exile the top two cards of target opponent's library' clause never parsed (Unimplemented head, a runtime no-op), so the chain tracked set was allocated empty and the GrantCastingPermission sub-ability had nothing to grant -- the exact structural defect the issue reports, now measured at runtime. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 418 matching lines (of 16433 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261003-server/server.log)"
+ ],
+ "observations": {
+  "monopoly_cast": true,
+  "monopoly_cast_turn": 7,
+  "heist_activated": true,
+  "heist_on_stack": true,
+  "heist_resolved": true,
+  "heist_turn": 7,
+  "loyalty_at_pre": 5,
+  "loyalty_at_post": 3,
+  "p1_lib_at_pre": 50,
+  "exiled_in_window": 0,
+  "exile_cast_offered": false,
+  "opponent_choice_answered": false,
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.101"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.102"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.103"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.104"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.105"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.106"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.107"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.108"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.109"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.110"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.111"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.112"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.113"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.114"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.115"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.116"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.117"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.118"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.119"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.120"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.121"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.122"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.123"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.124"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.125"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.126"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.127"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.128"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.129"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.130"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.131"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.132"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.133"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.134"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.135"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.136"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.137"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.138"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.139"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.140"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.141"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.142"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.143"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.144"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.145"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.146"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.147"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.148"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.149"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.150"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.151"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.152"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.153"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.154"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.155"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.156"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.157"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.158"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.159"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.160"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.161"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.162"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.163"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.164"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.165"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.166"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.167"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.168"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.169"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.170"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.171"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.172"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.173"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.174"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.175"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.176"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.177"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.178"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.179"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.180"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.181"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.182"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.183"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.184"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.185"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.186"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.187"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.188"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.189"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.190"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.191"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.192"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.193"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.194"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.195"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.196"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.197"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.198"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.199"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.200"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.201"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.202"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.203"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MHTLZ3.0.204"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MHTLZ3.0.205"
+   ]
+  ],
+  "wf_types_window": [
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Mr. Monopoly, On the Go on the battlefield, its [-2] activated) and observes the resolution outcome. The consumer-side outcome was unmeasured in the report; this run measures it.",
+  "12x Mr. Monopoly, On the Go / 12x Lightning Bolt deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 12x Mr. Monopoly, On the Go + 48x Mountain; P1: 12x Lightning Bolt + 48x Mountain (lands only, never casts, never attacks); default Bo1, life 20",
+ "contract_line": "Mr. Monopoly, On the Go on P0's battlefield, [-2] activated: correct = the top two cards of P1's library are exiled and P0 may cast them this turn. Observed (bug): the 'Heist! -- Exile the top two cards of target opponent's library' clause never parsed (Unimplemented head, runtime no-op), so 0 cards are exiled and the GrantCastingPermission sub-ability reads an empty tracked set.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 409
+ }
+}

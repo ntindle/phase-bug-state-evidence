@@ -1,0 +1,87 @@
+{
+ "why": "heist_on_stack",
+ "stack": [
+  {
+   "id": 121,
+   "source_id": 26,
+   "controller": 0,
+   "kind": {
+    "type": "ActivatedAbility",
+    "data": {
+     "source_id": 26,
+     "ability": {
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unrecognized_clause_head",
+       "description": "Heist! \u2014 Exile the top two cards of target opponent's library"
+      },
+      "targets": [],
+      "source_id": 26,
+      "source_incarnation": 3,
+      "controller": 0,
+      "kind": "Activated",
+      "sub_ability": {
+       "effect": {
+        "type": "GrantCastingPermission",
+        "permission": {
+         "type": "PlayFromExile",
+         "duration": "UntilEndOfTurn",
+         "granted_to": 0,
+         "mana_spend_permission": "AnyTypeOrColor"
+        },
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        }
+       },
+       "targets": [],
+       "source_id": 26,
+       "source_incarnation": 3,
+       "controller": 0,
+       "kind": "Spell",
+       "sub_ability": null,
+       "duration": "UntilEndOfTurn",
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "source_ability_provenance": {
+         "type": "Characteristic",
+         "data": {
+          "type": "Own"
+         }
+        }
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "[\u22122]: Heist! \u2014 Exile the top two cards of target opponent's library. Until end of turn, you may play those cards, and mana of any type can be spent to cast them.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "source_ability_provenance": {
+        "type": "Characteristic",
+        "data": {
+         "type": "Own"
+        }
+       }
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "description": "[\u22122]: Heist! \u2014 Exile the top two cards of target opponent's library. Until end of turn, you may play those cards, and mana of any type can be spent to cast them.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false,
+      "ability_index": 1
+     }
+    }
+   }
+  }
+ ]
+}
