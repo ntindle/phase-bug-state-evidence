@@ -1,0 +1,73 @@
+{
+ "issue": 7441,
+ "run_id": "20261003-0841-7441",
+ "started_at": "2026-10-03T13:53:20",
+ "duration_s": 2.7,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (run-20261003-0711; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0c29c264a9162b083e3538ca3da0b60ec686e41e5527e7ed0efeaa9e2397f446",
+ "format_config": "CommanderDraft (3 seats; P0 commanders Wilson+Scion of Halaster, P1/P2 none)",
+ "decks": {
+  "P0_commanders": [
+   "Wilson, Refined Grizzly",
+   "Scion of Halaster"
+  ],
+  "P0_main": "30x Forest + 30x Swamp (60; BG = combined commander color identity)",
+  "P1_main": "60x Forest",
+  "P2_main": "60x Forest",
+  "control_P0_commanders": [
+   "Wilson, Refined Grizzly"
+  ],
+  "control_P0_main": "60x Forest (mono-green = Wilson's color identity)"
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_live_command_zone": "passed",
+  "A3_control_ok": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Scion of Halaster as the issue reports -- exactly one static_ability (mode Continuous) affecting commander creatures you own (Typed Creature + IsCommander + Owned(You)); modifications[0] is GrantAbility with definition kind Spell; head Unimplemented describing 'The first time you would draw a card each turn, instead look at the top two cards of your library'; sub_ability kind Spell with effect PutAtLibraryPosition targeting TrackedSet(0), count Fixed(1), position Top, sub_link SequentialSibling; sub-sub kind Spell with effect Draw count Fixed(1) target Controller, sub_link SequentialSibling; no other abilities/triggers/replacements. Head name in pinned data is 'unparsed_replacement' (the issue body quotes 'the' from the 9b7c66e30 census); the description matches and the structural defect is identical. ADDITIONAL gap: the oracle's 'Put one of them into your graveyard' half has NO sub-ability in the pinned parse -- the chain goes Top-placement straight to Draw. See data_evidence.json and scion_of_halaster_card_data.json.",
+  "A2 probe: create status=ok; game_started=True; scion_zone=Command; unparsed_replacement_live=True.",
+  "A2 passed: the pinned v0.100.0 server accepted the Wilson, Refined Grizzly + Scion of Halaster background pairing (deck validation did not reject it), the CommanderDraft game started, and the authoritative pre export shows the Scion of Halaster object in the command zone carrying the Unimplemented 'unparsed_replacement' head on its granted definition -- the parse gap is live on the running server, not just in the card-data file. See pre.json and scion_live_object.json.",
+  "A3 probe: control status=ok; game_started=True.",
+  "A3 passed: the identical CommanderDraft game with Wilson, Refined Grizzly alone as commander created and reached GameStarted -- the background pairing's acceptance is specific to the deck, not the format config, the deck construction, or the harness. See control_game.json.",
+  "A4 (scope documentation, not a verdict driver): no replacement-resolution drive was run. The granted ability is a replacement effect on commander creatures; observing it would require casting the commander and driving to a draw step. The issue itself asserts no runtime consumer symptom ('this issue does not assert a runtime symptom'), so none is claimed. The empty tracked-set publish follows structurally: the Unimplemented head is the chain root (no ancestor to extend), its resolver pushes no GameEvent, and the publish authority therefore allocates a fresh empty set for the PutAtLibraryPosition sub-ability to read.",
+  "verdict=reproduced: the reported parse defect is confirmed on the pinned v0.100.0 release (Continuous grant to commander creatures you own whose head is Unimplemented 'unparsed_replacement', chaining to PutAtLibraryPosition reading TrackedSet(0)), and the gap is live on the running server -- the Scion of Halaster object sits in the command zone of a started CommanderDraft game with the Unimplemented head on its granted definition. The control (Wilson alone) starts, isolating the setup to the deck. This is not a fix claim.",
+  "server.log excerpt: 1 matching lines (of 1393 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0711/server.log)"
+ ],
+ "observations": {
+  "head_name_pinned": "unparsed_replacement",
+  "create_status": "ok",
+  "game_code": "U3EXMI",
+  "game_started": true,
+  "scion_zone": "Command",
+  "scion_head_live": true,
+  "control_game_code": "135P5P",
+  "control_started": true
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "The report is a data-level parse report (the issue asserts no runtime consumer symptom). The scenario demonstrates the parse on the pinned card data and shows the gap live on the running server (command-zone object carries the Unimplemented head); it does not drive a replacement-effect resolution because the issue asserts no consumer-side symptom and the Unimplemented head is a documented runtime no-op.",
+  "The empty tracked-set publish is documented structurally from the parsed chain (Unimplemented chain root -> no GameEvent -> fresh empty set), not measured at runtime.",
+  "Deck-validation internals (ChooseABackground pairing) are cited from the engine source tree available locally (v0.82.0 checkout); the acceptance itself was observed live on the pinned v0.100.0 server."
+ ],
+ "setup_line": "Phase 1: pinned card-data.json parse walk of the Continuous grant chain. Phase 2: live CommanderDraft create with Wilson + Scion of Halaster as commanders (expect GameStarted), then authoritative pre export showing Scion in the command zone with the Unimplemented head. Phase 3: control CommanderDraft create with Wilson alone (expect GameStarted).",
+ "contract_line": "Reported defect: the granted 'first time you would draw a card each turn, instead look at the top two cards' replacement is Unimplemented in the parse, so the PutAtLibraryPosition sub-ability reads an empty chain tracked set. Demonstrated: the parse on pinned v0.100.0 matches the report, and the Scion of Halaster object in a live started game's command zone carries the Unimplemented head.",
+ "prior_runs": [],
+ "stats": {}
+}
