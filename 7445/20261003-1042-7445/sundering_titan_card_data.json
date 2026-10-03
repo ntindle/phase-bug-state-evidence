@@ -1,0 +1,202 @@
+{
+ "name": "Sundering Titan",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [],
+  "generic": 8
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Artifact",
+   "Creature"
+  ],
+  "subtypes": [
+   "Golem"
+  ]
+ },
+ "power": {
+  "type": "Fixed",
+  "value": 7
+ },
+ "toughness": {
+  "type": "Fixed",
+  "value": 10
+ },
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "When this creature enters or leaves the battlefield, choose a land of each basic land type, then destroy those lands.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "choose a land of each basic land type"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Destroy",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "cant_regenerate": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, choose a land of each basic land type, then destroy those lands.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": "LeavesBattlefield",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "choose a land of each basic land type"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Destroy",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "cant_regenerate": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield",
+    "Graveyard",
+    "Exile"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ leaves the battlefield, choose a land of each basic land type, then destroy those lands.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "scryfall_oracle_id": "d17d071d-dbee-4d65-8435-137f35cd89ca",
+ "metadata": {
+  "source_printing_ids": [
+   "0263c742-345b-4425-8326-75bfa60e08ea",
+   "a2ebb5d3-72b1-411d-8c90-83dac5b37898"
+  ]
+ },
+ "legalities": {
+  "brawl": "legal",
+  "commander": "banned",
+  "duel": "legal",
+  "historic": "legal",
+  "legacy": "legal",
+  "modern": "legal",
+  "oathbreaker": "banned",
+  "timeless": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "2XM",
+  "A25",
+  "ARC",
+  "BRR",
+  "DST",
+  "MPS",
+  "V10"
+ ],
+ "rulings": [
+  {
+   "date": "2020-08-07",
+   "text": "If a land has more than one basic land type, it can be chosen more than once."
+  },
+  {
+   "date": "2020-08-07",
+   "text": "If one of the basic land types isn't present, it isn't chosen. If the only land of a certain type is one you control, you must choose it."
+  },
+  {
+   "date": "2020-08-07",
+   "text": "Players can't take actions in between the time you choose the lands and the time you destroy them. Notably, they can't activate mana abilities of those lands."
+  },
+  {
+   "date": "2020-08-07",
+   "text": "Sundering Titan's ability isn't targeted. When it resolves, Sundering Titan's controller must choose one land for each basic land type (Plains, Island, Swamp, Mountain, and Forest), and then they are destroyed simultaneously."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
