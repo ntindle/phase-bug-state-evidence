@@ -1,0 +1,42 @@
+{
+ "name": "Happy Yargle Day!",
+ "oracle": "At the beginning of each player's end step, if that player doesn't control a creature named Yargle, Glutton of Urborg, that player puts a bargle counter on a creature they control. It becomes a copy of Yargle, Glutton of Urborg, except it isn't legendary.\nWhenever chaos ensues, choose Swords to Plowshares, Opt, Fatal Push, Anger of the Gods, or Explore at random. Copy the chosen card. You may cast the copy without paying its mana cost.",
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "trigger_mode": "ChaosEnsues",
+ "trigger_zones": [
+  "Battlefield",
+  "Command"
+ ],
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "choose Swords to Plowshares, Opt, Fatal Push, Anger of the Gods, or Explore at random"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "CastCopyOfCard",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "cost": {
+    "type": "Cost",
+    "shards": [],
+    "generic": 0
+   },
+   "count": null
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ },
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'choose'; the pinned v0.100.0 corpus names it 'unparsed_verb_arguments' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}
