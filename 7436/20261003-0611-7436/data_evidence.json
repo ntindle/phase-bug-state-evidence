@@ -1,0 +1,315 @@
+{
+ "princess_luna": {
+  "name": "Princess Luna",
+  "mana_cost": {
+   "type": "NoCost"
+  },
+  "card_type": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Alicorn"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 4
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 4
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Flying\nWhen this creature transforms into Princess Luna, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission. (Gifts are appreciated.)",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [
+   "Flying"
+  ],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "Transformed",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unparsed_verb_arguments",
+      "description": "choose cards you own from outside the game with a moon in their art"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Exile",
+       "target": {
+        "type": "TrackedSet",
+        "id": 0
+       },
+       "owner_library": false,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "Unimplemented",
+        "name": "unrecognized_clause_head",
+        "description": "As long as those cards remain exiled"
+       },
+       "cost": null,
+       "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+         "type": "CastFromZone",
+         "target": {
+          "type": "ParentTarget"
+         },
+         "without_paying_mana_cost": false,
+         "mode": "Cast"
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": true,
+        "target_choice_timing": "Resolution",
+        "forward_result": false
+       },
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "multi_target": {
+      "min": 0,
+      "max": {
+       "type": "Fixed",
+       "value": 6
+      }
+     },
+     "forward_result": false
+    },
+    "valid_card": null,
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": {
+     "type": "SelfRef"
+    },
+    "description": "When ~ transforms into ~, choose up to six cards you own from outside the game with a moon in their art, then exile those cards. As long as those cards remain exiled, you may cast them, and your friends may cast them with your permission.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": [
+   "Black"
+  ],
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+  "brawl_commander": true,
+  "is_commander": true,
+  "legalities": {},
+  "layout": "transform",
+  "face_index": 1,
+  "printings": [
+   "PTG"
+  ]
+ },
+ "nightmare_moon": {
+  "name": "Nightmare Moon",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black",
+    "Black"
+   ],
+   "generic": 4
+  },
+  "card_type": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Alicorn"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 6
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 6
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Flying\nAs long as it's nighttime, Nightmare Moon gets +2/+2 and has menace.\n{6}: Transform Nightmare Moon. Anypony may activate this ability or help pay the cost. When they do, they become your friend.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [
+   "Flying"
+  ],
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "Transform",
+     "target": {
+      "type": "SelfRef"
+     },
+     "scope": {
+      "type": "Single"
+     }
+    },
+    "cost": {
+     "type": "Mana",
+     "cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 6
+     }
+    },
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "Anypony may activate this ability or help pay the cost"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unrecognized_clause_head",
+       "description": "When they do, they become your friend"
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "{6}: Transform ~. Anypony may activate this ability or help pay the cost. When they do, they become your friend.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [
+   {
+    "mode": "Continuous",
+    "affected": {
+     "type": "SelfRef"
+    },
+    "modifications": [
+     {
+      "type": "AddPower",
+      "value": 2
+     },
+     {
+      "type": "AddToughness",
+      "value": 2
+     },
+     {
+      "type": "AddKeyword",
+      "keyword": "Menace"
+     }
+    ],
+    "condition": {
+     "type": "Unrecognized",
+     "text": "it's nighttime"
+    },
+    "affected_zone": null,
+    "effect_zone": null,
+    "active_zones": [],
+    "characteristic_defining": false,
+    "description": "As long as it's nighttime, ~ gets +2/+2 and has menace."
+   }
+  ],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "e724bddb-6195-4943-b9c6-decc96717998",
+  "brawl_commander": true,
+  "is_commander": true,
+  "legalities": {},
+  "layout": "transform",
+  "face_index": 0,
+  "printings": [
+   "PTG"
+  ]
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "head_name_discrepancy": {
+  "issue_body_quotes": "choose",
+  "pinned_data_shows": "unparsed_verb_arguments",
+  "note": "description string matches the issue; structural defect identical either way"
+ }
+}
