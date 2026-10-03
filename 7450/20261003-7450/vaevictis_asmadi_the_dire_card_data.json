@@ -1,0 +1,222 @@
+{
+ "name": "Vaevictis Asmadi, the Dire",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Red",
+   "Green"
+  ],
+  "generic": 3
+ },
+ "card_type": {
+  "supertypes": [
+   "Legendary"
+  ],
+  "core_types": [
+   "Creature"
+  ],
+  "subtypes": [
+   "Elder",
+   "Dragon"
+  ]
+ },
+ "power": {
+  "type": "Fixed",
+  "value": 6
+ },
+ "toughness": {
+  "type": "Fixed",
+  "value": 6
+ },
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Flying\nWhenever Vaevictis Asmadi attacks, for each player, choose target permanent that player controls. Those players sacrifice those permanents. Each player who sacrificed a permanent this way reveals the top card of their library, then puts it onto the battlefield if it's a permanent card.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [
+  "Flying"
+ ],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "Attacks",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_quantity",
+     "description": "for each player, choose target permanent that player controls"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Sacrifice",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unrecognized_clause_head",
+       "description": "who sacrificed a permanent this way reveals the top card of their library"
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "ChangeZone",
+        "origin": null,
+        "destination": "Battlefield",
+        "target": {
+         "type": "ParentTarget"
+        },
+        "owner_library": false,
+        "enter_transformed": false,
+        "enter_tapped": false,
+        "enters_attacking": false
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": {
+        "type": "TargetMatchesFilter",
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Permanent"
+         ],
+         "controller": null,
+         "properties": []
+        },
+        "use_lki": false
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "player_scope": {
+        "type": "All"
+       }
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "player_scope": {
+       "type": "All"
+      },
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever ~ attacks, for each player, choose target permanent that player controls. Those players sacrifice those permanents. Each player who sacrificed a permanent this way reveals the top card of their library, then puts it onto the battlefield if it's a permanent card.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": [
+  "Black",
+  "Green",
+  "Red"
+ ],
+ "color_identity": [
+  "Black",
+  "Green",
+  "Red"
+ ],
+ "scryfall_oracle_id": "c42ce2e9-4dfe-468a-8f41-49e187cb91d4",
+ "brawl_commander": true,
+ "is_commander": true,
+ "metadata": {
+  "source_printing_ids": [
+   "85f99ec3-5ab9-43a6-ae92-2501f04d6b6c",
+   "d19fdc00-21eb-48dc-966a-6b634dc5a2c4",
+   "d4de5ce7-d6df-48cb-9cb6-1f6f6a476b1d"
+  ]
+ },
+ "legalities": {
+  "brawl": "legal",
+  "commander": "legal",
+  "duel": "legal",
+  "historic": "legal",
+  "legacy": "legal",
+  "modern": "legal",
+  "oathbreaker": "legal",
+  "pioneer": "legal",
+  "timeless": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "M19",
+  "PLST",
+  "PM19",
+  "SLD"
+ ],
+ "rulings": [
+  {
+   "date": "2018-07-13",
+   "text": "If any of the target permanents aren't sacrificed (most likely because one of them became an illegal target, such as by gaining hexproof), that permanent's controller won't reveal the top card of their library or put it onto the battlefield."
+  },
+  {
+   "date": "2018-07-13",
+   "text": "If any player controls no permanents, Vaevictis's ability won't have sufficient legal targets, so it's removed from the stack without any effect."
+  },
+  {
+   "date": "2018-07-13",
+   "text": "Vaevictis's triggered ability resolves during the declare attackers step, before blockers are chosen. A creature targeted by its ability won't be around to block, and creatures put onto the battlefield with its ability may be able to do so."
+  },
+  {
+   "date": "2018-07-13",
+   "text": "You must target one of your permanents to sacrifice as well."
+  }
+ ],
+ "rarities": [
+  "mythic"
+ ]
+}
