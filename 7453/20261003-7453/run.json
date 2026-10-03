@@ -1,0 +1,41 @@
+{
+ "issue": 7453,
+ "run_id": "20261003-7453",
+ "run_started_at": "2026-10-03T13:43:31-05:00",
+ "validated_at": "2026-10-03T13:50:00-05:00",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "mode": "Full",
+  "bind": "127.0.0.1:9381",
+  "binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "binary_minisign_verified": true,
+  "manifest_minisign_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06"
+ },
+ "scenario": "driver/scenario_7453.py",
+ "scenario_sha256": "94f888a1e1a97f8cda061cdba8a78931230e31c5b966fefd8548ff7476db214e",
+ "scope": "Parser / data-pipeline subsystem: parse shape of the pronoun-object block-restriction clause in the pinned, minisign-verified card-data.json (35,879 cards). The pinned engine loads exactly this dataset; the reported defect IS the parse shape, and the issue's triage established 'confirmed by data inspection'. No engine game session.",
+ "assertions": {
+  "A1_data_integrity": "passed",
+  "A2_all_12_present": "passed",
+  "A3_mode_correct": "passed",
+  "A4_affected_self": "passed",
+  "A5_filter_semantics": "passed",
+  "A6_dataset_sweep": "passed"
+ },
+ "result": "All 12 issue-named cards now parse the \"can't block it\" pronoun-object clause to CantBeBlockedBy { filter } with affected SelfRef, the exact lowering the issue's analysis prescribed. 11 'power less than' cards carry a Creature Typed filter with PtComparison Power LE (source power - 1); Silumgar Assassin ('power greater than') carries GE (source power + 1). Dataset-wide sweep: 12/12 \"can't block it\" statics are CantBeBlockedBy; zero collapse to the inverted CantBlock. The reported inversion does not occur on v0.101.0.",
+ "verdict": "not-reproduced",
+ "limitations": [
+  "No engine game session: the defect is a parse-shape defect in the shipped card data; the engine loads this exact dataset.",
+  "Engine enforcement of CantBeBlockedBy (declare-blockers legality) not separately driven; it is the same lowering shape the issue notes already worked for the 'this creature' sibling form.",
+  "Consistent with the 2026-09-10 'already fixed' comment (PR #7452's object_is_source route), but the fix commit claim was not independently compiled or verified \u2014 verdict is scoped to the pinned data, not a fix claim.",
+  "Not tested on the report's original origin/main @ 9b7c66e30 build."
+ ],
+ "publication": {
+  "status": "pending"
+ }
+}
