@@ -1,0 +1,597 @@
+{
+ "issue": 7438,
+ "run_id": "20261003-0711-7438",
+ "started_at": "2026-10-03T12:30:40",
+ "duration_s": 23.4,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (run-20261003-0711; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "fc4f1e00fea1fdee52256c752fec89bfcdd39aad69802559edeb4f52be17d720",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Revival Experiment",
+    4
+   ],
+   [
+    "Grisly Salvage",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ],
+   [
+    "Ornithopter",
+    4
+   ],
+   [
+    "Memnite",
+    4
+   ],
+   [
+    "Pacifism",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Forest",
+    14
+   ],
+   [
+    "Swamp",
+    14
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_no_returns": "passed",
+  "A5_life_unchanged": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Revival Experiment as the issue reports -- abilities[0] kind Spell, head Unimplemented (name 'unparsed_quantity' in pinned data; the issue body quotes 'for' -- description matches, structural defect identical) describing 'For each permanent type, return up to one card of that type from your graveyard to the battlefield', + sub Spell LoseLife { Multiply(3, Ref(TrackedSetSize)), target Controller }, sub_link SequentialSibling, + sub-sub Spell ChangeZone { destination Exile, target SelfRef } (a0 itself carries no sub_link field in the pinned data); see data_evidence.json and revival_experiment_card_data.json.",
+  "A2 probe: pre revival_in_hand=True; pre mana B/G/total=3/3/6; pre phase=PreCombatMain; pre active=0; pre stack=0; pre P0 graveyard=5 cards (['grisly salvage', 'swamp', 'ornithopter', 'swamp', 'llanowar elves']); permanent types=['artifact', 'creature', 'land']; salvage_casts=1.",
+  "A2 passed: pre.json shows Revival Experiment in the P0 hand with >=1 untapped Swamp, >=1 untapped Forest and >=6 untapped lands total (main phase, stack empty), and the P0 graveyard holds cards spanning >=2 permanent types -- the return clause has a non-vacuous test population.",
+  "A3 probe: revival_cast=True; spell_on_stack=True; spell_resolved=True; cast_turn=11; revival post_zone=Graveyard (parsed self-exile sub-ability did not exile it).",
+  "A3 passed: Revival Experiment was cast, the spell was seen on the stack and resolved (cast oid 22). Post-resolution zone of the cast copy: Graveyard -- the parsed 'Exile Revival Experiment' ChangeZone SelfRef sub-ability did not take effect (see note above).",
+  "A4 probe: spell_resolved=True; return_choice_seen=False; return_choice window prompts=0 None; graveyard->battlefield moves pre->post=[].",
+  "A4 passed (bug symptom): the spell resolved but no graveyard-card return choice was ever offered and no P0 card moved Graveyard->Battlefield -- the Unimplemented return head is a runtime no-op, exactly the reported defect.",
+  "A5 probe: spell_resolved=True; P0 life pre=20 post=20.",
+  "A5 passed: P0 life unchanged across resolution (20 -> 20) -- the LoseLife sub-ability read the empty chain tracked set (3 x 0 = 0). The issue asserts no consumer-side symptom; this records the observable absence.",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 11, post turn 16, phase EndCombat), no in-flight submissions lingering (rejections=0).",
+  "verdict=reproduced: Revival Experiment was cast with a stocked graveyard and resolved, but the 'for each permanent type, return up to one card of that type from your graveyard to the battlefield' clause never parsed (Unimplemented head, runtime no-op), so no cards returned, the chain tracked set was allocated empty, and the dependent LoseLife read an empty set (0 life lost). ADDITIONAL OBSERVATION (outside the issue's reported defect): the parsed 'Exile Revival Experiment' ChangeZone SelfRef sub-ability did not take effect -- the cast copy went Hand -> Stack -> Graveyard. Possible mechanisms: the Unimplemented head suppresses the whole resolution chain, or the ChangeZone SelfRef fails; not distinguished by this run. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 490 matching lines (of 1010 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0711/server.log)"
+ ],
+ "observations": {
+  "revival_cast": true,
+  "revival_oid": 22,
+  "spell_on_stack": true,
+  "spell_resolved": true,
+  "salvage_casts": 1,
+  "dig_answered": 1,
+  "cast_turn": 11,
+  "return_choice_seen": false,
+  "revival_post_zone": "Graveyard",
+  "p0_life_pre": 20,
+  "p0_life_post": 20,
+  "gy_pre": [
+   [
+    "grisly salvage",
+    [
+     "instant"
+    ]
+   ],
+   [
+    "swamp",
+    [
+     "land"
+    ]
+   ],
+   [
+    "ornithopter",
+    [
+     "artifact",
+     "creature"
+    ]
+   ],
+   [
+    "swamp",
+    [
+     "land"
+    ]
+   ],
+   [
+    "llanowar elves",
+    [
+     "creature"
+    ]
+   ]
+  ],
+  "gy_post": [
+   [
+    "grisly salvage",
+    [
+     "instant"
+    ]
+   ],
+   [
+    "revival experiment",
+    [
+     "sorcery"
+    ]
+   ],
+   [
+    "swamp",
+    [
+     "land"
+    ]
+   ],
+   [
+    "ornithopter",
+    [
+     "artifact",
+     "creature"
+    ]
+   ],
+   [
+    "swamp",
+    [
+     "land"
+    ]
+   ],
+   [
+    "llanowar elves",
+    [
+     "creature"
+    ]
+   ]
+  ],
+  "gy_to_bf_moves": [],
+  "prompt_classes": {
+   "pass_priority": 11,
+   "mana_payment": 63,
+   "discard_handsize": 4
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.164"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.165"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.166"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.167"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.168"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.169"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.170"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.171"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.172"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.173"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.174"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.175"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.176"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.177"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.178"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.179"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.180"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.181"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.182"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.183"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.184"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.185"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.186"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.187"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.188"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.189"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.190"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.191"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.192"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.193"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.194"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.195"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.196"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.197"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.198"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.199"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.200"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.201"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.202"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.203"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.204"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.205"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.206"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.207"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.208"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.209"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.210"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.211"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.212"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.213"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.214"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.215"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.216"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.217"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.218"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.219"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.220"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.221"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.222"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.223"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.224"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.225"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.226"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.227"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.228"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.229"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.230"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.231"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.232"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.233"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.234"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.235"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.236"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.237"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.238"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.239"
+   ],
+   [
+    "resolving",
+    "P1",
+    "CM10BQ.0.240"
+   ],
+   [
+    "resolving",
+    "P0",
+    "CM10BQ.0.241"
+   ]
+  ],
+  "wf_types_window": [
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "stack_kinds_window": [
+   "{\"type\": \"Spell\", \"data\": {\"card_id\": 22, \"casting_variant\": \"Normal\", \"actual_mana_spent\": 6}}"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Revival Experiment cast with a stocked graveyard, full resolution) and observes the resolution outcome. The issue asserts no consumer-side symptom; A5 records the observable absence of any life loss.",
+  "The P0 graveyard is stocked via Grisly Salvage mills (fully-parsed Dig effect) rather than combat deaths; the returned-card population is whatever the mills produced.",
+  "4x/8x/14x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Revival Experiment + 4x Grisly Salvage + 8x Llanowar Elves + 4x Ornithopter + 4x Memnite + 4x Pacifism + 4x Grizzly Bears + 14x Forest + 14x Swamp; P1: 60x Forest (lands only, never casts, never attacks); default Bo1, life 20",
+ "contract_line": "Revival Experiment cast with stocked graveyard -> full resolution: correct = up to one card of each permanent type returns from the P0 graveyard to the battlefield, P0 loses 3 life per card returned, spell exiled. Observed (bug): the return clause never parsed (Unimplemented head, runtime no-op), so nothing returns, the chain tracked set is allocated empty, and LoseLife reads an empty set (0 life lost).",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 481
+ }
+}
