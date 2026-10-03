@@ -1,0 +1,8101 @@
+{
+ "issue": 7425,
+ "run_id": "20261002-7425b",
+ "started_at": "2026-10-03T02:55:27",
+ "duration_s": 48.0,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (already listening at run start; ServerHello 0.100.0/bc9ef56/protocol 101 verified by the 2026-10-02 pin run and re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-02: latest stable release v0.100.0 == pinned release dir (minisig-verified binary + manifest, keynum 436711b6a2d36828; GitHub /releases confirms v0.100.0 still latest stable); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b5a048b525f274e08f7309cb71ae024fb96461e4910fb050622d2a8b01b91277",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Highcliff Felidar",
+    4
+   ],
+   [
+    "Plains",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "Agent of Stromgald",
+    4
+   ],
+   [
+    "Cinder Wall",
+    4
+   ],
+   [
+    "Shivan Dragon",
+    4
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolves": "passed",
+  "A4_trigger_resolved": "passed",
+  "A5_choice_offered": "failed",
+  "A6_greatest_destroyed": "failed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "data-level: pinned v0.100.0 card-data.json parses Highcliff Felidar's ETB as ChangesZone SelfRef->Battlefield with repeat_for Opponent count; head Unimplemented(name='unparsed_verb_arguments', description='choose a creature with the greatest power among creatures that player '...) + sub Destroy target={'type': 'TrackedSet', 'id': 0} (sub_link=SequentialSibling); issue-reported shape: True; head node name differs from the issue's 9b7c66e30 corpus ('choose' -> 'unparsed_verb_arguments'), same clause",
+  "A1 passed: pinned v0.100.0 card-data.json parses Highcliff Felidar's ETB as ChangesZone SelfRef->Battlefield (repeat_for Opponent count) with head Unimplemented('choose a creature with the greatest power among creatures that player controls') + sub Destroy TrackedSet(0), sub_link SequentialSibling; see data_evidence.json.",
+  "A2 passed: pre.json has 2 creatures under P1's control with distinct powers [1, 3] ([(86, 'agent of stromgald', 1), (118, 'cinder wall', 3)]); Felidar was castable (7+ untapped Plains).",
+  "A3 passed: Highcliff Felidar was cast and is on P0's battlefield at post.",
+  "A4 passed: post stack empty after the cast; the ETB trigger resolved without a stall (observed on stack live: True).",
+  "Resolution prompts: 31 seen.",
+  "prompt iids during resolution: ['VR4WA7.0.211', 'VR4WA7.0.213', 'VR4WA7.0.215', 'VR4WA7.0.217', 'VR4WA7.0.219', 'VR4WA7.0.222', 'VR4WA7.0.224', 'VR4WA7.0.228'] (full JSON in wire_log resolution_prompt entries); choice-shaped iids: none",
+  "A5 FAILED: no 'choose a creature with the greatest power' choice was ever offered to P0 -- THE REPORTED BUG (the clause never parsed, so the choice step does not exist at runtime). All resolution prompts were ordinary turn-structure menus.",
+  "A6 probe: pre-P1 creature oid 86 (agent of stromgald, power 1) post zone='Battlefield' controller=1.",
+  "A6 probe: pre-P1 creature oid 118 (cinder wall, power 3) post zone='Battlefield' controller=1.",
+  "A6 FAILED: NO pre-P1 creature was destroyed (greatest-power group: [118] power 3; survivors: [(86, 'Battlefield', 1), (118, 'Battlefield', 1)]) -- THE REPORTED BUG (Destroy read an empty tracked set).",
+  "A7 passed: post stack empty.",
+  "The Felidar ETB trigger was observed on the stack during resolution (live tick).",
+  "verdict=reproduced: the printed ETB effect never happened -- no greatest-power choice was offered and no creature was destroyed (or the destruction did not match the printed outcome); confirmed on v0.100.0. The parse is the reported defect; the missing choice and missing destruction are its direct structural consequence. This is not a fix claim.",
+  "server.log excerpt: 552 matching lines (of 8691 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261002-7424/server.log)",
+  "First attempt (run 20261002-7425, same issue, partial evidence dir evidence/7425/20261002-7425/): blocked -- driver power_of() read live-state power as a {type,value} dict (the live state carries a plain number), so the cast-gate powers set was always empty and Felidar was never cast; the game ran to P1 decking out (winner 0). Partial attempt not uploaded; this rerun (20261002-7425b) is the complete run."
+ ],
+ "observations": {
+  "felidar_cast": true,
+  "cast_submitted_at": 1790996162.829749,
+  "p1_creatures_at_pre": [
+   [
+    86,
+    "agent of stromgald",
+    1
+   ],
+   [
+    118,
+    "cinder wall",
+    3
+   ]
+  ],
+  "prompts_seen": [
+   [
+    "resolving",
+    "VR4WA7.0.211",
+    {
+     "interactionId": "VR4WA7.0.211",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.211.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.213",
+    {
+     "interactionId": "VR4WA7.0.213",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.213.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.215",
+    {
+     "interactionId": "VR4WA7.0.215",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.215.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.217",
+    {
+     "interactionId": "VR4WA7.0.217",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.217.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.219",
+    {
+     "interactionId": "VR4WA7.0.219",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.219.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.222",
+    {
+     "interactionId": "VR4WA7.0.222",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.222.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.224",
+    {
+     "interactionId": "VR4WA7.0.224",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.224.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.228",
+    {
+     "interactionId": "VR4WA7.0.228",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.228.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.231",
+    {
+     "interactionId": "VR4WA7.0.231",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.231.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.233",
+    {
+     "interactionId": "VR4WA7.0.233",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.233.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.236",
+    {
+     "interactionId": "VR4WA7.0.236",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.236.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.238",
+    {
+     "interactionId": "VR4WA7.0.238",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.238.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.240",
+    {
+     "interactionId": "VR4WA7.0.240",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.240.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.241",
+    {
+     "interactionId": "VR4WA7.0.241",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.241.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.241.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.243",
+    {
+     "interactionId": "VR4WA7.0.243",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.243.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.243.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.245",
+    {
+     "interactionId": "VR4WA7.0.245",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.245.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "playLand",
+            "actionId": "af4685c218372318a5b8a45a05a0676cb606c54114d15028327b4b9fb65fa5a73"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "hand",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "playLand",
+            "actionId": "a5357f7fa0e1da10a3b93f81b24b74bb31929c0001e5a970dfd7065afcbc44a73"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "50",
+            "name": "Plains",
+            "zone": "hand",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "playLand",
+            "actionId": "a3a23217217fff69d1702d7ed4c23f2764b51ae79e4e5ff578dfa4589889de21a"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "58",
+            "name": "Plains",
+            "zone": "hand",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "playLand",
+            "actionId": "a2073753e4400d38de067fb86bc4fb044fd03614683814ed6ff08d0eead10fcbd"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "60",
+            "name": "Plains",
+            "zone": "hand",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "a149d72a9a87b4f08823977bf4e32305bb85c35ba3d0c083e38ca5f9ef335a571"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "auto"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "af73ca80248203fc46863b4582eb9a8f5a042fca21beeceb603af41e6b342ca66"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "manual"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c9",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c10",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c11",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c12",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.245.c13",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.246",
+    {
+     "interactionId": "VR4WA7.0.246",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.246.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "a149d72a9a87b4f08823977bf4e32305bb85c35ba3d0c083e38ca5f9ef335a571"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "auto"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "af73ca80248203fc46863b4582eb9a8f5a042fca21beeceb603af41e6b342ca66"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "manual"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c9",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.246.c10",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.248",
+    {
+     "interactionId": "VR4WA7.0.248",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.248.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.248.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.250",
+    {
+     "interactionId": "VR4WA7.0.250",
+     "response": {
+      "type": "schema",
+      "data": {
+       "spec": {
+        "type": "relations",
+        "data": {
+         "edges": [
+          {
+           "sourceId": "VR4WA7.0.250.r0",
+           "targetIds": [
+            "VR4WA7.0.250.d0"
+           ]
+          }
+         ],
+         "min": 0,
+         "max": 1,
+         "sourceConstraint": "atMostOne",
+         "allowGroups": true,
+         "confirm": "explicit"
+        }
+       },
+       "candidates": [
+        {
+         "id": "VR4WA7.0.250.r0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "attacker",
+            "index": null,
+            "reference": "2",
+            "name": "Highcliff Felidar",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.250.d0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "player",
+           "data": {
+            "role": "attackTarget",
+            "index": null,
+            "seat": 1
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "selection",
+       "data": {
+        "intent": "attack",
+        "constraint": {
+         "type": "engineValidatedCount",
+         "data": {
+          "min": 0,
+          "max": 1
+         }
+        },
+        "confirm": "explicit"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": 1,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.251",
+    {
+     "interactionId": "VR4WA7.0.251",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.251.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.251.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.253",
+    {
+     "interactionId": "VR4WA7.0.253",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.253.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "a149d72a9a87b4f08823977bf4e32305bb85c35ba3d0c083e38ca5f9ef335a571"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "auto"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "castSpell",
+            "actionId": "af73ca80248203fc46863b4582eb9a8f5a042fca21beeceb603af41e6b342ca66"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "59",
+            "name": "Highcliff Felidar",
+            "zone": "hand",
+            "controller": 0,
+            "power": 5,
+            "tapped": false
+           }
+          },
+          {
+           "type": "value",
+           "data": {
+            "role": "paymentMode",
+            "index": null,
+            "value": "manual"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c9",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.253.c10",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.255",
+    {
+     "interactionId": "VR4WA7.0.255",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.255.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.255.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.258",
+    {
+     "interactionId": "VR4WA7.0.258",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.258.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.258.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.260",
+    {
+     "interactionId": "VR4WA7.0.260",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.260.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.260.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.263",
+    {
+     "interactionId": "VR4WA7.0.263",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.263.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.263.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.265",
+    {
+     "interactionId": "VR4WA7.0.265",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.265.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.265.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.268",
+    {
+     "interactionId": "VR4WA7.0.268",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.268.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.268.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.270",
+    {
+     "interactionId": "VR4WA7.0.270",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.270.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.270.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.272",
+    {
+     "interactionId": "VR4WA7.0.272",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.272.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.272.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.273",
+    {
+     "interactionId": "VR4WA7.0.273",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.273.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.273.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ],
+   [
+    "resolving",
+    "VR4WA7.0.275",
+    {
+     "interactionId": "VR4WA7.0.275",
+     "response": {
+      "type": "exactChoices",
+      "data": {
+       "choices": [
+        {
+         "id": "VR4WA7.0.275.c0",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "passPriority",
+            "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c1",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4a7aa138da3ca9bbab0658f6e6889ce17181cace1800371dded5a28cc40533d6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "11",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c2",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a591ecb59b8629fd142bafcea0f5bdbd6c2dfdd8959d8aaca0be7a767dd1186f7"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "20",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c3",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "af030599767199727245d2e98dc0941579fa0cdc3cc844a82331117e3337459dc"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "21",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c4",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a9eebe8d0e8814b56824da00a5b8f8a22a62a1aef0f3494f3aae773ecf8715e39"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "22",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c5",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a4f7f6edb8560094d721f69c599ce83faac7f31b7627e031ab37d51ead1a157a5"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "26",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c6",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a28d9a2d14ed8338a127761d96a674ae883e9b511ae756c3fa391f23b007018e6"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "34",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c7",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a99456e7e39f7f4d8343229ccefbd0f5e6b331f49dfe82013da109d5604c8a78d"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "46",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        },
+        {
+         "id": "VR4WA7.0.275.c8",
+         "surfaces": [
+          {
+           "type": "summary",
+           "data": {
+            "code": "candidate"
+           }
+          },
+          {
+           "type": "action",
+           "data": {
+            "code": "tapLandForMana",
+            "actionId": "a45047a829e12e59547a8668407b1a33f64fe5337eb35dc669ee3611cbed858e9"
+           }
+          },
+          {
+           "type": "object",
+           "data": {
+            "role": "source",
+            "index": null,
+            "reference": "47",
+            "name": "Plains",
+            "zone": "battlefield",
+            "controller": 0,
+            "power": null,
+            "tapped": false
+           }
+          },
+          {
+           "type": "mana",
+           "data": {
+            "role": "producedMana",
+            "index": 0,
+            "symbols": [
+             "W"
+            ],
+            "restrictions": []
+           }
+          }
+         ],
+         "status": {
+          "type": "available"
+         }
+        }
+       ]
+      }
+     },
+     "surfaces": [
+      {
+       "type": "summary",
+       "data": {
+        "code": "decision"
+       }
+      }
+     ],
+     "progress": {
+      "selected": 0,
+      "minimum": 0,
+      "maximum": null,
+      "aggregate": null,
+      "confirmable": false
+     }
+    }
+   ]
+  ],
+  "wf_types_resolving": [
+   "DeclareAttackers",
+   "Priority"
+  ],
+  "stack_saw_trigger": true,
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (no game state); the scenario replays the reported line (Felidar enters with >=2 distinct-power creatures under the opponent's control) from a fresh game and observes the resolution outcome.",
+  "Dense playsets/lands are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Highcliff Felidar + 56x Plains; P1: 4x Agent of Stromgald + 4x Cinder Wall + 4x Shivan Dragon + 48x Mountain (both sides never attack)",
+ "contract_line": "Felidar ETB: P0 must be offered the 'choose a creature with the greatest power among creatures P1 controls' choice and exactly one greatest-power P1 creature must be destroyed. Observed: the clause never parsed, no choice prompt appeared, and no creature was destroyed.",
+ "prior_runs": [
+  {
+   "run_id": "20261002-7425",
+   "verdict": "blocked",
+   "note": "driver power_of shape bug; no cast; game ended by P1 decking; not uploaded"
+  }
+ ],
+ "stats": {
+  "states_seen": 545
+ }
+}
