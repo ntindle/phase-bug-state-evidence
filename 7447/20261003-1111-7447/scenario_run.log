@@ -1,0 +1,18 @@
+data-level check: subtypes=['Saga']; n_triggers=3; modes=['CounterAdded', 'CounterAdded', 'CounterAdded']; heads=[('GainControl', None, None), ('Draw', None, None), ('Unimplemented', 'unparsed_verb_arguments', 'choose a creature')]; subs=[(None, {}, None), (None, {}, None), ('DestroyAll', {'type': 'TrackedSet', 'id': 0}, False)]; ch3 player_scope=None
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+P0 hello done; P1 hello done
+game created: code=9BAQYW
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] mulligan #1 (hand: ['plains', 'plains', 'plains', 'forest', 'forest', 'forest', 'forest'])
+[P1] mulligan #1 (hand: ['forest', 'plains', 'plains', 'forest', 'forest', 'forest', 'plains'])
+[P0] keep 7 (hand: ['savannah lions', 'forest', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P1] keep 7 (hand: ['forest', 'forest', 'forest', 'forest', 'forest', 'plains', 'plains'])
+[P0] bottoming ['plains']
+[P1] bottoming ['plains']
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live heresy oid=14 zone=Library trigger defs found=3
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
