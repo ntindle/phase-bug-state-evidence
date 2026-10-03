@@ -1,0 +1,70 @@
+{
+ "issue": 7445,
+ "run_id": "20261003-1042-7445",
+ "started_at": "2026-10-03T15:45:32",
+ "finished_at": "2026-10-03T15:45:37",
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (already listening at run start -- verified by this run's own raw Hello handshake; started by run 20261003-1005-7444 earlier today)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "reproduced",
+ "scope": "Sundering Titan parse state: data-level parse assertion + live-deck presence on the pinned server. The issue asserts no runtime consumer symptom (Destroy's consumption on the empty tracked set is unmeasured in the #6857 census); per the issue, the reported defect is the parse state and its direct structural consequence (empty chain tracked-set publish from the Unimplemented no-op resolver). No ETB/LTB drive was attempted.",
+ "result": "Pinned v0.100.0 card-data.json and the live object on the pinned server both carry the reported Unimplemented head ('choose a land of each basic land type') on the ChangesZone and LeavesBattlefield triggers; the Destroy sub-ability reads TrackedSet(0), which the no-op Unimplemented resolver leaves empty. Head-name note: the issue quotes 'choose'; pinned data names the head 'unparsed_verb_arguments' -- description identical, still Unimplemented.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Sundering Titan as the issue reports -- Artifact -- Creature -- Golem; triggers[0] mode ChangesZone (enters) and triggers[1] mode LeavesBattlefield (leaves), both execute kind Spell, both heads Unimplemented describing 'choose a land of each basic land type'; each sub Spell Destroy { cant_regenerate: false } target TrackedSet(0). Name note: the issue quotes the head name 'choose' (census corpus 9b7c66e30); the pinned data names the head 'unparsed_verb_arguments' -- the clause is still Unimplemented, so the defect holds; see data_evidence.json and sundering_titan_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=4JZAAR; post_mulligan_seen=True; pre_exported=True; pre objects=120; wf_types_seen=['MulliganDecision', 'Priority']; pre waiting_for=Priority; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including Sundering Titan in P0's main deck), the game started for both seats, mulligans completed, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live Sundering Titan object (oid 38, zone Library) with trigger_definitions carrying the identical Unimplemented head on both triggers -- modes ['ChangesZone', 'LeavesBattlefield'], execute kinds ['Spell', 'Spell'], heads ['Unimplemented/unparsed_verb_arguments', 'Unimplemented/unparsed_verb_arguments'], subs Destroy target TrackedSet(0) cant_regenerate false; the parse defect is live on the pinned server."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: Destroy's behaviour on an empty tracked set is unmeasured (stated in the issue), so no trigger-resolution drive was performed.",
+  "The live check establishes the parse tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "Browser UI not exercised; native engine only, two human-client seats."
+ ],
+ "observations": {
+  "live_head": [
+   {
+    "execute_kind": "Spell",
+    "head_type": "Unimplemented",
+    "head_name": "unparsed_verb_arguments",
+    "head_description": "choose a land of each basic land type",
+    "sub_type": "Destroy",
+    "sub_target": {
+     "id": 0,
+     "type": "TrackedSet"
+    },
+    "cant_regenerate": false
+   },
+   {
+    "execute_kind": "Spell",
+    "head_type": "Unimplemented",
+    "head_name": "unparsed_verb_arguments",
+    "head_description": "choose a land of each basic land type",
+    "sub_type": "Destroy",
+    "sub_target": {
+     "id": 0,
+     "type": "TrackedSet"
+    },
+    "cant_regenerate": false
+   }
+  ],
+  "pre_objects": 120,
+  "wf_types_seen": [
+   "MulliganDecision",
+   "Priority"
+  ]
+ }
+}
