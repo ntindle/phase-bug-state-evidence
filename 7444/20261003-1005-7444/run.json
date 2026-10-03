@@ -1,0 +1,60 @@
+{
+ "issue": 7444,
+ "run_id": "20261003-1005-7444",
+ "started_at": "2026-10-03T15:15:54",
+ "finished_at": "2026-10-03T15:16:00",
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (started fresh by this run; ServerHello 0.100.0/bc9ef56/protocol 101 verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "reproduced",
+ "scope": "Storybook Ride parse state: data-level parse assertion + live-deck presence on the pinned server. The issue asserts no runtime consumer symptom (GrantCastingPermission consumption on the empty set is unmeasured); per the issue, the reported defect is the parse state and its direct structural consequence (empty chain tracked-set publish from the Unimplemented no-op resolver). No attraction-visit drive was attempted.",
+ "result": "Pinned v0.100.0 card-data.json and the live object on the pinned server both carry the reported Unimplemented head ('where_x_binding') on the VisitAttraction trigger; GrantCastingPermission reads TrackedSet(0), which the no-op Unimplemented resolver leaves empty.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Storybook Ride as the issue reports -- Artifact -- Attraction, triggers[0] mode VisitAttraction, execute kind Spell, head Unimplemented name 'where_x_binding' (matches the issue body exactly, no discrepancy) describing \"where X is the number of Attractions you've visited this turn\", sub Spell GrantCastingPermission { PlayFromExile / UntilEndOfTurn / granted_to 0 } target TrackedSet(0), second sub CreateDelayedTrigger uses_tracked_set false; see data_evidence.json and storybook_ride_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=C2TJOS; post_mulligan_seen=True; pre_exported=True; pre objects=120; wf_types_seen=['MulliganDecision', 'Priority']; pre waiting_for=Priority; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including Storybook Ride in P0's main deck), the game started for both seats, mulligans completed, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live Storybook Ride object (oid 2, zone Library) with trigger_definitions carrying the identical Unimplemented head -- mode VisitAttraction, execute_kind Spell, head Unimplemented/where_x_binding, description \"where X is the number of Attractions you've visited this turn\", sub GrantCastingPermission target {'id': 0, 'type': 'TrackedSet'}, permission {'duration': 'UntilEndOfTurn', 'granted_to': 0, 'type': 'PlayFromExile'}; the parse defect is live on the pinned server."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: GrantCastingPermission's behaviour on an empty tracked set is unmeasured (stated in the issue), so no visit-resolution drive was performed.",
+  "The live check establishes the parse tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "Browser UI not exercised; native engine only, two human-client seats."
+ ],
+ "observations": {
+  "live_head": {
+   "execute_kind": "Spell",
+   "head_type": "Unimplemented",
+   "head_name": "where_x_binding",
+   "head_description": "where X is the number of Attractions you've visited this turn",
+   "sub_type": "GrantCastingPermission",
+   "sub_target": {
+    "id": 0,
+    "type": "TrackedSet"
+   },
+   "sub_permission": {
+    "duration": "UntilEndOfTurn",
+    "granted_to": 0,
+    "type": "PlayFromExile"
+   }
+  },
+  "pre_objects": 120,
+  "wf_types_seen": [
+   "MulliganDecision",
+   "Priority"
+  ]
+ }
+}
