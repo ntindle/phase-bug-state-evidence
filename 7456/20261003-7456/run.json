@@ -1,0 +1,523 @@
+{
+ "issue": 7456,
+ "run_id": "20261003-7456",
+ "started_at": "2026-10-03T19:26:54",
+ "duration_s": 50.3,
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828); binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9374 (started by this run with a fresh games.db; run dir runs/20261003-7456; verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03T16:02:26Z) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 103,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9834b062b4d8fd05a4570bc63fbf43dcc5f1ac8c5d63e6f44569384ec80cd7c2",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Tears of Rage",
+    8
+   ],
+   [
+    "Goblin Piker",
+    12
+   ],
+   [
+    "Mountain",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_pump_applied": "passed",
+  "A5_sacrifice_outcome": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json carries the issue-reported defect -- Tears of Rage abilities[0] is PumpAll with a SequentialSibling CreateDelayedTrigger { uses_tracked_set: false, condition AtNextPhase/End, inner Sacrifice { target TrackedSet(0), count Fixed(1) } }, cost {2}{R}{R}; all 9 issue-named cards carry >=1 such node; see data_evidence.json and tears_of_rage_card_data.json.",
+  "A2 probe: pre tears_in_hand=True; pre untapped_mountains=12; pre P0 pikers=3; pre phase=DeclareAttackers; pre active=0; attackers=[18, 22]; control=33; mid spell on stack=True.",
+  "A2 passed: pre.json shows Tears of Rage in the P0 hand with >=4 untapped Mountains and >=3 Pikers on the battlefield in the DeclareAttackers step with 2 attackers declared, and mid_stack.json shows the Tears of Rage spell on the stack.",
+  "A3 probe: tears_cast=True; tears_on_stack=True; tears_resolved=True; cast_turn=28; tears_gy_oid=16.",
+  "A3 passed: Tears of Rage was cast, seen on the stack, and resolved; the card is now in the P0 graveyard (oid 16).",
+  "A4 probe: life pre=20/20 post=20/12 (expect P1 20->12).",
+  "A4 passed: P1 went 20 -> 12 -- the two attackers dealt 8 unblocked damage as 4/1s, so the +X/+0 pump (X = 2 attackers) applied at resolution.",
+  "A5 probe: attacker zones={18: 'Battlefield', 22: 'Battlefield'}; control oid=33 zone=Battlefield; new graveyard creature rows=[]; delayed_trigger_seen=True.",
+  "A5 passed (bug symptom): neither declared attacker was sacrificed at the end step -- both remain on the P0 battlefield at post, and the non-attacking control Piker is also on the battlefield. The delayed trigger's Sacrifice arm read an unbound tracked set (uses_tracked_set: false), exactly the reported defect.",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 28, post turn 33, phase Upkeep), no in-flight submissions lingering (rejections=0).",
+  "verdict=reproduced: Tears of Rage was cast in the declare attackers step and resolved (attackers pumped +2/+0, P1 20->12), but the end-step delayed trigger never sacrificed the attackers -- both remain on the battlefield at post with the control Piker. The CreateDelayedTrigger uses_tracked_set:false node left the inner TrackedSet(0) unbound, exactly the reported defect. Confirmed on v0.101.0. This is not a fix claim.",
+  "server.log excerpt: 1030 matching lines (of 2470 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261003-7456/server.log)"
+ ],
+ "observations": {
+  "tears_cast": true,
+  "tears_oid": 16,
+  "tears_on_stack": true,
+  "tears_resolved": true,
+  "cast_turn": 28,
+  "attacker_oids": [
+   18,
+   22
+  ],
+  "control_oid": 33,
+  "attacker_zones_post": {
+   "18": "Battlefield",
+   "22": "Battlefield"
+  },
+  "control_zone_post": "Battlefield",
+  "p1_life_pre": 20,
+  "p1_life_post": 12,
+  "delayed_trigger_seen": true,
+  "mid_endstep_exported": true,
+  "pre_creatures": {
+   "P0": {
+    "18": "goblin piker",
+    "22": "goblin piker",
+    "33": "goblin piker"
+   },
+   "P1": {}
+  },
+  "post_creatures": {
+   "P0": {
+    "18": "goblin piker",
+    "22": "goblin piker",
+    "33": "goblin piker"
+   },
+   "P1": {}
+  },
+  "prompt_classes": {
+   "mana_payment": 73,
+   "discard_handsize": 2,
+   "declare_combat": 2
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.435"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.436"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.437"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.438"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.439"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.440"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.441"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.442"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.443"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.444"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.445"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.446"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.447"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.448"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.449"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.450"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.451"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.452"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.453"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.454"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.455"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.456"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.457"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.458"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.459"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.460"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.461"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.462"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.463"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.464"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.465"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.466"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.467"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.468"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.469"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.470"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.471"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.472"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.473"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.474"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.475"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.476"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.477"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.478"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.479"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.480"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.481"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.482"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.483"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.484"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.485"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.486"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.487"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.488"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.489"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.490"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.491"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.492"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.493"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.494"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.495"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.496"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.497"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.498"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.499"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.500"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.501"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.502"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.503"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.504"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.505"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.506"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.507"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.508"
+   ],
+   [
+    "resolving",
+    "P0",
+    "B5V8CU.0.509"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.510"
+   ],
+   [
+    "resolving",
+    "P1",
+    "B5V8CU.0.511"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "stack_kinds_window": [
+   "{\"type\": \"Spell\", \"data\": {\"card_id\": 16, \"ability\": {\"effect\": {\"type\": \"PumpAll\", \"power\": {\"type\": \"Quantity\", \"value",
+   "{\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 16, \"ability\": {\"effect\": {\"type\": \"Sacrifice\", \"target\": {\"type\": \"T"
+  ],
+  "cast_rejections": 0,
+  "hello_ok": true
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report's runtime measurement covers Tears of Rage only; the scenario replays that line (cast in the declare attackers step, 2 attackers + 1 non-attacking control) and observes the end-step sacrifice outcome. The other 8 cards are classified from the card-data AST (A1 census), per the issue's own scope.",
+  "8x Tears of Rage / 12x Goblin Piker / 40x Mountain (P0) and 60x Plains (P1) deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Second independent parse shape (recorded, out of #7456 scope): the inner Sacrifice carries count Fixed(1) for 'sacrifice those creatures'. The verdict turns on binding (0 vs >=1 sacrificed), not on the count.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 8x Tears of Rage + 12x Goblin Piker + 40x Mountain; P1: 60x Plains; 2 attackers + 1 control; default Bo1, life 20",
+ "contract_line": "Tears of Rage cast in declare attackers -> resolution: correct = attackers +2/+0, then the end-step delayed trigger sacrifices the 2 attackers (control survives). Observed (bug): pump applies (P1 20->12) but the sacrifice arm reads an unbound tracked set -- attackers never sacrificed.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 1021
+ }
+}
