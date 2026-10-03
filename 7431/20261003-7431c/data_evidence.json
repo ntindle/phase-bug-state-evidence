@@ -1,0 +1,103 @@
+{
+ "name": "Mist of Stagnation",
+ "oracle": "Permanents don't untap during their controllers' untap steps.\nAt the beginning of each player's upkeep, that player chooses a permanent for each card in their graveyard, then untaps those permanents.",
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": []
+ },
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Blue",
+   "Blue"
+  ],
+  "generic": 3
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "choose a permanent for each card in their graveyard"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "SetTapState",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "scope": {
+       "type": "Single"
+      },
+      "state": {
+       "type": "Untap"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "Upkeep",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of each player's upkeep, that player chooses a permanent for each card in their graveyard, then untaps those permanents.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [
+  {
+   "mode": "CantUntap",
+   "affected": {
+    "type": "Typed",
+    "type_filters": [
+     "Permanent"
+    ],
+    "controller": null,
+    "properties": []
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Permanents don't untap during their controllers' untap steps."
+  }
+ ],
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'choose'; the pinned v0.100.0 corpus names it 'unparsed_verb_arguments' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}
