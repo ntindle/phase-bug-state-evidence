@@ -1,0 +1,78 @@
+{
+ "name": "Interplanar Tunnel",
+ "oracle": "When you encounter Interplanar Tunnel, reveal cards from the top of your planar deck until you reveal five plane cards. Put a plane card from among them on top of your planar deck, then put the rest of the revealed cards on the bottom in a random order. (Then planeswalk away from this phenomenon.)",
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "trigger_mode": {
+  "Planeswalked": {
+   "role": "To"
+  }
+ },
+ "trigger_zones": [
+  "Battlefield",
+  "Command"
+ ],
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "reveal cards from the top of your planar deck until you reveal five plane cards"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "ChangeZoneAll",
+   "origin": null,
+   "destination": "Library",
+   "target": {
+    "type": "TrackedSetFiltered",
+    "id": 0,
+    "filter": {
+     "type": "Any"
+    }
+   }
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "unparsed_verb_arguments",
+    "description": "put the rest of the revealed cards on the bottom in a random order"
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ },
+ "sub_sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "Unimplemented",
+   "name": "unparsed_verb_arguments",
+   "description": "put the rest of the revealed cards on the bottom in a random order"
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ },
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'reveal'; the pinned v0.100.0 corpus names it 'unparsed_verb_arguments' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged. The pinned parse also shows the 'put the rest ...' clause as a second Unimplemented node, matching the triage comment."
+}
