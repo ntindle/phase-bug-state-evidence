@@ -1,0 +1,18 @@
+data-level check: subtypes=['Saga']; n_triggers=3; modes=['CounterAdded', 'CounterAdded', 'CounterAdded']; heads=[('Unimplemented', 'unparsed_verb_arguments', 'choose permanent with mana value 3 or greater from among permanents your opponents control'), ('Draw', None, None), ('ChangeZone', None, None)]; subs=[('ChangeZone', {'type': 'TrackedSet', 'id': 0}, None), ('Draw', {'type': 'Controller'}, None), ('ChangeZone', {'type': 'SelfRef'}, None)]; ch1 player_scope=None; starting_with=You
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+P0 hello done; P1 hello done
+game created: code=8WWI9N
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] mulligan #1 (hand: ['forest', 'forest', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P1] mulligan #1 (hand: ['forest', 'forest', 'plains', 'forest', 'plains', 'forest', 'forest'])
+[P0] keep 7 (hand: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'plains'])
+[P1] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'forest', 'plains'])
+[P0] bottoming ['forest']
+[P1] bottoming ['forest']
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live yangchen oid=11 zone=Library trigger defs found=3
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
