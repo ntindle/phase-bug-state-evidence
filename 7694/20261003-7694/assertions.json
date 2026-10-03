@@ -1,0 +1,22 @@
+{
+ "A1_no_runtime_article_noun_composition": {
+  "status": "passed",
+  "detail": "Current main TargetingOverlay.tsx resolves caption as targeting.${frame}.${slug} whole-phrase keys (type TargetPhraseKey); the old t(\"targeting.one\", {target: targetWord}) runtime article+noun composition is gone from the file."
+ },
+ "A2_de_agreement": {
+  "status": "passed",
+  "detail": "de targeting.one.player='einen Spieler' (masculine accusative, correct), targeting.one.creature='eine Kreatur' (feminine, correct); upToOne mirrors agreement ('bis zu einen Spieler', 'bis zu eine Kreatur')."
+ },
+ "A3_it_agreement": {
+  "status": "passed",
+  "detail": "it targeting.one.creature='una creatura' (feminine, correct), targeting.one.player='un giocatore' (masculine, correct); upToOne mirrors ('fino a una creatura', 'fino a un giocatore')."
+ },
+ "A4_pt_agreement": {
+  "status": "passed",
+  "detail": "pt targeting.one.creature='uma criatura' (feminine, correct), targeting.one.player='um jogador' (masculine, correct); upToOne mirrors ('até uma criatura', 'até um jogador')."
+ },
+ "A5_reported_wrongness_was_prefx_state": {
+  "status": "passed",
+  "detail": "At pre-fix commit 97567645 (parent of #7806 merge), de targeting.one='eine {{target}}' composed at runtime with the noun -> 'eine Spieler' for a masculine noun, matching the issue's reported wrongness. it/pt then read 'un(a) {{target}}' / 'um(a) {{target}}' (hedged forms). Fix #7806 merged 2026-08-24 replaced composition with whole-phrase per-noun keys."
+ }
+}
