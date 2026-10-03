@@ -1,0 +1,712 @@
+{
+ "issue": 7430,
+ "run_id": "20261003-7430b",
+ "started_at": "2026-10-03T06:26:19",
+ "duration_s": 33.3,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at 01:15 CDT 2026-10-03); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "27929f81436bf8ce678d2e48b3efd7cf9baa412f72988d93c2b560d72baa45c7",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Last One Standing",
+    4
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Swamp",
+    19
+   ],
+   [
+    "Mountain",
+    21
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_spell_resolved": "passed",
+  "A4_population": "failed",
+  "A5_empty_read": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Last One Standing as the issue reports -- abilities[0] Spell head Unimplemented('unparsed_verb_arguments': 'Choose a creature at random') + sub Spell Destroy { target: TrackedSet(0), cant_regenerate: false }; no Not wrapper anywhere in the Destroy subtree; mana {1}{B}{R}; see data_evidence.json.",
+  "A2 probe: pre creatures P0=2 P1=2; P0 pool={'B': 2, 'R': 4, 'G': 2} untapped_lands=8; LOS in hand at pre=True; cast oid=54.",
+  "A2 passed: >=2 creatures per side on the battlefield and Last One Standing in P0's hand when the cast was submitted.",
+  "A3 passed: Last One Standing was observed on the stack after the cast and resolved (left the stack; in P0 graveyard=True).",
+  "A4 probe: creatures at pre n=4; destroyed post=0; survivors post=4; creature-choice prompts in window=none.",
+  "A4 FAILED: the outcome is NOT the correct 'choose one at random, destroy the rest' (n=4, destroyed=0, survivors=4) -- THE REPORTED BUG: the 'choose a creature at random' clause never parsed, so there is no governing random choice and the Destroy sub-ability reads an empty tracked set.",
+  "A5 passed: the Destroy sub-ability destroyed zero creatures -- the empty-tracked-set no-op the issue's structural analysis predicts (the Unimplemented head pushed no events, the publish allocated a fresh empty set).",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 18, post turn 25, phase End).",
+  "verdict=reproduced: Last One Standing was cast with 4 creatures on the battlefield and resolved, but the outcome was not 'one random survivor, the rest destroyed' (destroyed=0, survivors=4). The 'choose a creature at random' clause never parsed (Unimplemented head, a runtime no-op), so no governing random choice exists and the Destroy sub-ability reads an empty tracked set -- the exact structural defect the issue reports. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 834 matching lines (of 7017 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261003-server/server.log)"
+ ],
+ "observations": {
+  "los_cast": true,
+  "los_cast_turn": 18,
+  "los_cast_oid": 54,
+  "los_on_stack_seen": true,
+  "los_resolved": true,
+  "los_gy_seen": true,
+  "bears_cast_p0": 2,
+  "bears_cast_p1": 2,
+  "n_at_pre": 4,
+  "destroyed_at_post": 0,
+  "survivors_at_post": 4,
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.294"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.295"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.296"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.297"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.298"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.299"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.300"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.301"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.302"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.303"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.304"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.305"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.306"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.307"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.308"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.309"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.310"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.311"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.312"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.313"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.314"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.315"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.316"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.317"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.318"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.319"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.320"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.321"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.322"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.323"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.324"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.325"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.326"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.327"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.328"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.329"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.330"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.331"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.332"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.333"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.334"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.335"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.336"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.337"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.338"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.339"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.340"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.341"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.342"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.343"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.344"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.345"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.346"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.347"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.348"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.349"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.350"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.351"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.352"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.353"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.354"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.355"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.356"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.357"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.358"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.359"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.360"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.361"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.362"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.363"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.364"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.365"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.366"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.367"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.368"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.369"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.370"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.371"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.372"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.373"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.374"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.375"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.376"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.377"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.378"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.379"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.380"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.381"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.382"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.383"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.384"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.385"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.386"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.387"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.388"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.389"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.390"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.391"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.392"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.393"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.394"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.395"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.396"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.397"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.398"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.399"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.400"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.401"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.402"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.403"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.404"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.405"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.406"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.407"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.408"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.409"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.410"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.411"
+   ],
+   [
+    "resolving",
+    "P1",
+    "LQ7I7Y.0.412"
+   ],
+   [
+    "resolving",
+    "P0",
+    "LQ7I7Y.0.413"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (cast Last One Standing with creatures on both battlefields) and observes the resolution outcome. The consumer-side outcome was unmeasured in the report; this run measures it.",
+  "4x Last One Standing / 4x Grizzly Bears / 12x Grizzly Bears deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Grizzly Bears + 4x Last One Standing + 12x Forest + 19x Swamp + 21x Mountain; P1: 12x Grizzly Bears + 48x Forest (lands/bears, never attacks); default Bo1, life 20",
+ "contract_line": "Cast Last One Standing with >=2 creatures per side: correct = one random survivor, the rest destroyed. Observed (bug): the 'choose a creature at random' clause never parsed (Unimplemented head, runtime no-op), so no governing choice exists and the Destroy sub-ability reads an empty tracked set.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 825
+ }
+}
