@@ -1,0 +1,631 @@
+{
+ "issue": 7436,
+ "run_id": "20261003-0611-7436",
+ "started_at": "2026-10-03T11:20:10",
+ "duration_s": 25.9,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "06434923b9b424fb4dde7cb768a7058a2fc3f4fadbbd0163b44fc1066f3f3f08",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Nightmare Moon",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "Swamp",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_no_exile_window": "passed",
+  "A5_no_choice_prompt": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Princess Luna as the issue reports -- triggers[0] mode Transformed, head Unimplemented (name 'unparsed_verb_arguments' in pinned data; the issue body quotes 'choose' -- description matches, structural defect identical) describing 'choose cards you own from outside the game with a moon in their art', + sub Spell ChangeZone { Exile, TrackedSet(0) } + sub-sub Unimplemented ('unrecognized_clause_head': 'As long as those cards remain exiled') + sub-sub-sub CastFromZone { ParentTarget, optional true, Cast }; front face Nightmare Moon has the {6} Transform SelfRef activated ability; see data_evidence.json and princess_luna_card_data.json.",
+  "A2 probe: pre moon_oid=15 (P0 battlefield); mid trigger on stack=True; pre phase=PreCombatMain; pre active=0; pre stack=0.",
+  "A2 passed: pre.json shows Nightmare Moon on the P0 battlefield before activation (main phase, stack empty), and mid_stack.json shows the transform trigger on the stack.",
+  "A3 probe: transform_activated=True; activated_on_stack=True; activation_resolved=True; trigger_on_stack=True; trigger_resolved=True; activation_turn=14.",
+  "A3 passed: the {6} transform activation was submitted, its ability object was seen on the stack and resolved; the creature is now Princess Luna (oid 15) on the P0 battlefield; the transform trigger left the stack (resolved).",
+  "A4 probe: 0 objects moved into Exile in the pre->post window []; zone transitions: [('100', 'Library', 'Hand', 'Swamp'), ('108', 'Hand', 'Graveyard', 'Swamp'), ('115', 'Library', 'Hand', 'Swamp'), ('25', 'Library', 'Hand', 'Swamp'), ('49', 'Library', 'Hand', 'Swamp'), ('68', 'Library', 'Hand', 'Swamp'), ('82', 'Hand', 'Graveyard', 'Swamp'), ('9', 'Library', 'Hand', 'Swamp')]; choice_prompt_seen=False.",
+  "A4 passed (bug symptom): 0 objects were exiled by the resolution window and no outside-the-game choice prompt was ever offered -- the Unimplemented head is a runtime no-op, the tracked set published empty, and the ChangeZone sub-ability exiled nothing, exactly the reported defect.",
+  "A5 probe: window prompt classes={\"pass_priority\": 12, \"mana_payment\": 74, \"choice_shaped\": 7}",
+  "  class pass_priority: 12 prompts [('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0')]",
+  "  class mana_payment: 74 prompts [('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1'), ('resolving', 'P1')]",
+  "  class choice_shaped: 7 prompts [('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P0'), ('resolving', 'P1'), ('resolving', 'P0'), ('resolving', 'P1')]",
+  "A5 FAILED: 7 choice-shaped prompt(s) were offered in the window [('resolving', 'P0', 'Y2FGVW.0.212'), ('resolving', 'P0', 'Y2FGVW.0.216'), ('resolving', 'P0', 'Y2FGVW.0.219'), ('resolving', 'P0', 'Y2FGVW.0.245'), ('resolving', 'P1', 'Y2FGVW.0.266'), ('resolving', 'P0', 'Y2FGVW.0.275'), ('resolving', 'P1', 'Y2FGVW.0.296')]; the choose clause functioned at runtime.",
+  "A6 passed: post stack empty, game advanced past the activation turn (activation turn 14, post turn 20, phase PreCombatMain), no in-flight submissions lingering (rejections=0).",
+  "server.log excerpt: 608 matching lines (of 4377 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0541/server.log)",
+  "A5 RECLASSIFICATION (post-run analysis, wire log replayed -- no new game): the first-pass classifier labeled any opportunity with object surfaces as choice_shaped, flagging 7 ordinary game prompts (3x DeclareAttackers relations prompts from turns played during the 8s settle, 2x DiscardToHandSize schema selects, 2x play-land / pass-priority main-phase menus). The refined classifier in scenario_7436.py excludes mana_payment, pass_priority, action_menu, declare_combat, and discard_handsize before calling anything choice_shaped; replayed over the immutable wire_log.jsonl it finds 0 outside-the-game choice prompts in the trigger resolution window. See a5_reclassification.json. A5 corrected to passed.",
+  "verdict=reproduced: Nightmare Moon transformed into Princess Luna and the Transformed trigger resolved, but the 'choose up to six cards you own from outside the game' clause never parsed (Unimplemented head, runtime no-op), so no choice prompt was offered, the chain tracked set was allocated empty, and the ChangeZone sub-ability exiled 0 objects -- the exact structural defect the issue reports, now measured at runtime. Confirmed on v0.100.0. This is not a fix claim. (A5 was corrected post-run: the initial classifier mislabeled 7 ordinary prompts; the refined classifier finds 0 choice-shaped prompts in the window -- see the A5 RECLASSIFICATION note and a5_reclassification.json.)"
+ ],
+ "observations": {
+  "moon_cast": true,
+  "moon_oid": 15,
+  "transform_activated": true,
+  "activated_on_stack": true,
+  "activation_resolved": true,
+  "trigger_on_stack": true,
+  "trigger_resolved": true,
+  "activation_turn": 14,
+  "choice_prompt_seen": false,
+  "choice_answered": false,
+  "exile_window": {
+   "moved": 0,
+   "transitions": [
+    [
+     "100",
+     "Library",
+     "Hand",
+     "Swamp"
+    ],
+    [
+     "108",
+     "Hand",
+     "Graveyard",
+     "Swamp"
+    ],
+    [
+     "115",
+     "Library",
+     "Hand",
+     "Swamp"
+    ],
+    [
+     "25",
+     "Library",
+     "Hand",
+     "Swamp"
+    ],
+    [
+     "49",
+     "Library",
+     "Hand",
+     "Swamp"
+    ],
+    [
+     "68",
+     "Library",
+     "Hand",
+     "Swamp"
+    ],
+    [
+     "82",
+     "Hand",
+     "Graveyard",
+     "Swamp"
+    ],
+    [
+     "9",
+     "Library",
+     "Hand",
+     "Swamp"
+    ]
+   ]
+  },
+  "prompt_classes": {
+   "pass_priority": 12,
+   "mana_payment": 74,
+   "action_menu": 2,
+   "declare_combat": 3,
+   "discard_handsize": 2
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.208"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.209"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.210"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.211"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.212"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.213"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.214"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.215"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.216"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.217"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.218"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.219"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.220"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.221"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.222"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.223"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.224"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.225"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.226"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.227"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.228"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.229"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.230"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.231"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.232"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.233"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.234"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.235"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.236"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.237"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.238"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.239"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.240"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.241"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.242"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.243"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.244"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.245"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.246"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.247"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.248"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.249"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.250"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.251"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.252"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.253"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.254"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.255"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.256"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.257"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.258"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.259"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.260"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.261"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.262"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.263"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.264"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.265"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.266"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.267"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.268"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.269"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.270"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.271"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.272"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.273"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.274"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.275"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.276"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.277"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.278"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.279"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.280"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.281"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.282"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.283"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.284"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.285"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.286"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.287"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.288"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.289"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.290"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.291"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.292"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.293"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.294"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.295"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.296"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.297"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.298"
+   ],
+   [
+    "resolving",
+    "P0",
+    "Y2FGVW.0.299"
+   ],
+   [
+    "resolving",
+    "P1",
+    "Y2FGVW.0.300"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "stack_kinds_window": [
+   "{\"type\": \"ActivatedAbility\", \"data\": {\"source_id\": 15, \"ability\": {\"effect\": {\"type\": \"Transform\", \"target\": {\"type\": \"S",
+   "{\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 15, \"ability\": {\"effect\": {\"type\": \"Unimplemented\", \"name\": \"unparsed"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Nightmare Moon transform activation, Princess Luna Transformed trigger resolution) and observes the resolution outcome.",
+  "4x Nightmare Moon / 56x Swamp deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "The harness holds no outside-the-game card pool; the decisive observable is whether the choice prompt is ever offered, not the number of cards chosen.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Nightmare Moon + 56x Swamp; P1: 60x Swamp (lands only, never casts, never attacks); default Bo1, life 20",
+ "contract_line": "Nightmare Moon {6} transform activation -> Princess Luna Transformed trigger resolution: correct = an outside-the-game choice is offered and chosen cards are exiled. Observed (bug): the choose clause never parsed (Unimplemented head, runtime no-op), so no choice prompt is offered and the ChangeZone sub-ability reads an empty tracked set, exiling 0 objects.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 599
+ }
+}
