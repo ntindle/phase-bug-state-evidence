@@ -1,0 +1,14 @@
+data-level check: defect_present=True (Attacks trigger; head Unimplemented with the exact reported clause; sub Sacrifice {target TrackedSet id 0, count Fixed 1}); head_name=unparsed_quantity; oracle_match=True
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+P0 hello done; P1 hello done
+game created: code=57Y2ZL
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] keep 7 (hand: ['mountain', 'mountain', 'forest', 'mountain', 'forest', 'forest', 'vaevictis asmadi, the dire'])
+[P1] keep 7 (hand: ['mountain', 'forest', 'forest', 'forest', 'forest', 'mountain', 'swamp'])
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live VAD oid=15 zone=Library tree={"key": "trigger_definitions", "mode": "Attacks", "head_type": "Unimplemented", "head_name": "unparsed_quantity", "head_description": "for each player, choose target permanent that player controls", "sub_type": "Sacrifice", "sub_target": {"id": 0, "type": "TrackedSet"}, "sub_count": {"type": "Fixed", "value": 1}, "sub2_type": "Unimplemented", "sub2_name": "unrecognized_clause_head"}
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
