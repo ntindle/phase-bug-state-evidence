@@ -1,0 +1,18 @@
+data-level check: core_types=['Artifact'] subtypes=['Attraction']; n_triggers=1; mode=VisitAttraction; execute_kind=Spell; head=Unimplemented/where_x_binding; sub=GrantCastingPermission perm=PlayFromExile/UntilEndOfTurn/granted_to=0 target={'type': 'TrackedSet', 'id': 0}; sub2=CreateDelayedTrigger uses_tracked_set=False
+ServerHello: version=0.100.0 build=bc9ef56 protocol=101 mode=Full
+P0 hello done; P1 hello done
+game created: code=C2TJOS
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] mulligan #1 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P1] mulligan #1 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P1] keep 7 (hand: ['savannah lions', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] bottoming ['plains']
+[P1] bottoming ['plains']
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live ride oid=2 zone=Library trigger defs found=1
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
