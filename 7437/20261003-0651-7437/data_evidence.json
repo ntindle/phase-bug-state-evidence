@@ -1,0 +1,142 @@
+{
+ "razor_demon": {
+  "name": "Razor Demon",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black",
+    "Black"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Demon"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 7
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 7
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "When you cast this spell, target opponent drafts a card from Razor Demon's spellbook. They may cast that card without paying its mana cost.\nFlying\nWard\u2014Discard a card.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [
+   "Flying",
+   {
+    "Ward": {
+     "type": "DiscardCard"
+    }
+   }
+  ],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "SpellCast",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "target opponent drafts a card from ~'s spellbook"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "GrantCastingPermission",
+       "permission": {
+        "type": "PlayFromExile",
+        "duration": "UntilEndOfTurn",
+        "granted_to": 0,
+        "mode": "Cast"
+       },
+       "target": {
+        "type": "TrackedSet",
+        "id": 0
+       },
+       "grantee": {
+        "type": "ParentTargetController"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Stack"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": {
+     "type": "Player"
+    },
+    "valid_source": null,
+    "description": "When you cast this spell, target opponent drafts a card from ~'s spellbook. They may cast that card without paying its mana cost.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "5bacbb8c-80d2-4127-93fe-e4d71e27a21d",
+  "metadata": {
+   "spellbook": [
+    "Demonic Bargain",
+    "Demonic Pact",
+    "Ever After"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "historic": "legal",
+   "timeless": "legal"
+  },
+  "printings": [
+   "YDSK"
+  ]
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "head_name_discrepancy": {
+  "issue_body_quotes": "target",
+  "pinned_data_shows": "unrecognized_clause_head",
+  "note": "description string matches the issue; structural defect identical either way"
+ }
+}
