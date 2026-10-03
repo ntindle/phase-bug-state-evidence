@@ -1,0 +1,281 @@
+{
+ "oid": "182",
+ "object": {
+  "abilities": [],
+  "attached_to": null,
+  "attachments": [],
+  "base_card_types": {
+   "core_types": [
+    "Enchantment"
+   ],
+   "subtypes": [
+    "Background"
+   ],
+   "supertypes": [
+    "Legendary"
+   ]
+  },
+  "base_characteristics_initialized": true,
+  "base_color": [
+   "Black"
+  ],
+  "base_controller": 0,
+  "base_keywords": [],
+  "base_mana_cost": {
+   "generic": 1,
+   "shards": [
+    "Black"
+   ],
+   "type": "Cost"
+  },
+  "base_name": "Scion of Halaster",
+  "base_power": null,
+  "base_printed_ref": {
+   "face_name": "Scion of Halaster",
+   "oracle_id": "227ddf6c-d21a-48da-84fb-395c7e096914"
+  },
+  "base_static_definitions": [
+   {
+    "active_zones": [],
+    "affected": {
+     "controller": null,
+     "properties": [
+      {
+       "type": "IsCommander"
+      },
+      {
+       "controller": "You",
+       "type": "Owned"
+      }
+     ],
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ]
+    },
+    "affected_zone": null,
+    "characteristic_defining": false,
+    "condition": null,
+    "description": "Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"",
+    "effect_zone": null,
+    "mode": "Continuous",
+    "modifications": [
+     {
+      "definition": {
+       "condition": null,
+       "cost": null,
+       "description": "The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.",
+       "duration": null,
+       "effect": {
+        "description": "The first time you would draw a card each turn, instead look at the top two cards of your library",
+        "name": "unparsed_replacement",
+        "type": "Unimplemented"
+       },
+       "forward_result": false,
+       "kind": "Spell",
+       "optional": false,
+       "optional_targeting": false,
+       "sub_ability": {
+        "condition": null,
+        "cost": null,
+        "description": null,
+        "duration": null,
+        "effect": {
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "position": {
+          "type": "Top"
+         },
+         "target": {
+          "id": 0,
+          "type": "TrackedSet"
+         },
+         "type": "PutAtLibraryPosition"
+        },
+        "forward_result": false,
+        "kind": "Spell",
+        "optional": false,
+        "optional_targeting": false,
+        "sub_ability": {
+         "condition": null,
+         "cost": null,
+         "description": null,
+         "duration": null,
+         "effect": {
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "type": "Controller"
+          },
+          "type": "Draw"
+         },
+         "forward_result": false,
+         "kind": "Spell",
+         "optional": false,
+         "optional_targeting": false,
+         "sub_ability": null,
+         "sub_link": "SequentialSibling",
+         "target_prompt": null
+        },
+        "sub_link": "SequentialSibling",
+        "target_prompt": null
+       },
+       "target_prompt": null
+      },
+      "type": "GrantAbility"
+     }
+    ]
+   }
+  ],
+  "base_toughness": null,
+  "card_id": 182,
+  "card_types": {
+   "core_types": [
+    "Enchantment"
+   ],
+   "subtypes": [
+    "Background"
+   ],
+   "supertypes": [
+    "Legendary"
+   ]
+  },
+  "color": [
+   "Black"
+  ],
+  "commander_tax": 0,
+  "controller": 0,
+  "counters": {},
+  "damage_marked": 0,
+  "dealt_deathtouch_damage": false,
+  "entered_battlefield_turn": null,
+  "face_down": false,
+  "flipped": false,
+  "id": 182,
+  "is_commander": true,
+  "keywords": [],
+  "loyalty": null,
+  "mana_cost": {
+   "generic": 1,
+   "shards": [
+    "Black"
+   ],
+   "type": "Cost"
+  },
+  "name": "Scion of Halaster",
+  "owner": 0,
+  "power": null,
+  "printed_ref": {
+   "face_name": "Scion of Halaster",
+   "oracle_id": "227ddf6c-d21a-48da-84fb-395c7e096914"
+  },
+  "replacement_definitions": [],
+  "static_definitions": [
+   {
+    "active_zones": [],
+    "affected": {
+     "controller": null,
+     "properties": [
+      {
+       "type": "IsCommander"
+      },
+      {
+       "controller": "You",
+       "type": "Owned"
+      }
+     ],
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ]
+    },
+    "affected_zone": null,
+    "characteristic_defining": false,
+    "condition": null,
+    "description": "Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"",
+    "effect_zone": null,
+    "mode": "Continuous",
+    "modifications": [
+     {
+      "definition": {
+       "condition": null,
+       "cost": null,
+       "description": "The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.",
+       "duration": null,
+       "effect": {
+        "description": "The first time you would draw a card each turn, instead look at the top two cards of your library",
+        "name": "unparsed_replacement",
+        "type": "Unimplemented"
+       },
+       "forward_result": false,
+       "kind": "Spell",
+       "optional": false,
+       "optional_targeting": false,
+       "sub_ability": {
+        "condition": null,
+        "cost": null,
+        "description": null,
+        "duration": null,
+        "effect": {
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "position": {
+          "type": "Top"
+         },
+         "target": {
+          "id": 0,
+          "type": "TrackedSet"
+         },
+         "type": "PutAtLibraryPosition"
+        },
+        "forward_result": false,
+        "kind": "Spell",
+        "optional": false,
+        "optional_targeting": false,
+        "sub_ability": {
+         "condition": null,
+         "cost": null,
+         "description": null,
+         "duration": null,
+         "effect": {
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "type": "Controller"
+          },
+          "type": "Draw"
+         },
+         "forward_result": false,
+         "kind": "Spell",
+         "optional": false,
+         "optional_targeting": false,
+         "sub_ability": null,
+         "sub_link": "SequentialSibling",
+         "target_prompt": null
+        },
+        "sub_link": "SequentialSibling",
+        "target_prompt": null
+       },
+       "target_prompt": null
+      },
+      "type": "GrantAbility"
+     }
+    ]
+   }
+  ],
+  "tapped": false,
+  "timestamp": 0,
+  "toughness": null,
+  "transformed": false,
+  "trigger_definitions": [],
+  "zone": "Command"
+ }
+}
