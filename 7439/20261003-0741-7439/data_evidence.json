@@ -1,0 +1,38 @@
+{
+ "card_name": "Running Is Useless",
+ "oracle_text": "When you set this scheme in motion, choose any number of creatures with different mana values. Destroy those creatures.",
+ "trigger_mode": "SetInMotion",
+ "head": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "choose creatures with different mana values"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": "Destroy",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "sub_link": "SequentialSibling"
+ },
+ "checks": {
+  "exactly_one_trigger": true,
+  "trigger_mode_SetInMotion": true,
+  "execute_kind_Spell": true,
+  "head_Unimplemented": true,
+  "head_describes_choice": true,
+  "sub_kind_Spell": true,
+  "sub_effect_Destroy": true,
+  "sub_target_TrackedSet": true,
+  "sub_link_SequentialSibling": true,
+  "no_other_abilities": true,
+  "oracle_matches": true
+ },
+ "head_name_discrepancy": {
+  "issue_body_quotes": "choose",
+  "pinned_data_shows": "unparsed_verb_arguments",
+  "note": "description string matches the issue; the structural defect (Unimplemented head -> empty tracked set) is identical either way, as in the #7437/#7438 runs"
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c"
+}

@@ -1,0 +1,108 @@
+{
+ "issue": 7439,
+ "run_id": "20261003-0741-7439",
+ "started_at": "2026-10-03T12:57:35",
+ "duration_s": 5.7,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (run-20261003-0711; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c6376b2a19e7d310c22d1c8988a95a557b8a5a9b39b0653bf1840b724087fcb6",
+ "format_config": "Archenemy (archenemy_player=0, 2 seats)",
+ "decks": {
+  "bad_attempt_scheme_deck": [
+   "Running Is Useless",
+   "Running Is Useless",
+   "Behold My Grandeur",
+   "Behold My Grandeur",
+   "Drench the Soil in Their Blood",
+   "Drench the Soil in Their Blood",
+   "Embrace My Diabolical Vision",
+   "Embrace My Diabolical Vision",
+   "Every Dream a Nightmare",
+   "Every Dream a Nightmare",
+   "I Call for Slaughter",
+   "I Call for Slaughter",
+   "Introductions Are in Order",
+   "Introductions Are in Order",
+   "Know Naught but Fire",
+   "Know Naught but Fire",
+   "Look Skyward and Despair",
+   "Look Skyward and Despair",
+   "A Display of My Dark Power",
+   "A Display of My Dark Power"
+  ],
+  "control_scheme_deck": [
+   "Behold My Grandeur",
+   "Behold My Grandeur",
+   "Drench the Soil in Their Blood",
+   "Drench the Soil in Their Blood",
+   "Embrace My Diabolical Vision",
+   "Embrace My Diabolical Vision",
+   "Every Dream a Nightmare",
+   "Every Dream a Nightmare",
+   "I Call for Slaughter",
+   "I Call for Slaughter",
+   "Introductions Are in Order",
+   "Introductions Are in Order",
+   "Know Naught but Fire",
+   "Know Naught but Fire",
+   "Look Skyward and Despair",
+   "Look Skyward and Despair",
+   "A Display of My Dark Power",
+   "A Display of My Dark Power",
+   "Every Hope Shall Vanish",
+   "Every Hope Shall Vanish"
+  ],
+  "P0_main": "36x Forest + 4x Llanowar Elves + 4x Grizzly Bears + 4x Serra Angel + 4x Memnite + 4x Shivan Dragon + 4x Plains (60)",
+  "P1_main": "40x Forest + 20x Plains (60)"
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_deck_rejected": "passed",
+  "A3_control_ok": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Running Is Useless as the issue reports -- exactly one trigger (mode SetInMotion), execute kind Spell, head Unimplemented describing 'choose creatures with different mana values', sub_ability kind Spell with effect Destroy targeting TrackedSet(0), sub_link SequentialSibling, no other abilities/statics/replacements. Head name in pinned data is 'unparsed_verb_arguments' (the issue body quotes 'choose' from the 9b7c66e30 census); the description matches and the structural defect is identical. See data_evidence.json and running_is_useless_card_data.json.",
+  "A2 probe: bad-create status=error; code='deck_rejected'; message='Deck not legal for Archenemy: Unsupported scheme cards: Running Is Useless'.",
+  "A2 passed (defect made visible at runtime): the pinned v0.100.0 server rejected the Archenemy game whose scheme deck contained Running Is Useless x2 with deck_rejected / 'Unsupported scheme cards: ... Running Is Useless'. The engine's scheme-deck validation (validate_scheme_deck -> card_face_gaps) refuses the card because of exactly the reported parse gap -- the Unimplemented head is the card's only trigger and it carries no other gaps. See deck_rejection.json.",
+  "A3 probe: control status=ok; game_started=True; set_in_motion_observed=['I Call for Slaughter'].",
+  "A3 passed: the identical Archenemy game with 20 fully-supported schemes created and reached GameStarted -- the A2 rejection is specific to the gapped card, not the format config, the deck construction, or the harness. Bonus: a scheme was set in motion on the archenemy's first precombat main (['I Call for Slaughter']), proving the Archenemy machinery works on this build. See control_game.json.",
+  "A4 (scope documentation, not a verdict driver): no engine-supported runtime path exists to set THIS scheme in motion on the pinned server -- the engine's own deck validation refuses to load it (A2), only the configured archenemy seat's scheme_deck is loaded as the scheme deck, and Debug CreateCard actions are rejected in multiplayer server games. The issue itself asserts no runtime consumer symptom ('this issue does not assert a runtime symptom'; 'No runtime reproduction was run for this card'), so none is claimed. The empty tracked-set publish follows structurally: the Unimplemented head is the chain root (no ancestor to extend), its resolver pushes no GameEvent, and the publish authority therefore allocates a fresh empty set for the Destroy sub-ability to read.",
+  "verdict=reproduced: the reported parse defect is confirmed on the pinned v0.100.0 release (SetInMotion trigger whose head is Unimplemented 'choose creatures with different mana values', chaining to Destroy reading TrackedSet(0)), and the defect is load-bearing at runtime -- the engine's own scheme-deck validation rejects Running Is Useless as an unsupported scheme card, so the scheme can never be set in motion and the Destroy sub-ability can never receive a populated tracked set. The control (20 supported schemes) creates and starts, isolating the rejection to this card's parse gap. This is not a fix claim.",
+  "server.log excerpt: 0 matching lines (of 1228 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0711/server.log)"
+ ],
+ "observations": {
+  "head_name_pinned": "unparsed_verb_arguments",
+  "deck_rejection_code": "deck_rejected",
+  "deck_rejection_message": "Deck not legal for Archenemy: Unsupported scheme cards: Running Is Useless",
+  "control_game_code": "F0M2SC",
+  "control_started": true,
+  "control_scheme_in_motion": [
+   "I Call for Slaughter"
+  ]
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report (the issue asserts no runtime consumer symptom). The scenario demonstrates the parse on the pinned card data and the defect's live consequence (scheme-deck validation rejects the card); it does not drive a set-in-motion resolution because the engine offers no supported path to put this card into play.",
+  "The empty tracked-set publish is documented structurally from the parsed chain (Unimplemented chain root -> no GameEvent -> fresh empty set), not measured at runtime.",
+  "Deck-validation internals (validate_scheme_deck / card_face_gaps) are cited from the engine source tree available locally (v0.82.0 checkout); the rejection itself was observed live on the pinned v0.100.0 server."
+ ],
+ "setup_line": "Phase 1: pinned card-data.json parse walk. Phase 2: live Archenemy create with Running Is Useless x2 in the scheme deck (expect deck_rejected). Phase 3: control Archenemy create with 20 fully-supported schemes (expect GameStarted).",
+ "contract_line": "Reported defect: 'choose any number of creatures with different mana values' is Unimplemented in the parse, so the Destroy sub-ability reads an empty chain tracked set. Demonstrated: the parse on pinned v0.100.0 matches the report, and the pinned server refuses to load the card into a scheme deck because of that gap.",
+ "prior_runs": [],
+ "stats": {}
+}

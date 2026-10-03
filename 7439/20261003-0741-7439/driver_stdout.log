@@ -1,0 +1,26 @@
+server identity hashes verified against on-disk pinned artifacts
+data-level check: mode=SetInMotion; head=Unimplemented/unparsed_verb_arguments; sub=Spell/Destroy/target=TrackedSet(0); sub_link=SequentialSibling; checks_failed=none
+[live] attempting Archenemy create with Running Is Useless x2 in scheme deck (20 schemes)
+[P0] Error: {"message": "Deck not legal for Archenemy: Unsupported scheme cards: Running Is Useless", "code": "deck_rejected"}
+[P0-bad] create ERROR: {"message": "Deck not legal for Archenemy: Unsupported scheme cards: Running Is Useless", "code": "deck_rejected"}
+[control] attempting Archenemy create with 20 supported schemes
+[C0-good] create OK (GameCreated): game=F0M2SC
+[control] C1 joined game F0M2SC (player_id=1)
+[C0] mulligan: keep 7
+[C1] mulligan: keep 7
+[C0] GameStarted received
+[control] set in motion observed on C0 turn 1: face-up scheme(s) ['I Call for Slaughter']
+FINAL VERDICT: reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7439/20261003-0741-7439/summary.png (1000x1180)
+manifest.sha256 written (10 files)
+summary.png opens OK (1000x1180)
+validation OK: all JSON parse, hashes match, PNG readable
+{
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_deck_rejected": "passed",
+  "A3_control_ok": "passed"
+ },
+ "validation_problems": []
+}

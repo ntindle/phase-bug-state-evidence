@@ -1,0 +1,107 @@
+{
+ "name": "Running Is Useless",
+ "mana_cost": {
+  "type": "NoCost"
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Scheme"
+  ],
+  "subtypes": []
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "When you set this scheme in motion, choose any number of creatures with different mana values. Destroy those creatures.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "SetInMotion",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "choose creatures with different mana values"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Destroy",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "cant_regenerate": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "multi_target": {
+     "min": 0,
+     "max": null
+    },
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield",
+    "Command"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When you set this scheme in motion, choose any number of creatures with different mana values. Destroy those creatures.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "scryfall_oracle_id": "a1c77622-79eb-4643-a568-7b2b1e9b6397",
+ "metadata": {
+  "source_printing_ids": [
+   "20b0d2ea-2777-4e7a-b883-c8a525744420"
+  ]
+ },
+ "legalities": {},
+ "printings": [
+  "DSC"
+ ],
+ "rulings": [
+  {
+   "date": "2024-09-20",
+   "text": "You don't choose creatures until the ability is resolving."
+  }
+ ],
+ "rarities": [
+  "common"
+ ]
+}
