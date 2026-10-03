@@ -1,0 +1,726 @@
+{
+ "issue": 7443,
+ "run_id": "20261003-0941-7443",
+ "started_at": "2026-10-03T14:48:39",
+ "duration_s": 20.6,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process started by an earlier 2026-10-03 run; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a67d27cc53818921fefabe2eaa7b6cb98385a2860ea71b58ec36900da1160f42",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Stick Together",
+    4
+   ],
+   [
+    "Savannah Lions",
+    8
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Savannah Lions",
+    12
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_no_party_prompt": "passed",
+  "A5_nothing_sacrificed": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Stick Together as the issue reports -- abilities[0] kind Spell, head Unimplemented (name 'unparsed_verb_arguments' in pinned data; the issue body quotes 'choose' -- description matches, structural defect identical) describing 'choose a party from among creatures they control', + sub Spell Sacrifice { target TrackedSet(0), count Fixed(1) }, player_scope All, cost {3}{W}{W}; see data_evidence.json and stick_together_card_data.json.",
+  "A2 probe: pre stick_in_hand=True; pre untapped_plains=5; pre phase=PreCombatMain; pre active=0; pre stack=0; pre P0 creatures={27: 'savannah lions'}; pre P1 creatures={112: 'savannah lions', 78: 'savannah lions'}; mid spell on stack=True; mid entry text='{\"controller\": 0, \"id\": 51, \"kind\": {\"data\": {\"actual_mana_spent\": 5, \"card_id\": 51, \"casting_variant\": \"normal\"}, \"type\": \"spell\"}, \"source_id\": 51}'.",
+  "A2 passed: pre.json shows Stick Together in the P0 hand with >=5 untapped Plains (main phase, stack empty, creatures on both battlefields), and mid_stack.json shows the Stick Together spell on the stack.",
+  "A3 probe: stick_cast=True; stick_on_stack=True; stick_resolved=True; cast_turn=10.",
+  "A3 passed: Stick Together was cast, seen on the stack, and resolved; the card is now in the P0 graveyard (oid 51).",
+  "A4 probe: stick_resolved=True; party_prompt_seen=False; party_choice window prompts=0 None; all window prompt classes={'pass_priority': 13, 'mana_payment': 97, 'declare_combat': 8, 'discard_handsize': 1}.",
+  "A4 passed (bug symptom): the spell resolved but no choose-a-party prompt was ever offered to either seat -- the Unimplemented choose head is a runtime no-op, exactly the reported defect.",
+  "A5 probe: pre P0 creatures={27: 'savannah lions'}; post P0 creatures={27: 'savannah lions'}; lost P0={}; pre P1 creatures={112: 'savannah lions', 78: 'savannah lions'}; post P1 creatures={112: 'savannah lions', 78: 'savannah lions'}; lost P1={}; new graveyard creature rows=[]; life pre=20/20 post=20/20.",
+  "A5 passed (bug symptom): every creature on the battlefield at pre is still there at post, no creature card entered either graveyard, life 20/20 -- 'sacrifices the rest' sacrificed nothing.",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 10, post turn 18, phase Upkeep), no in-flight submissions lingering (rejections=0).",
+  "verdict=reproduced: Stick Together was cast and resolved, but the 'chooses a party from among creatures they control' clause never parsed (Unimplemented head, runtime no-op), so no party prompt was offered to either player, the chain tracked set was allocated empty, and the Sacrifice sub-ability sacrificed nothing -- every creature stayed on the battlefield. The exact structural defect the issue reports, now measured at runtime. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 564 matching lines (of 2038 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0711/server.log)"
+ ],
+ "observations": {
+  "stick_cast": true,
+  "stick_oid": 51,
+  "stick_on_stack": true,
+  "stick_resolved": true,
+  "cast_turn": 10,
+  "party_prompt_seen": false,
+  "party_answered": false,
+  "pre_creatures": {
+   "P0": {
+    "27": "savannah lions"
+   },
+   "P1": {
+    "112": "savannah lions",
+    "78": "savannah lions"
+   }
+  },
+  "post_creatures": {
+   "P0": {
+    "27": "savannah lions"
+   },
+   "P1": {
+    "112": "savannah lions",
+    "78": "savannah lions"
+   }
+  },
+  "prompt_classes": {
+   "pass_priority": 13,
+   "mana_payment": 97,
+   "declare_combat": 8,
+   "discard_handsize": 1
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.160"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.161"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.162"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.163"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.164"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.165"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.166"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.167"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.168"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.169"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.170"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.171"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.172"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.173"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.174"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.175"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.176"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.177"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.178"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.179"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.180"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.181"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.182"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.183"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.184"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.185"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.186"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.187"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.188"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.189"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.190"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.191"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.192"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.193"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.194"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.195"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.196"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.197"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.198"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.199"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.200"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.201"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.202"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.203"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.204"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.205"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.206"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.207"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.208"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.209"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.210"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.211"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.212"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.213"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.214"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.215"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.216"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.217"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.218"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.219"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.220"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.221"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.222"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.223"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.224"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.225"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.226"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.227"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.228"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.229"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.230"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.231"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.232"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.233"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.234"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.235"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.236"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.237"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.238"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.239"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.240"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.241"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.242"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.243"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.244"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.245"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.246"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.247"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.248"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.249"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.250"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.251"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.252"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.253"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.254"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.255"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.256"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.257"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.258"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.259"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.260"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.261"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.262"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.263"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.264"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.265"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.266"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.267"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.268"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.269"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.270"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.271"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.272"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.273"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.274"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.275"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.276"
+   ],
+   [
+    "resolving",
+    "P0",
+    "XHV6N7.0.277"
+   ],
+   [
+    "resolving",
+    "P1",
+    "XHV6N7.0.278"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "stack_kinds_window": [
+   "{\"type\": \"Spell\", \"data\": {\"card_id\": 51, \"casting_variant\": \"Normal\", \"actual_mana_spent\": 5}}"
+  ],
+  "cast_rejections": 0,
+  "hello_ok": true
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Stick Together cast with creatures on both battlefields) and observes the resolution outcome.",
+  "4x Stick Together / 8x Savannah Lions / 48x Plains (P0) and 12x Savannah Lions / 48x Plains (P1) deck densities are test-harness conveniences (engine accepts >4-of for custom games). No party-typed creatures were used; this is immaterial because the choose clause is unparsed -- the engine never reaches creature-type filtering.",
+  "Second independent parse defect (recorded, out of runtime scope): the Sacrifice sub targets TrackedSet(0) with no Not wrapper, i.e. it is shaped to sacrifice the chosen party rather than 'the rest'. The runtime test cannot reach this defect because the antecedent choose clause never parsed.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Stick Together + 8x Savannah Lions + 48x Plains; P1: 12x Savannah Lions + 48x Plains; no attacks; default Bo1, life 20",
+ "contract_line": "Stick Together cast -> resolution: correct = each player is prompted to choose a party, then sacrifices all other creatures. Observed (bug): no party prompt is offered (Unimplemented head, runtime no-op), the chain tracked set is allocated empty, and the Sacrifice sub-ability sacrifices nothing.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 555
+ }
+}

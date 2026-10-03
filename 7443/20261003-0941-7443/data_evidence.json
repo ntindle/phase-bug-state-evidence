@@ -1,0 +1,128 @@
+{
+ "stick_together": {
+  "name": "Stick Together",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "White"
+   ],
+   "generic": 3
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Sorcery"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Each player chooses a party from among creatures they control, then sacrifices the rest. (To choose a party, choose up to one each of Cleric, Rogue, Warrior, and Wizard.)",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_verb_arguments",
+     "description": "choose a party from among creatures they control"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Sacrifice",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "player_scope": {
+      "type": "All"
+     }
+    },
+    "duration": null,
+    "description": "Each player chooses a party from among creatures they control, then sacrifices the rest.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "White"
+  ],
+  "scryfall_oracle_id": "4abda0ad-0a2b-4bd9-81c7-56329e62311d",
+  "metadata": {
+   "source_printing_ids": [
+    "640d1aa1-26ff-49df-aadc-c083d14df6be",
+    "8d77a57a-e30b-46d7-acb8-1d164c7dff78",
+    "a0870aef-cae2-4670-a866-28cad523ca39"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "CLB",
+   "HBG",
+   "PLST"
+  ],
+  "rarities": [
+   "rare"
+  ]
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "head_name_discrepancy": {
+  "issue_body_quotes": "choose",
+  "pinned_data_shows": "unparsed_verb_arguments",
+  "note": "description string matches the issue; structural defect identical either way"
+ },
+ "second_parse_defect": {
+  "note": "the sub is Sacrifice { target: TrackedSet(0), count: Fixed(1) } with no Not wrapper -- shaped to sacrifice the CHOSEN party rather than 'the rest'. Even a correct publish would sacrifice the wrong population. Out of runtime scope: the antecedent choose clause never parsed, so no party is ever chosen.",
+  "sub_effect": {
+   "type": "Sacrifice",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "count": {
+    "type": "Fixed",
+    "value": 1
+   }
+  }
+ }
+}
