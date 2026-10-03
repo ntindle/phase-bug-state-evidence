@@ -1,0 +1,89 @@
+{
+ "issue": 7450,
+ "run_id": "20261003-7450",
+ "started_at": "2026-10-03T18:15:57",
+ "finished_at": "2026-10-03T18:16:00",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9375 (started by this run with a fresh games.db; run dir runs/20261003-7450; verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03T16:02:26Z) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "reproduced",
+ "scope": "Vaevictis Asmadi, the Dire parse state: data-level parse assertion + live-object trigger-tree assertion on the pinned server, mirroring the #7446 scenario for the same #6857-census issue family. The issue asserts no runtime consumer symptom (no runtime reproduction was run in the report either); the reported defect is the parse state and its direct structural consequence (Unimplemented head -> empty chain tracked set read by the filter-only Sacrifice consumer). No attack/combat drive was attempted.",
+ "result": "Pinned v0.101.0 card-data.json and the live Vaevictis Asmadi, the Dire object on the pinned server both carry the reported defect: an Attacks trigger whose execute head is Effect::Unimplemented ('unparsed_quantity', the exact clause 'for each player, choose target permanent that player controls') with sub_ability Sacrifice {target TrackedSet, count Fixed 1}. Because the Unimplemented resolver pushes no GameEvent, the chain tracked set is allocated empty and the Sacrifice consumer -- a filter-only reader -- sacrifices nothing, as reported.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json carries the reported defect for Vaevictis Asmadi, the Dire -- an Attacks trigger whose execute head is Effect::Unimplemented {name: 'unparsed_quantity', description: the exact reported clause 'for each player, choose target permanent that player controls'}, with sub_ability Sacrifice {target TrackedSet id 0, count Fixed 1}. The chain head therefore never publishes a tracked set (the Unimplemented resolver is a no-op that pushes no GameEvent), so the Sacrifice consumer reads an empty set. See data_evidence.json and vaevictis_asmadi_the_dire_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=57Y2ZL; post_mulligan_seen=True; pre_exported=True; pre objects=120; wf_types_seen=['MulliganDecision', 'Priority']; pre waiting_for=Priority; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including Vaevictis Asmadi, the Dire in P0's main deck), the game started for both seats, mulligans completed, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live Vaevictis Asmadi, the Dire object (oid 15, zone Library) whose trigger tree carries the identical defect -- head Unimplemented 'unparsed_quantity' with the exact reported clause text, sub Sacrifice {target TrackedSet id 0, count Fixed 1}. The defect is live on the pinned server, not just in the shipped card data."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: the attack trigger resolution was not driven (stated scope in the issue; same contract as the #7446 scenario).",
+  "The live check establishes the trigger tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "In the pinned data the ability lives under the card's 'triggers' list (abilities list is empty), with the Unimplemented node named 'unparsed_quantity' (the census corpus at 9b7c66e30 named it 'for'); the clause text is identical.",
+  "Browser UI not exercised; native engine only, two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports restorable only via full game replay."
+ ],
+ "observations": {
+  "live_tree": {
+   "key": "trigger_definitions",
+   "mode": "Attacks",
+   "head_type": "Unimplemented",
+   "head_name": "unparsed_quantity",
+   "head_description": "for each player, choose target permanent that player controls",
+   "sub_type": "Sacrifice",
+   "sub_target": {
+    "id": 0,
+    "type": "TrackedSet"
+   },
+   "sub_count": {
+    "type": "Fixed",
+    "value": 1
+   },
+   "sub2_type": "Unimplemented",
+   "sub2_name": "unrecognized_clause_head"
+  },
+  "defect_detail": {
+   "mode": "Attacks",
+   "head": {
+    "type": "Unimplemented",
+    "name": "unparsed_quantity",
+    "description": "for each player, choose target permanent that player controls"
+   },
+   "sub": {
+    "type": "Sacrifice",
+    "target": {
+     "type": "TrackedSet",
+     "id": 0
+    },
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    }
+   },
+   "sub2": {
+    "type": "Unimplemented",
+    "name": "unrecognized_clause_head",
+    "description": "who sacrificed a permanent this way reveals the top card of their library"
+   }
+  },
+  "pre_objects": 120,
+  "wf_types_seen": [
+   "MulliganDecision",
+   "Priority"
+  ]
+ }
+}
