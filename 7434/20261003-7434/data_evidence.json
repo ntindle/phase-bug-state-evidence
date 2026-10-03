@@ -1,0 +1,95 @@
+{
+ "name": "Over the Top",
+ "oracle": "Each player reveals a number of cards from the top of their library equal to the number of nonland permanents they control, puts all permanent cards they revealed this way onto the battlefield, and puts the rest into their graveyard.",
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Sorcery"
+  ],
+  "subtypes": []
+ },
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Red",
+   "Red"
+  ],
+  "generic": 5
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "spell_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "Unimplemented",
+   "name": "unparsed_quantity",
+   "description": "reveal a number of cards from the top of their library equal to the number of nonland permanents they control"
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "ChangeZoneAll",
+    "origin": null,
+    "destination": "Battlefield",
+    "target": {
+     "type": "TrackedSetFiltered",
+     "id": 0,
+     "filter": {
+      "type": "Typed",
+      "type_filters": [
+       "Permanent"
+      ],
+      "controller": null,
+      "properties": []
+     }
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZoneAll",
+     "origin": "Exile",
+     "destination": "Graveyard",
+     "target": {
+      "type": "TrackedSet",
+      "id": 0
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "player_scope": {
+    "type": "All"
+   }
+  },
+  "duration": null,
+  "description": "Each player reveals a number of cards from the top of their library equal to the number of nonland permanents they control, puts all permanent cards they revealed this way onto the battlefield, and puts the rest into their graveyard.",
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "player_scope": {
+   "type": "All"
+  }
+ },
+ "report_corpus_note": "the issue body says the Unimplemented head node is named 'reveal'; on the pinned v0.100.0 corpus it is named 'unparsed_quantity' with the description 'reveal a number of cards from the top of their library equal to the number of nonland permanents they control' -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged and this difference does not change the verdict."
+}
