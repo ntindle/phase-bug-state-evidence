@@ -1,0 +1,14 @@
+data-level check: core_types=['Sorcery']; n_abilities=1; parsed_ability={"kind": "Spell", "head_type": "Unimplemented", "head_name": "unbound_subject", "head_description": "You and target opponent each gain control of all creatures the other controls until end of turn", "sub_kind": "Spell", "sub_type": "SetTapState", "sub_target": {"type": "TrackedSet", "id": 0}, "sub_scope": {"type": "Single"}, "sub_state": {"type": "Untap"}, "sub_link": "SequentialSibling", "sub2_type": "GenericEffect", "sub2_haste": true, "sub2_duration": "UntilEndOfTurn"}
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+P0 hello done; P1 hello done
+game created: code=ZIGZLW
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] keep 7 (hand: ['twist allegiance', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P1] keep 7 (hand: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live twist oid=29 zone=Library ability defs found=1
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
