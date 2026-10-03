@@ -1,0 +1,198 @@
+{
+ "name": "Scion of Halaster",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black"
+  ],
+  "generic": 1
+ },
+ "card_type": {
+  "supertypes": [
+   "Legendary"
+  ],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Background"
+  ]
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [],
+ "static_abilities": [
+  {
+   "mode": "Continuous",
+   "affected": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": [
+     {
+      "type": "IsCommander"
+     },
+     {
+      "type": "Owned",
+      "controller": "You"
+     }
+    ]
+   },
+   "modifications": [
+    {
+     "type": "GrantAbility",
+     "definition": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unparsed_replacement",
+       "description": "The first time you would draw a card each turn, instead look at the top two cards of your library"
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "PutAtLibraryPosition",
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        },
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "position": {
+         "type": "Top"
+        }
+       },
+       "cost": null,
+       "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+         "type": "Draw",
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "target": {
+          "type": "Controller"
+         }
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false,
+        "sub_link": "SequentialSibling"
+       },
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": "The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.",
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     }
+    }
+   ],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\""
+  }
+ ],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Black"
+ ],
+ "scryfall_oracle_id": "227ddf6c-d21a-48da-84fb-395c7e096914",
+ "is_commander": true,
+ "metadata": {
+  "source_printing_ids": [
+   "3a7ce463-6427-4040-baec-c5fa361db806",
+   "c876f9b3-b4f6-4177-9c43-443ae2a028d0"
+  ]
+ },
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "pauper": "legal",
+  "paupercommander": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "CLB"
+ ],
+ "rulings": [
+  {
+   "date": "2022-06-10",
+   "text": "An effect that checks whether you control your commander is satisfied if you control one or both of your two commanders."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "Both commanders start in the command zone, and the remaining 98 cards (or 58 cards in a Commander Draft game) of your deck are shuffled to become your library."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "Choose a Background is a variant of the partner ability. You may have two commanders if one of them is a legendary creature with the choose a background ability and the other is a legendary Background enchantment. Backgrounds and cards with choose a Background do not interact with cards which have any other partner ability."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "If a card refers to a commander creature you own, a Background won't usually be counted or included for that effect. If another spell or ability causes your Background to become a creature, however, it will be included. Any effect that refers to your commander or a commander you own or control without specifying creature will apply to a Background that is your commander, as appropriate."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "If something refers to your commander while you have two commanders, it refers to one of them of your choice. If you are instructed to perform an action on your commander (e.g. put it from the command zone into your hand due to Command Beacon), you choose one of your commanders at the time the effect happens."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "If you control a Background that grants an ability to commander creatures you own, and you own more than one commander creature, each of them will have that ability."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "If your Commander deck has two commanders, you can include only cards whose own color identities are also found in your commanders\u2019 combined color identities."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "If your commander loses the choose a Background ability or stops being a Background during the game, as appropriate, it is still your commander."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "Once the game begins, your two commanders are tracked separately. If you cast one, you won\u2019t have to pay an additional {2} the first time you cast the other. A player loses the game after having been dealt 21 combat damage from any one of them, not from both of them combined (although your Background won\u2019t usually be a creature anyway)."
+  },
+  {
+   "date": "2022-06-10",
+   "text": "You can choose two commanders that are the same color or colors."
+  }
+ ],
+ "rarities": [
+  "common"
+ ]
+}
