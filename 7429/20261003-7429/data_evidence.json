@@ -1,0 +1,81 @@
+{
+ "name": "Kharasha Foothills",
+ "oracle": "Whenever a creature you control attacks a player, for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent. Exile those tokens at the beginning of the next end step.\nWhenever chaos ensues, you may sacrifice any number of creatures. If you do, Kharasha Foothills deals that much damage to target creature.",
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Plane"
+  ],
+  "subtypes": [
+   "Mongseng"
+  ]
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "trigger_mode": "Attacks",
+ "valid_card": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "controller": "You",
+  "properties": []
+ },
+ "attack_target_filter": "Player",
+ "trigger_zones": [
+  "Battlefield",
+  "Command"
+ ],
+ "trigger_optional": false,
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unparsed_quantity",
+  "description": "for each other opponent, you may create a token that's a copy of that creature, tapped and attacking that opponent"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "CreateDelayedTrigger",
+   "condition": {
+    "type": "AtNextPhase",
+    "phase": "End"
+   },
+   "effect": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": null,
+     "destination": "Exile",
+     "target": {
+      "type": "TrackedSet",
+      "id": 0
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "uses_tracked_set": false
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false,
+  "sub_link": "SequentialSibling"
+ },
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'for'; the pinned v0.100.0 corpus names it 'unparsed_quantity' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}
