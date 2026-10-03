@@ -1,0 +1,103 @@
+{
+ "card_name": "Scion of Halaster",
+ "card_type": {
+  "supertypes": [
+   "Legendary"
+  ],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Background"
+  ]
+ },
+ "color_identity": [
+  "Black"
+ ],
+ "oracle_text": "Commander creatures you own have \"The first time you would draw a card each turn, instead look at the top two cards of your library. Put one of them into your graveyard and the other back on top of your library. Then draw a card.\"",
+ "static_ability_mode": "Continuous",
+ "affected": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "properties": [
+   "IsCommander",
+   "Owned"
+  ]
+ },
+ "grant": {
+  "kind": "Spell",
+  "modification": "GrantAbility"
+ },
+ "head": {
+  "type": "Unimplemented",
+  "name": "unparsed_replacement",
+  "description": "The first time you would draw a card each turn, instead look at the top two cards of your library"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": "PutAtLibraryPosition",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "count": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "position": {
+   "type": "Top"
+  },
+  "sub_link": "SequentialSibling"
+ },
+ "sub_sub_ability": {
+  "kind": "Spell",
+  "effect": "Draw",
+  "count": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "target": {
+   "type": "Controller"
+  },
+  "sub_link": "SequentialSibling"
+ },
+ "checks": {
+  "exactly_one_static_ability": true,
+  "mode_Continuous": true,
+  "affected_Typed_Creature": true,
+  "affected_IsCommander": true,
+  "affected_Owned_You": true,
+  "modification_GrantAbility": true,
+  "definition_kind_Spell": true,
+  "head_Unimplemented": true,
+  "head_describes_replacement": true,
+  "sub_kind_Spell": true,
+  "sub_effect_PutAtLibraryPosition": true,
+  "sub_target_TrackedSet_0": true,
+  "sub_count_Fixed_1": true,
+  "sub_position_Top": true,
+  "sub_link_SequentialSibling": true,
+  "subsub_kind_Spell": true,
+  "subsub_effect_Draw": true,
+  "subsub_count_Fixed_1": true,
+  "subsub_target_Controller": true,
+  "subsub_link_SequentialSibling": true,
+  "no_other_abilities": true,
+  "oracle_matches": true
+ },
+ "discrepancies": [
+  {
+   "field": "head.name",
+   "issue_body_quotes": "the",
+   "pinned_data_shows": "unparsed_replacement",
+   "note": "description string matches the issue verbatim; the structural defect (Unimplemented chain root -> empty tracked set) is identical either way, as in the #7436-#7440 runs"
+  },
+  {
+   "field": "missing_graveyard_half",
+   "note": "The oracle sentence 'Put one of them into your graveyard and the other back on top of your library' parses to ONLY PutAtLibraryPosition{Top, 1} -> Draw{1}. The 'put one into your graveyard' half has no sub-ability at all in the pinned parse; the chain goes Top-placement straight to the Draw. The tracked-set anaphor the issue describes therefore covers only the top-placement half."
+  }
+ ],
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c"
+}
