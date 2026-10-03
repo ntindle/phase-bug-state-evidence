@@ -1,0 +1,219 @@
+{
+ "tears_of_rage": {
+  "name": "Tears of Rage",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Red",
+    "Red"
+   ],
+   "generic": 2
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Cast this spell only during the declare attackers step.\nAttacking creatures you control get +X/+0 until end of turn, where X is the number of attacking creatures. Sacrifice those creatures at the beginning of the next end step.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "PumpAll",
+     "power": {
+      "type": "Quantity",
+      "value": {
+       "type": "Ref",
+       "qty": {
+        "type": "ObjectCount",
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Creature"
+         ],
+         "controller": null,
+         "properties": [
+          {
+           "type": "Attacking"
+          }
+         ]
+        }
+       }
+      }
+     },
+     "toughness": {
+      "type": "Fixed",
+      "value": 0
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": [
+       {
+        "type": "Attacking"
+       }
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CreateDelayedTrigger",
+      "condition": {
+       "type": "AtNextPhase",
+       "phase": "End"
+      },
+      "effect": {
+       "kind": "Spell",
+       "effect": {
+        "type": "Sacrifice",
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        },
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "uses_tracked_set": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": "UntilEndOfTurn",
+    "description": "Attacking creatures you control get +X/+0 until end of turn, where X is the number of attacking creatures. Sacrifice those creatures at the beginning of the next end step.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Red"
+  ],
+  "scryfall_oracle_id": "564ffd21-bffb-488d-a496-cca29f344cdc",
+  "casting_restrictions": [
+   {
+    "type": "DeclareAttackersStep"
+   }
+  ],
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "DST",
+   "PSAL"
+  ]
+ },
+ "tears_shape_ok": true,
+ "nine_card_census": {
+  "fire giant's fury": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "kharasha foothills": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "priority boarding": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "pure intentions": {
+   "cdt_nodes": 2,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "shredder, shadow master": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "song of blood": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "FilteredTrackedSetSize"
+   ]
+  },
+  "tears of rage": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  },
+  "the eagles are coming!": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "FilteredTrackedSetSize"
+   ]
+  },
+  "waltz of rage": {
+   "cdt_nodes": 1,
+   "defective_false_with_ref": 1,
+   "ref_types": [
+    "TrackedSet"
+   ]
+  }
+ },
+ "census_ok": true,
+ "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+ "count_note": "the inner Sacrifice carries count Fixed(1) for 'sacrifice those creatures' -- a second, independent parse shape, out of #7456 scope; the verdict turns on binding (0 vs >=1 sacrificed), not on the count"
+}
