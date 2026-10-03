@@ -1,0 +1,185 @@
+{
+ "synthetic_destiny_card": {
+  "name": "Synthetic Destiny",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Blue",
+    "Blue"
+   ],
+   "generic": 4
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Exile all creatures you control. At the beginning of the next end step, reveal cards from the top of your library until you reveal that many creature cards, put all creature cards revealed this way onto the battlefield, then shuffle the rest of the revealed cards into your library.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZoneAll",
+     "origin": null,
+     "destination": "Exile",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CreateDelayedTrigger",
+      "condition": {
+       "type": "AtNextPhase",
+       "phase": "End"
+      },
+      "effect": {
+       "kind": "Spell",
+       "effect": {
+        "type": "RevealUntil",
+        "player": {
+         "type": "Controller"
+        },
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Creature"
+         ],
+         "controller": null,
+         "properties": []
+        },
+        "count": {
+         "type": "Ref",
+         "qty": {
+          "type": "EventContextAmount"
+         }
+        },
+        "kept_destination": "Battlefield",
+        "rest_destination": "Library"
+       },
+       "cost": null,
+       "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+         "type": "Shuffle",
+         "target": {
+          "type": "Controller"
+         }
+        },
+        "cost": null,
+        "sub_ability": null,
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+       },
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "uses_tracked_set": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Exile all creatures you control. At the beginning of the next end step, reveal cards from the top of your library until you reveal that many creature cards, put all creature cards revealed this way onto the battlefield, then shuffle the rest of the revealed cards into your library.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Blue"
+  ],
+  "scryfall_oracle_id": "640a7d2c-42c4-4ea7-bd5b-72f12a65785e",
+  "metadata": {
+   "source_printing_ids": [
+    "6ab025e6-9ee7-45f0-b829-199637eb0038",
+    "78ab1d69-da01-424b-9d09-ef985aef4cbd",
+    "dc19002c-e87d-45a1-84f2-f953587ddfd1"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "C15",
+   "FRC",
+   "KHC",
+   "PZ1"
+  ],
+  "rulings": [
+   {
+    "date": "2015-11-04",
+    "text": "Creature tokens you exile this way will count toward the number of creature cards you put onto the battlefield."
+   },
+   {
+    "date": "2015-11-04",
+    "text": "If the number of creatures you exile is greater than the number of creature cards remaining in your library, you'll wind up revealing your entire library, putting all creature cards revealed that way onto the battlefield, then shuffling your library."
+   },
+   {
+    "date": "2015-11-04",
+    "text": "If you don't reveal any noncreature cards this way (perhaps because all the creature cards you needed were on top of your library), you still shuffle your library."
+   },
+   {
+    "date": "2015-11-04",
+    "text": "If you exile your commander as Synthetic Destiny resolves, you may not put it into the command zone until after Synthetic Destiny is finished resolving. It will still count toward the number of creature cards you put onto the battlefield."
+   },
+   {
+    "date": "2015-11-04",
+    "text": "The cards you exile will stay in exile. They're not part of the group you shuffle into your library."
+   },
+   {
+    "date": "2015-11-04",
+    "text": "The creature cards will enter the battlefield simultaneously."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ },
+ "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+ "oracle_text": "Exile all creatures you control. At the beginning of the next end step, reveal cards from the top of your library until you reveal that many creature cards, put all creature cards revealed this way onto the battlefield, then shuffle the rest of the revealed cards into your library."
+}
