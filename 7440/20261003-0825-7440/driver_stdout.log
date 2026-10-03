@@ -1,0 +1,25 @@
+server identity hashes verified against on-disk pinned artifacts
+data-level check: mode={'Planeswalked': {'role': 'To'}}; head=Unimplemented/unparsed_verb_arguments; sub=Spell/Destroy/target=TrackedSet(0); sub_link=SequentialSibling; card_type={'supertypes': [], 'core_types': [], 'subtypes': ['sECreT', 'LaIR']}; checks_failed=none
+[live] attempting Planechase create with Sans Mercy x1 in planar deck (20 planes)
+[P0] Error: {"message": "Deck not legal for Planechase: Planar deck cards must be Plane or Phenomenon: sAnS mERcY", "code": "deck_rejected"}
+[P0-bad] create ERROR: {"message": "Deck not legal for Planechase: Planar deck cards must be Plane or Phenomenon: sAnS mERcY", "code": "deck_rejected"}
+[control] attempting Planechase create with 20 supported planes
+[C0-good] create OK (GameCreated): game=0U1LI5
+[control] C1 joined game 0U1LI5 (player_id=1)
+[C0] mulligan: keep 7
+[C1] mulligan: keep 7
+[C0] GameStarted received
+FINAL VERDICT: reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7440/20261003-0825-7440/summary.png (1000x1240)
+manifest.sha256 written (10 files)
+summary.png opens OK (1000x1240)
+validation OK: all JSON parse, hashes match, PNG readable
+{
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_deck_rejected": "passed",
+  "A3_control_ok": "passed"
+ },
+ "validation_problems": []
+}
