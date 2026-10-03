@@ -1,0 +1,122 @@
+{
+ "oid": 2,
+ "zone": "Library",
+ "trigger_definitions": [
+  {
+   "definition": {
+    "batched": false,
+    "condition": null,
+    "constraint": null,
+    "damage_kind": "Any",
+    "description": null,
+    "destination": null,
+    "execute": {
+     "condition": null,
+     "cost": null,
+     "description": null,
+     "duration": "UntilEndOfTurn",
+     "effect": {
+      "description": "where X is the number of Attractions you've visited this turn",
+      "name": "where_x_binding",
+      "type": "Unimplemented"
+     },
+     "forward_result": false,
+     "kind": "Spell",
+     "optional": false,
+     "optional_targeting": false,
+     "sub_ability": {
+      "condition": null,
+      "cost": null,
+      "description": null,
+      "duration": null,
+      "effect": {
+       "permission": {
+        "duration": "UntilEndOfTurn",
+        "granted_to": 0,
+        "type": "PlayFromExile"
+       },
+       "target": {
+        "id": 0,
+        "type": "TrackedSet"
+       },
+       "type": "GrantCastingPermission"
+      },
+      "forward_result": false,
+      "kind": "Spell",
+      "optional": false,
+      "optional_targeting": false,
+      "sub_ability": {
+       "condition": null,
+       "cost": null,
+       "description": null,
+       "duration": null,
+       "effect": {
+        "condition": {
+         "phase": "End",
+         "type": "AtNextPhase"
+        },
+        "effect": {
+         "condition": null,
+         "cost": null,
+         "description": null,
+         "duration": null,
+         "effect": {
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "position": {
+           "type": "Bottom"
+          },
+          "target": {
+           "type": "ParentTarget"
+          },
+          "type": "PutAtLibraryPosition"
+         },
+         "forward_result": false,
+         "kind": "Spell",
+         "optional": false,
+         "optional_targeting": false,
+         "sub_ability": null,
+         "target_prompt": null
+        },
+        "type": "CreateDelayedTrigger",
+        "uses_tracked_set": false
+       },
+       "forward_result": false,
+       "kind": "Spell",
+       "optional": false,
+       "optional_targeting": false,
+       "sub_ability": null,
+       "sub_link": "SequentialSibling",
+       "target_prompt": null
+      },
+      "sub_link": "SequentialSibling",
+      "target_prompt": null
+     },
+     "target_prompt": null
+    },
+    "mode": "VisitAttraction",
+    "optional": false,
+    "origin": null,
+    "phase": null,
+    "secondary": false,
+    "trigger_zones": [],
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "valid_source": null,
+    "valid_target": null
+   },
+   "occurrence": {
+    "data": {
+     "base_set": 1,
+     "printed_index": 0
+    },
+    "type": "Printed"
+   }
+  }
+ ],
+ "base_name": "Storybook Ride",
+ "controller": 0
+}
