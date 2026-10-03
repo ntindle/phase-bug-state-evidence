@@ -1,0 +1,41 @@
+{
+ "name": "Highcliff Felidar",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "White"
+  ],
+  "generic": 5
+ },
+ "oracle": "Vigilance\nWhen this creature enters, for each opponent, choose a creature with the greatest power among creatures that player controls. Destroy those creatures.",
+ "trigger_mode": "ChangesZone",
+ "trigger_destination": "Battlefield",
+ "repeat_for": {
+  "type": "Ref",
+  "qty": {
+   "type": "PlayerCount",
+   "filter": {
+    "type": "Opponent"
+   }
+  }
+ },
+ "head": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "choose a creature with the greatest power among creatures that player controls"
+ },
+ "sub": {
+  "type": "Destroy",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "cant_regenerate": false
+ },
+ "sub_target": {
+  "type": "TrackedSet",
+  "id": 0
+ },
+ "sub_link": "SequentialSibling"
+}
