@@ -1,0 +1,18 @@
+data-level check: core_types=['Artifact', 'Creature'] subtypes=['Golem']; n_triggers=2; modes=['ChangesZone', 'LeavesBattlefield']; heads=[('Unimplemented', 'unparsed_verb_arguments', 'choose a land of each basic land type'), ('Unimplemented', 'unparsed_verb_arguments', 'choose a land of each basic land type')]; subs=[('Destroy', {'type': 'TrackedSet', 'id': 0}, False), ('Destroy', {'type': 'TrackedSet', 'id': 0}, False)]
+ServerHello: version=0.100.0 build=bc9ef56 protocol=101 mode=Full
+P0 hello done; P1 hello done
+game created: code=4JZAAR
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] waiting_for type: MulliganDecision
+[P0] mulligan #1 (hand: ['plains', 'plains', 'savannah lions', 'plains', 'plains', 'savannah lions', 'plains'])
+[P1] mulligan #1 (hand: ['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[P0] keep 7 (hand: ['plains', 'plains', 'plains', 'plains', 'savannah lions', 'plains', 'savannah lions'])
+[P1] keep 7 (hand: ['plains', 'plains', 'savannah lions', 'plains', 'plains', 'savannah lions', 'plains'])
+[P0] bottoming ['plains']
+[P1] bottoming ['plains']
+[P0] waiting_for type: Priority
+past mulligan phases; exporting pre.json
+exported pre.json
+[A3] live titan oid=38 zone=Library trigger defs found=2
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
