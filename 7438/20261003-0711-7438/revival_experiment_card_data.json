@@ -1,0 +1,136 @@
+{
+ "name": "Revival Experiment",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Green"
+  ],
+  "generic": 4
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Sorcery"
+  ],
+  "subtypes": []
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "For each permanent type, return up to one card of that type from your graveyard to the battlefield. You lose 3 life for each card returned this way. Exile Revival Experiment.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "unparsed_quantity",
+    "description": "For each permanent type, return up to one card of that type from your graveyard to the battlefield"
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "LoseLife",
+     "amount": {
+      "type": "Multiply",
+      "factor": 3,
+      "inner": {
+       "type": "Ref",
+       "qty": {
+        "type": "TrackedSetSize"
+       }
+      }
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "ChangeZone",
+      "origin": null,
+      "destination": "Exile",
+      "target": {
+       "type": "SelfRef"
+      },
+      "owner_library": false,
+      "enter_transformed": false,
+      "enter_tapped": false,
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": "For each permanent type, return up to one card of that type from your graveyard to the battlefield. You lose 3 life for each card returned this way. Exile ~.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "triggers": [],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Black",
+  "Green"
+ ],
+ "scryfall_oracle_id": "913ec957-5f4e-46b4-a819-9448837f72a3",
+ "metadata": {
+  "source_printing_ids": [
+   "694bfbbf-4246-4b2c-96a0-9e895b4f7709",
+   "cd50007c-5883-4f0c-80c3-41f13f463908"
+  ]
+ },
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "C21",
+  "PRM"
+ ],
+ "rulings": [
+  {
+   "date": "2021-04-16",
+   "text": "The cards you return are chosen as Revival Experiment resolves. No player can respond to those choices."
+  },
+  {
+   "date": "2021-04-16",
+   "text": "The permanent types are artifact, creature, enchantment, land, and planeswalker. Things like \u201clegendary\u201d or \u201csnow\u201d are supertypes, not types."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
