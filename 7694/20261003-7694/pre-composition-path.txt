@@ -1,0 +1,7 @@
+Pre-fix composition path (runtime article+noun composition):
+ * `Object` maps to the generic `nounTarget` ON PURPOSE: `targeting.one` is
+            see it — measured with each locale's real strings, `targeting.one`
+            depends on the composition. Multi-slot (`targeting.one`): one line
+            Single-slot optional (`targeting.upToOne`) is the wider case and is
+    ? t("targeting.upToOne", { target: targetWord })
+    : t("targeting.one", { target: targetWord });
