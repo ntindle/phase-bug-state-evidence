@@ -1,0 +1,672 @@
+{
+ "issue": 7437,
+ "run_id": "20261003-0651-7437",
+ "started_at": "2026-10-03T11:51:31",
+ "duration_s": 14.9,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (shared process; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable; ServerHello 0.100.0/bc9ef56/protocol 101 re-verified by this run); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1ba5616508ade318af69ae6c3867f90309b9d25df2f9e2f54e4b18db1a5434da",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Razor Demon",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "Swamp",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_cast_resolved": "passed",
+  "A4_no_draft_window": "passed",
+  "A5_no_permission_grant": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Razor Demon as the issue reports -- triggers[0] mode SpellCast, head Unimplemented (name 'unrecognized_clause_head' in pinned data; the issue body quotes 'target' -- description matches, structural defect identical) describing 'target opponent drafts a card from ~'s spellbook', + sub Spell GrantCastingPermission { PlayFromExile UntilEndOfTurn granted_to 0 Cast, target TrackedSet(0), grantee ParentTargetController }, sub_link SequentialSibling; valid_target Player; spellbook metadata has 3 entries (Demonic Bargain, Demonic Pact, Ever After); see data_evidence.json and razor_demon_card_data.json.",
+  "A2 probe: pre demon_in_hand=True; pre untapped_swamps=3; pre phase=PreCombatMain; pre active=0; pre stack=0; mid trigger on stack=True; target_chosen=False (no TargetSelection prompt seen: True).",
+  "A2 passed: pre.json shows Razor Demon in the P0 hand with >=3 untapped Swamps (main phase, stack empty), and mid_stack.json shows the SpellCast draft trigger on the stack. The trigger's target selection was never prompted (engine auto-targeted the only opponent, P1); no TargetSelection appears in the wire log.",
+  "A3 probe: demon_cast=True; target_chosen=False; trigger_on_stack=True; trigger_resolved=True; cast_turn=6.",
+  "A3 passed: Razor Demon was cast, its SpellCast trigger was seen on the stack and resolved; the creature is now on the P0 battlefield (oid 19).",
+  "A4 probe: trigger_resolved=True; draft_prompt_seen=False; choice_shaped window prompts=0 None; spellbook cards in zones at post=[].",
+  "A4 passed (bug symptom): the trigger resolved but no draft-choice prompt was ever offered to the opponent and no spellbook card entered any zone -- the Unimplemented draft head is a runtime no-op, exactly the reported defect.",
+  "A5 probe: choice_shaped prompts to P1=[]; wire draft_choice events=0; spellbook in zones post=[].",
+  "A5 passed: no draft prompt reached the opponent, the wire log records no draft-choice opportunity, and no spellbook card became visible/castable to either player -- GrantCastingPermission read the empty tracked set and granted nothing observable (the issue asserts no consumer-side symptom; this records the observable absence).",
+  "A6 passed: post stack empty, game advanced past the cast turn (cast turn 6, post turn 13, phase PostCombatMain), no in-flight submissions lingering (rejections=0).",
+  "verdict=reproduced: Razor Demon was cast, its SpellCast draft trigger resolved, but the 'target opponent drafts a card from Razor Demon's spellbook' clause never parsed (Unimplemented head, runtime no-op), so no draft prompt was offered to the opponent, no spellbook card materialized, and the GrantCastingPermission sub-ability read an empty chain tracked set -- the exact structural defect the issue reports, now measured at runtime. Confirmed on v0.100.0. This is not a fix claim.",
+  "server.log excerpt: 405 matching lines (of 5163 total; log=/home/hatch/workspace/dev/phase-backfill/runs/run-20261003-0541/server.log)"
+ ],
+ "observations": {
+  "demon_cast": true,
+  "demon_oid": 19,
+  "target_chosen": false,
+  "trigger_on_stack": true,
+  "trigger_resolved": true,
+  "cast_turn": 6,
+  "draft_prompt_seen": false,
+  "draft_answered": false,
+  "spellbook_in_zones_post": [],
+  "prompt_classes": {
+   "pass_priority": 14,
+   "mana_payment": 94,
+   "declare_combat": 3,
+   "discard_handsize": 2
+  },
+  "prompts_seen": [
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.86"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.87"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.88"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.89"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.90"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.91"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.92"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.93"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.94"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.95"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.96"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.97"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.98"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.99"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.100"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.101"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.102"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.103"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.104"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.105"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.106"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.107"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.108"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.109"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.110"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.111"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.112"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.113"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.114"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.115"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.116"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.117"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.118"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.119"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.120"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.121"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.122"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.123"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.124"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.125"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.126"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.127"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.128"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.129"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.130"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.131"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.132"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.133"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.134"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.135"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.136"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.137"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.138"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.139"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.140"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.141"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.142"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.143"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.144"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.145"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.146"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.147"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.148"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.149"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.150"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.151"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.152"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.153"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.154"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.155"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.156"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.157"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.158"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.159"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.160"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.161"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.162"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.163"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.164"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.165"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.166"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.167"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.168"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.169"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.170"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.171"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.172"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.173"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.174"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.175"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.176"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.177"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.178"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.179"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.180"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.181"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.182"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.183"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.184"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.185"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.186"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.187"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.188"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.189"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.190"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.191"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.192"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.193"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.194"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.195"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.196"
+   ],
+   [
+    "resolving",
+    "P1",
+    "MK15XJ.0.197"
+   ],
+   [
+    "resolving",
+    "P0",
+    "MK15XJ.0.198"
+   ]
+  ],
+  "wf_types_window": [
+   "DeclareAttackers",
+   "DiscardToHandSize",
+   "Priority"
+  ],
+  "stack_kinds_window": [
+   "{\"type\": \"Spell\", \"data\": {\"card_id\": 19, \"casting_variant\": \"Normal\", \"actual_mana_spent\": 3}}",
+   "{\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 19, \"ability\": {\"effect\": {\"type\": \"Unimplemented\", \"name\": \"unrecogn"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (Razor Demon cast, SpellCast draft trigger resolution with the opponent targeted) and observes the resolution outcome. The issue asserts no consumer-side symptom; A5 records the observable absence of any grant.",
+  "4x Razor Demon / 56x Swamp deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "The harness holds no outside-the-game spellbook pool; the decisive observable is whether the draft prompt is ever offered, not the number of cards drafted.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 4x Razor Demon + 56x Swamp; P1: 60x Swamp (lands only, never casts, never attacks); default Bo1, life 20",
+ "contract_line": "Razor Demon cast -> SpellCast draft trigger resolution (target opponent = P1): correct = the opponent is offered a draft choice from the spellbook and may cast the drafted card. Observed (bug): the draft clause never parsed (Unimplemented head, runtime no-op), so no draft prompt is offered and the GrantCastingPermission sub-ability reads an empty tracked set.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 395
+ }
+}
