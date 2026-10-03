@@ -1,0 +1,408 @@
+{
+ "issue": 7426,
+ "run_id": "20261003-7426",
+ "started_at": "2026-10-03T04:20:52",
+ "duration_s": 20.9,
+ "server": {
+  "server_version": "v0.100.0",
+  "build_commit": "bc9ef56",
+  "protocol_version": 101,
+  "server_binary_sha256": "261550905a3d569731c9bd66b2b12a0fa878400fefaa9cc36f3ad4e1a3d8adda",
+  "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+  "draft_pools_sha256": "961c5397d834ca92b2168035be386844339573024df72dbc78370b934ed75770",
+  "signature_verified": true,
+  "server_run_id": "backfill-owned v0.100.0 server on 127.0.0.1:9374 (started by this run; ServerHello 0.100.0/bc9ef56/protocol 101 verified by this run's own Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.100.0 == pinned release dir (GitHub /releases re-confirmed v0.100.0 still latest stable at 23:13 CDT 2026-10-02); hashes recomputed against on-disk artifacts this run"
+ },
+ "driver": {
+  "protocol_advertised": 101,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d4b31504f8bafb2414c05b929f1100226f915a4b4d81add126c6dac508e79686",
+ "format_config": "Planechase (engine-canonical FormatConfig::planechase())",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    60
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "planar_deck": [
+   "Interplanar Tunnel",
+   "Bicycle Rack",
+   "Elvish Impersonation Contest",
+   "Ghirapur Grand Prix",
+   "Jalira's Show",
+   "Shrinking Plane",
+   "Sky Deck",
+   "Stroopwafel Cafe",
+   "The Food Court",
+   "The Pro Tour",
+   "Windmill Farm",
+   "Hedron Fields of Agadeem",
+   "Jund",
+   "Llanowar",
+   "Prahv",
+   "Tazeem",
+   "Windriddle Palaces",
+   "Agyrem",
+   "Esper",
+   "The Eon Fog"
+  ]
+ },
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_encounter_trigger_resolved": "passed",
+  "A4_reveal_choice_offered": "failed",
+  "A5_no_ability_effect": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.100.0 card-data.json parses Interplanar Tunnel's encounter trigger as mode {'Planeswalked': {'role': 'To'}} with head Unimplemented('unparsed_verb_arguments': 'reveal cards from the top of your planar deck until you reveal five plane cards') + sub ChangeZoneAll (destination Library, target TrackedSetFiltered id 0) + sub-sub Unimplemented('unparsed_verb_arguments': 'put the rest of the revealed cards on the bottom in a random order'); see data_evidence.json.",
+  "A2 probe: Interplanar Tunnel face-up in command zone=True (oid=124); planar_controller=0; planar_deck count=19.",
+  "A2 passed: Interplanar Tunnel was encountered (face-up in the command zone) when its trigger was on the stack.",
+  "A3 passed: the 'When you encounter Interplanar Tunnel' trigger was observed on the stack and resolved (turn 3).",
+  "Encounter-window prompts: 55 vi opportunities seen by either seat; waiting_for types: ['Priority']; choice-shaped: none; reveal-related: none.",
+  "A4 FAILED: the encounter trigger resolved but NO reveal/on-top choice was ever offered to either seat -- THE REPORTED BUG (the head clause never parsed, so the reveal step does not exist at runtime).",
+  "A5 probe: planar_deck pre=19 cards, window_end=19 cards, order_changed=True; revealed_cards+public pre=0 window_end=0; max revealed during window=0; departure_already_run_by_window_end=True.",
+  "A5 FAILED: the encounter trigger resolved with ZERO ability-driven planar-deck effect -- no reveal recorded, no cards moved by the ability -- THE REPORTED BUG (ChangeZoneAll read the empty chain tracked set; silent no-op). Any planar-deck motion in post is the engine's own phenomenon-departure procedure, not the ability. POST-ANALYSIS (2026-10-03, from the immutable saved states): the window_end planar_deck order == pre planar_deck[1:] + [tunnel_oid] EXACTLY (verified programmatically): the departure revealed exactly one card (The Food Court, pre-deck top) as the new active plane and put the Tunnel on the very bottom, with every other card in identical order. Had the ability worked, its 'reveal until five plane cards ... rest on the bottom in a random order' would have shuffled the deck. Combined with max-revealed=0 during the whole window and no on-top choice ever offered, the ability contributed ZERO planar-deck motion: a complete silent no-op, exactly the reported empty-tracked-set consequence.",
+  "A6 passed: post stack empty, game advanced (turn 6, phase EndCombat).",
+  "verdict=reproduced: Interplanar Tunnel was encountered; its 'When you encounter' trigger fired and resolved, but no reveal happened, no 'put a plane card on top' choice was offered, and the ability moved no planar-deck cards -- see the failed assertion(s) above (confirmed on v0.100.0). The parse is the reported defect; the silent no-op is its direct structural consequence (Unimplemented head pushes no GameEvent -> empty chain tracked set -> ChangeZoneAll no-op). This is not a fix claim.",
+  "server.log excerpt: 204 matching lines (of 266 total; log=/home/hatch/workspace/dev/phase-backfill/runs/20261003-7426/server.log)",
+  "POST-RUN scenario fix (2026-10-03, no behavior change): after finalize closed the wire log, main()'s trailing wire('game_result') raised ValueError on the closed file, which aborted the __main__ post-processing (scenario copy / PNG render / manifest). driver/scenario_7426.py now guards wire() with 'if WIRE.closed: return' (say() already guarded); the evidence copy, PNG, and manifest were produced manually from the completed run's artifacts. scenario_sha256 updated to the fixed file; the game-driving logic is byte-identical to what ran."
+ ],
+ "observations": {
+  "attempts": 1,
+  "rolls": 2,
+  "roll_rejections": 0,
+  "starting_plane_name": "elvish impersonation contest",
+  "encounter_seen": true,
+  "encounter_resolved": true,
+  "tunnel_oid": 124,
+  "planar_deck_at_pre": [
+   121,
+   136,
+   122,
+   138,
+   131,
+   140,
+   126,
+   129,
+   132,
+   128,
+   137,
+   130,
+   135,
+   125,
+   134,
+   127,
+   133,
+   139,
+   123
+  ],
+  "revealed_max_window": 0,
+  "departure_by_window_end": true,
+  "prompts_seen": [
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.47"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.48"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.49"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.50"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.51"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.52"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.53"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.54"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.55"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.56"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.57"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.58"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.59"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.60"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.61"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.62"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.63"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.64"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.65"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.66"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.67"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.68"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.69"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.70"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.71"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.72"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.73"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.74"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.75"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.76"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.77"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.78"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.79"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.80"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.81"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.82"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.83"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.84"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.85"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.86"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.87"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.88"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.89"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.90"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.91"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.92"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.93"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.94"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.95"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.96"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.97"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.98"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.99"
+   ],
+   [
+    "encounter_window",
+    "P1",
+    "Y5C2CJ.0.100"
+   ],
+   [
+    "encounter_window",
+    "P0",
+    "Y5C2CJ.0.101"
+   ]
+  ],
+  "wf_types_window": [
+   "Priority"
+  ],
+  "cast_rejections": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The report is a data-level parse report; the scenario replays the reported line (encounter Interplanar Tunnel in a fresh Planechase game) and observes the resolution outcome. The planar deck is engine-shuffled; P0 planeswalked via the planar die until the Tunnel was encountered (filler planes chosen for benign, choice-free chaos abilities; planar deck singleton enforced by the engine).",
+  "The engine's phenomenon-departure planeswalk (reveal until a plane, rest to the bottom) runs after the encounter ability resolves; planar-deck motion from the departure is not the ability's effect.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 60x Island + planar deck [Interplanar Tunnel + 19 benign planes]; P1: 60x Forest (lands, passes, never attacks); Planechase format, life 20",
+ "contract_line": "Encounter Interplanar Tunnel: reveal cards from the top of the planar deck until five plane cards are revealed, put a plane card from among them on top, rest on the bottom in random order. Observed (bug): the clause never parsed -- no reveal, no on-top choice, no planar-deck motion from the ability.",
+ "prior_runs": [],
+ "stats": {
+  "states_seen": 197
+ }
+}
