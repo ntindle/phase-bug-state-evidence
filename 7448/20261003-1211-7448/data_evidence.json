@@ -1,0 +1,373 @@
+{
+ "the_legend_of_yangchen_card": {
+  "name": "The Legend of Yangchen",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "White"
+   ],
+   "generic": 3
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Enchantment"
+   ],
+   "subtypes": [
+    "Saga"
+   ]
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "(As this Saga enters and after your draw step, add a lore counter.)\nI \u2014 Starting with you, each player chooses up to one permanent with mana value 3 or greater from among permanents your opponents control. Exile those permanents.\nII \u2014 You may have target opponent draw three cards. If you do, draw three cards.\nIII \u2014 Exile this Saga, then return it to the battlefield transformed under your control.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "CounterAdded",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unparsed_verb_arguments",
+      "description": "choose permanent with mana value 3 or greater from among permanents your opponents control"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Exile",
+       "target": {
+        "type": "TrackedSet",
+        "id": 0
+       },
+       "owner_library": false,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "multi_target": {
+      "min": 0,
+      "max": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "forward_result": false,
+     "player_scope": {
+      "type": "All"
+     },
+     "starting_with": "You"
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "Chapter 1",
+    "constraint": null,
+    "condition": null,
+    "counter_filter": {
+     "counter_type": "lore",
+     "threshold": 1
+    },
+    "saga_chapter": 1,
+    "batched": false
+   },
+   {
+    "mode": "CounterAdded",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 3
+      },
+      "target": {
+       "type": "Typed",
+       "type_filters": [],
+       "controller": "Opponent",
+       "properties": []
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Draw",
+       "count": {
+        "type": "Fixed",
+        "value": 3
+       },
+       "target": {
+        "type": "Controller"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "EffectOutcome",
+       "signal": "OptionalEffectPerformed"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": true,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "Chapter 2",
+    "constraint": null,
+    "condition": null,
+    "counter_filter": {
+     "counter_type": "lore",
+     "threshold": 2
+    },
+    "saga_chapter": 2,
+    "batched": false
+   },
+   {
+    "mode": "CounterAdded",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "ChangeZone",
+      "origin": null,
+      "destination": "Exile",
+      "target": {
+       "type": "SelfRef"
+      },
+      "owner_library": false,
+      "enter_transformed": false,
+      "enter_tapped": false,
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Battlefield",
+       "target": {
+        "type": "SelfRef"
+       },
+       "owner_library": false,
+       "enter_transformed": true,
+       "enters_under": "You",
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "Chapter 3",
+    "constraint": null,
+    "condition": null,
+    "counter_filter": {
+     "counter_type": "lore",
+     "threshold": 3
+    },
+    "saga_chapter": 3,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [
+   {
+    "event": "Moved",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "PutCounter",
+      "counter_type": "lore",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "SelfRef"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "mode": {
+     "type": "Mandatory"
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "description": "Saga ETB lore counter",
+    "condition": null,
+    "destination_zone": "Battlefield"
+   }
+  ],
+  "color_override": null,
+  "color_identity": [
+   "White"
+  ],
+  "scryfall_oracle_id": "521a63cf-5e83-4649-9800-c62b2fc474d6",
+  "metadata": {
+   "source_printing_ids": [
+    "944ddbe5-45bf-44c3-aad5-b051ec79ae8b",
+    "a60e8f23-90b2-4bc6-bd54-a95055556389"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pioneer": "legal",
+   "standard": "legal",
+   "standardbrawl": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "layout": "transform",
+  "face_index": 0,
+  "printings": [
+   "PTLA",
+   "TLA"
+  ],
+  "rulings": [
+   {
+    "date": "2025-10-02",
+    "text": "A nonmodal double-faced card enters with its front face up by default, unless a spell or ability instructs you to put it onto the battlefield transformed or you cast it transformed, in which case it enters with its back face up."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "Each face of a nonmodal double-faced card has its own set of characteristics: name, types, subtypes, abilities, and so on. While a nonmodal double-faced permanent is on the battlefield, consider only the characteristics of the face that's currently up. The other set of characteristics is ignored."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "Each nonmodal double-faced card in this set is cast face up. In every zone other than the battlefield, consider only the characteristics of its front face. If it is on the battlefield, consider only the characteristics of the face that's up; the other face's characteristics are ignored."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "If you are instructed to put a card that isn't a double-faced card onto the battlefield transformed, it will not enter the battlefield at all. In that case, it stays in the zone it was previously in. For example, if a single-faced card is a copy of The Legend of Yangchen, the chapter III ability will cause it to be exiled and then remain in exile."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "Permanents chosen by players using The Legend of Yangchen's first ability will be exiled simultaneously once all players have chosen permanents."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "The mana value of a nonmodal double-faced card is the mana value of its front face, no matter which face is up."
+   },
+   {
+    "date": "2025-10-02",
+    "text": "You must choose a target opponent for The Legend of Yangchen's second chapter ability when it is put on the stack. You will not choose whether or not that opponent will draw cards until the ability resolves."
+   }
+  ],
+  "rarities": [
+   "mythic"
+  ]
+ },
+ "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+ "head_name_note": {
+  "issue_body_quotes": "choose",
+  "pinned_data_shows": [
+   "unparsed_verb_arguments",
+   null,
+   null
+  ]
+ }
+}
