@@ -1,0 +1,248 @@
+{
+ "why": "brain2_on_stack",
+ "stack": [
+  {
+   "id": 11,
+   "source_id": 11,
+   "controller": 0,
+   "kind": {
+    "type": "Spell",
+    "data": {
+     "card_id": 11,
+     "ability": {
+      "effect": {
+       "type": "RevealHand",
+       "target": {
+        "type": "Typed",
+        "type_filters": [],
+        "controller": "Opponent",
+        "properties": []
+       },
+       "card_filter": {
+        "type": "Typed",
+        "type_filters": [
+         {
+          "Non": "Land"
+         }
+        ],
+        "controller": null,
+        "properties": []
+       },
+       "count": null,
+       "reveal": true
+      },
+      "targets": [
+       {
+        "Player": 1
+       }
+      ],
+      "source_id": 11,
+      "cast_occurrence": {
+       "caster": 0,
+       "turn_journal_index": 0
+      },
+      "controller": 0,
+      "kind": "Spell",
+      "sub_ability": {
+       "effect": {
+        "type": "ChangeZone",
+        "origin": null,
+        "destination": "Exile",
+        "target": {
+         "type": "ParentTarget"
+        },
+        "owner_library": false,
+        "enter_transformed": false,
+        "enter_tapped": false,
+        "enters_attacking": false
+       },
+       "targets": [],
+       "source_id": 11,
+       "cast_occurrence": {
+        "caster": 0,
+        "turn_journal_index": 0
+       },
+       "controller": 0,
+       "kind": "Spell",
+       "sub_ability": {
+        "effect": {
+         "type": "Unimplemented",
+         "name": "unparsed_verb_arguments",
+         "description": "search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card"
+        },
+        "targets": [],
+        "source_id": 11,
+        "cast_occurrence": {
+         "caster": 0,
+         "turn_journal_index": 0
+        },
+        "controller": 0,
+        "kind": "Spell",
+        "sub_ability": {
+         "effect": {
+          "type": "ChangeZone",
+          "origin": null,
+          "destination": "Exile",
+          "target": {
+           "type": "TrackedSet",
+           "id": 0
+          },
+          "owner_library": false,
+          "enter_transformed": false,
+          "enter_tapped": false,
+          "enters_attacking": false
+         },
+         "targets": [],
+         "source_id": 11,
+         "cast_occurrence": {
+          "caster": 0,
+          "turn_journal_index": 0
+         },
+         "controller": 0,
+         "kind": "Spell",
+         "sub_ability": {
+          "effect": {
+           "type": "Shuffle",
+           "target": {
+            "type": "ParentTargetController"
+           }
+          },
+          "targets": [],
+          "source_id": 11,
+          "cast_occurrence": {
+           "caster": 0,
+           "turn_journal_index": 0
+          },
+          "controller": 0,
+          "kind": "Spell",
+          "sub_ability": null,
+          "duration": null,
+          "condition": {
+           "type": "QuantityCheck",
+           "lhs": {
+            "type": "Ref",
+            "qty": {
+             "type": "DistinctCardTypes",
+             "source": {
+              "type": "Zone",
+              "zone": "Graveyard",
+              "scope": "Controller"
+             }
+            }
+           },
+           "comparator": "GE",
+           "rhs": {
+            "type": "Fixed",
+            "value": 4
+           }
+          },
+          "context": {
+           "additional_cost_paid": false,
+           "alternative_mana_cost_paid": false,
+           "optional_effect_performed": false
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "description": "Delirium \u2014 If there are four or more card types among cards in your graveyard, search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card, exile those cards, then that player shuffles.",
+          "detached_remainder": "NoProducer",
+          "forward_result": false
+         },
+         "duration": null,
+         "condition": {
+          "type": "QuantityCheck",
+          "lhs": {
+           "type": "Ref",
+           "qty": {
+            "type": "DistinctCardTypes",
+            "source": {
+             "type": "Zone",
+             "zone": "Graveyard",
+             "scope": "Controller"
+            }
+           }
+          },
+          "comparator": "GE",
+          "rhs": {
+           "type": "Fixed",
+           "value": 4
+          }
+         },
+         "context": {
+          "additional_cost_paid": false,
+          "alternative_mana_cost_paid": false,
+          "optional_effect_performed": false
+         },
+         "optional_targeting": false,
+         "optional": false,
+         "description": "Delirium \u2014 If there are four or more card types among cards in your graveyard, search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card, exile those cards, then that player shuffles.",
+         "detached_remainder": "NoProducer",
+         "forward_result": false
+        },
+        "duration": null,
+        "condition": {
+         "type": "QuantityCheck",
+         "lhs": {
+          "type": "Ref",
+          "qty": {
+           "type": "DistinctCardTypes",
+           "source": {
+            "type": "Zone",
+            "zone": "Graveyard",
+            "scope": "Controller"
+           }
+          }
+         },
+         "comparator": "GE",
+         "rhs": {
+          "type": "Fixed",
+          "value": 4
+         }
+        },
+        "context": {
+         "additional_cost_paid": false,
+         "alternative_mana_cost_paid": false,
+         "optional_effect_performed": false
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "description": "Delirium \u2014 If there are four or more card types among cards in your graveyard, search that player's graveyard, hand, and library for any number of cards with the same name as the exiled card, exile those cards, then that player shuffles.",
+        "detached_remainder": "NoProducer",
+        "forward_result": false,
+        "sub_link": "SequentialSibling"
+       },
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "Target opponent reveals their hand. You choose a nonland card from it and exile that card.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false
+      },
+      "duration": null,
+      "condition": null,
+      "context": {
+       "additional_cost_paid": false,
+       "alternative_mana_cost_paid": false,
+       "optional_effect_performed": false,
+       "cast_from_zone": "Hand",
+       "cast_controller": 0,
+       "cast_phase": "PreCombatMain"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "description": "Target opponent reveals their hand. You choose a nonland card from it and exile that card.",
+      "detached_remainder": "NoProducer",
+      "forward_result": false
+     },
+     "casting_variant": "Normal",
+     "actual_mana_spent": 3
+    }
+   }
+  }
+ ]
+}
