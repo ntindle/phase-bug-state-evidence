@@ -1,0 +1,145 @@
+{
+ "name": "Invasive Surgery",
+ "oracle": "Counter target sorcery spell.\nDelirium \u2014 If there are four or more card types among cards in your graveyard, search the graveyard, hand, and library of that spell's controller for any number of cards with the same name as that spell, exile those cards, then that player shuffles.",
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "abilities_count": 2,
+ "counter_ability": {
+  "type": "Counter",
+  "target": {
+   "type": "And",
+   "filters": [
+    {
+     "type": "StackSpell"
+    },
+    {
+     "type": "Typed",
+     "type_filters": [
+      "Sorcery"
+     ],
+     "controller": null,
+     "properties": []
+    }
+   ]
+  }
+ },
+ "head_effect": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "search the graveyard, hand, and library of that spell's controller for any number of cards with the same name as that spell"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "ChangeZone",
+   "origin": null,
+   "destination": "Exile",
+   "target": {
+    "type": "TrackedSet",
+    "id": 0
+   },
+   "owner_library": false,
+   "enter_transformed": false,
+   "enter_tapped": false,
+   "enters_attacking": false
+  },
+  "cost": null,
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Shuffle",
+    "target": {
+     "type": "ParentTargetController"
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": {
+    "type": "QuantityCheck",
+    "lhs": {
+     "type": "Ref",
+     "qty": {
+      "type": "DistinctCardTypes",
+      "source": {
+       "type": "Zone",
+       "zone": "Graveyard",
+       "scope": "Controller"
+      }
+     }
+    },
+    "comparator": "GE",
+    "rhs": {
+     "type": "Fixed",
+     "value": 4
+    }
+   },
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": {
+   "type": "QuantityCheck",
+   "lhs": {
+    "type": "Ref",
+    "qty": {
+     "type": "DistinctCardTypes",
+     "source": {
+      "type": "Zone",
+      "zone": "Graveyard",
+      "scope": "Controller"
+     }
+    }
+   },
+   "comparator": "GE",
+   "rhs": {
+    "type": "Fixed",
+    "value": 4
+   }
+  },
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ },
+ "sub_sub_ability": {
+  "kind": "Spell",
+  "effect": {
+   "type": "Shuffle",
+   "target": {
+    "type": "ParentTargetController"
+   }
+  },
+  "cost": null,
+  "sub_ability": null,
+  "duration": null,
+  "description": null,
+  "target_prompt": null,
+  "condition": {
+   "type": "QuantityCheck",
+   "lhs": {
+    "type": "Ref",
+    "qty": {
+     "type": "DistinctCardTypes",
+     "source": {
+      "type": "Zone",
+      "zone": "Graveyard",
+      "scope": "Controller"
+     }
+    }
+   },
+   "comparator": "GE",
+   "rhs": {
+    "type": "Fixed",
+    "value": 4
+   }
+  },
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ },
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'search'; the pinned v0.100.0 corpus names it 'unparsed_verb_arguments' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}
