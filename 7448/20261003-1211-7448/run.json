@@ -1,0 +1,62 @@
+{
+ "issue": 7448,
+ "run_id": "20261003-1211-7448",
+ "started_at": "2026-10-03T17:15:06",
+ "finished_at": "2026-10-03T17:15:11",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-10-03; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9374 (started by this run; prior v0.101.0 server from run 20261003-1111-7447 stopped before start; verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03T16:02:26Z) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "reproduced",
+ "scope": "The Legend of Yangchen parse state: data-level parse assertion + live-object parse-tree assertion on the pinned server. The issue asserts no runtime consumer symptom (ChangeZone's consumption on the empty tracked set is unmeasured in the #6857 census); per the issue, the reported defect is the parse state and its direct structural consequence (empty chain tracked-set publish from the Unimplemented no-op resolver). No chapter-resolution drive was attempted.",
+ "result": "Pinned v0.101.0 card-data.json and the live object on the pinned server both carry the reported Unimplemented head ('choose permanent with mana value 3 or greater from among permanents your opponents control') on the chapter-1 CounterAdded trigger; the ChangeZone sub-ability reads TrackedSet(0), which the no-op Unimplemented resolver leaves empty. Head-name note: the issue quotes 'choose'; pinned data names the head 'unparsed_verb_arguments' -- description identical, still Unimplemented.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json parses The Legend of Yangchen as the issue reports -- Enchantment -- Saga; 3 CounterAdded triggers (chapters 1-3); chapter-3 execute kind Spell, head Unimplemented describing 'choose a creature', sub Spell DestroyAll { cant_regenerate: false } target TrackedSet(0), player_scope All, starting_with You. Head-name note: the issue quotes the head name 'choose' (census corpus 9b7c66e30); the pinned data names the head 'unparsed_verb_arguments' -- the clause is still Unimplemented, so the defect holds; see data_evidence.json and the_legend_of_yangchen_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=8WWI9N; post_mulligan_seen=True; pre_exported=True; pre objects=120; wf_types_seen=['MulliganDecision', 'Priority']; pre waiting_for=Priority; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including The Legend of Yangchen in P0's main deck), the game started for both seats, mulligans completed, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live The Legend of Yangchen object (oid 11, zone Library) with trigger_definitions carrying the identical chapter-1 Unimplemented head -- execute kind ['Spell'], head ['Unimplemented/unparsed_verb_arguments'], sub ChangeZone->Exile target TrackedSet(0); the parse defect is live on the pinned server."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: ChangeZone's behaviour on an empty tracked set is unmeasured (stated in the issue), so no chapter-resolution drive was performed.",
+  "The live check establishes the parse tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "Browser UI not exercised; native engine only, two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports restorable only via full game replay."
+ ],
+ "observations": {
+  "live_head": [
+   {
+    "execute_kind": "Spell",
+    "head_type": "Unimplemented",
+    "head_name": "unparsed_verb_arguments",
+    "head_description": "choose permanent with mana value 3 or greater from among permanents your opponents control",
+    "sub_type": "ChangeZone",
+    "sub_target": {
+     "id": 0,
+     "type": "TrackedSet"
+    },
+    "cant_regenerate": null,
+    "player_scope": null,
+    "starting_with": null
+   }
+  ],
+  "pre_objects": 120,
+  "wf_types_seen": [
+   "MulliganDecision",
+   "Priority"
+  ]
+ }
+}
