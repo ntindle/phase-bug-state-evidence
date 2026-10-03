@@ -1,0 +1,59 @@
+{
+ "name": "Last One Standing",
+ "oracle": "Choose a creature at random, then destroy the rest.",
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Sorcery"
+  ],
+  "subtypes": []
+ },
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Black",
+   "Red"
+  ],
+  "generic": 1
+ },
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c",
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "unparsed_verb_arguments",
+    "description": "Choose a creature at random"
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Destroy",
+     "target": {
+      "type": "TrackedSet",
+      "id": 0
+     },
+     "cant_regenerate": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": "Choose a creature at random, then destroy the rest.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "report_corpus_note": "the issue's corpus (9b7c66e30) names the Unimplemented head 'choose'; the pinned v0.100.0 corpus names it 'unparsed_verb_arguments' with the identical description -- both are Effect::Unimplemented over the same clause; the structural claim is unchanged."
+}
