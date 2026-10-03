@@ -1,0 +1,67 @@
+{
+ "card_name": "sAnS mERcY",
+ "oracle_text": "wHeN YoU pLAnESWalK tO tHIs pLAnE, eACh pLAyER cHoOSeS a nOnBlACk cREaTuRE tHEy cONtrOl. dEsTRoy tHOsE cREatUReS.\nwHeNEveR cHoAS EnSUEs, pERfoRm tHe foLLowiNG pROceSs X tiMEs, wHErE X iS tHe nUmBEr oF tImeS yOU'vE roLLeD tHe PlaNAr diE tHIs tuRN. eAcH oPPonENt LOseS 3 LiFE uNLeSs tHAt pLAyEr sAcRiFicEs A nOnLaND pErManENt OR diSCaRds a cArD.",
+ "card_type": {
+  "supertypes": [],
+  "core_types": [],
+  "subtypes": [
+   "sECreT",
+   "LaIR"
+  ]
+ },
+ "trigger0_mode": {
+  "Planeswalked": {
+   "role": "To"
+  }
+ },
+ "head": {
+  "type": "Unimplemented",
+  "name": "unparsed_verb_arguments",
+  "description": "cHoOSeS a nOnBlACk cREaTuRE tHEy cONtrOl"
+ },
+ "sub_ability": {
+  "kind": "Spell",
+  "effect": "Destroy",
+  "target": {
+   "type": "TrackedSet",
+   "id": 0
+  },
+  "sub_link": "SequentialSibling"
+ },
+ "all_triggers": [
+  {
+   "mode": {
+    "Planeswalked": {
+     "role": "To"
+    }
+   },
+   "head_type": "Unimplemented"
+  },
+  {
+   "mode": {
+    "Unknown": "wHeNEveR cHoAS EnSUEs"
+   },
+   "head_type": "Unimplemented"
+  }
+ ],
+ "checks": {
+  "trigger0_mode_PlaneswalkedTo": true,
+  "execute_kind_Spell": true,
+  "head_Unimplemented": true,
+  "head_describes_choice": true,
+  "sub_kind_Spell": true,
+  "sub_effect_Destroy": true,
+  "sub_target_TrackedSet": true,
+  "sub_link_SequentialSibling": true,
+  "oracle_matches": true,
+  "typeline_lost_plane": true,
+  "typeline_shows_secret_lair": true
+ },
+ "head_name_discrepancy": {
+  "issue_body_quotes": "chooses",
+  "pinned_data_shows": "unparsed_verb_arguments",
+  "note": "description string matches the issue; the structural defect (Unimplemented head -> empty tracked set) is identical either way, as in the #7436-#7439 runs"
+ },
+ "typeline_note": "the alternating-case type line also failed to parse: card_type.core_types is empty (the card is not a Plane in the data) and subtypes read ['sECreT','LaIR'] (the 'Secret Lair' promo-set marker from printings ['PSSC']). This is why the engine's planar-deck validation rejects the card at runtime (A2).",
+ "card_data_sha256": "57e086e700ee0bd81002327e89d339356c4bb6c26d9e1ca9c010474c0b8c291c"
+}
