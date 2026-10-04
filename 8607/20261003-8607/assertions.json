@@ -1,0 +1,24 @@
+{
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_leg1_tribute_paid": "passed",
+  "A4_leg1_counters": "failed",
+  "A5_leg2_tribute_declined": "passed",
+  "A6_leg2_counters": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json carries Vorinclex's double/halve replacement, Nessian's Tribute 6 keyword + Tribute replacement + TributeNotPaid fight trigger, and Cackling Counterpart's token-copy effect.",
+  "A2 passed: Vorinclex + original Nessian (oid 10) on battlefield in pre_leg1.",
+  "A3 passed: P1 accepted (paid) tribute 6 on the token copy (wire: tribute_answer ACCEPT, iid C5ZN16.0.758).",
+  "A4 FAILED: token copy (oid 121) entered with 12 +1/+1 counters; expected 3. P1 paid tribute 6 as the chosen opponent, so CR 702.104a makes P1 the placer and Vorinclex (opponent's placement) should halve to 3; observed 12 = doubled, i.e. the commit pass recorded the placer as P0 (controller) instead of P1. BUG REPRODUCED.",
+  "A5 passed: P1 declined tribute on the second token copy (wire: DECLINE, iid C5ZN16.0.798).",
+  "A6 passed: declined token (oid 122) entered with 0 +1/+1 counters (expected 0); decline control clean."
+ ],
+ "leg1_count": 12,
+ "leg2_count": 0,
+ "token1_oid": 121,
+ "token2_oid": 122,
+ "nessian_oid": 10
+}
