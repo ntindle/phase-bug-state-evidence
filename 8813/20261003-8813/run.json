@@ -1,0 +1,52 @@
+{
+ "run_id": "20261003-8813",
+ "issue": 8813,
+ "issue_url": "https://github.com/phase-rs/phase/pull/8813",
+ "pr_state": "closed, unmerged",
+ "pr_head": "e0d1852f69d636ac816575b769e92a55ffe7ecc5",
+ "fixes_issue": 5474,
+ "validated_at": "2026-10-03",
+ "server": {
+  "server_version": "0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "mode": "Full",
+  "binary_sha256": "c32eabdcf93d04f6e0a3f0a1c2b3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c",
+  "card_data_sha256": "b365361edafd3d90",
+  "draft_pools_sha256": "75bb313864c341a9",
+  "observed_at": "2026-10-03",
+  "source": "ServerHello probed live (0.101.0/acafe9b/proto 103/Full); sha256 prefixes re-computed against pinned v0.101.0 release artifacts (binary+data under server/releases/v0.101.0/); fresh isolated server on 127.0.0.1:9374 for run 20261003-8813"
+ },
+ "client_mainline_commit": "12a8ef4a76fe8d70a35bdc7575988a40436aac8c",
+ "assertions": {
+  "A1_client_defect_site": "passed",
+  "A2_modal_offered": "passed",
+  "A3_front_only_legal": "passed",
+  "A4_back_probe_rejected": "passed",
+  "A5_front_completes": "passed",
+  "A6_back_offered_payable": "failed"
+ },
+ "verdict": "reproduced",
+ "obs_summary": {
+  "cast1_submitted": true,
+  "face1_legal_choose_modal_face": [
+   {
+    "back_face": false
+   }
+  ],
+  "back_probe_rejection_type": "ActionRejected",
+  "face_still_pending_after_probe": true,
+  "face2_legal_choose_modal_face": [
+   {
+    "back_face": false
+   }
+  ],
+  "face2_picked_back": false
+ },
+ "limitations": [
+  "Client-subsystem defect site verified by source inspection on current mainline (no DOM/browser run; the defect is in which buttons the modal paints).",
+  "PR #8813 is closed-unmerged, so no PR-variant worktree was built; the published patch was not applied or tested.",
+  "A6 is observational: it records the engine's advertised faces when the back face is affordable; it does not drive the verdict."
+ ],
+ "scenario": "driver/scenario_8813.py"
+}
