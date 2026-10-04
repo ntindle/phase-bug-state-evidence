@@ -1,0 +1,80 @@
+{
+ "issue": 825,
+ "run_id": "20261004-825",
+ "started_at": "2026-10-04T13:45:27",
+ "duration_s": 53.8,
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "observed_at": "2026-10-04",
+  "source": "ServerHello + sha256 recomputed against the on-disk verified v0.101.0 artifacts; server already listening on 127.0.0.1:9374 from the backfill loop (runs/20261004-825)"
+ },
+ "server_run_dir": "runs/20261004-825",
+ "driver": {
+  "protocol_advertised": 103,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "76ea30c58d12fe13dad69b459f5449c11e1e47aded7254450262a4f6ef0d69ae",
+ "decks": {
+  "P0": [
+   [
+    "Choose Your Weapon",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Runeclaw Bear",
+    4
+   ],
+   [
+    "Birds of Paradise",
+    8
+   ],
+   [
+    "Llanowar Elves",
+    4
+   ],
+   [
+    "Forest",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_modal_offered": "passed",
+  "A3_doubling": "passed",
+  "A4_archery_targets": "passed",
+  "A5_archery_damage": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre-cast setup: 2/2=Grizzly Bears, BoP on BF, untapped forests=4, weapon in hand=True",
+  "Two-Weapon Fighting: Grizzly Bears (oid 32) doubled to 4/4, all other creatures untouched",
+  "modal choice presented for both casts; cast1 chose Two-Weapon, cast2 chose Archery",
+  "Archery candidates == flying creatures: ['Birds of Paradise', 'Birds of Paradise', 'Birds of Paradise', 'Birds of Paradise']; non-flyers excluded",
+  "Archery: targeted Birds of Paradise (oid 31) destroyed by 5 damage; all other creatures unharmed",
+  "both casts in graveyard (2); game proceeding (wf=Priority)"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats."
+ ],
+ "setup_line": "P0: 12x Choose Your Weapon + 4x Grizzly Bears + 4x Runeclaw Bear + 8x Birds of Paradise + 4x Llanowar Elves + 28x Forest (12x density so both modal casts complete; mulligan-to-weapon, keep if weapon+2 lands); P1: 60x Forest dummy",
+ "contract_line": "P0 casts Choose Your Weapon twice: Two-Weapon Fighting targeting own 2/2 (expect 4/4), then Archery targeting own Birds of Paradise (expect 5 damage, destroyed); Archery must not offer the non-flying 2/2 as a target",
+ "stats": {}
+}
