@@ -17,7 +17,7 @@
   "observed_at": "2026-10-03",
   "source": "ServerHello probed live (0.101.0/acafe9b/proto 103/Full); sha256 prefixes re-computed against pinned v0.101.0 release artifacts (binary+data under server/releases/v0.101.0/); fresh isolated server on 127.0.0.1:9374 for run 20261003-8813"
  },
- "client_mainline_commit": "12a8ef4a76fe8d70a35bdc7575988a40436aac8c",
+ "client_mainline_commit": "59b2b17b36f875e1479330703c663d557b854c1e",
  "assertions": {
   "A1_client_defect_site": "passed",
   "A2_modal_offered": "passed",
@@ -26,7 +26,7 @@
   "A5_front_completes": "passed",
   "A6_back_offered_payable": "failed"
  },
- "verdict": "reproduced",
+ "verdict": "not-reproduced",
  "obs_summary": {
   "cast1_submitted": true,
   "face1_legal_choose_modal_face": [
@@ -48,5 +48,7 @@
   "PR #8813 is closed-unmerged, so no PR-variant worktree was built; the published patch was not applied or tested.",
   "A6 is observational: it records the engine's advertised faces when the back face is affordable; it does not drive the verdict."
  ],
- "scenario": "driver/scenario_8813.py"
+ "scenario": "driver/scenario_8813.py",
+ "client_mainline_note": "A1 checked against freshly-fetched origin/main (59b2b17); the local checkout HEAD (12a8ef4, 2026-09-17) was 16 days stale and initially gave the wrong answer - corrected before publication.",
+ "correction": "2026-10-04 correction: initial A1 used a stale checkout and reported the defect present; re-check against current origin/main shows the fixed behavior (buttons gated on engine-issued actions). Verdict corrected reproduced -> not-reproduced before publication."
 }
