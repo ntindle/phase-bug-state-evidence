@@ -1,0 +1,21 @@
+{
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_trigger_fired": "passed",
+  "A4_sacrifice": "passed",
+  "A5_sacrifice_effect": "passed",
+  "A6_bf_pick": "failed",
+  "A7_cleanup": "failed"
+ },
+ "notes": [
+  "A1_parse: passed (mode=True dig1=True sac=True cond=True dig2=True else=True)",
+  "A2: ritual_bf=True pre_bears_bf=2 (>=2 needed) pre_lib=48",
+  "A3: trigger_fired at turn 8, resolved=True inferred_from_prompt=False",
+  "A4: sac_prompt_seen=True sac_accepted=True sac_declines=1 sac_candidates_n=2 (>=2 required for the reported multi-creature case)",
+  "A5: sac_chosen_oid=22 zone=Graveyard auto=False (X = 1 + sacrificed bear mv 2 = 3)",
+  "A6: bf_prompt_seen=False bf_candidates_n=0 (REPORTED BUG: put-a-creature-onto-BF step never happens after the sacrifice)",
+  "A7 failed: ability stalled after the sacrifice - no BF-pick prompt, game moved on with the 7 cards unresolved"
+ ],
+ "verdict": "reproduced"
+}
