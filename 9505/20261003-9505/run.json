@@ -1,0 +1,78 @@
+{
+ "run_id": "20261003-9505",
+ "issue": 9505,
+ "started_at": "2026-10-03T22:58:33",
+ "finished_at": "2026-10-04T04:07:52",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "source": "2026-10-03: latest stable release v0.101.0 == pinned release dir (GitHub /releases re-confirmed v0.101.0 still latest stable this run; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run's own handshake); hashes recomputed against on-disk artifacts this run; minisign verification recorded in the ledger pin (2026-10-03T12:58:00-05:00)"
+ },
+ "scenario": "driver/scenario_9505.py",
+ "scenario_sha256": "0948625fec6a676e4ebb1d88d8f2b754f4717572e795b6cc2b1d8a356a12f155",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_code": "passed",
+  "A3_leg1": "not-run",
+  "A4_leg2": "not-run"
+ },
+ "checks": {
+  "a1": {
+   "n_exile_triggers": 20,
+   "n_dropped": 0
+  },
+  "a2": "see code_evidence.json",
+  "a3": {
+   "pre_exported": true,
+   "pre_graveyard": [
+    "verdant catacombs"
+   ],
+   "live_vizier_origin_zones": true,
+   "vizier_trigger_origins": [
+    [
+     "ChangesZoneAll",
+     null,
+     [
+      "Graveyard"
+     ]
+    ]
+   ],
+   "control_confounded": true
+  }
+ },
+ "verdict": "reproduced",
+ "result": "Single-exile origin parse drops unparseable origins: try_parse_put_into_exile_from does .ok()/unwrap_or(None) with the remainder discarded and no tail check, so e.g. 'put into exile from an opponent's library' parses as a supported unconstrained ChangesZone trigger; the v0.101.0 runtime matcher treats origin=None + empty origin_zones as a match from ANY zone (over-fire). Zero corpus witnesses in pinned v0.101.0 data (all 20 corpus exile triggers parse origins correctly or are legitimately unconstrained).",
+ "scope": "Parser defect (single-card exile origin arm) in pinned v0.101.0, verified at engine source level (v0.101.0 tag, byte-identical to the issue's reference commit 49b64bd08). No corpus card exhibits the drop.",
+ "limitations": [
+  "Browser UI not exercised.",
+  "The defect is at oracle-text parse time; the pinned binary exposes no parser CLI, so the failing input shape ('...from an opponent's library') is verified at the engine source level (v0.101.0 tag), not by feeding text to the running server.",
+  "No corpus card carries an unparseable exile origin, so no corpus card over-fires on the pinned server today.",
+  "Runtime origin-faithfulness control (Rakshasa Vizier) was confounded: the 'exile graveyard' effect did not deliver a trigger-visible event to the Vizier's ChangesZoneAll trigger (separate observation, not the #9505 defect)."
+ ],
+ "notes": [
+  "A3/A4 control confounded: Tormod's Crypt resolved (Verdant Catacombs confirmed Graveyard->Exile in the live DB state at rev 836) but Rakshasa Vizier's ChangesZoneAll/origin_zones=[Graveyard] trigger never fired and placed no counter. This is a separate runtime trigger-delivery observation, not the #9505 parser defect; filed as a limitation. The runtime over-fire consequence of the #9505 defect is established at the matcher code level (A2: origin=None + empty origin_zones => true)."
+ ],
+ "wire_log": "wire_log.jsonl",
+ "evidence_files": [
+  "code_evidence.json",
+  "data_census.json",
+  "manifest.sha256",
+  "pre.json",
+  "render_summary_9505.py",
+  "scenario_9505.py",
+  "scenario_run.log",
+  "source/parse_graveyard_origin_union.v0.101.0.rs",
+  "source/runtime_origin_match.v0.101.0.rs",
+  "source/try_parse_one_or_more_put_into_exile_from.v0.101.0.rs",
+  "source/try_parse_put_into_exile_from.v0.101.0.rs",
+  "source/try_parse_put_into_graveyard.v0.101.0.rs",
+  "summary.png",
+  "wire_log.jsonl"
+ ]
+}
