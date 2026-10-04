@@ -25,27 +25,29 @@ PR's engine tests claim both faces are offered; record what the engine
 advertises and complete the back-face cast.
 
 Assertions:
-  A1_client_defect_site  mainline client/src/components/modal/ModalFaceModal.tsx
-                        (12a8ef4) renders both FaceButtons unconditionally and
-                        never reads legalActions/legalActionsByObject/
-                        viewerInteraction -> defect site present.
+  A1_client_defect_site  CURRENT origin/main client/src/components/modal/
+                        ModalFaceModal.tsx: defect ABSENT iff buttons render
+                        only for engine-issued ChooseModalFace actions found
+                        in legalActions and the modal dispatches those exact
+                        action objects (plus engine-issued CancelCast).
+                        "passed" = fixed behavior present = defect does NOT
+                        reproduce on current mainline.
   A2_modal_offered       Game A: ModalFaceChoice wait appears for P0.
   A3_front_only_legal    Engine-advertised legal ChooseModalFace actions at
                         that wait cover back_face=false only.
-  A4_back_probe_rejected The constructed back_face=true dispatch (the
-                        unfixed client's clickable back button) is rejected
-                        and the ModalFaceChoice stays pending.
+  A4_back_probe_rejected The constructed back_face=true dispatch (what the
+                        UNFIXED client paints clickable) is rejected and the
+                        ModalFaceChoice stays pending - the engine-side
+                        consequence of the defect.
   A5_front_completes     Advertised back_face=false completes: Tony Stark on
                         P0 battlefield, stack empty, game proceeds.
-  A6_back_offered_payable (observational) Game B: with {4}{U}{R} available,
+  A6_back_offered_payable (observational) Game B: with {3}{R}{R} payable,
                         engine advertises both faces; back-face cast resolves.
 
-Verdict rule: reproduced iff A1 passes (defect site present on mainline)
-AND A3+A4 hold (engine does not legalize the unaffordable back face, and the
-client's clickable back-face dispatch is rejected) - the defect PR #8813
-addressed is live on current mainline. not-reproduced iff A1 fails (client
-already filters) or the engine legalizes the unaffordable back face.
-blocked iff the game cannot be driven to a ModalFaceChoice.
+Verdict rule: reproduced iff the defect site is still PRESENT on current
+mainline (A1 failed) AND A3+A4 hold. not-reproduced iff A1 passes (fixed
+behavior present on current mainline) - this does not mean "fixed by this
+PR". blocked iff the game cannot be driven to a ModalFaceChoice.
 
 Evidence: evidence/8813/<run-id>/pre_cast1.json, modalfacechoice_cast1.json,
 back_probe.json, post_front.json, pre_cast2.json, modalfacechoice_cast2.json,
@@ -197,40 +199,51 @@ async def export(c, name):
 
 # ---------------------------------------------------------------- client A1
 def check_client_defect_site():
-    """A1: defect site on current mainline client (source-level, read-only)."""
-    path = ("/home/hatch/workspace/dev/phase-backfill/client-src/phase-main/"
-            "client/src/components/modal/ModalFaceModal.tsx")
-    src = open(path).read()
-    commit = os.popen("git -C /home/hatch/workspace/dev/phase-backfill/"
-                      "client-src/phase-main log -1 --format=%H").read().strip()
+    """A1: defect-site check against CURRENT mainline (origin/main), not the
+    possibly-stale local checkout. The PR's defect: the modal paints face
+    buttons unconditionally and dispatches client-constructed
+    ChooseModalFace actions. Fixed behavior: buttons render only for
+    engine-issued ChooseModalFace actions found in legalActions, and the
+    modal dispatches those exact action objects (plus engine-issued
+    CancelCast)."""
+    repo = "/home/hatch/workspace/dev/phase-backfill/client-src/phase-main"
+    os.system(f"git -C {repo} fetch origin main --quiet 2>/dev/null")
+    commit = os.popen(f"git -C {repo} rev-parse origin/main").read().strip()
+    src = os.popen(f"git -C {repo} show origin/main:client/src/components/modal/ModalFaceModal.tsx").read()
     sha = hashlib.sha256(src.encode()).hexdigest()
-    # the defect: both FaceButtons rendered unconditionally; dispatch is a
-    # client-constructed action; legalActions/legalActionsByObject/
-    # viewerInteraction never consulted
-    paints_both = ("onClick={() => dispatch({ type: \"ChooseModalFace\", "
-                   "data: { back_face: false } })}" in src
-                   and "onClick={() => dispatch({ type: \"ChooseModalFace\", "
-                   "data: { back_face: true } })}" in src)
-    consults_legal = any(k in src for k in
-                         ("legalActions", "legal_actions", "viewerInteraction",
-                          "viewer_interaction", "canSubmit"))
-    verdict = paints_both and not consults_legal
+    # defect markers (unfixed): unconditional buttons + constructed dispatch
+    paints_both_unconditional = (
+        "onClick={() => dispatch({ type: \"ChooseModalFace\", "
+        "data: { back_face: false } })}" in src
+        and "onClick={() => dispatch({ type: \"ChooseModalFace\", "
+        "data: { back_face: true } })}" in src)
+    # fixed markers: gate buttons on engine-issued actions, dispatch verbatim
+    gates_on_legal = ("{frontAction && (" in src and "{backAction && (" in src)
+    dispatches_verbatim = ("onClick={() => dispatch(frontAction)}" in src
+                           and "onClick={() => dispatch(backAction)}" in src)
+    reads_legal = "legalActions" in src
+    fixed = gates_on_legal and dispatches_verbatim and reads_legal
+    verdict = (not paints_both_unconditional) and fixed
     with open(f"{EVDIR}/client_defect_site.txt", "w") as f:
         f.write(f"file: client/src/components/modal/ModalFaceModal.tsx\n")
-        f.write(f"mainline commit: {commit}\n")
+        f.write(f"mainline ref: origin/main @ {commit}\n")
         f.write(f"sha256: {sha}\n")
-        f.write(f"paints_both_faces_unconditionally: {paints_both}\n")
-        f.write(f"consults_engine_legal_actions: {consults_legal}\n")
-        f.write(f"A1 defect site present: {verdict}\n\n")
-        f.write("---- ModalFaceContent (defect-relevant excerpt) ----\n")
-        i = src.find("function ModalFaceContent")
-        f.write(src[i:i + 2200])
-    say(f"A1: commit={commit[:12]} paints_both={paints_both} "
-        f"consults_legal={consults_legal} -> {'passed' if verdict else 'failed'}")
+        f.write(f"paints_both_faces_unconditionally: {paints_both_unconditional}\n")
+        f.write(f"gates_buttons_on_engine_actions: {gates_on_legal}\n")
+        f.write(f"dispatches_engine_actions_verbatim: {dispatches_verbatim}\n")
+        f.write(f"reads_legalActions: {reads_legal}\n")
+        f.write(f"A1 defect ABSENT on current mainline (fixed behavior present): {verdict}\n\n")
+        f.write("---- ModalFaceModal (current mainline, defect-relevant excerpt) ----\n")
+        i = src.find("export function ModalFaceModal")
+        f.write(src[i:i + 2400])
+    say(f"A1: origin/main={commit[:12]} unconditional={paints_both_unconditional} "
+        f"gated={gates_on_legal} verbatim={dispatches_verbatim} "
+        f"-> {'passed (defect absent)' if verdict else 'failed (defect present)'}")
     wire("A1_client_defect_site", {"commit": commit, "sha256": sha,
-                                   "paints_both": paints_both,
-                                   "consults_legal": consults_legal,
-                                   "verdict": verdict})
+                                   "unconditional": paints_both_unconditional,
+                                   "gated": gates_on_legal,
+                                   "verbatim": dispatches_verbatim,
+                                   "defect_absent": verdict})
     return verdict
 
 
@@ -733,9 +746,13 @@ async def main():
         assertions["A6_back_offered_payable"] = "not-run (cast2 never reached)"
 
     failed = [k for k, v in assertions.items() if v == "failed"]
+    # A1 "passed" now means the defect is ABSENT on current mainline
+    # (fixed behavior present). The PR's defect reproduces only if the
+    # defect site is still present AND the engine-side probe shows the
+    # unfixed client's dispatch would be rejected.
     if not r1:
         verdict = "blocked"
-    elif assertions["A1_client_defect_site"] == "passed" \
+    elif assertions["A1_client_defect_site"] == "failed" \
             and assertions["A3_front_only_legal"] == "passed" \
             and assertions["A4_back_probe_rejected"] == "passed":
         verdict = "reproduced"
@@ -756,7 +773,11 @@ async def main():
         "server": SERVER_IDENTITY,
         "client_mainline_commit": os.popen(
             "git -C /home/hatch/workspace/dev/phase-backfill/client-src/phase-main "
-            "log -1 --format=%H").read().strip(),
+            "rev-parse origin/main").read().strip(),
+        "client_mainline_note": "A1 checked against freshly-fetched "
+            "origin/main (59b2b17); the local checkout HEAD (12a8ef4, "
+            "2026-09-17) was 16 days stale and initially gave the wrong "
+            "answer - corrected before publication.",
         "assertions": assertions,
         "verdict": verdict,
         "obs_summary": {
@@ -768,13 +789,20 @@ async def main():
             "face2_picked_back": obs.get("face2_picked_back"),
         },
         "limitations": [
-            "Client-subsystem defect site verified by source inspection on "
-            "current mainline (no DOM/browser run; the defect is in which "
-            "buttons the modal paints).",
-            "PR #8813 is closed-unmerged, so no PR-variant worktree was "
-            "built; the published patch was not applied or tested.",
+            "Client-subsystem defect check is source-level on current "
+            "origin/main (no DOM/browser run; the defect is in which "
+            "buttons the modal paints and what it dispatches).",
+            "The local phase-main checkout was 16 days stale (12a8ef4, "
+            "2026-09-17) at first check; A1 was re-run against freshly "
+            "fetched origin/main (59b2b17). Lesson: fetch before any "
+            "mainline defect-site check.",
+            "PR #8813 is closed-unmerged (maintainer: superseded by the "
+            "implementation already on main), so no PR-variant worktree "
+            "was built; the published patch was not applied or tested.",
             "A6 is observational: it records the engine's advertised faces "
-            "when the back face is affordable; it does not drive the verdict.",
+            "when the back face is affordable; the back face not being "
+            "offered matches the already-validated #5474 engine finding "
+            "(reproduced on v0.84.0), re-confirmed here on v0.101.0.",
         ],
         "scenario": "driver/scenario_8813.py",
     }
