@@ -1,0 +1,111 @@
+{
+ "issue": 7190,
+ "run_id": "20261003-7190",
+ "started_at": "2026-10-04T02:31:56",
+ "duration_s": 96.6,
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "mode": "Full",
+  "binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "observed_at": "2026-10-03",
+  "source": "this-run setup: sha256 recomputed on disk; minisign+manifest verified at pin time 2026-10-03"
+ },
+ "server_run_dir": "runs/20261003-7190",
+ "game_codes": [
+  "N579FL",
+  "7KCVTG",
+  "I5H7Z9"
+ ],
+ "driver": {
+  "protocol_advertised": 103,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "736ae710aa00baee2535dd2f3404cec33b86a879fd662563f766b4af0e0a43c5",
+ "decks": {
+  "P0": [
+   [
+    "sword of the meek",
+    8
+   ],
+   [
+    "llanowar elves",
+    8
+   ],
+   [
+    "forest",
+    44
+   ]
+  ],
+  "P1_accept_decline": [
+   [
+    "naturalize",
+    16
+   ],
+   [
+    "forest",
+    44
+   ]
+  ],
+  "P1_kill": [
+   [
+    "naturalize",
+    8
+   ],
+   [
+    "shock",
+    12
+   ],
+   [
+    "forest",
+    24
+   ],
+   [
+    "mountain",
+    16
+   ]
+  ]
+ },
+ "revalidation_of": {
+  "run_id": "20260916-7190c",
+  "release": "v0.85.0",
+  "protocol_version": 72,
+  "verdict": "not-reproduced",
+  "evidence_commit": "b69be6a6491057a1a2aec334ecb7aa4aae153a7c",
+  "note": "Prior validation published 2026-09-16 (comment 5705126997); release pin has since advanced to v0.101.0, so this run re-validates on the current pin per the playbook staleness rule."
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_return_ok": "passed",
+  "A4_attach_correct": "passed",
+  "A5_decline_ok": "passed",
+  "A6_unattached_ok": "passed"
+ },
+ "notes": [
+  "[accept] A4: sword oid 53 attached_to=40; triggering Elves oid 40 pt=(2, 3)",
+  "[decline] A5: post GY swords=[20] BF swords=[]",
+  "[kill] A6: sword oid 22 attached_to=None; Elves in GY=[51]"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post JSON are authoritative exports restorable only via full game replay, not direct load.",
+  "Dense playsets (8x Sword/Elves, 16x Naturalize, 12x Shock) are a test-harness convenience; the engine accepts >4-of for custom games."
+ ],
+ "setup_line": "P0: 44 Forest + 8 Sword of the Meek + 8 Llanowar Elves; P1: 44 Forest + 16 Naturalize (accept/decline) or 24 Forest + 16 Mountain + 8 Naturalize + 12 Shock (kill); kill leg delays Elves to T7 so P1 untaps between T4 Naturalize and T7 Shock",
+ "contract_line": "Sword cast T3, Naturalized T4 (-> GY), Elves T5 (-> trigger); accept/decline the 'you may return'; kill leg Shocks the Elves in response",
+ "stats": {
+  "seen_wf_types": [],
+  "game_codes": [
+   "N579FL",
+   "7KCVTG",
+   "I5H7Z9"
+  ]
+ }
+}
