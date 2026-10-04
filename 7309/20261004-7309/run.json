@@ -1,0 +1,64 @@
+{
+ "issue": 7309,
+ "title": "Baxter Building \u2014 '{4}, {T}: Add four mana in any combination of colors' only allows four mana of a single color",
+ "run_id": "20261004-7309",
+ "validated_at": "2026-10-04T04:53:50.948387-05:00",
+ "validated_version": "v0.101.0",
+ "build_commit": "acafe9b",
+ "protocol_version": 103,
+ "server": {
+  "server_version": "0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "mode": "Full",
+  "binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828"
+ },
+ "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+ "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+ "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+ "scenario": {
+  "file": "driver/scenario_7309_01010.py",
+  "sha256": "d03ad6a4b03ec3d723a98715f81209d5b45a0eb288f8515eaa21270c213846db"
+ },
+ "scenario_sha256": "d03ad6a4b03ec3d723a98715f81209d5b45a0eb288f8515eaa21270c213846db",
+ "verdict": "reproduced",
+ "prior_validated_verdict": "reproduced",
+ "scope": "Baxter Building '{4},{T}: Add four mana in any combination of colors' (ability_index 1); native engine, two human driver seats (P0 test seat, P1 driven passer); protocol-103 driver",
+ "result": "Activated Baxter Building's any-combination mana ability (oid 9, {4} paid via 4 tapped Mountains, Baxter tapped). Engine offered only 5 pre-expanded single-color TapLandForMana options (White/Blue/Black/Red/Green), no manaGroups mix choice. Submitted White: mana pool became exactly 4x White from Baxter; no opportunity to mix colors. Matches the report: 'only allows you to tap for four mana of a single color and not mix and match as intended'.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_ok": "passed",
+  "A3_single_color_4": "passed",
+  "A4_no_mix_offered": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_detail": {
+  "A1_setup_ok": "pre: turn 12 PreCombatMain, wf=Priority/p0, Baxters untapped on BF ['6', '9'], 4 untapped Mountains, pool empty=True",
+  "A2_activation_ok": "activation submitted ability_index=1 mana_type=White (white=True); activation rejections=0; Baxter 9 tapped=True; Mountains tapped 0->4 (delta 4 = True)",
+  "A3_single_color_4": "post pool = 4 pips ['White', 'White', 'White', 'White'], source_ids=['9'] (baxter_oid=9)",
+  "A4_no_mix_offered": "activation_offers.json: 5 offers ['Black', 'Blue', 'Green', 'Red', 'White'], all ability_index=1, all output Concrete; mix_choice_seen=False, manaGroups in wire=False",
+  "A5_cleanup": "post: wf=Priority/p0, stack=0, life=[20, 20]"
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human driver seats (P1 driven to keep/land/pass).",
+  "The native Easy AI seat stalled at MulliganDecision on v0.101.0 (game 2LGFBE never started); two human seats used instead.",
+  "The browser mana-choice UI itself is not exercised; the defect surface under test is the engine-level pre-expansion into 5 single-color taps.",
+  "States are authoritative exports, restorable only via full game replay (driver/scenario_7309_01010.py), not direct load.",
+  "Only the White single-color branch was driven; the other four pre-expanded colors were not submitted (offers recorded in activation_offers.json)."
+ ],
+ "driver_notes": [
+  "Protocol-103 port of scenario_7309.py: MulliganDecision gated on waiting_for.data.pending[] Declare; DiscardToHandSize via advertised viewer_interaction (legacy SelectCards silently ignored on 103); Baxter ability 1 found in legal_actions_by_object; {4} paid by tapping Mountains through per-object TapLandForMana; pool captured with priority held for post export; revision-gated main loop + 5s re-tick safety net.",
+  "Two human driver seats: the native Easy AI seat stalled at MulliganDecision on v0.101.0 (first attempt game 2LGFBE never left mulligan; evidence discarded), so P1 is a driven passer (keep/land/pass, never attacks).",
+  "Assertions key on the activated Baxter oid from activation_offers.json."
+ ],
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": null,
+  "evidence_commit": null,
+  "verified_at": null
+ }
+}
