@@ -1,0 +1,73 @@
+{
+ "detail": {
+  "n_static_abilities": 3,
+  "tiers": [
+   {
+    "description": "As long as ~ is enchanted by exactly one Aura, it has base power and toughness 3/3.",
+    "condition_type": "QuantityComparison",
+    "comparator": "EQ",
+    "rhs": 1,
+    "set_pt": [
+     [
+      3
+     ],
+     [
+      3
+     ]
+    ],
+    "keywords": [],
+    "tier_ok": true
+   },
+   {
+    "description": "As long as ~ is enchanted by exactly two Auras, it has base power and toughness 5/5 and vigilance.",
+    "condition_type": "QuantityComparison",
+    "comparator": "EQ",
+    "rhs": 2,
+    "set_pt": [
+     [
+      5
+     ],
+     [
+      5
+     ]
+    ],
+    "keywords": [
+     "Vigilance"
+    ],
+    "tier_ok": true
+   },
+   {
+    "description": "As long as ~ is enchanted by three or more Auras, it has base power and toughness 10/10, vigilance, and trample.",
+    "condition_type": "QuantityComparison",
+    "comparator": "GE",
+    "rhs": 3,
+    "set_pt": [
+     [
+      10
+     ],
+     [
+      10
+     ]
+    ],
+    "keywords": [
+     "Trample",
+     "Vigilance"
+    ],
+    "tier_ok": true
+   }
+  ],
+  "oracle_text": "As long as this creature is enchanted by exactly one Aura, it has base power and toughness 3/3.\nAs long as this creature is enchanted by exactly two Auras, it has base power and toughness 5/5 and vigilance.\nAs long as this creature is enchanted by three or more Auras, it has base power and toughness 10/10, vigilance, and trample.",
+  "printed_pt": [
+   {
+    "type": "Fixed",
+    "value": 1
+   },
+   {
+    "type": "Fixed",
+    "value": 1
+   }
+  ]
+ },
+ "ok": true,
+ "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00"
+}
