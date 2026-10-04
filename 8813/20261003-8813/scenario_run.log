@@ -1,0 +1,32 @@
+A1: commit=12a8ef4a76fe paints_both=True consults_legal=False -> passed
+game created KYAK61
+[P0] mulligan keep
+[P1] mulligan keep
+[P0] PlayLand shapes: [{"type": "PlayLand", "data": {"object_id": 32, "card_id": 32}}, {"type": "PlayLand", "data": {"object_id": 34, "card_id": 34}}, {"type": "PlayLand", "data": {"object_id": 36, "card_id": 36}}, {"type": "PlayLand", "data": {"object_id": 56, "card_id": 56}}, {"type": "PlayLand", "data": {"object_id": 57, "card_id": 57}}]
+[P0] casts Tony Stark oid=31 (unaffordable back: 2 untapped islands, 0 mountains)
+exported pre_cast1.json (405899 bytes)
+ModalFaceChoice [cast1]: vi_faces=1 legalChooseModalFace=[{'back_face': False}]
+[P0] back-face probe: dispatching client-constructed back_face=true (unfixed client paints it clickable)
+REJECTION observed: ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+back probe: rejection=True modal_still_pending=True
+ModalFaceChoice [cast1]: vi_faces=1 legalChooseModalFace=[{'back_face': False}]
+[P0] answering ModalFaceChoice with advertised back_face=false
+exported post_front.json (419183 bytes)
+Game A complete: Tony Stark on BF; moving to Game B ramp
+[P0] declare attackers: none
+[P0] declare attackers: none
+[P0] casts Tony Stark oid=53 (back affordable: 5 untapped, 3I/2M)
+exported pre_cast2.json (407879 bytes)
+ModalFaceChoice [cast2]: vi_faces=1 legalChooseModalFace=[{'back_face': False}]
+[P0] answering ModalFaceChoice cast2 with back_face=False
+[P0] legend rule: keep KYAK61.0.152.c0
+exported post_cast2.json (428890 bytes)
+ASSERTIONS: {
+ "A1_client_defect_site": "passed",
+ "A2_modal_offered": "passed",
+ "A3_front_only_legal": "passed",
+ "A4_back_probe_rejected": "passed",
+ "A5_front_completes": "passed",
+ "A6_back_offered_payable": "failed"
+}
+VERDICT: reproduced
