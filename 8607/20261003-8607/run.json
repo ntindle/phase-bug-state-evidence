@@ -1,0 +1,64 @@
+{
+ "run_id": "20261003-8607",
+ "issue": 8607,
+ "issue_url": "https://github.com/phase-rs/phase/issues/8607",
+ "started_at": "2026-10-04T01:49:32",
+ "finished_at": "2026-10-04T01:56:34",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9374 (started by an earlier backfill run; this run's own game + raw Hello handshake verify the identity)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "scenario": "driver/scenario_8607.py",
+ "scenario_sha256": "52cfc6c43976154c58f3b412a0e07987263df92cf0998aaf444065432d1aa134",
+ "game_code": "C5ZN16",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_leg1_tribute_paid": "passed",
+  "A4_leg1_counters": "failed",
+  "A5_leg2_tribute_declined": "passed",
+  "A6_leg2_counters": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.101.0 card-data.json carries Vorinclex's double/halve replacement, Nessian's Tribute 6 keyword + Tribute replacement + TributeNotPaid fight trigger, and Cackling Counterpart's token-copy effect.",
+  "A2 passed: Vorinclex + original Nessian (oid 10) on battlefield in pre_leg1.",
+  "A3 passed: P1 accepted (paid) tribute 6 on the token copy (wire: tribute_answer ACCEPT, iid C5ZN16.0.758).",
+  "A4 FAILED: token copy (oid 121) entered with 12 +1/+1 counters; expected 3. P1 paid tribute 6 as the chosen opponent, so CR 702.104a makes P1 the placer and Vorinclex (opponent's placement) should halve to 3; observed 12 = doubled, i.e. the commit pass recorded the placer as P0 (controller) instead of P1. BUG REPRODUCED.",
+  "A5 passed: P1 declined tribute on the second token copy (wire: DECLINE, iid C5ZN16.0.798).",
+  "A6 passed: declined token (oid 122) entered with 0 +1/+1 counters (expected 0); decline control clean."
+ ],
+ "scope": "Tribute paid by the chosen opponent on a token copy of Nessian Wilds Ravager with Vorinclex, Monstrous Raider on the battlefield; two native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised",
+  "AI seats not used (both seats human-driven)",
+  "Verdict derived from the decisive exported states of run 20261003-8607 (no replay needed); counter shape {'P1P1': n} is the v0.101.0 serialization for +1/+1.",
+  "No standalone state-restore facility; states restorable only via full game replay (driver/scenario_8607.py)."
+ ],
+ "evidence_files": [
+  "assertions.json",
+  "data_evidence.json",
+  "post_leg1.json",
+  "post_leg2.json",
+  "pre_leg1.json",
+  "pre_leg2.json",
+  "scenario_run.log",
+  "wire_log.jsonl"
+ ],
+ "finalize": {
+  "finalized_by": "run-20261003-2041-8607",
+  "finalized_at": "2026-10-04T01:59:56.398336+00:00",
+  "resume_note": "Prior slot (same cron, 20:49-20:56 CDT) completed the live scenario but its counter reader did not understand the v0.101.0 serialized counter shape {'P1P1': n} and marked the decisive assertions not-run -> verdict 'blocked'. This run patched the reader, re-extracted the decisive values from the already-captured authoritative states (pre/post unchanged), and set verdict 'reproduced'. No new game run was needed; all evidence files except assertions.json, run.json, summary.png, manifest.sha256 are byte-identical to the original run.",
+  "one_line": "Tribute 6 paid by the chosen opponent on a token copy under Vorinclex entered with 12 counters instead of 3 (placer misattributed, doubled instead of halved)."
+ },
+ "result": "P1 paid tribute 6 on the Cackling Counterpart token copy of Nessian Wilds Ravager with Vorinclex, Monstrous Raider on the battlefield. Per CR 702.104a the placer is P1 (the chosen opponent), so Vorinclex should halve to 3 +1/+1 counters. The token entered with 12 counters (doubled): the commit pass recorded the placer as P0, not P1. The declined-tribute control entered with 0 counters."
+}
