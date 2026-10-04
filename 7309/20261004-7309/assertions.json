@@ -1,0 +1,19 @@
+{
+ "issue": 7309,
+ "run_id": "20261004-7309",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_ok": "passed",
+  "A3_single_color_4": "passed",
+  "A4_no_mix_offered": "passed",
+  "A5_cleanup": "passed"
+ },
+ "detail": {
+  "A1_setup_ok": "pre: turn 12 PreCombatMain, wf=Priority/p0, Baxters untapped on BF ['6', '9'], 4 untapped Mountains, pool empty=True",
+  "A2_activation_ok": "activation submitted ability_index=1 mana_type=White (white=True); activation rejections=0; Baxter 9 tapped=True; Mountains tapped 0->4 (delta 4 = True)",
+  "A3_single_color_4": "post pool = 4 pips ['White', 'White', 'White', 'White'], source_ids=['9'] (baxter_oid=9)",
+  "A4_no_mix_offered": "activation_offers.json: 5 offers ['Black', 'Blue', 'Green', 'Red', 'White'], all ability_index=1, all output Concrete; mix_choice_seen=False, manaGroups in wire=False",
+  "A5_cleanup": "post: wf=Priority/p0, stack=0, life=[20, 20]"
+ }
+}
