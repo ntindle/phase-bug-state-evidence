@@ -1,0 +1,64 @@
+{
+ "issue": 8182,
+ "run_id": "20261003-8182",
+ "started_at": "2026-10-03T19:12:00-05:00",
+ "finished_at": "2026-10-04T00:30:03",
+ "server": {
+  "server_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true,
+  "signature_note": "v0.101.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.101.0 server on 127.0.0.1:9374 (started by an earlier backfill run; this run's own game + raw Hello handshake verify the identity)",
+  "mode": "Full",
+  "source": "2026-10-03: latest stable release v0.101.0 (published 2026-10-03T16:02:26Z) == pinned release dir; ServerHello 0.101.0/acafe9b/protocol 103 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "not-reproduced",
+ "scope": "Timber Paladin zero-aura stat line (the reported path); native engine, two human driver seats, protocol-103 driver. Asserts the runtime OUTCOME (P/T + keywords with zero Auras attached) against the pinned QuantityComparison parse, with attachment counts grounded in the attached_to/attachments link (both directions).",
+ "result": "Timber Paladin with zero Auras attached is 1/1 with no vigilance and no trample on v0.101.0 (confirmed in pre.json turn 5 and post_0aura.json turn 6); the pinned parse carries typed aura-count conditions (EQ 1 / EQ 2 / GE 3). The reported 10/10 shape does not occur. Scoped to v0.101.0 -- not a fix claim. The 1/2/3-Aura tier-control legs were not driven (Aura target-selection UX); see limitations.",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_zero_aura_correct": "passed",
+  "A3_one_aura": "not-run",
+  "A4_two_auras": "not-run",
+  "A5_three_auras": "not-run",
+  "A6_parse_level": "passed"
+ },
+ "notes": [
+  "A6 passed: pinned v0.101.0 card-data.json parses all three Timber Paladin tiers as typed QuantityComparison aura-count conditions (EQ 1 / EQ 2 / GE 3) -- not Unrecognized. See data_evidence.json.",
+  "A1 passed: Timber Paladin on P0's battlefield (oid 12); pre.json exported at turn 5.",
+  "A2 probe (pre.json, turn 5): paladin pt=1/1 keywords=[] attached_auras=0",
+  "A2 probe (post_0aura.json, turn 6): paladin pt=1/1 keywords=[] attached_auras=0",
+  "A2 passed: with zero Auras attached Timber Paladin is 1/1 with no vigilance and no trample in BOTH pre.json (turn 5) and post_0aura.json (turn 6) -- the reported 10/10 shape does not occur. Decisive against the always-true-Unrecognized mechanism: had every tier applied unconditionally, the stat line would be 10/10+vigilance+trample.",
+  "A3_one_aura not-run: the 1-aura tier-control leg was not driven -- the Unholy Strength cast (targets:[]) produced no TargetSelection interaction and the Aura never attached; the scenario was stopped before the aura legs. The reported zero-aura path (A2) is complete and decisive on its own.",
+  "A4_two_auras not-run: the 2-aura tier-control leg was not driven -- the Unholy Strength cast (targets:[]) produced no TargetSelection interaction and the Aura never attached; the scenario was stopped before the aura legs. The reported zero-aura path (A2) is complete and decisive on its own.",
+  "A5_three_auras not-run: the 3-aura tier-control leg was not driven -- the Unholy Strength cast (targets:[]) produced no TargetSelection interaction and the Aura never attached; the scenario was stopped before the aura legs. The reported zero-aura path (A2) is complete and decisive on its own."
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Timber Paladin / 12x Unholy Strength deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The 1/2/3-Aura tier-control legs were not driven: the Unholy Strength CastSpell (advertised with targets:[]) produced no TargetSelection interaction and the Aura never attached, so the scenario was stopped after the complete zero-aura path. The zero-aura observation is decisive against the reported always-true mechanism (every tier applying would show 10/10+vigilance+trample).",
+  "Not tested on the report's original 2026-08-29 build; verdict is scoped to v0.101.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports restorable only via full game replay.",
+  "P1 is a passive land-drop seat; no combat was driven.",
+  "The secondary fail-open finding (StaticCondition::Unrecognized evaluates true in layers.rs) is tracked separately in #8183 and was not exercised here -- the pinned parse has no Unrecognized conditions for this card."
+ ],
+ "observations": {
+  "pre_turn": 5,
+  "post_0aura_turn": 6,
+  "paladin_oid": 12,
+  "pre_pt": [
+   1,
+   1
+  ],
+  "post_0aura_pt": [
+   1,
+   1
+  ],
+  "game_code": "5685FR",
+  "drive_phase": "zero (aura legs not driven)"
+ }
+}
