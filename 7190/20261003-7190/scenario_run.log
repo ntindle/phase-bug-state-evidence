@@ -1,0 +1,94 @@
+ServerHello: version=0.101.0 build=acafe9b protocol=103 mode=Full
+server identity: v0.101.0 (acafe9b) protocol 103, mode Full; live server runs/20261003-7190
+===== game start: mode=accept =====
+game N579FL mode=accept; P0 seat=0 P1 seat=1
+[P0] mulligan: keep (lands=5, mulls=0)
+[P1] mulligan: keep (lands=6, mulls=0)
+DIAG[accept] turn=1 active=0 phase=Untap wf=MulliganDecision pp=0 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P0] casting Sword of the Meek (turn 3)
+[P1] casting Naturalize targeting Sword (oids [53])
+[P0] casting Llanowar Elves; Sword in GY (oids [53])
+[accept] Sword trigger observed on stack (id=121)
+[accept] exporting pre_accept.json (trigger on stack)
+[accept] triggering Elves on BF: oid 40
+[P0] OPP (optional-return): iid=N579FL.0.78 rtype=exactChoices n=2
+[P0]   cand id=N579FL.0.78.c0 kind=('other', None) text='false'
+[P0]   cand id=N579FL.0.78.c1 kind=('other', None) text='true'
+[P0] optional 'you may return' offered; answering ACCEPT
+[accept] exporting post_accept.json (quiet board)
+game accept done: A1_setup_ok=passed, A2_choice_offered=passed, A3_return_ok=passed, A4_attach_correct=passed
+===== game start: mode=decline =====
+game 7KCVTG mode=decline; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (lands=6, want=('sword of the meek',))
+[P1] mulligan: keep (lands=4, mulls=0)
+DIAG[decline] turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P0] mulligan: keep (lands=5, mulls=1)
+[P0] bottoming 1: ['forest']
+[P0] casting Sword of the Meek (turn 4)
+[P1] casting Naturalize targeting Sword (oids [20])
+[P0] casting Llanowar Elves; Sword in GY (oids [20])
+[decline] Sword trigger observed on stack (id=121)
+[decline] exporting pre_decline.json (trigger on stack)
+[decline] triggering Elves on BF: oid 34
+[P0] OPP (optional-return): iid=7KCVTG.0.95 rtype=exactChoices n=2
+[P0]   cand id=7KCVTG.0.95.c0 kind=('other', None) text='false'
+[P0]   cand id=7KCVTG.0.95.c1 kind=('other', None) text='true'
+[P0] optional 'you may return' offered; answering DECLINE
+[decline] exporting post_decline.json (quiet board)
+game decline done: A5_decline_ok=passed
+===== game start: mode=kill =====
+game I5H7Z9 mode=kill; P0 seat=0 P1 seat=1
+[P0] mulligan #1 (lands=4, want=('sword of the meek',))
+[P1] mulligan #1 (lands=5, want=('naturalize', 'shock', 'mountain'))
+DIAG[kill] turn=1 active=1 phase=Untap wf=MulliganDecision pp=1 stage=SETUP stack=0 sword_cast=False nat=False elves=False trig=False choice=False shock=False
+[P0] mulligan: keep (lands=5, mulls=1)
+[P1] mulligan #2 (lands=5, want=('naturalize', 'shock', 'mountain'))
+[P1] mulligan: keep (lands=4, mulls=2)
+[P0] bottoming 1: ['forest']
+[P1] mulligan: keep (lands=4, mulls=2)
+[P1] bottoming 2: ['forest', 'forest']
+[P0] casting Sword of the Meek (turn 4)
+[P1] casting Naturalize targeting Sword (oids [22])
+[P0] casting Llanowar Elves; Sword in GY (oids [22])
+[kill] Sword trigger observed on stack (id=121)
+[kill] exporting pre_kill.json (trigger on stack)
+[kill] triggering Elves on BF: oid 51
+[P1] casting Shock in response to Sword trigger; Elves oids [51]
+[P1] OPP (shock-target): iid=I5H7Z9.0.304 rtype=schema n=3
+[P1]   cand id=I5H7Z9.0.304.t0 kind=('player', 0) text=''
+[P1]   cand id=I5H7Z9.0.304.t1 kind=('player', 1) text=''
+[P1]   cand id=I5H7Z9.0.304.t2 kind=('object', 51) text='Llanowar Elves'
+[P1] answering Shock target selection -> Elves oid 51
+[P1] submitting iid=I5H7Z9.0.304 choice=I5H7Z9.0.304.t2 (Llanowar Elves) via sequence
+[P0] OPP (optional-miss-debug): iid=I5H7Z9.0.306 rtype=exactChoices n=10
+[P0]   cand id=I5H7Z9.0.306.c0 kind=('other', None) text=''
+[P0]   cand id=I5H7Z9.0.306.c1 kind=('object', 30) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c2 kind=('object', 31) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c3 kind=('object', 39) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c4 kind=('object', 42) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c5 kind=('object', 45) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c6 kind=('object', 52) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c7 kind=('object', 57) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c8 kind=('object', 58) text='Forest'
+[P0]   cand id=I5H7Z9.0.306.c9 kind=('object', 60) text='Forest'
+[P0] OPP (optional-miss-debug): iid=I5H7Z9.0.307 rtype=exactChoices n=10
+[P0]   cand id=I5H7Z9.0.307.c0 kind=('other', None) text=''
+[P0]   cand id=I5H7Z9.0.307.c1 kind=('object', 30) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c2 kind=('object', 31) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c3 kind=('object', 39) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c4 kind=('object', 42) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c5 kind=('object', 45) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c6 kind=('object', 52) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c7 kind=('object', 57) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c8 kind=('object', 58) text='Forest'
+[P0]   cand id=I5H7Z9.0.307.c9 kind=('object', 60) text='Forest'
+[P0] OPP (optional-return): iid=I5H7Z9.0.309 rtype=exactChoices n=2
+[P0]   cand id=I5H7Z9.0.309.c0 kind=('other', None) text='false'
+[P0]   cand id=I5H7Z9.0.309.c1 kind=('other', None) text='true'
+[P0] optional 'you may return' offered; answering ACCEPT
+[kill] exporting post_kill.json (quiet board)
+game kill done: A6_unattached_ok=passed
+wrote parse_sword.json
+wrote run.json verdict=not-reproduced
+wrote /home/hatch/workspace/dev/phase-backfill/evidence/7190/20261003-7190/summary.png
+wrote server_excerpts.log (300 lines)
