@@ -1,0 +1,87 @@
+game GG9H3Q; P0 seat=0 P1 seat=1
+P0 keeps opening hand
+P1 keeps opening hand
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision P0bf=[] P1bf=[] P0hand=['Swamp', 'Swamp', 'Forest', 'Swamp', 'Swamp', 'Mountain', 'Swamp'] setup=False blk=False
+P1 casts Clockwork Percussionist
+P1 casts Goblin Bushwhacker
+P0 non-priority decision: OptionalCostChoice acts=[]
+P1 declines optional cost (kicker)
+P1 casts Goblin Bushwhacker
+P0 non-priority decision: OptionalCostChoice acts=[]
+P1 declines optional cost (kicker)
+P0 casts Gixian Infiltrator
+P0 declares no attackers
+P1 casts Goblin Bushwhacker
+P0 non-priority decision: OptionalCostChoice acts=[]
+P1 declines optional cost (kicker)
+P0 declares no attackers
+P0 declares no attackers
+DIAG turn=17 active=0 phase=PreCombatMain wf=Priority P0bf=['Swamp', 'Mountain', 'Swamp', 'Swamp', 'Gixian Infiltrator', 'Swamp', 'Swamp', 'Swamp', 'Swamp', 'Mountain'] P1bf=['Mountain', 'Goblin Bushwhacker', 'Mountain', 'Clockwork Percussionist', 'Mountain', 'Mountain', 'Goblin Bushwhacker', 'Mountain'] P0hand=['Forest', 'Swamp', 'Swamp', 'Mountain', 'Mountain'] setup=False blk=False
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P1 casts Clockwork Percussionist
+P0 casts Writhing Chrysalis (spawn replenish 0->2)
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+DIAG turn=33 active=0 phase=PreCombatMain wf=Priority P0bf=['Swamp', 'Mountain', 'Swamp', 'Mountain', 'Swamp', 'Writhing Chrysalis', 'Forest', 'Swamp', 'Gixian Infiltrator', 'Swamp', 'Forest', 'Swamp'] P1bf=['Mountain', 'Mountain', 'Goblin Bushwhacker', 'Mountain', 'Mountain', 'Clockwork Percussionist', 'Mountain', 'Mountain'] P0hand=['Forest', 'Swamp', 'Gixian Infiltrator', 'Swamp'] setup=False blk=False
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+DIAG turn=47 active=0 phase=Upkeep wf=Priority P0bf=['Mountain', 'Swamp', 'Mountain', 'Swamp', 'Forest', 'Mountain', 'Mountain', 'Swamp', 'Writhing Chrysalis', 'Forest', 'Swamp', 'Gixian Infiltrator'] P1bf=['Mountain', 'Mountain', 'Mountain', 'Goblin Bushwhacker', 'Mountain', 'Mountain', 'Mountain', 'Mountain'] P0hand=['Forest', 'Gixian Infiltrator', 'Writhing Chrysalis', 'Gixian Infiltrator'] setup=False blk=False
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P1 casts Clockwork Percussionist
+DIAG turn=62 active=1 phase=PreCombatMain wf=Priority P0bf=['Mountain', 'Swamp', 'Mountain', 'Swamp', 'Forest', 'Mountain', 'Mountain', 'Mountain', 'Swamp', 'Writhing Chrysalis', 'Forest', 'Swamp'] P1bf=['Mountain', 'Mountain', 'Mountain', 'Mountain', 'Goblin Bushwhacker', 'Mountain', 'Mountain', 'Mountain'] P0hand=['Forest', 'Gixian Infiltrator', 'Writhing Chrysalis', 'Gixian Infiltrator'] setup=False blk=False
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P1 casts Goblin Bushwhacker
+P0 non-priority decision: OptionalCostChoice acts=[]
+P1 declines optional cost (kicker)
+P0 declares no attackers
+P0 declares no attackers
+DIAG turn=75 active=0 phase=PreCombatMain wf=Priority P0bf=['Mountain', 'Swamp', 'Mountain', 'Swamp', 'Forest', 'Mountain', 'Mountain', 'Mountain', 'Swamp', 'Writhing Chrysalis', 'Forest', 'Swamp'] P1bf=['Mountain', 'Mountain', 'Mountain', 'Mountain', 'Mountain', 'Mountain', 'Goblin Bushwhacker', 'Mountain'] P0hand=['Gixian Infiltrator', 'Writhing Chrysalis', 'Gixian Infiltrator', 'Gixian Infiltrator'] setup=False blk=False
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P0 declares no attackers
+P1 casts Blazing Rootwalla
+SETUP COMPLETE: P0 has Infiltrator+Chrysalis+2 spawns; P1 has all three attackers
+P1 waits: attackers not all ready [('Clockwork Percussionist', True), ('Goblin Bushwhacker', True), ('Blazing Rootwalla', False)]
+P0 declares no attackers
+P1 attacks with ['Clockwork Percussionist', 'Goblin Bushwhacker', 'Blazing Rootwalla']
+DeclareBlockers action shape: {"type": "DeclareBlockers", "data": {"assignments": []}}
+blockers: chrys=13 inf=25 spawns=[122, 123] | attackers: rw=110 bw=68 pc=70
+P0 declares blockers: Chrysalis->Rootwalla, Infiltrator->Bushwhacker, Spawn(122)->Percussionist
+exporting PRE (blockers declared, P0 priority, pre-sac)
+combat state: {"attacked_defenders_this_combat": {"1": [0]}, "attackers": [{"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 70}, {"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 68}, {"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 110}], "attacking_incarnations_this_combat": [{"incarnation": 3, "object_id": 68}, {"incarnation": 3, "object_id": 70}, {"incarnation": 3, "object_id": 110}], "blocker_assignments": {"110": [13], "68": [25], "70": [122]}, "blocker_to_attacker": {"122": [70], "13": [110], "25": [68]}, "blockers_declared_by": [0], "creature_attacked_defenders_this_combat": {"110": [0], "68": [0], "70": [0]}, "creature_blocked_attackers_this_combat": [{"attacker": {"incarnation": 3, "object_id": 110}, "blocker": {"incarnation": 3, "object_id": 13}}, {"attacker": {"incarnation": 3, "object_id": 68}, "blocker": {"incarnation": 3, "object_id": 25}}, {"attacker": {"incarnation": 3, "object_id": 70}, "blocker": {"incarnation": 1, "object_id": 122}}], "damage_assignments": {}, "damage_st
+block assignments observed: {('Gixian Infiltrator', 'Goblin Bushwhacker'), ('Writhing Chrysalis', 'Blazing Rootwalla'), ('Eldrazi Spawn', 'Clockwork Percussionist')}
+Spawn activation offered: {"type": "ActivateAbility", "data": {"source_id": 122, "ability_index": 0}, "_src_oid": "122"}
+P0 activates Spawn sac ability (offered channel)
+P0 non-priority decision: OrderTriggers acts=[('OrderTriggers', ['order']), ('OrderTriggers', ['order'])]
+P0 submits trigger order as advertised
+post-activation: spawns_on_bf=1 (was 2) colorless_in_pool=1 (was 0) phase=DeclareBlockers rejections=[]
+counters Gixian Infiltrator(25): 0 -> 0
+counters Writhing Chrysalis(13): 0 -> 0
+counters Gixian Infiltrator(25): 0 -> 0
+counters Writhing Chrysalis(13): 0 -> 1
+counters Gixian Infiltrator(25): 0 -> 1
+counters Writhing Chrysalis(13): 0 -> 1
+all assertions resolved; finishing
+summary.png rendered

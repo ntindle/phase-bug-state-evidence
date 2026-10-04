@@ -1,0 +1,16 @@
+{"t": 1791105214.4963028, "event": "mulligan", "payload": {"who": "P0", "decision": "keep"}}
+{"t": 1791105214.4975128, "event": "mulligan", "payload": {"who": "P1", "decision": "keep"}}
+{"t": 1791105227.8188217, "event": "p0_nonpriority", "payload": {"wtype": "OptionalCostChoice", "acts": []}}
+{"t": 1791105233.3044736, "event": "p0_nonpriority", "payload": {"wtype": "OptionalCostChoice", "acts": []}}
+{"t": 1791105245.3203344, "event": "p0_nonpriority", "payload": {"wtype": "OptionalCostChoice", "acts": []}}
+{"t": 1791105276.3761287, "event": "p0_cast_chrysalis", "payload": {"type": "CastSpell", "data": {"object_id": 13, "card_id": 13, "targets": [], "payment_mode": {"type": "Auto"}}}}
+{"t": 1791105420.182257, "event": "p0_nonpriority", "payload": {"wtype": "OptionalCostChoice", "acts": []}}
+{"t": 1791105474.9518244, "event": "p1_attacks", "payload": {"attacks": [], "bands": []}}
+{"t": 1791105475.4104643, "event": "declare_blockers_shape", "payload": {"type": "DeclareBlockers", "data": {"assignments": []}}}
+{"t": 1791105475.410853, "event": "declare_blockers_submitted", "payload": {"assignments": [[13, 110], [25, 68], [122, 70]]}}
+{"t": 1791105476.187639, "event": "combat_state", "payload": {"attacked_defenders_this_combat": {"1": [0]}, "attackers": [{"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 70}, {"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 68}, {"attack_target": {"data": 0, "type": "Player"}, "band_id": null, "blocked": true, "defending_player": 0, "object_id": 110}], "attacking_incarnations_this_combat": [{"incarnation": 3, "object_id": 68}, {"incarnation": 3, "object_id": 70}, {"incarnation": 3, "object_id": 110}], "blocker_assignments": {"110": [13], "68": [25], "70": [122]}, "blocker_to_attacker": {"122": [70], "13": [110], "25": [68]}, "blockers_declared_by": [0], "creature_attacked_defenders_this_combat": {"110": [0], "68": [0], "70": [0]}, "creature_blocked_attackers_this_combat": [{"attacker": {"incarnation": 3, "object_id": 110}, "blocker": {"incarnation": 3, "object_id": 13}}, {"attacker": {"incarnation": 3, "object_id": 68}, "blocker": {"incarnation": 3, "object_id": 25}}, {"attacker": {"incarnation": 3, "object_id": 70}, "blocker": {"incarnation": 1, "object_id": 122}}], "damage_assignments": {}, "damage_step_index": null, "first_strike_done": false, "first_strike_participants": null, "pending_blocker_declaration_events": [], "pending_damage": [], "regular_damage_done": false}}
+{"t": 1791105476.187811, "event": "spawn_activation_offered", "payload": {"type": "ActivateAbility", "data": {"source_id": 122, "ability_index": 0}, "_src_oid": "122"}}
+{"t": 1791105476.1884377, "event": "sac_submission", "payload": {"via": "offered:ActivateAbility", "submission": null}}
+{"t": 1791105476.3399913, "event": "p0_nonpriority", "payload": {"wtype": "OrderTriggers", "acts": [["OrderTriggers", {"order": [0, 1]}], ["OrderTriggers", {"order": [1, 0]}]]}}
+{"t": 1791105476.6454687, "event": "post_activation", "payload": {"spawns_bf": 1, "pool_c": 1, "phase": "DeclareBlockers", "rejections": []}}
+{"t": 1791105476.6455135, "event": "sac_accepted", "payload": {"via": "offered:ActivateAbility"}}
