@@ -1,0 +1,73 @@
+{
+ "issue": 301,
+ "run_id": "20261003-301",
+ "started_at": "2026-10-04T04:17:02",
+ "duration_s": 378.0,
+ "server_identity": {
+  "validated_version": "v0.101.0",
+  "build_commit": "acafe9b",
+  "protocol_version": 103,
+  "server_binary_sha256": "c32eabdcf93d04f61186558c223a12e6edbe15a678050863ae6d535165359b0a",
+  "card_data_sha256": "b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00",
+  "draft_pools_sha256": "75bb313864c341a99747e2a2a446dda5d83763bf073f5215d39289fdf8d34b06",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 103,
+  "client": "driver/client.py",
+  "note": "protocol-103 port of scenario_301_0980: DiscardToHandSize answered via the advertised viewer_interaction opportunity (schema select/sequence); the legacy SelectCards action is silently ignored on protocol 103 and stalled the first decline attempt (captured as stuck_after_activation_decline.json). PassPriority falls back to the viewer_interaction passPriority action code."
+ },
+ "scenario_sha256": "e2a64eb8a6045441090ea74a42a24146a5ec3dff33225f5c0560cc0cea61ef50",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Chaos Wand",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    59
+   ],
+   [
+    "Lightning Bolt",
+    1
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_paid": "passed",
+  "A3_exile_observed": "passed",
+  "A4_accept_target_pending": "passed",
+  "A5_exile_returned_early": "passed",
+  "A6_advertised_target_rejected": "passed",
+  "A7_no_damage_no_cast": "passed",
+  "A8_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] activation ok=True; wand tapped=True untapped islands 12->8",
+  "[accept] P1 library 42->38; bolt zone=Exile",
+  "[accept] pre-target: P1 lib=42 (pre-exile 42); bolt zone=Library in-library-membership=True",
+  "[accept] rejection={\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}}; still_pending=True",
+  "[decline] first attempt stalled post-activation: legacy SelectCards DiscardToHandSize is silently ignored on protocol 103 (captured as stuck_after_activation_decline.json); reran decline leg with the interaction-route discard fix \u2014 evidence below is from the clean rerun only.",
+  "[decline] activation ok=True; wand tapped=True untapped islands 12->8",
+  "[decline] P1 library 42->25; bolt zone=Exile",
+  "[decline] decline: visible bolts=[] life=20/20 waiting={\"type\": \"Priority\", \"data\": {\"player\": 0}}",
+  "[accept] authoritative post: bolt=[(85, 'Library')] zone=Library (returned pre-target), P1 lib=42, life=20/20, exile_objects=0, waiting=TargetSelection",
+  "[decline] authoritative post: bolt back in P1 library (42 cards), exile empty, stack empty, life 20/20, waiting Priority \u2014 no cast, no damage, no dangling decision",
+  "protocol-103 driver (v0.101.0): mulligan as {choice:{type:Keep}} gated on pending[] Declare; BottomCards via SelectCards(data.cards); DiscardToHandSize via the advertised viewer_interaction opportunity (schema select/sequence; legacy SelectCards is silently ignored on protocol 103); activation via advertised ActivateAbility action; optional-cast accept/decline from exactChoices decideOptionalEffect role/value surfaces; target submitted per the advertised schema response type; per-game guard reset; priority-gated passes (legacy PassPriority then interaction passPriority code); stale-client watchdog."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre/post states are authoritative exports restorable only via full game replay (scenario_301_01010.py), not direct load."
+ ],
+ "setup_line": "P0: 56x Island + 4x Chaos Wand; P1: 59x Island + 1x Lightning Bolt (draw-go)",
+ "contract_line": "Accept: free Bolt cast must finish targeting/resolve for 3 dmg; Decline: no cast, cards to bottom"
+}
