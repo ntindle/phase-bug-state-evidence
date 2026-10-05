@@ -1,0 +1,12 @@
+data-level check: subtypes=['Saga']; n_triggers=3; modes=['CounterAdded', 'CounterAdded', 'CounterAdded']; heads=[('GainControl', None, None), ('Draw', None, None), ('Unimplemented', 'unparsed_verb_arguments', 'choose a creature')]; subs=[(None, {}, None), (None, {}, None), ('DestroyAll', {'type': 'TrackedSet', 'id': 0}, False)]
+ServerHello OK: {'server_version': '0.102.0', 'build_commit': 'e17f6fd', 'protocol_version': 106, 'mode': 'Full'}
+P0 hello done; P1 hello done
+game created: code=NCJCU1
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 0, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+P0 keeps (hand=[])
+P1 keeps (hand=[])
+both seats kept; exporting pre.json
+exported pre.json
+[A3] live heresy oid=23 zone=Library trigger defs found=3
+verdict: reproduced (assertions: {'A1_data_level': 'passed', 'A2_setup_ok': 'passed', 'A3_live_object': 'passed'})
+run.json written; verdict=reproduced
