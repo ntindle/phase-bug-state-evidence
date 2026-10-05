@@ -1,0 +1,93 @@
+{
+ "issue": 7163,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7163",
+ "run_id": "20261004-7163c",
+ "started_at": "2026-10-05T03:25:28",
+ "finished_at": "2026-10-05T03:26:08",
+ "duration_s": 40.0,
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-04: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh v0.102.0 server started by this run on 127.0.0.1:9374 with isolated run dir runs/run-20261004-2211"
+ },
+ "server_run_dir": "runs/run-20261004-2211",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "96473775648cab1b1769bbea2b77f3cecdb3f4e820883d5f4098d9b38e276684",
+ "decks": {
+  "P0": "20x Birthing Ritual + 20x Grizzly Bears + 20x Forest",
+  "P1": "12x Grizzly Bears + 48x Forest"
+ },
+ "setup_line": "P0: 20x Birthing Ritual + 20x Grizzly Bears + 20x Forest | P1: 12x Grizzly Bears + 48x Forest (draw-go, zero attackers)",
+ "contract_line": "End step with Ritual + 2+ Bears: may-sacrifice must offer >=2 bears; after the sacrifice the engine must offer the put-a-creature-from-the-7 (mv<=X) onto the battlefield pick.",
+ "stats": {
+  "max_turn": 12,
+  "ritual_turn": 7,
+  "sac_done": true,
+  "bf_done": false,
+  "sac_declines": 1,
+  "later_declines": 1
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_trigger_fired": "passed",
+  "A4_sacrifice": "passed",
+  "A5_sacrifice_effect": "passed",
+  "A6_bf_pick": "failed",
+  "A7_cleanup": "failed"
+ },
+ "notes": [
+  "A1_parse: passed (mode=True dig1=True sac=True cond=True dig2=True else=True)",
+  "A2: ritual_bf=True pre_bears_bf=2 (>=2 needed) pre_lib=49",
+  "A3: trigger_fired at turn 7, resolved=True inferred_from_prompt=False",
+  "A4: sac_prompt_seen=True sac_accepted=True sac_declines=1 sac_candidates_n=2 (>=2 required for the reported multi-creature case)",
+  "A5: sac_chosen_oid=26 zone=Graveyard auto=False (X = 1 + sacrificed bear mv 2 = 3)",
+  "A6: bf_prompt_seen=False bf_candidates_n=0 (REPORTED BUG: put-a-creature-onto-BF step never happens after the sacrifice)",
+  "A7 failed: ability stalled after the sacrifice - no BF-pick prompt, game moved on with the 7 cards unresolved"
+ ],
+ "driver_state": {
+  "trigger_fired": true,
+  "trigger_inferred": false,
+  "trigger_resolved": true,
+  "pre_exported": true,
+  "mid_exported": true,
+  "post_exported": true,
+  "sac_prompt_seen": true,
+  "sac_accepted": true,
+  "sac_candidates_n": 2,
+  "sac_answered": true,
+  "sac_chosen_oid": 26,
+  "sac_done": true,
+  "sac_auto": false,
+  "sac_declines": 1,
+  "bf_prompt_seen": false,
+  "bf_candidates_n": 0,
+  "bf_answered": false,
+  "bf_chosen_oid": null,
+  "bf_done": false,
+  "stuck": true,
+  "later_declines": 1,
+  "ritual_turn": 7,
+  "pre_bears_bf": 2,
+  "pre_lib_count": 49
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Zero-attacker combat was scripted on both seats so combat could not mask the trigger.",
+  "Grizzly Bears (mv 2) used as both the sacrifice and the put-onto-BF candidate; X = 3."
+ ],
+ "evidence_dir": "7163/20261004-7163c"
+}
