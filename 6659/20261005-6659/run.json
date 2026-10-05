@@ -1,0 +1,41 @@
+{
+  "assertions": {
+    "A1_engine_canonicalizes": "passed",
+    "A2_gap1_alias_counted_separately": "passed",
+    "A3_gap2_searchadd_ungated": "passed",
+    "A4_control_plus_gated": "passed"
+  },
+  "build_commit": "e17f6fd",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "client_head": "611d205471bd253300a536869eb99c7787cbead3",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "driver_notes": [
+    "Temporary vitest contract at client/src/components/deck-builder/__tests__/useDeckBuilder.copyLimitAffordance.backfill.test.tsx drove the REAL hook (renderHook) on client mainline 611d205, then was removed; checkout left pristine. Preserved copy: evidence/6659/20261005-6659/contract_6659.test.tsx.",
+    "npm install needed --legacy-peer-deps on this box (npm 10.9.4 arborist crash 'Cannot read properties of null (reading edgesOut)' during ideal-tree build for vitest).",
+    "2 tests / 2 passed, 177ms. Coverage-threshold ERRORs are incidental to running one file against the repo's global 10% gate.",
+    "maxDeckCopies mock returns the engine-resolved ceiling per spelling (UpTo(9) for both Nazgul and Nazgûl — the real engine canonicalizes the name BEFORE resolving the ceiling: deck_validation.rs max_deck_copies 'let canonical = canonical_deck_count_key(db, name);'), so the gap-1 bucketing difference is exercised, not the ceiling.",
+    "Limit-scan landing guarded by a Lightning Bolt at-ceiling canary (canIncrement false only after the effect's Promise.all resolves); both gap tests share that guarantee.",
+    "CardGrid tile wiring re-verified on current mainline: click -> if (legal) onAddCard(card), disabled={!legal} (legality only); DeckBuilder.tsx:462 still renders <CardGrid onAddCard={handleAddCard}> with no eligibility prop; adjacent surface gets canAddCard={canIncrement}.",
+    "Relevant client paths diffed against 12a8ef4 (the 2026-09-17 contract state): combinedCopyCounts, canIncrement, copyLimits useEffect are byte-identical; handleAddCard/handleIncrementCard/handleImport differ only by a mechanical setDirty(true)->markDirty() rename. New upstream since: canonicalizeDeckNames (engine canonical spelling via WASM adapter) applied only in the two serializeSavedDeck save paths — the live-editor affordances are untouched.",
+    "Engine-side folding still lives at CardDatabase::fold_card_name_key (card_db.rs:869, associated fn) feeding canonical_deck_count_key (deck_validation.rs:3631); max_deck_copies still resolves the ceiling after canonicalization (deck_validation.rs:3918).",
+    "v0.102.0 release artifacts (binary+data+sigs) reused from the verified pin (minisign-verified at pin time); this run re-asserted identity via ServerHello 0.102.0/e17f6fd/protocol 106/Full."
+  ],
+  "issue": 6659,
+  "limitations": [
+    "UI-subsystem test: real hook via vitest/jsdom, not a full browser session; no game-state pair exists for a deckbuilder report.",
+    "engineRuntime.maxDeckCopies mocked per name to the real engine-resolved values; the WASM engine bundle is not shipped in the checkout, so ceiling resolution itself is not executed.",
+    "Engine canonicalization leg replicates the engine's documented algorithm against pinned card data (engine not compiled on this host); key code paths quoted in run.json driver_notes.",
+    "Browser UI not exercised; the correct fix shape for gap 2 (disabled tile vs silent no-op) is a design decision, not asserted."
+  ],
+  "protocol_version": 106,
+  "result": "Both gaps reproduce on client mainline 611d205. Gap 1: text-imported 5x 'Nazgul' + 4x 'Nazgûl' (canonical 9/9) leaves canIncrement true for both spellings; handleIncrementCard climbs to canonical 10 > 9. Gap 2: 5th handleAddCard walks Lightning Bolt 4 -> 5 past the ceiling while the '+' control stays gated (control). Engine leg: both spellings canonicalize to 'nazgûl', bucket 18 > 9, so copy_limit_violations still rejects — stale affordance, not a legality hole.",
+  "run_id": "20261005-6659",
+  "scope": "Deck-builder subsystem (area:engine + area:deckbuilder): client copy-limit affordance in useDeckBuilder.ts. Gap 1 = combinedCopyCounts keys by raw entry name (no canonicalization). Gap 2 = handleAddCard (search-result add path) never consults canIncrement. Real useDeckBuilder hook driven via vitest renderHook; engineRuntime.maxDeckCopies mocked per name to the real engine-resolved ceilings (Nazgul/Nazgûl -> UpTo(9), Standard default 4). Engine canonicalization leg replicates the engine's lookup_key/fold_card_name_key/face-name algorithm against pinned v0.102.0 card data.",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "server_version": "v0.102.0",
+  "signature_verified": true,
+  "title": "Deck builder copy-limit affordance: alias spellings counted separately, search-add ungated",
+  "validated_at": "2026-10-05",
+  "validated_version": "client-mainline@611d205471bd253300a536869eb99c7787cbead3",
+  "verdict": "reproduced"
+}
