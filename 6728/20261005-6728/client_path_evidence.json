@@ -1,0 +1,23 @@
+{
+ "client_checkout_commit": "611d205471bd253300a536869eb99c7787cbead3",
+ "checked_files_sha256": {
+  "client/src/adapter/p2p-draft-host.ts": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+  "client/src/adapter/draftPodHostAdapter.ts": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3"
+ },
+ "findings": {
+  "C1_identifier_generator_still_client_shaped": {
+   "file": "client/src/adapter/p2p-draft-host.ts:333-338",
+   "claim": "hostDraftCode() still emits `draft-` + 8 lowercase hex from its own randomness (deliberately independent of hostDraftSeed per code comment). Shape is still server-invalid (server requires exactly 6 uppercase alphanumeric).",
+   "verbatim": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}"
+  },
+  "C2_upload_still_ignores_http_status": {
+   "file": "client/src/adapter/p2p-draft-host.ts:3713-3730",
+   "claim": "uploadBackupSnapshot awaits fetch without checking response.status; only network-level throws are caught and console.warn'ed. An HTTP 400 'Invalid draft code' is a non-throw and is swallowed silently \u2014 the failure stays invisible to the host.",
+   "verbatim": "private async uploadBackupSnapshot(snapshot: PersistedDraftHostSession): Promise<void> {\n    if (!this.backupEndpoint || !this.draftCode) return;\n    try {\n      const publicSnapshot = sanitizePublicBackup(snapshot);\n      await fetch(`${this.backupEndpoint}/p2p-draft-backup`, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n          draft_code: this.draftCode,\n          host_peer_id: this.hostPeer.id,\n          snapshot_json: JSON.stringify(publicSnapshot),\n        }),\n      });\n    } catch (err) {\n      console.warn(\"[P2PDraftHost] server backup upload failed:\", err);\n    }\n  }"
+  },
+  "C3_endpoint_forwarded": {
+   "file": "client/src/adapter/p2p-draft-host.ts:601-609; draftPodHostAdapter.ts:324",
+   "claim": "The production adapter forwards config.backupEndpoint into the P2PDraftHost constructor; the upload path is live. Blocker #1 in the report (endpoint never supplied) appears addressed; blockers #2/#3 (server-invalid identifier, unchecked status) persist per C1/C2."
+  }
+ }
+}
