@@ -1,0 +1,103 @@
+{
+ "oracle": "If a player would draw a card except the first one they draw in each of their draw steps, that player discards a card instead. If the player discards a card this way, they draw a card. If the player doesn't discard a card this way, they mill a card.",
+ "replacements": [
+  {
+   "event": "Draw",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Discard",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "PostReplacementDamageTarget"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "ParentTarget"
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Mill",
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "target": {
+        "type": "ParentTarget"
+       },
+       "destination": "Graveyard"
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "Not",
+       "condition": {
+        "type": "EffectOutcome",
+        "signal": "OptionalEffectPerformed"
+       }
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": {
+      "type": "EffectOutcome",
+      "signal": "OptionalEffectPerformed"
+     },
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": null,
+   "description": "If a player would draw a card except the first one they draw in each of their draw steps, that player discards a card instead. If the player discards a card this way, they draw a card. If the player doesn't discard a card this way, they mill a card.",
+   "condition": {
+    "type": "ExceptFirstDrawInDrawStep"
+   },
+   "draw_scope": "IndividualDraw",
+   "valid_player": "AnyPlayer"
+  }
+ ],
+ "shape": {
+  "event": "Draw",
+  "head_effect": "Discard",
+  "head_condition": "None",
+  "mid_effect": "Draw",
+  "mid_condition": "{'type': 'EffectOutcome', 'signal': 'OptionalEffectPerformed'}",
+  "tail_effect": "Mill",
+  "tail_condition": "{'type': 'Not', 'condition': {'type': 'EffectOutcome', 'signal': 'OptionalEffectPerformed'}}"
+ }
+}
