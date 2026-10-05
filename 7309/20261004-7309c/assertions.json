@@ -1,0 +1,17 @@
+{
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_ok": "passed",
+  "A4_no_mix_offered": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: ability1 parse ok=True (produced=AnyCombination count=4 options=['White', 'Blue', 'Black', 'Red', 'Green'])",
+  "A2: baxter_bf=2 untapped_mountains>=4 phase=PreCombatMain turn=11",
+  "A3: white_submitted=True rejected=False baxter_tapped=True mountains_tapped=4",
+  "A4: ability1_count=10 colors=['Black', 'Blue', 'Green', 'Red', 'White'] single_only=True mix_choice_seen=False",
+  "A5: pool=4 whites=4 (expect 4/4) src_ids=['16']"
+ ],
+ "verdict": "reproduced"
+}
