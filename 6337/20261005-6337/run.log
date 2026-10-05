@@ -1,0 +1,13 @@
+2026-10-05 run 20261005-6337: re-validation of #6337 on v0.102.0 (stale: validated v0.85.0 2026-09-16).
+- GitHub releases checked: latest stable still v0.102.0 (2026-10-04); no re-pin needed.
+- Issue still open, labels: bug, status:confirmed, area:deckbuilder, priority:p2-wrong-game-result.
+- Fetched crates/draft-wasm/src/bot_ai.rs, suggest.rs and crates/phase-ai/src/draft_eval.rs from the v0.102.0 tag via raw.githubusercontent.com.
+  bot_ai.rs and draft_eval.rs are byte-identical to the v0.85.0 copies (same sha256).
+- find_best_colors (suggest.rs:354; sort at :376): `sorted.sort_by(|a, b| b.1.partial_cmp(a.1).unwrap_or(std::cmp::Ordering::Equal));` — function body byte-identical to v0.85.0; still no secondary tie-break. A2 passed.
+- color_preference (bot_ai.rs:304) still delegates to draft_eval::dominant_colors(&colors, 3).
+- dominant_colors (draft_eval.rs:223; tie-break at :238): `b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0))` — total order intact. A3 passed.
+- Built harness (harness/src/main.rs, release) and ran the binary in 30 separate OS processes over the tied pool (one card of each W/U/B/R/G, constant score 1.0).
+  find_best_colors: 13 distinct top-2 orderings in 30 runs (see observations.json). A4 passed (reproduces the reported non-determinism).
+  dominant_colors: B,G in all 30 runs. A5 passed.
+  fixed control (house-style .then_with tie-break): B,G in all 30 runs. A6 passed.
+Verdict: reproduced (unchanged since v0.85.0). No webhook (prior validated verdict already reproduced).

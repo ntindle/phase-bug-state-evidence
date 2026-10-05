@@ -1,0 +1,57 @@
+{
+ "issue": 6337,
+ "run_id": "20261005-6337",
+ "verdict": "reproduced",
+ "validated_at": "2026-10-05",
+ "release_tag": "v0.102.0",
+ "source": {
+  "repo": "phase-rs/phase",
+  "release_tag": "v0.102.0",
+  "fetched_from": "https://raw.githubusercontent.com/phase-rs/phase/v0.102.0/crates/draft-wasm/src/ and crates/phase-ai/src/",
+  "files": {
+   "crates/draft-wasm/src/bot_ai.rs": {
+    "sha256": "a3bab1fca230e63ff88413dbddc16ecf9f62b00d6b55774bca69f9a5d2dbcec1",
+    "color_preference_line": 304,
+    "note": "byte-identical to v0.85.0; still delegates to draft_eval::dominant_colors (deterministic)"
+   },
+   "crates/draft-wasm/src/suggest.rs": {
+    "sha256": "bf54f94c7c1f99aa550ed7e639a9705c1f4570ba1a913ae7a798e176f6dcc43a1",
+    "find_best_colors_fn_line": 354,
+    "defect_sort_line": 376,
+    "note": "find_best_colors body byte-identical to v0.85.0; sort still has no tie-break"
+   },
+   "crates/phase-ai/src/draft_eval.rs": {
+    "sha256": "7283544f82dded24bb2a4f8018fcdd68664769ff313498dc277e413cc5059d8c",
+    "dominant_colors_line": 223,
+    "tiebreak_line": 238,
+    "note": "byte-identical to v0.85.0; total-order tie-break intact"
+   }
+  }
+ },
+ "harness": {
+  "toolchain": "rustc stable (1.x) from ~/.cargo/bin, release build",
+  "binary": "harness/target/release/issue6337",
+  "sources": "harness/src/main.rs + harness/Cargo.toml; find_best_colors/dominant_colors copied verbatim from the v0.102.0 sources (verified byte-identical function bodies vs v0.85.0)",
+  "substitutions": [
+   "DraftCardInstance -> local DraftCard stub (same colors field shape; sorting logic untouched)",
+   "score_card -> constant 1.0 per card (the issue's exact tie condition: one card of each of W/U/B/R/G)",
+   "dominant_colors called with the same &[&[String]] shape color_preference passes, min_samples=3"
+  ],
+  "control": "find_best_colors_fixed: identical function + .then_with(|| a.0.cmp(b.0)) house-style tie-break"
+ },
+ "scope": "draft-wasm/phase-ai color-selection helpers on v0.102.0 sources; 30 separate OS processes over the issue's tied repro pool; no game states exist for a deckbuilder report",
+ "result": "Reproduced on v0.102.0 sources: find_best_colors top-2 varied across runs (13 distinct orderings in 30 processes). The bot_ai.rs half stays deterministic \u2014 color_preference delegates to draft_eval::dominant_colors, which has a total-order tie-break (B,G in all 30 runs, same as fixed control). The Suggest-deck path defect persists verbatim.",
+ "assertions": {
+  "A1_setup_sources_ok": "passed",
+  "A2_suggest_defect_present": "passed",
+  "A3_dominant_colors_total_order": "passed",
+  "A4_suggest_varies": "passed",
+  "A5_dominant_colors_stable": "passed",
+  "A6_control_stable": "passed"
+ },
+ "limitations": [
+  "Browser/UI \"Suggest deck\" click path not exercised; the helper function it calls is exercised verbatim from the release sources.",
+  "Real score_card gives per-card quality scores; constant score reproduces the reported tie condition only.",
+  "No engine game states apply to this subsystem (per playbook deckbuilder rule)."
+ ]
+}
