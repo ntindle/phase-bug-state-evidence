@@ -1,0 +1,71 @@
+data-level check: ok=True
+ServerHello OK: {'server_version': '0.102.0', 'build_commit': 'e17f6fd', 'protocol_version': 106, 'mode': 'Full'}
+P0 hello done; P1 hello done
+game created: code=YABULF
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] keep 7 (mulls=0): ['arboreal grazer', 'forest', 'arboreal grazer', 'arboreal grazer', 'forest', "green sun's zenith", 'arboreal grazer']
+[P1] keep 7 (mulls=0): ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[tick] turn=1 phase=Untap active=1 stack=0 rev=2
+[tick] turn=1 phase=Upkeep active=1 stack=0 rev=4
+[P0] interaction rtype=exactChoices spec=None n=1 codes=['candidate', 'passPriority'] choices=[]
+[P1] playing land island via vi
+[P1] submitting interaction iid=YABULF.0.6 choice=YABULF.0.6.c1 (Island)
+[tick] turn=1 phase=PreCombatMain active=1 stack=0 rev=6
+[tick] turn=1 phase=BeginCombat active=1 stack=0 rev=9
+[tick] turn=1 phase=EndCombat active=1 stack=0 rev=11
+[tick] turn=1 phase=PostCombatMain active=1 stack=0 rev=13
+[tick] turn=1 phase=End active=1 stack=0 rev=15
+[tick] turn=2 phase=Upkeep active=0 stack=0 rev=17
+[tick] turn=2 phase=Draw active=0 stack=0 rev=19
+[P0] interaction rtype=exactChoices spec=None n=4 codes=['candidate', 'passPriority', 'playLand'] choices=[ // Forest // Forest // Forest]
+[P0] playing land forest via vi
+[P0] submitting interaction iid=YABULF.0.21 choice=YABULF.0.21.c1 (Forest)
+[tick] turn=2 phase=PreCombatMain active=0 stack=0 rev=21
+[P0] interaction rtype=exactChoices spec=None n=12 codes=['candidate', 'castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // ]
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['candidate', 'passPriority', 'tapLandForMana'] choices=[ // Forest]
+[tick] turn=2 phase=BeginCombat active=0 stack=0 rev=24
+[tick] turn=2 phase=EndCombat active=0 stack=0 rev=26
+[tick] turn=2 phase=PostCombatMain active=0 stack=0 rev=28
+[tick] turn=2 phase=End active=0 stack=0 rev=30
+[tick] turn=3 phase=Upkeep active=1 stack=0 rev=32
+[tick] turn=3 phase=Draw active=1 stack=0 rev=34
+[P1] playing land island via vi
+[P1] submitting interaction iid=YABULF.0.36 choice=YABULF.0.36.c1 (Island)
+[tick] turn=3 phase=PreCombatMain active=1 stack=0 rev=36
+[tick] turn=3 phase=BeginCombat active=1 stack=0 rev=39
+[tick] turn=3 phase=EndCombat active=1 stack=0 rev=41
+[tick] turn=3 phase=PostCombatMain active=1 stack=0 rev=43
+[tick] turn=3 phase=End active=1 stack=0 rev=45
+[tick] turn=4 phase=Upkeep active=0 stack=0 rev=47
+[tick] turn=4 phase=Draw active=0 stack=0 rev=49
+[P0] interaction rtype=exactChoices spec=None n=15 codes=['candidate', 'castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Forest // Forest // Forest // Green Sun's Zenith // Green Sun's Zenith // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal]
+[P0] playing land forest via vi
+[P0] submitting interaction iid=YABULF.0.51 choice=YABULF.0.51.c1 (Forest)
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=51
+P0 casts Green Sun's Zenith (legacy action)
+[P0] interaction rtype=schema spec=number n=0 codes=[] choices=[]
+[P0] Zenith X-choice -> X=1
+[tick] turn=4 phase=PreCombatMain active=0 stack=1 rev=53
+[P0] interaction rtype=schema spec=select n=8 codes=['candidate'] choices=[Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer]
+exported pre.json (403233 bytes)
+pre: bf_forest=2 hand_forest=2
+[P0] Zenith search -> Arboreal Grazer
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=56
+Grazer on battlefield: oid 57
+GRAZER ETB TRIGGER observed on stack
+exported mid_trigger.json (434932 bytes)
+[tick] turn=4 phase=PreCombatMain active=0 stack=1 rev=57
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['candidate', 'decideOptionalEffect'] choices=[false // true]
+[P0] submitting interaction iid=YABULF.0.59 choice=YABULF.0.59.c1 (true)
+[P0] Grazer ETB optional 'you may' -> ACCEPT
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=59
+[P0] interaction rtype=schema spec=select n=2 codes=['candidate'] choices=[Forest // Forest]
+[P0] Grazer ETB land target -> Forest (ref=31)
+exported post.json (450050 bytes)
+post: turn=4 phase=PreCombatMain; resolution complete
+assertions: {"A0_data_level": "passed", "A1_setup_ok": "passed", "A2_grazer_bf": "passed", "A3_etb_triggered": "passed", "A4_zenith_library": "passed", "A5_shuffle_exactly2": "failed", "A6_cleanup": "passed"}
+verdict: reproduced
+note: A5: 3 shuffle commands during the Zenith resolution (pre=0, post=3, kinds=['LibraryShuffle']); expected 2
+note: verdict=reproduced (secondary observation from the report): the ETB itself fired and resolved, but the Zenith resolution deviates from the report's expected behavior (wrong destination and/or extra shuffles)
+server excerpts: 124 lines for YABULF
+manifest.sha256 written (11 files)
