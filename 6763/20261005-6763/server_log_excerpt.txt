@@ -1,0 +1,26 @@
+=== server_log_excerpt.txt ===
+Run 20261005-6763, server v0.102.0 (build e17f6fd, protocol 106), shared log runs/20261005-6758/server.log
+Game codes: DMHW8C (variant A), CK8BX3 (variant B). Timestamps UTC.
+
+--- game DMHW8C: session lifecycle ---
+2026-10-05T20:58:06.199488Z  INFO ws_message: server_core::session: game session created game=DMHW8C player_count=2
+2026-10-05T20:58:06.221282Z  INFO ws_message: phase_server: game created via lobby game=DMHW8C host=P0-A players=2
+2026-10-05T20:58:06.489431Z  WARN phase_server: Full snapshot was no longer current game=DMHW8C disposition=SupersededOrRetired
+2026-10-05T20:58:57.387417Z  INFO phase_server: client disconnected game=Some("DMHW8C") player=Some(PlayerId(0))
+2026-10-05T20:58:57.394625Z  INFO server_core::session: player disconnected game=DMHW8C player=PlayerId(0)
+2026-10-05T20:58:57.395927Z  INFO phase_server: client disconnected game=Some("DMHW8C") player=Some(PlayerId(1))
+2026-10-05T20:58:57.396767Z  INFO server_core::session: player disconnected game=DMHW8C player=PlayerId(1)
+
+--- game CK8BX3: session lifecycle ---
+2026-10-05T20:58:57.403566Z  INFO ws_message: server_core::session: game session created game=CK8BX3 player_count=2
+2026-10-05T20:58:57.425233Z  INFO ws_message: phase_server: game created via lobby game=CK8BX3 host=P0-B players=2
+2026-10-05T20:58:57.770452Z  WARN phase_server: Full snapshot was no longer current game=CK8BX3 disposition=SupersededOrRetired
+2026-10-05T20:59:33.607248Z  INFO phase_server: client disconnected game=Some("CK8BX3") player=Some(PlayerId(0))
+2026-10-05T20:59:33.607342Z  INFO server_core::session: player disconnected game=CK8BX3 player=PlayerId(0)
+2026-10-05T20:59:33.607705Z  INFO phase_server: client disconnected game=Some("CK8BX3") player=Some(PlayerId(1))
+2026-10-05T20:59:33.607729Z  INFO server_core::session: player disconnected game=CK8BX3 player=PlayerId(1)
+
+--- errors/warnings during run window (20:57-21:00 UTC) ---
+2026-10-05T20:58:06.489431Z  WARN phase_server: Full snapshot was no longer current game=DMHW8C disposition=SupersededOrRetired
+2026-10-05T20:58:57.770452Z  WARN phase_server: Full snapshot was no longer current game=CK8BX3 disposition=SupersededOrRetired
+(no errors observed in window if empty)
