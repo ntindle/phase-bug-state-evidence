@@ -1,0 +1,118 @@
+{
+ "issue": 7180,
+ "run_id": "20261005-7180",
+ "validated_at": "2026-10-05T13:27:13-0500",
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828); data digests match the signed manifest; digests recomputed against on-disk artifacts this run",
+  "source": "2026-10-05: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; shared pinned server on 127.0.0.1:9374 reused (verified healthy by this run's own handshake)"
+ },
+ "decks": {
+  "P0": [
+   [
+    "apex altisaur",
+    12
+   ],
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "forest",
+    30
+   ],
+   [
+    "mountain",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "scenario_file": "scenario_7180_01020.py",
+ "scenario_sha256": "593db84e313583fe4587112f0bd4ddf3b399053fb5d458b968cb3c62e1c8b11d",
+ "data_level_ok": true,
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_zero_option_etb": "failed",
+  "A3_etb_resolution": "passed",
+  "A5_zero_option_enrage": "failed",
+  "A4_enrage_triggered": "passed",
+  "A6_enrage_resolution": "passed"
+ },
+ "notes": [
+  "ETB fight: bear1 gy=1 altisaur_bf=1",
+  "enrage fight: bears gy 1->2 altisaur_bf=1"
+ ],
+ "events": [
+  {
+   "t": "altisaur_bf",
+   "oid": "17"
+  },
+  {
+   "etb_skip_offered": false,
+   "info": {
+    "rtype": "schema",
+    "skip_offered": false,
+    "signals": [],
+    "n_candidates": 2,
+    "spec_type": "sequence",
+    "constraint": {},
+    "candidates": [
+     {
+      "choice_id": "OFAI82.0.282.t0",
+      "ref": "104",
+      "name": "grizzly bears",
+      "text": "Grizzly Bears"
+     },
+     {
+      "choice_id": "OFAI82.0.282.t1",
+      "ref": "92",
+      "name": "grizzly bears",
+      "text": "Grizzly Bears"
+     }
+    ]
+   }
+  },
+  {
+   "enrage_skip_offered": false,
+   "info": {
+    "rtype": "schema",
+    "skip_offered": false,
+    "signals": [],
+    "n_candidates": 1,
+    "spec_type": "sequence",
+    "constraint": {},
+    "candidates": [
+     {
+      "choice_id": "OFAI82.0.285.t0",
+      "ref": "92",
+      "name": "grizzly bears",
+      "text": "Grizzly Bears"
+     }
+    ]
+   }
+  }
+ ],
+ "verdict": "reproduced",
+ "scope": "Apex Altisaur ETB + enrage fight triggers: zero-target/skip option presence; forced-fight resolution; native engine, two human-client seats",
+ "limitations": [
+  "Browser/UI not exercised",
+  "AI seats not used"
+ ]
+}
