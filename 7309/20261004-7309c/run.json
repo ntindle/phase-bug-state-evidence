@@ -1,0 +1,90 @@
+{
+ "issue": 7309,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7309",
+ "run_id": "20261004-7309c",
+ "started_at": "2026-10-05T03:47:38",
+ "finished_at": "2026-10-05T03:48:10",
+ "duration_s": 32.3,
+ "server": {
+  "server_version": "0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-04: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned v0.102.0 server on 127.0.0.1:9374 with isolated run dir runs/run-20261004-2211"
+ },
+ "server_run_dir": "runs/run-20261004-2211",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7f0c79d4e6bb52cfefc1709047acc70a571daadd0967d37c2a32cbd9b9ae4c49",
+ "decks": {
+  "P0": "4x Baxter Building + 56x Mountain",
+  "P1": "60x Forest"
+ },
+ "setup_line": "P0: 4x Baxter Building + 56x Mountain | P1: 60x Forest (draw-go, zero attackers)",
+ "contract_line": "P0 main phase with Baxter + 4 Mountains: activate ability 1 (any-combination). A genuine mix choice must be offered; reported bug = 5 single-color pre-expansions only.",
+ "stats": {
+  "max_turn": 11,
+  "ability1_count": 10,
+  "offer_colors": [
+   "Black",
+   "Blue",
+   "Green",
+   "Red",
+   "White"
+  ],
+  "mix_choice_seen": false,
+  "white_submitted": true,
+  "white_accepted": true
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_ok": "passed",
+  "A4_no_mix_offered": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: ability1 parse ok=True (produced=AnyCombination count=4 options=['White', 'Blue', 'Black', 'Red', 'Green'])",
+  "A2: baxter_bf=2 untapped_mountains>=4 phase=PreCombatMain turn=11",
+  "A3: white_submitted=True rejected=False baxter_tapped=True mountains_tapped=4",
+  "A4: ability1_count=10 colors=['Black', 'Blue', 'Green', 'Red', 'White'] single_only=True mix_choice_seen=False",
+  "A5: pool=4 whites=4 (expect 4/4) src_ids=['16']"
+ ],
+ "driver_state": {
+  "stage": "ACTIVATED",
+  "pre_exported": true,
+  "mid_exported": false,
+  "post_exported": true,
+  "offers_exported": true,
+  "ability1_count": 10,
+  "offer_colors": [
+   "Black",
+   "Blue",
+   "Green",
+   "Red",
+   "White"
+  ],
+  "all_mana_types_single": true,
+  "mix_choice_seen": false,
+  "white_submitted": true,
+  "white_accepted": true,
+  "act_submitted_at": 1791172090.169513,
+  "baxter_oid": "16",
+  "max_turn": 11
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 4-of playsets are a test-harness convenience.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Zero-attacker combat scripted on both seats."
+ ],
+ "evidence_dir": "7309/20261004-7309c"
+}
