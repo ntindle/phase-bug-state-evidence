@@ -1,0 +1,59 @@
+{
+ "issue": 7195,
+ "run_id": "20261005-7195c",
+ "game_code": "O9WUR0",
+ "started_at": "2026-10-05T23:03:42",
+ "duration_s": 203.9,
+ "verdict": "reproduced",
+ "assertions": {
+  "A0_connected": "passed",
+  "A1_setup_ok": "passed",
+  "A2_demonstrate_declined": "passed",
+  "A3_destroyed": "passed",
+  "A4_exile_done": "passed",
+  "A5_cast_offered": "failed",
+  "A6_free_cast_resolved": "not-run"
+ },
+ "notes": [
+  "pre_cast: turn=8 phase=PreCombatMain ring_oids=['70'] mountains_out=4 life=20/20",
+  "demonstrate_done=True flourish-stack-entries=0",
+  "ring oid=70 zone=Graveyard",
+  "A6 bolt: P0 life=20 (expect 17), bolt in P1 gy=True, P1 untapped lands after=1 (expect 0: proves no mana was paid)"
+ ],
+ "data_level_ok": true,
+ "demonstrate_done": true,
+ "flourish_cast": true,
+ "ring_oid": "70",
+ "exiled_oid": "97",
+ "exiled_lname": "lightning bolt",
+ "cast_offered": null,
+ "cast_offer_kind": null,
+ "maycast_accepted": null,
+ "decks": {
+  "P0": [
+   [
+    "Transforming Flourish",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Sol Ring",
+    8
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Lightning Bolt",
+    40
+   ]
+  ]
+ },
+ "scenario_sha256": "611fa82adcf9c0a9c92bba43b0d494aba322fe138bfaaf99ad0eca8dc2c4794f"
+}
