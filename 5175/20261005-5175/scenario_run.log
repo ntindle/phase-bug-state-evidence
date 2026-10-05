@@ -1,0 +1,29 @@
+run 20261005-5175 — phase-rs/phase#5175 (open, unmerged fix PR by jeffrey701)
+client-subsystem re-validation: additionalCostChoices Choice branch crash on short engine payload
+
+Release check: latest stable phase-rs/phase release = v0.102.0 (published 2026-10-04) —
+matches the pinned artifacts under server/releases/ — no advance. phase-server already
+running (v0.102.0/e17f6fd/protocol 106 on 127.0.0.1:9374, pid 16833); this run needs no
+engine session (client-subsystem only).
+
+1. Fetched phase mainline; HEAD = 1f536c2bb6680fae7e8393377e8de9d238123aae (2026-10-05T21:27:47Z).
+   Diffed the paths under test against the last contract commit 2ce96cb (2026-09-09 run):
+   costLabel.ts gained an unrelated formatKnownCost/formatCost refactor and a Reveal branch;
+   the `case "Choice"` additionalCostChoices code (cost.data[0]/cost.data[1] indexed straight)
+   is behaviorally unchanged (client/src/viewmodel/costLabel.ts:786-793). Prior behavioral
+   assertions transfer; re-executed on a fresh checkout per the #6659 rule.
+2. Detached worktree phase-5175-20261005 @ 1f536c2b. `npm install --legacy-peer-deps`
+   (npm 10.9.4 arborist bug workaround) completed clean (~3.4 min, exit 0). PR's new test
+   block applied to costLabel.test.ts (same anchor as the 2026-09-09 run). Copy
+   phase-5175-20261005-pr got the PR guard applied byte-identically to the published diff;
+   node_modules symlinked from the main tree (identical install; fixed an off-by-one
+   relative symlink before running).
+3. Vitest (4.1.11; repo pins ^4.1.0) on costLabel.test.ts with --coverage.enabled=false:
+   - mainline variant: 34/35 pass; the new short-payload test FAILS with
+     TypeError: Cannot read properties of undefined (reading 'type')  <- bug reproduced
+   - PR-guard variant: 35/35 pass; short payload degrades to "Decline", no throw
+4. Evidence: run.json, client_observations.json, scenario_run.log,
+   vitest_mainline_full.log, vitest_pr_full.log, pr_patch_applied_test.diff,
+   pr_patch_applied_costLabel.diff, summary.png, manifest.sha256.
+
+verdict: reproduced (on current mainline client 1f536c2b).

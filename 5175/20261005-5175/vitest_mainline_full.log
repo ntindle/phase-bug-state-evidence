@@ -1,0 +1,67 @@
+
+ RUN  v4.1.11 /home/hatch/workspace/dev/phase-backfill/client-test/phase-5175-20261005/client
+
+ ❯ src/viewmodel/__tests__/costLabel.test.ts (35 tests | 1 failed) 33ms
+     ✓ labels CrewVehicle with the keyword N extracted from engine keywords 4ms
+     ✓ falls back to 'Crew' when no Crew keyword is present (defensive) 1ms
+     ✓ labels SaddleMount with Saddle N extracted from keywords 1ms
+     ✓ labels ActivateStation with a fixed label and rules-text description 0ms
+     ✓ labels Equip with a fixed label and rules-text description 0ms
+     ✓ labels ReturnToHand costs from ability description (Quirion Ranger) 1ms
+     ✓ labels Reveal costs formatted with count, card filter and zone 3ms
+     ✓ labels an ActivateAbility with its serialized cost 1ms
+     ✓ labels an ActivateAbility that adds one mana of any color 0ms
+     ✓ labels an ActivateAbility that adds multiple mana of any one color 0ms
+     ✓ labels a non-mana ActivateAbility with its formatted cost 1ms
+     ✓ attaches the engine's activation cost as a mana option's description (CR 602.1a) 0ms
+     ✓ does not attach a cost line to a loyalty ability that adds mana (CR 605.1a — Chandra, Torch of Defiance) 0ms
+     ✓ treats an absent is_mana_ability flag as not a mana ability 0ms
+     ✓ attaches no cost line to a mana ability the engine gave no description (no synthesized "Activate") 1ms
+     ✓ substitutes ~ on the non-mana activated-ability path, in both label and description (CR 201.5) 1ms
+     ✓ first prompt (timesKicked 0) offers a non-cancel 'cast without kicking' decline 1ms
+     ✓ re-prompt (timesKicked 2) shows the kick count and a 'finish casting' decline 0ms
+     ✓ first prompt offers a non-cancel decline 0ms
+     ✓ re-prompt shows the payment count and finish-casting decline 0ms
+     ✓ formats a chosen-number cost for the Max fold 0ms
+     ✓ formats a chosen-number cost for the Min fold 0ms
+     ✓ falls back to the bare noun for a scoped chosen number 0ms
+     ✓ formats disjunctive activation cost branches 0ms
+     ✓ formats the external-tag mana wire shape 0ms
+     ✓ formats typed discard filters from the server wire shape 1ms
+     ✓ formats exile filters and zones from the server wire shape 0ms
+     ✓ routes exile templates through the active locale with engine values as interpolation 1ms
+     ✓ labels both options for a well-formed two-cost Choice 0ms
+     × does not throw when a Choice payload is missing its second cost 8ms
+     ✓ shows the printed cost, not reduced, when the engine reports no override 0ms
+     ✓ flags a smaller effective Cost as reduced 0ms
+     ✓ flags a NoCost effective cost against a real printed cost as reduced (Omniscience) 0ms
+     ✓ does not flag a naturally-free card (no printed cost) as reduced 0ms
+     ✓ does not flag an unchanged effective cost as reduced 0ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/viewmodel/__tests__/costLabel.test.ts > additionalCostChoices — Choice with a malformed (short) engine payload > does not throw when a Choice payload is missing its second cost
+AssertionError: expected [Function] to not throw an error but 'TypeError: Cannot read properties of …' was thrown
+
+- Expected:
+undefined
+
++ Received:
+"TypeError: Cannot read properties of undefined (reading 'type')"
+
+ ❯ src/viewmodel/__tests__/costLabel.test.ts:571:51
+    569|     // engine — a short array must degrade to a fallback label, not cr…
+    570|     const cost = { type: "Choice", data: [manaCost] } as unknown as Ad…
+    571|     expect(() => additionalCostChoices(cost)).not.toThrow();
+       |                                                   ^
+    572|     const decline = additionalCostChoices(cost).options.find(
+    573|       (o) => o.id === "decline",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 34 passed (35)
+   Start at  18:50:41
+   Duration  2.17s (transform 838ms, setup 452ms, import 790ms, tests 33ms, environment 644ms)
+
