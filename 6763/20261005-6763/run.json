@@ -1,0 +1,147 @@
+{
+ "issue": 6763,
+ "run_id": "20261005-6763",
+ "kind": "revalidation",
+ "started_at": "2026-10-05T20:58:06",
+ "finished_at": "2026-10-05T21:06:35",
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "observed_at": "2026-10-05",
+  "source": "ServerHello handshake this run (0.102.0/e17f6fd/protocol 106); digests recomputed against on-disk pinned artifacts this run; reused the pinned v0.102.0 server on 127.0.0.1:9374 (run dir runs/20261005-6758)"
+ },
+ "client": {
+  "commit": "611d205",
+  "tree": "/home/hatch/workspace/dev/phase-backfill/checkout-6659-20261005/client",
+  "origin_main_at_checkout": "611d205 (no drift at run time)",
+  "components_under_test": [
+   "components/stack/StackDisplay.tsx",
+   "components/stack/StackTargetArcs.tsx",
+   "components/stack/stackTargets.ts",
+   "components/zone/GraveyardPile.tsx",
+   "components/zone/ZoneViewer.tsx",
+   "utils/objectAnchorSelector.ts"
+  ],
+  "changes_since_20260917_run": [
+   "StackDisplay.tsx: 1-line cosmetic change (backdrop blur / bg opacity on the stack panel).",
+   "GraveyardPile.tsx: top slot now hides cards 'in flight' via animationStore (flightVeiledObjectIds); count still includes them.",
+   "StackTargetArcs.tsx, stackTargets.ts, ZoneViewer.tsx, objectAnchorSelector.ts: byte-identical to the 20260917 tree.",
+   "gameStore.ts: undo/checkpoint refactor only (trusted checkpoints); no change to the fields the harness seeds."
+  ],
+  "npm_install": "not needed; node_modules already present in the checkout"
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py",
+  "scenario": "scenario_6763_01020.py",
+  "scenario_sha256": "2d85c0729a08b86f8983a3279afd2cee05b64563c0bb3c5cfe69bdd8e042302e"
+ },
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "games": {
+  "A": {
+   "game_code": "DMHW8C",
+   "chosen_oid": 28,
+   "trigger_entry_id": 121,
+   "p0_gy_ballistas": [
+    42,
+    28
+   ]
+  },
+  "B": {
+   "game_code": "CK8BX3",
+   "chosen_oid": 7,
+   "trigger_entry_id": 121,
+   "p0_gy_ballistas": [
+    7,
+    29
+   ]
+  }
+ },
+ "assertions": {
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed",
+  "U1_rendered_setup": "passed",
+  "U2_target_identity_ui": "passed",
+  "U3_label_indistinguishable": "passed",
+  "U4_arc_indistinguishable": "passed",
+  "U5_viewer_indistinguishable": "passed"
+ },
+ "verdict": "reproduced",
+ "verdict_rule": "reproduced iff every E and U assertion passes (engine distinctly targets; UI renders identically = bug still observed)",
+ "key_observations": [
+  "Engine (v0.102.0): both games put the Emperor exile trigger on the stack with targets == [{'Object': oid}] (exactly one target); game A targeted Ballista oid 28, game B targeted Ballista oid 7; both oids are Walking Ballista objects in P0's graveyard.",
+  "P0's viewer envelope and the authoritative export at the before-responding moment carry the same target Object id in both games (E4).",
+  "After resolution the chosen Ballista is in Exile, the stack is empty, and the game proceeds (E5).",
+  "UI (client 611d205): stack target label is '-> Walking Ballista' in both variants -- identical, name-only, no object id.",
+  "StackTargetArcs resolves both Ballista oids to the same graveyard-pile anchor (grouped pile element, identical rect); drawn arc landing endpoints identical (48.234375, 67.53125) across variants.",
+  "ZoneViewer renders both Ballistas identically (modulo data-object-id) with no target highlight on either card."
+ ],
+ "revalidation_of": {
+  "run_id": "20260917-6763",
+  "protocol": 72,
+  "engine": "v0.86.0",
+  "evidence_commit": "3f1c88e076c2aa5d699ec47e29a1e842540e8cd8",
+  "note": "Old run derived variant B by token-replacing one export; this run played TWO REAL games (A targets oid 28, B targets oid 7)."
+ },
+ "limitations": [
+  "No publication performed: no evidence-repo upload, no issue comment, no ledger write (per task instruction).",
+  "Two human-client seats driven headlessly; the real client UI was exercised separately via the CDP harness seeded from the captured viewer snapshots.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict scoped to v0.102.0, never a fix claim.",
+  "12x/4x deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "UI harness renders StackDisplay+GraveyardPile+ZoneViewer in isolation (no full board); card art is stubbed by the harness mocks."
+ ],
+ "files": [
+  "snapshot_A.json",
+  "snapshot_B.json",
+  "viewer_A.json",
+  "viewer_B.json",
+  "post_trigger_A.json",
+  "post_trigger_B.json",
+  "engine_result.json",
+  "ui_result.json",
+  "ui_A_stack.png",
+  "ui_A_viewer.png",
+  "ui_B_stack.png",
+  "ui_B_viewer.png",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server_log_excerpt.txt",
+  "summary.png",
+  "scenario_6763_01020.py",
+  "cdp_test_6763.py",
+  "harness/",
+  "run.json",
+  "manifest.sha256"
+ ]
+}
