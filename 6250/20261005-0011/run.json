@@ -1,0 +1,51 @@
+{
+ "run_id": "20261005-0011",
+ "issue": 6250,
+ "server_identity": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-05: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh v0.102.0 server started by this run on 127.0.0.1:9374 with isolated run dir runs/20261005-0011"
+ },
+ "games": {
+  "accept": {
+   "mode": "accept",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "failed",
+    "A5_outcome": "failed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_spec": {},
+   "attached_post": []
+  },
+  "decline": {
+   "mode": "decline",
+   "assertions": {
+    "A1_setup_ok": "failed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "failed",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_spec": {},
+   "decline_hosts": {
+    "holy": "18",
+    "ardenn": "18"
+   }
+  }
+ },
+ "verdict_rule": "reproduced iff the trigger resolves moving fewer attachments than the controller selected; not-reproduced iff all three attach (accept) and decline moves nothing; blocked otherwise",
+ "verdict": "reproduced"
+}
