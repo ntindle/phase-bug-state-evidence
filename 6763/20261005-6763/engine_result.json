@@ -1,0 +1,77 @@
+{
+ "issue": 6763,
+ "run_id": "20261005-6763",
+ "started_at": "2026-10-05T20:58:06",
+ "duration_s": 87.4,
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "observed_at": "2026-10-05",
+  "source": "2026-10-05: pinned release v0.102.0 == latest stable; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reusing the pinned v0.102.0 server on 127.0.0.1:9374"
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "2d85c0729a08b86f8983a3279afd2cee05b64563c0bb3c5cfe69bdd8e042302e",
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "game_A": {
+  "chosen_oid": 28,
+  "trigger_entry_id": 121,
+  "game_code": "DMHW8C"
+ },
+ "game_B": {
+  "chosen_oid": 7,
+  "trigger_entry_id": 121,
+  "game_code": "CK8BX3"
+ },
+ "assertions": {
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed"
+ },
+ "notes": [
+  "E1[A]: gy_ballistas=[42, 28] emperor_bf=['67'] trigger_entry=121",
+  "E2[A]: entry targets=[28] chosen=28",
+  "E1[B]: gy_ballistas=[7, 29] emperor_bf=['77'] trigger_entry=121",
+  "E2[B]: entry targets=[7] chosen=7",
+  "E3: chosen_A=28 chosen_B=7 distinct=True",
+  "E4[A]: viewer refs=[28] export refs match=True",
+  "E4[B]: viewer refs=[7] export refs match=True",
+  "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat"
+ ],
+ "revalidation_of": {
+  "run_id": "20260917-6763",
+  "protocol": 72,
+  "evidence_commit": "3f1c88e076c2aa5d699ec47e29a1e842540e8cd8"
+ }
+}
