@@ -1,0 +1,55 @@
+[15:33:47] server identity hashes recomputed against on-disk pinned artifacts
+[15:33:47] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[15:33:47] ===== attempt 1 =====
+[15:33:47] game SMCZWM attempt=1; P0 seat=0 P1 seat=1
+[15:33:48] [6760-a1] keep 7: ['llanowar elves', 'forest', 'llanowar elves', 'llanowar elves', 'llanowar elves', 'llanowar elves', 'llanowar elves']
+[15:33:48] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[15:33:48] [P16760-a1] playing land island (legacy)
+[15:33:51] [6760-a1] playing land forest (legacy)
+[15:33:53] [P16760-a1] playing land island (legacy)
+[15:33:57] [6760-a1] discarding to hand size via vi (select)
+[15:33:57] [P16760-a1] playing land island (legacy)
+[15:34:01] [6760-a1] discarding to hand size via vi (select)
+[15:34:02] [P16760-a1] playing land island (legacy)
+[15:34:05] [6760-a1] playing land forest (legacy)
+[15:34:07] [P16760-a1] playing land island (legacy)
+[15:34:09] [6760-a1] playing land forest (legacy)
+[15:34:12] [P16760-a1] playing land island (legacy)
+[15:34:15] [6760-a1] discarding to hand size via vi (select)
+[15:34:16] [P16760-a1] playing land island (legacy)
+[15:34:18] [6760-a1] DIAG P06760-a1: rev=195 turn=13 phase=End prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[15:34:18] [6760-a1] DIAG P16760-a1: rev=195 turn=13 phase=End prio=['PassPriority'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[15:34:20] [6760-a1] discarding to hand size via vi (select)
+[15:34:21] [P16760-a1] playing land island (legacy)
+[15:34:25] [6760-a1] discarding to hand size via vi (select)
+[15:34:26] [P16760-a1] playing land island (legacy)
+[15:34:30] [6760-a1] discarding to hand size via vi (select)
+[15:34:31] [P16760-a1] playing land island (legacy)
+[15:34:34] [6760-a1] discarding to hand size via vi (select)
+[15:34:35] [P16760-a1] playing land island (legacy)
+[15:34:38] [6760-a1] playing land forest (legacy)
+[15:34:40] [P16760-a1] playing land island (legacy)
+[15:34:44] [6760-a1] discarding to hand size via vi (select)
+[15:34:45] [P16760-a1] playing land island (legacy)
+[15:34:48] [6760-a1] playing land forest (legacy)
+[15:34:48] [6760-a1] DIAG P06760-a1: rev=381 turn=26 phase=PreCombatMain prio=['PassPriority', 'PlayLand', 'CastSpell', 'CastSpell', 'CastSpell', 'CastSpell'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[15:34:48] [6760-a1] DIAG P16760-a1: rev=381 turn=26 phase=PreCombatMain prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[15:34:48] [6760-a1] casting Ojer Kaslem, Deepest Growth (oid 43)
+[15:34:49] [6760-a1] Ojer Kaslem on battlefield at turn 26
+[15:34:51] [P16760-a1] playing land island (legacy)
+[15:34:54] [6760-a1] P0 attacks P1 with Ojer Kaslem (turn 28)
+[15:34:57] [6760-a1] combat damage landed: P1 life=14
+[15:34:58] [6760-a1] select prompt: spec.type=select constraint={"type": "count", "data": {"min": 0, "max": 1}} n_candidates=6
+[15:34:58]   candidate SMCZWM.0.425.s0: llanowar elves (Creature) zone=Library ref=27
+[15:34:58]   candidate SMCZWM.0.425.s1: llanowar elves (Creature) zone=Library ref=18
+[15:34:58]   candidate SMCZWM.0.425.s2: llanowar elves (Creature) zone=Library ref=23
+[15:34:58]   candidate SMCZWM.0.425.s3: llanowar elves (Creature) zone=Library ref=29
+[15:34:58]   candidate SMCZWM.0.425.s4: llanowar elves (Creature) zone=Library ref=22
+[15:34:58]   candidate SMCZWM.0.425.s5: forest (Land) zone=Library ref=9
+[15:34:58] [6760-a1] submitting 2-card selection (creature SMCZWM.0.425.s0 + land SMCZWM.0.425.s5) via select
+[15:34:58] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[15:34:58] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[15:34:58] [6760-a1] submitting 1-card fallback (creature SMCZWM.0.425.s0)
+[15:35:01] [6760-a1] select outcome path=one_accepted: entered=['llanowar elves'] bottomed=5/6
+[15:35:01] attempt 1 assertions: {"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+[15:35:01] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
