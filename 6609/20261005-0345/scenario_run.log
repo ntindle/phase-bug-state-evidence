@@ -1,0 +1,70 @@
+ServerHello OK: {'server_version': '0.102.0', 'build_commit': 'e17f6fd', 'protocol_version': 106, 'mode': 'Full'}
+game ASKCW7; P0 seat=0 P1 seat=1
+P0 mulligans #1 (hand=['shock', 'grizzly bears', 'ornithopter', 'rancor', 'grizzly bears', 'rancor', 'rancor'])
+P1 keeps (hand=['mountain', 'lightning bolt', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['shock', 'grizzly bears', 'ornithopter', 'rancor', 'grizzly bears', 'rancor'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 mulligans #2 (hand=['rancor', 'island', 'rancor', 'ornithopter', 'shock', 'ornithopter', 'nethergoyf'])
+P0 mulligans #3 (hand=['nethergoyf', 'rancor', 'grizzly bears', 'ornithopter', 'grizzly bears', 'island', 'nethergoyf'])
+P0 keeps (hand=['swamp', 'ornithopter', 'shock', 'shock', 'ornithopter', 'shock', 'swamp'], mulls=3)
+P0 bottoms 3 via vi (select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Swamp', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Shock', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Swamp', 'available')]
+P0 plays land swamp
+P0 casts Ornithopter
+P1 plays land mountain
+P1 bolts ornithopter (oid 51)
+[P1] submitting advertised target: id=ASKCW7.0.30.t2 kind=sequence (Ornithopter)
+P0 plays land island
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P1 plays land mountain
+P0 plays land swamp
+P1 plays land mountain
+P1 plays land mountain
+P0 casts Nethergoyf
+payment expected for goyf_cast: needs={'B': 1, 'generic': 1}
+[P0] paying mana via vi: tap Swamp for B (remaining needs={'B': 0, 'generic': 1})
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 0, 'generic': 0})
+payment for goyf_cast complete (needs exhausted)
+P1 plays land mountain
+P1 bolts nethergoyf (oid 31)
+[P1] submitting advertised target: id=ASKCW7.0.158.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P1 bolts nethergoyf (oid 31)
+[P1] submitting advertised target: id=ASKCW7.0.161.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P0 casts Divination
+payment expected for divination: needs={'U': 1, 'generic': 2}
+P1 plays land mountain
+[P0] paying mana via vi: tap Island for U (remaining needs={'U': 0, 'generic': 2})
+[P0] paying mana via vi: tap Swamp for generic (remaining needs={'U': 0, 'generic': 1})
+[P0] paying mana via vi: tap Swamp for generic (remaining needs={'U': 0, 'generic': 0})
+payment for divination complete (needs exhausted)
+P1 plays land mountain
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['ASKCW7.0.284.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Shock', 'available'), ('Shock', 'available'), ('Ornithopter', 'available'), ('Rancor', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Ornithopter', 'available'), ('Rancor', 'available')]
+P1 plays land mountain
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 31)
+payment expected for escape: needs={'B': 1, 'generic': 2}
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Ornithopter', 'available'), ('Ornithopter', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Ornithopter', 'available'), ('Ornithopter', 'available'), ('Nethergoyf', 'available')]
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=3 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['ASKCW7.0.305.s2'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Ornithopter', 'available'), ('Divination', 'available'), ('Shock', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
+server excerpts: 0 matching lines
