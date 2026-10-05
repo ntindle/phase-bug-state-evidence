@@ -1,0 +1,2717 @@
+{
+  "run_id": "20261005-6594",
+  "issue": 6594,
+  "started_at": "2026-10-05T07:38:36Z",
+  "server": {
+    "server_version": "v0.102.0",
+    "build_commit": "e17f6fd",
+    "protocol_version": 106,
+    "mode": "Full",
+    "binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+    "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+    "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828); data digests match the signed manifest; digests recomputed against on-disk files this run"
+  },
+  "server_observed": {
+    "server_version": "0.102.0",
+    "build_commit": "e17f6fd",
+    "protocol_version": 106,
+    "mode": "Full"
+  },
+  "verdict": "not-reproduced",
+  "assertions": {
+    "A1_atraxa_cast": "passed",
+    "A2_choice_pending": "passed",
+    "A3_choice_resolves": "passed",
+    "A4_zones_sane": "passed"
+  },
+  "observations": {
+    "atraxa_cast": true,
+    "atraxa_cast_turn": 14,
+    "choice_seen": false,
+    "choice_first_t": null,
+    "choice_first_rev": null,
+    "choice_last_progress_rev": null,
+    "choice_last_progress_t": null,
+    "choice_detail": null,
+    "choice_resolved": true,
+    "stall_detected": false,
+    "stall_stuck_s": null,
+    "rejections": [],
+    "p0_acts": 101,
+    "trigger_fired": true,
+    "trigger_turn": 14,
+    "trigger_resolved_t": 1791185953.2445369,
+    "revealed_at_choice": null,
+    "ai_loop_stopped_sig": false,
+    "sel_snap_pre": {
+      "hand": 3,
+      "lib": 49,
+      "rev": 209,
+      "turn": 14,
+      "src": "live"
+    },
+    "sel_snap_post": {
+      "hand": 5,
+      "lib": 47,
+      "rev": 212,
+      "turn": 14
+    },
+    "sel_delta": {
+      "hand": 2,
+      "lib": -2
+    },
+    "sel_window_checks": 2
+  },
+  "notes": [
+    "A2: pending window not directly observed (brief on 106); inferred passed from the selection delta (P1 hand +2 across the ETB resolution with the reveal clearing)",
+    "post: P1 hand=5 library=47 strange-zone objects=0"
+  ],
+  "trigger_samples": [
+    {
+      "turn": 14,
+      "phase": "PreCombatMain",
+      "source": "atraxa, grand unifier",
+      "entry": {
+        "id": 121,
+        "source_id": 77,
+        "controller": 1,
+        "kind": {
+          "type": "TriggeredAbility",
+          "data": {
+            "source_id": 77,
+            "ability": {
+              "effect": {
+                "type": "RevealTop",
+                "player": {
+                  "type": "Controller"
+                },
+                "count": 10
+              },
+              "targets": [],
+              "source_id": 77,
+              "source_incarnation": 3,
+              "trigger_source": {
+                "identity": {
+                  "reference": {
+                    "object_id": 77,
+                    "incarnation": 3
+                  },
+                  "expected_zone": "Battlefield"
+                },
+                "lki": {
+                  "name": "Atraxa, Grand Unifier",
+                  "power": 7,
+                  "toughness": 7,
+                  "base_power": 7,
+                  "base_toughness": 7,
+                  "mana_value": 7,
+                  "controller": 1,
+                  "owner": 1,
+                  "card_types": [
+                    "Creature"
+                  ],
+                  "subtypes": [
+                    "Phyrexian",
+                    "Angel"
+                  ],
+                  "supertypes": [
+                    "Legendary"
+                  ],
+                  "keywords": [
+                    "Deathtouch",
+                    "Flying",
+                    "Lifelink",
+                    "Vigilance"
+                  ],
+                  "colors": [
+                    "Black",
+                    "Green",
+                    "Blue",
+                    "White"
+                  ],
+                  "chosen_attributes": [],
+                  "counters": {},
+                  "tapped": false,
+                  "is_suspected": false,
+                  "attachments": []
+                },
+                "card_id": 77,
+                "printed_ref": {
+                  "oracle_id": "abbcb153-0763-44c6-964f-b4ff0eb64257",
+                  "face_name": "Atraxa, Grand Unifier"
+                },
+                "is_token": false,
+                "face_down": false,
+                "mana_cost": {
+                  "type": "Cost",
+                  "shards": [
+                    "Green",
+                    "White",
+                    "Blue",
+                    "Black"
+                  ],
+                  "generic": 3
+                },
+                "transformed": false,
+                "is_renowned": false,
+                "is_saddled": false,
+                "trigger_entries": [
+                  {
+                    "occurrence": {
+                      "type": "Printed",
+                      "data": {
+                        "base_set": 1,
+                        "printed_index": 0
+                      }
+                    },
+                    "definition": {
+                      "mode": "ChangesZone",
+                      "execute": {
+                        "kind": "Spell",
+                        "effect": {
+                          "type": "RevealTop",
+                          "player": {
+                            "type": "Controller"
+                          },
+                          "count": 10
+                        },
+                        "cost": null,
+                        "sub_ability": {
+                          "kind": "Spell",
+                          "effect": {
+                            "type": "ChooseFromZone",
+                            "count": 8,
+                            "zone": "Library",
+                            "zone_owner": "Controller",
+                            "chooser": "Controller",
+                            "up_to": true,
+                            "constraint": {
+                              "type": "DistinctCardTypes",
+                              "categories": [
+                                "Artifact",
+                                "Battle",
+                                "Creature",
+                                "Enchantment",
+                                "Instant",
+                                "Land",
+                                "Planeswalker",
+                                "Sorcery"
+                              ]
+                            }
+                          },
+                          "cost": null,
+                          "sub_ability": {
+                            "kind": "Spell",
+                            "effect": {
+                              "type": "ChangeZone",
+                              "origin": "Library",
+                              "destination": "Hand",
+                              "target": {
+                                "type": "Any"
+                              },
+                              "owner_library": false,
+                              "enter_transformed": false,
+                              "enter_tapped": false,
+                              "enters_attacking": false
+                            },
+                            "cost": null,
+                            "sub_ability": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "PutAtLibraryPosition",
+                                "target": {
+                                  "type": "ExiledBySource"
+                                },
+                                "count": {
+                                  "type": "Fixed",
+                                  "value": 0
+                                },
+                                "position": {
+                                  "type": "Bottom"
+                                }
+                              },
+                              "cost": null,
+                              "sub_ability": null,
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false
+                            },
+                            "duration": null,
+                            "description": null,
+                            "target_prompt": null,
+                            "condition": null,
+                            "optional_targeting": false,
+                            "optional": false,
+                            "forward_result": false
+                          },
+                          "duration": null,
+                          "description": null,
+                          "target_prompt": null,
+                          "condition": null,
+                          "optional_targeting": false,
+                          "optional": false,
+                          "forward_result": false,
+                          "sub_link": "SequentialSibling"
+                        },
+                        "duration": null,
+                        "description": null,
+                        "target_prompt": null,
+                        "condition": null,
+                        "optional_targeting": false,
+                        "optional": false,
+                        "forward_result": false
+                      },
+                      "valid_card": {
+                        "type": "SelfRef"
+                      },
+                      "origin": null,
+                      "destination": "Battlefield",
+                      "trigger_zones": [
+                        "Battlefield"
+                      ],
+                      "phase": null,
+                      "optional": false,
+                      "damage_kind": "Any",
+                      "secondary": false,
+                      "valid_target": null,
+                      "valid_source": null,
+                      "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                      "constraint": null,
+                      "condition": null,
+                      "batched": false
+                    }
+                  }
+                ],
+                "timestamp": 15,
+                "entered_battlefield_turn": 14,
+                "combat_status": {
+                  "attacking": false,
+                  "blocking": false,
+                  "blocked": false,
+                  "attacking_alone": false,
+                  "blocking_alone": false,
+                  "defending_player": null
+                },
+                "cast_from_zone": "Hand",
+                "cast_controller": 1,
+                "phase_status": {
+                  "status": "PhasedIn"
+                },
+                "mana_spent_to_cast": true,
+                "colors_spent_to_cast": {
+                  "white": 2,
+                  "blue": 3,
+                  "black": 1,
+                  "green": 1
+                },
+                "mana_spent_to_cast_amount": 7,
+                "mana_spent_source_snapshots": [
+                  {
+                    "source_id": 81,
+                    "lki": {
+                      "name": "Forest",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Forest"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 78,
+                    "lki": {
+                      "name": "Plains",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Plains"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 97,
+                    "lki": {
+                      "name": "Island",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Island"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 109,
+                    "lki": {
+                      "name": "Swamp",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Swamp"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 106,
+                    "lki": {
+                      "name": "Island",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Island"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 99,
+                    "lki": {
+                      "name": "Plains",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Plains"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  },
+                  {
+                    "source_id": 76,
+                    "lki": {
+                      "name": "Island",
+                      "power": null,
+                      "toughness": null,
+                      "base_power": null,
+                      "base_toughness": null,
+                      "mana_value": 0,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Land"
+                      ],
+                      "subtypes": [
+                        "Island"
+                      ],
+                      "supertypes": [
+                        "Basic"
+                      ],
+                      "keywords": [],
+                      "colors": [],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": true,
+                      "is_suspected": false,
+                      "attachments": []
+                    }
+                  }
+                ]
+              },
+              "trigger_definition_ref": {
+                "source": {
+                  "object_id": 77,
+                  "incarnation": 3
+                },
+                "occurrence": {
+                  "type": "Printed",
+                  "data": {
+                    "base_set": 1,
+                    "printed_index": 0
+                  }
+                }
+              },
+              "controller": 1,
+              "original_controller": 1,
+              "kind": "Spell",
+              "sub_ability": {
+                "effect": {
+                  "type": "ChooseFromZone",
+                  "count": 8,
+                  "zone": "Library",
+                  "zone_owner": "Controller",
+                  "chooser": "Controller",
+                  "up_to": true,
+                  "constraint": {
+                    "type": "DistinctCardTypes",
+                    "categories": [
+                      "Artifact",
+                      "Battle",
+                      "Creature",
+                      "Enchantment",
+                      "Instant",
+                      "Land",
+                      "Planeswalker",
+                      "Sorcery"
+                    ]
+                  }
+                },
+                "targets": [],
+                "source_id": 77,
+                "source_incarnation": 3,
+                "trigger_source": {
+                  "identity": {
+                    "reference": {
+                      "object_id": 77,
+                      "incarnation": 3
+                    },
+                    "expected_zone": "Battlefield"
+                  },
+                  "lki": {
+                    "name": "Atraxa, Grand Unifier",
+                    "power": 7,
+                    "toughness": 7,
+                    "base_power": 7,
+                    "base_toughness": 7,
+                    "mana_value": 7,
+                    "controller": 1,
+                    "owner": 1,
+                    "card_types": [
+                      "Creature"
+                    ],
+                    "subtypes": [
+                      "Phyrexian",
+                      "Angel"
+                    ],
+                    "supertypes": [
+                      "Legendary"
+                    ],
+                    "keywords": [
+                      "Deathtouch",
+                      "Flying",
+                      "Lifelink",
+                      "Vigilance"
+                    ],
+                    "colors": [
+                      "Black",
+                      "Green",
+                      "Blue",
+                      "White"
+                    ],
+                    "chosen_attributes": [],
+                    "counters": {},
+                    "tapped": false,
+                    "is_suspected": false,
+                    "attachments": []
+                  },
+                  "card_id": 77,
+                  "printed_ref": {
+                    "oracle_id": "abbcb153-0763-44c6-964f-b4ff0eb64257",
+                    "face_name": "Atraxa, Grand Unifier"
+                  },
+                  "is_token": false,
+                  "face_down": false,
+                  "mana_cost": {
+                    "type": "Cost",
+                    "shards": [
+                      "Green",
+                      "White",
+                      "Blue",
+                      "Black"
+                    ],
+                    "generic": 3
+                  },
+                  "transformed": false,
+                  "is_renowned": false,
+                  "is_saddled": false,
+                  "trigger_entries": [
+                    {
+                      "occurrence": {
+                        "type": "Printed",
+                        "data": {
+                          "base_set": 1,
+                          "printed_index": 0
+                        }
+                      },
+                      "definition": {
+                        "mode": "ChangesZone",
+                        "execute": {
+                          "kind": "Spell",
+                          "effect": {
+                            "type": "RevealTop",
+                            "player": {
+                              "type": "Controller"
+                            },
+                            "count": 10
+                          },
+                          "cost": null,
+                          "sub_ability": {
+                            "kind": "Spell",
+                            "effect": {
+                              "type": "ChooseFromZone",
+                              "count": 8,
+                              "zone": "Library",
+                              "zone_owner": "Controller",
+                              "chooser": "Controller",
+                              "up_to": true,
+                              "constraint": {
+                                "type": "DistinctCardTypes",
+                                "categories": [
+                                  "Artifact",
+                                  "Battle",
+                                  "Creature",
+                                  "Enchantment",
+                                  "Instant",
+                                  "Land",
+                                  "Planeswalker",
+                                  "Sorcery"
+                                ]
+                              }
+                            },
+                            "cost": null,
+                            "sub_ability": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "ChangeZone",
+                                "origin": "Library",
+                                "destination": "Hand",
+                                "target": {
+                                  "type": "Any"
+                                },
+                                "owner_library": false,
+                                "enter_transformed": false,
+                                "enter_tapped": false,
+                                "enters_attacking": false
+                              },
+                              "cost": null,
+                              "sub_ability": {
+                                "kind": "Spell",
+                                "effect": {
+                                  "type": "PutAtLibraryPosition",
+                                  "target": {
+                                    "type": "ExiledBySource"
+                                  },
+                                  "count": {
+                                    "type": "Fixed",
+                                    "value": 0
+                                  },
+                                  "position": {
+                                    "type": "Bottom"
+                                  }
+                                },
+                                "cost": null,
+                                "sub_ability": null,
+                                "duration": null,
+                                "description": null,
+                                "target_prompt": null,
+                                "condition": null,
+                                "optional_targeting": false,
+                                "optional": false,
+                                "forward_result": false
+                              },
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false
+                            },
+                            "duration": null,
+                            "description": null,
+                            "target_prompt": null,
+                            "condition": null,
+                            "optional_targeting": false,
+                            "optional": false,
+                            "forward_result": false,
+                            "sub_link": "SequentialSibling"
+                          },
+                          "duration": null,
+                          "description": null,
+                          "target_prompt": null,
+                          "condition": null,
+                          "optional_targeting": false,
+                          "optional": false,
+                          "forward_result": false
+                        },
+                        "valid_card": {
+                          "type": "SelfRef"
+                        },
+                        "origin": null,
+                        "destination": "Battlefield",
+                        "trigger_zones": [
+                          "Battlefield"
+                        ],
+                        "phase": null,
+                        "optional": false,
+                        "damage_kind": "Any",
+                        "secondary": false,
+                        "valid_target": null,
+                        "valid_source": null,
+                        "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                        "constraint": null,
+                        "condition": null,
+                        "batched": false
+                      }
+                    }
+                  ],
+                  "timestamp": 15,
+                  "entered_battlefield_turn": 14,
+                  "combat_status": {
+                    "attacking": false,
+                    "blocking": false,
+                    "blocked": false,
+                    "attacking_alone": false,
+                    "blocking_alone": false,
+                    "defending_player": null
+                  },
+                  "cast_from_zone": "Hand",
+                  "cast_controller": 1,
+                  "phase_status": {
+                    "status": "PhasedIn"
+                  },
+                  "mana_spent_to_cast": true,
+                  "colors_spent_to_cast": {
+                    "white": 2,
+                    "blue": 3,
+                    "black": 1,
+                    "green": 1
+                  },
+                  "mana_spent_to_cast_amount": 7,
+                  "mana_spent_source_snapshots": [
+                    {
+                      "source_id": 81,
+                      "lki": {
+                        "name": "Forest",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Forest"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 78,
+                      "lki": {
+                        "name": "Plains",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Plains"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 97,
+                      "lki": {
+                        "name": "Island",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Island"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 109,
+                      "lki": {
+                        "name": "Swamp",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Swamp"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 106,
+                      "lki": {
+                        "name": "Island",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Island"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 99,
+                      "lki": {
+                        "name": "Plains",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Plains"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    },
+                    {
+                      "source_id": 76,
+                      "lki": {
+                        "name": "Island",
+                        "power": null,
+                        "toughness": null,
+                        "base_power": null,
+                        "base_toughness": null,
+                        "mana_value": 0,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Land"
+                        ],
+                        "subtypes": [
+                          "Island"
+                        ],
+                        "supertypes": [
+                          "Basic"
+                        ],
+                        "keywords": [],
+                        "colors": [],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": true,
+                        "is_suspected": false,
+                        "attachments": []
+                      }
+                    }
+                  ]
+                },
+                "trigger_definition_ref": {
+                  "source": {
+                    "object_id": 77,
+                    "incarnation": 3
+                  },
+                  "occurrence": {
+                    "type": "Printed",
+                    "data": {
+                      "base_set": 1,
+                      "printed_index": 0
+                    }
+                  }
+                },
+                "controller": 1,
+                "original_controller": 1,
+                "kind": "Spell",
+                "sub_ability": {
+                  "effect": {
+                    "type": "ChangeZone",
+                    "origin": "Library",
+                    "destination": "Hand",
+                    "target": {
+                      "type": "Any"
+                    },
+                    "owner_library": false,
+                    "enter_transformed": false,
+                    "enter_tapped": false,
+                    "enters_attacking": false
+                  },
+                  "targets": [],
+                  "source_id": 77,
+                  "source_incarnation": 3,
+                  "trigger_source": {
+                    "identity": {
+                      "reference": {
+                        "object_id": 77,
+                        "incarnation": 3
+                      },
+                      "expected_zone": "Battlefield"
+                    },
+                    "lki": {
+                      "name": "Atraxa, Grand Unifier",
+                      "power": 7,
+                      "toughness": 7,
+                      "base_power": 7,
+                      "base_toughness": 7,
+                      "mana_value": 7,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Creature"
+                      ],
+                      "subtypes": [
+                        "Phyrexian",
+                        "Angel"
+                      ],
+                      "supertypes": [
+                        "Legendary"
+                      ],
+                      "keywords": [
+                        "Deathtouch",
+                        "Flying",
+                        "Lifelink",
+                        "Vigilance"
+                      ],
+                      "colors": [
+                        "Black",
+                        "Green",
+                        "Blue",
+                        "White"
+                      ],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": false,
+                      "is_suspected": false,
+                      "attachments": []
+                    },
+                    "card_id": 77,
+                    "printed_ref": {
+                      "oracle_id": "abbcb153-0763-44c6-964f-b4ff0eb64257",
+                      "face_name": "Atraxa, Grand Unifier"
+                    },
+                    "is_token": false,
+                    "face_down": false,
+                    "mana_cost": {
+                      "type": "Cost",
+                      "shards": [
+                        "Green",
+                        "White",
+                        "Blue",
+                        "Black"
+                      ],
+                      "generic": 3
+                    },
+                    "transformed": false,
+                    "is_renowned": false,
+                    "is_saddled": false,
+                    "trigger_entries": [
+                      {
+                        "occurrence": {
+                          "type": "Printed",
+                          "data": {
+                            "base_set": 1,
+                            "printed_index": 0
+                          }
+                        },
+                        "definition": {
+                          "mode": "ChangesZone",
+                          "execute": {
+                            "kind": "Spell",
+                            "effect": {
+                              "type": "RevealTop",
+                              "player": {
+                                "type": "Controller"
+                              },
+                              "count": 10
+                            },
+                            "cost": null,
+                            "sub_ability": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "ChooseFromZone",
+                                "count": 8,
+                                "zone": "Library",
+                                "zone_owner": "Controller",
+                                "chooser": "Controller",
+                                "up_to": true,
+                                "constraint": {
+                                  "type": "DistinctCardTypes",
+                                  "categories": [
+                                    "Artifact",
+                                    "Battle",
+                                    "Creature",
+                                    "Enchantment",
+                                    "Instant",
+                                    "Land",
+                                    "Planeswalker",
+                                    "Sorcery"
+                                  ]
+                                }
+                              },
+                              "cost": null,
+                              "sub_ability": {
+                                "kind": "Spell",
+                                "effect": {
+                                  "type": "ChangeZone",
+                                  "origin": "Library",
+                                  "destination": "Hand",
+                                  "target": {
+                                    "type": "Any"
+                                  },
+                                  "owner_library": false,
+                                  "enter_transformed": false,
+                                  "enter_tapped": false,
+                                  "enters_attacking": false
+                                },
+                                "cost": null,
+                                "sub_ability": {
+                                  "kind": "Spell",
+                                  "effect": {
+                                    "type": "PutAtLibraryPosition",
+                                    "target": {
+                                      "type": "ExiledBySource"
+                                    },
+                                    "count": {
+                                      "type": "Fixed",
+                                      "value": 0
+                                    },
+                                    "position": {
+                                      "type": "Bottom"
+                                    }
+                                  },
+                                  "cost": null,
+                                  "sub_ability": null,
+                                  "duration": null,
+                                  "description": null,
+                                  "target_prompt": null,
+                                  "condition": null,
+                                  "optional_targeting": false,
+                                  "optional": false,
+                                  "forward_result": false
+                                },
+                                "duration": null,
+                                "description": null,
+                                "target_prompt": null,
+                                "condition": null,
+                                "optional_targeting": false,
+                                "optional": false,
+                                "forward_result": false
+                              },
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false,
+                              "sub_link": "SequentialSibling"
+                            },
+                            "duration": null,
+                            "description": null,
+                            "target_prompt": null,
+                            "condition": null,
+                            "optional_targeting": false,
+                            "optional": false,
+                            "forward_result": false
+                          },
+                          "valid_card": {
+                            "type": "SelfRef"
+                          },
+                          "origin": null,
+                          "destination": "Battlefield",
+                          "trigger_zones": [
+                            "Battlefield"
+                          ],
+                          "phase": null,
+                          "optional": false,
+                          "damage_kind": "Any",
+                          "secondary": false,
+                          "valid_target": null,
+                          "valid_source": null,
+                          "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                          "constraint": null,
+                          "condition": null,
+                          "batched": false
+                        }
+                      }
+                    ],
+                    "timestamp": 15,
+                    "entered_battlefield_turn": 14,
+                    "combat_status": {
+                      "attacking": false,
+                      "blocking": false,
+                      "blocked": false,
+                      "attacking_alone": false,
+                      "blocking_alone": false,
+                      "defending_player": null
+                    },
+                    "cast_from_zone": "Hand",
+                    "cast_controller": 1,
+                    "phase_status": {
+                      "status": "PhasedIn"
+                    },
+                    "mana_spent_to_cast": true,
+                    "colors_spent_to_cast": {
+                      "white": 2,
+                      "blue": 3,
+                      "black": 1,
+                      "green": 1
+                    },
+                    "mana_spent_to_cast_amount": 7,
+                    "mana_spent_source_snapshots": [
+                      {
+                        "source_id": 81,
+                        "lki": {
+                          "name": "Forest",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Forest"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 78,
+                        "lki": {
+                          "name": "Plains",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Plains"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 97,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 109,
+                        "lki": {
+                          "name": "Swamp",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Swamp"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 106,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 99,
+                        "lki": {
+                          "name": "Plains",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Plains"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 76,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      }
+                    ]
+                  },
+                  "trigger_definition_ref": {
+                    "source": {
+                      "object_id": 77,
+                      "incarnation": 3
+                    },
+                    "occurrence": {
+                      "type": "Printed",
+                      "data": {
+                        "base_set": 1,
+                        "printed_index": 0
+                      }
+                    }
+                  },
+                  "controller": 1,
+                  "original_controller": 1,
+                  "kind": "Spell",
+                  "sub_ability": {
+                    "effect": {
+                      "type": "PutAtLibraryPosition",
+                      "target": {
+                        "type": "ExiledBySource"
+                      },
+                      "count": {
+                        "type": "Fixed",
+                        "value": 0
+                      },
+                      "position": {
+                        "type": "Bottom"
+                      }
+                    },
+                    "targets": [],
+                    "source_id": 77,
+                    "source_incarnation": 3,
+                    "trigger_source": {
+                      "identity": {
+                        "reference": {
+                          "object_id": 77,
+                          "incarnation": 3
+                        },
+                        "expected_zone": "Battlefield"
+                      },
+                      "lki": {
+                        "name": "Atraxa, Grand Unifier",
+                        "power": 7,
+                        "toughness": 7,
+                        "base_power": 7,
+                        "base_toughness": 7,
+                        "mana_value": 7,
+                        "controller": 1,
+                        "owner": 1,
+                        "card_types": [
+                          "Creature"
+                        ],
+                        "subtypes": [
+                          "Phyrexian",
+                          "Angel"
+                        ],
+                        "supertypes": [
+                          "Legendary"
+                        ],
+                        "keywords": [
+                          "Deathtouch",
+                          "Flying",
+                          "Lifelink",
+                          "Vigilance"
+                        ],
+                        "colors": [
+                          "Black",
+                          "Green",
+                          "Blue",
+                          "White"
+                        ],
+                        "chosen_attributes": [],
+                        "counters": {},
+                        "tapped": false,
+                        "is_suspected": false,
+                        "attachments": []
+                      },
+                      "card_id": 77,
+                      "printed_ref": {
+                        "oracle_id": "abbcb153-0763-44c6-964f-b4ff0eb64257",
+                        "face_name": "Atraxa, Grand Unifier"
+                      },
+                      "is_token": false,
+                      "face_down": false,
+                      "mana_cost": {
+                        "type": "Cost",
+                        "shards": [
+                          "Green",
+                          "White",
+                          "Blue",
+                          "Black"
+                        ],
+                        "generic": 3
+                      },
+                      "transformed": false,
+                      "is_renowned": false,
+                      "is_saddled": false,
+                      "trigger_entries": [
+                        {
+                          "occurrence": {
+                            "type": "Printed",
+                            "data": {
+                              "base_set": 1,
+                              "printed_index": 0
+                            }
+                          },
+                          "definition": {
+                            "mode": "ChangesZone",
+                            "execute": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "RevealTop",
+                                "player": {
+                                  "type": "Controller"
+                                },
+                                "count": 10
+                              },
+                              "cost": null,
+                              "sub_ability": {
+                                "kind": "Spell",
+                                "effect": {
+                                  "type": "ChooseFromZone",
+                                  "count": 8,
+                                  "zone": "Library",
+                                  "zone_owner": "Controller",
+                                  "chooser": "Controller",
+                                  "up_to": true,
+                                  "constraint": {
+                                    "type": "DistinctCardTypes",
+                                    "categories": [
+                                      "Artifact",
+                                      "Battle",
+                                      "Creature",
+                                      "Enchantment",
+                                      "Instant",
+                                      "Land",
+                                      "Planeswalker",
+                                      "Sorcery"
+                                    ]
+                                  }
+                                },
+                                "cost": null,
+                                "sub_ability": {
+                                  "kind": "Spell",
+                                  "effect": {
+                                    "type": "ChangeZone",
+                                    "origin": "Library",
+                                    "destination": "Hand",
+                                    "target": {
+                                      "type": "Any"
+                                    },
+                                    "owner_library": false,
+                                    "enter_transformed": false,
+                                    "enter_tapped": false,
+                                    "enters_attacking": false
+                                  },
+                                  "cost": null,
+                                  "sub_ability": {
+                                    "kind": "Spell",
+                                    "effect": {
+                                      "type": "PutAtLibraryPosition",
+                                      "target": {
+                                        "type": "ExiledBySource"
+                                      },
+                                      "count": {
+                                        "type": "Fixed",
+                                        "value": 0
+                                      },
+                                      "position": {
+                                        "type": "Bottom"
+                                      }
+                                    },
+                                    "cost": null,
+                                    "sub_ability": null,
+                                    "duration": null,
+                                    "description": null,
+                                    "target_prompt": null,
+                                    "condition": null,
+                                    "optional_targeting": false,
+                                    "optional": false,
+                                    "forward_result": false
+                                  },
+                                  "duration": null,
+                                  "description": null,
+                                  "target_prompt": null,
+                                  "condition": null,
+                                  "optional_targeting": false,
+                                  "optional": false,
+                                  "forward_result": false
+                                },
+                                "duration": null,
+                                "description": null,
+                                "target_prompt": null,
+                                "condition": null,
+                                "optional_targeting": false,
+                                "optional": false,
+                                "forward_result": false,
+                                "sub_link": "SequentialSibling"
+                              },
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false
+                            },
+                            "valid_card": {
+                              "type": "SelfRef"
+                            },
+                            "origin": null,
+                            "destination": "Battlefield",
+                            "trigger_zones": [
+                              "Battlefield"
+                            ],
+                            "phase": null,
+                            "optional": false,
+                            "damage_kind": "Any",
+                            "secondary": false,
+                            "valid_target": null,
+                            "valid_source": null,
+                            "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                            "constraint": null,
+                            "condition": null,
+                            "batched": false
+                          }
+                        }
+                      ],
+                      "timestamp": 15,
+                      "entered_battlefield_turn": 14,
+                      "combat_status": {
+                        "attacking": false,
+                        "blocking": false,
+                        "blocked": false,
+                        "attacking_alone": false,
+                        "blocking_alone": false,
+                        "defending_player": null
+                      },
+                      "cast_from_zone": "Hand",
+                      "cast_controller": 1,
+                      "phase_status": {
+                        "status": "PhasedIn"
+                      },
+                      "mana_spent_to_cast": true,
+                      "colors_spent_to_cast": {
+                        "white": 2,
+                        "blue": 3,
+                        "black": 1,
+                        "green": 1
+                      },
+                      "mana_spent_to_cast_amount": 7,
+                      "mana_spent_source_snapshots": [
+                        {
+                          "source_id": 81,
+                          "lki": {
+                            "name": "Forest",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Forest"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 78,
+                          "lki": {
+                            "name": "Plains",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Plains"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 97,
+                          "lki": {
+                            "name": "Island",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Island"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 109,
+                          "lki": {
+                            "name": "Swamp",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Swamp"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 106,
+                          "lki": {
+                            "name": "Island",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Island"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 99,
+                          "lki": {
+                            "name": "Plains",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Plains"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        },
+                        {
+                          "source_id": 76,
+                          "lki": {
+                            "name": "Island",
+                            "power": null,
+                            "toughness": null,
+                            "base_power": null,
+                            "base_toughness": null,
+                            "mana_value": 0,
+                            "controller": 1,
+                            "owner": 1,
+                            "card_types": [
+                              "Land"
+                            ],
+                            "subtypes": [
+                              "Island"
+                            ],
+                            "supertypes": [
+                              "Basic"
+                            ],
+                            "keywords": [],
+                            "colors": [],
+                            "chosen_attributes": [],
+                            "counters": {},
+                            "tapped": true,
+                            "is_suspected": false,
+                            "attachments": []
+                          }
+                        }
+                      ]
+                    },
+                    "trigger_definition_ref": {
+                      "source": {
+                        "object_id": 77,
+                        "incarnation": 3
+                      },
+                      "occurrence": {
+                        "type": "Printed",
+                        "data": {
+                          "base_set": 1,
+                          "printed_index": 0
+                        }
+                      }
+                    },
+                    "controller": 1,
+                    "original_controller": 1,
+                    "kind": "Spell",
+                    "sub_ability": null,
+                    "duration": null,
+                    "condition": null,
+                    "context": {
+                      "additional_cost_paid": false,
+                      "alternative_mana_cost_paid": false,
+                      "optional_effect_performed": false
+                    },
+                    "optional_targeting": false,
+                    "optional": false,
+                    "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                    "detached_remainder": "NoProducer",
+                    "forward_result": false,
+                    "may_trigger_origin": {
+                      "type": "Definition",
+                      "definition_ref": {
+                        "source": {
+                          "object_id": 77,
+                          "incarnation": 3
+                        },
+                        "occurrence": {
+                          "type": "Printed",
+                          "data": {
+                            "base_set": 1,
+                            "printed_index": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "duration": null,
+                  "condition": null,
+                  "context": {
+                    "additional_cost_paid": false,
+                    "alternative_mana_cost_paid": false,
+                    "optional_effect_performed": false
+                  },
+                  "optional_targeting": false,
+                  "optional": false,
+                  "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                  "detached_remainder": "NoProducer",
+                  "forward_result": false,
+                  "may_trigger_origin": {
+                    "type": "Definition",
+                    "definition_ref": {
+                      "source": {
+                        "object_id": 77,
+                        "incarnation": 3
+                      },
+                      "occurrence": {
+                        "type": "Printed",
+                        "data": {
+                          "base_set": 1,
+                          "printed_index": 0
+                        }
+                      }
+                    }
+                  }
+                },
+                "duration": null,
+                "condition": null,
+                "context": {
+                  "additional_cost_paid": false,
+                  "alternative_mana_cost_paid": false,
+                  "optional_effect_performed": false
+                },
+                "optional_targeting": false,
+                "optional": false,
+                "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                "detached_remainder": "NoProducer",
+                "forward_result": false,
+                "may_trigger_origin": {
+                  "type": "Definition",
+                  "definition_ref": {
+                    "source": {
+                      "object_id": 77,
+                      "incarnation": 3
+                    },
+                    "occurrence": {
+                      "type": "Printed",
+                      "data": {
+                        "base_set": 1,
+                        "printed_index": 0
+                      }
+                    }
+                  }
+                },
+                "sub_link": "SequentialSibling"
+              },
+              "duration": null,
+              "condition": null,
+              "context": {
+                "additional_cost_paid": false,
+                "alternative_mana_cost_paid": false,
+                "optional_effect_performed": false,
+                "cast_from_zone": "Hand"
+              },
+              "optional_targeting": false,
+              "optional": false,
+              "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+              "detached_remainder": "NoProducer",
+              "forward_result": false,
+              "ability_index": 0,
+              "may_trigger_origin": {
+                "type": "Definition",
+                "definition_ref": {
+                  "source": {
+                    "object_id": 77,
+                    "incarnation": 3
+                  },
+                  "occurrence": {
+                    "type": "Printed",
+                    "data": {
+                      "base_set": 1,
+                      "printed_index": 0
+                    }
+                  }
+                }
+              }
+            },
+            "condition": null,
+            "trigger_event": {
+              "type": "ZoneChanged",
+              "data": {
+                "object_id": 77,
+                "from": "Stack",
+                "to": "Battlefield",
+                "record": {
+                  "object_id": 77,
+                  "name": "Atraxa, Grand Unifier",
+                  "core_types": [
+                    "Creature"
+                  ],
+                  "subtypes": [
+                    "Phyrexian",
+                    "Angel"
+                  ],
+                  "supertypes": [
+                    "Legendary"
+                  ],
+                  "keywords": [
+                    "Deathtouch",
+                    "Flying",
+                    "Lifelink",
+                    "Vigilance"
+                  ],
+                  "trigger_definitions": [
+                    {
+                      "occurrence": {
+                        "type": "Printed",
+                        "data": {
+                          "base_set": 1,
+                          "printed_index": 0
+                        }
+                      },
+                      "definition": {
+                        "mode": "ChangesZone",
+                        "execute": {
+                          "kind": "Spell",
+                          "effect": {
+                            "type": "RevealTop",
+                            "player": {
+                              "type": "Controller"
+                            },
+                            "count": 10
+                          },
+                          "cost": null,
+                          "sub_ability": {
+                            "kind": "Spell",
+                            "effect": {
+                              "type": "ChooseFromZone",
+                              "count": 8,
+                              "zone": "Library",
+                              "zone_owner": "Controller",
+                              "chooser": "Controller",
+                              "up_to": true,
+                              "constraint": {
+                                "type": "DistinctCardTypes",
+                                "categories": [
+                                  "Artifact",
+                                  "Battle",
+                                  "Creature",
+                                  "Enchantment",
+                                  "Instant",
+                                  "Land",
+                                  "Planeswalker",
+                                  "Sorcery"
+                                ]
+                              }
+                            },
+                            "cost": null,
+                            "sub_ability": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "ChangeZone",
+                                "origin": "Library",
+                                "destination": "Hand",
+                                "target": {
+                                  "type": "Any"
+                                },
+                                "owner_library": false,
+                                "enter_transformed": false,
+                                "enter_tapped": false,
+                                "enters_attacking": false
+                              },
+                              "cost": null,
+                              "sub_ability": {
+                                "kind": "Spell",
+                                "effect": {
+                                  "type": "PutAtLibraryPosition",
+                                  "target": {
+                                    "type": "ExiledBySource"
+                                  },
+                                  "count": {
+                                    "type": "Fixed",
+                                    "value": 0
+                                  },
+                                  "position": {
+                                    "type": "Bottom"
+                                  }
+                                },
+                                "cost": null,
+                                "sub_ability": null,
+                                "duration": null,
+                                "description": null,
+                                "target_prompt": null,
+                                "condition": null,
+                                "optional_targeting": false,
+                                "optional": false,
+                                "forward_result": false
+                              },
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false
+                            },
+                            "duration": null,
+                            "description": null,
+                            "target_prompt": null,
+                            "condition": null,
+                            "optional_targeting": false,
+                            "optional": false,
+                            "forward_result": false,
+                            "sub_link": "SequentialSibling"
+                          },
+                          "duration": null,
+                          "description": null,
+                          "target_prompt": null,
+                          "condition": null,
+                          "optional_targeting": false,
+                          "optional": false,
+                          "forward_result": false
+                        },
+                        "valid_card": {
+                          "type": "SelfRef"
+                        },
+                        "origin": null,
+                        "destination": "Battlefield",
+                        "trigger_zones": [
+                          "Battlefield"
+                        ],
+                        "phase": null,
+                        "optional": false,
+                        "damage_kind": "Any",
+                        "secondary": false,
+                        "valid_target": null,
+                        "valid_source": null,
+                        "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                        "constraint": null,
+                        "condition": null,
+                        "batched": false
+                      }
+                    }
+                  ],
+                  "trigger_source_context": {
+                    "identity": {
+                      "reference": {
+                        "object_id": 77,
+                        "incarnation": 2
+                      },
+                      "expected_zone": "Stack"
+                    },
+                    "lki": {
+                      "name": "Atraxa, Grand Unifier",
+                      "power": 7,
+                      "toughness": 7,
+                      "base_power": 7,
+                      "base_toughness": 7,
+                      "mana_value": 7,
+                      "controller": 1,
+                      "owner": 1,
+                      "card_types": [
+                        "Creature"
+                      ],
+                      "subtypes": [
+                        "Phyrexian",
+                        "Angel"
+                      ],
+                      "supertypes": [
+                        "Legendary"
+                      ],
+                      "keywords": [
+                        "Deathtouch",
+                        "Flying",
+                        "Lifelink",
+                        "Vigilance"
+                      ],
+                      "colors": [
+                        "Black",
+                        "Green",
+                        "Blue",
+                        "White"
+                      ],
+                      "chosen_attributes": [],
+                      "counters": {},
+                      "tapped": false,
+                      "is_suspected": false,
+                      "attachments": []
+                    },
+                    "card_id": 77,
+                    "printed_ref": {
+                      "oracle_id": "abbcb153-0763-44c6-964f-b4ff0eb64257",
+                      "face_name": "Atraxa, Grand Unifier"
+                    },
+                    "is_token": false,
+                    "face_down": false,
+                    "mana_cost": {
+                      "type": "Cost",
+                      "shards": [
+                        "Green",
+                        "White",
+                        "Blue",
+                        "Black"
+                      ],
+                      "generic": 3
+                    },
+                    "transformed": false,
+                    "is_renowned": false,
+                    "is_saddled": false,
+                    "trigger_entries": [
+                      {
+                        "occurrence": {
+                          "type": "Printed",
+                          "data": {
+                            "base_set": 1,
+                            "printed_index": 0
+                          }
+                        },
+                        "definition": {
+                          "mode": "ChangesZone",
+                          "execute": {
+                            "kind": "Spell",
+                            "effect": {
+                              "type": "RevealTop",
+                              "player": {
+                                "type": "Controller"
+                              },
+                              "count": 10
+                            },
+                            "cost": null,
+                            "sub_ability": {
+                              "kind": "Spell",
+                              "effect": {
+                                "type": "ChooseFromZone",
+                                "count": 8,
+                                "zone": "Library",
+                                "zone_owner": "Controller",
+                                "chooser": "Controller",
+                                "up_to": true,
+                                "constraint": {
+                                  "type": "DistinctCardTypes",
+                                  "categories": [
+                                    "Artifact",
+                                    "Battle",
+                                    "Creature",
+                                    "Enchantment",
+                                    "Instant",
+                                    "Land",
+                                    "Planeswalker",
+                                    "Sorcery"
+                                  ]
+                                }
+                              },
+                              "cost": null,
+                              "sub_ability": {
+                                "kind": "Spell",
+                                "effect": {
+                                  "type": "ChangeZone",
+                                  "origin": "Library",
+                                  "destination": "Hand",
+                                  "target": {
+                                    "type": "Any"
+                                  },
+                                  "owner_library": false,
+                                  "enter_transformed": false,
+                                  "enter_tapped": false,
+                                  "enters_attacking": false
+                                },
+                                "cost": null,
+                                "sub_ability": {
+                                  "kind": "Spell",
+                                  "effect": {
+                                    "type": "PutAtLibraryPosition",
+                                    "target": {
+                                      "type": "ExiledBySource"
+                                    },
+                                    "count": {
+                                      "type": "Fixed",
+                                      "value": 0
+                                    },
+                                    "position": {
+                                      "type": "Bottom"
+                                    }
+                                  },
+                                  "cost": null,
+                                  "sub_ability": null,
+                                  "duration": null,
+                                  "description": null,
+                                  "target_prompt": null,
+                                  "condition": null,
+                                  "optional_targeting": false,
+                                  "optional": false,
+                                  "forward_result": false
+                                },
+                                "duration": null,
+                                "description": null,
+                                "target_prompt": null,
+                                "condition": null,
+                                "optional_targeting": false,
+                                "optional": false,
+                                "forward_result": false
+                              },
+                              "duration": null,
+                              "description": null,
+                              "target_prompt": null,
+                              "condition": null,
+                              "optional_targeting": false,
+                              "optional": false,
+                              "forward_result": false,
+                              "sub_link": "SequentialSibling"
+                            },
+                            "duration": null,
+                            "description": null,
+                            "target_prompt": null,
+                            "condition": null,
+                            "optional_targeting": false,
+                            "optional": false,
+                            "forward_result": false
+                          },
+                          "valid_card": {
+                            "type": "SelfRef"
+                          },
+                          "origin": null,
+                          "destination": "Battlefield",
+                          "trigger_zones": [
+                            "Battlefield"
+                          ],
+                          "phase": null,
+                          "optional": false,
+                          "damage_kind": "Any",
+                          "secondary": false,
+                          "valid_target": null,
+                          "valid_source": null,
+                          "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+                          "constraint": null,
+                          "condition": null,
+                          "batched": false
+                        }
+                      }
+                    ],
+                    "timestamp": 0,
+                    "combat_status": {
+                      "attacking": false,
+                      "blocking": false,
+                      "blocked": false,
+                      "attacking_alone": false,
+                      "blocking_alone": false,
+                      "defending_player": null
+                    },
+                    "cast_from_zone": "Hand",
+                    "cast_controller": 1,
+                    "phase_status": {
+                      "status": "PhasedIn"
+                    },
+                    "cast_spell_keywords": [
+                      "Deathtouch",
+                      "Flying",
+                      "Lifelink",
+                      "Vigilance"
+                    ],
+                    "mana_spent_to_cast": true,
+                    "colors_spent_to_cast": {
+                      "white": 2,
+                      "blue": 3,
+                      "black": 1,
+                      "green": 1
+                    },
+                    "mana_spent_to_cast_amount": 7,
+                    "mana_spent_source_snapshots": [
+                      {
+                        "source_id": 81,
+                        "lki": {
+                          "name": "Forest",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Forest"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 78,
+                        "lki": {
+                          "name": "Plains",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Plains"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 97,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 109,
+                        "lki": {
+                          "name": "Swamp",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Swamp"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 106,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 99,
+                        "lki": {
+                          "name": "Plains",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Plains"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      },
+                      {
+                        "source_id": 76,
+                        "lki": {
+                          "name": "Island",
+                          "power": null,
+                          "toughness": null,
+                          "base_power": null,
+                          "base_toughness": null,
+                          "mana_value": 0,
+                          "controller": 1,
+                          "owner": 1,
+                          "card_types": [
+                            "Land"
+                          ],
+                          "subtypes": [
+                            "Island"
+                          ],
+                          "supertypes": [
+                            "Basic"
+                          ],
+                          "keywords": [],
+                          "colors": [],
+                          "chosen_attributes": [],
+                          "counters": {},
+                          "tapped": true,
+                          "is_suspected": false,
+                          "attachments": []
+                        }
+                      }
+                    ]
+                  },
+                  "power": 7,
+                  "toughness": 7,
+                  "base_power": 7,
+                  "base_toughness": 7,
+                  "colors": [
+                    "Black",
+                    "Green",
+                    "Blue",
+                    "White"
+                  ],
+                  "mana_value": 7,
+                  "controller": 1,
+                  "owner": 1,
+                  "from_zone": "Stack",
+                  "cast_from_zone": "Hand",
+                  "played_from_zone": null,
+                  "to_zone": "Battlefield",
+                  "attachments": [],
+                  "linked_exile_snapshot": [],
+                  "is_token": false,
+                  "combat_status": {
+                    "attacking": false,
+                    "blocking": false,
+                    "blocked": false,
+                    "attacking_alone": false,
+                    "blocking_alone": false,
+                    "defending_player": null
+                  },
+                  "co_departed": [],
+                  "entered_incarnation": 3,
+                  "attached_to": null,
+                  "turn_zone_change_index": 3,
+                  "recorded_turn_number": 14,
+                  "is_suspected": false
+                }
+              }
+            },
+            "description": "When ~ enters, reveal the top ten cards of your library. For each card type, you may put a card of that type from among the revealed cards into your hand. Put the rest on the bottom of your library in a random order.",
+            "source_name": "Atraxa, Grand Unifier"
+          }
+        }
+      }
+    }
+  ],
+  "setup_line": "P0: 60x island (human driver). P1: AI Medium, 12x Atraxa, Grand Unifier + 12x each Forest/Plains/Island/Swamp.",
+  "contract_line": "AI casts Atraxa -> ETB reveals 10 -> AI must submit a legal ChooseFromZoneChoice (one card per type, optional) and the game advances.",
+  "limitations": [
+    "Browser/UI not exercised; the separate frontend 'Maximum call stack size exceeded' (multiplayerDraftStore) defect is out of scope for this engine+AI test",
+    "Server-side AI (phase-ai) policy tested, not the browser WASM AI driver path"
+  ],
+  "stats": {
+    "p0_actions": 101,
+    "trigger_observations": 1
+  },
+  "scenario": {
+    "file": "scenario_6594_01020.py",
+    "sha256": "170638d6b12e9b20c59dba9df77c3ed73dec266c734bea5f15461ae8198c48ec"
+  },
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "island",
+          60
+        ]
+      ]
+    },
+    "P1_AI": {
+      "main": [
+        [
+          "atraxa, grand unifier",
+          12
+        ],
+        [
+          "forest",
+          12
+        ],
+        [
+          "plains",
+          12
+        ],
+        [
+          "island",
+          12
+        ],
+        [
+          "swamp",
+          12
+        ]
+      ]
+    }
+  }
+}
