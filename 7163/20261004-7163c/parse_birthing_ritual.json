@@ -1,0 +1,189 @@
+[
+ {
+  "mode": "Phase",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Dig",
+    "player": {
+     "type": "Controller"
+    },
+    "count": {
+     "type": "Fixed",
+     "value": 7
+    },
+    "destination": null,
+    "keep_count": 0,
+    "up_to": false,
+    "filter": {
+     "type": "Any"
+    },
+    "rest_destination": "Library",
+    "rest_order": "random",
+    "reveal": false,
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Sacrifice",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": []
+     },
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Dig",
+      "player": {
+       "type": "Controller"
+      },
+      "count": {
+       "type": "Fixed",
+       "value": 0
+      },
+      "destination": "Battlefield",
+      "keep_count": 1,
+      "up_to": true,
+      "filter": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": null,
+       "properties": [
+        {
+         "type": "Cmc",
+         "comparator": "LE",
+         "value": {
+          "type": "Offset",
+          "inner": {
+           "type": "Ref",
+           "qty": {
+            "type": "ObjectManaValue",
+            "scope": {
+             "type": "CostPaidObject"
+            }
+           }
+          },
+          "offset": 1
+         }
+        }
+       ]
+      },
+      "rest_destination": "Library",
+      "reveal": false,
+      "enter_tapped": false,
+      "enters_attacking": false,
+      "source": "prior_look"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "else_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Dig",
+       "player": {
+        "type": "Controller"
+       },
+       "count": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "destination": null,
+       "keep_count": 0,
+       "up_to": false,
+       "filter": {
+        "type": "Any"
+       },
+       "rest_destination": "Library",
+       "reveal": false,
+       "enter_tapped": false,
+       "enters_attacking": false,
+       "source": "prior_look"
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": {
+      "type": "EffectOutcome",
+      "signal": "OptionalEffectPerformed"
+     },
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "valid_card": null,
+  "origin": null,
+  "destination": null,
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": "End",
+  "optional": false,
+  "damage_kind": "Any",
+  "secondary": false,
+  "valid_target": null,
+  "valid_source": null,
+  "description": "At the beginning of your end step, if you control a creature, look at the top seven cards of your library. Then you may sacrifice a creature. If you do, you may put a creature card with mana value X or less from among those cards onto the battlefield, where X is 1 plus the sacrificed creature's mana value. Put the rest on the bottom of your library in a random order.",
+  "constraint": {
+   "type": "OnlyDuringYourTurn"
+  },
+  "condition": {
+   "type": "ControlsType",
+   "filter": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": "You",
+    "properties": [
+     {
+      "type": "InZone",
+      "zone": "Battlefield"
+     }
+    ]
+   }
+  },
+  "batched": false
+ }
+]
