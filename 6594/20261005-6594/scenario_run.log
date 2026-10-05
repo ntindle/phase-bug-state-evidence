@@ -1,0 +1,15 @@
+ServerHello OK: {'server_version': '0.102.0', 'build_commit': 'e17f6fd', 'protocol_version': 106, 'mode': 'Full'}
+game TKR5JP; P0 seat=0; P1 = AI Medium seat
+[P0] mulligan: Keep
+TRIGGER on stack (turn 14 PreCombatMain): source=atraxa, grand unifier
+OBSERVED: Atraxa ETB trigger fired (turn 14)
+SEL(live): pre-trigger P1 hand=3 lib=49
+OBSERVED: AI cast Atraxa (turn 14, rev 209)
+exported _probe.json
+exported _probe.json
+SEL: post-trigger snapshot P1 hand=5 lib=47 (rev 212); delta={'hand': 2, 'lib': -2}
+OBSERVED (via selection delta): AI answered the ChooseFromZoneChoice (P1 hand +2); exporting post.json
+exported post.json
+server-log AI signature present: False (0 matching lines)
+VERDICT: not-reproduced
+assertions: {"A1_atraxa_cast": "passed", "A2_choice_pending": "passed", "A3_choice_resolves": "passed", "A4_zones_sane": "passed"}
