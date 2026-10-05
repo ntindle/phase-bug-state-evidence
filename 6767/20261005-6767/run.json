@@ -1,0 +1,55 @@
+{
+ "run_id": "20261005-6767",
+ "issue": 6767,
+ "date": "2026-10-05T22:24:45Z",
+ "server": {
+  "version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "run_dir": "runs/20261005-6767",
+  "port": 9375
+ },
+ "scenario_sha256": "09ac61207694265135907c5e6e085b3455bc14c4e955726a044847a8cd26aba0",
+ "decks": {
+  "P0": {
+   "Duskana, the Rage Mother": 4,
+   "Grizzly Bears": 12,
+   "Taiga": 16,
+   "Savannah": 14,
+   "Plateau": 14
+  },
+  "P1": {
+   "Forest": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_declared": "passed",
+  "A3_trigger_fires": "failed",
+  "A4_pump_correct": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre: duskana_bf=1 bears_bf=2 life=[20, 20]",
+  "trigger evidence hits: none",
+  "mid_combat attacker 27 P/T=2/2 (expected 5/5)",
+  "non-attacking bears mid_combat: [('60', (2, 2))]",
+  "post: phase=PostCombatMain turn=15 stack_empty=True",
+  "ETB observation: Duskana ETB with 2 other 2/2 Bears on BF; P0 hand=3 (oracle: draw 2; parsed trigger: fixed 1)"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "ETB draw recorded as an observation only, not scored."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6767_v086.py (verified 2026-09-17, run 20260917-6767).",
+  "Payment via vi tapLandForMana with needs={generic:2,R:1,G:1,W:1} (Duskana) / {generic:1,G:1} (Bear); legacy PayMana/PayManaAbilityMana also honored.",
+  "Land plays via legal_actions PlayLand matched by _src_oid; is_land() helper covers Taiga/Savannah/Plateau/Forest.",
+  "DeclareAttackers submitted from the advertised action's data shape; the full advertised shape is wire-logged (declare_attackers_shape)."
+ ]
+}
