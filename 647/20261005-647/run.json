@@ -1,0 +1,98 @@
+{
+ "issue": 647,
+ "run_id": "20261005-647",
+ "started_at": "2026-10-05T06:49:29",
+ "duration_s": 94.6,
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-05: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reusing the healthy v0.102.0 server already listening on 127.0.0.1:9374 (started by run 20261005-0011, same binary + data dir; not restarted per playbook)"
+ },
+ "server_run_dir": "runs/20261005-0011 (shared server, not restarted)",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1bd05f1b79c4713f3224400f52bd8fe9fdf5dde3e6177ae48dc668ed0587252b",
+ "decks": {
+  "P0": [
+   [
+    "Asmoranomardicadaistinaculdacar",
+    4
+   ],
+   [
+    "Faithless Looting",
+    4
+   ],
+   [
+    "Swamp",
+    26
+   ],
+   [
+    "Mountain",
+    26
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "stats": {
+  "states_seen": 1135,
+  "neg_observations": 4,
+  "pos_observations": 0,
+  "max_turn": 38,
+  "looting_turn": 37,
+  "discard_turns": [
+   35,
+   37
+  ],
+  "offer_turns": [],
+  "asmo_cast_turn": null,
+  "all_discarded": [
+   "swamp",
+   "swamp",
+   "swamp",
+   "swamp"
+  ],
+  "seen_vi_kinds": [
+   "mulligan",
+   "choose",
+   "select"
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_neg_no_cast_offered": "passed",
+  "A3_neg_no_viewer_cast": "passed",
+  "A4_looting_resolved": "passed",
+  "A5_cast_offered_after_discard": "failed",
+  "A6_asmo_cast_paid": "not-run"
+ },
+ "notes": [
+  "discard turn 35 ended without CastSpell(Asmo) offered (1 observations)",
+  "discard turn 37 ended without CastSpell(Asmo) offered (3 observations)",
+  "Asmo never offered on any of 2 discard turns (turns [35, 37])",
+  "A6 not-run: Asmo was never cast",
+  "parse check (pinned v0.102.0 card-data.json): mana_cost={\"type\": \"NoCost\"}; parse_warnings=[{\"type\": \"SwallowedClause\", \"detector\": \"Optional_YouMay\", \"description\": \"As long as you've discarded a card this turn, you may pay {B/R} to cast this spell.\", \"line_index\": 0, \"unit_span\": {\"first_line\": 0, \"last_line\": 0, \"start_byte\": 0, \"end_byte\": 83, \"precision\": \"Exact\", \"ordinal_within_spa; static_abilities=[{\"mode\": \"Continuous\", \"affected\": {\"type\": \"SelfRef\"}, \"modifications\": [], \"condition\": {\"type\": \"QuantityComparison\", \"lhs\": {\"type\": \"Ref\", \"qty\": {\"type\": \"CardsDiscardedThisTurn\", \"player\": {\"type\": \"Controller\"}}}, \"comparator\": \"GE\", \"rhs\": {\"type\": \"Fixed\", \"value\": 1}}, \"affected_zone\": null, \"effect_zone\": null, \"active_zones\": [], \"characteristic_defining\": false, \"description\": \"As l",
+  "no interaction rejections observed on protocol 106",
+  "verdict=not-reproduced"
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-10-05",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ]
+}
