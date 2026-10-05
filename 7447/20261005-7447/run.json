@@ -1,0 +1,66 @@
+{
+ "issue": 7447,
+ "run_id": "20261005-7447",
+ "started_at": "2026-10-05T12:47:05",
+ "finished_at": "2026-10-05T12:47:09",
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-10-04; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned v0.102.0 server on 127.0.0.1:9374 (started 2026-10-05 by an earlier backfill run; verified by this run's own raw Hello handshake)",
+  "mode": "Full",
+  "source": "2026-10-05: latest stable release v0.102.0 (published 2026-10-04T16:14:29Z) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "verdict": "reproduced",
+ "scope": "The Horus Heresy parse state: data-level parse assertion + live-object parse-tree assertion on the pinned server. The issue asserts no runtime consumer symptom (DestroyAll's consumption on the empty tracked set is unmeasured in the #6857 census); per the issue, the reported defect is the parse state and its direct structural consequence (empty chain tracked-set publish from the Unimplemented no-op resolver). No chapter-resolution drive was attempted.",
+ "result": "Pinned v0.102.0 card-data.json and the live object on the pinned server both carry the reported Unimplemented head ('choose a creature') on the chapter-3 CounterAdded trigger; the DestroyAll sub-ability reads TrackedSet(0), which the no-op Unimplemented resolver leaves empty. Head-name note: the issue quotes 'choose'; pinned data names the head 'unparsed_verb_arguments' -- description identical, still Unimplemented.",
+ "assertions": {
+  "A1_data_level": "passed",
+  "A2_setup_ok": "passed",
+  "A3_live_object": "passed"
+ },
+ "notes": [
+  "A1 passed: pinned v0.102.0 card-data.json parses The Horus Heresy as the issue reports -- Enchantment -- Saga; 3 CounterAdded triggers (chapters 1-3); chapter-3 execute kind Spell, head Unimplemented describing 'choose a creature', sub Spell DestroyAll { cant_regenerate: false } target TrackedSet(0). Head-name note: the issue quotes the head name 'choose' (census corpus 9b7c66e30); the pinned data names the head 'unparsed_verb_arguments' -- the clause is still Unimplemented, so the defect holds; see data_evidence.json and the_horus_heresy_card_data.json.",
+  "A2 probe: hello_ok=True; game_code=NCJCU1; mulligans_kept={'P0': True, 'P1': True}; pre_exported=True; pre objects=120; pre waiting_for=MulliganDecision; players=[(0, 20), (1, 20)].",
+  "A2 passed: the pinned server accepted both decks (including The Horus Heresy in P0's main deck), the game started for both seats, mulligans kept, and pre.json was exported.",
+  "A3 passed: the authoritative pre export contains the live The Horus Heresy object (oid 23, zone Library) with trigger_definitions carrying the identical chapter-3 Unimplemented head -- execute kind Spell, head Unimplemented/unparsed_verb_arguments, sub DestroyAll target TrackedSet(0) cant_regenerate false; the parse defect is live on the pinned server."
+ ],
+ "limitations": [
+  "No runtime symptom is asserted for this issue: DestroyAll's behaviour on an empty tracked set is unmeasured (stated in the issue), so no chapter-resolution drive was performed.",
+  "The live check establishes the parse tree on the server's live object, not a restoration from the exported snapshot; snapshot bytes are preserved with their SHA-256 for re-inspection.",
+  "Browser UI not exercised; native engine only, two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports restorable only via full game replay."
+ ],
+ "observations": {
+  "live_head": [
+   {
+    "execute_kind": "Spell",
+    "head_type": "Unimplemented",
+    "head_name": "unparsed_verb_arguments",
+    "head_description": "choose a creature",
+    "sub_type": "DestroyAll",
+    "sub_target": {
+     "id": 0,
+     "type": "TrackedSet"
+    },
+    "cant_regenerate": false,
+    "player_scope": null,
+    "starting_with": null
+   }
+  ],
+  "pre_objects": 120,
+  "mulligans_kept": {
+   "P0": true,
+   "P1": true
+  }
+ },
+ "driver_notes": [
+  "Protocol-106 port of scenario_7447.py (verified 2026-10-03, run 20261003-1111-7447): ClientHello advertises protocol 106 (server enforces exact match); CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision answered via legacy Action; keep immediately (no hunt needed for this parser-class contract).",
+  "The card-data key is lowercase 'the horus heresy' (name field 'The Horus Heresy')."
+ ]
+}
