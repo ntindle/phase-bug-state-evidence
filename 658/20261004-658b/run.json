@@ -1,0 +1,96 @@
+{
+ "issue": 658,
+ "run_id": "20261004-658b",
+ "started_at": "2026-10-05T02:47:34",
+ "duration_s": 181.0,
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "observed_at": "2026-10-04",
+  "source": "2026-10-04: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh v0.102.0 server started by this run on 127.0.0.1:9374 with isolated run dir runs/20261004-658"
+ },
+ "server_run_dir": "runs/20261004-658 (fresh v0.102.0 server started by this run on 127.0.0.1:9374)",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e6c863e1703a8d028d63a7faec675b4d1f1848d8f3ebc8a66abd6d9c10218240",
+ "decks": {
+  "P0": [
+   [
+    "Mountain",
+    56
+   ],
+   [
+    "Dualcaster Mage",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    56
+   ],
+   [
+    "Lightning Bolt",
+    4
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_flash_timing": "passed",
+  "A3_copy_created": "passed",
+  "A2_etb_targets_stack": "passed",
+  "A4_retarget_offered": "passed",
+  "A5_resolution": "passed"
+ },
+ "notes": [
+  "Dualcaster cast with Bolt on stack on P1's turn, phase PreCombatMain; pre.json exported before the cast",
+  "Dualcaster Mage resolved to P0's battlefield",
+  "copy observed on stack: 2 bolt-like entries (DealDamage 3 signature), ids=[67, 122]",
+  "CopyRetarget surfaced in P0 viewer_interaction (MayChooseNewTargets): copy_id=None rtype=exactChoices keys=['choices']",
+  "no copy_id in the retarget surface; A2 confirmed from stack: second bolt-like (DealDamage 3) entry present while the original Bolt is on the stack",
+  "retarget submission (retarget_p1) seat 1 ()",
+  "MayChooseNewTargets offered and answered; (retarget_p1) seat 1 () (prompt advanced)",
+  "life pre=(20, 20) post=(17, 17) (delta P0=3 P1=3); mage_on_bf=True; stack empty; priority held",
+  "parse check: Dualcaster Mage + Lightning Bolt from v0.102.0 card-data.json saved to parse_*.json"
+ ],
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Restoration: the prebuilt phase-server has no standalone state-restore facility; pre.json/post.json are authoritative exports restorable only via full game replay, not direct load."
+ ],
+ "setup_line": "P0: 56x Mountain + 4x Dualcaster Mage; P1: 56x Mountain + 4x Lightning Bolt",
+ "contract_line": "P1 Bolts P0; P0 flashes in Dualcaster in response; ETB copies Bolt retargeted to P1; both resolve",
+ "stats": {
+  "states_seen": 2,
+  "seen_vi_kinds": [
+   "choose"
+  ],
+  "pre_life": [
+   20,
+   20
+  ],
+  "post_life": [
+   17,
+   17
+  ],
+  "copy_id": null,
+  "bolt_oid": "67",
+  "etb_evidence": {
+   "copy_id_inferred_from_stack": true,
+   "bolt_like_ids": [
+    67,
+    122
+   ],
+   "bolt_oid": "67"
+  },
+  "retarget_note": "(retarget_p1) seat 1 ()"
+ }
+}
