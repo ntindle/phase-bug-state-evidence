@@ -1,0 +1,49 @@
+[04:59:04] starting issue #5654 run 20261004-5654
+[04:59:04] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[04:59:04] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[04:59:06] [A] game WDUI4D P0seat=0 P1seat=1
+[04:59:06] [P0] mulligan #2 (7: ['swamp', 'swamp', 'swamp', 'island', 'island', 'swamp', 'island'])
+[04:59:06] [P1] mulligan #2 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[04:59:06] [A] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[04:59:06] [P0] keep 7: ['swamp', 'swamp', 'island', 'island', 'swamp', 'swamp', 'notion thief']
+[04:59:06] [P0] keep 7: ['swamp', 'swamp', 'island', 'island', 'swamp', 'swamp', 'notion thief']
+[04:59:06] [P1] keep 7: ['island', 'divination', 'island', 'divination', 'island', 'island', 'island']
+[04:59:06] [P0] bottoming ['Swamp'] via vi
+[04:59:06] [P1] bottoming ['Island'] via vi
+[04:59:07] [P0] playing land swamp
+[04:59:09] [P1] playing land island
+[04:59:11] [P0] playing land swamp
+[04:59:15] [P1] playing land island
+[04:59:17] [P0] playing land island
+[04:59:19] [P1] playing land island
+[04:59:21] [P0] playing land island
+[04:59:21] [A] P0 casts Notion Thief (turn 7)
+[04:59:24] [P1] playing land island
+[04:59:24] [A] P1 main phase: exporting PRE_A, then casting Divination
+[04:59:24] [A] P1 casts Divination (turn 8)
+[04:59:24] [P1] tap land for mana used_for=U
+[04:59:24] [P1] submitting interaction iid=WDUI4D.0.120 choice=WDUI4D.0.120.c1 (Island)
+[04:59:26] [A] Divination resolved; exporting POST_A
+[04:59:26] [A] exported POST_A
+[04:59:26] [A] done flag set; finishing game
+[04:59:26] [A] game A finished ok=True
+[04:59:26] [B] game 4608EZ P0seat=0 P1seat=1
+[04:59:26] [P0] keep 7: ['island', 'island', 'plagiarize', 'island', 'island', 'island', 'island']
+[04:59:26] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[04:59:26] [B] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[04:59:27] [P0] playing land island
+[04:59:29] [P1] playing land island
+[04:59:32] [P0] playing land island
+[04:59:34] [P1] playing land island
+[04:59:36] [P0] playing land island
+[04:59:39] [P1] playing land island
+[04:59:42] [P0] playing land island
+[04:59:44] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[04:59:44] [B] P0 casts Plagiarize (turn 8)
+[04:59:45] [B] P1 past draw step; exporting POST_B
+[04:59:45] [B] exported POST_B
+[04:59:45] [B] done flag set; finishing game
+[04:59:45] [B] game B finished ok=True
+[04:59:45] [A] deltas P0 hand 4->6 lib 51->49; P1 hand 6->5 lib 50->50
+[04:59:45] [B] deltas P0 hand 6->5 lib 50->50; P1 hand 7->8 lib 50->49
+[04:59:45] rendered summary.png

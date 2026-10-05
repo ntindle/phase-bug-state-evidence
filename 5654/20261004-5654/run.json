@@ -1,0 +1,196 @@
+{
+ "issue": 5654,
+ "run_id": "20261004-5654",
+ "started_at": "2026-10-05T04:59:04",
+ "duration_s": 40.8,
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-04: latest stable release v0.102.0 == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server process on 127.0.0.1:9374 reused (backfill-owned, release check confirmed still current)"
+ },
+ "server_run_dir": "reused backfill-owned server on 127.0.0.1:9374",
+ "parse_summary": {
+  "notion thief": {
+   "event": "Draw",
+   "condition": "ExceptFirstDrawInDrawStep",
+   "execute_effect": "Draw",
+   "execute_desc": null,
+   "sub_effect": null,
+   "sub_count": null,
+   "sub_target": null
+  },
+  "plagiarize": {
+   "event": "Draw",
+   "condition": null,
+   "execute_effect": "Unimplemented",
+   "execute_desc": "if target player would draw a card, instead that player skips that draw",
+   "sub_effect": "Draw",
+   "sub_count": 1,
+   "sub_target": "Controller"
+  },
+  "hullbreacher": {
+   "event": "Draw",
+   "condition": "ExceptFirstDrawInDrawStep",
+   "execute_effect": "Token",
+   "execute_desc": null,
+   "sub_effect": null,
+   "sub_count": null,
+   "sub_target": null
+  }
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_5654_01020.py"
+ },
+ "scenario_sha256": "dcabdaed6b9b45f928bd35850a6e811b042d019efe467b65c05b071cec2b2fd4",
+ "decks": {
+  "A_P0": [
+   [
+    "notion thief",
+    8
+   ],
+   [
+    "island",
+    26
+   ],
+   [
+    "swamp",
+    26
+   ]
+  ],
+  "A_P1": [
+   [
+    "divination",
+    8
+   ],
+   [
+    "island",
+    52
+   ]
+  ],
+  "B_P0": [
+   [
+    "plagiarize",
+    8
+   ],
+   [
+    "island",
+    52
+   ]
+  ],
+  "B_P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "A": {
+   "ok": true,
+   "notes": [
+    "P0 cast Notion Thief (turn 7)",
+    "P1 cast Divination with Thief on board (turn 8)"
+   ]
+  },
+  "B": {
+   "ok": true,
+   "notes": [
+    "P0 cast Plagiarize during P1's Upkeep (turn 8)"
+   ]
+  }
+ },
+ "observations": {
+  "snaps": {
+   "preA": {
+    "P0": [
+     4,
+     51
+    ],
+    "P1": [
+     6,
+     50
+    ]
+   },
+   "postA": {
+    "P0": [
+     6,
+     49
+    ],
+    "P1": [
+     5,
+     50
+    ]
+   },
+   "preB": {
+    "P0": [
+     6,
+     50
+    ],
+    "P1": [
+     7,
+     50
+    ]
+   },
+   "postB": {
+    "P0": [
+     5,
+     50
+    ],
+    "P1": [
+     8,
+     49
+    ]
+   }
+  }
+ },
+ "assertions": {
+  "A2A_parse_notion": "passed",
+  "A2B_parse_plagiarize": "passed",
+  "A1A_setup": "passed",
+  "A4A_skip_holds": "passed",
+  "A5A_ctrl_draws": "passed",
+  "A6A_cleanup": "passed",
+  "A1B_setup": "passed",
+  "A3B_target_offered": "failed",
+  "A4B_skip_holds": "failed",
+  "A5B_ctrl_draws": "failed",
+  "A6B_cleanup": "passed"
+ },
+ "notes": [
+  "A2A parse notion thief (pinned v0.102.0): execute=Draw (desc=None), sub=None: the Unimplemented skip node from the v0.78.0/v0.85.0 contract is GONE -- the parser now emits a plain Draw{1,Controller} replacement; the runtime assertions below are the decisive test",
+  "A2B parse plagiarize (pinned v0.102.0): execute=Unimplemented (if target player would draw a card, instead that player skips that draw), sub=Drawx1->Controller: class gap PERSISTS",
+  "parse hullbreacher control: execute=Token (single-action substitute fully parsed: yes)",
+  "A1A setup: thief_on_bf=True, div_in_P1_hand=True, P1_untapped_islands=4: ok",
+  "A4A skip holds: P1 hand 6->5 (-1 = cast Divination, +0 draws), library 50->50 (both draws skipped)",
+  "A5A controller draws: P0 hand 4->6, library 51->49",
+  "A6A cleanup: Divination in P1 gy, stack empty, game proceeding",
+  "A1B setup: plag_in_P0_hand=True, P0_untapped_islands=4, active=1 phase=Upkeep: ok",
+  "A3B target: NO target prompt observed after the Plagiarize cast (as on v0.78.0/v0.85.0)",
+  "A4B skip BROKEN: P1 hand 7->8, library 50->49 (expected unchanged)",
+  "A5B controller draw BROKEN: P0 hand 6->5 (expected 6), library 50->50 (expected -1)",
+  "A6B cleanup: Plagiarize in P0 gy, stack empty, game proceeding",
+  "draw replacement deviates from Oracle in-game (A_bad=False, B_bad=True)",
+  "P0 cast Notion Thief (turn 7)",
+  "P1 cast Divination with Thief on board (turn 8)",
+  "P0 cast Plagiarize during P1's Upkeep (turn 8)"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Hullbreacher shares the same Oracle text and parse class but was not driven (same-class coverage via Plagiarize/Notion Thief).",
+  "Not tested on the original 2026-07-12 build; verdict is scoped to v0.102.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "A: P0 8x notion thief + 26 island + 26 swamp vs P1 8x divination + 52 island (P1 casts Divination with Thief on board). B: P0 8x plagiarize + 52 island vs P1 60 island (P0 casts Plagiarize @P1 during P1's Upkeep).",
+ "contract_line": "Per Oracle, each affected draw is skipped by the victim and drawn by the controller instead."
+}
