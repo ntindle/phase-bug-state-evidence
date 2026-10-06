@@ -1,0 +1,23 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_death_observed": "passed",
+  "A3_triggers_doubled": "failed",
+  "A4_slugs_created": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre_death: turn=19 phase=PreCombatMain toxrill_bf=True masamune_attached=True elves_bf_slime_free=True DoubleTriggers_grant=True",
+  "post: elves_in_p1_gy=True; mid: toxrill slug triggers on stack=1",
+  "mid: 1 Toxrill slug triggers on stack (expected 2 with doubling); per-tick audit max death-trigger count=1",
+  "post: 1 Slug tokens on P0 battlefield (expected 2 with doubling)",
+  "post: stack_empty=True turn=20 phase=Upkeep"
+ ],
+ "game_code": "EM3KJM",
+ "max_death_triggers_audit": 1,
+ "mid_death_triggers": 1,
+ "equip_activated": true,
+ "equip_done": false,
+ "elves_cast": true,
+ "elves_died": true
+}
