@@ -1,0 +1,89 @@
+{
+ "card": "Dargo, the Shipwrecker",
+ "oracle_text": "As an additional cost to cast this spell, you may sacrifice any number of artifacts and/or creatures. This spell costs {2} less to cast for each permanent sacrificed this way and {2} less to cast for each other artifact or creature you've sacrificed this turn.\nTrample\nPartner (You can have two commanders if both have partner.)",
+ "additional_cost": {
+  "type": "Optional",
+  "data": {
+   "cost": {
+    "type": "Sacrifice",
+    "target": {
+     "type": "Or",
+     "filters": [
+      {
+       "type": "Typed",
+       "type_filters": [
+        "Artifact"
+       ],
+       "controller": null,
+       "properties": []
+      },
+      {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": null,
+       "properties": []
+      }
+     ]
+    },
+    "count": 4294967295
+   }
+  }
+ },
+ "static_abilities": [
+  {
+   "mode": {
+    "ModifyCost": {
+     "mode": "Reduce",
+     "amount": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "spell_filter": null,
+     "dynamic_count": {
+      "type": "TrackedSetSize"
+     }
+    }
+   },
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": {
+    "type": "AdditionalCostPaid"
+   },
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [
+    "Hand",
+    "Stack",
+    "Command",
+    "Graveyard",
+    "Exile",
+    "Library"
+   ],
+   "characteristic_defining": false,
+   "description": "This spell costs {2} less to cast for each permanent sacrificed this way and {2} less to cast for each other artifact or creature you've sacrificed this turn."
+  }
+ ],
+ "reduce_modes": [
+  {
+   "ModifyCost": {
+    "mode": "Reduce",
+    "amount": {
+     "type": "Cost",
+     "shards": [],
+     "generic": 2
+    },
+    "spell_filter": null,
+    "dynamic_count": {
+     "type": "TrackedSetSize"
+    }
+   }
+  }
+ ],
+ "prior_turn_sac_discount_in_parse": false,
+ "finding": "v0.102.0 card data still collapses Dargo's cost into a single ModifyCost { Reduce {2}, dynamic_count: TrackedSetSize } with condition AdditionalCostPaid; the 'each other artifact or creature you've sacrificed this turn' reduction is absent from the parse (same as v0.98.0)."
+}
