@@ -1,0 +1,61 @@
+[05:32:35] server identity hashes verified against on-disk pinned artifacts
+[05:32:39] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[05:32:39] data-level: ETB PutCounter(shield) -> chained GainControl duration={"ForAsLongAs": {"condition": {"type": "RecipientHasCounters", "counters": {"type": "OfType", "data": "shield"}, "minimum": 1}}}
+[05:32:40] P0 creating game...
+[05:32:40] P1 joining...
+[05:32:41] game NTYHSI; P0 seat=0 P1 seat=1
+[05:32:41] [P0] mulligan -> Keep (hand=['forest', 'forest', 'plains', 'forest', 'forest', 'day of judgment', 'plains'])
+[05:32:41] [P1] mulligan -> Mulligan (hand=['boon of safety', 'island', 'perrie, the pulverizer', 'perrie, the pulverizer', 'island', 'boon of safety', 'perrie, the pulverizer'])
+[05:32:41] [P1] mulligan -> Keep (hand=['plains', 'plains', 'island', 'plains', 'island', 'forest', 'perrie, the pulverizer'])
+[05:32:41] [P1] bottoms 1
+[05:32:42] [P0] playing land forest
+[05:32:46] [P1] playing land plains
+[05:32:50] [P0] playing land forest
+[05:32:54] [P1] playing land plains
+[05:32:58] [P0] playing land plains
+[05:33:02] [P1] playing land island
+[05:33:06] [P0] playing land forest
+[05:33:09] [P1] playing land island
+[05:33:13] [P0] playing land forest
+[05:33:17] [P1] playing land forest
+[05:33:21] [P0] playing land plains
+[05:33:28] [P1] playing land forest
+[05:33:32] [P0] playing land plains
+[05:33:35] [P1] playing land island
+[05:33:39] [P0] playing land forest
+[05:33:43] [P1] playing land forest
+[05:33:47] [P0] playing land forest
+[05:33:51] [P1] playing land plains
+[05:33:54] [P0] playing land plains
+[05:33:55] [P0] casts Grizzly Bears (26)
+[05:33:59] [P1] playing land island
+[05:33:59] [P1] casts Shield Broker (68)
+[05:34:01] Broker ETB resolved: Bear oid=26 shield=1 controller=1
+[05:34:01] exported pre_wipe.json
+[05:34:01] STAGE -> BROKER_RESOLVED
+[05:34:05] [P0] playing land forest
+[05:34:05] [P0] casts Day of Judgment (31)
+[05:34:06] Wipe resolved: Bear survived with counter consumed, control reverted to P0, Broker in P1 graveyard
+[05:34:06] exported post_wipe.json
+[05:34:06] STAGE -> WIPE_RESOLVED
+[05:34:10] [P1] casts Perrie, the Pulverizer (59)
+[05:34:10] [P1] Shield Broker prompt rtype=schema spec=sequence ncands=2 nrefs=2
+[05:34:10] [P1] Shield Broker ETB targets grizzly bears oid=26
+[05:34:11] Perrie ETB resolved: Bear shield=1 controller=0
+[05:34:11] exported post_perrie.json
+[05:34:11] STAGE -> PERRIE_RESOLVED
+[05:34:14] exported post.json
+[05:34:14] post.json exported: bear shield=1 controller=0
+[05:34:14] STAGE -> DONE
+[05:34:14] loop ended: stage=DONE elapsed=96s
+[05:34:14] A1_broker_steal: passed
+[05:34:14] A2_wipe_replacement: passed
+[05:34:14] A3_control_reverted: passed
+[05:34:14] A4_no_reactivation: passed
+[05:34:14] A5_cleanup: passed
+[05:34:14] verdict=not-reproduced
+[05:34:14] DONE verdict=not-reproduced assertions={"A1_broker_steal": "passed", "A2_wipe_replacement": "passed", "A3_control_reverted": "passed", "A4_no_reactivation": "passed", "A5_cleanup": "passed"}
+[05:34:15] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6893/20261006-6893/summary.png
+[05:34:15] copied driver into evidence dir
+[05:34:15] server excerpts written (300 lines from /home/hatch/workspace/dev/phase-backfill/runs/20261006-0441/server.log)
+[05:34:15] manifest written (14 files)
