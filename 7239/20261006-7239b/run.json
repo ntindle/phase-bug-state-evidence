@@ -1,0 +1,86 @@
+{
+ "issue": 7239,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7239",
+ "run_id": "20261006-7239b",
+ "started_at": "2026-10-06T17:22:42",
+ "finished_at": "2026-10-06T17:25:06",
+ "duration_s": 143.8,
+ "server_identity": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_note": "v0.102.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-06: latest stable release v0.102.0 (published 2026-10-04) == pinned release dir; ServerHello 0.102.0/e17f6fd/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.102.0 server on 127.0.0.1:9374 (run dir runs/20261006-9295, backfill-owned, isolated games.db)"
+ },
+ "server_run_dir": "runs/20261006-9295 (v0.102.0 server on 127.0.0.1:9374, isolated games.db)",
+ "data_level_parse_ok": true,
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "2266f1c6e0439110dd96769feec00357455d8483a5e7cdf7e1848dd707ab7a62",
+ "decks": {
+  "P0": [
+   [
+    "Hot Pursuit",
+    8
+   ],
+   [
+    "Mountain",
+    52
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Forest",
+    52
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P3": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_no_spurious_control_change": "passed",
+  "A3_scope_correct": "not-run",
+  "A4_untap_correct": "not-run",
+  "A5_haste_granted": "not-run"
+ },
+ "notes": [
+  "A1: pre bears controller=1 tapped=True; all_alive=True; post_cast HP_on_P0_bf=True; bears is_suspected=True; etb_kind=None",
+  "A2: passed -- no control change pre->post (P0 combat passed with no control change)",
+  "protocol-106 driver (v0.102.0): MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi; Grizzly Bears ({1}{G}) and Hot Pursuit ({1}{R}) cast via advertised CastSpell (engine auto-taps + vi tapLandForMana/PayMana); P1's attack via the relations-schema DeclareAttackers opportunity (Bears -> P0); empty declares via the relations-first grace pattern; HP ETB Suspect via the schema/select target opportunity; priority-gated passes; 5s re-tick backstop covers priority holders and pending decisions."
+ ],
+ "verdict": "not-reproduced",
+ "result": "A1_setup_ok: passed; A2_no_spurious_control_change: passed; A3_scope_correct: not-run; A4_untap_correct: not-run; A5_haste_granted: not-run",
+ "scope": "Hot Pursuit BeginCombat trigger with 0 players eliminated; native human seats (no AI); 20-life four-player free-for-all",
+ "limitations": [
+  "Browser UI not exercised; native engine via four human-client seats.",
+  "20-life four-player free-for-all, not Commander (40 life); the reported defect (missing 2+-eliminated condition) is format-independent.",
+  ">4-of deck densities are a test-harness convenience (engine accepts them for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The 'two or more players lost' branch was not exercised -- only the 0-eliminated case.",
+  "Verdict is scoped to v0.102.0, not a fix claim."
+ ],
+ "setup_line": "P0: 8x Hot Pursuit, 52x Mountain; P1: 8x Grizzly Bears, 52x Forest; P2/P3: 60x Forest",
+ "contract_line": "With 0 players eliminated and a tapped suspected Bears on P1's battlefield, P0's BeginCombat trigger must not change any permanent's controller, untap anything, or grant haste."
+}
