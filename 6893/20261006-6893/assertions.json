@@ -1,0 +1,20 @@
+{
+ "issue": 6893,
+ "run_id": "20261006-6893",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_broker_steal": "passed",
+  "A2_wipe_replacement": "passed",
+  "A3_control_reverted": "passed",
+  "A4_no_reactivation": "passed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_broker_steal_detail": "bear oid=26 shield=1 controller=1 zone=Battlefield (pre_wipe.json)",
+  "A2_wipe_replacement_detail": "bear oid=26 shield=0 controller=0 zone=Battlefield (post_wipe.json): shield counter removed instead of destruction",
+  "A3_control_reverted_detail": "bear_controller=0 broker_in_p1_graveyard=True (post_wipe.json)",
+  "A4_no_reactivation_detail": "counter_source=perrie post_perrie: bear oid=26 shield=1 controller=0 zone=Battlefield; post: bear oid=26 shield=1 controller=0 zone=Battlefield",
+  "A5_cleanup_detail": "stage=DONE turns_past_perrie=1 stall=False stages=['SETUP', 'BROKER_RESOLVED', 'WIPE_RESOLVED', 'PERRIE_RESOLVED', 'DONE']"
+ },
+ "notes": []
+}
