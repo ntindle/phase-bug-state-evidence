@@ -1,0 +1,76 @@
+{
+ "run_id": "20261006-9295",
+ "issue": 9295,
+ "started_at": "2026-10-06T13:52:58",
+ "finished_at": "2026-10-06T13:53:58",
+ "server": {
+  "server_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "source": "2026-10-06: v0.102.0 == latest stable per GitHub /releases (v0.102.0 published 2026-10-04, no newer v0.* stable); pinned release dir unchanged; hashes recomputed against on-disk artifacts this run; minisign verification recorded in the ledger pin; ServerHello re-verified by this run"
+ },
+ "scenario": "driver/scenario_9295.py",
+ "scenario_sha256": "e4fc33feeed197c0b7d80fb43fb216a4cfd7e4cbbccf10f99209c785237dc95f",
+ "assertions": {
+  "A1_data": "passed",
+  "A2_no_target_prompt": "passed",
+  "A3_draw_replaced": "passed",
+  "A4_no_damage": "passed",
+  "A5_wind_draw_normal": "passed"
+ },
+ "checks": {
+  "war": {
+   "pre_exported": true,
+   "post_exported": true,
+   "activation_submitted": true,
+   "draw_seen": true,
+   "pre_hand": 6,
+   "post_hand": 6,
+   "pre_p1_life": 20,
+   "post_p1_life": 20,
+   "target_prompt_seen": false,
+   "target_answered": false,
+   "replacement_choice_seen": false,
+   "replacement_applied": false,
+   "activation_window_opps": 2,
+   "window_target_opps": 0
+  },
+  "wind": {
+   "pre_exported": true,
+   "post_exported": true,
+   "ability_offered": true,
+   "activation_submitted": true,
+   "draw_seen": true,
+   "pre_hand": 6,
+   "post_hand": 7
+  }
+ },
+ "verdict": "reproduced",
+ "result": "On pinned v0.102.0 (e17f6fd, protocol 106): activating Words of War's {1} ability offers no target selection at activation; the next draw is replaced (P0 hand unchanged) but no damage is dealt (P1 stays at 20). Words of Wind and Words of Waste remain Unimplemented (unparsed_replacement) in the pinned card data and the draw is not replaced. Matches the issue's baseline exactly.",
+ "scope": "Words of War accept path + Words of Wind unparsed control; native engine, two human-client seats, Bo1. Words of Waste / Wilding / Worship not driven at runtime; their parse status is covered by the data-level check.",
+ "limitations": [
+  "Browser UI not exercised.",
+  "The draw-replacement shield's internal representation is not asserted from the export; the verdict rests on the observable outcome (target prompt / hand size / life totals).",
+  "Words of Waste, Words of Wilding, Words of Worship: parse status only (data-level); no runtime leg."
+ ],
+ "notes": [],
+ "wire_log": "wire_log.jsonl",
+ "evidence_files": [
+  "data_check.json",
+  "manifest.sha256",
+  "post.json",
+  "post2.json",
+  "pre.json",
+  "pre2.json",
+  "run.json",
+  "scenario_9295.py",
+  "scenario_run.log",
+  "summary.png",
+  "wire_log.jsonl"
+ ]
+}
