@@ -1,0 +1,41 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_teamwork_cast": "passed",
+    "A3_teamwork_trigger_ok": "passed",
+    "A4_attack_no_trigger": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: pre turn=6 hill={'oid': '50', 'tapped': False, 'counters': 0, 'power': 2} bears=1 beast_in_hand=True",
+    "A2: beast_casts=1 teamwork_pay=1 tap_hill=1 beast_zones=['Graveyard', 'Hand', 'Library'] hill_tapped_post=True beast_target_hint=Grizzly Bears",
+    "A3: hill_counters_post=1 hand pre=5 post=5",
+    "A4: hill_counters_final=2 hand post=5 final=6 p1_life=16 expected=17 (hill power 3)",
+    "A5: stack_empty=True game_over=False turn=8"
+  ],
+  "obs": {
+    "beast_casts": 1,
+    "teamwork_pay_subs": 1,
+    "tap_select_subs": 1,
+    "beast_stack_seen": true,
+    "hill_trigger_stack_seen": true,
+    "attack_declared": true,
+    "teamwork_offered": true,
+    "beast_target_name": "Grizzly Bears"
+  },
+  "st": {
+    "stage": "ATTACK",
+    "stop": true,
+    "game_code": "9QCTM3",
+    "mulls": {
+      "P0": 0,
+      "P1": 0
+    },
+    "legend_answered": 0,
+    "teamwork_turn": 6,
+    "attack_turn": 8,
+    "pre_hand": 5,
+    "post_hand": 5,
+    "p1_block_grace_until": 1791274839.5882065
+  }
+}
