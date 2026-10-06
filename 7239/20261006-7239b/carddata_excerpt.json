@@ -1,0 +1,202 @@
+{
+ "name": "Hot Pursuit",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Red"
+  ],
+  "generic": 1
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": []
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "When this enchantment enters, suspect target creature an opponent controls. As long as this enchantment remains on the battlefield, that creature is also goaded.\nAt the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Suspect",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "Opponent",
+      "properties": []
+     },
+     "scope": {
+      "type": "Single"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "As long as ~ remains on the battlefield"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Unimplemented",
+       "name": "unrecognized_clause_head",
+       "description": "that creature is also goaded"
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, suspect target creature an opponent controls. As long as ~ remains on the battlefield, that creature is also goaded.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  },
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Unimplemented",
+     "name": "unparsed_condition",
+     "description": "if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn"
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "BeginCombat",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Red"
+ ],
+ "scryfall_oracle_id": "00bf9859-d5bf-455a-a4be-965ea4250c7e",
+ "metadata": {
+  "source_printing_ids": [
+   "95b38896-4568-4764-af81-74d932ac500f",
+   "bbba7b9f-d944-4987-b60d-34733382ec53"
+  ]
+ },
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "MKC"
+ ],
+ "rulings": [
+  {
+   "date": "2024-02-02",
+   "text": "Being suspected isn\u2019t a copiable value. If a permanent becomes a copy of a suspected creature, it won\u2019t be suspected."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "Hot Pursuit\u2019s second triggered ability causes you to gain control of all creatures that are goaded, suspected, or both. You don\u2019t have to make any choices."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "If Hot Pursuit leaves the battlefield before its first triggered ability resolves, the target creature will become suspected, but it won\u2019t become goaded at all."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "If a creature is already suspected, suspecting it again won\u2019t have any effect."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "If a suspected creature loses all abilities, it will lose menace and \"This creature can't block\", but it won\u2019t stop being suspected."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "There\u2019s no limit to the number of creatures that can be suspected simultaneously. Suspecting a new creature doesn\u2019t cause other creatures to stop being suspected."
+  },
+  {
+   "date": "2024-02-02",
+   "text": "When an effect suspects a creature, it becomes suspected. It gains menace and \"This creature can't block\" for as long as it\u2019s suspected. It stays suspected until it leaves the battlefield or another effect causes it to no longer be suspected."
+  }
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
