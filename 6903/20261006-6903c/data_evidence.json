@@ -1,0 +1,54 @@
+{
+ "name": "Shadow Kin",
+ "oracle_text": "Flash\nAt the beginning of your upkeep, each player mills three cards. You may exile a creature card from among the cards milled this way. If you do, this creature becomes a copy of that card, except it has this ability.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Blue"
+  ],
+  "generic": 3
+ },
+ "chain": [
+  {
+   "trigger": "Phase",
+   "phase": "Upkeep",
+   "effect": "Mill",
+   "mill_count": 3,
+   "mill_target": "Controller",
+   "player_scope": "All"
+  },
+  {
+   "sub": "ChangeZone",
+   "origin": null,
+   "destination": "Exile",
+   "target": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   },
+   "optional": true
+  },
+  {
+   "sub2": "BecomeCopy",
+   "target": "ParentTarget",
+   "mods": [
+    {
+     "type": "RetainPrintedTriggerFromSource",
+     "source_trigger_index": 0
+    }
+   ],
+   "condition": {
+    "type": "EffectOutcome",
+    "signal": "OptionalEffectPerformed"
+   }
+  }
+ ],
+ "parse_ok": true,
+ "data_notes": [
+  "Mill target is Controller (not EachPlayer) with player_scope=All; on v0.81.3 the each-player mill worked behaviorally (each library -3).",
+  "ChangeZone origin=null: no graveyard zone or event-set provenance in the parse -- the triage's data-level finding persists on v0.102.0; the behavioral question is whether the engine scopes candidates to the milled set anyway."
+ ]
+}
