@@ -1,0 +1,15 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_no_spurious_control_change": "passed",
+  "A3_scope_correct": "not-run",
+  "A4_untap_correct": "not-run",
+  "A5_haste_granted": "not-run"
+ },
+ "notes": [
+  "A1: pre bears controller=1 tapped=True; all_alive=True; post_cast HP_on_P0_bf=True; bears is_suspected=True; etb_kind=None",
+  "A2: passed -- no control change pre->post (P0 combat passed with no control change)",
+  "protocol-106 driver (v0.102.0): MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi; Grizzly Bears ({1}{G}) and Hot Pursuit ({1}{R}) cast via advertised CastSpell (engine auto-taps + vi tapLandForMana/PayMana); P1's attack via the relations-schema DeclareAttackers opportunity (Bears -> P0); empty declares via the relations-first grace pattern; HP ETB Suspect via the schema/select target opportunity; priority-gated passes; 5s re-tick backstop covers priority holders and pending decisions."
+ ],
+ "verdict": "not-reproduced"
+}
