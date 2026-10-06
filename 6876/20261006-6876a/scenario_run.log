@@ -1,0 +1,58 @@
+[03:19:26] server identity hashes verified against on-disk pinned artifacts
+[03:19:28] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[03:19:28] data-level: trigger mode=Taps constraint=None condition=None effect=PutCounter+Draw
+[03:19:28] data-level: structured teamwork qualifier present=False (description mentions teamwork=True)
+[03:19:28] P0 creating game...
+[03:19:29] P1 joining...
+[03:19:29] game 9QCTM3; P0 seat=0 P1 seat=1
+[03:19:29] [P0] mulligan -> Keep (hand=['agent maria hill', 'forest', 'beast mode', 'forest', 'beast mode', 'beast mode', 'plains'])
+[03:19:29] [P1] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[03:19:30] [P1] playing land plains
+[03:19:34] [P0] playing land forest
+[03:19:38] [P1] playing land plains
+[03:19:42] [P0] playing land forest
+[03:19:42] [P0] casts Grizzly Bears (37)
+[03:19:47] [P1] playing land plains
+[03:19:51] [P0] playing land plains
+[03:19:51] [P0] casts Agent Maria Hill (50)
+[03:19:52] === stage -> TEAMWORK (turn 6) ===
+[03:19:52] exported pre_teamwork.json
+[03:19:52] [P0] casts Beast Mode (44)
+[03:19:52] [P0] creature-candidate prompt (kind=sequence rtype=schema): [('Grizzly Bears', '37'), ('Agent Maria Hill', '50')]
+[03:19:52] [P0] Beast Mode targets Bears (ref=37)
+[03:19:52] [P0] submitting interaction iid=9QCTM3.0.91 choice=9QCTM3.0.91.t0 (Grizzly Bears)
+[03:19:53] [P0] teamwork OptionalCostChoice (kind=choose): ['', 'false', 'true']
+[03:19:53] [P0] teamwork -> PAY (true)
+[03:19:53] [P0] submitting interaction iid=9QCTM3.0.92 choice=9QCTM3.0.92.c2 (true)
+[03:19:53] [P0] teamwork taps Hill ONLY (ref=50)
+[03:19:53] [P0] submitting interaction iid=9QCTM3.0.93 choice=9QCTM3.0.93.s1 (Agent Maria Hill)
+[03:19:53] Beast Mode on stack (target hint: Grizzly Bears)
+[03:19:53] Hill trigger on stack
+[03:19:54] stack empty after Beast Mode + Hill trigger; exporting post_teamwork
+[03:19:54] exported post_teamwork.json
+[03:19:54] === stage -> ATTACK ===
+[03:19:55] [P0] declares no attackers (Hill unable, turn 6)
+[03:19:57] [P1] playing land plains
+[03:20:01] [P0] playing land forest
+[03:20:03] [P0] declares attackers: Hill alone (turn 8)
+[03:20:03] [P0] blind declare empty (106 shape)
+[03:20:03] [P06876] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[03:20:08] [P0] blind declare empty (106 shape)
+[03:20:08] [P06876] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[03:20:08] [P0] blind declare empty (106 shape)
+[03:20:09] [P06876] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[03:20:14] [P0] blind declare empty (106 shape)
+[03:20:14] [P06876] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[03:20:15] PostCombatMain on attack turn; exporting post_attack
+[03:20:15] exported post_attack.json
+[03:20:15] loop ended: stage=ATTACK elapsed=48s
+[03:20:15] A1_setup_ok: passed
+[03:20:15] A2_teamwork_cast: passed
+[03:20:15] A3_teamwork_trigger_ok: passed
+[03:20:15] A4_attack_no_trigger: failed
+[03:20:15] A5_cleanup: passed
+[03:20:15] verdict: reproduced
+[03:20:16] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_teamwork_cast": "passed", "A3_teamwork_trigger_ok": "passed", "A4_attack_no_trigger": "failed", "A5_cleanup": "passed"}
+[03:20:16] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6876/20261006-6876a/summary.png
+[03:20:16] copied driver into evidence dir
+[03:20:16] manifest written (12 files)
