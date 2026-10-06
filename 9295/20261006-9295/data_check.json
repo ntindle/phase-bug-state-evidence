@@ -1,0 +1,37 @@
+{
+ "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+ "evidence": {
+  "war": {
+   "oracle": "{1}: The next time you would draw a card this turn, this enchantment deals 2 damage to any target instead.",
+   "effect_type": "CreateDrawReplacement",
+   "replacement_effect": {
+    "type": "DealDamage",
+    "amount": {
+     "type": "Fixed",
+     "value": 2
+    },
+    "target": {
+     "type": "Any"
+    }
+   },
+   "target_prompt": null
+  },
+  "wind": {
+   "oracle": "{1}: The next time you would draw a card this turn, each player returns a permanent they control to its owner's hand instead.",
+   "effect_type": "Unimplemented",
+   "name": "unparsed_replacement"
+  },
+  "waste": {
+   "oracle": "{1}: The next time you would draw a card this turn, each opponent discards a card instead.",
+   "effect_type": "Unimplemented",
+   "name": "unparsed_replacement"
+  }
+ },
+ "checks": {
+  "war_is_draw_replacement": true,
+  "war_deals_2_any": true,
+  "war_no_target_prompt": true,
+  "wind_unparsed": true,
+  "waste_unparsed": true
+ }
+}
