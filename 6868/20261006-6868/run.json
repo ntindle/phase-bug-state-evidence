@@ -1,0 +1,110 @@
+{
+ "issue": 6868,
+ "run_id": "20261006-6868",
+ "game_code": "UGVJZK",
+ "started_at": "2026-10-06T06:54:55",
+ "duration_s": 67.0,
+ "server_identity": {
+  "validated_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "587a155600bbac67da43c29c2df2ee29a0e66395bc0e35f2873683cb471f5b3a",
+ "decks": {
+  "P0": [
+   [
+    "Jared Carthalion",
+    8
+   ],
+   [
+    "Plains",
+    10
+   ],
+   [
+    "Island",
+    10
+   ],
+   [
+    "Swamp",
+    10
+   ],
+   [
+    "Mountain",
+    10
+   ],
+   [
+    "Forest",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Plains",
+    10
+   ],
+   [
+    "Island",
+    8
+   ],
+   [
+    "Swamp",
+    8
+   ],
+   [
+    "Mountain",
+    8
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-106 port of scenario_6868_0980.py (protocol 94 / v0.98.0) for pinned v0.102.0; behavioral contract A1..A6 and verdict logic unchanged.",
+  "Conventions adopted from scenario_6861_01020.py / scenario_6773_01020.py: CreateGameWithSettings + JoinGameWithPassword + start_when_full + Bo1; protocol-106 HELLO (exact match); priority = top-level PassPriority, all decisions via viewer_interaction (waiting_for is gone).",
+  "ActivateAbility submitted only while holding priority; legacy PayMana actions first, then vi tapLandForMana menus driven by MANA_NEEDS; sleep(0) yield before leg evaluation; 5s re-tick backstop for priority-holding clients.",
+  "real_decision_pending excludes the 106 priority-menu codes (passPriority, tapLandForMana, untapLandForMana, castSpell, activateAbility, candidate, mana, mulliganDecision, playLand); playLand vi opportunities answered before the decision gate; land matching via is_land(). surf_codes() filters None codes.",
+  "Jared's +1/-3 selected by ability_index when the engine advertises it (fallback: listing order, wire-logged via ability_index_absent).",
+  "-3 target selection via advertised vi target opportunity (schema/select, schema/sequence with candidates, or exactChoices with candidate/target codes); Kavu (seat 0) answered before P1 Bears; both choiceIds in one response if the prompt advertises max>=2, else one choiceId per prompt (sequential max=1 prompts).",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); counters asserted on the saved post state (the reported OUTCOME), not the prompt.",
+  "Card-data v0.102.0: -3 keeps multi_target max=Fixed(2); the color-counted counter child is still Unimplemented(unparsed_quantity) (SequentialSibling) -- same as the v0.98.0 parse."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_minus3_offered": "passed",
+  "A3_target_resolve": "passed",
+  "A4_kavu_counters": "failed",
+  "A5_bears_counters": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: jared=True kavu=114 colors=['White', 'Blue', 'Black', 'Red', 'Green'] p1bear=106",
+  "A2: minus3 offered=True",
+  "A3: answered=True submissions=[{'ref': '114', 'name': 'Kavu'}, {'ref': '106', 'name': 'Grizzly Bears'}] rejections=0 loyalty=3 stack_empty=True",
+  "A4_kavu_counters: counters=0 detail=[] power/toughness=(3, 3) (expected 5; base (3, 3))",
+  "A5_bears_counters: counters=0 detail=[] power/toughness=(2, 2) (expected 1; base (2, 2))",
+  "A6: stack_empty=True turn=12 phase=PreCombatMain"
+ ],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5640479052,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Jared density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6868_01020.py), not direct load."
+ ],
+ "setup_line": "P0: 8x Jared Carthalion + 10x each basic land; P1: 8x Grizzly Bears + basics (draw-go)",
+ "contract_line": "Jared +1 creates a 3/3 all-colors Kavu token; next P0 turn -3 targets Kavu + P1 Grizzly Bears and each gets +1/+1 counters equal to its color count (5 on Kavu, 1 on Bears)."
+}
