@@ -1,0 +1,79 @@
+[05:49:09] server identity hashes verified against on-disk pinned artifacts
+[05:49:13] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[05:49:13] data-level: Transform(all Humans) -> PreventDamage(amount=All target={"type": "Any"} scope=CombatDamage)
+[05:49:14] P0 creating game...
+[05:49:14] P1 joining...
+[05:49:14] game LDCPPJ; P0 seat=0 P1 seat=1
+[05:49:14] [P0] mulligan -> Keep (hand=['forest', 'young wolf', 'young wolf', 'forest', 'grizzly bears', 'young wolf', 'grizzly bears'])
+[05:49:14] [P1] mulligan -> Keep (hand=['grizzly bears', 'forest', 'young wolf', 'forest', 'young wolf', 'grizzly bears', 'forest'])
+[05:49:15] [P0] playing land forest
+[05:49:15] [P0] casts Young Wolf (39)
+[05:49:20] [P1] playing land forest
+[05:49:20] [P1] casts Young Wolf (106)
+[05:49:24] [P0] playing land forest
+[05:49:25] [P0] casts Grizzly Bears (49)
+[05:49:27] [P0] declare no attackers
+[05:49:30] [P1] playing land forest
+[05:49:30] [P1] casts Grizzly Bears (89)
+[05:49:32] [P1] declare no attackers
+[05:49:35] [P0] playing land forest
+[05:49:36] [P0] declare no attackers
+[05:49:39] [P1] playing land forest
+[05:49:40] [P1] declare no attackers
+[05:49:43] [P0] playing land forest
+[05:49:44] [P0] declare no attackers
+[05:49:47] [P1] playing land forest
+[05:49:48] [P1] declare no attackers
+[05:49:51] [P0] playing land forest
+[05:49:52] [P0] declare no attackers
+[05:49:55] [P1] playing land forest
+[05:49:56] [P1] declare no attackers
+[05:50:00] [P0] declare no attackers
+[05:50:03] [P1] playing land forest
+[05:50:04] [P1] declare no attackers
+[05:50:07] [P0] playing land forest
+[05:50:08] [P0] declare no attackers
+[05:50:11] [P1] playing land forest
+[05:50:13] [P1] declare no attackers
+[05:50:16] [P0] declare no attackers
+[05:50:19] [P1] playing land forest
+[05:50:20] [P1] declare no attackers
+[05:50:23] exported pre_p0_attack.json
+[05:50:23] STAGE -> P0_ATTACK
+[05:50:23] P0 attack turn ready; pre_p0_attack.json exported
+[05:50:26] [P0] declares attackers: ['young wolf', 'grizzly bears'] -> seat 1
+[05:50:26] [P0] casts Moonmist (17)
+[05:50:26] [P0] Moonmist cast on turn 17 (combat prevention)
+[05:50:26] P0 attackers declared on turn 17: [{'object_id': 39, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}, {'object_id': 49, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}]
+[05:50:27] [P1] declare no blockers
+[05:50:29] exported post_p0_attack.json
+[05:50:29] post_p0_attack.json exported: P1 life=20
+[05:50:29] STAGE -> P0_DONE
+[05:50:31] [P1] playing land forest
+[05:50:33] [P1] declare no attackers
+[05:50:36] [P0] declare no attackers
+[05:50:39] [P1] playing land forest
+[05:50:39] exported pre_p1_attack.json
+[05:50:39] STAGE -> P1_ATTACK
+[05:50:39] P1 attack turn ready; pre_p1_attack.json exported
+[05:50:40] [P1] declares attackers: ['grizzly bears', 'young wolf'] -> seat 0
+[05:50:41] P1 attackers declared on turn 20: [{'object_id': 89, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}, {'object_id': 106, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}]
+[05:50:41] [P0] casts Moonmist (11)
+[05:50:41] [P0] Moonmist cast on turn 20 (combat prevention)
+[05:50:42] [P0] declare no blockers
+[05:50:44] exported post_p1_attack.json
+[05:50:44] post_p1_attack.json exported: P0 life=20
+[05:50:44] exported post.json
+[05:50:44] STAGE -> DONE
+[05:50:44] loop ended: stage=DONE elapsed=92s
+[05:50:44] A1_setup_ok: passed
+[05:50:44] A2_moonmist_resolves: passed
+[05:50:44] A3_p0_attack_damage: failed
+[05:50:44] A4_p1_attack_damage: failed
+[05:50:44] A5_cleanup: passed
+[05:50:44] verdict=reproduced
+[05:50:45] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_moonmist_resolves": "passed", "A3_p0_attack_damage": "failed", "A4_p1_attack_damage": "failed", "A5_cleanup": "passed"}
+[05:50:45] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6899/20261006-6899/summary.png
+[05:50:45] copied driver into evidence dir
+[05:50:45] server excerpts written (300 lines from /home/hatch/workspace/dev/phase-backfill/runs/20261006-0441/server.log)
+[05:50:45] manifest written (15 files)
