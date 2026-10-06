@@ -1,0 +1,90 @@
+{
+ "issue": 6891,
+ "run_id": "20261006-6891",
+ "game_code": "PK3AZO",
+ "started_at": "2026-10-06T10:08:25",
+ "duration_s": 82.2,
+ "server_identity": {
+  "validated_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9ceb1a2956bdc7140c3f2f2797a43dc783e6b36929c367ee84bccbc336a8a35f",
+ "decks": {
+  "P0": [
+   [
+    "Lathiel, the Bounteous Dawn",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    18
+   ],
+   [
+    "Plains",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6891.py (protocol 69 / v0.80.0) for pinned v0.102.0; behavioral contract A1..A7 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action. The v0.102.0 engine auto-taps reliably; manual taps are a >90s fallback only.",
+  "Lathiel's end-step trigger is detected on the stack by the instantiated ability's own fields (kind.data.ability.effect.type==PutCounter, counter_type P1P1, source object named Lathiel) -- never by matching the whole nested trigger_entries blob.",
+  "Target slots are vi opportunities whose candidates reference battlefield creatures other than Lathiel. Slot 0 targets P0's own Bear; slot 1 re-targets the SAME Bear (stacking test). The reported defect is observed iff the engine excludes the already-targeted Bear from the later slot's candidates. Decline path: done-choice, else empty selection (up-to).",
+  "P0 attacks with Lathiel alone via advertised DeclareAttackers (attacks=[[oid, {type:Player, data:1}]]); P1 declares empty blockers with the 25s relations grace window.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.102.0 still parses the trigger with multi_target={min:0, max:Ref(LifeGainedThisTurn)} -- the target-count cap is still tied to life gained, exactly as in v0.80.0 (area:engine)."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_budget": "passed",
+  "A4_slot0_accepted": "passed",
+  "A5_free_distribution": "failed",
+  "A6_decline_path": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "lathiel_bf=True own_bears=1 p1_bears=2 p0_life_at_trigger=22",
+  "A2_trigger_fired_detail": "trigger_on_stack=True target_prompt_seen=True slots_answered=2",
+  "A3_budget_detail": "p0_life_at_endstep=22 life_gained=2 (expected 2)",
+  "A4_slot0_accepted_detail": "slots_answered=2 accepted=True p0_bear_oid=13 is_own=True",
+  "A5_free_distribution_detail": "distinct_required_observed=True stacking_tried=False stacking_accepted=None own_bear_counters=2 (free distribution wants 2) p1_bear_counters=0 (expected 0)",
+  "A6_decline_path_detail": "declined_extra=False empty_tried=True terminal_forced=False",
+  "A7_cleanup_detail": "post stack_empty=True stage=DONE"
+ },
+ "notes": [],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5645285027,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Lathiel / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Distribution with 3+ counters / 3+ targets not exercised (single 2-counter scenario).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6891_01020.py), not direct load."
+ ],
+ "setup_line": "P0: 12x Lathiel, the Bounteous Dawn + 12x Grizzly Bears + 18x Forest + 18x Plains; P1: 12x Grizzly Bears + 48x Forest (casts bears as legal opponent targets)",
+ "contract_line": "Attack with Lathiel alone (lifelink, gain 2); at the end step, target P0's own Bear for slot 0, then re-target the SAME Bear for slot 1. Free distribution works iff the engine still offers the already-targeted Bear and accepts the same-target submission."
+}
