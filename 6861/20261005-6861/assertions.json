@@ -1,0 +1,29 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_cast_offered": "failed",
+  "A3_exile_cast_completes": "failed",
+  "A4_gy_cast_completes": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: turn=36 phase=PreCombatMain squee_exile=1 squee_gy=1 untapped_lands=12",
+  "post.json: stack_empty=True turn=36 phase=BeginCombat",
+  "exile offered=False (source=none) stack=False bf=False rejected=True",
+  "gy offered=False stack=False bf=False rejected=True",
+  "protocol-106 driver (v0.102.0): mulligan via legacy MulliganDecision action; DiscardToHandSize via vi schema/select; Looting discard via vi hand-card choice; CastSpell/ActivateAbility via legacy Action with mana via legacy PayMana actions and/or vi tapLandForMana menus driven by MANA_NEEDS; Ooze target via advertised vi target opportunity; legend rule answered preferring the just-cast Squee; priority-gated passes; 5s re-tick backstop."
+ ],
+ "a2_source": "none",
+ "exile": {
+  "offered": false,
+  "stack": false,
+  "bf": false,
+  "rejected": true
+ },
+ "gy": {
+  "offered": false,
+  "stack": false,
+  "bf": false,
+  "rejected": true
+ }
+}
