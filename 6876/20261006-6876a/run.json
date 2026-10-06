@@ -1,0 +1,84 @@
+{
+ "issue": 6876,
+ "run_id": "20261006-6876a",
+ "game_code": "9QCTM3",
+ "started_at": "2026-10-06T08:19:28",
+ "duration_s": 47.8,
+ "server_identity": {
+  "validated_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "ebd18cefec5dbc642d8c62a2a0d3aa5db127771ce21e7b3a562599dba5cb13dd",
+ "decks": {
+  "P0": [
+   [
+    "Agent Maria Hill",
+    4
+   ],
+   [
+    "Beast Mode",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Plains",
+    15
+   ],
+   [
+    "Forest",
+    15
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    40
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6876.py (protocol 69 / v0.80.0) for pinned v0.102.0; behavioral contract A1..A5 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action on P0 main/priority; the v0.102.0 engine auto-taps reliably, so manual mana taps engage only as a fallback if a cast sits >90s with a tap menu visible.",
+  "Beast Mode prompts answered generically: target selection -> the Bears (schema select/sequence or exactChoices); decideOptionalCost teamwork -> pay (bare true/false role=accept surfaces); TapCreatures payment -> Hill ONLY.",
+  "DeclareAttackers via relations-schema vi opportunity answered first (Hill alone vs P1); the vi fallback only answers relations-schema opportunities (select/sequence are decisions, never declares). P1 declares no blockers.",
+  "real_decision_pending excludes the 106 priority-menu codes; playLand vi codes answered before the decision gate; land matching via is_land().",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.102.0 parses Hill's trigger as mode=Taps with no structured teamwork qualifier (constraint/condition/origin all empty) -- the qualifier survives only in the description string, which is consistent with the runtime firing on any tap (area:parser)."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_teamwork_cast": "passed",
+  "A3_teamwork_trigger_ok": "passed",
+  "A4_attack_no_trigger": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: pre turn=6 hill={'oid': '50', 'tapped': False, 'counters': 0, 'power': 2} bears=1 beast_in_hand=True",
+  "A2: beast_casts=1 teamwork_pay=1 tap_hill=1 beast_zones=['Graveyard', 'Hand', 'Library'] hill_tapped_post=True beast_target_hint=Grizzly Bears",
+  "A3: hill_counters_post=1 hand pre=5 post=5",
+  "A4: hill_counters_final=2 hand post=5 final=6 p1_life=16 expected=17 (hill power 3)",
+  "A5: stack_empty=True game_over=False turn=8"
+ ],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5643039882,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Hill / 8x Beast Mode / 8x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6876_01020.py), not direct load."
+ ],
+ "setup_line": "P0: 4x Agent Maria Hill + 8x Beast Mode + 8x Grizzly Bears + 15x Plains + 15x Forest; P1: 40x Plains (passive)",
+ "contract_line": "Cast Beast Mode with teamwork paid by tapping only Hill: her trigger must put exactly one +1/+1 counter and draw one card. Attacking with Hill (a non-teamwork tap) must not fire it."
+}
