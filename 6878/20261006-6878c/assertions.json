@@ -1,0 +1,114 @@
+{
+ "issue": 6878,
+ "run_id": "20261006-6878c",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A2_keep_offered_detail": {
+   "top3": [
+    [
+     "2",
+     "forest"
+    ],
+    [
+     "23",
+     "forest"
+    ],
+    [
+     "7",
+     "duskwatch recruiter"
+    ]
+   ],
+   "keep_offered_refs": [
+    "7"
+   ],
+   "keep_kind": "select",
+   "keep_spec": {
+    "type": "select",
+    "data": {
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  },
+  "A3_order_offered_r1": "failed",
+  "A3_order_offered_r1_detail": {
+   "rest_oids": [
+    "2",
+    "23"
+   ],
+   "order_spec": null
+  },
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "2",
+    "23"
+   ],
+   "positions": {
+    "2": 28,
+    "23": 29
+   },
+   "library_len": 30,
+   "post_bottom_tail": [
+    "39",
+    "31",
+    "4",
+    "29",
+    "2",
+    "23"
+   ]
+  },
+  "A5_no_opponent_leak": "failed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "2": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "23": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "7": {
+     "name": "Duskwatch Recruiter",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    }
+   },
+   "leaked": [
+    "2",
+    "23"
+   ]
+  },
+  "A6_decline_branch_r2": "failed",
+  "A6_decline_branch_r2_detail": {
+   "kept": [],
+   "rest_oids": [
+    "34",
+    "30",
+    "20"
+   ],
+   "rest_positions": {
+    "34": 26,
+    "30": 27,
+    "20": 28
+   },
+   "order_offered": false
+  },
+  "A7_cleanup": "passed"
+ },
+ "notes": []
+}
