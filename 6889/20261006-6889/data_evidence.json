@@ -1,0 +1,52 @@
+{
+ "name": "Tolsimir, Friend to Wolves",
+ "oracle_text": "When Tolsimir enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.\nWhenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+ "trigger_count": 2,
+ "wolf_trigger": {
+  "mode": "ChangesZone",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "GainLife",
+    "amount": {
+     "type": "Fixed",
+     "value": 3
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "valid_card": {
+   "type": "Typed",
+   "type_filters": [
+    {
+     "Subtype": "Wolf"
+    }
+   ],
+   "controller": "You",
+   "properties": []
+  },
+  "origin": null,
+  "destination": "Battlefield",
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": null,
+  "optional": false,
+  "damage_kind": "Any",
+  "secondary": false,
+  "valid_target": null,
+  "valid_source": null,
+  "description": "Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+  "constraint": null,
+  "condition": null,
+  "batched": false
+ }
+}
