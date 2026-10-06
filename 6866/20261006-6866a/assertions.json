@@ -1,0 +1,171 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_low_branch": "passed",
+    "A7_exile_ok": "failed",
+    "A4_high_observed": "passed",
+    "A5_reroll_offered": "passed",
+    "A6_reroll_works": "failed"
+  },
+  "notes": [
+    "Reconstruction note: the driver process completed both games and wrote all evidence; this finalize script re-derived the assertions from the saved authoritative exports, wire_log.jsonl and run_progress.json because the in-process evaluate scored the run-level A3/A7 from per-game driver state (the decisive low turn came from game 0). No live game touched.",
+    "refs derived: low_ref=[0, 10] high_ref=[1, 15]",
+    "games: [{\"gindex\": 0, \"game_code\": \"EOKORR\", \"result\": \"stall\", \"attack_turns\": [10, 12, 14, 16, 18, 20, 22, 24, 26, 28], \"deltas\": {\"10\": [\"122\"], \"12\": [\"124\"], \"14\": [\"126\"], \"16\": [\"128\"], \"18\": [\"130\"], \"20\": [\"132\"], \"22\": [\"134\"], \"24\": [\"136\"], \"26\": [\"138\"], \"28\": [\"140\"]}, \"target_answers\": [[10, \"31\", \"grizzly bears\"], [12, \"31\", \"grizzly bears\"], [14, \"31\", \"grizzly bears\"], [16, \"31\", \"grizzly bears\"], [18, \"31\", \"grizzly bears\"], [20, \"31\", \"grizzly bears\"], [22, \"31\", \"grizzly bears\"], [",
+    "A1: pre.json phase=PreCombatMain delina_bf=True bear_bf=True life=20/20",
+    "A2: target_answers=[[10, '31', 'grizzly bears'], [12, '31', 'grizzly bears'], [14, '31', 'grizzly bears'], [16, '31', 'grizzly bears'], [18, '31', 'grizzly bears'], [20, '31', 'grizzly bears'], [22, '31', 'grizzly bears'], [24, '31', 'grizzly bears'], [26, '31', 'grizzly bears'], [28, '31', 'grizzly bears'], [9, '17', 'grizzly bears'], [11, '17', 'grizzly bears'], [13, '17', 'grizzly bears'], [15, '17', 'grizzly bears']]",
+    "A3: low turn 10 (game 0) new_oids=['122'] detail={'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'in_combat_attackers': False, 'legendary': False}",
+    "A7: low-turn token oids ['122'] still on BF in post_low.json: ['122']",
+    "A4: high_ref=[1, 15] (turn-15 delta=[])",
+    "A5: reroll prompts=[(15, True)]",
+    "A6: accepted the 'roll again' prompt (choice true); turn-15 token delta stayed 0 and no further prompt appeared before DeclareBlockers -- the accept resolved nothing"
+  ],
+  "games": [
+    {
+      "gindex": 0,
+      "game_code": "EOKORR",
+      "result": "stall",
+      "attack_turns": [
+        10,
+        12,
+        14,
+        16,
+        18,
+        20,
+        22,
+        24,
+        26,
+        28
+      ],
+      "deltas": {
+        "10": [
+          "122"
+        ],
+        "12": [
+          "124"
+        ],
+        "14": [
+          "126"
+        ],
+        "16": [
+          "128"
+        ],
+        "18": [
+          "130"
+        ],
+        "20": [
+          "132"
+        ],
+        "22": [
+          "134"
+        ],
+        "24": [
+          "136"
+        ],
+        "26": [
+          "138"
+        ],
+        "28": [
+          "140"
+        ]
+      },
+      "target_answers": [
+        [
+          10,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          12,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          14,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          16,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          18,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          20,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          22,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          24,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          26,
+          "31",
+          "grizzly bears"
+        ],
+        [
+          28,
+          "31",
+          "grizzly bears"
+        ]
+      ]
+    },
+    {
+      "gindex": 1,
+      "game_code": "I2XIER",
+      "result": "done",
+      "attack_turns": [
+        9,
+        11,
+        13,
+        15
+      ],
+      "deltas": {
+        "9": [
+          "122"
+        ],
+        "11": [
+          "124"
+        ],
+        "13": [
+          "126"
+        ],
+        "15": []
+      },
+      "target_answers": [
+        [
+          9,
+          "17",
+          "grizzly bears"
+        ],
+        [
+          11,
+          "17",
+          "grizzly bears"
+        ],
+        [
+          13,
+          "17",
+          "grizzly bears"
+        ],
+        [
+          15,
+          "17",
+          "grizzly bears"
+        ]
+      ]
+    }
+  ]
+}
