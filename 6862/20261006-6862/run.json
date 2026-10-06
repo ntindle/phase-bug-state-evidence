@@ -1,0 +1,81 @@
+{
+ "issue": 6862,
+ "run_id": "20261006-6862",
+ "game_code": "GMJPNX",
+ "server_identity": {
+  "validated_version": "v0.102.0",
+  "build_commit": "e17f6fd",
+  "protocol_version": 106,
+  "server_binary_sha256": "5b79f0c520e11ad1df158f72c1674a43378ff9c999b57199789a531f6d125aa8",
+  "card_data_sha256": "eb87edbd0c90e2440fdb97404e4a40fb86ca9770439f9c045fc9d0f220605b36",
+  "draft_pools_sha256": "e80b16721bf3da5b28580f29bbe94b8df43f02363e66647cc004bb53888040e3",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "028209f425e9c32f2c85d0a2af1e11044c338d7019c8744324a5ff95e408180b",
+ "decks": {
+  "P0": [
+   [
+    "Espers to Magicite",
+    12
+   ],
+   [
+    "Swamp",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Sylvan Reclamation",
+    8
+   ],
+   [
+    "Mountain",
+    16
+   ],
+   [
+    "Forest",
+    16
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_observed": "passed",
+  "A3_trigger_prompted": "failed",
+  "A4_noncreature_excluded": "not-run",
+  "A5_illegal_branch": "not-run",
+  "A6_control_token": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json (turn 7 PostCombatMain): P1 gy=[('Faithless Looting', 3), ('Forest', 2), ('Grizzly Bears', 1), ('Sylvan Reclamation', 3)]; P0 hand=[('Espers to Magicite', 3), ('Swamp', 3)]",
+  "post_exile.json (turn 7 PostCombatMain): P1 exile=[('Faithless Looting', 3), ('Forest', 2), ('Grizzly Bears', 1), ('Sylvan Reclamation', 3)]; P1 gy now=[]",
+  "wire log: esper_resolved seen; trigger_prompt events=NONE; interaction submissions after resolution=17 (ongoing land/discard play)",
+  "A4/A5/A6 not-run: the reflexive trigger never fired, so no target candidates were ever offered (the reported illegal-noncreature-target path cannot be reached).",
+  "post_exile stack: empty; game continued after resolution (17 subsequent submissions) with no stuck prompt",
+  "data-level (v0.102.0 card-data.json): oracle ok=True; creature filter present=True; exiled-by-source present=True; multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}}",
+  "Difference from the report: the report describes the AI being offered/choosing exiled Sylvan Reclamation as the token source. On v0.102.0 the reflexive trigger never fires at all (no stack entry, no target choice across the full post-resolution game), so the candidate-filter defect cannot be exercised; this is the same clearly identified related failure as the v0.80.0 (protocol 69) and v0.98.0 runs."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6862_01020.py), not direct load.",
+  "Native AI seats not used; the reflexive trigger is engine-level and seat-independent.",
+  "The driver was stopped after the trigger failed to appear across 11+ post-resolution turns; post.json was not exported (post_exile.json is the terminal state)."
+ ],
+ "setup_line": "P0: 12x Espers to Magicite + 48x Swamp (land-drop, pass); P1: 12x Faithless Looting + 8x Grizzly Bears + 8x Sylvan Reclamation + 16x Mountain + 16x Forest (land-drop; Looting discards Bears/Reclamations)",
+ "contract_line": "Esper's to Magicite exiles P1's graveyard; the reflexive trigger offers exiled creature cards only (Sylvan Reclamation excluded); choosing a Bear creates an artifact-only Bear token. OBSERVED: the trigger never fires."
+}
