@@ -1,0 +1,51 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90m/home/hatch/workspace/dev/phase-backfill/client-test/phase-5178-20261005/client[39m
+
+ [31m❯[39m src/services/__tests__/serverDetection-5178-contract.test.ts [2m([22m[2m6 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 16[2mms[22m[39m
+[31m     [31m×[31m does not corrupt a bracketed IPv6 host that has no port[39m[32m 11[2mms[22m[39m
+     [32m✓[39m still splits a bracketed IPv6 host that DOES carry a port[32m 0[2mms[22m[39m
+[31m     [31m×[31m handles a longer port-less bracketed IPv6 literal[39m[32m 1[2mms[22m[39m
+     [32m✓[39m hostname control resolves correctly[32m 0[2mms[22m[39m
+     [32m✓[39m localhost control resolves to ws with default port[32m 0[2mms[22m[39m
+     [32m✓[39m bare code control returns code only[32m 0[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/serverDetection-5178-contract.test.ts[2m > [22mparseJoinCode — bracketed IPv6 host (#5178 contract)[2m > [22mdoes not corrupt a bracketed IPv6 host that has no port
+[31m[1mAssertionError[22m: expected 'wss://[::1/ws' to be 'wss://[::1]/ws' // Object.is equality[39m
+
+Expected: [32m"wss://[::1[7m][27m/ws"[39m
+Received: [31m"wss://[::1/ws"[39m
+
+[36m [2m❯[22m src/services/__tests__/serverDetection-5178-contract.test.ts:[2m18:29[22m[39m
+    [90m 16|[39m     [35mconst[39m r [33m=[39m [34mparseJoinCode[39m([32m"ABC123@[::1]"[39m)[33m;[39m
+    [90m 17|[39m     [34mexpect[39m(r[33m.[39mcode)[33m.[39m[34mtoBe[39m([32m"ABC123"[39m)[33m;[39m
+    [90m 18|[39m     [34mexpect[39m(r[33m.[39mserverAddress)[33m.[39m[34mtoBe[39m([32m"wss://[::1]/ws"[39m)[33m;[39m
+    [90m   |[39m                             [31m^[39m
+    [90m 19|[39m   })[33m;[39m
+    [90m 20|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/serverDetection-5178-contract.test.ts[2m > [22mparseJoinCode — bracketed IPv6 host (#5178 contract)[2m > [22mhandles a longer port-less bracketed IPv6 literal
+[31m[1mAssertionError[22m: expected 'wss://[2001:db8::1/ws' to be 'wss://[2001:db8::1]/ws' // Object.is equality[39m
+
+Expected: [32m"wss://[2001:db8::1[7m][27m/ws"[39m
+Received: [31m"wss://[2001:db8::1/ws"[39m
+
+[36m [2m❯[22m src/services/__tests__/serverDetection-5178-contract.test.ts:[2m28:65[22m[39m
+    [90m 26|[39m
+    [90m 27|[39m   [34mit[39m([32m"handles a longer port-less bracketed IPv6 literal"[39m[33m,[39m () [33m=>[39m {
+    [90m 28|[39m     [34mexpect[39m([34mparseJoinCode[39m([32m"ABC123@[2001:db8::1]"[39m)[33m.[39mserverAddress)[33m.[39m[34mtoBe[39m(
+    [90m   |[39m                                                                 [31m^[39m
+    [90m 29|[39m       [32m"wss://[2001:db8::1]/ws"[39m[33m,[39m
+    [90m 30|[39m     )[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 19:23:16
+[2m   Duration [22m 2.11s[2m (transform 1.16s, setup 337ms, import 1.26s, tests 16ms, environment 281ms)[22m
+
