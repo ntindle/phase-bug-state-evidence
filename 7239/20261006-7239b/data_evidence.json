@@ -1,0 +1,33 @@
+{
+ "name": "Hot Pursuit",
+ "oracle_text": "When this enchantment enters, suspect target creature an opponent controls. As long as this enchantment remains on the battlefield, that creature is also goaded.\nAt the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Untap them. They gain haste until end of turn.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Red"
+  ],
+  "generic": 1
+ },
+ "trigger_chain": [
+  {
+   "mode": "ChangesZone",
+   "phase": null,
+   "condition": null,
+   "effect_type": "Suspect",
+   "effect_name": null,
+   "description": "When ~ enters, suspect target creature an opponent controls. As long as ~ remains on the battlefield, that creature is also goaded."
+  },
+  {
+   "mode": "Phase",
+   "phase": "BeginCombat",
+   "condition": null,
+   "effect_type": "Unimplemented",
+   "effect_name": "unparsed_condition",
+   "description": "At the beginning of combat on your turn, if two or more players have lost the game, gain control of all goaded and/or suspected creatures until end of turn. Unt"
+  }
+ ],
+ "data_notes": [
+  "v0.102.0 parse: the BeginCombat clause is effect=Unimplemented/unparsed_condition (condition=None). The parser no longer marks this clause supported -- the whole clause is an unparsed_condition. The v0.98.0 finding (condition:null + GainControlAll filter:any + Untap->SelfRef) was against an older card-data AST."
+ ],
+ "parse_ok": true
+}
