@@ -1,0 +1,32 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_x_announced": "passed",
+    "A3_draw_completed": "passed",
+    "A4_choose_prompted": "failed",
+    "A5_discard_happened": "failed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "pre_cast: main=True spell_in_hand=True cast_advertised=True islands_bf=3 hand=6 lib=51",
+    "x prompt offered & answered: True value=1 (wanted 2) range=(0, 1) clamped=True (iids=['OM5I38.0.78'])",
+    "draw check: spell_in_gy=True lib 51->47 (delta=4) stack_empty=True",
+    "hand-keep 'choose X' prompt observed after draw: False (count=0)",
+    "hand: pre=6 post=9; oracle with X=1 expects 1; bug expects 9",
+    "post_cast: phase=PostCombatMain turn=5 stack_empty=True"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "ChooseXValue",
+    "Priority"
+  ],
+  "x_answered": true,
+  "x_value": 1,
+  "x_range": [
+    0,
+    1
+  ],
+  "x_clamped": true,
+  "hand_keep_prompts": []
+}
