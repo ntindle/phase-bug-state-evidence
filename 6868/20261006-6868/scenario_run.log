@@ -1,0 +1,75 @@
+[01:54:52] server identity hashes verified against on-disk pinned artifacts
+[01:54:55] ServerHello: version=0.102.0 build=e17f6fd protocol=106 mode=Full
+[01:54:55] data-level: minus3 multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 2}} counter_child=Unimplemented/unparsed_quantity
+[01:54:55] P0 creating game...
+[01:54:56] P1 joining...
+[01:54:58] game UGVJZK; P0 seat=0 P1 seat=1
+[01:54:58] [P0] keep 7: ['jared carthalion', 'island', 'island', 'island', 'jared carthalion', 'mountain', 'forest']
+[01:54:58] [P1] keep 7: ['swamp', 'swamp', 'grizzly bears', 'forest', 'forest', 'mountain', 'swamp']
+[01:54:59] [P1] playing land swamp
+[01:55:03] [P0] playing land island
+[01:55:08] [P1] playing land swamp
+[01:55:14] [P0] playing land mountain
+[01:55:23] [P1] playing land forest
+[01:55:23] P1 casts Grizzly Bears (oid 106)
+[01:55:24] [P1] tap land for mana used_for=generic
+[01:55:24] [P1] submitting interaction iid=UGVJZK.0.68 choice=UGVJZK.0.68.c1 (Swamp)
+[01:55:31] [P0] playing land forest
+[01:55:33] [P1] tap land for mana used_for=G
+[01:55:33] [P1] submitting interaction iid=UGVJZK.0.96 choice=UGVJZK.0.96.c1 (Forest)
+[01:55:35] [P1] playing land forest
+[01:55:40] [P0] playing land plains
+[01:55:43] [P1] playing land mountain
+[01:55:48] [P0] playing land swamp
+[01:55:48] P0 casts Jared Carthalion (oid 12)
+[01:55:49] === stage -> PLUS1 ===
+[01:55:49] [P0] Jared +1 options: 0
+[01:55:49] [P0] Jared +1 options: 0
+[01:55:50] [P0] Jared +1 options: 0
+[01:55:50] [P0] Jared +1 options: 2
+[01:55:50] [P0] activates Jared +1 (ability_index 0) turn=10
+[01:55:51] === Kavu token on BF; stage -> MINUS3 (turn 10) ===
+[01:55:52] [P0] Jared -3 options: 0
+[01:55:53] [P0] Jared -3 options: 0
+[01:55:53] [P1] playing land swamp
+[01:55:54] [P0] Jared -3 options: 0
+[01:55:54] [P0] Jared -3 options: 0
+[01:55:55] [P0] Jared -3 options: 0
+[01:55:56] [P0] Jared -3 options: 0
+[01:55:56] [P0] Jared -3 options: 0
+[01:55:56] [P0] tap land for mana used_for=U
+[01:55:56] [P0] submitting interaction iid=UGVJZK.0.181 choice=UGVJZK.0.181.c1 (Island)
+[01:55:57] [P0] tap land for mana used_for=W
+[01:55:57] [P0] submitting interaction iid=UGVJZK.0.182 choice=UGVJZK.0.182.c1 (Plains)
+[01:55:57] [P0] tap land for mana used_for=B
+[01:55:57] [P0] submitting interaction iid=UGVJZK.0.183 choice=UGVJZK.0.183.c1 (Swamp)
+[01:55:57] [P0] tap land for mana used_for=R
+[01:55:57] [P0] submitting interaction iid=UGVJZK.0.184 choice=UGVJZK.0.184.c1 (Mountain)
+[01:55:58] [P0] tap land for mana used_for=G
+[01:55:58] [P0] submitting interaction iid=UGVJZK.0.185 choice=UGVJZK.0.185.c1 (Forest)
+[01:55:58] [P0] Jared -3 options: 0
+[01:55:58] DIAG P0: rev=187 turn=12 phase=Upkeep prio=False decision=False stage=MINUS3 kavu=True p1bear=True untapped=0
+[01:55:58] [P0] Jared -3 options: 0
+[01:55:59] [P0] playing land island
+[01:55:59] [P0] Jared -3 options: 2
+[01:55:59] exported pre_activate.json
+[01:55:59] [P0] activates Jared -3 (ability_index 1) turn=12
+[01:56:00] [P0] -3 target prompt (iid=UGVJZK.0.192, shape=schema/sequence): [('Grizzly Bears', '106', 1), ('Kavu', '114', 0)]
+[01:56:00] [P0] -3: targeted ['Kavu'] [1/2]
+[01:56:00] [P0] -3 target prompt (iid=UGVJZK.0.193, shape=schema/sequence): [('Grizzly Bears', '106', 1)]
+[01:56:00] [P0] -3: targeted ['Grizzly Bears'] [2/2]
+[01:56:00] [P0] -3: both targets answered
+[01:56:02] exported post_activate.json
+[01:56:02] exported post.json
+[01:56:02] === DONE: -3 resolved ===
+[01:56:02] A1_setup_ok: passed
+[01:56:02] A2_minus3_offered: passed
+[01:56:02] A3_target_resolve: passed
+[01:56:02] A4_kavu_counters: failed
+[01:56:02] A5_bears_counters: failed
+[01:56:02] A6_cleanup: passed
+[01:56:02] verdict: reproduced
+[01:56:03] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_minus3_offered": "passed", "A3_target_resolve": "passed", "A4_kavu_counters": "failed", "A5_bears_counters": "failed", "A6_cleanup": "passed"}
+[01:56:04] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6868/20261006-6868/summary.png
+[01:56:04] copied driver into evidence dir
+[01:56:04] wrote manifest.sha256 (12 files)
