@@ -1,0 +1,54 @@
+[22:17:57] starting issue #5654 run 20261006-2211-5654
+[22:17:57] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[22:17:57] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[22:17:58] [A] game HXJRNX P0seat=0 P1seat=1
+[22:17:58] [P0] mulligan #2 (7: ['swamp', 'swamp', 'swamp', 'island', 'swamp', 'swamp', 'swamp'])
+[22:17:58] [P1] mulligan #2 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[22:17:58] [A] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[22:17:59] [P0] keep 7: ['swamp', 'notion thief', 'swamp', 'notion thief', 'island', 'swamp', 'island']
+[22:17:59] [P0] keep 7: ['swamp', 'notion thief', 'swamp', 'notion thief', 'island', 'swamp', 'island']
+[22:17:59] [P1] mulligan #3 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[22:17:59] [P0] keep 7: ['swamp', 'notion thief', 'swamp', 'notion thief', 'island', 'swamp', 'island']
+[22:17:59] [P1] keep 7: ['island', 'island', 'island', 'divination', 'island', 'island', 'island']
+[22:17:59] [P0] bottoming ['Swamp'] via vi
+[22:17:59] [P1] bottoming ['Island', 'Island'] via vi
+[22:18:00] [P0] playing land swamp
+[22:18:03] [P1] playing land island
+[22:18:05] [P0] playing land island
+[22:18:09] [P1] playing land island
+[22:18:11] [P0] playing land swamp
+[22:18:14] [P1] playing land island
+[22:18:16] [P0] playing land island
+[22:18:16] [A] P0 casts Notion Thief (turn 7)
+[22:18:19] [P1] playing land island
+[22:18:19] [A] P1 main phase: exporting PRE_A, then casting Divination
+[22:18:19] [A] P1 casts Divination (turn 8)
+[22:18:19] [P1] tap land for mana used_for=U
+[22:18:19] [P1] submitting interaction iid=HXJRNX.0.121 choice=HXJRNX.0.121.c1 (Island)
+[22:18:21] [A] Divination resolved; exporting POST_A
+[22:18:21] [A] exported POST_A
+[22:18:21] [A] done flag set; finishing game
+[22:18:21] [A] game A finished ok=True
+[22:18:21] [B] game SQF6KT P0seat=0 P1seat=1
+[22:18:21] [P0] mulligan #2 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[22:18:21] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[22:18:21] [B] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[22:18:22] [P0] keep 7: ['plagiarize', 'island', 'island', 'island', 'island', 'island', 'island']
+[22:18:22] [P0] bottoming ['Island'] via vi
+[22:18:23] [P1] playing land island
+[22:18:25] [P0] playing land island
+[22:18:27] [P1] playing land island
+[22:18:30] [P0] playing land island
+[22:18:33] [P1] playing land island
+[22:18:37] [P0] playing land island
+[22:18:41] [P1] playing land island
+[22:18:44] [P0] playing land island
+[22:18:46] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[22:18:46] [B] P0 casts Plagiarize (turn 9)
+[22:18:47] [B] P1 past draw step; exporting POST_B
+[22:18:47] [B] exported POST_B
+[22:18:47] [B] done flag set; finishing game
+[22:18:47] [B] game B finished ok=True
+[22:18:47] [A] deltas P0 hand 4->6 lib 51->49; P1 hand 5->4 lib 51->51
+[22:18:47] [B] deltas P0 hand 6->5 lib 50->50; P1 hand 6->7 lib 50->49
+[22:18:47] rendered summary.png
