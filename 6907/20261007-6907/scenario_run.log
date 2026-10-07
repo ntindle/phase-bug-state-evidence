@@ -1,0 +1,99 @@
+ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game VPV6FT; P0 seat=0 P1 seat=1
+[P0] mulligans (1) seeking Warden (hand=['forest', 'grizzly bears', 'gavony township', 'forest', 'plains', 'grizzly bears'])
+[P1] keeps (hand=7: ['forest', 'forest', 'plains', 'forest', 'forest', 'forest'])
+DIAG turn=1 active=0 phase=Untap wf=MulliganDecision stage=SETUP warden=None ng1=False town=False ng2=False tsels=0 decisions=0 P0hand=['forest', 'grizzly bears', 'gavony township', 'forest', 'plains', 'grizzly bears']
+[P0] keeps (hand=7: ['grizzly bears', 'forest', 'plains', 'plains', 'sanctuary warden', 'forest'])
+[P1] keeps (hand=7: ['forest', 'forest', 'plains', 'forest', 'forest', 'forest'])
+[P0] bottoming ['plains']
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] playing land plains
+[P1] playing land forest
+[P0] playing land forest
+[P0] casting Grizzly Bears (oid 43)
+[P1] playing land forest
+[P0] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+[P0] playing land plains
+[P1] playing land plains
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land plains
+[P0] casting Sanctuary Warden (oid 5)
+target selection #1 (stage SETUP): grizzly bears(Battlefield,p0), sanctuary warden(Battlefield,p0)
+[P0] Warden ETB: no Warden candidate; first-candidate fallback
+[P0] Warden ETB trigger targets Warden (decline follows via may-choice)
+[P1] playing land forest
+[P0] tap land for mana used_for=W needs_left={'W': 1, 'generic': 4}
+[P0] tap land for mana used_for=W needs_left={'W': 0, 'generic': 4}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 3}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 2}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 0}
+[P0] playing land plains
+[P1] playing land plains
+[P0] playing land forest
+[P1] playing land plains
+[P0] playing land plains
+[P1] playing land plains
+[P0] playing land forest
+[P1] playing land plains
+[P0] playing land nesting grounds
+DIAG turn=22 active=1 phase=Draw wf=Priority stage=SETUP warden=5 ng1=False town=False ng2=False tsels=1 decisions=0 P0hand=['sanctuary warden', 'grizzly bears', 'nesting grounds']
+[P1] playing land plains
+[P0] playing land plains
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land plains
+[P0] playing land nesting grounds
+[P1] playing land forest
+[P0] playing land plains
+[P1] playing land plains
+[P0] playing land plains
+[P1] playing land plains
+[P0] playing land gavony township
+board ready (turn 35): NG + Warden (counters={'shield': 2}) + Township + Bears; stage -> CONTROL
+[P0] activating Nesting Grounds (control, turn 35); pre_control exported
+exported pre_control.json
+target selection #2 (stage CONTROL): plains(Battlefield,p0), forest(Battlefield,p0), grizzly bears(Battlefield,p0), plains(Battlefield,p0), forest(Battlefield,p0), forest(Battlefield,p0), plains(Battlefield,p0), sanctuary warden(Battlefield,p0)
+[P0] NG target answers sanctuary warden (dest_slot=False)
+target selection #3 (stage CONTROL): plains(Battlefield,p0), forest(Battlefield,p1), forest(Battlefield,p0), grizzly bears(Battlefield,p0), forest(Battlefield,p1), plains(Battlefield,p0), plains(Battlefield,p1), forest(Battlefield,p0)
+[P0] NG target answers grizzly bears (dest_slot=True)
+[P0] tap land for mana used_for=generic needs_left={'generic': 0}
+[P0] NG ability #1 on stack (turn 35)
+exported post_control.json
+[P0] NG #1 resolved; post_control exported; stage -> PROOF_SETUP
+[P0] activating Gavony Township (turn 35); pre_township exported
+exported pre_township.json
+[P0] tap land for mana used_for=W needs_left={'G': 1, 'W': 0, 'generic': 2}
+[P0] tap land for mana used_for=G needs_left={'G': 0, 'W': 0, 'generic': 2}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'W': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'W': 0, 'generic': 0}
+exported post_township.json
+[P0] Township resolved: Warden counters={'P1P1': 1, 'shield': 1}; post_township exported; stage -> PROOF
+[P1] playing land plains
+[P0] activating Nesting Grounds (proof, turn 37); pre_proof exported
+exported pre_proof.json
+target selection #4 (stage PROOF): plains(Battlefield,p0), forest(Battlefield,p0), grizzly bears(Battlefield,p0), plains(Battlefield,p0), forest(Battlefield,p0), forest(Battlefield,p0), plains(Battlefield,p0), sanctuary warden(Battlefield,p0)
+[P0] NG target answers sanctuary warden (dest_slot=False)
+target selection #5 (stage PROOF): plains(Battlefield,p0), forest(Battlefield,p1), forest(Battlefield,p0), grizzly bears(Battlefield,p0), forest(Battlefield,p1), plains(Battlefield,p0), plains(Battlefield,p1), forest(Battlefield,p0)
+[P0] NG target answers grizzly bears (dest_slot=True)
+[P0] tap land for mana used_for=generic needs_left={'generic': 0}
+[P0] NG ability #2 on stack (turn 37)
+exported post_proof.json
+[P0] NG #2 resolved; post_proof exported; DONE
+A1_setup_ok: passed -- ng=True warden=True township=True bears=True warden_counters={'shield': 2} single_shield_type=True p0_main=True turn=35
+A2_control_move: passed -- warden delta={'shield': -1} {'shield': 2}->{'shield': 1}; bears delta={'shield': 1} {}->{'shield': 1}
+A3_counter_prompted: failed -- no counter-type choice offered during PROOF activation (decisions recorded in PROOF: 0)
+A4_exact_move: not-run -- no counter choice was offered (A3 failed)
+A5_default_documents: passed -- engine default moved counter class(es) ['shield']: warden {'P1P1': 1, 'shield': 1}->{'P1P1': 1}, bears {'P1P1': 1, 'shield': 1}->{'P1P1': 1, 'shield': 2}
+A6_cleanup: passed -- post_proof turn=37 phase=PreCombatMain stack_empty=True
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TriggerTargetSelection', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority']
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_control_move": "passed", "A3_counter_prompted": "failed", "A4_exact_move": "not-run", "A5_default_documents": "passed", "A6_cleanup": "passed"}
