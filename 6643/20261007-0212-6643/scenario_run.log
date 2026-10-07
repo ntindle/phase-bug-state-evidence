@@ -1,0 +1,38 @@
+ServerHello OK: {'server_version': '0.103.0', 'build_commit': 'ec27a8d', 'protocol_version': 106, 'mode': 'Full'}
+game MNM3T7; P0 seat=0 P1 seat=1
+P0 keeps (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'], mulls=0)
+P1 keeps (hand=['island', 'island', 'island', 'island', 'island', 'island', 'island'], mulls=0)
+DIAG turn=1 active=1 phase=Untap pp=1 hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest'] dude=[] exp_lvl=1 bears=[] life=[20, 20] stack=0 attacked=False trig=False targ=False
+P0 casts Party Dude
+payment expected for cast_dude: needs={'G': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0})
+payment for cast_dude complete (needs exhausted)
+Party Dude on BF (oid 48)
+Dude object level-ish keys: ['class_level']; level read=1
+P0 activates Party Dude level-up idx=0 (-> level 2)
+payment expected for dude_level2: needs={'G': 1, 'generic': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0, 'generic': 1})
+[P0] paying mana via vi: tap Forest for generic (remaining needs={'G': 0, 'generic': 0})
+payment for dude_level2 complete (needs exhausted)
+P0 casts Grizzly Bears
+payment expected for cast_bear: needs={'G': 1, 'generic': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0, 'generic': 1})
+[P0] paying mana via vi: tap Forest for generic (remaining needs={'G': 0, 'generic': 0})
+payment for cast_bear complete (needs exhausted)
+P0 declares no attackers (dude=48 lvl=2 ready_bears=[50])
+P0 activates Party Dude level-up idx=1 (-> level 3)
+payment expected for dude_level3: needs={'G': 1, 'generic': 4}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0, 'generic': 4})
+PRE: exporting (dude lvl expected=3 field=3, bear 50 ready, P1 life=20)
+exported pre.json
+P0 attacks P1 with Bear (oid 50) on turn 12
+payment for dude_level3 auto-covered (party dude on stack); clearing
+*** PARTY DUDE TRIGGER OBSERVED ON STACK ***
+exported mid_trigger.json
+[P0] Party Dude target prompt answered with the attacking Bear (oid 50); P0 hand at target time: 5
+[P0] submitting advertised target: id=MNM3T7.0.198.t0 kind=sequence (Grizzly Bears)
+exported mid_target.json
+exported mid_pump.json
+mid_pump: bear P/T=7/7 phase=DeclareBlockers
+exported post.json
+server excerpts: 0 matching lines
