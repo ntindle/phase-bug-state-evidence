@@ -1,0 +1,154 @@
+{
+ "issue": 6758,
+ "run_id": "20261007-6758",
+ "started_at": "2026-10-07T10:14:02",
+ "duration_s": 45.5,
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-10-07",
+  "source": "digests recomputed via sha256sum against the pinned v0.102.0 release files under server/releases/v0.102.0/; raw ServerHello on 127.0.0.1:9374 verified by this run (server_version 0.102.0 / build e17f6fd / protocol 106 / Full)"
+ },
+ "server_run_dir": "runs/20261007-6758",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6758_01070.py"
+ },
+ "scenario_sha256": "08275085b5a5187a3fa9de0b90541dcaca92885d738c05b41560200d87222bd6",
+ "decks": {
+  "P0": [
+   [
+    "Comet Storm",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "games": [
+  {
+   "label": "g1_kicked",
+   "plan": {
+    "x": 2,
+    "kick": true,
+    "targets": [
+     1,
+     0
+    ],
+    "need_lands": 5,
+    "mana_needs": {
+     "R": 2,
+     "generic": 3
+    }
+   },
+   "x_chosen": 2,
+   "kick_paid": true,
+   "kick_subs": 1,
+   "kicker_done": true,
+   "target_prompts": 1,
+   "target_iids": [
+    "IFCI8D.0.138"
+   ],
+   "target_choices": [
+    1
+   ],
+   "cast_turn": 9,
+   "obs": {
+    "life_pre": [
+     20,
+     20
+    ],
+    "life_post": [
+     20,
+     20
+    ]
+   }
+  },
+  {
+   "label": "g2_control",
+   "plan": {
+    "x": 1,
+    "kick": false,
+    "targets": [
+     1
+    ],
+    "need_lands": 3,
+    "mana_needs": {
+     "R": 2,
+     "generic": 1
+    }
+   },
+   "x_chosen": 1,
+   "kick_paid": false,
+   "kick_subs": 0,
+   "kicker_done": true,
+   "target_prompts": 1,
+   "target_iids": [
+    "V4CV2K.0.89"
+   ],
+   "target_choices": [
+    1
+   ],
+   "cast_turn": 6,
+   "obs": {
+    "life_pre": [
+     20,
+     20
+    ],
+    "life_post": null
+   }
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_decisions": "passed",
+  "A3_two_targets": "failed",
+  "A4_damage_each": "failed",
+  "A5_control_path": "passed"
+ },
+ "notes": [
+  "P0 main phase: exporting g1_kicked_pre.json, then casting Comet Storm",
+  "P0 casts Comet Storm (turn 9, oid 48)",
+  "exported g1_kicked_on_stack.json (targets=[1], prompts=1, x=2, kick_paid=True)",
+  "Storm left the stack; exporting POST",
+  "exported g1_kicked_post.json",
+  "g1_kicked_pre.json: P0 main phase, Storm in hand, 5 untapped Mountains, life 20/20",
+  "cast decisions: X=2 kick_paid=True kick_subs=1 kicker_done=True",
+  "target prompts: 1 (choices=[1]) \u2014 expected 2 for a spell kicked once (REPORTED BUG)",
+  "resolution: P1 took 0 (expected 2), P0 took 0 (expected 2); storm_in_gy=True stack_empty=True (REPORTED BUG: no damage)",
+  "--- control game ---",
+  "P0 main phase: exporting g2_control_pre.json, then casting Comet Storm",
+  "P0 casts Comet Storm (turn 6, oid 23)",
+  "exported g2_control_on_stack.json (targets=[1], prompts=1, x=1, kick_paid=False)",
+  "Storm left the stack; exporting POST",
+  "exported g2_control_post.json",
+  "g2_control_pre.json: P0 main phase, Storm in hand, 3 untapped Mountains, life 20/20",
+  "cast decisions: X=1 kick_paid=False kick_subs=0 kicker_done=True",
+  "control: 1 target prompt, X=1, storm in gy, stack empty; damage dealt: P1 20->20"
+ ],
+ "verdict": "reproduced",
+ "verdict_reason": "kicked-once cast offered 1 target prompt(s) (expected 2); resolution: P1 20->20, P0 20->20; control X=1 no-kick: prompts=1 P1 20->None",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Comet Storm deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 12x Comet Storm + 48x Mountain (mulligan to storm); P1: 60x Mountain dummy",
+ "contract_line": "Cast Comet Storm X=2 with kicker {1} paid once: 2 target prompts (P1 then P0), X=2 damage to EACH target, storm to graveyard; control X=1 no kicker: 1 prompt, clean resolution"
+}
