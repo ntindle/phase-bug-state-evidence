@@ -1,0 +1,73 @@
+{
+ "run_id": "20261006-2310",
+ "issue": 6250,
+ "server_identity": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true,
+  "signature_note": "v0.103.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-06: latest stable release v0.103.0 (published 2026-10-06) == pinned release dir; ServerHello 0.103.0/ec27a8d/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.103.0 server on 127.0.0.1:9374 owned by this run's predecessor (runs/20261006-2111-5230); run state under runs/20261006-2241"
+ },
+ "games": {
+  "accept": {
+   "mode": "accept",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "passed",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=3 over 3 candidates; card text requires 'any number'",
+   "attach_spec": {
+    "type": "select",
+    "min": 0,
+    "max": 3,
+    "ncandidates": 3,
+    "candidate_names": [
+     "Colossus Hammer",
+     "Plate Armor",
+     "Holy Strength"
+    ],
+    "raw_constraint": {
+     "min": 0,
+     "max": 3
+    }
+   },
+   "attached_post": [
+    "colossus hammer",
+    "holy strength",
+    "plate armor"
+   ]
+  },
+  "decline": {
+   "mode": "decline",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "not-run",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=None over 0 candidates; card text requires 'any number'",
+   "attach_spec": {},
+   "decline_hosts": {
+    "holy": "45",
+    "ardenn": "45"
+   },
+   "a4_not_run_reason": "decline control: the trigger is declined at the optional-choice step, so no attachment-selection prompt is ever offered; there is no advertised cap to check on this leg."
+  }
+ },
+ "verdict_rule": "not-reproduced iff every accept-leg assertion passes (engine offers all available attachments with no cap below \"any number\", and all selected attachments move) and the decline control fires/declines cleanly with nothing moved; reproduced iff the accept leg shows a cap below the available count or fewer attachments moved than selected; blocked otherwise. Decline-leg A4 is not-run by design (declined trigger never reaches attachment selection).",
+ "verdict": "not-reproduced",
+ "verdict_correction_note": "2026-10-06: verdict recomputed from saved states after the run. The in-run rule required every decline assertion to pass, but decline-leg A4 is inapplicable by design; scoping A4 to the accept leg yields not-reproduced. No game was re-driven; states and wire log unchanged."
+}
