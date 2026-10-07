@@ -1,0 +1,57 @@
+ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game Z8DB9C; seats 0/1
+[P0] keep 7: ['taiga', 'duskana, the rage mother', 'taiga', 'savannah', 'savannah', 'taiga', 'savannah']
+[P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[P0] playing land taiga
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.22 choice=Z8DB9C.0.22.c1 (Forest)
+[P0] playing land taiga
+[P0] casting Grizzly Bears (oid 1)
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.51 choice=Z8DB9C.0.51.c1 (Forest)
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.57 choice=Z8DB9C.0.57.c1 (Forest)
+[P0] tap land for mana used_for=G needs_left={'generic': 1, 'G': 0}
+[P0] submitting interaction iid=Z8DB9C.0.68 choice=Z8DB9C.0.68.c2 (Taiga)
+[P0] tap land for mana used_for=generic needs_left={'generic': 0, 'G': 0}
+[P0] submitting interaction iid=Z8DB9C.0.69 choice=Z8DB9C.0.69.c1 (Taiga)
+[P0] playing land savannah
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.86 choice=Z8DB9C.0.86.c1 (Forest)
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.87 choice=Z8DB9C.0.87.c1 (Forest)
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.93 choice=Z8DB9C.0.93.c1 (Forest)
+[P0] playing land savannah
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.120 choice=Z8DB9C.0.120.c1 (Forest)
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.121 choice=Z8DB9C.0.121.c1 (Forest)
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.122 choice=Z8DB9C.0.122.c1 (Forest)
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P1] submitting interaction iid=Z8DB9C.0.128 choice=Z8DB9C.0.128.c1 (Forest)
+[P0] playing land taiga
+[P0] casting Duskana, the Rage Mother (oid 38)
+[note] Duskana ETB with 1 other 2/2 Bears on BF; P0 hand=4 (oracle: draw 1; parsed trigger: fixed 1)
+exported pre.json
+DeclareAttackers advertised data keys: ['attacks', 'bands'] :: {"attacks": [], "bands": []}
+[P0] attacks P1 with Bear oid 1 (turn 9)
+exported mid_combat.json
+[mid] attacker 1 P/T=(2, 2) phase=DeclareBlockers
+exported post.json
+[post] phase=PostCombatMain turn=9 attacker P/T=(2, 2)
+A1_setup_ok: passed
+A2_attack_declared: passed
+A3_trigger_fires: failed
+A4_pump_correct: failed
+A5_cleanup: passed
+verdict: reproduced
