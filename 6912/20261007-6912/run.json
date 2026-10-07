@@ -1,0 +1,219 @@
+{
+ "run_id": "20261007-6912",
+ "issue": 6912,
+ "cz_choice": "zone",
+ "date": "2026-10-07T20:27:44Z",
+ "started_at": "2026-10-07T15:26:54-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "port": 9374
+ },
+ "scenario": "driver/scenario_6912_01030.py",
+ "scenario_sha256": "48658aa774149535e843bb3065d71ee4f96783b289384afbdafdf6d28b487bc1",
+ "format_config": "CommanderDraft (>=60 cards, no singleton; commanders placed in command zone)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "chaos warp",
+     12
+    ],
+    [
+     "mountain",
+     48
+    ]
+   ],
+   "commander": [
+    "zurgo bellstriker"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_targeted": "passed",
+  "A3_replacement_offered": "passed",
+  "A4_zone_correct": "passed",
+  "A5_owner_routing": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "repl_seen": {
+   "turn": 8,
+   "revision": 176,
+   "chooser": 1
+  },
+  "repl_chooser": 1,
+  "repl_choices": [
+   {
+    "i": 0,
+    "text": "0",
+    "optionIndex": "0",
+    "mentions_command_zone": false
+   },
+   {
+    "i": 1,
+    "text": "1",
+    "optionIndex": "1",
+    "mentions_command_zone": false
+   }
+  ],
+  "repl_chosen": {
+   "i": 0,
+   "text": "0",
+   "how": "optionIndex mapping from runs 20260912-6912a/b: idx 0 == command zone"
+  },
+  "repl_guess": null,
+  "repl_chooser_wrong": false,
+  "cast_turn": 8,
+  "wf_types_resolution": [
+   "TargetSelection",
+   "Priority",
+   "Priority",
+   "Priority",
+   "ReplacementChoice",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority"
+  ],
+  "reveal_prompts": [],
+  "auto_answered": []
+ },
+ "notes": [
+  "post: ayula_zone=Command p1_lib 51->49 p0_lib 50->50 new_on_p1_bf=['forest'] new_on_p0_bf=[]",
+  "A5 accounting: p1 hand 7->7 gy 0->1",
+  "A5 draws=1 draws_sane=True",
+  "verdict=not-reproduced cz_choice=zone"
+ ],
+ "stats": {
+  "states_seen": 288
+ },
+ "setup_line": "P0: 12x Chaos Warp + 48x Mountain (commander Zurgo Bellstriker, never cast); P1: 60x Forest (commander Ayula, Queen Among Bears); P2: 60x Forest; native human seats",
+ "contract_line": "P0 casts Chaos Warp targeting P1's commander Ayula; P1 (owner) answers the commander replacement choice with the command zone (zone branch); warp must then shuffle/reveal/put from P1's library and put the revealed Forest onto P1's battlefield.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "Dense 12x Chaos Warp / 48x Mountain decks are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The revealed top card is random; the assertions verify the routing outcome (owner's library, permanent->BF) rather than a specific revealed card.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6912.py (verified 2026-09-12, run 20260912-6912a, verdict not-reproduced).",
+  "Conventions from the proven scenario_6910_01030.py template: merged_actions/vi, PASSED_REV gating, Select-model hand-size discards (schema+select required), schema-select BottomCards, the never-hold-priority-while-watching fall-through rule, and host-only exports.",
+  "CommanderDraft 3-seat setup proven in scenario_6916_01030.py."
+ ]
+}
