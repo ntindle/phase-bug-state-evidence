@@ -1,0 +1,47 @@
+{
+  "assertions": {
+    "A1": "failed",
+    "A2": "failed",
+    "A3": "failed",
+    "A4": "failed",
+    "C1": "passed",
+    "C2": "passed"
+  },
+  "base_commit": "e17f6fd302114d67eba04ef048cc5cf719df46c2",
+  "completed_at": "2026-10-07T01:45:00Z",
+  "contract": {
+    "assertions": {
+      "A1_delayed_interaction_dropped_over_replacement": "old interaction snapshot must NOT overwrite replacement turn 8 with old turn 3; adapter/generation/gameState stay on the replacement session",
+      "A2_dropped_after_clear_without_adapter_replace": "delayed interaction must not call getSnapshot or commit after clear, session identity unchanged",
+      "A3_dropped_if_replacement_during_snapshot_fetch": "stale getSnapshot result must not overwrite replacement turn 9 with old turn 4",
+      "A4_stale_rejection_suppressed": "rejection from replaced session must not surface a notification or change session identity",
+      "C1_uninterrupted_interaction_commits": "control: an uninterrupted interaction reply commits normally",
+      "C2_current_session_rejection_reported": "control: a rejection in the current session still reports and rethrows"
+    },
+    "setup": "Mock engine adapter; dispatchInteraction with a submit that settles only after a session boundary; then clearPromptOverlayState() + install replacement adapter/generation/snapshot; then release the old submit."
+  },
+  "evidence_files": [
+    "assertions.json",
+    "base_test_output.txt",
+    "commits.txt",
+    "fixhead_test_output.txt",
+    "run.json",
+    "sessionCleanup.test.ts",
+    "summary.png"
+  ],
+  "fix_head": "0737a0d2eda4bf713c4e1e095198b21f5824de14",
+  "issue": 9551,
+  "limitations": [
+    "Client-subsystem reproduction (vitest with mock engine adapter); no engine WS game state involved",
+    "Browser UI not exercised",
+    "Test file is the PR head version applied to the base checkout (purely additive vs base version)"
+  ],
+  "result": "On the pre-fix base e17f6fd30211 (PR #9551 base), the 4 new session-ownership tests FAIL: a delayed old interaction called the old adapter getSnapshot after a replacement session was installed and committed old turn 3 over replacement turn 8; the stale rejection surfaced instead of being suppressed. Both controls pass on both builds. All 8 pass on the PR fix head 0737a0d2eda4b.",
+  "run_id": "run-20261007-002710",
+  "scope": "Client dispatch session-ownership portion of #9319: dispatchInteraction() must not commit a delayed old interaction reply over a replacement session",
+  "started_at": "2026-10-07T00:27:10Z",
+  "subsystem": "client",
+  "test_file": "client/src/game/__tests__/sessionCleanup.test.ts",
+  "test_file_sha256": "eb54c4812ff27d9114d8b275851d4242fb6bc40e050572220c3d1ae478bce831",
+  "verdict": "reproduced"
+}
