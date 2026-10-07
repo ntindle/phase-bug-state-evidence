@@ -1,0 +1,53 @@
+[16:44:22] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[16:44:22] data-level: -6 effect type=Unimplemented name=emblem_creation unimplemented=True
+[16:44:22] P0 creating game...
+[16:44:22] P1 joining...
+[16:44:23] game RU5PNS; P0 seat=0 P1 seat=1
+[16:44:23] [P0] mulligan -> Keep
+[16:44:23] [P1] mulligan -> Keep
+[16:44:24] [P1] playing land plains
+[16:44:28] [P0] playing land mountain
+[16:44:32] [P1] playing land forest
+[16:44:36] [P0] playing land mountain
+[16:44:40] [P1] playing land swamp
+[16:44:44] [P0] playing land mountain
+[16:44:48] [P1] playing land island
+[16:44:51] [P0] playing land forest
+[16:44:52] [P0] casts grizzly bears (oid=4)
+[16:44:52] [P0] tap land for mana used_for=generic
+[16:44:52] [P0] submitting interaction iid=RU5PNS.0.113 choice=RU5PNS.0.113.c1 (Mountain)
+[16:44:56] [P1] playing land swamp
+[16:45:00] [P0] playing land forest
+[16:45:00] [P0] casts zariel, archduke of avernus (oid=28)
+[16:45:00] [P0] tap land for mana used_for=generic
+[16:45:00] [P0] submitting interaction iid=RU5PNS.0.147 choice=RU5PNS.0.147.c1 (Forest)
+[16:45:01] [watch] Zariel loyalty=4 (turn 10)
+[16:45:01] === stage -> LOYAL1 ===
+[16:45:01] [P0] Zariel loyalty=4 legacy_activate=False vi_activate=False
+[16:45:03] [P0] activates Zariel +1 (ability_index 0)
+[16:45:03] [watch] Zariel loyalty=5 (turn 10)
+[16:45:03] === stage -> LOYAL2 ===
+[16:45:06] [P1] playing land island
+[16:45:10] [P0] playing land mountain
+[16:45:10] [P0] activates Zariel +1 (ability_index 0)
+[16:45:10] [watch] Zariel loyalty=6 (turn 12)
+[16:45:10] === stage -> ACTIVATE ===
+[16:45:14] [P1] playing land swamp
+[16:45:18] exported pre_activate.json
+[16:45:18] [P0] activates Zariel ult (ability_index 2)
+[16:45:18] exported post_activate.json
+[16:45:18] [watch] post-ult emblem scan: []
+[16:45:18] === stage -> COMBAT ===
+[16:45:20] [P0] declares attackers: [4] -> P1
+[16:45:24] exported post.json
+[16:45:24] === DONE (post-combat main reached) ===
+[16:45:24] A1_setup_ok: passed
+[16:45:24] A2_loyalty_paid: passed
+[16:45:24] A3_emblem_created: failed
+[16:45:24] A4_target_prompt: failed
+[16:45:24] A5_untap_resolves: failed
+[16:45:24] A6_additional_combat: failed
+[16:45:25] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_loyalty_paid": "passed", "A3_emblem_created": "failed", "A4_target_prompt": "failed", "A5_untap_resolves": "failed", "A6_additional_combat": "failed"}
+[16:45:25] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6864/20261007-6864/summary.png
+[16:45:25] copied driver into evidence dir
+[16:45:25] wrote manifest.sha256 (11 files)
