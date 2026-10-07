@@ -1,0 +1,71 @@
+{
+ "name": "Agent Maria Hill",
+ "oracle_text": "Whenever Agent Maria Hill becomes tapped to pay a teamwork cost, put a +1/+1 counter on her and draw a card.",
+ "triggers": [
+  {
+   "mode": "Taps",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "P1P1",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever ~ becomes tapped to pay a teamwork cost, put a +1/+1 counter on her and draw a card.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
