@@ -1,0 +1,57 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_observed": "passed",
+  "A3_trigger_prompted": "failed",
+  "A4_noncreature_excluded": "not-run",
+  "A5_illegal_branch": "not-run",
+  "A6_control_token": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json (turn 8 PostCombatMain): P1 gy=[('Faithless Looting', 2), ('Forest', 2), ('Grizzly Bears', 1), ('Sylvan Reclamation', 1)]; P0 hand=[('Espers to Magicite', 4), ('Swamp', 3)]",
+  "post_exile.json (turn 8 PostCombatMain): P1 exile=[('Faithless Looting', 2), ('Forest', 2), ('Grizzly Bears', 1), ('Sylvan Reclamation', 1)]; P1 gy now=[]",
+  "wire log: esper_resolved seen; trigger_prompt events=NONE; interaction submissions after resolution=10 (ongoing land/discard play)",
+  "A4/A5/A6 not-run: the reflexive trigger never fired, so no target candidates were ever offered (the reported illegal-noncreature-target path cannot be reached).",
+  "post_exile stack: empty; game continued after resolution (10 subsequent submissions) with no stuck prompt",
+  "data-level (v0.103.0 card-data.json): oracle ok=True; creature filter present=True; exiled-by-source present=True; multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}}",
+  "Difference from the report: the report describes the AI being offered/choosing exiled Sylvan Reclamation as the token source. On v0.103.0 the reflexive trigger never fires at all (no stack entry, no target choice across the full post-resolution game), so the candidate-filter defect cannot be exercised; this is the same clearly identified related failure as the v0.80.0 (protocol 69) and v0.98.0 runs."
+ ],
+ "pre_p1_gy": [
+  [
+   "Faithless Looting",
+   2
+  ],
+  [
+   "Forest",
+   2
+  ],
+  [
+   "Grizzly Bears",
+   1
+  ],
+  [
+   "Sylvan Reclamation",
+   1
+  ]
+ ],
+ "post_exile_p1_exile": [
+  [
+   "Faithless Looting",
+   2
+  ],
+  [
+   "Forest",
+   2
+  ],
+  [
+   "Grizzly Bears",
+   1
+  ],
+  [
+   "Sylvan Reclamation",
+   1
+  ]
+ ],
+ "post_exile_stack": []
+}
