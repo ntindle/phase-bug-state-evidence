@@ -1,0 +1,100 @@
+{
+ "run_id": "20261007-7177",
+ "issue": 7177,
+ "date": "2026-10-07T17:48:33Z",
+ "started_at": "2026-10-07T12:39:10-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "port": 9374,
+  "run_dir": "runs/run-20261007-1011"
+ },
+ "scenario_sha256": "96b9ee2171fb9db87db50ed6b74fa11844d8d64880922335f3d97b42288a484c",
+ "decks": {
+  "P0": [
+   [
+    "mr. house, president and ceo",
+    4
+   ],
+   [
+    "adorable kitten",
+    24
+   ],
+   [
+    "mountain",
+    11
+   ],
+   [
+    "plains",
+    11
+   ],
+   [
+    "swamp",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_rolls_valid": "passed",
+  "A3_low_clean": "passed",
+  "A4_mid_robot": "passed",
+  "A5_six_treasure": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: turn 29 house_oid=21 life=20/20",
+  "post: turn 91 rolls=20 life=102/20 robots=12 treasures=0",
+  "A1: house_oid=21 house_bf_pre=True pre_exported=True",
+  "A2: rolls=20 valid=20 sixes=7 mids=5 lows=8 results=[5, 6, 3, 2, 2, 1, 5, 2, 3, 4, 6, 6, 6, 6, 6, 5, 1, 6, 2, 5]",
+  "  roll r=3: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=2: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=2: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=1: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=2: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=3: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=1: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=2: robots\u0394=0 treasures\u0394=0 house_trigger_seen=False",
+  "  roll r=5: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=5: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=4: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=5: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=5: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "  roll r=6: robots\u0394=1 treasures\u0394=0 house_trigger_seen=True",
+  "A6: post phase=PreCombatMain turn=91 stack_empty=True"
+ ],
+ "stats": {
+  "states_seen": 3338
+ },
+ "setup_line": "P0: 4x Mr. House + 24x Adorable Kitten + 33 lands; P1: 60x Forest dummy; native human seats",
+ "contract_line": "cast Mr. House, then cast Kittens one at a time; each Kitten ETB rolls 1d6 (life-gain delta = result) with House's RolledDieOnce trigger on the BF; assert a 6+ roll creates a Robot AND a Treasure (reported: only the Robot)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "24x Kitten / 4x House densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "Rolls come from Adorable Kitten's ETB, not House's own {4}{T} roll ability (still Unimplemented unparsed_quantity in the pinned data) -- the trigger under test is House's roll trigger."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_7177.py (verified 2026-09-15, run 20260915-7177).",
+  "Merged_actions/vi conventions, NON_DECISION_CODES, vi tapLandForMana payment, PASSED_REV gating, and progress watchdogs taken from the proven 20261007-6771 template.",
+  "Rolls are measured as (life, robot, treasure) deltas per kitten once the kitten is on the BF and the stack has been empty for 8 consecutive ticks; abandoned pending rolls are recorded as not-run with a note.",
+  "Pinned v0.103.0 data still parses the 6+ branch as Unimplemented instead_condition -- see data_evidence.json."
+ ]
+}
