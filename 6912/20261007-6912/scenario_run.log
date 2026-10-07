@@ -1,0 +1,52 @@
+ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+data-level check: chaos warp oracle: The owner of target permanent shuffles it into their library, then reveals the top card of their library. If it's a perm | chaos warp cost: {'type': 'Cost', 'shards': ['Red'], 'generic': 2} | ayula cost={'type': 'Cost', 'shards': ['Green'], 'generic': 1} power={'type': 'Fixed', 'value': 2}
+P0 creating game (CommanderDraft, 3 seats)...
+P1 joining...
+P2 joining...
+game RV7ENY; P0 seat=0 P1 seat=1 P2 seat=2
+[P0] keeps (hand=7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'chaos warp'])
+[P1] keeps (hand=7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[P2] keeps (hand=7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+DIAG turn=1 active=2 phase=Untap wf=MulliganDecision ayula=None warp=False/tgt=False/repl=False frozen=False mid=False post=False P0hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'chaos warp']
+[P1] keeps (hand=7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[P2] keeps (hand=7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[P1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P2] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[P2] playing land forest
+[P0] playing land mountain
+[P1] playing land forest
+[P2] playing land forest
+[P0] playing land mountain
+[P1] playing land forest
+[P1] casts Ayula (commander, oid 182) via CastSpell
+[P2] playing land forest
+[P0] playing land mountain
+PRE: exporting (Ayula on P1 BF, warp in hand, 3+ mountains)
+exported pre.json
+[P0] casts Chaos Warp (oid 13)
+[P0] targets Ayula (oid 182) with Chaos Warp
+[P0] submitting interaction iid=RV7ENY.0 choice=RV7ENY.0.171.t6 (Ayula, Queen Among Bears)
+[P1] answering the commander replacement choice
+[P1] REPLACEMENT CHOICE chooser=1 n=2 descs=[{"i": 0, "text": "0", "optionIndex": "0", "mentions_command_zone": false}, {"i": 1, "text": "1", "optionIndex": "1", "mentions_command_zone": false}]
+[P1] optionIndex mapping from runs 20260912-6912a/b: idx 0 == command zone
+[P1] submitting interaction iid=RV7ENY.0 choice=RV7ENY.0.175.c0 (0)
+exported mid.json
+[P1] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+[P1] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+[P1] discarding 1 to hand size
+[P2] discarding 1 to hand size
+[P0] tap land for mana used_for=R needs_left={'R': 0, 'generic': 2}
+[P0] tap land for mana used_for=generic needs_left={'R': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'R': 0, 'generic': 0}
+post-resolution window reached; exporting POST
+exported post.json
+exported POST
+post exported and settled; finishing
+A1_setup_ok: passed -- ayula_bf=182 is_commander=True warp_in_hand=True untapped_mtn=3 life=[40, 40]
+A2_cast_targeted: passed -- submitted target oid 182 == pre-cast Ayula oid
+A3_replacement_offered: passed -- ReplacementChoice offered to P1 (owner), choices=[{"i": 0, "text": "0", "optionIndex": "0", "mentions_command_zone": false}, {"i": 1, "text": "1", "optionIndex": "1", "mentions_command_zone": false}], chosen={"i": 0, "text": "0", "how": "optionIndex mapping from runs 20260912-6912a/b: idx 0 == command zone"}
+A4_zone_correct: passed -- Ayula in the command zone after choosing the command-zone replacement
+A5_owner_routing: passed -- revealed Forest put onto P1's BF (P1 library 51->49 = -1 draw(s) -1 revealed); P0's battlefield untouched
+A6_cleanup: passed -- stack empty, waiting_for=Priority, game proceeding
+WF sequence: ['MulliganDecision', 'Priority', 'TargetSelection', 'Priority', 'ReplacementChoice', 'Priority', 'DiscardToHandSize', 'Priority', 'DiscardToHandSize', 'Priority']
+DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_cast_targeted": "passed", "A3_replacement_offered": "passed", "A4_zone_correct": "passed", "A5_owner_routing": "passed", "A6_cleanup": "passed"}
