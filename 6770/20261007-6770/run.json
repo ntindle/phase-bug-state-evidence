@@ -1,0 +1,60 @@
+{
+ "run_id": "20261007-6770",
+ "issue": 6770,
+ "date": "2026-10-07T15:43:10Z",
+ "started_at": "2026-10-07T10:42:47-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "run_dir": "runs/run-20261007-1011 (shared live server, phase-server PID 5775)",
+  "port": 9374
+ },
+ "scenario_sha256": "d3df13ec5b3c458fbe5d185886c7a9c9c192093057d96561344bbbc277f851b8",
+ "decks": {
+  "P0": {
+   "Manabond": 12,
+   "Grizzly Bears": 12,
+   "Forest": 36
+  },
+  "P1": {
+   "Forest": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_decline_no_move": "passed",
+  "A3_accept_lands_battlefield": "failed",
+  "A4_accept_rest_discarded": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre_decline: manabond_bf=1 hand_lands=3 hand_nonlands=2 life=[20, 20]",
+  "decline: hand_same=True bf_lands_same=True",
+  "accept: hand_lands=4 hand_nonlands=2; post: lands->bf=0 lands->gy=4 nonlands->gy=2",
+  "accept zone map: {56: 'Graveyard', 14: 'Graveyard', 23: 'Graveyard', 60: 'Graveyard', 44: 'Graveyard', 36: 'Graveyard'}",
+  "post_accept: phase=Upkeep turn=4 stack_empty=True advanced=True"
+ ],
+ "stats": {
+  "states_seen": 120
+ },
+ "setup_line": "P0: 12x Manabond + 12x Grizzly Bears + 36x Forest; P1: 60x Forest dummy; native human seats",
+ "contract_line": "cast Manabond ({G}), ramp with decline-every-turn, DECLINE at first armed end step (no movement), ACCEPT at next end step; assert lands hit the battlefield and the rest of the hand is discarded",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Manabond/Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6770_0860.py (verified 2026-09-18, run 20260918-6770).",
+  "Manabond's may-choice answered via 106 decideOptionalEffect bare true/false choice (role=accept/value, text fallbacks), per the #7195 driver lesson; gated per-stage with the answer held until the pre-decision export lands.",
+  "Payment via vi tapLandForMana with needs={G:1}; legacy PayMana/ PayManaAbilityMana honored as fallback.",
+  "playLand included in NON_DECISION_CODES (per the #7195 lesson); land plays via legal_actions PlayLand matched by _src_oid with the is_land() helper (card_types.core_types contains 'Land').",
+  "post_decline exported in the end step with the stack empty and before the cleanup discard, so A2 compares decline-only movement.",
+  "post_accept exported at the first P1 turn after accept_turn (trigger resolved, discard done, game advanced)."
+ ]
+}
