@@ -1,0 +1,140 @@
+
+[1m[46m RUN [49m[22m [36mv4.1.0 [39m[90m/home/hatch/workspace/dev/phase-backfill/repos/pr9551-base/client[39m
+      [2mCoverage enabled with [22m[33mv8[39m
+
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mclears convoke ManaPayment and UI dialogs without disposing the adapter
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mresets the per-game manualManaOverride toggle so it can't leak across games
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mresets the ephemeral hand hide-filter so it can't leak across games
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mclears an in-flight mobile hand gesture at a game boundary
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mclears active and queued roll overlays at a game boundary
+ [2m[90m↓[39m[22m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState[2m > [22mclears a completed scry overlay at a game boundary
+ [32m✓[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mreleases a dispatch mutex wedged by an unsettled submit, so the next session's first action runs[32m 10[2mms[22m[39m
+ [32m✓[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdrops a commit that was in flight when the boundary fired, so it cannot re-populate prompts[32m 4[2mms[22m[39m
+ [32m✓[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mcommits an uninterrupted interaction reply[32m 2[2mms[22m[39m
+ [31m×[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdoes not commit a delayed interaction snapshot over a replacement session[32m 10[2mms[22m[39m
+[31m   → expected "vi.fn()" to not be called at all, but actually been called 1 times[90m
+
+Received:
+
+[1m  1st vi.fn() call:
+
+[22m    Array []
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+ [31m×[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdrops a delayed interaction after clear without replacing its adapter[32m 2[2mms[22m[39m
+[31m   → expected "vi.fn()" to not be called at all, but actually been called 1 times[90m
+
+Received:
+
+[1m  1st vi.fn() call:
+
+[22m    Array []
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+ [31m×[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdrops an interaction snapshot if replacement happens while fetching it[32m 15[2mms[22m[39m
+[31m   → expected { turn_number: 4, …(22) } to deeply equal { turn_number: 9, …(22) }[39m
+ [31m×[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22msuppresses an interaction rejection from a replaced session[32m 9[2mms[22m[39m
+[31m   → promise rejected "Error: old session interaction failed" instead of resolving[39m
+ [32m✓[39m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mreports and rethrows a rejection while its session is still current[32m 3[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 4 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdoes not commit a delayed interaction snapshot over a replacement session
+[31m[1mAssertionError[22m: expected "vi.fn()" to not be called at all, but actually been called 1 times[90m
+
+Received:
+
+[1m  1st vi.fn() call:
+
+[22m    Array []
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+[36m [2m❯[22m src/game/__tests__/sessionCleanup.test.ts:[2m276:32[22m[39m
+    [90m274|[39m     [35mawait[39m delayedInteraction[33m;[39m
+    [90m275|[39m
+    [90m276|[39m     [34mexpect[39m(oldGetSnapshot)[33m.[39mnot[33m.[39m[34mtoHaveBeenCalled[39m()[33m;[39m
+    [90m   |[39m                                [31m^[39m
+    [90m277|[39m     [34mexpect[39m(useGameStore[33m.[39m[34mgetState[39m()[33m.[39madapter)[33m.[39m[34mtoBe[39m(replacementAdapter)[33m;[39m
+    [90m278|[39m     expect(useGameStore.getState().gameSessionGeneration).toBe(replace…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/4]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdrops a delayed interaction after clear without replacing its adapter
+[31m[1mAssertionError[22m: expected "vi.fn()" to not be called at all, but actually been called 1 times[90m
+
+Received:
+
+[1m  1st vi.fn() call:
+
+[22m    Array []
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+[36m [2m❯[22m src/game/__tests__/sessionCleanup.test.ts:[2m312:32[22m[39m
+    [90m310|[39m     [35mawait[39m delayedInteraction[33m;[39m
+    [90m311|[39m
+    [90m312|[39m     [34mexpect[39m(oldGetSnapshot)[33m.[39mnot[33m.[39m[34mtoHaveBeenCalled[39m()[33m;[39m
+    [90m   |[39m                                [31m^[39m
+    [90m313|[39m     [34mexpect[39m(useGameStore[33m.[39m[34mgetState[39m()[33m.[39mwaitingFor)[33m.[39m[34mtoBeNull[39m()[33m;[39m
+    [90m314|[39m     [34mexpect[39m(useGameStore[33m.[39m[34mgetState[39m()[33m.[39madapter)[33m.[39m[34mtoBe[39m(adapter)[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/4]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22mdrops an interaction snapshot if replacement happens while fetching it
+[31m[1mAssertionError[22m: expected { turn_number: 4, …(22) } to deeply equal { turn_number: 9, …(22) }[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[33m@@ -74,11 +74,11 @@[39m
+[2m    "seat_order": [[22m
+[2m      0,[22m
+[2m      1,[22m
+[2m    ],[22m
+[2m    "stack": [],[22m
+[32m-   "turn_number": 9,[39m
+[31m+   "turn_number": 4,[39m
+[2m    "waiting_for": {[22m
+[2m      "data": {[22m
+[2m        "player": 0,[22m
+[2m      },[22m
+[2m      "type": "Priority",[22m
+
+[36m [2m❯[22m src/game/__tests__/sessionCleanup.test.ts:[2m359:47[22m[39m
+    [90m357|[39m     [34mexpect[39m(useGameStore[33m.[39m[34mgetState[39m()[33m.[39madapter)[33m.[39m[34mtoBe[39m(replacementAdapter)[33m;[39m
+    [90m358|[39m     expect(useGameStore.getState().gameSessionGeneration).toBe(replace…
+    [90m359|[39m     expect(useGameStore.getState().gameState).toEqual(replacementState…
+    [90m   |[39m                                               [31m^[39m
+    [90m360|[39m   })[33m;[39m
+    [90m361|[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/4]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/game/__tests__/sessionCleanup.test.ts[2m > [22mclearPromptOverlayState dispatch-pipeline recovery[2m > [22msuppresses an interaction rejection from a replaced session
+[31m[1mAssertionError[22m: promise rejected "Error: old session interaction failed" instead of resolving[39m
+[36m [2m❯[22m src/game/__tests__/sessionCleanup.test.ts:[2m392:36[22m[39m
+    [90m390|[39m
+    [90m391|[39m     [34mrejectOldSubmit[39m([35mnew[39m [33mError[39m([32m"old session interaction failed"[39m))[33m;[39m
+    [90m392|[39m     [35mawait[39m [34mexpect[39m(delayedInteraction)[33m.[39mresolves[33m.[39m[34mtoBeUndefined[39m()[33m;[39m
+    [90m   |[39m                                    [31m^[39m
+    [90m393|[39m
+    [90m394|[39m     [34mexpect[39m(useAppNotificationStore[33m.[39m[34mgetState[39m()[33m.[39mnotification)[33m.[39m[34mtoBeNull[39m()[33m;[39m
+
+[31m[1mCaused by: Error[22m: old session interaction failed[39m
+[36m [2m❯[22m src/game/__tests__/sessionCleanup.test.ts:[2m391:21[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/4]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m4 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[2m | [22m[33m6 skipped[39m[90m (14)[39m
+[2m   Start at [22m 19:43:19
+[2m   Duration [22m 18.21s[2m (transform 1.78s, setup 482ms, import 2.01s, tests 58ms, environment 446ms)[22m
+
