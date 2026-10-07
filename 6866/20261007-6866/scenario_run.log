@@ -1,0 +1,89 @@
+[17:22:33] server identity hashes verified against on-disk pinned artifacts
+[17:22:36] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[17:22:36] data-level finding: 15-20 branch still parses Unimplemented (create + optional roll again)
+[17:22:37] P0 creating game...
+[17:22:38] P1 joining...
+[17:22:39] game ON4CCH; P0 seat=0 P1 seat=1
+[17:22:39] [P0] mulligan -> Keep (hand=['mountain', 'grizzly bears', 'delina, wild mage', 'mountain', 'mountain', 'forest', 'grizzly bears'])
+[17:22:39] [P1] mulligan -> Keep (hand=['forest', 'llanowar elves', 'llanowar elves', 'forest', 'llanowar elves', 'forest', 'forest'])
+[17:22:40] [P1] playing land forest
+[17:22:40] [P1] casts Llanowar Elves (110)
+[17:22:45] [P0] playing land mountain
+[17:22:49] [P1] playing land forest
+[17:22:49] [P1] casts Llanowar Elves (73)
+[17:22:50] [P1] casts Llanowar Elves (115)
+[17:22:52] [P1] casts Llanowar Elves (64)
+[17:22:56] [P0] playing land mountain
+[17:23:00] [P1] playing land forest
+[17:23:00] [P1] casts Llanowar Elves (102)
+[17:23:02] [P1] declare no attackers
+[17:23:04] [P0] playing land mountain
+[17:23:08] [P1] playing land forest
+[17:23:10] [P1] declare no attackers
+[17:23:13] [P0] playing land forest
+[17:23:13] [P0] casts Grizzly Bears (24)
+[17:23:17] [P1] playing land forest
+[17:23:18] [P1] casts Llanowar Elves (82)
+[17:23:19] [P1] declare no attackers
+[17:23:23] [P0] playing land mountain
+[17:23:23] [P0] casts Delina, Wild Mage (27)
+[17:23:24] Delina on BF at turn 10
+[17:23:24] exported pre.json
+[17:23:24] === stage -> ATTACK (bear_bf=True) ===
+[17:23:24] exported pre_attack_g0_10.json
+[17:23:24] --- attack turn 10 (#1) ---
+[17:23:25] [P0] declares no attackers (Delina unable, turn 10)
+[17:23:28] [P1] playing land forest
+[17:23:29] [P1] declare no attackers
+[17:23:32] [P0] playing land forest
+[17:23:32] exported pre_attack_g0_12.json
+[17:23:32] --- attack turn 12 (#2) ---
+[17:23:34] [P0] declares attackers: Delina alone (turn 12)
+[17:23:35] [P0] Delina trigger targets grizzly bears (turn 12)
+[17:23:35] [P0] submitting interaction iid=ON4CCH.0.206 choice=ON4CCH.0.206.t0 (Grizzly Bears)
+[17:23:35] turn 12: token delta = 1 (new oids ['122'])
+[17:23:35] turn 12: classified LOW (initial_delta=1)
+[17:23:36] [P1] declares blockers: 2 relations for 2 attackers
+[17:23:36] exported mid_low.json
+[17:23:36] === mid_low exported (turn 12, phase=DeclareBlockers) ===
+[17:23:38] exported post_low.json
+[17:23:38] turn 12: low-turn token exiled by PostCombatMain: False
+[17:23:39] DIAG p0: rev=223 turn=13 phase=Upkeep stage=ATTACK prio=True decision=False cast=None legend=0
+[17:23:40] [P1] casts Llanowar Elves (69)
+[17:23:42] [P1] declare no attackers
+[17:23:44] [P0] playing land mountain
+[17:23:45] exported pre_attack_g0_14.json
+[17:23:45] --- attack turn 14 (#3) ---
+[17:23:46] [P0] declares attackers: Delina alone (turn 14)
+[17:23:46] [P0] Delina trigger targets grizzly bears (turn 14)
+[17:23:46] [P0] submitting interaction iid=ON4CCH.0.250 choice=ON4CCH.0.250.t0 (Grizzly Bears)
+[17:23:47] turn 14: token delta = 1 (new oids ['124'])
+[17:23:47] [P1] declares blockers: 2 relations for 2 attackers
+[17:23:51] [P1] casts Llanowar Elves (87)
+[17:23:53] [P1] declare no attackers
+[17:23:58] [P0] playing land mountain
+[17:23:58] exported pre_attack_g0_16.json
+[17:23:58] --- attack turn 16 (#4) ---
+[17:23:59] [P0] declares attackers: Delina alone (turn 16)
+[17:24:00] [P0] Delina trigger targets grizzly bears (turn 16)
+[17:24:00] [P0] submitting interaction iid=ON4CCH.0.294 choice=ON4CCH.0.294.t0 (Grizzly Bears)
+[17:24:00] [P0] 'roll again' prompt (turn 16): ACCEPTED
+[17:24:00] [P0] submitting interaction iid=ON4CCH.0.297 choice=ON4CCH.0.297.c1 (true)
+[17:24:00] turn 16: token delta = 0 (new oids [])
+[17:24:00] turn 16: classified HIGH (initial_delta=0, prompt=yes)
+[17:24:01] exported mid_high.json
+[17:24:01] === mid_high exported (turn 16, phase=DeclareAttackers) ===
+[17:24:01] [P1] declares blockers: 1 relations for 1 attackers
+[17:24:03] exported post_high.json
+[17:24:03] === both branches observed; DONE ===
+[17:24:03] A1_setup_ok: passed
+[17:24:03] A2_trigger_fires: passed
+[17:24:03] A3_low_branch: passed
+[17:24:03] A4_high_observed: passed
+[17:24:03] A5_reroll_offered: passed
+[17:24:03] A6_reroll_works: failed
+[17:24:03] A7_exile_ok: failed
+[17:24:03] copied pre_attack_low_g0_12.json
+[17:24:03] copied pre_attack_high_g0_16.json
+[17:24:03] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fires": "passed", "A3_low_branch": "passed", "A7_exile_ok": "failed", "A4_high_observed": "passed", "A5_reroll_offered": "passed", "A6_reroll_works": "failed"}
+[17:24:03] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6866/20261007-6866/summary.png
