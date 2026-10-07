@@ -1,0 +1,25 @@
+{
+ "ok": true,
+ "notes": [],
+ "mr_house_oracle": "Whenever you roll a 4 or higher, create a 3/3 colorless Robot artifact creature token. If you rolled 6 or higher, instead create that token and a Treasure token.\n{4}, {T}: Roll a six-sided die plus an additional six-sided die for each mana from Treasures spent to activate this ability.",
+ "trigger_payload": {
+  "mode": "RolledDieOnce",
+  "die_result": {
+   "AtLeast": 4
+  },
+  "effect_type": "Token",
+  "sub_effect": {
+   "type": "Unimplemented",
+   "name": "instead_condition",
+   "description": "If you rolled 6 or higher, instead create that token and a Treasure token"
+  },
+  "roll_ability": {
+   "type": "Unimplemented",
+   "name": "unparsed_quantity"
+  },
+  "kitten_etb": {
+   "type": "RollDie",
+   "sides": 6
+  }
+ }
+}
