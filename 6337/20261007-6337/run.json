@@ -1,0 +1,46 @@
+{
+ "run_id": "20261007-6337",
+ "issue": 6337,
+ "title": "Draft color selection is non-deterministic (missing HashMap tie-break)",
+ "validated_version": "v0.103.0",
+ "server_version": "v0.103.0",
+ "build_commit": "ec27a8d",
+ "protocol_version": 106,
+ "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+ "binary_signature": "minisign-verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (2026-10-07)",
+ "manifest_sha256": "3e19f3faa7c9a958a1e2ff8c4dda82fd394fc36d577a2060f6c0f344d80f4404",
+ "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+ "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+ "validated_at": "2026-10-07",
+ "sources": {
+  "suggest.rs": "bf54f94c7c1f99aa550ed7e639a9705c1f4570ba1a913ae7a798e176f6dcc43a58ec41 (byte-identical to v0.102.0 copy)",
+  "bot_ai.rs": "a3bab1fca230e63ff88413dbddc16ecf9f62b00d6b55774bca69f9a5d2dbcec1 (byte-identical to v0.102.0 copy)",
+  "draft_eval.rs": "7283544f82dded24bb2a4f8018fcdd68664769ff313498dc277e413cc5059d8c (byte-identical to v0.102.0 copy)",
+  "fetched_from": "https://raw.githubusercontent.com/phase-rs/phase/v0.103.0/crates/{draft-wasm/src/{suggest,bot_ai},phase-ai/src/draft_eval}.rs"
+ },
+ "scenario": {
+  "harness": "harness/src/main.rs (issue6337 v0.103.0): find_best_colors, dominant_colors, and find_best_colors_fixed copied VERBATIM from v0.103.0 sources; DraftCardInstance/CardDatabase replaced by local stubs; score_card stub returns constant 1.0 (the issue's tie repro pool: one card of each of W/U/B/R/G)",
+  "runs": 30,
+  "binary": "harness/target/release/issue6337"
+ },
+ "assertions": {
+  "A1_setup_sources_ok": "passed",
+  "A2_suggest_defect_present": "passed",
+  "A3_dominant_colors_total_order": "passed",
+  "A4_suggest_varies": "passed",
+  "A5_dominant_colors_stable": "passed",
+  "A6_control_stable": "passed"
+ },
+ "verdict": "reproduced",
+ "scope": "draft-wasm/phase-ai color-selection helpers on v0.103.0 sources; 30 separate OS processes over the issue's tied repro pool; no game states exist for a deckbuilder report",
+ "result": "Re-validated on v0.103.0 sources: find_best_colors top-2 varied across runs (15 distinct orderings in 30 processes). suggest.rs, bot_ai.rs, draft_eval.rs all byte-identical to v0.102.0; the score-only sort at suggest.rs:376 still has no tie-break. color_preference still delegates to deterministic dominant_colors (B,G in all 30 runs), as does the house-style control.",
+ "limitations": [
+  "Browser/UI \"Suggest deck\" click path not exercised; the helper function it calls is exercised verbatim from the release sources.",
+  "Real score_card gives per-card quality scores; constant score reproduces the reported tie condition only.",
+  "No engine game states apply to this subsystem (per playbook deckbuilder rule)."
+ ],
+ "driver_notes": [
+  "Re-validation only: no engine server interaction needed; sources verified via minisign before use.",
+  "NOTE (2026-10-07): the v0.103.0 binary sha256 a991fec4... is the signature-verified digest; the #6557 ledger entry recorded 5b79f0c5... for the same pinned binary \u2014 discrepancy to reconcile (file at pin dir verifies against the repo-pinned key)."
+ ]
+}
