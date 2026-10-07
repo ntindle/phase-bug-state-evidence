@@ -1,0 +1,62 @@
+{
+ "issue": 9542,
+ "issue_url": "https://github.com/phase-rs/phase/pull/9542",
+ "underlying_bug": "https://github.com/phase-rs/phase/issues/9377 (section 2)",
+ "run_id": "20261006-1841-9542",
+ "started_at": "2026-10-06T19:16:40-0500",
+ "elapsed_s": 106.0,
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true,
+  "signature_note": "v0.103.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY in prehashed (blake2b-512) mode on 2026-10-06; digests recomputed against on-disk files this run",
+  "source": "2026-10-06: latest stable release v0.103.0 == pinned release dir; fresh v0.103.0 server started by this run on 127.0.0.1:9374 with isolated run dir runs/20261006-1841; ServerHello 0.103.0/ec27a8d/protocol 106 verified by handshake this run"
+ },
+ "decks": {
+  "P0": [
+   [
+    "forest",
+    24
+   ],
+   [
+    "grizzly bears",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    24
+   ],
+   [
+    "unsummon",
+    4
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_bounced_hidden": "passed",
+  "A3_lki_leak": "passed",
+  "A4_ledger_leak": "passed",
+  "A5_leak_identity": "passed"
+ },
+ "verdict": "reproduced",
+ "result": "P1's viewer snapshot after the bounce names 'Grizzly Bears' in lki_cache, lki_by_incarnation, lki_copiable_values (keyed by the hidden card's ObjectId) and in spells_cast_this_game_by_player, while the card object itself renders as 'Hidden Card'.",
+ "driver_notes": [
+  "Protocol-106 scenario (pattern of scenario_301_01030.py).",
+  "MulliganDecision answered via viewer_interaction choose (per-viewer opportunity); bare legacy Action misfires wrong_player.",
+  "PassPriority is a unit variant: submitted with no data key.",
+  "Mana via PayMana/PayManaAbilityMana legal actions, then vi tapLandForMana.",
+  "Unsummon target via vi schema/select opportunity matching bears oid in candidate surfaces."
+ ],
+ "limitations": [
+  "Single hidden-zone move exercised (battlefield -> hand). #9377 section 2 lists more (stack -> hand/library, battlefield -> library + shuffle, linked_exile_lki mana_value); not covered here.",
+  "Ledger leak asserted on spells_cast_this_game_by_player only."
+ ]
+}
