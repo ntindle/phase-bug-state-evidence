@@ -1,0 +1,59 @@
+{
+ "run_id": "20261007-6771",
+ "issue": 6771,
+ "date": "2026-10-07T16:14:54Z",
+ "started_at": "2026-10-07T11:14:37-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "port": 9374
+ },
+ "scenario_sha256": "125cc0934ae28402061501271aec9978b6f0058c05b78a93c9f679e5e3cbbbac",
+ "decks": {
+  "P0": {
+   "Breakthrough": 12,
+   "Island": 48
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_x_announced": "passed",
+  "A3_draw_completed": "passed",
+  "A4_choose_prompted": "failed",
+  "A5_discard_happened": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre_cast: main=True spell_in_hand=True cast_advertised=True islands_bf=3 hand=7 lib=50",
+  "x prompt offered & answered: True value=1 (wanted 2) range=(0, 1) clamped=True (iids=['NRYRMI.0.96'])",
+  "draw check: spell_in_gy=True lib 50->46 (delta=4) stack_empty=True",
+  "hand-keep 'choose X' prompt observed after draw: False (count=0)",
+  "hand: pre=7 post=10; oracle with X=1 expects 1; bug expects 10",
+  "post_cast: phase=PostCombatMain turn=6 stack_empty=True"
+ ],
+ "stats": {
+  "states_seen": 97
+ },
+ "setup_line": "P0: 12x Breakthrough + 48x Island; P1: 60x Island dummy; native human seats",
+ "contract_line": "cast Breakthrough ({X}{U}, X=2 wanted), answer the ChooseXValue prompt clamped into the advertised range, tap mana via vi; assert the draw completes and the 'choose X cards in your hand, discard the rest' half fires (reported broken)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Breakthrough deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6771_v086.py (verified 2026-09-18, run 20260918-6771).",
+  "Merged_actions/vi conventions, NON_DECISION_CODES incl. playLand, vi tapLandForMana payment, and PASSED_REV gating taken from the proven 20261005-6770 template.",
+  "Breakthrough's X announced via a 106 number-schema vi opportunity (wired raw); X=2 wanted, clamped into the advertised [min,max]; the generic cost is paid after the answer lands.",
+  "If the X prompt is never answered the run cannot exercise the bug: verdict stays blocked rather than misfiring 'reproduced'.",
+  "Pinned data parses only Draw(Fixed 4); 'choose X cards in your hand' and 'discard the rest' remain Unimplemented (unparsed_verb_arguments) in v0.103.0 -- see data_evidence.json."
+ ]
+}
