@@ -1,0 +1,91 @@
+ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+data-level check: Goreclaw: ModifyCost reduce={'type': 'Cost', 'shards': [], 'generic': 2}; affected type_filters=['Card'] properties=[] -> qualifier_lost=True | Thryx: ModifyCost statics=0 -> reduction_absent=True; static modes=[['CantBeCountered']] | Overrun: cost={'type': 'Cost', 'shards': ['Green', 'Green', 'Green'], 'generic': 2} power=None | Grizzly Bears: cost={'type': 'Cost', 'shards': ['Green'], 'generic': 1} power={'type': 'Fixed', 'value': 2} | Colossal Dreadmaw: cost={'type': 'Cost', 'shards': ['Green', 'Green'], 'generic': 4} power={'type': 'Fixed', 'value': 6} | Goreclaw, Terror of Qal Sisma: cost={'type': 'Cost', 'shards': ['Green'], 'generic': 3} power={'type': 'Fixed', 'value': 4} | Thryx, the Sudden Storm: cost={'type': 'Cost', 'shards': ['Blue', 'Blue'], 'generic': 3} power={'type': 'Fixed', 'value': 4}
+P0 creating game...
+P1 joining...
+game PNV3QD; P0 seat=0 P1 seat=1
+[P0] mulligans (1) seeking goreclaw, terror of qal sisma (hand=['forest', 'forest', 'colossal dreadmaw', 'forest', 'forest', 'forest'])
+[P1] mulligans (1) seeking ('thryx, the sudden storm', 'colossal dreadmaw') (hand=['island', 'thryx, the sudden storm', 'thryx, the sudden storm', 'island', 'island', 'forest'])
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision stage=SETUP goreclaw=False thryx=False tests_done=[] P0hand=['forest', 'forest', 'colossal dreadmaw', 'forest', 'forest', 'forest']
+[P0] mulligans (2) seeking goreclaw, terror of qal sisma (hand=['forest', 'forest', 'colossal dreadmaw', 'forest', 'forest', 'forest'])
+[P1] mulligans (2) seeking ('thryx, the sudden storm', 'colossal dreadmaw') (hand=['island', 'thryx, the sudden storm', 'thryx, the sudden storm', 'island', 'island', 'forest'])
+[P0] mulligans (3) seeking goreclaw, terror of qal sisma (hand=['forest', 'forest', 'colossal dreadmaw', 'forest', 'forest', 'grizzly bears'])
+[P1] keeps (hand=7: ['thryx, the sudden storm', 'forest', 'forest', 'forest', 'island', 'forest'])
+[P0] keeps (hand=7: ['forest', 'overrun', 'forest', 'forest', 'goreclaw, terror of qal sisma', 'forest'])
+[P1] keeps (hand=7: ['thryx, the sudden storm', 'forest', 'forest', 'forest', 'forest', 'island'])
+[P1] bottoming 2 cards
+[P0] bottoming 3 cards
+[P1] ActionRejected: {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P0] casting Goreclaw (oid 13)
+[P1] playing land forest
+[P1] casting Thryx (oid 95)
+Goreclaw + Thryx on battlefield (turn 9); stage -> TEST
+[P0] tap land for mana used_for=G needs_left={'G': 0, 'generic': 3}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 2}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+[P0] playing land forest
+[P1] tap land for mana used_for=U needs_left={'U': 1, 'generic': 3}
+[P1] tap land for mana used_for=U needs_left={'U': 0, 'generic': 3}
+[P1] tap land for mana used_for=generic needs_left={'U': 0, 'generic': 2}
+[P1] tap land for mana used_for=generic needs_left={'U': 0, 'generic': 1}
+[P1] tap land for mana used_for=generic needs_left={'U': 0, 'generic': 0}
+[P1] playing land forest
+exported pre_test_overrun.json
+[P0] test overrun: cast overrun (oid 53); pre_untapped=5
+exported post_test_overrun.json
+[P0] test overrun: resolved to Graveyard; paid=3 (expect 5)
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+DIAG turn=19 active=1 phase=Upkeep wf=Priority stage=TEST goreclaw=True thryx=True tests_done=['overrun'] P0hand=['forest', 'forest']
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land forest
+exported pre_test_bears.json
+[P0] test bears: cast grizzly bears (oid 57); pre_untapped=15
+exported post_test_bears.json
+[P0] test bears: resolved to Battlefield; paid=1 (expect 2)
+[P1] playing land forest
+exported pre_test_dreadmaw_goreclaw.json
+[P0] test dreadmaw_goreclaw: cast colossal dreadmaw (oid 26); pre_untapped=15
+exported post_test_dreadmaw_goreclaw.json
+[P0] test dreadmaw_goreclaw: resolved to Battlefield; paid=4 (expect 4)
+[P0] playing land forest
+exported pre_test_dreadmaw_thryx.json
+[P1] test dreadmaw_thryx: cast colossal dreadmaw (oid 76); pre_untapped=17
+exported post_test_dreadmaw_thryx.json
+[P1] test dreadmaw_thryx: resolved to Battlefield; paid=6 (expect 5)
+[P1] playing land island
+exported post_all_tests.json
+all tests complete; post_all_tests exported
+settled one turn past completion; stopping
+A1_setup_ok: passed -- goreclaw_on_p0_bf=True thryx_on_p1_bf=True
+A2_overrun_cost: failed -- overrun (P0): paid 3 mana (printed 5, expect 5); non-creature: no reduction expected
+A3_bears_cost: failed -- grizzly bears (P0): paid 1 mana (printed 2, expect 2); creature power 2 < 4: no reduction expected
+A4_dreadmaw_goreclaw_control: passed -- colossal dreadmaw (P0): paid 4 mana (printed 6, expect 4); creature power 6: {2} reduction expected (control)
+A5_thryx_dreadmaw_cost: failed -- colossal dreadmaw (P1): paid 6 mana (printed 6, expect 5); MV 6 with Thryx: {1} reduction expected
+A6_cleanup: passed -- stack empty=True; turn=35 phase=PreCombatMain
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority']
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_overrun_cost": "failed", "A3_bears_cost": "failed", "A4_dreadmaw_goreclaw_control": "passed", "A5_thryx_dreadmaw_cost": "failed", "A6_cleanup": "passed"}
