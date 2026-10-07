@@ -1,0 +1,54 @@
+{
+ "run_id": "20261007-0411-6728",
+ "issue": 6728,
+ "date": "2026-10-07",
+ "driver": "driver/scenario_6728.py (adapted: RUN_ID/BASE for 20261007-0411-6728, port 9378)",
+ "scenario": "P2P draft server-backup HTTP handler exercised against the pinned v0.103.0 binary: client-shaped upload (draft-xxxxxxxx) must be rejected with 400 and create no row; contract-valid 6-char uppercase code must complete create/retrieve/update/delete; GET/DELETE with the client-shaped code must also be rejected. Client-side generator + silent-upload claims re-checked by source inspection at client mainline 4ab8245.",
+ "server": {
+  "validated_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "data_dir": "server/releases/v0.103.0/data",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "endpoint": "http://127.0.0.1:9378",
+  "games_db": "runs/20261007-0411-6728/games.db",
+  "signature_verified": true,
+  "server_hello_observed": {
+   "server_version": "0.103.0",
+   "build_commit": "ec27a8d",
+   "protocol_version": 106,
+   "mode": "Full"
+  },
+  "release_manifest": "server/releases/v0.103.0/release-server-v0.103.0.json"
+ },
+ "client": {
+  "repo": "phase-rs/phase",
+  "checkout": "4ab824580838640e817fac7190280d9433851401",
+  "path": "client/src/adapter/p2p-draft-host.ts",
+  "findings": "hostDraftCode() still emits `draft-` + 8 lowercase hex; uploadBackupSnapshot still awaits fetch without inspecting the response status, so a 400 rejection stays silent. Relevant paths unchanged since 611d205."
+ },
+ "assertions": {
+  "total": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "verdict": "reproduced",
+ "result": "On v0.103.0 the server still rejects the client-generated `draft-xxxxxxxx` identifier with 400 Invalid draft code (no row created); a contract-valid 6-char uppercase code completes create/retrieve/update/delete. Client at mainline 4ab8245 still generates `draft-` + 8 lowercase hex and uploadBackupSnapshot still never checks the HTTP status, so the rejected upload stays silent. Server-side validator byte-identical to v0.102.0 (admin.rs blob 3ec97d64).",
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) on the pinned release binary + client source-path inspection at current mainline; frontend P2P browser stack not exercised",
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at 4ab824580838640e817fac7190280d9433851401 (sha256 recorded in client_path_evidence.json), not on running the client.",
+  "No game-state pair exists for this report; evidence is HTTP exchanges + source excerpts, per playbook subsystem-equivalent contract."
+ ],
+ "prior_run": {
+  "run_id": "20261005-6728",
+  "validated_version": "v0.102.0",
+  "verdict": "reproduced",
+  "evidence_commit": "3e2613525ab1b7746e2291eeb84f810780d13015"
+ },
+ "evidence_dir": "evidence/6728/20261007-0411-6728",
+ "server_log": "runs/20261007-0411-6728/server.log"
+}
