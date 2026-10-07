@@ -1,0 +1,61 @@
+[17:48:58] server identity hashes verified against on-disk pinned artifacts
+[17:49:01] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[17:49:01] data-level: minus3 multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 2}} counter_child=Unimplemented/unparsed_quantity
+[17:49:01] P0 creating game...
+[17:49:02] P1 joining...
+[17:49:03] game 9DYUSD; P0 seat=0 P1 seat=1
+[17:49:03] [P0] keep 7: ['plains', 'forest', 'jared carthalion', 'forest', 'swamp', 'jared carthalion', 'swamp']
+[17:49:03] [P1] keep 7: ['island', 'mountain', 'island', 'grizzly bears', 'mountain', 'forest', 'mountain']
+[17:49:04] [P0] playing land plains
+[17:49:08] [P1] playing land island
+[17:49:12] [P0] playing land forest
+[17:49:18] [P1] playing land mountain
+[17:49:21] [P0] playing land swamp
+[17:49:25] [P1] playing land island
+[17:49:29] [P0] playing land island
+[17:49:33] [P1] playing land mountain
+[17:49:37] [P0] playing land forest
+[17:49:41] [P1] playing land forest
+[17:49:41] P1 casts Grizzly Bears (oid 62)
+[17:49:46] [P0] playing land mountain
+[17:49:47] P0 casts Jared Carthalion (oid 2)
+[17:49:47] === stage -> PLUS1 ===
+[17:49:48] [P0] Jared +1 options: 0
+[17:49:48] [P0] Jared +1 options: 0
+[17:49:48] [P0] Jared +1 options: 0
+[17:49:49] [P0] Jared +1 options: 2
+[17:49:49] [P0] activates Jared +1 (ability_index 0) turn=11
+[17:49:50] === Kavu token on BF; stage -> MINUS3 (turn 11) ===
+[17:49:51] [P0] Jared -3 options: 0
+[17:49:51] [P0] Jared -3 options: 0
+[17:49:52] [P1] playing land mountain
+[17:49:52] [P0] Jared -3 options: 0
+[17:49:53] [P0] Jared -3 options: 0
+[17:49:54] [P0] Jared -3 options: 0
+[17:49:54] [P0] Jared -3 options: 0
+[17:49:55] [P0] Jared -3 options: 0
+[17:49:55] [P0] Jared -3 options: 0
+[17:49:55] [P0] Jared -3 options: 0
+[17:49:56] [P0] playing land swamp
+[17:49:56] [P0] Jared -3 options: 2
+[17:49:56] exported pre_activate.json
+[17:49:56] [P0] activates Jared -3 (ability_index 1) turn=13
+[17:49:57] [P0] -3 target prompt (iid=9DYUSD.0.198, shape=schema/sequence): [('Grizzly Bears', '62', 1), ('Kavu', '114', 0)]
+[17:49:57] [P0] -3: targeted ['Kavu'] [1/2]
+[17:49:57] [P0] -3 target prompt (iid=9DYUSD.0.199, shape=schema/sequence): [('Grizzly Bears', '62', 1)]
+[17:49:57] [P0] -3: targeted ['Grizzly Bears'] [2/2]
+[17:49:57] [P0] -3: both targets answered
+[17:49:59] exported post_activate.json
+[17:49:59] exported post.json
+[17:49:59] === DONE: -3 resolved ===
+[17:49:59] A1_setup_ok: passed
+[17:49:59] A2_minus3_offered: passed
+[17:49:59] A3_target_resolve: passed
+[17:49:59] A4_kavu_counters: failed
+[17:49:59] A5_bears_counters: failed
+[17:49:59] A6_cleanup: passed
+[17:49:59] verdict: reproduced
+[17:50:00] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_minus3_offered": "passed", "A3_target_resolve": "passed", "A4_kavu_counters": "failed", "A5_bears_counters": "failed", "A6_cleanup": "passed"}
+[17:50:00] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6868/20261007-6868/summary.png
+[17:50:00] copied driver into evidence dir
+[17:50:00] wrote manifest.sha256 (12 files)
