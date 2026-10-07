@@ -1,0 +1,100 @@
+{
+ "name": "The Dominion Bracelet",
+ "oracle_text": "Equipped creature gets +1/+1 and has \"{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to activate, where X is this creature's power. Activate only as a sorcery.\" (You see all cards that player could see and make all decisions for them.)\nEquip {1}",
+ "static_abilities": [
+  {
+   "mode": "Continuous",
+   "affected": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": [
+     {
+      "type": "EquippedBy"
+     }
+    ]
+   },
+   "modifications": [
+    {
+     "type": "AddPower",
+     "value": 1
+    },
+    {
+     "type": "AddToughness",
+     "value": 1
+    },
+    {
+     "type": "GrantAbility",
+     "definition": {
+      "kind": "Activated",
+      "effect": {
+       "type": "ControlNextTurn",
+       "target": {
+        "type": "Typed",
+        "type_filters": [],
+        "controller": "Opponent",
+        "properties": []
+       },
+       "grant_extra_turn_after": false,
+       "window": "NextTurn"
+      },
+      "cost": {
+       "type": "Composite",
+       "costs": [
+        {
+         "type": "Mana",
+         "cost": {
+          "type": "Cost",
+          "shards": [],
+          "generic": 15
+         }
+        },
+        {
+         "type": "Exile",
+         "count": 1,
+         "zone": null,
+         "filter": {
+          "type": "GrantingObject"
+         }
+        }
+       ]
+      },
+      "sub_ability": null,
+      "duration": null,
+      "description": "{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to activate, where X is ~'s power. Activate only as a sorcery.",
+      "target_prompt": null,
+      "activation_restrictions": [
+       {
+        "type": "AsSorcery"
+       }
+      ],
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "cost_reduction": {
+       "amount_per": 1,
+       "count": {
+        "type": "Ref",
+        "qty": {
+         "type": "Power",
+         "scope": {
+          "type": "Source"
+         }
+        }
+       }
+      },
+      "forward_result": false
+     }
+    }
+   ],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Equipped creature gets +1/+1 and has \"{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to activate, where X is ~'s power. Activate only as a sorcery.\""
+  }
+ ]
+}

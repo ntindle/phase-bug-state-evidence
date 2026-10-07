@@ -1,0 +1,48 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_granted_exposed": "failed",
+    "A3_activation_completes": "not-run",
+    "A4_control_recorded": "not-run",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "A1: attached=True yargle=10/4 fresh_main=True",
+    "A2: ever_advertised=False last_advertised_count=0 probe_turns=35 obj_desc_match=True not_offered=True",
+    "A3 not-run: granted ability never exposed",
+    "A4 not-run: activation did not complete",
+    "A4: markers_outside_defs=[] scheduled_turn_controls_nonempty=False p0_decides_for_p1=False control_snaps=0",
+    "A5: stack_empty=True game_over=False turn=35"
+  ],
+  "grant_probe": {
+    "at": 1791416134.652174,
+    "turn": 35,
+    "advertised_count": 0,
+    "object_ability_descriptions": [
+      "{15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability costs {X} less to ac"
+    ],
+    "object_ability_kinds": [
+      "Activated"
+    ]
+  },
+  "grant_prompts_answered": [],
+  "p0_decides_for_p1": null,
+  "ids": {
+    "grant_ability": null
+  },
+  "act": {
+    "equip": {
+      "at": 1791416031.7486072,
+      "turn": 13
+    },
+    "equip_targeted": {
+      "at": 1791416032.767658,
+      "auto": true,
+      "ref": "21"
+    }
+  },
+  "seen_turns": {
+    "yargle": 9,
+    "attached": 13
+  }
+}
