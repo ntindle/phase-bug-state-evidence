@@ -1,0 +1,143 @@
+{
+ "issue": 6763,
+ "run_id": "20261007-6763",
+ "client_commit": "611d205",
+ "client_tree": "/home/hatch/workspace/dev/phase-backfill/checkout-6659-20261005/client",
+ "assertions": {
+  "U1_rendered_setup": "passed",
+  "U2_target_identity_ui": "passed",
+  "U3_label_indistinguishable": "passed",
+  "U4_arc_indistinguishable": "passed",
+  "U5_viewer_indistinguishable": "passed"
+ },
+ "notes": [
+  "U2: variant A targets 36, variant B targets 12",
+  "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+  "U4: arc endpoints identical (48.234375, 67.53125); start-point jitter ['M 136.19875526428223 558 Q 170.96017250476552 298.6431500771698 48.234375 67.53125'] vs ['M 135.9609661102295 558 Q 170.8479032889586 298.6801415377461 48.234375 67.53125'] is <0.1px noise",
+  "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '17 36', 'rect': {'x': 0, 'y': 0, 'w': 96.5, 'h': 135.1}} arcs_A=['M 136.19875526428223 558 Q 170.96017250476552 298.6431500771698 48.234375 67.53125']"
+ ],
+ "observations": {
+  "A": {
+   "variant": "A",
+   "seed": {
+    "variant": "A",
+    "entryId": 121,
+    "targetId": 36,
+    "gyIds": [
+     17,
+     36
+    ]
+   },
+   "pile": {
+    "grouped": "17 36",
+    "count": "sta2"
+   },
+   "anchors": {
+    "17": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "17 36",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    },
+    "36": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "17 36",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    }
+   },
+   "labels": [
+    "\u2192 Walking Ballista"
+   ],
+   "arcs": [
+    "M 136.19875526428223 558 Q 170.96017250476552 298.6431500771698 48.234375 67.53125"
+   ],
+   "viewer": {
+    "cards": {
+     "17": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     },
+     "36": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     }
+    },
+    "highlighted": []
+   }
+  },
+  "B": {
+   "variant": "B",
+   "seed": {
+    "variant": "B",
+    "entryId": 121,
+    "targetId": 12,
+    "gyIds": [
+     12,
+     16
+    ]
+   },
+   "pile": {
+    "grouped": "12 16",
+    "count": "sta2"
+   },
+   "anchors": {
+    "12": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "12 16",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    },
+    "16": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "12 16",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    }
+   },
+   "labels": [
+    "\u2192 Walking Ballista"
+   ],
+   "arcs": [
+    "M 135.9609661102295 558 Q 170.8479032889586 298.6801415377461 48.234375 67.53125"
+   ],
+   "viewer": {
+    "cards": {
+     "12": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     },
+     "16": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     }
+    },
+    "highlighted": []
+   }
+  }
+ }
+}
