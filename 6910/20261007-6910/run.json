@@ -1,0 +1,84 @@
+{
+ "run_id": "20261007-6910",
+ "issue": 6910,
+ "date": "2026-10-07T19:44:09Z",
+ "started_at": "2026-10-07T14:42:16-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "port": 9374
+ },
+ "scenario": "driver/scenario_6910_01030.py",
+ "scenario_sha256": "38d2ddd39257275e66a14f464ac4b300cb091c9fa551463689b8c583cf924b66",
+ "decks": {
+  "P0": [
+   [
+    "goreclaw, terror of qal sisma",
+    4
+   ],
+   [
+    "overrun",
+    4
+   ],
+   [
+    "grizzly bears",
+    4
+   ],
+   [
+    "colossal dreadmaw",
+    4
+   ],
+   [
+    "forest",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "thryx, the sudden storm",
+    4
+   ],
+   [
+    "colossal dreadmaw",
+    4
+   ],
+   [
+    "island",
+    26
+   ],
+   [
+    "forest",
+    26
+   ]
+  ]
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_overrun_cost": "failed",
+  "A3_bears_cost": "failed",
+  "A4_dreadmaw_goreclaw_control": "passed",
+  "A5_thryx_dreadmaw_cost": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [],
+ "stats": {
+  "states_seen": 613
+ },
+ "setup_line": "P0: 4x Goreclaw + 4x Overrun + 4x Grizzly Bears + 4x Colossal Dreadmaw + 44x Forest; P1: 4x Thryx + 4x Colossal Dreadmaw + 26x Island + 26x Forest; native human seats",
+ "contract_line": "P0 casts Overrun (non-creature), Grizzly Bears (P2), Colossal Dreadmaw (P6) with Goreclaw on board; P1 casts Colossal Dreadmaw (MV6) with Thryx on board. Each test cast on a fresh turn with all lands untapped; mana paid = tapped-land delta. Expected payments: 5 / 2 / 4 / 5.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6910.py (verified 2026-09-13, run 20260912-6910a, verdict reproduced).",
+  "Conventions from the proven scenario_6907_01030.py template: merged_actions/vi, PASSED_REV gating, Select-model hand-size discards (schema+select required), schema-select BottomCards, vi tapLandForMana payment, and the never-hold-priority-while-watching fall-through rule.",
+  "Pinned v0.103.0 data parses Goreclaw's reducer with the 'power 4 or greater' qualifier LOST (affected properties empty) and carries no cost-reduction static for Thryx at all -- see data_evidence.json."
+ ]
+}
