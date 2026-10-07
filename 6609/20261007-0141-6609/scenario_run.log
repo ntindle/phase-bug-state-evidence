@@ -1,0 +1,96 @@
+ServerHello OK: {'server_version': '0.103.0', 'build_commit': 'ec27a8d', 'protocol_version': 106, 'mode': 'Full'}
+game W4T8AH; P0 seat=0 P1 seat=1
+P0 mulligans #1 (hand=['swamp', 'nethergoyf', 'nethergoyf', 'grizzly bears', 'shock', 'shock', 'divination'])
+P1 keeps (hand=['lightning bolt', 'mountain', 'mountain', 'mountain', 'mountain', 'lightning bolt', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['swamp', 'nethergoyf', 'nethergoyf', 'grizzly bears', 'shock', 'shock'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 mulligans #2 (hand=['nethergoyf', 'grizzly bears', 'divination', 'shock', 'divination', 'grizzly bears', 'divination'])
+P0 keeps (hand=['island', 'island', 'swamp', 'ornithopter', 'swamp', 'shock', 'grizzly bears'], mulls=2)
+P0 bottoms 2 via vi (select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Island', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Ornithopter', 'available'), ('Swamp', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available')]
+P0 plays land swamp
+P1 plays land mountain
+P0 plays land island
+P1 plays land mountain
+P0 plays land island
+P0 casts Divination
+payment expected for divination: needs={'U': 1, 'generic': 2}
+P1 plays land mountain
+[P0] paying mana via vi: tap Island for U (remaining needs={'U': 0, 'generic': 2})
+[P0] paying mana via vi: tap Swamp for generic (remaining needs={'U': 0, 'generic': 1})
+[P0] paying mana via vi: tap Island for generic (remaining needs={'U': 0, 'generic': 0})
+payment for divination complete (needs exhausted)
+P0 plays land swamp
+P1 plays land mountain
+P0 plays land island
+P0 casts Nethergoyf
+payment expected for goyf_cast: needs={'B': 1, 'generic': 1}
+[P0] paying mana via vi: tap Swamp for B (remaining needs={'B': 0, 'generic': 1})
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 0, 'generic': 0})
+payment for goyf_cast complete (needs exhausted)
+P1 plays land mountain
+P1 bolts nethergoyf (oid 57)
+[P1] submitting advertised target: id=W4T8AH.0.157.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P1 bolts nethergoyf (oid 57)
+[P1] submitting advertised target: id=W4T8AH.0.160.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P1 bolts nethergoyf (oid 57)
+[P1] submitting advertised target: id=W4T8AH.0.163.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P0 plays land swamp
+P0 casts Ornithopter
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['W4T8AH.0.349.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Grizzly Bears', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Rancor', 'available'), ('Nethergoyf', 'available'), ('Grizzly Bears', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+P0 plays land island
+DIAG turn=23 active=0 phase=PreCombatMain pp=1 hand=['nethergoyf', 'nethergoyf', 'rancor', 'nethergoyf', 'grizzly bears', 'rancor'] gy0=['divination', 'nethergoyf', 'grizzly bears'] goyf_gy=True phase_sm=setup escape_live=False
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['W4T8AH.0.411.s2'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Rancor', 'available'), ('Nethergoyf', 'available'), ('Grizzly Bears', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available'), ('Ornithopter', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['W4T8AH.0.442.s6'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Grizzly Bears', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available'), ('Ornithopter', 'available'), ('Rancor', 'available')]
+P1 plays land mountain
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 57)
+payment expected for escape: needs={'B': 1, 'generic': 2}
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available')]
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=4 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['W4T8AH.0.463.s0'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Grizzly Bears', 'available'), ('Rancor', 'available'), ('Ornithopter', 'available')]
+[P0] paying mana via vi: tap Swamp for B (remaining needs={'B': 0, 'generic': 2})
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Island', 'available'), ('Swamp', 'available')]
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 0, 'generic': 1})
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Island', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Swamp', 'available')]
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 0, 'generic': 0})
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Island', 'available'), ('Swamp', 'available')]
+payment for escape complete (needs exhausted)
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Swamp', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Island', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
+server excerpts: 0 matching lines
