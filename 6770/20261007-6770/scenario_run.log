@@ -1,0 +1,29 @@
+ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game KNGG53; seats 0/1
+[P0] keeps (lands=4)
+[P1] keeps (lands=7)
+[P0] playing land forest
+[P0] casting Manabond (oid 26)
+[decline-armed] turn 1 hand lands=3 nonlands=2
+exported pre_decline.json
+[pre_decline] turn 1: lands=3 nonlands=2
+[P0] Manabond may-choice answered false (choice KNGG53.0.20.c0)
+exported post_decline.json
+[post_decline] phase=End turn=1; arming ACCEPT
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+exported pre_accept.json
+[pre_accept] turn 3: lands=4 nonlands=2
+[P0] Manabond may-choice answered true (choice KNGG53.0.53.c1)
+[P1] tap land for mana used_for=any needs_left=None
+exported post_accept.json
+[post_accept] phase=Upkeep turn=4
+A1_setup_ok: passed
+A2_decline_no_move: passed
+A3_accept_lands_battlefield: failed
+A4_accept_rest_discarded: passed
+A5_cleanup: passed
+verdict: reproduced
