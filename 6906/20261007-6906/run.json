@@ -1,0 +1,86 @@
+{
+ "run_id": "20261007-6906",
+ "issue": 6906,
+ "date": "2026-10-07T18:24:39Z",
+ "started_at": "2026-10-07T13:19:43-05:00",
+ "server": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "port": 9374
+ },
+ "scenario_sha256": "841748d564cbb25cc7e8fc2cf84b13846b39b669cb7383bf352bb0dcafa6d39d",
+ "decks": {
+  "P0": [
+   [
+    "calix, destiny's hand",
+    4
+   ],
+   [
+    "glorious anthem",
+    8
+   ],
+   [
+    "forest",
+    24
+   ],
+   [
+    "plains",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    24
+   ],
+   [
+    "naturalize",
+    4
+   ],
+   [
+    "forest",
+    32
+   ]
+  ]
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_target_prompted": "passed",
+  "A3_two_target_slots": "failed",
+  "A4_exile_observed": "failed",
+  "A5_own_enchant_targeted": "not-run",
+  "A6_return_on_destroy": "failed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "generic stall watchdog: no revision advance >180s",
+  "A1: calix_bf=True anthems_bf=True bears_p1_bf=True p0_main=True turn=33 pre={'turn': 34, 'phase': 'PreCombatMain', 'calix_loyalty': 4, 'bears': 2, 'anthems': 2}",
+  "A2: 1 TargetSelection prompt(s) for the -3 activation (2 total recorded)",
+  "A3: 1 -3 target slot(s) offered (expect >=2: exile target + own enchantment); candidates=[[('grizzly bears', 'Battlefield', 1), ('grizzly bears', 'Battlefield', 1)]]",
+  "A4: target Bear oid 62 zone=Battlefield (expect Exile)",
+  "A5: no second target slot (A3 not passed)",
+  "A6: no link slot offered; Anthem destroyed; target Bear zone=Battlefield (expect Exile: documents unconditional exile, no return linkage)",
+  "A7: stack empty=True; turn=35"
+ ],
+ "stats": {
+  "states_seen": 1813
+ },
+ "setup_line": "P0: 4x Calix, Destiny's Hand + 8x Glorious Anthem + 48 lands; P1: 24x Grizzly Bears + 4x Naturalize + 32x Forest; native human seats",
+ "contract_line": "P0 casts 2 Anthems + Calix, activates the -3 (ability_index 1) at main-phase priority; assert TWO target selections are offered (exile target + own enchantment); answer with a P1 Bear and a P0 Anthem; P1 destroys the linked Anthem with Naturalize and asserts the exiled Bear returns",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Anthem / 24x Bear densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6906.py (verified 2026-09-12, run 20260912-6906e).",
+  "Merged_actions/vi conventions, NON_DECISION_CODES, vi tapLandForMana payment, PASSED_REV gating, Select-model hand-size discards, and progress watchdogs taken from the proven scenario_7177_01030.py template.",
+  "Target selections detected via schema select/sequence candidates or exactChoices candidate/target codes; submitted with the advertised response type; raw opportunities wired and saved as target_sel_N.json.",
+  "Pinned v0.103.0 data still parses the -3 as a single-target ChangeZone -> Exile with no duration and no sub_ability -- see data_evidence.json."
+ ]
+}
