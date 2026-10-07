@@ -1,0 +1,27 @@
+{
+ "ok": true,
+ "notes": [],
+ "calix_oracle": "[+1]: Look at the top four cards of your library. You may reveal an enchantment card from among them and put that card into your hand. Put the rest on the bottom of your library in a random order.\n[\u22123]: Exile target creature or enchantment you don't control until target enchantment you control leaves the battlefield.\n[\u22127]: Return all enchantment cards from your graveyard to the battlefield.",
+ "minus3_payload": {
+  "cost": {
+   "type": "Loyalty",
+   "amount": -3
+  },
+  "effect_type": "ChangeZone",
+  "destination": "Exile",
+  "target_type": "Or",
+  "target_controllers": [
+   "Opponent"
+  ],
+  "target_types": [
+   [
+    "Creature"
+   ],
+   [
+    "Enchantment"
+   ]
+  ],
+  "has_duration": false,
+  "has_sub_ability": false
+ }
+}
