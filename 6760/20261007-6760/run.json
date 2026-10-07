@@ -1,0 +1,80 @@
+{
+ "issue": 6760,
+ "run_id": "20261007-6760",
+ "started_at": "2026-10-07T10:43:45",
+ "duration_s": 39.7,
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true,
+  "observed_at": "2026-10-07",
+  "source": "2026-10-07: latest stable release v0.103.0 (published 2026-10-06) == pinned release dir; ServerHello 0.103.0/ec27a8d/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reusing the pinned v0.103.0 server on 127.0.0.1:9374 started by run cron-20261007-0441 (pid 4631) with isolated games.db at runs/cron-20261007-0441/games.db"
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "96d5273ec2e2d1cfe1c9499804b785159465a7ae9c831d56d274109ff09f4730",
+ "decks": {
+  "P0": [
+   [
+    "Ojer Kaslem, Deepest Growth",
+    4
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Llanowar Elves",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_damage_and_reveal": "passed",
+  "A4_both_categories": "passed",
+  "A5_two_cards_enter": "failed",
+  "A6_rest_to_bottom": "passed",
+  "A7_cleanup": "passed",
+  "A3_may_accepted": "passed"
+ },
+ "notes": [
+  "2-card submission rejected ({\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\",); single-card fallback entered=True; the land 'forest' ended in zone Library (never put onto the battlefield)",
+  "protocol-106 driver (v0.103.0): Ojer cast via CastSpell legacy action with {G:2, generic:3} driven through PayManaAbilityMana/PayMana legacy actions + vi tapLandForMana menus; attack via DeclareAttackers attacks=[[oid,{type:Player,data:1}]]; P1 declares no blockers via DeclareBlockers assignments=[]; mulligan answered as-is with decision='keep'; discard via DiscardToHandSize viewer_interaction select submission; land plays via legacy PlayLand + vi playLand opportunity (answered before the decision gate); may-choice via exactChoices decideOptionalEffect accept choice; revealed-card selection via schema prompt submitted as {type:<spec.type>, data:{choiceIds:[...]}}.",
+  "P0 deck 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1 60x Island draw-go, never blocks (engine accepts >4-of for custom games)."
+ ],
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "at": 1791369862.9700162,
+   "data": "{\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.103.0, not a fix claim.",
+  "4x/24x/32x deck density is a test-harness convenience (engine accepts >4-of for custom games)."
+ ],
+ "setup_line": "P0: 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1: 60x Island (never blocks)",
+ "contract_line": "Ojer deals 6 combat damage -> reveal 6 -> may put a creature AND a land onto the battlefield",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
