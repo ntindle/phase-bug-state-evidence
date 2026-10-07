@@ -1,0 +1,195 @@
+{
+ "card": "Delina, Wild Mage",
+ "oracle_text": "Whenever Delina attacks, choose target creature you control, then roll a d20.\n1\u201414 | Create a tapped and attacking token that's a copy of that creature, except it's not legendary and it has \"At end of combat, exile this token.\"\n15\u201420 | Create one of those tokens. You may roll again.",
+ "triggered_abilities": [
+  {
+   "mode": "Attacks",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "TargetOnly",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    },
+    "declares_chosen_group": 0,
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "RollDie",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "sides": 20,
+      "results": [
+       {
+        "min": 1,
+        "max": 14,
+        "effect": {
+         "kind": "Spell",
+         "effect": {
+          "type": "CopyTokenOf",
+          "target": {
+           "type": "ParentTarget"
+          },
+          "owner": {
+           "type": "Controller"
+          },
+          "enters_attacking": true,
+          "tapped": true,
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "additional_modifications": [
+           {
+            "type": "RemoveSupertype",
+            "supertype": "Legendary"
+           },
+           {
+            "type": "GrantAbility",
+            "definition": {
+             "kind": "Spell",
+             "effect": {
+              "type": "CreateDelayedTrigger",
+              "condition": {
+               "type": "AtNextPhase",
+               "phase": "EndCombat"
+              },
+              "effect": {
+               "kind": "Spell",
+               "effect": {
+                "type": "ChangeZone",
+                "origin": null,
+                "destination": "Exile",
+                "target": {
+                 "type": "SelfRef"
+                },
+                "owner_library": false,
+                "enter_transformed": false,
+                "enter_tapped": false,
+                "enters_attacking": false
+               },
+               "cost": null,
+               "sub_ability": null,
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": null,
+               "optional_targeting": false,
+               "optional": false,
+               "forward_result": false
+              },
+              "uses_tracked_set": false
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": "at end of combat, exile ~.",
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            }
+           }
+          ]
+         },
+         "cost": null,
+         "sub_ability": null,
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": null,
+         "optional_targeting": false,
+         "optional": false,
+         "forward_result": false
+        }
+       },
+       {
+        "min": 15,
+        "max": 20,
+        "effect": {
+         "kind": "Spell",
+         "effect": {
+          "type": "Unimplemented",
+          "name": "unparsed_verb_arguments",
+          "description": "Create one of those tokens"
+         },
+         "cost": null,
+         "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+           "type": "Unimplemented",
+           "name": "unparsed_verb_arguments",
+           "description": "roll again"
+          },
+          "cost": null,
+          "sub_ability": null,
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": true,
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+         },
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": null,
+         "optional_targeting": false,
+         "optional": false,
+         "forward_result": false
+        }
+       }
+      ]
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "Whenever ~ attacks, choose target creature you control, then roll a d20.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "finding": "15-20 branch still parses Unimplemented (create + optional roll again)"
+}
