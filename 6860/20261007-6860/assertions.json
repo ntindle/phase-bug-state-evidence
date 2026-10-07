@@ -1,0 +1,42 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_additional_offered": "passed",
+    "A3_prior_discount": "failed",
+    "A4_additional_discount": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "Reconstruction note: the driver process died after exporting post_leg2.json (both legs completed per wire log + run log); this finalize script re-derived all assertions from the saved authoritative exports and wire_log.jsonl. No live game touched. The v0.102.0 run died the same way post-legs (no OOM in dmesg).",
+    "pinned v0.103.0 artifact hashes re-verified against disk",
+    "double-pay audit: 0 driver mana payments (tap_land/manual_tap/legacy_pay_mana) -- the untapped-Mountain delta is purely the engine's auto-tap",
+    "pre.json snapshot: {'untapped': 16, 'pool': 0, 'dargo_bf': 0, 'dargo_hand': 5, 'bombard_bf': True, 'memnites_bf': 4}",
+    "post_leg1.json snapshot: {'untapped': 9, 'pool': 0, 'dargo_bf': 1, 'dargo_hand': 5, 'bombard_bf': True, 'memnites_bf': 3}",
+    "post_leg2.json snapshot: {'untapped': 6, 'pool': 0, 'dargo_bf': 1, 'dargo_hand': 4, 'bombard_bf': True, 'memnites_bf': 1}",
+    "optional additional-cost prompts offered/answered: ['LEG1', 'LEG2'] (LEG1 decline, LEG2 pay)",
+    "LEG1 recorded leg: {'untapped_before': 16, 'pool_before': 0, 'untapped_after': 9, 'pool_after': 0, 'spent': 7, 'manual_taps': 0} (state cross-check untapped 16->9 = 7, pool 0, 0 manual taps)",
+    "LEG2 recorded leg: {'untapped_before': 9, 'pool_before': 0, 'untapped_after': 6, 'pool_after': 0, 'spent': 3, 'manual_taps': 0} (state cross-check untapped 9->6 = 3, pool 0, 0 manual taps)",
+    "both casts resolved=True; legend rule answered=True (keep-first via advertised action); post_leg2 dargo_bf=1 dargo_hand=4",
+    "data-level: v0.103.0 card data still collapses Dargo's cost into a single ModifyCost { Reduce {2}, dynamic_count: TrackedSetSize } with condition AdditionalCostPaid; the 'each other artifact or creature you've sacrificed this turn' reduction is absent from the parse (same as v0.98.0).",
+    "protocol-106 driver (v0.103.0): HELLO advertises protocol 106; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell/ActivateAbility via advertised actions; optional additional cost via decideOptionalCost/decideOptionalEffect opportunity (exactChoices bare true/false); sac count via number schema; permanent selection via select/sequence candidates; mana is engine auto-tapped -- the 2026-10-07 double-pay gate keeps MANA_NEEDS empty for test casts and pay_tick only fires on outstanding non-test needs (0 driver payments this run), so the untapped-Mountain delta equals exactly what the engine charged; playLand in NON_DECISION_CODES; priority-gated passes."
+  ],
+  "wf_sequence": [
+    "optional_cost x2",
+    "sac_count x1",
+    "sac_select x1",
+    "legend x1",
+    "cast_resolved x2"
+  ],
+  "legs": {
+    "LEG1": {
+      "expected": 5,
+      "spent": 7,
+      "manual_taps": 0
+    },
+    "LEG2": {
+      "expected": 1,
+      "spent": 3,
+      "manual_taps": 0
+    }
+  }
+}
