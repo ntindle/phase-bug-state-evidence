@@ -1,0 +1,64 @@
+[11:29:42] server identity hashes verified against the v0.103.0 pin
+[11:29:47] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[11:29:47] saved parse_port_razer.json
+[11:29:47] parse: razer=True oracle_ok=True cant_attack_condition=None
+[11:29:47] P0 creating game (Bo1, 3 seats)...
+[11:29:47] P1 joining...
+[11:29:47] P2 joining...
+[11:29:49] game FNXBWO; seats P0=0 P1=1 P2=2 RUN_ID=20261008-7144
+[11:29:49] [P0] mulligan -> Keep (hand=['mountain', 'port razer', 'mountain', 'mountain', 'mountain', 'mountain', 'port razer'])
+[11:29:49] [P1] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[11:29:49] [P2] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[11:29:49] DIAG turn=1 active=2 phase=Untap razer_bf=False combats=0 prompt=False lands0=0 life=[20, 20, 20] stack=0
+[11:29:49] [P1] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[11:29:49] [P2] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[11:29:50] [P17144r] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[11:29:50] [P27144r] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[11:29:56] [P2] discards 1: ['plains']
+[11:29:59] [P0] plays Mountain (bf lands=0)
+[11:30:09] [P1] discards 1: ['plains']
+[11:30:15] [P2] discards 1: ['plains']
+[11:30:17] [P0] plays Mountain (bf lands=1)
+[11:30:28] [P1] discards 1: ['plains']
+[11:30:34] [P2] discards 1: ['plains']
+[11:30:36] [P0] plays Mountain (bf lands=2)
+[11:30:47] [P1] discards 1: ['plains']
+[11:30:49] DIAG turn=10 active=2 phase=PreCombatMain razer_bf=False combats=0 prompt=False lands0=3 life=[20, 20, 20] stack=0
+[11:30:53] [P2] discards 1: ['plains']
+[11:30:55] [P0] plays Mountain (bf lands=3)
+[11:31:06] [P1] discards 1: ['plains']
+[11:31:12] [P2] discards 1: ['plains']
+[11:31:14] [P0] plays Mountain (bf lands=4)
+[11:31:14] [P0] casting Port Razer oid=22 t14 (engine Auto payment)
+[11:31:15] [P0] Port Razer confirmed on battlefield (turn 14)
+[11:31:15] exported PRE
+[11:31:15] PRE exported (razer on board, pre-combat observation)
+[11:31:16] [P0] combat #1 begins (turn 14); razer summoning_sick=True
+[11:31:26] [P1] discards 1: ['plains']
+[11:31:32] [P2] discards 1: ['plains']
+[11:31:34] [P0] plays Mountain (bf lands=5)
+[11:31:35] [P0] combat #2 begins (turn 17); razer summoning_sick=False
+[11:31:44] [P1] discards 1: ['plains']
+[11:31:49] DIAG turn=19 active=2 phase=PostCombatMain razer_bf=True combats=2 prompt=False lands0=6 life=[20, 20, 20] stack=0
+[11:31:51] [P2] discards 1: ['plains']
+[11:31:53] [P0] plays Mountain (bf lands=6)
+[11:31:54] [P0] combat #3 begins (turn 20); razer summoning_sick=False
+[11:31:56] [P0] 3 combats observed (2 non-sick), no attack recorded; finalizing
+[11:31:56] loop ended: elapsed=130s
+[11:31:56] exported POST
+[11:31:56] loaded pre.json
+[11:31:56] loaded post.json
+[11:31:56] wrote run.json verdict=reproduced
+[11:31:56] A1_razer_on_battlefield: passed
+[11:31:56] A2_able_bodied: passed
+[11:31:56] A3_combats_observed: passed
+[11:31:56] A4_no_declare_prompt: passed
+[11:31:56] A5_never_attacked: passed
+[11:31:56] A6_condition_dropped: passed
+[11:31:56] A7_extra_combat: not-run
+[11:31:56] A8_new_player_attack: not-run
+[11:31:56] copied scenario_7144_01030.py into EVDIR
+[11:31:56] copied 891 server.log lines for game FNXBWO into EVDIR
+[11:31:56] wrote summary.png
+[11:31:56] wrote manifest.sha256 (9 files)
+[11:31:56] scenario finished
