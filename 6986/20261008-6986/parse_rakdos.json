@@ -1,0 +1,92 @@
+{
+ "card": "Rakdos, the Showstopper",
+ "oracle_text": "Flying, trample\nWhen Rakdos enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.",
+ "keywords": [
+  "Flying",
+  "Trample"
+ ],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "FlipCoin",
+     "win_effect": null,
+     "lose_effect": null
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "DestroyAll",
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": null,
+       "properties": []
+      },
+      "cant_regenerate": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes up tails.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "parse_warnings": [
+  {
+   "type": "SwallowedClause",
+   "detector": "DynamicQty",
+   "description": "Flying, trample\nWhen Rakdos enters, flip a coin for each creature that isn't a Demon, Devil, or Imp. Destroy each creature whose coin comes ",
+   "line_index": 1,
+   "unit_span": {
+    "first_line": 0,
+    "last_line": 1,
+    "start_byte": 0,
+    "end_byte": 149,
+    "precision": "Exact",
+    "ordinal_within_span": 0
+   },
+   "items": [
+    0
+   ]
+  }
+ ]
+}
