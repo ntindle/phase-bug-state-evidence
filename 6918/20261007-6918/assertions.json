@@ -1,0 +1,22 @@
+{
+ "issue": 6918,
+ "run_id": "20261007-6918",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counter_on_elf": "passed",
+  "A3_control_bear": "passed",
+  "A4_anthem": "passed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "door_oid=45 zone=Battlefield chosen_type=elf choice_iid=Z0JSUD.0.191 choice_attempts=1 (expect door on BF, chosen 'elf')",
+  "A2_counter_on_elf": "door charge counters in MID1 = 1 (expect 1 after casting an Elf of the chosen type)",
+  "A3_control_bear": "door charge counters mid1=1 mid2=1 (Grizzly Bears cast between)",
+  "A4_anthem": "charge=2 elves=[('llanowar elves', 3, 3), ('llanowar elves', 3, 3)] (expect 1+2/1+2)",
+  "A5_cleanup": "stack_empty=True turn=25"
+ },
+ "notes": [
+  "verdict=not-reproduced"
+ ]
+}
