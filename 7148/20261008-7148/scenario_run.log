@@ -1,0 +1,39 @@
+[12:32:18] server identity hashes verified against the v0.103.0 pin
+[12:32:20] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[12:32:20] parse: nils_discipline_enforcer ok=True
+[12:32:21] P0 creating game (Bo1, 3 seats)...
+[12:32:21] P1 joining...
+[12:32:21] P2 joining...
+[12:32:22] game UKI4GI; P0 seat=0 P1 seat=1 P2 seat=2 RUN_ID=20261008-7148
+[12:32:22] [P27148r] mulligan -> Keep (hand=['storm crow', 'storm crow', 'storm crow', 'island', 'island', 'island', 'storm crow'])
+[12:32:22] [P07148r] mulligan -> Keep (hand=['plains', 'plains', 'nils, discipline enforcer', 'nils, discipline enforcer', 'plains', 'plains', 'nils, discipline enforcer'])
+[12:32:22] [P17148r] mulligan -> Keep (hand=['forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest', 'forest'])
+[12:32:24] [P07148r] plays Plains (turn 1)
+[12:32:30] [P17148r] plays Forest (turn 2)
+[12:32:35] [P27148r] plays Island (turn 3)
+[12:32:41] [P07148r] plays Plains (turn 4)
+[12:32:46] [P17148r] plays Forest (turn 5)
+[12:32:47] [P17148r] casts Grizzly Bears oid=76 t5 (engine Auto payment)
+[12:32:54] [P27148r] plays Island (turn 6)
+[12:32:54] [P27148r] casts Storm Crow oid=135 t6 (engine Auto payment)
+[12:33:01] [P07148r] plays Plains (turn 7)
+[12:33:01] [P07148r] casts Nils oid=15 t7 (engine Auto payment)
+[12:33:05] [P07148r] Nils end-step trigger on stack (turn 7); exporting PRE
+[12:33:05] exported PRE
+[12:33:05] [P07148r] Nils target prompt #0: rtype=schema stype=sequence ncands=1 scope_player=0 (candidate unanimity) iid=UKI4GI.0.168
+[12:33:05]     cand id=UKI4GI.0.168.t0 -> nils, discipline enforcer#15 (P0) zone=Battlefield
+[12:33:05] [P07148r] Nils prompt #0 answers scope P0 -> nils, discipline enforcer#15
+[12:33:06] exported MID
+[12:33:06] [watch] mid exported at turn 7 phase End; counters: {'15': {'name': 'nils, discipline enforcer', 'controller': 0, 'p1p1': 3}}
+[12:33:06] Nils trigger resolved; stopping
+[12:33:06] main loop ended: stop=True reason=nils trigger resolved; mid exported
+[12:33:07] scenario source copied to evidence
+[12:33:07] exported POST
+[12:33:07] VERDICT: reproduced
+[12:33:07]   A1: parse ok=True (see parse_nils.json)
+[12:33:07]   A2: trigger_seen=True trigger_turn=7 prompts_answered=1 pre_exported=True nils_on_bf=True sides=[0, 1, 2] pre_creatures={'135': {'name': 'storm crow', 'controller': 2, 'p1p1': 0}, '15': {'name': 'nils, discipline enforcer', 'controller': 0, 'p1p1': 0}, '76': {'name': 'grizzly bears', 'controller': 1, 'p1p1': 0}}
+[12:33:07]   A3: mid_exported=True total_p1p1=3 max_on_one_creature=3 per_player={0: 3} distribution={'15': {'name': 'nils, discipline enforcer', 'controller': 0, 'p1p1': 3}} prompts=[{'n': 0, 'scope_player': 0, 'scope_how': 'candidate unanimity', 'chosen_oid': '15', 'duplicate_scope': False, 'turn': 7, 'phase': 'End'}]
+[12:33:07]   A4: trigger_turn=7 mid_turn=7 mid_phase=End
+[12:33:07]   A5: final stack depth=0
+[12:33:07]   verdict=reproduced: 1 prompt(s) answered; counters landed as {'15': {'name': 'nils, discipline enforcer', 'controller': 0, 'p1p1': 3}}
+[12:33:07] run.json written
