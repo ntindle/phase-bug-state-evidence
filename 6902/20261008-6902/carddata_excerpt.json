@@ -1,0 +1,208 @@
+{
+ "name": "Sneak Attack",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Red"
+  ],
+  "generic": 3
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": []
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "{R}: You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice the creature at the beginning of the next end step.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "ChangeZone",
+    "origin": "Hand",
+    "destination": "Battlefield",
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": "You",
+     "properties": [
+      {
+       "type": "InZone",
+       "zone": "Hand"
+      }
+     ]
+    },
+    "owner_library": false,
+    "enter_transformed": false,
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "Red"
+     ],
+     "generic": 0
+    }
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "GenericEffect",
+     "static_abilities": [
+      {
+       "mode": "Continuous",
+       "affected": {
+        "type": "ParentTarget"
+       },
+       "modifications": [
+        {
+         "type": "AddKeyword",
+         "keyword": "Haste"
+        }
+       ],
+       "condition": null,
+       "affected_zone": null,
+       "effect_zone": null,
+       "active_zones": [],
+       "characteristic_defining": false,
+       "description": "gain haste"
+      }
+     ],
+     "duration": null,
+     "target": {
+      "type": "ParentTarget"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CreateDelayedTrigger",
+      "condition": {
+       "type": "AtNextPhase",
+       "phase": "End"
+      },
+      "effect": {
+       "kind": "Activated",
+       "effect": {
+        "type": "Sacrifice",
+        "target": {
+         "type": "ParentTarget"
+        },
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "uses_tracked_set": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": "{R}: You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice the creature at the beginning of the next end step.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": true,
+   "target_choice_timing": "Resolution",
+   "forward_result": true
+  }
+ ],
+ "triggers": [],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Red"
+ ],
+ "scryfall_oracle_id": "e7aee670-e6ac-4b3a-b3d1-7b7013db8f3d",
+ "metadata": {
+  "source_printing_ids": [
+   "019edeac-ce93-4969-8dcb-787f0bfd9ae7",
+   "0b121aba-52c0-4b6c-a7d8-17188b524673",
+   "207d5f12-fbc6-4c75-9d84-fd2f0023fbd0",
+   "3d9709ea-5962-4590-8b14-5213b14f9229",
+   "5b8c11ba-533d-48c9-821c-3fec846bca97",
+   "6ff4de87-f871-4edc-9abb-b91053195bac",
+   "8fb31436-4b39-421e-a7e0-cdf172823665",
+   "9c17b6f3-c460-4214-b3fc-232d4514bcf0",
+   "a45b4ca9-4355-4690-84c3-a7d44c367dbf",
+   "b2418b3d-574a-40e7-9b6b-1bc4a8199105",
+   "d07dc95d-82a8-4a58-8ea2-d4513bd7316d",
+   "d3cc06d1-f8c7-49f3-a8e4-2f241acf1829"
+  ]
+ },
+ "legalities": {
+  "brawl": "legal",
+  "commander": "legal",
+  "duel": "legal",
+  "historic": "banned",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "premodern": "legal",
+  "timeless": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "2XM",
+  "DMR",
+  "EMA",
+  "J12",
+  "PLST",
+  "PRM",
+  "SLD",
+  "USG",
+  "WOT"
+ ],
+ "rulings": [
+  {
+   "date": "2020-08-07",
+   "text": "You sacrifice the creature only if you still control it. If that creature has left the battlefield, even if it came back, you don't sacrifice it."
+  }
+ ],
+ "rarities": [
+  "rare",
+  "mythic"
+ ]
+}
