@@ -1,0 +1,20 @@
+{
+ "issue": 6914,
+ "run_id": "20261007-6914",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_kediss_trigger": "passed",
+  "A4_source_attribution": "failed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "malcolm_bf=181 is_commander=True untapped=True kediss_bf=182 life=[40, 40, 40] attack_turn=14",
+  "A2_combat_damage": "P1 life=38 (expect 38 = Malcolm's 2 unblocked combat damage)",
+  "A3_kediss_trigger": "P2 life=38 (expect 38 = Kediss trigger dealing 2)",
+  "A4_source_attribution": "P0 treasure tokens=1 (expect 2 if the commander is the damage source; 1 = engine sourced it from Kediss) -> only 1 treasure despite P2 taking 2: the engine attributed the extra damage to Kediss (not a Pirate), so Malcolm's trigger did not fire. BUG REPRODUCED.",
+  "A5_cleanup": "stack_empty=True turn=15"
+ },
+ "notes": []
+}
