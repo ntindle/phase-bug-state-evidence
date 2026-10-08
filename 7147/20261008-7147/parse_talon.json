@@ -1,0 +1,21 @@
+{
+ "oracle_text": "When this land enters, up to one target creature phases out.\n{T}: Add {C}.\n{1}, {T}: Add one mana of any color.\n{4}: Put this card from your hand onto the battlefield.",
+ "trigger_count": 1,
+ "trigger": {
+  "mode": "ChangesZone",
+  "effect_type": "PhaseOut",
+  "target_type": "Typed",
+  "target_filters": [
+   "Creature"
+  ],
+  "multi_target": {
+   "min": 0,
+   "max": {
+    "type": "Fixed",
+    "value": 1
+   }
+  },
+  "optional": false,
+  "optional_targeting": false
+ }
+}
