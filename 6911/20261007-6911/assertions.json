@@ -1,0 +1,20 @@
+{
+ "issue": 6911,
+ "run_id": "20261007-6911",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sacrifice_prompted": "failed",
+  "A3_land_sacrificed": "not-run",
+  "A4_search_up_to_three": "passed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "pre_exported=True gorger_on_bf_at_cast=True er_cast_turn=10",
+  "A2_sacrifice_prompted": "prompt_sequence=['search'] sac_idx=None search_idx=0",
+  "A3_land_sacrificed": "sac_oid=None; no sacrifice prompt answered; p0_forests_left_bf_pre_to_post=[]",
+  "A4_search_up_to_three": "search_max=3 chosen=3 entered_tapped=[True, True, True] bf_forests pre=4 post=7 expected_post=7",
+  "A5_cleanup": "er_in_gy=True stack_empty=True turn=10"
+ },
+ "notes": []
+}
