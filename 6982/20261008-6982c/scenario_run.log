@@ -1,0 +1,60 @@
+[08:53:50] server identity hashes verified against the v0.103.0 pin
+[08:53:53] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[08:53:53] saved parse_florian.json
+[08:53:53] parse: triggers[0].execute.effect type=Unimplemented name=where_x_binding -> A1=passed
+[08:53:54] P0 creating game (default Bo1, 3 seats)...
+[08:53:54] P1 joining...
+[08:53:54] P2 joining...
+[08:53:54] game 2FDHQR; P0 seat=0 P1 seat=1 P2 seat=2 RUN_ID=20261008-6982c
+[08:53:54] [P0] mulligan -> Keep (hand=['swamp', 'mountain', 'florian, voldaren scion', 'mountain', 'mountain', 'mountain', 'lightning bolt'])
+[08:53:54] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[08:53:54] [P2] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[08:53:54] DIAG turn=1 active=2 phase=Untap pp=2 life=[20, 20, 20] florian=None bolt=False/False/False attacked=False pre=False post=False trig_dmg=False look=None stack=0
+[08:53:55] life = (20, 20, 20)
+[08:53:57] [P2] playing land forest
+[08:54:03] [P0] playing land swamp
+[08:54:08] [P1] playing land forest
+[08:54:14] [P2] playing land forest
+[08:54:20] [P0] playing land mountain
+[08:54:26] [P1] playing land forest
+[08:54:33] [P2] playing land forest
+[08:54:39] [P0] playing land mountain
+[08:54:39] [P0] casting Florian (engine Auto payment)
+[08:54:40] Florian on BF: oid=38 (turn 8)
+[08:54:40] exported PRE
+[08:54:40] PRE exported: Florian on BF, all at 20
+[08:54:42] Florian TriggeredAbility ON STACK (turn 8 PostCombatMain)
+[08:54:46] [P1] playing land forest
+[08:54:52] [P2] playing land forest
+[08:54:55] DIAG turn=10 active=2 phase=EndCombat pp=0 life=[20, 20, 20] florian=38 bolt=False/False/False attacked=False pre=True post=False trig_dmg=False look=None stack=0
+[08:54:58] [P0] casting Lightning Bolt (engine Auto payment)
+[08:54:58] target selection #1 (stage bolt): ?(?,pNone,seat=0), ?(?,pNone,seat=1), ?(?,pNone,seat=2), florian, voldaren scion(Battlefield,p0,seat=None)
+[08:54:58] [P0] bolt targets P2 (seat 2)
+[08:54:58] [P0] submitting interaction iid=2FDHQR.0.239 choice=2FDHQR.0.239.t2 ()
+[08:54:59] life = (20, 20, 17)
+[08:54:59] [P0] playing land mountain
+[08:54:59] bolt resolved: P2 life 17
+[08:55:01] [P0] attacking P1 with Florian oid=38 (turn 11)
+[08:55:03] life = (20, 17, 17)
+[08:55:05] damage-turn postcombat baselines: exile=0 lib=49
+[08:55:05] Florian TriggeredAbility ON STACK (turn 11 PostCombatMain)
+[08:55:06] exported POST
+[08:55:06] POST exported: damage-turn postcombat, stack empty
+[08:55:06] loop ended: elapsed=73s
+[08:55:06] loaded pre.json
+[08:55:06] loaded post.json
+[08:55:06] wrote run.json verdict=reproduced
+[08:55:06] A1_parse_gap: passed
+[08:55:06] A2_setup_ok: passed
+[08:55:06] A3_life_loss: passed
+[08:55:06] A4_trigger_fires: passed
+[08:55:06] A5_look_X: failed
+[08:55:06] A6_exile_one: failed
+[08:55:06] A7_play_permission: failed
+[08:55:06] A8_cleanup: passed
+[08:55:06] copied scenario_6982_01030.py into EVDIR
+[08:55:06] copied server.log from /home/hatch/workspace/dev/phase-backfill/runs/20261008-6982/server.log into EVDIR
+[08:55:06] wrote summary.png
+[08:55:06] wrote manifest.sha256 (10 files)
+[08:55:06] scenario finished
+[08:55:06] wrote manifest.sha256 (10 files)
