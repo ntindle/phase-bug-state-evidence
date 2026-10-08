@@ -1,0 +1,66 @@
+[08:37:47] server identity hashes verified against the v0.103.0 pin
+[08:37:50] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[08:37:50] saved parse_lazav_familiar_stranger.json
+[08:37:50] parse: {'CommitCrime': True, 'PutCounter': True, 'P1P1': True, 'SelfRef': True, 'ChangeZone': True, 'Graveyard': True, 'Exile': True, 'optional': True, 'Resolution': True, 'BecomeCopy': True, 'ParentTarget': True, 'UntilEndOfTurn': True, 'ZoneChangedThisWay': True, 'Creature': True} -> A1=passed
+[08:37:51] P0 creating game (default Bo1, 2 seats)...
+[08:37:51] P1 joining...
+[08:37:51] game 23XJFT; P0 seat=0 P1 seat=1 RUN_ID=20261008-0845-7162
+[08:37:51] [P0] mulligan -> Keep (hand=['swamp', 'child of night', 'swamp', 'lazav, familiar stranger', 'mountain', 'island', 'lightning bolt'])
+[08:37:51] [P1] mulligan -> Mulligan (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[08:37:51] DIAG turn=1 active=1 phase=Untap pp=1 life=[20, 20] stage=setup lazav_bf=0 child_bf=0 bolt1=False/False bolt2=False/False exile_offer=False/False copy_offer=False/False exile=0 stack_bolts=0
+[08:37:51] life = (20, 20)
+[08:37:51] [P1] mulligan -> Mulligan (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[08:37:52] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[08:37:52] [P1] bottoms 2
+[08:37:56] [P0] plays land island (target 99 untapped)
+[08:38:04] [P0] plays land swamp (target 99 untapped)
+[08:38:12] [P0] plays land swamp (target 99 untapped)
+[08:38:12] [P0] casting lazav, familiar stranger oid=13 (engine Auto payment)
+[08:38:19] [P1] discards 1: ['forest']
+[08:38:20] [P0] plays land mountain (target 99 untapped)
+[08:38:21] [P0] casting child of night oid=3 (engine Auto payment)
+[08:38:21] exported PRE
+[08:38:21] [P0] stage -> crime (turn=8)
+[08:38:21] [P0] casting bolt 1 (own child of night) oid=4
+[08:38:22] [bolt1-target] recorded bolt1_target.json (iid=23XJFT.0.119, n=4)
+[08:38:22] [P0] bolt1 target: choosing Child of Night (choice 23XJFT.0.119.t3)
+[08:38:22] [P0] submitting interaction iid=23XJFT.0.119 choice=23XJFT.0.119.t3 (Child of Night)
+[08:38:22] [P0] bolt1 resolved: child of night in P0 gy; P0-gy bolts=1
+[08:38:29] [P1] discards 1: ['forest']
+[08:38:30] [P0] plays land mountain (target 99 untapped)
+[08:38:30] [P0] casting bolt 2 (P1 -- the crime) oid=17
+[08:38:31] [bolt2-target] recorded bolt2_target.json (iid=23XJFT.0.154, n=3)
+[08:38:31] [P0] bolt2 target: choosing  (choice 23XJFT.0.154.t1)
+[08:38:31] [P0] submitting interaction iid=23XJFT.0.154 choice=23XJFT.0.154.t1 ()
+[08:38:31] [P0] stage -> crime_leg (crime committed)
+[08:38:31] [may-exile] recorded offer_exile_opp.json (iid=23XJFT.0.157, n=2)
+[08:38:31] exported OFFER_EXILE
+[08:38:31] [P0] may-exile: ACCEPTING
+[08:38:31] [P0] submitting interaction iid=23XJFT.0.157 choice=23XJFT.0.157.c1 (true)
+[08:38:32] [exile-selection] recorded exile_selection.json (iid=23XJFT.0.158, n=4)
+[08:38:32] [P0] exile-selection: exiling child of night oid=3
+[08:38:32] [may-copy] recorded offer_copy_opp.json (iid=23XJFT.0.159, n=2)
+[08:38:32] exported OFFER_COPY
+[08:38:32] [P0] may-copy: ACCEPTING (reported branch)
+[08:38:32] [P0] submitting interaction iid=23XJFT.0.159 choice=23XJFT.0.159.c1 (true)
+[08:38:33] life = (20, 17)
+[08:38:33] exported POST
+[08:38:33] loop ended: elapsed=44s
+[08:38:33] loaded pre.json
+[08:38:33] loaded offer_exile.json
+[08:38:33] loaded offer_copy.json
+[08:38:33] loaded post.json
+[08:38:33] wrote run.json verdict=reproduced
+[08:38:33] A1_parse: passed
+[08:38:33] A2_setup: passed
+[08:38:33] A3_crime_trigger: passed
+[08:38:33] A4_exile_offered: passed
+[08:38:33] A5_copy_offered: passed
+[08:38:33] A6_copy_effect: failed
+[08:38:33] A7_cleanup: passed
+[08:38:33] wrote lazav_prompts.json (5 prompts)
+[08:38:33] copied scenario_7162_01030.py into EVDIR
+[08:38:33] server.log: wrote note instead (no runs/<run-id>/server.log)
+[08:38:33] wrote summary.png
+[08:38:33] wrote manifest.sha256 (17 files)
+[08:38:33] scenario finished
