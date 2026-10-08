@@ -1,0 +1,45 @@
+{
+ "oracle_text": "At the beginning of your end step, for each player, put a +1/+1 counter on up to one target creature that player controls.\nEach creature with one or more counters on it can't attack you or planeswalkers you control unless its controller pays {X}, where X is the number of counters on that creature.",
+ "parse_warnings": [
+  {
+   "type": "SwallowedClause",
+   "detector": "DynamicQty",
+   "description": "At the beginning of your end step, for each player, put a +1/+1 counter on up to one target creature that player controls.",
+   "line_index": 0,
+   "unit_span": {
+    "first_line": 0,
+    "last_line": 0,
+    "start_byte": 0,
+    "end_byte": 122,
+    "precision": "Exact",
+    "ordinal_within_span": 0
+   },
+   "items": [
+    0
+   ],
+   "gap": {
+    "kind": "unparsed_quantity",
+    "operand": "player"
+   }
+  }
+ ],
+ "trigger_count": 1,
+ "trigger": {
+  "mode": "Phase",
+  "phase": "End",
+  "constraint": "OnlyDuringYourTurn",
+  "effect_type": "PutCounter",
+  "counter_type": "P1P1",
+  "count": 1,
+  "target_type": "Typed",
+  "target_controller": "ScopedPlayer",
+  "multi_target": {
+   "min": 0,
+   "max": {
+    "type": "Fixed",
+    "value": 1
+   }
+  },
+  "player_scope": "All"
+ }
+}
