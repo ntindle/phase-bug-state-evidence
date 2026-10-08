@@ -1,0 +1,27 @@
+{
+ "issue": 6951,
+ "run_id": "20261008-6951",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_ch2_unimplemented": "passed",
+  "A2_ch3_typed": "passed",
+  "A3_reached_ch3": "passed",
+  "A4_tax_consistent": "passed",
+  "A5_returned": "passed",
+  "A6_counter": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_ch2_unimplemented": "chapter II effect = Unimplemented/unrecognized_clause_head (expected Unimplemented/*; the reported Effect:noncreature deck-builder flag persists)",
+  "A2_ch3_typed": "chapter III typed=True (expected no Unimplemented + ChooseOneOf/PutCounter choice)",
+  "A3_reached_ch3": "ecd=16 lore=2 turn=31 (cast turn 27) bear_in_yard=True ch3_seen=True ch3_targeted=False counter_answered=True",
+  "A4_tax_consistent": "P1 in-window Bolt (turn 30) tapped 1 Mountain(s); expected 1 (no tax: ch2 Unimplemented)",
+  "A5_returned": "P0 Bears on BF in post: 1",
+  "A6_counter": "bear oid=18 P/T=3/3 +1/+1=True counters={'P1P1': 1}; ",
+  "A7_cleanup": "stack_empty=True turn=33"
+ },
+ "notes": [
+  "verdict=reproduced: chapter-II noncreature tax still Unimplemented on v0.103.0 (deck-builder Effect:noncreature flag persists)",
+  "verdict=reproduced"
+ ]
+}
