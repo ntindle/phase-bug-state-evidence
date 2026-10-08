@@ -1,0 +1,71 @@
+[04:52:53] server identity hashes verified against on-disk pinned artifacts
+[04:52:57] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[04:52:57] data-level: Transform(all Humans) -> PreventDamage(amount=All target={"type": "Any"} scope=CombatDamage)
+[04:52:57] P0 creating game...
+[04:52:58] P1 joining...
+[04:52:58] game OSUNJO; P0 seat=0 P1 seat=1
+[04:52:58] [P0] mulligan -> Keep (hand=['forest', 'moonmist', 'forest', 'forest', 'young wolf', 'grizzly bears', 'forest'])
+[04:52:58] [P1] mulligan -> Keep (hand=['grizzly bears', 'grizzly bears', 'forest', 'forest', 'forest', 'forest', 'grizzly bears'])
+[04:52:59] [P1] playing land forest
+[04:53:03] [P0] playing land forest
+[04:53:03] [P0] casts Young Wolf (39)
+[04:53:07] [P1] playing land forest
+[04:53:12] [P0] playing land forest
+[04:53:12] [P0] casts Grizzly Bears (51)
+[04:53:14] [P0] declare no attackers
+[04:53:17] [P1] playing land forest
+[04:53:21] [P0] playing land forest
+[04:53:22] [P0] declare no attackers
+[04:53:25] [P1] playing land forest
+[04:53:29] [P0] playing land forest
+[04:53:30] [P0] declare no attackers
+[04:53:33] [P1] playing land forest
+[04:53:36] [P0] playing land forest
+[04:53:38] [P0] declare no attackers
+[04:53:40] [P1] playing land forest
+[04:53:41] [P1] casts Young Wolf (113)
+[04:53:41] [P1] casts Grizzly Bears (63)
+[04:53:46] [P0] playing land forest
+[04:53:46] exported pre_p0_attack.json
+[04:53:46] STAGE -> P0_ATTACK
+[04:53:46] P0 attack turn ready; pre_p0_attack.json exported
+[04:53:47] [P0] declares attackers: ['young wolf', 'grizzly bears'] -> seat 1
+[04:53:47] [P0] casts Moonmist (24)
+[04:53:47] [P0] Moonmist cast on turn 12 (combat prevention, stage P0_ATTACK); life at cast P0=20 P1=20
+[04:53:47] P0 attackers declared on turn 12: [{'object_id': 39, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}, {'object_id': 51, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}]
+[04:53:49] [P1] declare no blockers
+[04:53:51] exported post_p0_attack.json
+[04:53:51] post_p0_attack.json exported: P1 life=20
+[04:53:51] STAGE -> P0_DONE
+[04:53:53] [P1] playing land forest
+[04:53:54] [P1] declare no attackers
+[04:53:57] [P0] playing land forest
+[04:53:58] [P0] declare no attackers
+[04:54:01] [P1] playing land forest
+[04:54:02] [P1] declare no attackers
+[04:54:06] [P0] declare no attackers
+[04:54:09] [P1] playing land forest
+[04:54:10] exported pre_p1_attack.json
+[04:54:10] STAGE -> P1_ATTACK
+[04:54:10] P1 attack turn ready; pre_p1_attack.json exported
+[04:54:11] [P1] declares attackers: ['grizzly bears', 'young wolf'] -> seat 0
+[04:54:11] P1 attackers declared on turn 17: [{'object_id': 63, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}, {'object_id': 113, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}]
+[04:54:11] [P0] casts Moonmist (49)
+[04:54:11] [P0] Moonmist cast on turn 17 (combat prevention, stage P1_ATTACK); life at cast P0=20 P1=20
+[04:54:13] [P0] declare no blockers
+[04:54:15] exported post_p1_attack.json
+[04:54:15] post_p1_attack.json exported: P0 life=20
+[04:54:15] exported post.json
+[04:54:15] STAGE -> DONE
+[04:54:15] loop ended: stage=DONE elapsed=79s
+[04:54:15] A1_setup_ok: passed
+[04:54:15] A2_moonmist_resolves: passed
+[04:54:15] A3_p0_attack_damage: failed
+[04:54:15] A4_p1_attack_damage: failed
+[04:54:15] A5_cleanup: passed
+[04:54:15] verdict=reproduced
+[04:54:16] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_moonmist_resolves": "passed", "A3_p0_attack_damage": "failed", "A4_p1_attack_damage": "failed", "A5_cleanup": "passed"}
+[04:54:17] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6899/20261007-6899/summary.png
+[04:54:17] copied driver into evidence dir
+[04:54:17] server excerpts written (300 lines from /home/hatch/workspace/dev/phase-backfill/runs/20261007-6950/server.log)
+[04:54:17] manifest written (15 files)
