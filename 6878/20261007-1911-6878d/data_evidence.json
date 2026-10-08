@@ -1,0 +1,43 @@
+{
+ "name": "Duskwatch Recruiter",
+ "oracle_text": "{2}{G}: Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
+ "dig_count": 3,
+ "keep_count": 1,
+ "up_to": true,
+ "filter": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "controller": null,
+  "properties": []
+ },
+ "rest_destination": "Library",
+ "reveal": true,
+ "rest_order": "<field absent>",
+ "effect_blob": {
+  "type": "Dig",
+  "player": {
+   "type": "Controller"
+  },
+  "count": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "destination": "Hand",
+  "keep_count": 1,
+  "up_to": true,
+  "filter": {
+   "type": "Typed",
+   "type_filters": [
+    "Creature"
+   ],
+   "controller": null,
+   "properties": []
+  },
+  "rest_destination": "Library",
+  "reveal": true,
+  "enter_tapped": false,
+  "enters_attacking": false
+ }
+}
