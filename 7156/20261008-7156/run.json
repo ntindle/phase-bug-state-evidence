@@ -1,0 +1,563 @@
+{
+ "issue": 7156,
+ "title": "triumph of st. Katherine \u2014 Reflection of Kiki-Jiki targeting Triumph of St. Katherine hangs resolving the dies trigger",
+ "run_id": "20261008-7156",
+ "validated_at": "2026-10-08",
+ "validated_version": "v0.104.0",
+ "server": {
+  "server_version": "0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full (--single-user flag passed)",
+  "binary_sha256": "0068db2e747f22b69e6e6acb6aa587245f8f38782fb0ae9d364abc77135c35b2",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "observed_at": "2026-10-08",
+  "source": "isolated v0.104.0 single-user server on 127.0.0.1:9374 (runs/20261008-7156; ServerHello verified v0.104.0/4227122/protocol 118) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "scope": "Fable of the Mirror-Breaker saga -> transform into Reflection of Kiki-Jiki -> {1},{T} copy of Triumph of Saint Katherine -> end-step sacrifice -> dies-trigger pile resolution; native engine, two human-client seats",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup_ok": "passed",
+  "A3_token_created": "passed",
+  "A4_trigger_fired": "failed",
+  "A5_no_hang": "passed",
+  "A6_pile_correct": "failed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_notes": [
+  "A1: triumph chain + reflection copy/sacrifice + fable ch.III transform parse: passed (v0.104.0 card-data)",
+  "A2: reflection untapped=True triumph_on_bf=True untapped_lands>=1 turn>transform_turn: passed (pre_activation.json)",
+  "A3: target prompt answered with Triumph (oid=14, one of 2 candidates); token oid=126 on BF turn 11: passed",
+  "A4: dies trigger NOT observed on the stack and NO EffectZoneChoice was ever presented (wf types seen: MiracleReveal, OptionalEffectChoice, Priority, TargetSelection). HOWEVER post-state evidence proves the trigger's first effect executed: the exact 6 cards on top of the library at token creation (Plains, Mountain, Triumph, Triumph, Fable of Saint Katherine..., Plains) are stranded in exile in post_no_trigger.json, and the token object is gone entirely. The engine silently executed ExileTop-6 and never ran Shuffle/PutAtLibraryPosition: failed (not observed per contract; effect evidence below)",
+  "A5: no hang \u2014 the game advanced normally (turn 11 -> 29, stack empty, priority passing); the failure mode is a SILENTLY INCOMPLETE resolution, not a softlock: passed (with stranded pile)",
+  "A6: pile stranded: post exile = [Plains(22), Fable(30), Triumph(43), Mountain(48), Plains(56), Triumph(7)] \u2014 exactly the mid_token top-6 multiset; library 48 -> 33 (6 exiled + draws over turns 11-29); pile never shuffled back on top; token absent (ceased to exist): failed",
+  "A7: stack empty, game advanced to turn 29; no hang watchdog trip: passed",
+  "verdict rule: reproduced (done_reason=token died, dies trigger never fired per driver observation; evidence shows trigger fired silently and stranded the 6-card pile) zone_choice_seen=False",
+  "ADDENDUM 2026-10-08: v0.104.0 failure differs from v0.82.0 (spurious EffectZoneChoice + 5 cards stranded after answering). On v0.104.0 the dies trigger fires with NO choice prompt and NO stack observation; it exiles the token + top six, then stops \u2014 the pile is never shuffled back on top. Same bug family (Praesidium Protectiva pile resolution broken), new silent failure mode."
+ ],
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      5
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      68
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      37
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      37
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      69
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      18
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      18
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      76
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      76
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      9
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      87
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      58
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      58
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      58
+     ]
+    }
+   },
+   "stage": "SETUP"
+  },
+  {
+   "who": "P0",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   },
+   "stage": "ACTIVATE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      82
+     ]
+    }
+   },
+   "stage": "ACTIVATE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      71
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      91
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      91
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      94
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      94
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      72
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      73
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      73
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      95
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      95
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      92
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      92
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      92
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      89
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      89
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      97
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  },
+  {
+   "who": "P1",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": [
+      97
+     ]
+    }
+   },
+   "stage": "WAIT_SACRIFICE"
+  }
+ ],
+ "wf_types_seen": [
+  "MiracleReveal",
+  "OptionalEffectChoice",
+  "Priority",
+  "TargetSelection"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (60x Plains; plays land, never casts/attacks/blocks).",
+  "The reported Discord attachment (turn-17 game state zip) was not used: its signed URL expired; the fixture replays the reported sequence from a fresh game instead.",
+  "A4 stack observation: the driver's 20Hz polling never saw the TriggeredAbility; the trigger's firing is inferred from its ExileTop-6 effect (exact top-6 cards stranded in exile). The token's zone-None disappearance is consistent with a token ceasing to exist after the ChangeZone."
+ ]
+}
