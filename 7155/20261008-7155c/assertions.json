@@ -1,0 +1,62 @@
+{
+ "assertions": {
+  "A1_parse_cost": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_offered": "passed",
+  "A4_x_prompt": "failed",
+  "A5_cost_paid": "failed",
+  "A6_search_prompt": "not-run",
+  "A7_resolution": "not-run",
+  "A8_cleanup": "failed"
+ },
+ "notes": [
+  "activation_ok=False",
+  "A2: artisan_bf=True tapped=False elves_bf=2 untapped_lands=3 (bg=3, need>=3)",
+  "A3: ActivateAbility offered=True (attempts=1)",
+  "A4: X answered=True (X=2); prompt still pending at end=True; interaction Number{2} rejected=True; legacy ChooseX{2} rejected=True",
+  "A5: artisan_tapped=False elves_in_gy=0 untapped_delta=0 (need>=3)",
+  "A6: library search offered+answered (Bears picked)=False (search_prompted=False)",
+  "A7: bears_on_bf=False stack_empty=True",
+  "A8: stack_empty=True x_prompt_still_pending=True",
+  "protocol-106 driver: MulliganDecision via legacy Action; bottom/SelectCards + DiscardToHandSize via vi schema/select; casts use the engine's Auto payment (no driver-side taps for casts); ActivateAbility submitted holding priority; {X} answered from a pure numeric menu; {2}{B/G} driven via vi tapLandForMana choices only when offered (engine may auto-pay); sacrifice = Elves via vi object references; search = schema select picking Grizzly Bears; priority-gated passes; sleep(0) yield before leg evaluation; re-tick backstop; stack-watch falls through to the pass gate."
+ ],
+ "verdict": "reproduced",
+ "rejections": [
+  {
+   "who": "P17155",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "7155",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "7155",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ]
+}

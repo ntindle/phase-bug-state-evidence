@@ -1,0 +1,86 @@
+{
+ "issue": 7155,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7155",
+ "run_id": "20261008-7155c",
+ "started_at": "2026-10-08T18:28:05",
+ "finished_at": "2026-10-08T18:28:29",
+ "duration_s": 23.6,
+ "server_identity": {
+  "server_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true,
+  "signature_note": "v0.103.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY in prehashed (blake2b-512) mode at pin time; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-08: latest stable release v0.103.0 == pinned release dir; ServerHello 0.103.0/ec27a8d/protocol 106 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused the already-listening v0.103.0 single-user server on 127.0.0.1:9374 (pid 4471, started by run 20261008-7148 -- not replaced, per playbook)"
+ },
+ "server_run_dir": "runs/20261008-7155a (run dir); reused the already-listening v0.103.0 single-user server on 127.0.0.1:9374, pid 4471 (started by run 20261008-7148; isolated games.db runs/20261008-7148)",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "862c180f959b210f69a302901424bf380102f9982403c2677e5e8ddb870d85fe",
+ "decks": {
+  "P0": [
+   [
+    "Fiend Artisan",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_cost": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_offered": "passed",
+  "A4_x_prompt": "failed",
+  "A5_cost_paid": "failed",
+  "A6_search_prompt": "not-run",
+  "A7_resolution": "not-run",
+  "A8_cleanup": "failed"
+ },
+ "notes": [
+  "activation_ok=False",
+  "A2: artisan_bf=True tapped=False elves_bf=2 untapped_lands=3 (bg=3, need>=3)",
+  "A3: ActivateAbility offered=True (attempts=1)",
+  "A4: X answered=True (X=2); prompt still pending at end=True; interaction Number{2} rejected=True; legacy ChooseX{2} rejected=True",
+  "A5: artisan_tapped=False elves_in_gy=0 untapped_delta=0 (need>=3)",
+  "A6: library search offered+answered (Bears picked)=False (search_prompted=False)",
+  "A7: bears_on_bf=False stack_empty=True",
+  "A8: stack_empty=True x_prompt_still_pending=True",
+  "protocol-106 driver: MulliganDecision via legacy Action; bottom/SelectCards + DiscardToHandSize via vi schema/select; casts use the engine's Auto payment (no driver-side taps for casts); ActivateAbility submitted holding priority; {X} answered from a pure numeric menu; {2}{B/G} driven via vi tapLandForMana choices only when offered (engine may auto-pay); sacrifice = Elves via vi object references; search = schema select picking Grizzly Bears; priority-gated passes; sleep(0) yield before leg evaluation; re-tick backstop; stack-watch falls through to the pass gate."
+ ],
+ "verdict": "reproduced",
+ "result": "A1_parse_cost: passed; A2_setup_ok: passed; A3_activation_offered: passed; A4_x_prompt: failed; A5_cost_paid: failed; A6_search_prompt: not-run; A7_resolution: not-run; A8_cleanup: failed",
+ "scope": "Fiend Artisan {X}{B/G},{T},Sacrifice-another-creature activation path; native human seats (no AI); X=2, sacrifice a Llanowar Elves, search for Grizzly Bears",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "setup_line": "P0: 4x Fiend Artisan / 12x Llanowar Elves / 4x Grizzly Bears / 20x Swamp / 20x Forest; P1: 60x Forest (passive). P0 mulligans for Artisan, casts Elves + Artisan (engine Auto payment).",
+ "contract_line": "P0 activates the Artisan (X=2) on a main phase with an empty stack: answers the X prompt, pays {2}{B/G}, taps, sacrifices an Elves, answers the search with Grizzly Bears; the Bears must enter the battlefield and the ability must resolve. The report says the game does not let you pay for the ability."
+}

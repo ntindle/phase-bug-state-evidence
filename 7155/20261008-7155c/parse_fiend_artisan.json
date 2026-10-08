@@ -1,0 +1,123 @@
+{
+ "ok": true,
+ "detail": "shards=['X', 'BlackGreen'] tap=True sac_ok=True cmc_x_bound=True sub_bf=True unimplemented=False",
+ "ability": {
+  "kind": "Activated",
+  "effect": {
+   "type": "SearchLibrary",
+   "filter": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": [
+     {
+      "type": "Cmc",
+      "comparator": "LE",
+      "value": {
+       "type": "Ref",
+       "qty": {
+        "type": "Variable",
+        "name": "X"
+       }
+      }
+     }
+    ]
+   },
+   "count": {
+    "type": "Fixed",
+    "value": 1
+   },
+   "reveal": false
+  },
+  "cost": {
+   "type": "Composite",
+   "costs": [
+    {
+     "type": "Mana",
+     "cost": {
+      "type": "Cost",
+      "shards": [
+       "X",
+       "BlackGreen"
+      ],
+      "generic": 0
+     }
+    },
+    {
+     "type": "Tap"
+    },
+    {
+     "type": "Sacrifice",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "Another"
+       }
+      ]
+     },
+     "count": 1
+    }
+   ]
+  },
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "ChangeZone",
+    "origin": "Library",
+    "destination": "Battlefield",
+    "target": {
+     "type": "Any"
+    },
+    "owner_library": false,
+    "enter_transformed": false,
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Shuffle",
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "duration": null,
+  "description": "{X}{B/G}, {T}, Sacrifice another creature: Search your library for a creature card with mana value X or less, put it onto the battlefield, then shuffle. Activate only as a sorcery.",
+  "target_prompt": null,
+  "activation_restrictions": [
+   {
+    "type": "AsSorcery"
+   }
+  ],
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ }
+}
