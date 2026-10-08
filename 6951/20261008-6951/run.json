@@ -1,0 +1,230 @@
+{
+ "issue": 6951,
+ "run_id": "20261008-6951",
+ "date": "2026-10-08T05:23:36",
+ "game_code": "X8TMJM",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "93765214b644fc337729e1497e712583014e0b8051b50dd5c25f047e94053ce7",
+ "decks": {
+  "P0": [
+   [
+    "Elspeth Conquers Death",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Plains",
+    24
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats)",
+ "setup_line": "P0 4x Elspeth Conquers Death / 12x Grizzly Bears / 24x Plains / 20x Forest; P1 12x Lightning Bolt / 48x Mountain. P0 casts a Bear; P1 Bolts it. P0 casts ECD {3}{W}{W} (engine Auto payment) once 5+ lands are out and the Bear is in the yard. Chapter I fizzles (no MV>=3 permanent); chapter II is Unimplemented (no-op); P1 Bolts P0's face in the chapter-II window; chapter III returns the Bear and offers the +1/+1-or-loyalty choice.",
+ "contract_line": "Chapter II must still parse as Unimplemented (the reported deck-builder Effect:noncreature flag persists -> reproduced). Chapter III must still parse typed and work in-game: the Bear returns 3/3 with a +1/+1 counter. The in-window Bolt's tapped-mana count must be consistent with the parse (1 Mountain if Unimplemented, 3 if the tax is now typed).",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6951.py (v0.81.3 / protocol 70) for pinned v0.103.0; behavioral contract A1..A7 and the issue-specific game plan unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.103.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay).",
+  "Target prompts answered via the 106 target_opportunity helper (schema select/sequence with candidates, or exactChoices with candidate/target codes); the chapter-I prompt (no legal targets) is wired but never answered - it must fizzle on its own.",
+  "The chapter-III ChooseOneOf counter prompt has no 106 precedent; the driver wires the full opportunity and prefers the +1/+1-textured choice, falling back to optionIndex 0 (parse order: branches[0] = PutCounter P1P1).",
+  "Chapter-II detection is lore-counter-first with a turn-arithmetic fallback (ch2 on P0's turn cast+2); the in-window Bolt is gated to P1's turn cast+3.",
+  "Pre/mid/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_ch2_unimplemented": "passed",
+  "A2_ch3_typed": "passed",
+  "A3_reached_ch3": "passed",
+  "A4_tax_consistent": "passed",
+  "A5_returned": "passed",
+  "A6_counter": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_ch2_unimplemented": "chapter II effect = Unimplemented/unrecognized_clause_head (expected Unimplemented/*; the reported Effect:noncreature deck-builder flag persists)",
+  "A2_ch3_typed": "chapter III typed=True (expected no Unimplemented + ChooseOneOf/PutCounter choice)",
+  "A3_reached_ch3": "ecd=16 lore=2 turn=31 (cast turn 27) bear_in_yard=True ch3_seen=True ch3_targeted=False counter_answered=True",
+  "A4_tax_consistent": "P1 in-window Bolt (turn 30) tapped 1 Mountain(s); expected 1 (no tax: ch2 Unimplemented)",
+  "A5_returned": "P0 Bears on BF in post: 1",
+  "A6_counter": "bear oid=18 P/T=3/3 +1/+1=True counters={'P1P1': 1}; ",
+  "A7_cleanup": "stack_empty=True turn=33"
+ },
+ "driver_state": {
+  "bear_cast": true,
+  "bolt1_cast": true,
+  "bolt1_done": true,
+  "ecd_cast": true,
+  "ecd_cast_turn": 27,
+  "ecd_oid": "16",
+  "ch2_seen": true,
+  "ch2_at": 1791437131.9665349,
+  "mid_exported": true,
+  "bolt2_cast": true,
+  "bolt2_turn": 30,
+  "bolt2_done": true,
+  "bolt2_tapped": 1,
+  "ch3_seen": true,
+  "ch3_at": 1791437142.0646763,
+  "pre_exported": true,
+  "ch3_targeted": false,
+  "counter_answered": true,
+  "counter_choice": "optionIndex 0",
+  "post_at": 1791437145.1034274,
+  "post_exported": true,
+  "target_sels": [
+   {
+    "interactionId": "X8TMJM.0.42",
+    "turn": 3,
+    "phase": "PreCombatMain",
+    "stage": "bolt1",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "X8TMJM.0.42.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "X8TMJM.0.42.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "X8TMJM.0.42.t2",
+      "oid": "18",
+      "seat": null,
+      "name": "grizzly bears",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Grizzly Bears"
+     }
+    ]
+   },
+   {
+    "interactionId": "X8TMJM.0.451",
+    "turn": 30,
+    "phase": "Upkeep",
+    "stage": "bolt2",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "X8TMJM.0.451.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "X8TMJM.0.451.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     }
+    ]
+   },
+   {
+    "interactionId": "X8TMJM.0.475",
+    "turn": 31,
+    "phase": "PreCombatMain",
+    "stage": "unexpected-target",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "candidates": [
+     {
+      "choice_id": "X8TMJM.0.475.c0",
+      "oid": null,
+      "seat": null,
+      "name": "0",
+      "zone": null,
+      "controller": null,
+      "text": "0"
+     },
+     {
+      "choice_id": "X8TMJM.0.475.c1",
+      "oid": null,
+      "seat": null,
+      "name": "1",
+      "zone": null,
+      "controller": null,
+      "text": "1"
+     }
+    ]
+   }
+  ]
+ },
+ "data_level": {
+  "name": "Elspeth Conquers Death",
+  "oracle_text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI \u2014 Exile target permanent an opponent controls with mana value 3 or greater.\nII \u2014 Noncreature spells your opponents cast cost {2} more to cast until your next turn.\nIII \u2014 Return target creature or planeswalker card from your graveyard to the battlefield. Put a +1/+1 counter or a loyalty counter on it.",
+  "chapter2_effect": {
+   "type": "Unimplemented",
+   "name": "unrecognized_clause_head",
+   "description": "Noncreature spells your opponents cast cost {2} more to cast"
+  },
+  "chapter2_unimplemented": true,
+  "chapter3_has_unimplemented": false,
+  "chapter3_has_chooseoneof_putcounter": true,
+  "chapter3_typed": true,
+  "note": "On v0.81.3 ch2 was Unimplemented/noncreature and ch3 was fully typed; on v0.103.0 ch2 is Unimplemented/unrecognized_clause_head and ch3 remains typed."
+ },
+ "verdict": "reproduced",
+ "evidence_comment_id": 5652442626,
+ "limitations": [
+  "Browser UI / deckbuilder UI not exercised; the deck-builder 'unsupported' flag is evidenced via the card-data parse check (Unimplemented nodes drive the flag).",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced: chapter-II noncreature tax still Unimplemented on v0.103.0 (deck-builder Effect:noncreature flag persists)",
+  "verdict=reproduced"
+ ],
+ "duration_s": 137.0
+}
