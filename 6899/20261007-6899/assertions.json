@@ -1,0 +1,20 @@
+{
+ "issue": 6899,
+ "run_id": "20261007-6899",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_moonmist_resolves": "passed",
+  "A3_p0_attack_damage": "failed",
+  "A4_p1_attack_damage": "failed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "P0: Young Wolf(39,tapped=False) Grizzly Bears(51,tapped=False); P1: Young Wolf(113,tapped=False) Grizzly Bears(63,tapped=False); P1 life=20 (pre_p0_attack.json)",
+  "A2_moonmist_resolves_detail": "moonmist_in_p0_gy=True (post_p0_attack.json)",
+  "A3_p0_attack_damage_detail": "P1 life 20 -> 20 over P0's Moonmist-covered Wolf+Bear attack (delta 0, expected 1 = Wolf 1 through + Bear 2 prevented; 0 = over-prevention defect; 3 = no prevention) (pre delta from life_at_cast, post from post_p0_attack.json)",
+  "A4_p1_attack_damage_detail": "P0 life 20 -> 20 over P1's Moonmist-covered Wolf+Bear attack (delta 0, expected 1; 0 = over-prevention defect; 3 = no prevention) (pre delta from life_at_cast, post from post_p1_attack.json)",
+  "A5_cleanup_detail": "stage=DONE stall=False p0_declared_turn=12 p1_declared_turn=17 stages=['SETUP', 'P0_ATTACK', 'P0_DONE', 'P1_ATTACK', 'DONE']"
+ },
+ "notes": []
+}
