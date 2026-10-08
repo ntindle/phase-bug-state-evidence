@@ -1,0 +1,213 @@
+{
+ "run_id": "20261008-7079",
+ "issue": 7079,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-08",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "02b1a1f1651a0f26da98f8bc2b83af124dc0aa44c28b4092a4a5cc0faeb68f68",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Magnificent End",
+    12
+   ],
+   [
+    "Plains",
+    28
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "setup_line": "P0 12x Magnificent End / 28x Plains / 20x Forest; P1 12x Grizzly Bears / 48x Forest. P0 mulligans for End+2 lands, holds lands at exactly 2 (Plains preferred). P1 mulligans for Bear+2 lands, casts a Bear when payable (engine Auto payment), attacks P0 at the first opportunity (P0 blocks nothing). Window: P0 PreCombatMain priority with 2 untapped lands (>=1 Plains), End in hand, tapped Bear on P1 BF, P1 attacked at least once, stack empty.",
+ "contract_line": "Magnificent End's cost reduction ({3} less for a tapped-creature target) is not honored by the cast-availability preflight: with exactly {1}{W} available and a tapped Bear target, CastSpell is not advertised (expected); the printed-cost control (5 lands) IS advertised -> reproduced.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_7079.py (v0.82.0 / protocol 70) for pinned v0.103.0; the behavioral contract, assertions A1..A6 and the verdict rule are unchanged.",
+  "my_priority = PassPriority in legal_actions; casts are gated on it.",
+  "CastSpell carries payment_mode Auto: the engine taps mana itself; the driver never answers tapLandForMana and runs no driver-side mana payment (legacy PayMana actions are answered if they appear).",
+  "DeclareAttackers via legacy Action with attacks=[[int(oid), {type:Player, data:P0_PID}]], bands=[]; DeclareBlockers with assignments=[].",
+  "The End's TargetSelection is answered from P0's viewer_interaction with the tapped-Bear candidate (object oid match, tapped-P1-bear fallback, seat==1 fallback); the engine may also auto-target a sole legal target (recorded as the auto-target case).",
+  "The stack-watch branch always falls through to the pass-priority gate (never returns early); both seats must pass in succession for a stack entry to resolve.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_reduced_offer": "failed",
+  "A4_printed_offer": "passed",
+  "A5_reduced_cast": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "notes": [],
+  "target_selections": [],
+  "life_trace": [
+   [
+    3.3,
+    [
+     20,
+     20
+    ]
+   ],
+   [
+    30.9,
+    [
+     18,
+     20
+    ]
+   ],
+   [
+    43.1,
+    [
+     16,
+     20
+    ]
+   ],
+   [
+    55.0,
+    [
+     14,
+     20
+    ]
+   ]
+  ],
+  "offer_scans": [
+   {
+    "by": "P0",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "untapped_lands": [
+     "plains",
+     "plains",
+     "plains",
+     "plains",
+     "plains"
+    ],
+    "oids": [
+     "19",
+     "24",
+     "49",
+     "57",
+     "24",
+     "49",
+     "57",
+     "19"
+    ]
+   }
+  ]
+ },
+ "driver_state": {
+  "window_assessed": true,
+  "offered_reduced": false,
+  "offered_reduced_detail": {
+   "turn": 6,
+   "phase": "PreCombatMain",
+   "untapped_lands": [
+    "plains",
+    "plains"
+   ],
+   "bear_oid": 80,
+   "bear_tapped": true,
+   "my_priority": true,
+   "p1_attack_turn": 5,
+   "offered_oids": []
+  },
+  "offered_printed": true,
+  "offered_printed_detail": {
+   "turn": 10,
+   "phase": "PreCombatMain",
+   "untapped_lands": [
+    "plains",
+    "plains",
+    "plains",
+    "plains",
+    "plains"
+   ],
+   "offered_oids": [
+    "19",
+    "24",
+    "49",
+    "57"
+   ]
+  },
+  "end_cast": false,
+  "end_in_flight": false,
+  "end_oid": null,
+  "end_on_stack_seen": false,
+  "end_resolved": false,
+  "end_resolved_at": null,
+  "target_answered": false,
+  "target_auto": false,
+  "target_submitted_oid": null,
+  "bear_oid": 80,
+  "land_target": 5,
+  "pre_exported": true,
+  "post_exported": true,
+  "p1_bear_cast": true,
+  "p1_attacked": true,
+  "p1_attack_turn": 5
+ },
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "notes": [
+  "A1: ModifyCost Reduce {3} / Targets(Tapped Creature) / SelfRef supported=True",
+  "A2: phase=PreCombatMain end_in_hand=True untapped_lands=['plains', 'plains'] tapped_bears=[80] life=18/20 (expect <20/20 after one bear attack) priority@assess=True",
+  "A3: offered_reduced=False detail={'turn': 6, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains'], 'bear_oid': 80, 'bear_tapped': True, 'my_priority': True, 'p1_attack_turn': 5, 'offered_oids': []}",
+  "A4: offered_printed=True detail={'turn': 10, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains', 'plains', 'plains', 'plains'], 'offered_oids': ['19', '24', '49', '57']}",
+  "A5 not-run: spell never offered at reduced cost",
+  "A6: stack_empty=True",
+  "verdict=reproduced: with a tapped-creature target and exactly {1}{W} available, CastSpell for Magnificent End was NOT advertised; printed-cost control offered=True (A4 passed strengthens the preflight-defect read)",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "parse_magnificent_end.json",
+  "scenario_7079_01030.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Magnificent End / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The untapped-creature-target control (spell not offered at reduced total when only untapped targets are legal) was not exercised in this run; the printed-cost control (A4) covers the positive offer path.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Turn order is randomized by the engine; the driver keys on active_player, not order."
+ ],
+ "duration_s": 59.2
+}
