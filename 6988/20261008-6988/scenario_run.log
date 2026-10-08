@@ -1,0 +1,78 @@
+[11:32:43] server artifact hashes (checked against the v0.103.0 pin): bin=a991fec48a21e11d... card-data=40aa768ead511bcd... draft-pools=b4fcf6dde106bcdc...
+[11:32:43] server identity hashes verified against the v0.103.0 pin
+[11:32:46] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[11:32:46] saved parse_tenuous_truce.json (3 triggers)
+[11:32:46] A1 parse: 3 triggers; Unknown-mode=['When a planeswalker they control or when they attack you or ']; YouAttack=['When you attack enchanted opponent, sacrifice ~.'] -> passed
+[11:32:46] P0 creating game (default Bo1, 2 seats)...
+[11:32:47] P1 joining...
+[11:32:48] game DT3M6N; P0 seat=0 P1 seat=1
+[11:32:48] [P0] mulligan -> Keep
+[11:32:48] [P1] mulligan -> Keep
+[11:32:48] DIAG turn=1 active=0 phase=Untap P0life=20 P1life=20 stage=SETUP auras=[] stack=0 ctrl/back/pw=False/False/False P0hand=['forest', 'grizzly bears', 'forest', 'plains', 'plains', 'tenuous truce', 'forest'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[11:32:50] [P0] playing land forest
+[11:32:54] [P1] playing land island
+[11:32:59] [P0] playing land forest
+[11:32:59] [P0] casts Grizzly Bears
+[11:33:04] [P1] playing land island
+[11:33:08] [P0] playing land plains
+[11:33:08] [P0] casts Tenuous Truce (SETUP)
+[11:33:09] Tenuous Truce resolved on BF (oid=14, stage=SETUP); attached_to_p1=True detail={"type": "Player", "data": 1}
+[11:33:14] [P1] playing land forest
+[11:33:14] [P1] casts Jace Beleren
+[11:33:20] [P0] casts Grizzly Bears
+[11:33:21] [P0] playing land plains
+[11:33:25] [P0] hand-size discards 1: ['forest']
+[11:33:26] [P1] casts Grizzly Bears
+[11:33:27] [P1] playing land forest
+[11:33:32] [P0] playing land forest
+[11:33:36] [P0] hand-size discards 3: ['forest', 'forest', 'forest']
+[11:33:37] exported pre.json
+[11:33:37] SETUP complete at turn 10: aura=14 attached to P1, P1 Jace loyalty=3, ready bears P0=2 P1=1; stage -> CTRL_ATTACK
+[11:33:38] [P1] playing land island
+[11:33:42] [P1] hand-size discards 1: ['forest']
+[11:33:43] [P0] playing land plains
+[11:33:44] [P0] CTRL_ATTACK: attacks=[[4, {'type': 'Player', 'data': 1}]]
+[11:33:45] [ctrl] trigger on stack: kind=TriggeredAbility desc=When you attack enchanted opponent, sacrifice ~.
+[11:33:48] DIAG turn=11 active=0 phase=End P0life=20 P1life=18 stage=CTRL_ATTACK auras=['14'] stack=0 ctrl/back/pw=True/False/False P0hand=['grizzly bears', 'forest', 'tenuous truce', 'plains', 'forest', 'grizzly bears', 'grizzly bears', 'grizzly bears'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[11:33:49] [P0] hand-size discards 1: ['forest']
+[11:33:49] exported mid_ctrl.json
+[11:33:49] stage -> RECAST_B (P0 attacked P1 directly on turn 11)
+[11:33:50] [P1] casts Grizzly Bears
+[11:33:51] [P1] playing land island
+[11:33:56] [P0] casts Tenuous Truce (RECAST_B)
+[11:33:58] [P0] playing land plains
+[11:33:58] Tenuous Truce resolved on BF (oid=23, stage=RECAST_B); attached_to_p1=True detail={"type": "Player", "data": 1}
+[11:33:58] stage -> BACK_ATTACK (aura #2 on BF)
+[11:34:01] [P0] hand-size discards 1: ['forest']
+[11:34:03] [P1] playing land forest
+[11:34:04] [P1] BACK_ATTACK: attacks=[[72, {'type': 'Player', 'data': 0}]]
+[11:34:07] [back] trigger on stack: kind=TriggeredAbility desc=When you attack enchanted opponent, sacrifice ~.
+[11:34:09] exported mid_back.json
+[11:34:09] stage -> RECAST_C (P1 attacked P0 on turn 14)
+[11:34:10] [P0] playing land plains
+[11:34:15] [P0] hand-size discards 3: ['forest', 'plains', 'plains']
+[11:34:17] [P1] playing land island
+[11:34:21] [P1] hand-size discards 1: ['forest']
+[11:34:23] [P0] playing land plains
+[11:34:31] [P0] hand-size discards 3: ['plains', 'plains', 'grizzly bears']
+[11:34:33] [P1] playing land forest
+[11:34:39] [P1] hand-size discards 1: ['forest']
+[11:34:42] [P0] casts Tenuous Truce (RECAST_C)
+[11:34:43] [P0] playing land forest
+[11:34:43] Tenuous Truce resolved on BF (oid=47, stage=RECAST_C); attached_to_p1=True detail={"type": "Player", "data": 1}
+[11:34:43] stage -> PW_ATTACK (aura #3 on BF)
+[11:34:46] [P0] PW_ATTACK: attacks=[[4, {'type': 'Planeswalker', 'data': 64}]]
+[11:34:46] [pw] trigger on stack: kind=TriggeredAbility desc=When you attack enchanted opponent, sacrifice ~.
+[11:34:49] DIAG turn=19 active=0 phase=DeclareAttackers P0life=18 P1life=18 stage=PW_ATTACK auras=['14', '23', '47'] stack=0 ctrl/back/pw=True/True/True P0hand=['grizzly bears', 'grizzly bears', 'grizzly bears', 'grizzly bears', 'grizzly bears', 'grizzly bears', 'tenuous truce'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[11:34:54] exported post.json
+[11:34:54] stage -> DONE (P0 attacked P1's Jace on turn 19)
+[11:34:54] post exported; finishing
+[11:34:54] pre.json: loaded
+[11:34:54] mid_ctrl.json: loaded
+[11:34:54] mid_back.json: loaded
+[11:34:54] post.json: loaded
+[11:34:54] wrote assertions.json
+[11:34:54] copied scenario_6988_01030.py into EVDIR
+[11:34:54] wrote server.log excerpt (0 matching lines)
+[11:34:54] wrote summary.png
+[11:34:54] wrote manifest.sha256
