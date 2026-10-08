@@ -1,0 +1,89 @@
+{
+ "name": "Shield Broker",
+ "oracle_text": "When this creature enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)",
+ "triggers": [
+  {
+   "mode": "ChangesZone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "shield",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature",
+       {
+        "Non": {
+         "Subtype": "Commander"
+        }
+       }
+      ],
+      "controller": "Opponent",
+      "properties": []
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "GainControl",
+      "target": {
+       "type": "ParentTarget"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": {
+      "ForAsLongAs": {
+       "condition": {
+        "type": "RecipientHasCounters",
+        "counters": {
+         "type": "OfType",
+         "data": "shield"
+        },
+        "minimum": 1
+       }
+      }
+     },
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "origin": null,
+   "destination": "Battlefield",
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "When ~ enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
