@@ -1,0 +1,70 @@
+[09:21:22] server identity hashes verified against the v0.103.0 pin
+[09:21:22] BACKFILL_7142_MODE=accept
+[09:21:25] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[09:21:25] A1_parse: passed checks={'LifeGained': True, 'PutCounter': True, 'EventContextAmount': True, 'optional': True, 'OncePerTurn': True, 'Typed': True, 'Creature': True}
+[09:21:25] P0 creating game (default Bo1, 2 seats)...
+[09:21:25] P1 joining...
+[09:21:26] game 995TZE; P0 seat=0 P1 seat=1 RUN_ID=20261008-7142e
+[09:21:26] [P0] mulligan -> Mulligan (hand=['healing salve', 'healing salve', 'healing salve', 'healing salve', 'nykthos paragon', 'grizzly bears', 'plains'])
+[09:21:26] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[09:21:26] DIAG turn=1 active=0 phase=Untap pp=0 life=[20, 20] stage=setup paragon_bf=0 bears_bf=0 salve1=False/False offer1=False/False salve2=False/False offer2=False/False stack=0
+[09:21:26] [P0] mulligan -> Mulligan (hand=['healing salve', 'nykthos paragon', 'forest', 'healing salve', 'grizzly bears', 'grizzly bears', 'healing salve'])
+[09:21:26] [P0] mulligan -> Keep (hand=['forest', 'healing salve', 'nykthos paragon', 'nykthos paragon', 'plains', 'plains', 'nykthos paragon'])
+[09:21:27] [P0] bottoms 2
+[09:21:27] life = (20, 20)
+[09:21:28] [P0] plays land plains (target 99 untapped)
+[09:21:34] [P1] discards 1: ['forest']
+[09:21:35] [P0] plays land plains (target 99 untapped)
+[09:21:43] [P1] discards 1: ['forest']
+[09:21:44] [P0] plays land forest (target 99 untapped)
+[09:21:50] [P1] discards 1: ['forest']
+[09:21:51] [P0] casting grizzly bears oid=4 (engine Auto payment)
+[09:21:58] [P1] discards 1: ['forest']
+[09:22:06] [P1] discards 1: ['forest']
+[09:22:07] [P0] casting grizzly bears oid=1 (engine Auto payment)
+[09:22:14] [P1] discards 1: ['forest']
+[09:22:15] [P0] plays land plains (target 99 untapped)
+[09:22:22] [P1] discards 1: ['forest']
+[09:22:23] [P0] plays land plains (target 99 untapped)
+[09:22:26] DIAG turn=15 active=0 phase=End pp=1 life=[20, 20] stage=setup paragon_bf=0 bears_bf=2 salve1=False/False offer1=False/False salve2=False/False offer2=False/False stack=0
+[09:22:30] [P1] discards 1: ['forest']
+[09:22:39] [P1] discards 1: ['forest']
+[09:22:41] [P0] plays land forest (target 99 untapped)
+[09:22:41] [P0] casting nykthos paragon oid=15 (engine Auto payment)
+[09:22:49] [P1] discards 1: ['forest']
+[09:22:50] [P0] plays land plains (target 99 untapped)
+[09:22:57] [P1] discards 1: ['forest']
+[09:22:58] exported PRE
+[09:22:58] [P0] PRE exported: paragon=1 bears=2 salves=2 untapped_plains=5
+[09:23:03] [P0] casting healing salve #1 (oid=11)
+[09:23:03] [P0] salve mode (leg 1): picking lifegain branch (Target player gains 3 life.)
+[09:23:03] [P0] submitting interaction iid=995TZE.0.352 choice=995TZE.0.352.o0 (0)
+[09:23:04] [P0] salve target (leg 1): choosing self (seat 0)
+[09:23:04] [P0] submitting interaction iid=995TZE.0.353 choice=995TZE.0.353.t0 ()
+[09:23:04] life = (23, 20)
+[09:23:04] [P0] salve #1 resolved: P0 20->23
+[09:23:05] [P0] NYKTHOS offer (leg 1): n=2 accept=['false', 'true']
+[09:23:05] exported OFFER1
+[09:23:05] [P0] ACCEPTING the Paragon counters (leg 1, accept-only mode)
+[09:23:05] [P0] submitting interaction iid=995TZE.0.358 choice=995TZE.0.358.c1 (true)
+[09:23:05] [P0] NYKTHOS single-creature choice (bug mechanism): choose 1 of [('4', 'grizzly bears'), ('15', 'nykthos paragon'), ('1', 'grizzly bears')]
+[09:23:05] [P0] submitting interaction iid=995TZE.0.359 choice=995TZE.0.359.s0 (Grizzly Bears)
+[09:23:07] [P0] accept leg settled; exporting post
+[09:23:07] exported POST
+[09:23:07] loop ended: elapsed=102s
+[09:23:07] wrote run.json verdict=reproduced
+[09:23:07] A1_parse: passed
+[09:23:07] A2_setup: passed
+[09:23:07] A3_offer1: passed
+[09:23:07] A4_decline_preserves: not-run
+[09:23:07] A5_counters_all: failed
+[09:23:07] A6_cleanup: passed
+[09:23:07] copied scenario_7142_01030.py into EVDIR
+[09:23:07] server.log: wrote note instead (no runs/<run-id>/server.log)
+[09:23:07] wrote summary.png
+[09:23:07] manifest: MISSING offer2.json
+[09:23:07] manifest: MISSING offer2_opp.json
+[09:23:07] wrote manifest.sha256 (12 files)
+[09:23:07] scenario finished
+[09:23:07] manifest: MISSING offer2.json
+[09:23:07] manifest: MISSING offer2_opp.json
