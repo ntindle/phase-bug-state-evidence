@@ -1,0 +1,63 @@
+[10:01:46] server identity hashes verified against the v0.103.0 pin
+[10:01:50] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[10:01:50] data-level: parse_gap_persists=True target={'type': 'Typed', 'type_filters': ['Creature'], 'controller': None, 'properties': [{'type': 'Another'}]}
+[10:01:50] P0 creating game (3 seats)...
+[10:01:50] P1 joining...
+[10:01:50] P2 joining...
+[10:01:51] game YT7UOJ; P0 seat=0 P1 seat=1 P2 seat=2
+[10:01:51] [P0] mulligan -> Keep (hand=['forest', 'mountain', 'forest', 'fear, fire, foes!', 'elvish mystic', 'mountain', 'mountain'])
+[10:01:51] [P1] mulligan -> Keep (hand=['elvish mystic', 'elvish mystic', 'forest', 'elvish mystic', 'forest', 'forest', 'forest'])
+[10:01:51] [P2] mulligan -> Keep (hand=['forest', 'elvish mystic', 'elvish mystic', 'forest', 'forest', 'forest', 'forest'])
+[10:01:51] DIAG turn=1 active=0 phase=Untap P0untapped=0 P1untapped=0 P2untapped=0 P1m=[] P0m=[] P2m=[] fear=False/False x=False tgt=None pre=False post=False
+[10:01:51] [P1] mulligan -> Keep (hand=['elvish mystic', 'elvish mystic', 'forest', 'elvish mystic', 'forest', 'forest', 'forest'])
+[10:01:51] [P2] mulligan -> Keep (hand=['forest', 'elvish mystic', 'elvish mystic', 'forest', 'forest', 'forest', 'forest'])
+[10:01:52] [P17021r] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[10:01:52] [P27021r] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[10:01:54] [P0] playing land mountain
+[10:02:00] [P1] playing land forest
+[10:02:06] [P2] playing land forest
+[10:02:12] [P0] playing land forest
+[10:02:13] [P0] casting Elvish Mystic (engine Auto payment)
+[10:02:20] [P1] playing land forest
+[10:02:20] [P1] casting Elvish Mystic (engine Auto payment)
+[10:02:29] [P2] playing land forest
+[10:02:30] [P2] casting Elvish Mystic (engine Auto payment)
+[10:02:40] [P0] playing land forest
+[10:02:40] [P0] casting Elvish Mystic (engine Auto payment)
+[10:02:42] [P0] declare no attackers
+[10:02:47] [P1] playing land forest
+[10:02:47] [P1] casting Elvish Mystic (engine Auto payment)
+[10:02:48] [P1] casting Elvish Mystic (engine Auto payment)
+[10:02:51] DIAG turn=8 active=1 phase=BeginCombat P0untapped=2 P1untapped=1 P2untapped=1 P1m=['67', '115', '117'] P0m=['4', '17'] P2m=['122'] fear=False/False x=False tgt=None pre=False post=False
+[10:02:52] [P1] declare no attackers
+[10:02:56] [P2] playing land forest
+[10:02:56] [P2] casting Elvish Mystic (engine Auto payment)
+[10:02:57] [P2] casting Elvish Mystic (engine Auto payment)
+[10:03:00] [P2] declare no attackers
+[10:03:04] exported pre.json
+[10:03:04] PRE exported: fixture complete, P0 priority
+[10:03:04] [P0] casting Fear, Fire, Foes! (engine Auto payment)
+[10:03:05] target selection #1 (stage fear-target): elvish mystic(Battlefield,p0,seat=None), elvish mystic(Battlefield,p1,seat=None), elvish mystic(Battlefield,p2,seat=None), elvish mystic(Battlefield,p0,seat=None), elvish mystic(Battlefield,p1,seat=None), elvish mystic(Battlefield,p1,seat=None), elvish mystic(Battlefield,p2,seat=None), elvish mystic(Battlefield,p2,seat=None)
+[10:03:05] [P0] answering fear-target target: elvish mystic (oid 67) via sequence
+[10:03:05] [P0] submitting interaction iid=YT7UOJ.0.245 choice=YT7UOJ.0.245.t1 (Elvish Mystic)
+[10:03:05] [P0] Fear X-choice -> X=2 (schema number)
+[10:03:06] Fear resolved (in P0 graveyard), turn 10
+[10:03:06] [P0] playing land mountain
+[10:03:13] [P1] playing land forest
+[10:03:15] exported post.json
+[10:03:15] POST exported: sequence complete; stopping
+[10:03:15] loop ended: stage=SETUP elapsed=85s
+[10:03:15] A1_parse_gap: passed
+[10:03:15] A2_setup_ok: passed
+[10:03:15] A3_target_hit: passed
+[10:03:15] A4_same_controller_hit: passed
+[10:03:15] A5_caster_spared: failed
+[10:03:15] A6_third_party_spared: failed
+[10:03:15] A7_cleanup: passed
+[10:03:15] detail A1_parse_gap: DamageAll target = Typed {Creature, controller:None, properties:['Another']} - no same-controller filter (parse drops the clause)
+[10:03:15] detail A2_setup_ok: P1m=['115', '117', '67'] P0m=['17', '4'] P2m=['122', '141', '167'] fear_in_P0_hand=True
+[10:03:15] detail A3_target_hit: target_oid=67 P1m_post=[] -> passed (expected: target dies)
+[10:03:15] detail A4_same_controller_hit: P1 other mystics post=[] -> passed (expected 0 survivors: target takes X=2, other takes the 1)
+[10:03:15] detail A5_caster_spared: P0 mystics post=[] -> FAILED (expected >=1: caster's creature takes 0)
+[10:03:15] detail A6_third_party_spared: P2 mystics post=[] -> FAILED (expected >=1: third party takes 0)
+[10:03:15] detail A7_cleanup: stack_empty=True fear_in_P0_gy=True
