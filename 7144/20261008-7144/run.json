@@ -1,0 +1,210 @@
+{
+ "run_id": "20261008-7144",
+ "issue": 7144,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-08",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "856d8e681f08a56472c7d74191aa94c873612109e5906a5f42647fc07eb73697",
+ "format_config": "default Bo1 (3 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Port Razer",
+    24
+   ],
+   [
+    "Mountain",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "setup_line": "P0 24x Port Razer / 36x Mountain; P1/P2 60x Plains. P0 plays a Mountain each turn, casts Port Razer at 5 untapped Mountains (engine Auto payment). P1/P2 pass always, never attack, never block. Driver observes P0's combats with the Razer on the battlefield; if the engine offers DeclareAttackers it honestly declares razer->P1 (extra combat: razer->P2).",
+ "contract_line": "Port Razer should be able to attack a player it has not attacked this turn and grant an additional combat after dealing combat damage. Report: it simply can't attack. Expected: A1-A3 pass, A4/A5 pass in the bug direction (no prompt, no attack), A6 confirms the parse mechanism.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_7144.py (v0.82.0 / protocol 70); the behavioral contract is unchanged (A1-A8 replace the old A1-A6 with finer observation).",
+  "my_priority = PassPriority in legal_actions; the Razer cast is gated on it.",
+  "CastSpell carries payment_mode Auto on 106: the engine taps mana itself; the driver never answers tapLandForMana and runs no driver-side mana payment (legacy PayMana actions are answered if they appear).",
+  "DeclareAttackers is a legacy Action: {\"attacks\": [[oid, {\"type\": \"Player\", \"data\": pid}]], \"bands\": []}. Acceptance is verified via the combat attackers list (attack_recorded) on later ticks; rejections are captured from the client inbox.",
+  "The stack-watch branch always falls through to the pass-priority gate (never returns early); all seats must pass in succession for a stack entry to resolve.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Turn order is randomized by the engine; the driver keys on active_player/phase, never on order."
+ ],
+ "assertions": {
+  "A1_razer_on_battlefield": "passed",
+  "A2_able_bodied": "passed",
+  "A3_combats_observed": "passed",
+  "A4_no_declare_prompt": "passed",
+  "A5_never_attacked": "passed",
+  "A6_condition_dropped": "passed",
+  "A7_extra_combat": "not-run",
+  "A8_new_player_attack": "not-run"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "tick_errors": [],
+  "notes": [
+   "rejection: P17144r ActionRejected",
+   "rejection: P27144r ActionRejected"
+  ],
+  "life_trace": []
+ },
+ "driver_state": {
+  "stage": "observe",
+  "razer_cast": true,
+  "razer_oid": 22,
+  "pre_exported": true,
+  "post_exported": true,
+  "post_combat1_exported": false,
+  "combats": [
+   {
+    "n": 1,
+    "turn": 14,
+    "sick": true,
+    "prompt_offered": false
+   },
+   {
+    "n": 2,
+    "turn": 17,
+    "sick": false,
+    "prompt_offered": false
+   },
+   {
+    "n": 3,
+    "turn": 20,
+    "sick": false,
+    "prompt_offered": false
+   }
+  ],
+  "last_p0_phase": [
+   20,
+   "PostCombatMain"
+  ],
+  "prompt_offered": false,
+  "declare_pending": null,
+  "declare_results": [],
+  "attack_recorded": false,
+  "combat1_turn": null,
+  "combat1_damage": false,
+  "extra_combat_seen": false,
+  "extra_combat_turn": null,
+  "extra_declare_done": false,
+  "life": {
+   "1": 20,
+   "2": 20
+  },
+  "rejections": [
+   {
+    "who": "P17144r",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "wrong_player",
+      "disposition": "unauthorized",
+      "message": "That action belongs to a different player.",
+      "related_object_ids": []
+     }
+    }
+   },
+   {
+    "who": "P27144r",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "action_not_allowed",
+      "disposition": "unavailable",
+      "message": "That action is not allowed right now.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ],
+  "game_code": "FNXBWO",
+  "game_over": false,
+  "pids": {
+   "P0": 0,
+   "P1": 1,
+   "P2": 2
+  }
+ },
+ "rejections": [
+  {
+   "who": "P17144r",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "wrong_player",
+     "disposition": "unauthorized",
+     "message": "That action belongs to a different player.",
+     "related_object_ids": []
+    }
+   }
+  },
+  {
+   "who": "P27144r",
+   "type": "ActionRejected",
+   "data": {
+    "rejection": {
+     "code": "action_not_allowed",
+     "disposition": "unavailable",
+     "message": "That action is not allowed right now.",
+     "related_object_ids": []
+    }
+   }
+  }
+ ],
+ "notes": [
+  "A1: razer on P0 BF in POST: True",
+  "A2: able-bodied=True (tapped=False summoning_sick=False)",
+  "A3: p0 combats with razer on board=3 (non-sick=2); turns=[14, 17, 20]",
+  "A4: declare prompt offered in able-bodied combats: 0 (expect 0; engine auto-skips with zero valid attackers)",
+  "A5: razer attack recorded=False lives={1: 20, 2: 20} declare_results=[]",
+  "A6: pinned card-data CantAttack condition=None (expect None: the 'a player it has already attacked this turn' qualifier was dropped at parse time)",
+  "A7/A8 not-run: combat-1 razer->P1 never accepted",
+  "verdict=reproduced: Port Razer never attacked any player across 3 observed P0 combats; engine offered no DeclareAttackers prompt in able-bodied combats (parsed CantAttack condition is null)",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post.json",
+  "run.json",
+  "parse_port_razer.json",
+  "scenario_7144_01030.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "Dense test decks are a harness convenience (engine accepts >4-of for custom games).",
+  "P1/P2 never attack or block; life changes can only come from a Razer attack.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "duration_s": 130.4
+}
