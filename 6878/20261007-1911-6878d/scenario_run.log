@@ -1,0 +1,48 @@
+[19:24:27] server identity hashes verified against on-disk pinned artifacts
+[19:24:30] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[19:24:30] data-level: Dig count=3 keep=1 up_to=True rest_dest=Library rest_order=<field absent>
+[19:24:31] P0 creating game...
+[19:24:31] P1 joining...
+[19:24:31] game S8LD49; P0 seat=0 P1 seat=1
+[19:24:31] [P0] mulligan -> Keep (hand=['forest', 'grizzly bears', 'forest', 'duskwatch recruiter', 'forest', 'forest', 'duskwatch recruiter'])
+[19:24:31] [P1] mulligan -> Keep (hand=['llanowar elves', 'forest', 'forest', 'llanowar elves', 'forest', 'forest', 'forest'])
+[19:24:32] [P1] playing land forest
+[19:24:36] [P0] playing land forest
+[19:24:40] [P1] playing land forest
+[19:24:44] [P0] playing land forest
+[19:24:48] [P1] playing land forest
+[19:24:52] [P0] playing land forest
+[19:24:52] [P0] casts Duskwatch Recruiter (13)
+[19:24:53] === stage -> R1ARM (turn 6) ===
+[19:24:57] [P1] casts Llanowar Elves (turn 7)
+[19:24:59] [P1] playing land forest
+[19:25:03] exported pre_r1.json
+[19:25:03] [P0] r1 top3: [('18', 'forest'), ('2', 'duskwatch recruiter'), ('22', 'duskwatch recruiter')]
+[19:25:03] [P0] activates Duskwatch Recruiter (r1; legacy)
+[19:25:03] [P0] r1 Dig prompt kind=choose rtype=exactChoices spec= nrefs=0
+[19:25:03]     cand id=S8LD49.0.114.c0 ref=None name=? zone=None text=
+[19:25:03] [P0] r1 Dig prompt kind=select rtype=schema spec=select nrefs=2
+[19:25:03]     cand id=S8LD49.0.116.s0 ref=2 name=duskwatch recruiter zone=Library text=Duskwatch Recruiter
+[19:25:03]     cand id=S8LD49.0.116.s1 ref=22 name=duskwatch recruiter zone=Library text=Duskwatch Recruiter
+[19:25:04] [P0] r1 Dig keep answered cids=['S8LD49.0.116.s0'] kept=['2'] rest=['18', '22']
+[19:25:04] [P1 view during Dig r1] {'18': {'name': 'Forest', 'zone': 'Library', 'face_down': False, 'revealed': None}, '2': {'name': 'Duskwatch Recruiter', 'zone': 'Library', 'face_down': False, 'revealed': None}, '22': {'name': 'Duskwatch Recruiter', 'zone': 'Library', 'face_down': False, 'revealed': None}}
+[19:25:04] exported post_r1.json
+[19:25:04] === r1 resolved; post exported; rest_positions={'18': 27, '22': 28} kept_in_hand=['2'] ===
+[19:25:04] === stage -> R2ARM ===
+[19:25:05] [P0] playing land forest
+[19:25:06] [P0] declare no attackers
+[19:25:09] Recruiter transformed to Krallenhorde Howler before activation -- scenario spoiled
+[19:25:09] exported spoiled_transform.json
+[19:25:09] loop ended: stage=R2ARM elapsed=39s
+[19:25:09] A1_setup_ok: passed
+[19:25:09] A2_keep_offered: passed
+[19:25:09] A3_order_offered_r1: failed
+[19:25:09] A4_rest_preserved_r1: passed
+[19:25:09] A5_no_opponent_leak: failed
+[19:25:09] A6_decline_branch_r2: not-run
+[19:25:09] A7_cleanup: passed
+[19:25:09] verdict=reproduced
+[19:25:10] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_keep_offered": "passed", "A3_order_offered_r1": "failed", "A4_rest_preserved_r1": "passed", "A5_no_opponent_leak": "failed", "A6_decline_branch_r2": "not-run", "A7_cleanup": "passed"}
+[19:25:10] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6878/20261007-1911-6878d/summary.png
+[19:25:10] copied driver into evidence dir
+[19:25:10] manifest written (12 files)
