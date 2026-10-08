@@ -1,0 +1,48 @@
+[11:16:06] server identity hashes verified against the v0.103.0 pin
+[11:16:12] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[11:16:12] saved parse_emrakul.json
+[11:16:12] A1 parse: keywords=['Flying', {'Protection': {'CardType': 'spells'}}, {'Protection': {'CardType': 'permanents that were cast this turn'}}]; Unimplemented abilities=[('Spell', 'unknown')] -> failed
+[11:16:13] P0 creating game (default Bo1, 2 seats)...
+[11:16:13] P1 joining...
+[11:16:14] game 9RKWCO; P0 seat=0 P1 seat=1
+[11:16:14] [P0] mulligan -> Keep (hand=['faithless looting', 'faithless looting', 'mountain', 'mountain', 'fiery temper', 'faithless looting', 'wastes'])
+[11:16:14] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[11:16:14] DIAG turn=1 active=0 phase=Untap P0life=20 P1life=20 stage=SETUP watch=None/False/False offer=False stack_seen=False primary_zone=None P0hand=['faithless looting', 'faithless looting', 'mountain', 'mountain', 'fiery temper', 'faithless looting', 'wastes']
+[11:16:14] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[11:16:15] [P16987r] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[11:16:16] [P0] playing land mountain
+[11:16:22] [P1] playing land mountain
+[11:16:27] [P0] playing land mountain
+[11:16:33] [P1] playing land mountain
+[11:16:37] [P0] playing land wastes
+[11:16:38] exported pre.json
+[11:16:38] pre.json exported (P1 life=20)
+[11:16:43] P0 casts Faithless Looting (control)
+[11:16:44] [P0] control Looting discards ['fiery temper', 'mountain'] oids=['40', '49']; arming madness watch
+[11:16:45] [P0] WATCH control: Fiery Temper oid=40 entered EXILE
+[11:16:46] [P0] control madness CAST OFFER for Fiery Temper (payment=auto); answering AUTO
+[11:16:46] [P0] submitting interaction iid=9RKWCO.0.73 choice=9RKWCO.0.73.c0 (Fiery Temper)
+[11:16:46] [P0] control madness target: P1 ()
+[11:16:46] [P0] submitting interaction iid=9RKWCO.0.74 choice=9RKWCO.0.74.t1 ()
+[11:16:47] [P0] WATCH control: Fiery Temper oid=40 in GRAVEYARD (no madness replacement)
+[11:16:47] [P0] WATCH control: Temper Exile->Graveyard after accepted cast (resolved between polls); P1 life now 17
+[11:16:47] [control] WATCH closed: cast resolved (zone signature) (exiled=['40'] offer=True resolved=True)
+[11:16:47] === stage -> PRIMARY_SETUP ===
+[11:16:57] [P1] playing land mountain
+[11:17:02] exported mid.json
+[11:17:02] mid.json exported (between control and primary proofs)
+[11:17:07] P0 casts Faithless Looting (primary: discarding Emrakul)
+[11:17:09] [P0] primary Looting discards ['emrakul, the world anew', 'wastes'] oids=['59', '41']; arming madness watch
+[11:17:09] [P0] WATCH primary: Emrakul, the World Anew oid=59 in GRAVEYARD (no madness replacement)
+[11:17:14] [P1] playing land mountain
+[11:17:14] DIAG turn=8 active=1 phase=PreCombatMain P0life=20 P1life=17 stage=PRIMARY watch=primary/True/False offer=False stack_seen=False primary_zone=Graveyard P0hand=['faithless looting', 'faithless looting', 'fiery temper', 'emrakul, the world anew', 'emrakul, the world anew', 'emrakul, the world anew']
+[11:17:19] [primary] WATCH closed: no offer by later P0 main phase (exiled=[] offer=False resolved=False)
+[11:17:19] exported post.json
+[11:17:19] post exported; finishing
+[11:17:19] pre.json: loaded
+[11:17:19] mid.json: loaded
+[11:17:19] post.json: loaded
+[11:17:19] wrote assertions.json
+[11:17:19] copied scenario_6987_01030.py into EVDIR
+[11:17:19] wrote server.log excerpt (280 matching lines)
+[finalize] run.json gained top-level verdict=reproduced; summary.png and manifest.sha256 written by finalize script (scenario died with KeyError: 'verdict' in render_summary; driver fixed).
