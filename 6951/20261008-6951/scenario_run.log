@@ -1,0 +1,81 @@
+[05:23:34] server identity hashes verified against the v0.103.0 pin
+[05:23:36] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[05:23:36] data-level: ch2_unimplemented=True ch3_typed=True
+[05:23:37] P0 creating game (default Bo1, 2 seats)...
+[05:23:37] P1 joining...
+[05:23:37] game X8TMJM; P0 seat=0 P1 seat=1
+[05:23:38] [P0] mulligan -> Keep (hand=['forest', 'forest', 'plains', 'plains', 'grizzly bears', 'forest', 'forest'])
+[05:23:38] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'lightning bolt'])
+[05:23:38] DIAG turn=1 active=0 phase=Untap pp=0 P0untapped=0 P1untapped=0 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=[] stack=0 bear_cast=False bolt1=False/False ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[05:23:38] [P0] playing land forest
+[05:23:42] [P1] playing land mountain
+[05:23:46] [P0] playing land forest
+[05:23:46] [P0] casting Grizzly Bears (engine Auto payment)
+[05:23:47] [P1] casting Lightning Bolt #1 at the Bear (engine Auto payment)
+[05:23:47] target selection #1 (stage bolt1): ?(?,pNone,seat=0), ?(?,pNone,seat=1), grizzly bears(Battlefield,p0,seat=None)
+[05:23:47] [P1] answering bolt1 target: grizzly bears (oid 18) via sequence
+[05:23:47] [P1] submitting interaction iid=X8TMJM.0.42 choice=X8TMJM.0.42.t2 (Grizzly Bears)
+[05:23:52] [P1] playing land mountain
+[05:23:56] [P0] playing land plains
+[05:24:00] [P1] playing land mountain
+[05:24:04] [P0] playing land plains
+[05:24:08] [P1] playing land mountain
+[05:24:12] [P0] playing land forest
+[05:24:16] [P1] playing land mountain
+[05:24:20] [P0] playing land forest
+[05:24:23] [P1] playing land mountain
+[05:24:27] [P0] playing land forest
+[05:24:32] [P1] playing land mountain
+[05:24:36] [P0] playing land forest
+[05:24:38] DIAG turn=15 active=0 phase=PostCombatMain pp=1 P0untapped=8 P1untapped=7 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=['18'] stack=0 bear_cast=True bolt1=True/True ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[05:24:39] [P1] playing land mountain
+[05:24:43] [P0] playing land forest
+[05:24:47] [P1] playing land mountain
+[05:24:51] [P0] playing land plains
+[05:24:57] [P1] playing land mountain
+[05:25:00] [P0] playing land forest
+[05:25:04] [P1] playing land mountain
+[05:25:08] [P0] playing land plains
+[05:25:12] [P1] playing land mountain
+[05:25:16] [P0] playing land forest
+[05:25:20] [P1] playing land mountain
+[05:25:23] [P0] casting Elspeth Conquers Death on turn 27 (engine Auto payment)
+[05:25:24] ECD on BF: oid=16
+[05:25:24] [P0] playing land forest
+[05:25:28] [P1] playing land mountain
+[05:25:31] chapter II reached (turn-arithmetic fallback)
+[05:25:33] [P0] playing land forest
+[05:25:36] [P1] casting Lightning Bolt #2 at P0 face IN the chapter-II window (turn 30)
+[05:25:36] target selection #2 (stage bolt2): ?(?,pNone,seat=0), ?(?,pNone,seat=1)
+[05:25:36] [P1] answering bolt2 target:  (oid None) via sequence
+[05:25:36] [P1] submitting interaction iid=X8TMJM.0.451 choice=X8TMJM.0.451.t0 ()
+[05:25:37] bolt2 resolved on turn 30: P1 tapped Mountains = 1
+[05:25:38] exported mid.json
+[05:25:38] MID exported: after chapter II
+[05:25:38] DIAG turn=30 active=1 phase=Draw pp=0 P0untapped=15 P1untapped=13 P0life=17 P1life=20 ecd=16 lore=2 bear_bf=[] bear_yard=['18'] stack=0 bear_cast=True bolt1=True/True ecd_cast=True@27 ch2=True bolt2=True/True/1 ch3=False/False/False pre=False mid=True post=False
+[05:25:38] [P1] playing land mountain
+[05:25:42] chapter III reached (turn-arithmetic fallback)
+[05:25:42] exported pre.json
+[05:25:42] PRE exported: chapter III reached, Bear in P0 yard
+[05:25:43] target selection #3 (stage unexpected-target): 0(?,pNone,seat=None), 1(?,pNone,seat=None)
+[05:25:43] [P0] target prompt is not the ch3 yard-Bear prompt; leaving unanswered
+[05:25:43] [P0] counter choice: picked 'optionIndex 0'
+[05:25:43] [P0] submitting interaction iid=X8TMJM.0.475 choice=X8TMJM.0.475.c0 (0)
+[05:25:45] [P0] playing land plains
+[05:25:48] [P1] playing land mountain
+[05:25:52] [P0] playing land plains
+[05:25:53] exported post.json
+[05:25:53] POST exported: Bear returned with counter; stopping
+[05:25:53] loop ended: stage=DONE elapsed=137s
+[05:25:53] A1_ch2_unimplemented: passed
+[05:25:53] A2_ch3_typed: passed
+[05:25:53] A3_reached_ch3: passed
+[05:25:53] A4_tax_consistent: passed
+[05:25:53] A5_returned: passed
+[05:25:53] A6_counter: passed
+[05:25:53] A7_cleanup: passed
+[05:25:53] verdict=reproduced
+[05:25:53] wrote run.json verdict=reproduced
+[05:25:53] copied scenario_6951_01030.py into EVDIR
+[05:25:53] server.log copy failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/20261008-6951/server.log' (shared pinned server; run log kept in scenario_run.log)
+[05:25:53] wrote summary.png
