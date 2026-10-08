@@ -1,0 +1,113 @@
+{
+ "record": {
+  "interactionId": "9IM7N6.0.440",
+  "turn": 26,
+  "phase": "CombatDamage",
+  "stage": "combat2",
+  "role": "removal-decline",
+  "rtype": "exactChoices",
+  "choices": [
+   {
+    "id": "9IM7N6.0.440.c0",
+    "text": "false",
+    "accept": "false",
+    "codes": [
+     "candidate",
+     "decideOptionalEffect"
+    ]
+   },
+   {
+    "id": "9IM7N6.0.440.c1",
+    "text": "true",
+    "accept": "true",
+    "codes": [
+     "candidate",
+     "decideOptionalEffect"
+    ]
+   }
+  ]
+ },
+ "opportunity": {
+  "interactionId": "9IM7N6.0.440",
+  "response": {
+   "type": "exactChoices",
+   "data": {
+    "choices": [
+     {
+      "id": "9IM7N6.0.440.c0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "action",
+        "data": {
+         "code": "decideOptionalEffect",
+         "actionId": "a21597a222451f334797f81dca5f18326bda34e8410993aa92644113a12ae7ea4"
+        }
+       },
+       {
+        "type": "value",
+        "data": {
+         "role": "accept",
+         "index": null,
+         "value": "false"
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "9IM7N6.0.440.c1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "action",
+        "data": {
+         "code": "decideOptionalEffect",
+         "actionId": "afe7ffdd7a65ab9fb0fe13fbfa5dadb0892a0da13e1b40a0ed0cbadc8c58d9b12"
+        }
+       },
+       {
+        "type": "value",
+        "data": {
+         "role": "accept",
+         "index": null,
+         "value": "true"
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 0,
+   "maximum": null,
+   "aggregate": null,
+   "confirmable": false
+  }
+ }
+}
