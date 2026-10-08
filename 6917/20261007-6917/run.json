@@ -1,0 +1,116 @@
+{
+ "issue": 6917,
+ "run_id": "20261007-6917",
+ "date": "2026-10-08T02:24:30",
+ "game_code": "EFLZWS",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "fd6a3f8ff7b96b36ad2fe2c503a44633d72fbfc16da58bd40ec28111d710e72e",
+ "decks": {
+  "P0": [
+   [
+    "Oko, Thief of Crowns",
+    4
+   ],
+   [
+    "Forest",
+    28
+   ],
+   [
+    "Island",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats)",
+ "setup_line": "P0 4x Oko, Thief of Crowns / 28x Forest / 28x Island; P1 12x Grizzly Bears / 48x Forest. P0 casts Oko, P1 casts 2+ bears, P0 activates Oko's +1 on a later main phase targeting one bear.",
+ "contract_line": "Oko's +1 has no duration: the target should stay a green 3/3 Elk with no abilities indefinitely. reproduced iff it reverts to a 2/2 Bear on P0's next turn.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6917.py (v0.81.3 / protocol 70) for pinned v0.103.0; behavioral contract A1..A5 and the verdict rule unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.103.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay). Oko's +1 costs +1 loyalty: no mana payment involved.",
+  "ActivateAbility is submitted while holding priority, before the priority-pass gate (legacy Action preferred; vi choose/select fallback); the stack-watch branch falls through to the pass gate (never hold priority while watching the stack).",
+  "Target candidate references arrive as strings on 106; the ACTUALLY submitted reference is recorded verbatim at answer time in ST.target_oid and the wire log.",
+  "Data-level: v0.103.0 card-data parses Oko's +1 with no duration ('until end of turn' absent); the defect is at resolution/effect-duration time.",
+  "Pre/post/mid states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation": "passed",
+  "A3_elk_this_turn": "passed",
+  "A4_elk_persists": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "oko_oid=51 loyalty=4 zone=Battlefield p1_bears=2 (expect loyalty 4 on BF, >=2 bears)",
+  "A2_activation": "oko loyalty in MID=5 (expect 5); plus_one_done=True activation_via=legacy-action",
+  "A3_elk_this_turn": "target ref='90' MID sig: 3/3 subtypes=['Elk'] color=['Green'] n_abilities=0 zone=Battlefield -> is_elk=True",
+  "A4_elk_persists": "target ref='90' POST sig: 2/2 subtypes=['Bear'] color=['Green'] n_abilities=0 zone=Battlefield -> is_elk=False is_bear=True -> REVERTED to 2/2 Bear after turn end: the reported duration bug is REPRODUCED.",
+  "A5_cleanup": "stack_empty=True turn=21"
+ },
+ "driver_state": {
+  "oko_cast": true,
+  "oko_cast_turn": 9,
+  "oko_oid": "51",
+  "plus_one_done": true,
+  "act_turn": 19,
+  "target_oid": "90",
+  "target_candidates": [
+   "Grizzly Bears",
+   "Grizzly Bears"
+  ],
+  "act_in_flight": false,
+  "mid_exported": true,
+  "post_exported": true,
+  "post_at": 1791426356.5867121,
+  "mid_act_turn": 19,
+  "oko_loyalty_mid": 5,
+  "pre_exported": true,
+  "plus_one_act_via": "legacy-action"
+ },
+ "data_level": {
+  "name": "Oko, Thief of Crowns",
+  "oracle_text": "[+2]: Create a Food token. (It's an artifact with \"{2}, {T}, Sacrifice this token: You gain 3 life.\")\n[+1]: Target artifact or creature loses all abilities and becomes a green Elk creature with base power and toughness 3/3.\n[\u22125]: Exchange control of target artifact or creature you control and target creature an opponent controls with power 3 or less.",
+  "ability_count": 3,
+  "plus_one_abilities": []
+ },
+ "verdict": "reproduced",
+ "evidence_comment_id": 5652116124,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Oko / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "'Loses all abilities' is not separately asserted: Grizzly Bears has no abilities; the reported defect is the effect duration (until-EOT vs indefinite).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced"
+ ],
+ "duration_s": 86.5
+}

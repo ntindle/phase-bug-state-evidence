@@ -1,0 +1,22 @@
+{
+ "issue": 6917,
+ "run_id": "20261007-6917",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation": "passed",
+  "A3_elk_this_turn": "passed",
+  "A4_elk_persists": "failed",
+  "A5_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "oko_oid=51 loyalty=4 zone=Battlefield p1_bears=2 (expect loyalty 4 on BF, >=2 bears)",
+  "A2_activation": "oko loyalty in MID=5 (expect 5); plus_one_done=True activation_via=legacy-action",
+  "A3_elk_this_turn": "target ref='90' MID sig: 3/3 subtypes=['Elk'] color=['Green'] n_abilities=0 zone=Battlefield -> is_elk=True",
+  "A4_elk_persists": "target ref='90' POST sig: 2/2 subtypes=['Bear'] color=['Green'] n_abilities=0 zone=Battlefield -> is_elk=False is_bear=True -> REVERTED to 2/2 Bear after turn end: the reported duration bug is REPRODUCED.",
+  "A5_cleanup": "stack_empty=True turn=21"
+ },
+ "notes": [
+  "verdict=reproduced"
+ ]
+}
