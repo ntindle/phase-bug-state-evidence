@@ -1,0 +1,135 @@
+{
+ "record": {
+  "interactionId": "7R8JLA.0.204",
+  "turn": 13,
+  "phase": "PreCombatMain",
+  "stage": "mutation-creature",
+  "rtype": "schema",
+  "spec_type": "sequence",
+  "candidates": [
+   {
+    "choice_id": "7R8JLA.0.204.t0",
+    "oid": "29",
+    "seat": null,
+    "name": "grizzly bears",
+    "zone": "Battlefield",
+    "controller": 0,
+    "text": "Grizzly Bears"
+   },
+   {
+    "choice_id": "7R8JLA.0.204.t1",
+    "oid": "17",
+    "seat": null,
+    "name": "leatherback baloth",
+    "zone": "Battlefield",
+    "controller": 0,
+    "text": "Leatherback Baloth"
+   }
+  ]
+ },
+ "opportunity": {
+  "interactionId": "7R8JLA.0.204",
+  "response": {
+   "type": "schema",
+   "data": {
+    "spec": {
+     "type": "sequence",
+     "data": {
+      "min": 1,
+      "max": 1,
+      "unique": true,
+      "includeAll": false,
+      "engineValidated": false,
+      "escape": null,
+      "confirm": "explicit"
+     }
+    },
+    "candidates": [
+     {
+      "id": "7R8JLA.0.204.t0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "29",
+         "name": "Grizzly Bears",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 2,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "7R8JLA.0.204.t1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "17",
+         "name": "Leatherback Baloth",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 4,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   },
+   {
+    "type": "selection",
+    "data": {
+     "intent": "modify",
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 1,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 1,
+   "maximum": 1,
+   "aggregate": null,
+   "confirmable": false
+  }
+ }
+}

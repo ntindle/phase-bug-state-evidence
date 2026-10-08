@@ -1,0 +1,66 @@
+[05:21:37] server identity hashes verified against the v0.103.0 pin
+[05:21:39] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[05:21:39] data-level: parse_gap_persists=True effect=Unimplemented/unless_payment
+[05:21:39] P0 creating game (default Bo1, 2 seats)...
+[05:21:39] P1 joining...
+[05:21:40] game 7R8JLA; P0 seat=0 P1 seat=1
+[05:21:41] [P0] mulligan -> Keep (hand=['island', 'repulsive mutation', 'grizzly bears', 'forest', 'island', 'leatherback baloth', 'forest'])
+[05:21:41] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'lightning bolt', 'lightning bolt', 'mountain', 'lightning bolt', 'lightning bolt'])
+[05:21:41] DIAG turn=1 active=0 phase=Untap pp=0 P0untapped=0 P1untapped=0 P0life=20 P1life=20 baloth=[] bears=[] stack=0bolts ready=False bolt1=False/False bolt2=False/False mut=False/False x=False ctgt=None stgt=None payprompt=False pre=False post=False
+[05:21:41] [P0] playing land island
+[05:21:45] [P1] playing land mountain
+[05:21:49] [P0] playing land forest
+[05:21:49] [P0] casting Grizzly Bears (engine Auto payment)
+[05:21:54] [P1] playing land mountain
+[05:21:58] [P0] playing land island
+[05:21:59] [P0] declare no attackers
+[05:22:02] [P1] playing land mountain
+[05:22:06] [P0] playing land forest
+[05:22:07] [P0] declare no attackers
+[05:22:10] [P1] playing land mountain
+[05:22:13] [P0] playing land island
+[05:22:15] [P0] declare no attackers
+[05:22:18] [P1] playing land mountain
+[05:22:22] [P0] playing land forest
+[05:22:22] [P0] casting Leatherback Baloth (engine Auto payment)
+[05:22:24] [P0] declare no attackers
+[05:22:27] [P1] playing land mountain
+[05:22:30] Mutation castable on P0 main with Baloth+Bears out (P1 may start Bolts)
+[05:22:30] [P0] playing land forest
+[05:22:31] [P1] casting Lightning Bolt #1 at P0 face (engine Auto payment)
+[05:22:31] target selection #1 (stage bolt-target): ?(?,pNone,seat=0), ?(?,pNone,seat=1), grizzly bears(Battlefield,p0,seat=None), leatherback baloth(Battlefield,p0,seat=None)
+[05:22:31] [P1] answering bolt-target target:  (oid None) via sequence
+[05:22:31] [P1] submitting interaction iid=7R8JLA.0.199 choice=7R8JLA.0.199.t0 ()
+[05:22:31] [P1] casting Lightning Bolt #2 at P0 face (engine Auto payment)
+[05:22:32] target selection #2 (stage bolt-target): ?(?,pNone,seat=0), ?(?,pNone,seat=1), grizzly bears(Battlefield,p0,seat=None), leatherback baloth(Battlefield,p0,seat=None)
+[05:22:32] [P1] answering bolt-target target:  (oid None) via sequence
+[05:22:32] [P1] submitting interaction iid=7R8JLA.0.201 choice=7R8JLA.0.201.t0 ()
+[05:22:32] exported pre.json
+[05:22:32] PRE exported: Baloth+Bears on BF, 2 Bolts on stack, Mutation in hand
+[05:22:32] [P0] casting Repulsive Mutation X=0 in response to 2 Bolts (engine Auto payment)
+[05:22:32] target selection #3 (stage mutation-creature): grizzly bears(Battlefield,p0,seat=None), leatherback baloth(Battlefield,p0,seat=None)
+[05:22:32] [P0] answering mutation-creature target: leatherback baloth (oid 17) via sequence
+[05:22:32] [P0] submitting interaction iid=7R8JLA.0.204 choice=7R8JLA.0.204.t1 (Leatherback Baloth)
+[05:22:33] [P0] Mutation X-choice -> X=0 (schema number)
+[05:22:33] Mutation resolved (in P0 graveyard), turn 13
+[05:22:34] P0 life 20 -> 17 (bolt damage)
+[05:22:34] P0 life 17 -> 14 (bolt damage)
+[05:22:35] [P0] declare no attackers
+[05:22:38] [P1] playing land mountain
+[05:22:41] DIAG turn=14 active=1 phase=End pp=0 P0untapped=5 P1untapped=7 P0life=14 P1life=20 baloth=['17'] bears=['29'] stack=0bolts ready=True bolt1=True/True bolt2=True/True mut=True/True x=True ctgt=17 stgt=None payprompt=False pre=True post=False
+[05:22:42] [P0] playing land island
+[05:22:42] exported post.json
+[05:22:42] POST exported: sequence complete; stopping
+[05:22:42] loop ended: stage=DONE elapsed=64s
+[05:22:42] A1_parse_gap: passed
+[05:22:42] A2_setup_ok: passed
+[05:22:42] A3_mutation_cast: passed
+[05:22:42] A4_payment_prompt: failed
+[05:22:42] A5_bolts_resolve: passed
+[05:22:42] A6_baloth_unchanged: passed
+[05:22:42] A7_cleanup: passed
+[05:22:42] verdict=reproduced
+[05:22:42] wrote run.json verdict=reproduced
+[05:22:42] copied scenario_6983_01030.py into EVDIR
+[05:22:43] wrote server.log excerpts (492 lines for game 7R8JLA)
+[05:22:43] wrote summary.png

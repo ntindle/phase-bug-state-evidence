@@ -1,0 +1,260 @@
+{
+ "issue": 6983,
+ "run_id": "20261008-6983",
+ "date": "2026-10-08T10:21:39",
+ "game_code": "7R8JLA",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true,
+  "run_note": "shared pinned v0.103.0 single-user server on 127.0.0.1:9374 (started by run 20261008-6982; this run used its own game + games.db rows)"
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0becf5b992eea7a1141d6cf0420d2beea1f8003fa6e2faf5b7de14e69dc529d7",
+ "decks": {
+  "P0": [
+   [
+    "Repulsive Mutation",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Leatherback Baloth",
+    8
+   ],
+   [
+    "Forest",
+    16
+   ],
+   [
+    "Island",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "Lightning Bolt",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "setup_line": "P0 12x Repulsive Mutation / 8x Grizzly Bears / 8x Leatherback Baloth / 16x Forest / 16x Island; P1 12x Lightning Bolt / 48x Mountain. P0 casts Bears then Baloth; P1 Bolts P0's face twice (two Bolts on the stack); P0 responds with Mutation X=0 targeting the Baloth (+ a Bolt if the engine offers the optional spell target). Engine Auto payment throughout; no driver mana taps.",
+ "contract_line": "The card-data parse gap must persist (Unimplemented/unless_payment -> reproduced); the Mutation must resolve with no unless-payment prompt and both Bolts resolving uncountered (P0 20->14). A payment prompt with amount 4 and correct decline semantics would flip the verdict to not-reproduced.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6983.py (v0.81.3 / protocol 70) for pinned v0.103.0; behavioral contract A1..A7 and the issue-specific game plan unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.103.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay; AGENTS.md #6910).",
+  "Target prompts answered via iter_target_opps (schema select/sequence with candidates, or exactChoices with candidate/target codes); the Mutation's creature slot is discriminated by own-battlefield Baloth candidates, the spell slot by stack candidates. Full opportunities are wired and recorded to target_sel_N.json.",
+  "The engine may auto-target a sole legal target or silently skip the optional spell target (v0.81.3 chose zero targets with one spell on the stack); both outcomes are recorded, not forced.",
+  "X is answered as X=0 via schema-number or exactChoices; the unless-payment scan runs on both clients' views during the whole Mutation in-flight window and matches on 'unless'/'unless_payment' in the opportunity blob.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_mutation_cast": "passed",
+  "A4_payment_prompt": "failed",
+  "A5_bolts_resolve": "passed",
+  "A6_baloth_unchanged": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_parse_gap": "sub_ability.effect = Unimplemented/unless_payment (expected Unimplemented/unless_payment); optional_targeting=False",
+  "A2_setup_ok": "baloth=['17'] bears=['29'] greatest_power=4 bolts_on_stack=2 mutation_in_hand=True life=[20, 20]",
+  "A3_mutation_cast": "cast=True resolved=True in_P0_gy=True x_answered=True creature_target_oid=17 spell_target_oid=None",
+  "A4_payment_prompt": "payment_prompt_seen=False detail=None; expected ABSENT while the clause parses Unimplemented",
+  "A5_bolts_resolve": "P0_life=14 (bug expectation 14: both Bolts resolved uncountered; 17 would mean one was countered) bolts_in_P1_gy=2",
+  "A6_baloth_unchanged": "Baloth oid=17 power=4 (expected 4: X=0 counters placed)",
+  "A7_cleanup": "stack_empty=True turn=15"
+ },
+ "driver_state": {
+  "mutation_ready": true,
+  "bolt1_cast": true,
+  "bolt1_targeted": true,
+  "bolt2_cast": true,
+  "bolt2_targeted": true,
+  "bolt_life_pre": 14,
+  "mutation_cast": true,
+  "mutation_in_flight": false,
+  "mutation_resolved": true,
+  "mutation_oid": null,
+  "creature_target_oid": "17",
+  "spell_target_oid": null,
+  "x_answered": true,
+  "pre_exported": true,
+  "post_at": 1791454954.8705215,
+  "post_exported": true,
+  "payment_prompt_seen": false,
+  "payment_prompt_detail": null,
+  "target_sels": [
+   {
+    "interactionId": "7R8JLA.0.199",
+    "turn": 13,
+    "phase": "PreCombatMain",
+    "stage": "bolt-target",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "7R8JLA.0.199.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "7R8JLA.0.199.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "7R8JLA.0.199.t2",
+      "oid": "29",
+      "seat": null,
+      "name": "grizzly bears",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Grizzly Bears"
+     },
+     {
+      "choice_id": "7R8JLA.0.199.t3",
+      "oid": "17",
+      "seat": null,
+      "name": "leatherback baloth",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Leatherback Baloth"
+     }
+    ]
+   },
+   {
+    "interactionId": "7R8JLA.0.201",
+    "turn": 13,
+    "phase": "PreCombatMain",
+    "stage": "bolt-target",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "7R8JLA.0.201.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "7R8JLA.0.201.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "text": ""
+     },
+     {
+      "choice_id": "7R8JLA.0.201.t2",
+      "oid": "29",
+      "seat": null,
+      "name": "grizzly bears",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Grizzly Bears"
+     },
+     {
+      "choice_id": "7R8JLA.0.201.t3",
+      "oid": "17",
+      "seat": null,
+      "name": "leatherback baloth",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Leatherback Baloth"
+     }
+    ]
+   },
+   {
+    "interactionId": "7R8JLA.0.204",
+    "turn": 13,
+    "phase": "PreCombatMain",
+    "stage": "mutation-creature",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "7R8JLA.0.204.t0",
+      "oid": "29",
+      "seat": null,
+      "name": "grizzly bears",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Grizzly Bears"
+     },
+     {
+      "choice_id": "7R8JLA.0.204.t1",
+      "oid": "17",
+      "seat": null,
+      "name": "leatherback baloth",
+      "zone": "Battlefield",
+      "controller": 0,
+      "text": "Leatherback Baloth"
+     }
+    ]
+   }
+  ]
+ },
+ "data_level": {
+  "name": "Repulsive Mutation",
+  "oracle_text": "Put X +1/+1 counters on target creature you control. Then counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control.",
+  "sub_ability_effect": {
+   "type": "Unimplemented",
+   "name": "unless_payment",
+   "description": "counter up to one target spell unless its controller pays mana equal to the greatest power among creatures you control"
+  },
+  "sub_ability_optional_targeting": false,
+  "sub_ability_target": null,
+  "parse_gap_persists": true,
+  "note": "On v0.81.3 the parse was identical: Unimplemented/unless_payment with optional_targeting=false."
+ },
+ "verdict": "reproduced",
+ "evidence_comment_id": 5653053246,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Only the decline branch of the unless clause could be exercised if the prompt appeared; the pay branch would need a second game."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced: the parser still cannot represent the board-state-derived unless-payment (A1 Unimplemented/unless_payment on v0.103.0); the Mutation resolved (A3) with no payment prompt offered (A4) and both Bolts resolved uncountered, P0 20->14 (A5)",
+  "limitation: the engine never offered the optional 'up to one target spell' target (no spell-slot target was answered); the runtime shows the clause skipped, not a targeted spell going uncountered",
+  "verdict=reproduced"
+ ],
+ "duration_s": 64.0
+}

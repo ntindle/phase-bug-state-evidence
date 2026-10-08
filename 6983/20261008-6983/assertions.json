@@ -1,0 +1,28 @@
+{
+ "issue": 6983,
+ "run_id": "20261008-6983",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_mutation_cast": "passed",
+  "A4_payment_prompt": "failed",
+  "A5_bolts_resolve": "passed",
+  "A6_baloth_unchanged": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_parse_gap": "sub_ability.effect = Unimplemented/unless_payment (expected Unimplemented/unless_payment); optional_targeting=False",
+  "A2_setup_ok": "baloth=['17'] bears=['29'] greatest_power=4 bolts_on_stack=2 mutation_in_hand=True life=[20, 20]",
+  "A3_mutation_cast": "cast=True resolved=True in_P0_gy=True x_answered=True creature_target_oid=17 spell_target_oid=None",
+  "A4_payment_prompt": "payment_prompt_seen=False detail=None; expected ABSENT while the clause parses Unimplemented",
+  "A5_bolts_resolve": "P0_life=14 (bug expectation 14: both Bolts resolved uncountered; 17 would mean one was countered) bolts_in_P1_gy=2",
+  "A6_baloth_unchanged": "Baloth oid=17 power=4 (expected 4: X=0 counters placed)",
+  "A7_cleanup": "stack_empty=True turn=15"
+ },
+ "notes": [
+  "verdict=reproduced: the parser still cannot represent the board-state-derived unless-payment (A1 Unimplemented/unless_payment on v0.103.0); the Mutation resolved (A3) with no payment prompt offered (A4) and both Bolts resolved uncountered, P0 20->14 (A5)",
+  "limitation: the engine never offered the optional 'up to one target spell' target (no spell-slot target was answered); the runtime shows the clause skipped, not a targeted spell going uncountered",
+  "verdict=reproduced"
+ ]
+}
