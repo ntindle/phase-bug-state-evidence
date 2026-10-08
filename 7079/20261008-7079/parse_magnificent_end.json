@@ -1,0 +1,95 @@
+{
+ "card": "Magnificent End",
+ "oracle_text": "This spell costs {3} less to cast if it targets a tapped creature.\nMagnificent End deals 5 damage to target creature.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White"
+  ],
+  "generic": 4
+ },
+ "static_abilities": [
+  {
+   "mode": {
+    "ModifyCost": {
+     "mode": "Reduce",
+     "amount": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 3
+     },
+     "spell_filter": {
+      "type": "Typed",
+      "type_filters": [
+       "Card"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "Targets",
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Creature"
+         ],
+         "controller": null,
+         "properties": [
+          {
+           "type": "Tapped"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    }
+   },
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [
+    "Hand",
+    "Stack",
+    "Command",
+    "Graveyard",
+    "Exile",
+    "Library"
+   ],
+   "characteristic_defining": false,
+   "description": "This spell costs {3} less to cast if it targets a tapped creature."
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "DealDamage",
+    "amount": {
+     "type": "Fixed",
+     "value": 5
+    },
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": []
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "~ deals 5 damage to target creature.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}
