@@ -1,0 +1,111 @@
+{
+ "issue": 6918,
+ "run_id": "20261007-6918",
+ "date": "2026-10-08T02:52:07",
+ "game_code": "Z0JSUD",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5c720080596c5d12fa7cb715f500ab0a4040cc330af7c8c6c200b41122255d16",
+ "decks": {
+  "P0": [
+   [
+    "Door of Destinies",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Forest",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats)",
+ "setup_line": "P0 4x Door of Destinies / 8x Llanowar Elves / 8x Grizzly Bears / 40x Forest; P1 60x Forest (passive). P0 casts Door (chooses 'Elf' at entry), then casts an Elf, a Bear (control), then a second Elf.",
+ "contract_line": "Casting an Elf (the chosen type) must add 1 charge counter to Door of Destinies (SpellCast trigger); a Bear (non-chosen) must add none; the anthem must track the counters. reproduced iff the Elf cast adds no counter.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6918.py (v0.81.3 / protocol 70) for pinned v0.103.0; behavioral contract A1..A5 and the verdict rule unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.103.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay).",
+  "The Door's entry 'choose a creature type' prompt is a vi schema opportunity with response spec type 'text', submitted as {'type': 'text', 'data': {'value': ...}}; gated on the Door being on P0's battlefield, no choice recorded yet, and a text-spec opportunity currently offered. The choice is marked only when the opportunity closes (a rejected submission leaves it pending and is retried after the rejection-drain resync).",
+  "Data-level: v0.103.0 card-data parses Door of Destinies fully (entry choice persist=true, SpellCast trigger with IsChosenCreatureType -> PutCounter charge on self, charge-counter anthem); the defect is at runtime matching, not in the data.",
+  "Pre/mid1/mid2/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counter_on_elf": "passed",
+  "A3_control_bear": "passed",
+  "A4_anthem": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "door_oid=45 zone=Battlefield chosen_type=elf choice_iid=Z0JSUD.0.191 choice_attempts=1 (expect door on BF, chosen 'elf')",
+  "A2_counter_on_elf": "door charge counters in MID1 = 1 (expect 1 after casting an Elf of the chosen type)",
+  "A3_control_bear": "door charge counters mid1=1 mid2=1 (Grizzly Bears cast between)",
+  "A4_anthem": "charge=2 elves=[('llanowar elves', 3, 3), ('llanowar elves', 3, 3)] (expect 1+2/1+2)",
+  "A5_cleanup": "stack_empty=True turn=25"
+ },
+ "driver_state": {
+  "door_cast": true,
+  "door_cast_turn": 13,
+  "door_oid": "45",
+  "chosen_type": "elf",
+  "choice_iid": "Z0JSUD.0.191",
+  "choice_attempts": 1,
+  "elf1_cast": true,
+  "mid1_exported": true,
+  "bear_cast": true,
+  "mid2_exported": true,
+  "elf2_cast": true,
+  "post_exported": true,
+  "pre_exported": true
+ },
+ "data_level": {
+  "name": "Door of Destinies",
+  "oracle_text": "As this artifact enters, choose a creature type.\nWhenever you cast a spell of the chosen type, put a charge counter on this artifact.\nCreatures you control of the chosen type get +1/+1 for each charge counter on this artifact.",
+  "trigger_count": 1,
+  "spellcast_chosen_trigger_ok": true,
+  "entry_choice_persist_ok": true,
+  "static_ability_count": 1
+ },
+ "verdict": "not-reproduced",
+ "evidence_comment_id": 5652192823,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Door / 8x Elves / 8x Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 1,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=not-reproduced"
+ ],
+ "duration_s": 104.1
+}
