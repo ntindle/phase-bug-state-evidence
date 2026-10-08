@@ -1,0 +1,438 @@
+{
+ "run_id": "20261008-0845-7162",
+ "issue": 7162,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-08",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "213f09939b05089489a9c8f07988360b4343cb80d5a29cab7ffb4509228db911",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "lazav, familiar stranger",
+    8
+   ],
+   [
+    "child of night",
+    8
+   ],
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "island",
+    14
+   ],
+   [
+    "swamp",
+    12
+   ],
+   [
+    "mountain",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    60
+   ]
+  ]
+ },
+ "setup_line": "P0 8x Lazav, Familiar Stranger / 8x Child of Night / 8x Lightning Bolt / 14x Island / 12x Swamp / 10x Mountain; P1 60x Forest (passive). P0 mulligans for Lazav+2 lands, casts Lazav ({U}{B}, engine Auto payment), casts Child of Night ({1}{B} 2/1, engine Auto payment). Crime turn: Bolt 1 targets own Child of Night (kills it; not a crime), Bolt 2 targets P1 (a crime). Lazav's CommitCrime trigger resolves: counter, may-exile (driver ACCEPTS, exiles the Child), may-become-copy (driver ACCEPTS).",
+ "contract_line": "Lazav's crime trigger must put a +1/+1 counter on Lazav, offer the exile of a card from a graveyard, and -- if a creature card was exiled -- offer having Lazav become a copy of it until end of turn. The report says the copy offer never appears.",
+ "driver_notes": [
+  "Protocol-106 driver for pinned v0.103.0, adapted from the scenario_7141_01030.py conventions.",
+  "my_priority = PassPriority in legal_actions; casts are gated on it.",
+  "CastSpell carries payment_mode Auto: the engine taps mana itself; the driver never answers tapLandForMana and runs no driver-side mana payment (legacy PayMana actions are answered if they appear).",
+  "The may-exile / may-become-copy offers are vi opportunities whose choices carry the decideOptionalEffect action code (scenario_301_01030.py shape); accept = role accept value true, decline = value false.",
+  "The exile card selection is a schema select/sequence opportunity whose candidates reference graveyard objects; answered with the Child of Night oid via the select shape.",
+  "Bolt target selections are answered with the advertised candidate (own Child of Night for bolt 1, seat 1 for bolt 2); the engine may also auto-target a sole legal target (recorded as the auto-target case).",
+  "Lazav is tracked by object oid across states because its name changes if the copy effect applies.",
+  "The stack-watch branch always falls through to the pass-priority gate (never returns early); both seats must pass in succession for a stack entry to resolve.",
+  "Pre/offer/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_crime_trigger": "passed",
+  "A4_exile_offered": "passed",
+  "A5_copy_offered": "passed",
+  "A6_copy_effect": "failed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "notes": [],
+  "target_selections": [],
+  "life_trace": [
+   [
+    1.7,
+    [
+     20,
+     20
+    ]
+   ],
+   [
+    43.0,
+    [
+     20,
+     17
+    ]
+   ]
+  ],
+  "optional_prompts": [],
+  "lazav_prompts": [
+   {
+    "interactionId": "23XJFT.0.119",
+    "turn": 8,
+    "phase": "PreCombatMain",
+    "stage": "crime",
+    "role": "bolt1-target",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "23XJFT.0.119.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "23XJFT.0.119.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "23XJFT.0.119.t2",
+      "oid": "13",
+      "seat": null,
+      "name": "lazav, familiar stranger",
+      "zone": "Battlefield",
+      "controller": 0,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Lazav, Familiar Stranger"
+     },
+     {
+      "choice_id": "23XJFT.0.119.t3",
+      "oid": "3",
+      "seat": null,
+      "name": "child of night",
+      "zone": "Battlefield",
+      "controller": 0,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Child of Night"
+     }
+    ]
+   },
+   {
+    "interactionId": "23XJFT.0.154",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "stage": "crime",
+    "role": "bolt2-target",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "23XJFT.0.154.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "23XJFT.0.154.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "23XJFT.0.154.t2",
+      "oid": "13",
+      "seat": null,
+      "name": "lazav, familiar stranger",
+      "zone": "Battlefield",
+      "controller": 0,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Lazav, Familiar Stranger"
+     }
+    ]
+   },
+   {
+    "interactionId": "23XJFT.0.157",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "stage": "crime_leg",
+    "role": "may-exile",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "candidates": [
+     {
+      "choice_id": "23XJFT.0.157.c0",
+      "oid": null,
+      "seat": null,
+      "name": "false",
+      "zone": null,
+      "controller": null,
+      "accept": "false",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "false"
+     },
+     {
+      "choice_id": "23XJFT.0.157.c1",
+      "oid": null,
+      "seat": null,
+      "name": "true",
+      "zone": null,
+      "controller": null,
+      "accept": "true",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "true"
+     }
+    ]
+   },
+   {
+    "interactionId": "23XJFT.0.158",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "stage": "crime_leg",
+    "role": "exile-selection",
+    "rtype": "schema",
+    "spec_type": "select",
+    "candidates": [
+     {
+      "choice_id": "23XJFT.0.158.s0",
+      "oid": "3",
+      "seat": null,
+      "name": "child of night",
+      "zone": "Graveyard",
+      "controller": 0,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Child of Night"
+     },
+     {
+      "choice_id": "23XJFT.0.158.s1",
+      "oid": "99",
+      "seat": null,
+      "name": "forest",
+      "zone": "Graveyard",
+      "controller": 1,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Forest"
+     },
+     {
+      "choice_id": "23XJFT.0.158.s2",
+      "oid": "4",
+      "seat": null,
+      "name": "lightning bolt",
+      "zone": "Graveyard",
+      "controller": 0,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Lightning Bolt"
+     },
+     {
+      "choice_id": "23XJFT.0.158.s3",
+      "oid": "85",
+      "seat": null,
+      "name": "forest",
+      "zone": "Graveyard",
+      "controller": 1,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Forest"
+     }
+    ]
+   },
+   {
+    "interactionId": "23XJFT.0.159",
+    "turn": 10,
+    "phase": "PreCombatMain",
+    "stage": "crime_leg",
+    "role": "may-copy",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "candidates": [
+     {
+      "choice_id": "23XJFT.0.159.c0",
+      "oid": null,
+      "seat": null,
+      "name": "false",
+      "zone": null,
+      "controller": null,
+      "accept": "false",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "false"
+     },
+     {
+      "choice_id": "23XJFT.0.159.c1",
+      "oid": null,
+      "seat": null,
+      "name": "true",
+      "zone": null,
+      "controller": null,
+      "accept": "true",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "true"
+     }
+    ]
+   }
+  ]
+ },
+ "driver_state": {
+  "stage": "settle",
+  "lazav_cast": true,
+  "child_cast": true,
+  "lazav_oid": 13,
+  "child_oid": 3,
+  "pre_exported": true,
+  "gy0_bolts_pre": 0,
+  "p1_life_pre": 20,
+  "p0_life_pre": 20,
+  "bolt1_cast": true,
+  "bolt1_pending": false,
+  "bolt1_targeted": true,
+  "bolt1_auto": false,
+  "child_in_gy": true,
+  "bolt2_cast": true,
+  "bolt2_pending": false,
+  "bolt2_targeted": true,
+  "bolt2_auto": false,
+  "gy0_bolts_post_bolt1": 1,
+  "p1_life_pre_crime2": 20,
+  "may_exile_seen": true,
+  "may_exile_accepted": true,
+  "exile_offer_exported": true,
+  "exile_done": true,
+  "exiled_child_oid": "3",
+  "may_copy_seen": true,
+  "may_copy_accepted": true,
+  "copy_offer_exported": true,
+  "copy_accepted": true,
+  "crime_leg_t0": 1791466712.236174,
+  "copy_wait_expired": false,
+  "p1_life_post_bolt2": 17,
+  "post_exported": true,
+  "settle_ticks": 3,
+  "finished": true
+ },
+ "mulligans": {
+  "P0": 0,
+  "P1": 2
+ },
+ "notes": [
+  "A1: CommitCrime + PutCounter(P1P1, SelfRef) + ChangeZone(Graveyard->Exile, optional, Resolution) + BecomeCopy(ParentTarget, optional, UntilEndOfTurn, ZoneChangedThisWay[Creature]): True",
+  "A2: lazav_bf=1 child_bf=1 p1_life_pre=20 (expect 20) turn=8",
+  "A3: lazav oid=13 zone=Battlefield +1/+1 counters=1 (expect >=1); bolt1_cast=True bolt2_cast=True p1 20->17",
+  "A4: may_exile_seen=True accepted=True exile_done=True exiled_child_oid=3 child exiled in post=True exile=['child of night']",
+  "A5: may_copy_seen=True accepted=True copy_wait_expired=False",
+  "A6: lazav oid=13 name='lazav, familiar stranger' (expect 'child of night') pt=2/5 (expect 3/2 = 2/1 copy + one +1/+1) zone=Battlefield +1/+1=1",
+  "A7: stack_empty=True life_final=20/17",
+  "verdict=reproduced: the copy offer appeared but accepting it did not make Lazav a copy of the exiled creature",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "offer_exile.json",
+  "offer_exile_opp.json",
+  "exile_selection.json",
+  "offer_copy.json",
+  "offer_copy_opp.json",
+  "bolt1_target.json",
+  "bolt2_target.json",
+  "lazav_prompts.json",
+  "post.json",
+  "run.json",
+  "parse_lazav_familiar_stranger.json",
+  "scenario_7162_01030.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "P1 is a fully passive punching bag (60x Forest; never plays lands, never casts, never blocks).",
+  "8x key-card density is a test-harness convenience (the engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Turn order is randomized by the engine; the driver keys on active_player and turn_number, not order."
+ ],
+ "duration_s": 43.5
+}
