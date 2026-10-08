@@ -1,0 +1,26 @@
+{
+ "issue": 6950,
+ "run_id": "20261007-6950",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_parse": "passed",
+  "A3_gain_23": "passed",
+  "A4_below_threshold": "passed",
+  "A5_mid_threshold": "passed",
+  "A6_at_threshold": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok": "oid=10 zone=Battlefield life=20 P/T=4/4 menace=False (expect Elenda on BF, life 20)",
+  "A2_parse": "static0_parses=True (GT LifeTotal vs StartingLifeTotal); static1_parses=True (GE LifeAboveStarting vs Fixed 10); (expect both True on v0.103.0; v0.81.3 had static1 Unrecognized)",
+  "A3_gain_23": "MID1 P0 life=23 (expected 23)",
+  "A4_below_threshold": "PRE (life 20) Elenda P/T=4/4 menace=False (Oracle-correct: 4/4, no menace)",
+  "A5_mid_threshold": "MID1 (life 23) Elenda P/T=5/5 menace=True (Oracle-correct: 5/5 + menace)",
+  "A6_at_threshold": "POST life=41 Elenda P/T=10/10 menace=True (expected 10/10 + menace)",
+  "A7_cleanup": "stack_empty=True turn=44"
+ },
+ "notes": [
+  "verdict=not-reproduced"
+ ]
+}

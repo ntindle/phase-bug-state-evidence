@@ -1,0 +1,146 @@
+{
+ "issue": 6950,
+ "run_id": "20261007-6950",
+ "date": "2026-10-08T04:22:47",
+ "game_code": "W7MRMN",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "51cee2501914d63ac76c493c8487584547bbfb96f30a3a523642f0d92a862bf4",
+ "decks": {
+  "P0": [
+   [
+    "Elenda, Saint of Dusk",
+    4
+   ],
+   [
+    "Revitalize",
+    12
+   ],
+   [
+    "Plains",
+    22
+   ],
+   [
+    "Swamp",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats)",
+ "setup_line": "P0 4x Elenda, Saint of Dusk / 12x Revitalize / 22x Plains / 22x Swamp; P1 60x Forest (passive). P0 casts Elenda ({2}{W}{B}, engine Auto payment), then casts Revitalize x1 (life 23), then x3 more (life 32).",
+ "contract_line": "Elenda must be 4/4 with no menace at life 20 (both conditions false), 5/5 with menace at life 23 (only the first condition true), and 10/10 with menace at life 32 (both true). reproduced iff the +5/+5 static applies below its life threshold.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6950.py (v0.81.3 / protocol 70) for pinned v0.103.0; behavioral contract A1..A7 and the verdict rule unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.103.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay).",
+  "Keyword checks use obj['keywords'] only: the full-object JSON contains the string 'Menace' inside static_definitions' AddKeyword modification text, which false-positives a whole-blob substring scan.",
+  "Healing Salve is modal+targeted; Revitalize ({1}{W}, you gain 3 life, draw a card) is the clean untargeted non-modal life-gain driver.",
+  "Data-level: v0.103.0 card-data parses both Elenda statics as QuantityComparison (GT LifeTotal vs StartingLifeTotal; GE LifeAboveStarting vs Fixed 10). On v0.81.3 the second condition was Unrecognized.",
+  "Pre/mid1/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_parse": "passed",
+  "A3_gain_23": "passed",
+  "A4_below_threshold": "passed",
+  "A5_mid_threshold": "passed",
+  "A6_at_threshold": "passed",
+  "A7_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "oid=10 zone=Battlefield life=20 P/T=4/4 menace=False (expect Elenda on BF, life 20)",
+  "A2_parse": "static0_parses=True (GT LifeTotal vs StartingLifeTotal); static1_parses=True (GE LifeAboveStarting vs Fixed 10); (expect both True on v0.103.0; v0.81.3 had static1 Unrecognized)",
+  "A3_gain_23": "MID1 P0 life=23 (expected 23)",
+  "A4_below_threshold": "PRE (life 20) Elenda P/T=4/4 menace=False (Oracle-correct: 4/4, no menace)",
+  "A5_mid_threshold": "MID1 (life 23) Elenda P/T=5/5 menace=True (Oracle-correct: 5/5 + menace)",
+  "A6_at_threshold": "POST life=41 Elenda P/T=10/10 menace=True (expected 10/10 + menace)",
+  "A7_cleanup": "stack_empty=True turn=44"
+ },
+ "driver_state": {
+  "elenda_cast": true,
+  "elenda_oid": "10",
+  "pre_exported": true,
+  "rev_casts": 7,
+  "rev_resolved_at": null,
+  "mid1_exported": true,
+  "rev_last_life": null,
+  "post_at": 1791433541.955564,
+  "post_exported": true
+ },
+ "data_level": {
+  "name": "Elenda, Saint of Dusk",
+  "oracle_text": "Lifelink, hexproof from instants\nAs long as your life total is greater than your starting life total, Elenda gets +1/+1 and has menace. Elenda gets an additional +5/+5 as long as your life total is at least 10 greater than your starting life total.",
+  "static_ability_count": 2,
+  "static0_condition": {
+   "type": "QuantityComparison",
+   "lhs": {
+    "type": "Ref",
+    "qty": {
+     "type": "LifeTotal",
+     "player": {
+      "type": "Controller"
+     }
+    }
+   },
+   "comparator": "GT",
+   "rhs": {
+    "type": "Ref",
+    "qty": {
+     "type": "StartingLifeTotal"
+    }
+   }
+  },
+  "static1_condition": {
+   "type": "QuantityComparison",
+   "lhs": {
+    "type": "Ref",
+    "qty": {
+     "type": "LifeAboveStarting"
+    }
+   },
+   "comparator": "GE",
+   "rhs": {
+    "type": "Fixed",
+    "value": 10
+   }
+  },
+  "static0_parses": true,
+  "static1_parses": true,
+  "note": "v0.103.0 data parses both conditions; on v0.81.3 static[1]'s condition was Unrecognized('your life total is at least 10 greater than your starting life total')"
+ },
+ "verdict": "not-reproduced",
+ "evidence_comment_id": 5652324131,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Elenda / 12x Revitalize density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Revitalize stands in for 'gain life' triggers; the static's deck-builder flag is evidenced via the card-data parse check.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=not-reproduced"
+ ],
+ "duration_s": 182.3
+}

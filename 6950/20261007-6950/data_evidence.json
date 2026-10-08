@@ -1,0 +1,41 @@
+{
+ "name": "Elenda, Saint of Dusk",
+ "oracle_text": "Lifelink, hexproof from instants\nAs long as your life total is greater than your starting life total, Elenda gets +1/+1 and has menace. Elenda gets an additional +5/+5 as long as your life total is at least 10 greater than your starting life total.",
+ "static_ability_count": 2,
+ "static0_condition": {
+  "type": "QuantityComparison",
+  "lhs": {
+   "type": "Ref",
+   "qty": {
+    "type": "LifeTotal",
+    "player": {
+     "type": "Controller"
+    }
+   }
+  },
+  "comparator": "GT",
+  "rhs": {
+   "type": "Ref",
+   "qty": {
+    "type": "StartingLifeTotal"
+   }
+  }
+ },
+ "static1_condition": {
+  "type": "QuantityComparison",
+  "lhs": {
+   "type": "Ref",
+   "qty": {
+    "type": "LifeAboveStarting"
+   }
+  },
+  "comparator": "GE",
+  "rhs": {
+   "type": "Fixed",
+   "value": 10
+  }
+ },
+ "static0_parses": true,
+ "static1_parses": true,
+ "note": "v0.103.0 data parses both conditions; on v0.81.3 static[1]'s condition was Unrecognized('your life total is at least 10 greater than your starting life total')"
+}
