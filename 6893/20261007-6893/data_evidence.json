@@ -1,0 +1,23 @@
+{
+ "name": "Shield Broker",
+ "oracle_text": "When this creature enters, put a shield counter on target noncommander creature you don't control. You gain control of that creature for as long as it has a shield counter on it. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)",
+ "etb_effect": "PutCounter",
+ "counter_type": "shield",
+ "chained_effect": "GainControl",
+ "chained_target": {
+  "type": "ParentTarget"
+ },
+ "chained_duration": {
+  "ForAsLongAs": {
+   "condition": {
+    "type": "RecipientHasCounters",
+    "counters": {
+     "type": "OfType",
+     "data": "shield"
+    },
+    "minimum": 1
+   }
+  }
+ },
+ "sub_link": null
+}
