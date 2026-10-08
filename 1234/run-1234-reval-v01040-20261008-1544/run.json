@@ -1,0 +1,142 @@
+{
+ "issue": 1234,
+ "issue_url": "https://github.com/phase-rs/phase/issues/1234",
+ "run_id": "run-1234-reval-v01040-20261008-1544",
+ "started_at": "2026-10-08T20:49:22",
+ "finished_at": "2026-10-08T21:00:47",
+ "duration_s": 685.0,
+ "server": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full",
+  "server_binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.104.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-08: latest stable release v0.104.0 (published 2026-10-08) == pinned release dir; ServerHello 0.104.0/4227122/protocol 118 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server process on 127.0.0.1:9375 started fresh for run run-1234-reval-v01040-20261008-1544 (backfill-owned)"
+ },
+ "server_run_dir": "runs/run-1234-reval-v01040-20261008-1544 (fresh v0.104.0 server started by this run on 127.0.0.1:9375)",
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "190b0da3c7ea0c64b418f6b03510211141697ad5571f377f21d7c8cfd28e5cb7",
+ "decks": {
+  "A": "12x Cabal Ritual + 4x Phyrexian Altar + 8x Diregraf Ghoul + 36x Swamp",
+  "B": "12x Sign in Blood + 4x Phyrexian Altar + 12x Memnite + 32x Forest",
+  "C": "12x Dark Ritual + 4x Phyrexian Altar + 44x Forest",
+  "D": "12x Steel Overseer + 4x Krark-Clan Ironworks + 12x Memnite + 32x Forest",
+  "P1": "60x Forest (draw-go)"
+ },
+ "setup_line": "A: Ritual+Altar+Ghoul+Swamps | B: Sign+Altar+2 Memnite+Forests | C: Ritual+Altar+0 creatures | D: Overseer+KCI+Memnite+Forests",
+ "contract_line": "Gate must offer {1}{B} (A) and {2} (D) casts, must NOT offer {B} with no creatures (C), and must offer {B}{B} via two Altar activations (B \u2014 the reported bug).",
+ "stats": {
+  "A": {
+   "game_code": "2E84XS",
+   "duration_s": 62.1,
+   "offered_seen": true,
+   "obs": 4,
+   "sacs_done": 1,
+   "resolution_B": "not-run"
+  },
+  "B": {
+   "game_code": "4VTYA2",
+   "duration_s": 40.0,
+   "offered_seen": false,
+   "obs": 4,
+   "sacs_done": 2,
+   "resolution_B": "passed"
+  },
+  "C": {
+   "game_code": "PWPO7M",
+   "duration_s": 22.4,
+   "offered_seen": false,
+   "obs": 4,
+   "sacs_done": 0,
+   "resolution_B": "not-run"
+  },
+  "D": {
+   "game_code": "46SHAQ",
+   "duration_s": 560.5,
+   "offered_seen": false,
+   "obs": 0,
+   "sacs_done": 0,
+   "resolution_B": "not-run"
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "not-run",
+  "A2a_gate_offers_1B": "passed",
+  "A2b_cast_completes": "passed",
+  "A3a_gate_offers_BB": "failed",
+  "A3b_manual_proof": "passed",
+  "A4_gate_rejects_B": "passed",
+  "A5a_gate_offers_2": "not-run",
+  "A5b_cast_completes": "not-run"
+ },
+ "notes": [
+  "VERDICT OVERRIDE (post-run review, 2026-10-08): the scenario's code-level verdict gate returned 'blocked' because A1_setup_ok requires all four games to reach setup and game D (KCI colorless regression guard) never drew Krark-Clan Ironworks. Post-run inspection of the authoritative game state (runs/run-1234-reval-v01040-20261008-1544/games.db, game 46SHAQ, rev 652, turn 33) shows all 4 KCI copies still in P0's 38-card library; P0 drew 22 cards with 0 KCI (~21% chance event) -- pure test-harness draw variance, not an engine or driver defect (P0 held 12 untapped forests; the producer-cast branch would have fired had KCI been in hand). Per the pre-registered behavioral contract (scenario docstring, playbook step 2: 'reproduced iff A3a records the gate NOT offering {B}{B} while A3b proves the mana was actually producible') and the playbook verdict table ('a valid scenario reaches and records the reported failure'), the decisive B-leg (A3a failed + A3b passed) establishes REPRODUCED on v0.104.0. D-leg assertions remain not-run; the KCI colorless regression guard last passed on v0.103.0 (run 20261006-1414-1234).",
+  "DRIVER COMPAT NOTE (v0.104.0/protocol 118): the cleanup DiscardToHandSize prompt now surfaces with viewer_interaction waitingForKind code 'select' (was generic 'choose' on protocol 106); the scenario's hand>7 + schema/select hand-card heuristic did not match it, so game D stalled at its turn-33 cleanup discard until the 560s per-game timeout. No verdict impact: game D could not have completed setup regardless (KCI never drawn).",
+  "--- game A (cabal ritual {1}{B}) duration 62.1s ---",
+  "P0 casts phyrexian altar (oid 6) needs={'generic': 3}",
+  "P0 casts diregraf ghoul (oid 42) needs={'B': 1}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 15)",
+  "gate assertion A2a_gate_offers_1B: offered_seen=True want_offered=True -> passed (obs=4)",
+  "-> act phase",
+  "activating phyrexian altar via ActivateAbility legal_action",
+  "sacrificed for phyrexian altar (#1): Diregraf Ghoul",
+  "chose mana color: ",
+  "casting cabal ritual",
+  "A2b: ritual resolved; ghoul in gy=True; black pool=5 (want >=3: 1 altar + 1 swamp tap + 3 ritual) -> passed",
+  "POST exported",
+  "--- game B (sign in blood {B}{B}) duration 40.0s ---",
+  "P0 casts memnite (oid 10) needs={'generic': 0}",
+  "P0 casts memnite (oid 26) needs={'generic': 0}",
+  "P0 casts phyrexian altar (oid 6) needs={'generic': 3}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 5)",
+  "gate assertion A3a_gate_offers_BB: offered_seen=False want_offered=True -> failed (obs=4)",
+  "-> act phase",
+  "activating phyrexian altar via ActivateAbility legal_action",
+  "sacrificed for phyrexian altar (#1): Memnite",
+  "chose mana color: ",
+  "activating phyrexian altar via ActivateAbility legal_action",
+  "sacrificed for phyrexian altar (#2): Memnite",
+  "chose mana color: ",
+  "both activations done; pool={'B': 2}",
+  "MID exported; pool={'B': 2}",
+  "A3b: with {B}{B} floating, gate now offers sign in blood -> passed (bug confirmed: feasibility analysis, not resources, blocked the offer)",
+  "casting sign in blood",
+  "targeted P1 for sign in blood",
+  "Sign in Blood resolved: P1 life=18 (want 18) -> passed",
+  "POST exported",
+  "--- game C (dark ritual {B}) duration 22.4s ---",
+  "P0 casts phyrexian altar (oid 6) needs={'generic': 3}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 6)",
+  "gate assertion A4_gate_rejects_B: offered_seen=False want_offered=False -> passed (obs=4)",
+  "POST exported (observe-only)",
+  "--- game D (steel overseer {2}) duration 560.5s ---",
+  "P0 casts memnite (oid 4) needs={'generic': 0}",
+  "P0 casts memnite (oid 51) needs={'generic': 0}",
+  "per-game timeout (560s) hit",
+  "setup incomplete for at least one game; see notes"
+ ],
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: not-run (game D setup incomplete -- KCI never drawn, see notes); A2a gate_offers_{1}{B}: passed; A2b cast_completes: passed; A3a gate_offers_{B}{B}: failed (THE BUG -- gate never offers Sign in Blood via two Altar activations); A3b manual_proof: passed (two real activations float {B}{B}; gate then offers; cast resolves P1 20->18); A4 gate_rejects_{B}: passed; A5a gate_offers_{2}: not-run; A5b cast_completes: not-run. VERDICT: reproduced (see VERDICT OVERRIDE note).",
+ "scope": "feasible_mana_capacity colored-shard feasibility under non-tap mana sources (Phyrexian Altar / Krark-Clan Ironworks); native engine, two human-client seats; four games covering {1}{B}, {B}{B}, {B} (negative), {2} (KCI regression)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "contract": "Game A ({1}{B} Cabal Ritual, Swamp+Altar+Ghoul): gate must offer; then real cast. Game B ({B}{B} Sign in Blood, Forests+Altar+2 Memnites): gate must offer (bug: does not); manual double activation floats {B}{B} as proof, then real cast at P1. Game C ({B} Dark Ritual, Altar+0 creatures): gate must NOT offer. Game D ({2} Steel Overseer, KCI+Memnite): gate must offer; then real cast via KCI activation.",
+ "verdict_override": {
+  "scenario_code_verdict": "blocked",
+  "final_verdict": "reproduced",
+  "reason": "VERDICT OVERRIDE (post-run review, 2026-10-08): the scenario's code-level verdict gate returned 'blocked' because A1_setup_ok requires all four games to reach setup and game D (KCI colorless regression guard) never drew Krark-Clan Ironworks. Post-run inspection of the authoritative game state (runs/run-1234-reval-v01040-20261008-1544/games.db, game 46SHAQ, rev 652, turn 33) shows all 4 KCI copies still in P0's 38-card library; P0 drew 22 cards with 0 KCI (~21% chance event) -- pure test-harness draw variance, not an engine or driver defect (P0 held 12 untapped forests; the producer-cast branch would have fired had KCI been in hand). Per the pre-registered behavioral contract (scenario docstring, playbook step 2: 'reproduced iff A3a records the gate NOT offering {B}{B} while A3b proves the mana was actually producible') and the playbook verdict table ('a valid scenario reaches and records the reported failure'), the decisive B-leg (A3a failed + A3b passed) establishes REPRODUCED on v0.104.0. D-leg assertions remain not-run; the KCI colorless regression guard last passed on v0.103.0 (run 20261006-1414-1234)."
+ }
+}
