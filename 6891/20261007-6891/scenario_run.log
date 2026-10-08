@@ -1,0 +1,61 @@
+[22:16:14] server identity hashes verified against on-disk pinned artifacts
+[22:16:17] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[22:16:17] data-level: counter=P1P1 count={'type': 'UpTo', 'max': {'type': 'Ref', 'qty': {'type': 'LifeGainedThisTurn', 'player': {'type': 'Controller'}}}} multi_target={"min": 0, "max": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}}
+[22:16:19] P0 creating game...
+[22:16:19] P1 joining...
+[22:16:20] game 38DNNK; P0 seat=0 P1 seat=1
+[22:16:20] [P0] mulligan -> Keep (hand=['forest', 'lathiel, the bounteous dawn', 'plains', 'grizzly bears', 'plains', 'plains', 'plains'])
+[22:16:20] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'grizzly bears'])
+[22:16:21] [P0] playing land forest
+[22:16:25] [P1] playing land forest
+[22:16:29] [P0] playing land plains
+[22:16:36] [P1] playing land forest
+[22:16:36] [P1] casts Grizzly Bears (62)
+[22:16:41] [P0] playing land plains
+[22:16:45] [P1] playing land forest
+[22:16:46] [P1] declare no attackers
+[22:16:49] [P0] playing land plains
+[22:16:49] [P0] casts Lathiel, the Bounteous Dawn (24)
+[22:16:54] [P1] playing land forest
+[22:16:55] [P1] declare no attackers
+[22:16:58] [P0] playing land plains
+[22:16:58] [P0] casts Grizzly Bears (56)
+[22:16:59] === stage -> ATTACK (turn 9) ===
+[22:17:00] [P0] attacks with Lathiel alone (turn 9)
+[22:17:00] attack resolved: Lathiel attacking (turn 9)
+[22:17:06] [P1] declare no blockers
+[22:17:08] === stage -> ENDSTEP (turn 9) ===
+[22:17:08] Lathiel trigger on stack at End; P0 life=22
+[22:17:08] exported pre_trigger.json
+[22:17:13] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[22:17:13] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=2 nrefs=2
+[22:17:13]     cand id=38DNNK.0.154.t0 ref=62 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[22:17:13]     cand id=38DNNK.0.154.t1 ref=56 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[22:17:13] [P0] slot 0 targets grizzly bears oid=56 (own=True)
+[22:17:14] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[22:17:14] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=1 nrefs=1
+[22:17:14]     cand id=38DNNK.0.155.t0 ref=62 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[22:17:14] [P0] slot 1: chosen oid=56 NOT among candidates -- distinct targets required
+[22:17:14] [P0] slot 1: trying empty selection (up-to path)
+[22:17:14] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=choose wf=Priority
+[22:17:14] [P0] Lathiel slot prompt rtype=exactChoices spec= ncands=4 nrefs=0
+[22:17:14]     cand id=38DNNK.0.156.c0 ref=None name=? zone=? text=
+[22:17:14]     cand id=38DNNK.0.156.c1 ref=9 name=plains zone=Battlefield text=Plains
+[22:17:14]     cand id=38DNNK.0.156.c2 ref=37 name=plains zone=Battlefield text=Plains
+[22:17:14]     cand id=38DNNK.0.156.c3 ref=45 name=plains zone=Battlefield text=Plains
+[22:17:14] [P0] ENDSTEP vi: canSubmit=False n_ops=0 kind=choose wf=Priority
+[22:17:15] exported post.json
+[22:17:15] post.json exported; trigger resolved; stopping
+[22:17:15] loop ended: stage=DONE elapsed=57s
+[22:17:15] A1_setup_ok: passed
+[22:17:15] A2_trigger_fired: passed
+[22:17:15] A3_budget: passed
+[22:17:15] A4_slot0_accepted: passed
+[22:17:15] A5_free_distribution: failed
+[22:17:15] A6_decline_path: passed
+[22:17:15] A7_cleanup: passed
+[22:17:15] verdict=reproduced
+[22:17:16] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_budget": "passed", "A4_slot0_accepted": "passed", "A5_free_distribution": "failed", "A6_decline_path": "passed", "A7_cleanup": "passed"}
+[22:17:16] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6891/20261007-6891/summary.png
+[22:17:16] copied driver into evidence dir
+[22:17:16] manifest written (11 files)

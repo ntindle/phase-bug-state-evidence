@@ -1,0 +1,24 @@
+{
+ "issue": 6891,
+ "run_id": "20261007-6891",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fired": "passed",
+  "A3_budget": "passed",
+  "A4_slot0_accepted": "passed",
+  "A5_free_distribution": "failed",
+  "A6_decline_path": "passed",
+  "A7_cleanup": "passed"
+ },
+ "details": {
+  "A1_setup_ok_detail": "lathiel_bf=True own_bears=1 p1_bears=1 p0_life_at_trigger=22",
+  "A2_trigger_fired_detail": "trigger_on_stack=True target_prompt_seen=True slots_answered=2",
+  "A3_budget_detail": "p0_life_at_endstep=22 life_gained=2 (expected 2)",
+  "A4_slot0_accepted_detail": "slots_answered=2 accepted=True p0_bear_oid=56 is_own=True",
+  "A5_free_distribution_detail": "distinct_required_observed=True stacking_tried=False stacking_accepted=None own_bear_counters=2 (free distribution wants 2) p1_bear_counters=0 (expected 0)",
+  "A6_decline_path_detail": "declined_extra=False empty_tried=True terminal_forced=False",
+  "A7_cleanup_detail": "post stack_empty=True stage=DONE"
+ },
+ "notes": []
+}
