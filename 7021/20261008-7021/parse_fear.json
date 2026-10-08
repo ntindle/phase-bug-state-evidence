@@ -1,0 +1,18 @@
+{
+ "name": "Fear, Fire, Foes!",
+ "oracle_text": "Damage can't be prevented this turn. Fear, Fire, Foes! deals X damage to target creature and 1 damage to each other creature with the same controller.",
+ "damage_all_target": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "controller": null,
+  "properties": [
+   {
+    "type": "Another"
+   }
+  ]
+ },
+ "parse_gap_persists": true,
+ "note": "On v0.82.0 the parse was identical: Typed Creature / controller:null / properties:[Another], no same-controller relation."
+}
