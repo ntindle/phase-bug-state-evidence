@@ -1,0 +1,204 @@
+{
+ "card": "Gr\u00edma, Saruman's Footman",
+ "oracle_text": "Gr\u00edma can't be blocked.\nWhenever Gr\u00edma deals combat damage to a player, that player exiles cards from the top of their library until they exile an instant or sorcery card. You may cast that card without paying its mana cost. Then that player puts the exiled cards that weren't cast this way on the bottom of their library in a random order.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Blue",
+   "Black"
+  ],
+  "generic": 2
+ },
+ "triggers": [
+  {
+   "mode": "DamageDone",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ExileFromTopUntil",
+     "player": {
+      "type": "TriggeringPlayer"
+     },
+     "until": {
+      "type": "NextMatches",
+      "filter": {
+       "type": "Or",
+       "filters": [
+        {
+         "type": "Typed",
+         "type_filters": [
+          "Instant"
+         ],
+         "controller": null,
+         "properties": []
+        },
+        {
+         "type": "Typed",
+         "type_filters": [
+          "Sorcery"
+         ],
+         "controller": null,
+         "properties": []
+        }
+       ]
+      }
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CastFromZone",
+      "target": {
+       "type": "ParentTarget"
+      },
+      "without_paying_mana_cost": true,
+      "mode": "Cast",
+      "driver": "DuringResolution"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "PutAtLibraryPosition",
+       "target": {
+        "type": "ExiledBySource"
+       },
+       "count": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "position": {
+        "type": "Bottom"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "else_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "PutAtLibraryPosition",
+       "target": {
+        "type": "ExiledBySource"
+       },
+       "count": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "position": {
+        "type": "Bottom"
+       }
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "PutAtLibraryPosition",
+        "target": {
+         "type": "ExiledBySource"
+        },
+        "count": {
+         "type": "Fixed",
+         "value": 0
+        },
+        "position": {
+         "type": "Bottom"
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": true,
+     "target_choice_timing": "Resolution",
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "CombatOnly",
+   "secondary": false,
+   "valid_target": {
+    "type": "Player"
+   },
+   "valid_source": {
+    "type": "SelfRef"
+   },
+   "description": "Whenever ~ deals combat damage to a player, that player exiles cards from the top of their library until they exile an instant or sorcery card. You may cast that card without paying its mana cost. Then that player puts the exiled cards that weren't cast this way on the bottom of their library in a random order.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "checks": {
+  "DamageDone": true,
+  "ExileFromTopUntil": true,
+  "NextMatches": true,
+  "Instant": true,
+  "Sorcery": true,
+  "CastFromZone": true,
+  "without_paying_mana_cost": true,
+  "PutAtLibraryPosition": true,
+  "Bottom": true
+ },
+ "observations": {
+  "bottom_counts": [
+   {
+    "type": "Fixed",
+    "value": 0
+   },
+   {
+    "type": "Fixed",
+    "value": 0
+   },
+   {
+    "type": "Fixed",
+    "value": 0
+   }
+  ]
+ }
+}

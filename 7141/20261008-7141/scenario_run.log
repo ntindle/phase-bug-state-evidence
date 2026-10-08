@@ -1,0 +1,80 @@
+[07:53:05] server identity hashes verified against the v0.103.0 pin
+[07:53:07] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[07:53:07] saved parse_grima_sarumans_footman.json
+[07:53:07] parse: {'DamageDone': True, 'ExileFromTopUntil': True, 'NextMatches': True, 'Instant': True, 'Sorcery': True, 'CastFromZone': True, 'without_paying_mana_cost': True, 'PutAtLibraryPosition': True, 'Bottom': True} bottom_counts=[{'type': 'Fixed', 'value': 0}, {'type': 'Fixed', 'value': 0}, {'type': 'Fixed', 'value': 0}] -> A1=passed
+[07:53:08] P0 creating game (default Bo1, 2 seats)...
+[07:53:08] P1 joining...
+[07:53:08] game QEWXTE; P0 seat=0 P1 seat=1 RUN_ID=20261008-7141
+[07:53:08] [P0] mulligan -> Keep (hand=['island', 'swamp', 'island', "gríma, saruman's footman", 'island', 'swamp', 'swamp'])
+[07:53:08] [P1] mulligan -> Mulligan (hand=['forest', 'forest', 'forest', 'lightning bolt', 'forest', 'forest', 'forest'])
+[07:53:08] DIAG turn=1 active=0 phase=Untap pp=0 life=[20, 20] stage=setup grima_bf=0 attack1/2=False/False offer1=False/False offer2=False/False exile=0 stack_bolts=0
+[07:53:08] life = (20, 20)
+[07:53:08] [P1] mulligan -> Mulligan (hand=['forest', 'lightning bolt', 'forest', 'forest', 'forest', 'lightning bolt', 'forest'])
+[07:53:09] [P1] mulligan -> Keep (hand=['forest', 'forest', 'lightning bolt', 'forest', 'forest', 'lightning bolt', 'lightning bolt'])
+[07:53:09] [P1] bottoms 2
+[07:53:10] [P0] plays land island (target 99 untapped)
+[07:53:18] [P0] plays land island (target 99 untapped)
+[07:53:26] [P0] plays land island (target 99 untapped)
+[07:53:32] [P1] discards 1: ['forest']
+[07:53:33] [P0] plays land island (target 99 untapped)
+[07:53:40] [P1] discards 1: ['forest']
+[07:53:41] [P0] plays land island (target 99 untapped)
+[07:53:47] [P1] discards 1: ['forest']
+[07:53:48] [P0] plays land island (target 99 untapped)
+[07:53:55] [P1] discards 1: ['forest']
+[07:53:56] [P0] plays land island (target 99 untapped)
+[07:54:02] [P1] discards 1: ['forest']
+[07:54:04] [P0] plays land island (target 99 untapped)
+[07:54:08] DIAG turn=16 active=1 phase=EndCombat pp=1 life=[20, 20] stage=setup grima_bf=0 attack1/2=False/False offer1=False/False offer2=False/False exile=0 stack_bolts=0
+[07:54:10] [P1] discards 1: ['forest']
+[07:54:11] [P0] plays land swamp (target 99 untapped)
+[07:54:11] [P0] casting grima, saruman's footman oid=49 (engine Auto payment)
+[07:54:12] [P0] stage -> combat1 (turn=17)
+[07:54:18] [P1] discards 1: ['forest']
+[07:54:20] [P0] plays land island (target 99 untapped)
+[07:54:21] exported PRE
+[07:54:21] [P0] declaring attacker: grima -> P1 (leg 1)
+[07:54:23] life = (20, 19)
+[07:54:24] [P0] optional prompt (may-cast-accept) iid=QEWXTE.0.292 accept=['false', 'true']
+[07:54:24] [may-cast-accept] recorded offer1_opp.json (iid=QEWXTE.0.292, n=2)
+[07:54:24] exported OFFER1
+[07:54:24] [P0] ACCEPTING the free cast (reported branch); exiled_n=3 bolt_oid=84
+[07:54:24] [P0] submitting interaction iid=QEWXTE.0.292 choice=QEWXTE.0.292.c1 (true)
+[07:54:25] [free-bolt-target] recorded free_bolt_target.json (iid=QEWXTE.0.293, n=3)
+[07:54:25] [P0] free-bolt target: choosing seat 1 (choice QEWXTE.0.293.t1)
+[07:54:25] [P0] submitting interaction iid=QEWXTE.0.293 choice=QEWXTE.0.293.t1 ()
+[07:54:25] life = (20, 16)
+[07:54:25] [P0] leg-1 free bolt resolved: P1 19->16
+[07:54:26] exported MID
+[07:54:26] [P0] stage -> regen
+[07:54:31] [P1] discards 1: ['forest']
+[07:54:31] [P0] stage -> combat2 (turn=21)
+[07:54:32] [P0] plays land swamp (target 99 untapped)
+[07:54:33] [P0] declaring attacker: grima -> P1 (leg 2)
+[07:54:35] life = (20, 15)
+[07:54:35] [P0] optional prompt (may-cast-decline) iid=QEWXTE.0.335 accept=['false', 'true']
+[07:54:35] [may-cast-decline] recorded offer2_opp.json (iid=QEWXTE.0.335, n=2)
+[07:54:35] exported OFFER2
+[07:54:35] [P0] DECLINING the free cast (control); exiled_n=3
+[07:54:35] [P0] submitting interaction iid=QEWXTE.0.335 choice=QEWXTE.0.335.c0 (false)
+[07:54:36] exported POST
+[07:54:36] loop ended: elapsed=89s
+[07:54:36] loaded pre.json
+[07:54:36] loaded offer1.json
+[07:54:36] loaded mid.json
+[07:54:36] loaded offer2.json
+[07:54:36] loaded post.json
+[07:54:36] wrote run.json verdict=reproduced
+[07:54:36] A1_parse: passed
+[07:54:36] A2_setup: passed
+[07:54:36] A3_exile_until: passed
+[07:54:36] A4_cast_offered: passed
+[07:54:36] A5_cast_resolves: passed
+[07:54:36] A6_bottom_cleanup: failed
+[07:54:36] A7_decline_control: failed
+[07:54:36] A8_cleanup: passed
+[07:54:36] copied scenario_7141_01030.py into EVDIR
+[07:54:36] copied server.log from /home/hatch/workspace/dev/phase-backfill/runs/20261008-7141/server.log into EVDIR
+[07:54:36] wrote summary.png
+[07:54:36] wrote manifest.sha256 (15 files)
+[07:54:36] scenario finished

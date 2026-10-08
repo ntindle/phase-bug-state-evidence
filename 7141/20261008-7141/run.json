@@ -1,0 +1,386 @@
+{
+ "run_id": "20261008-7141",
+ "issue": 7141,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-08",
+ "server": {
+  "server_version": "0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "mode": "Full",
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3be1edb6689bb7bb4a8c662db3097400f50a84814a4970073b922dab3bb053af",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "gr\u00edma, saruman's footman",
+    12
+   ],
+   [
+    "island",
+    24
+   ],
+   [
+    "swamp",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    20
+   ],
+   [
+    "forest",
+    40
+   ]
+  ]
+ },
+ "setup_line": "P0 12x Grima, Saruman's Footman / 24x Island / 24x Swamp; P1 20x Lightning Bolt / 40x Forest (passive). P0 mulligans for Grima+2 lands, casts Grima ({2}{U}{B}, engine Auto payment). Combat1 (turn>=7): attack with Grima (unblockable), ACCEPT the may-cast offer (reported branch), target the free Bolt at P1. Regen: wait 2 turns. Combat2: attack, DECLINE the may-cast offer (control).",
+ "contract_line": "Grima's combat-damage trigger exiles from the top until an instant/sorcery, offers the free cast, then must put the uncast exiled cards on the bottom of the library; the v0.82.0 run left them stranded in exile.",
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_7141.py (v0.82.0 / protocol 70) for pinned v0.103.0; the behavioral contract, assertions A1..A8 and the verdict rule are unchanged.",
+  "my_priority = PassPriority in legal_actions; casts are gated on it.",
+  "CastSpell carries payment_mode Auto: the engine taps mana itself; the driver never answers tapLandForMana and runs no driver-side mana payment (legacy PayMana actions are answered if they appear).",
+  "The may-cast offer is a vi opportunity whose choices carry the decideOptionalEffect action code (scenario_301_01030.py shape); accept = role accept value true, decline = value false.",
+  "The free Bolt's target selection is answered with seat 1; the engine may also auto-target a sole legal target (recorded as the auto-target case).",
+  "DeclareAttackers via legacy Action with attacks=[[int(oid), {type:Player, data:1}]], bands=[]; DeclareBlockers with assignments=[].",
+  "The stack-watch branch always falls through to the pass-priority gate (never returns early); both seats must pass in succession for a stack entry to resolve.",
+  "Pre/offer/mid/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_exile_until": "passed",
+  "A4_cast_offered": "passed",
+  "A5_cast_resolves": "passed",
+  "A6_bottom_cleanup": "failed",
+  "A7_decline_control": "failed",
+  "A8_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [],
+  "tick_errors": [],
+  "notes": [],
+  "target_selections": [
+   {
+    "interactionId": "QEWXTE.0.292",
+    "turn": 19,
+    "phase": "CombatDamage",
+    "stage": "combat1",
+    "purpose": "may-cast-accept",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "candidates": [
+     {
+      "choice_id": "QEWXTE.0.292.c0",
+      "oid": null,
+      "seat": null,
+      "name": "false",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": "false",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "false"
+     },
+     {
+      "choice_id": "QEWXTE.0.292.c1",
+      "oid": null,
+      "seat": null,
+      "name": "true",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": "true",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "true"
+     }
+    ]
+   },
+   {
+    "interactionId": "QEWXTE.0.293",
+    "turn": 19,
+    "phase": "CombatDamage",
+    "stage": "accept_leg",
+    "purpose": "free-bolt-target",
+    "rtype": "schema",
+    "spec_type": "sequence",
+    "candidates": [
+     {
+      "choice_id": "QEWXTE.0.293.t0",
+      "oid": null,
+      "seat": 0,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "QEWXTE.0.293.t1",
+      "oid": null,
+      "seat": 1,
+      "name": "",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": ""
+     },
+     {
+      "choice_id": "QEWXTE.0.293.t2",
+      "oid": "49",
+      "seat": null,
+      "name": "gr\u00edma, saruman's footman",
+      "zone": "Battlefield",
+      "controller": 0,
+      "tapped": true,
+      "accept": null,
+      "codes": [
+       "candidate"
+      ],
+      "text": "Gr\u00edma, Saruman's Footman"
+     }
+    ]
+   },
+   {
+    "interactionId": "QEWXTE.0.335",
+    "turn": 21,
+    "phase": "CombatDamage",
+    "stage": "combat2",
+    "purpose": "may-cast-decline",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "candidates": [
+     {
+      "choice_id": "QEWXTE.0.335.c0",
+      "oid": null,
+      "seat": null,
+      "name": "false",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": "false",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "false"
+     },
+     {
+      "choice_id": "QEWXTE.0.335.c1",
+      "oid": null,
+      "seat": null,
+      "name": "true",
+      "zone": null,
+      "controller": null,
+      "tapped": null,
+      "accept": "true",
+      "codes": [
+       "candidate",
+       "decideOptionalEffect"
+      ],
+      "text": "true"
+     }
+    ]
+   }
+  ],
+  "life_trace": [
+   [
+    1.7,
+    [
+     20,
+     20
+    ]
+   ],
+   [
+    76.3,
+    [
+     20,
+     19
+    ]
+   ],
+   [
+    78.4,
+    [
+     20,
+     16
+    ]
+   ],
+   [
+    87.9,
+    [
+     20,
+     15
+    ]
+   ]
+  ],
+  "optional_prompts": [
+   {
+    "interactionId": "QEWXTE.0.292",
+    "turn": 19,
+    "phase": "CombatDamage",
+    "stage": "combat1",
+    "role": "may-cast-accept",
+    "rtype": "exactChoices",
+    "accept_values": [
+     "false",
+     "true"
+    ],
+    "codes": [
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ],
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ]
+    ],
+    "texts": [
+     "false",
+     "true"
+    ]
+   },
+   {
+    "interactionId": "QEWXTE.0.335",
+    "turn": 21,
+    "phase": "CombatDamage",
+    "stage": "combat2",
+    "role": "may-cast-decline",
+    "rtype": "exactChoices",
+    "accept_values": [
+     "false",
+     "true"
+    ],
+    "codes": [
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ],
+     [
+      "candidate",
+      "decideOptionalEffect"
+     ]
+    ],
+    "texts": [
+     "false",
+     "true"
+    ]
+   }
+  ]
+ },
+ "driver_state": {
+  "stage": "done",
+  "grima_cast": true,
+  "attack1_done": true,
+  "attack1_turn": 19,
+  "attack2_done": true,
+  "attack2_turn": 21,
+  "p1_life_pre": 20,
+  "offer1_seen": true,
+  "offer1_accepted": true,
+  "offer1_skipped": false,
+  "offer1_bolt_oid": 84,
+  "offer1_exiled": [
+   84,
+   108,
+   110
+  ],
+  "p1_life_at_offer1": 19,
+  "p0_untapped_pre_cast": 10,
+  "p0_untapped_post_cast": 10,
+  "free_bolt_pending": false,
+  "free_bolt_targeted": true,
+  "free_bolt_auto": false,
+  "gy1_bolts_pre_free": 0,
+  "p1_life_post_free": 16,
+  "mid_exported": true,
+  "offer2_seen": true,
+  "offer2_declined": true,
+  "offer2_skipped": false,
+  "offer2_exiled": [
+   99,
+   108,
+   110
+  ],
+  "p1_life_at_offer2": 15,
+  "gy1_bolts_at_mid": 1,
+  "p1_life_post": 15,
+  "pre_exported": true,
+  "offer1_exported": true,
+  "offer2_exported": true,
+  "post_exported": true,
+  "p0_life_final": 20,
+  "p1_life_final": 15,
+  "settle_ticks": 4,
+  "stage_t0": 1791464073.9488728,
+  "finished": true
+ },
+ "mulligans": {
+  "P0": 0,
+  "P1": 2
+ },
+ "notes": [
+  "A1: DamageDone + ExileFromTopUntil + NextMatches + Instant + Sorcery + CastFromZone(free) + PutAtLibraryPosition(Bottom): True; OBS bottom_counts=[{'type': 'Fixed', 'value': 0}, {'type': 'Fixed', 'value': 0}, {'type': 'Fixed', 'value': 0}] (oracle: ALL uncast exiled cards)",
+  "A2: grima_bf=1 p1_life_pre=20 (expect 20) p1_lib=46 turn=19",
+  "A3: exiled_n=3 exiled=['forest', 'forest', 'lightning bolt'] top_end=front bolt_oid=84",
+  "A4: offer1_seen=True bolt_oid=84 accepted=True skipped=False",
+  "A5: P1 19->16 (dmg=3, expect 3); bolt oid=84 in P1 gy=True; P0 untapped lands 10->10 (free cast: expect no payment; unchanged=True)",
+  "A6: uncast_exiled=2 in_P1_lib=0 stranded_in_exile=2 ['forest', 'forest']",
+  "A7: exiled_n=3 in_P1_lib=0 stranded=1 P1-gy bolts 1->1 (expect no new); P1 15->15 (dmg=0, expect 0)",
+  "A8: stack_empty=True life_final=20/15",
+  "verdict=reproduced: the exile-until / may-cast / bottom-cleanup chain failed in at least one stage",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "offer1.json",
+  "mid.json",
+  "offer2.json",
+  "post.json",
+  "run.json",
+  "parse_grima_sarumans_footman.json",
+  "offer1_opp.json",
+  "offer2_opp.json",
+  "free_bolt_target.json",
+  "scenario_7141_01030.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grima / 20x Lightning Bolt density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is a fully passive punching bag (20x Bolt, 40x Forest; never plays lands, never casts, never blocks).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Turn order is randomized by the engine; the driver keys on active_player and turn_number, not order."
+ ],
+ "duration_s": 88.8
+}
