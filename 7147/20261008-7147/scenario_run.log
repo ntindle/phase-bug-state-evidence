@@ -1,0 +1,59 @@
+[12:03:38] server identity hashes verified against the v0.103.0 pin
+[12:03:43] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[12:03:43] parse: talon_gates_of_madara ok=True
+[12:03:43] P0 creating game (Bo1, 2 seats)...
+[12:03:44] P1 joining...
+[12:03:44] game ES5LHY; P0 seat=0 P1 seat=1 RUN_ID=20261008-7147
+[12:03:44] [P17147r] mulligan -> Keep (hand=['grizzly bears', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[12:03:44] [P07147r] mulligan -> Keep (hand=['forest', 'forest', 'grizzly bears', 'grizzly bears', 'forest', 'forest', 'forest'])
+[12:03:45] [P07147r] plays Forest (turn 1)
+[12:03:46] [P07147r] plays Forest (turn 1)
+[12:03:50] [P17147r] plays Forest (turn 2)
+[12:03:54] [P07147r] plays Forest (turn 3)
+[12:03:54] [P07147r] casts Grizzly Bears oid=14 t3 (engine Auto payment)
+[12:04:00] [P17147r] plays Forest (turn 4)
+[12:04:00] [P17147r] casts Grizzly Bears oid=97 t4 (engine Auto payment)
+[12:04:04] [P07147r] plays Forest (turn 5)
+[12:04:05] [P07147r] casts Grizzly Bears oid=20 t5 (engine Auto payment)
+[12:04:09] [P17147r] plays Forest (turn 6)
+[12:04:13] [P07147r] plays Forest (turn 7)
+[12:04:19] [P17147r] plays Forest (turn 8)
+[12:04:23] [P07147r] legA plays Talon Gates (turn 9) bears P0=2 P1=1
+[12:04:23] [P07147r] legA: ETB trigger on stack, exporting PRE
+[12:04:23] exported PREA
+[12:04:23] [P07147r] legA TriggerTargetSelection: rtype=schema stype=sequence ncands=3 iid=ES5LHY.0.140
+[12:04:23]     cand id=ES5LHY.0.140.t0 -> grizzly bears#14 (P0) zone=Battlefield
+[12:04:23]     cand id=ES5LHY.0.140.t1 -> grizzly bears#97 (P1) zone=Battlefield
+[12:04:23]     cand id=ES5LHY.0.140.t2 -> grizzly bears#20 (P0) zone=Battlefield
+[12:04:23] [P07147r] legA submits EMPTY target selection
+[12:04:23] [P07147r] legA submitting: {"interactionId": "ES5LHY.0.140", "response": {"type": "sequence", "data": {"choiceIds": []}}}
+[12:04:23] [legA] trigger targets on stack: [null]
+[12:04:24] exported MIDA
+[12:04:24] [legA] mid: 24 bears tracked; phased=['14', '20', '97'] (answer turn 9 -> mid turn 9)
+[12:04:24] legA resolution observed; leg=B armed
+[12:04:28] [P17147r] plays Forest (turn 10)
+[12:04:33] [P07147r] legB plays Talon Gates (turn 11) bears P0=2 P1=1
+[12:04:33] [P07147r] legB: ETB trigger on stack, exporting PRE
+[12:04:33] exported PREB
+[12:04:33] [P07147r] legB TriggerTargetSelection: rtype=schema stype=sequence ncands=3 iid=ES5LHY.0.174
+[12:04:33]     cand id=ES5LHY.0.174.t0 -> grizzly bears#14 (P0) zone=Battlefield
+[12:04:33]     cand id=ES5LHY.0.174.t1 -> grizzly bears#97 (P1) zone=Battlefield
+[12:04:33]     cand id=ES5LHY.0.174.t2 -> grizzly bears#20 (P0) zone=Battlefield
+[12:04:33] [P07147r] legB targets grizzly bears#97
+[12:04:33] [P07147r] legB submitting: {"interactionId": "ES5LHY.0.174", "response": {"type": "sequence", "data": {"choiceIds": ["ES5LHY.0.174.t1"]}}}
+[12:04:33] [legB] trigger targets on stack: [null]
+[12:04:34] exported MIDB
+[12:04:34] [legB] mid: 24 bears tracked; phased=['97'] (answer turn 11 -> mid turn 11)
+[12:04:34] legB resolution observed; stopping
+[12:04:35] main loop ended: stop=True reason=both legs resolved
+[12:04:35] scenario source copied to evidence
+[12:04:35] exported POST
+[12:04:35] VERDICT: reproduced
+[12:04:35]   A1: parse ok=True (see parse_talon.json)
+[12:04:35]   A2: prompt_seen=True ncands=3 sides=[0, 1] pre=True
+[12:04:35]   A3: answered=True rejected_flag=False legA rejections=0
+[12:04:35]   A4: mid_exported=True phased_after_empty=['14', '20', '97'] answer_turn=9 mid_turn=9 same_turn=True (bears pre=24 mid=24)
+[12:04:35]   A5: prompt_seen=True answered=True target_oid=97 phased=['97'] others_phased=[]
+[12:04:35]   A6: final stack depth=0
+[12:04:35]   verdict=reproduced: legA empty selection -> phased bears ['14', '20', '97']; legB single-target control -> phased ['97'] (target 97)
+[12:04:35] run.json written
