@@ -1,0 +1,21 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_creatures_enter": "passed",
+  "A3_triggers_fired": "passed",
+  "A4_both_sacrificed": "passed",
+  "A5_cleanup_leg1": "passed",
+  "A6_endstep_survives": "passed",
+  "A7_next_endstep_sac": "passed"
+ },
+ "notes": [
+  "game created and both seats joined: True",
+  "leg-1 bears put in by sneak: ['42', '57']; battlefield-confirmed at activation: ['42', '57']",
+  "sacrifice trigger stack ids seen across leg-1 end step: ['123', '124'] (max simultaneous on stack: 2, 7 snapshots)",
+  "post1 bear zones: 42=Graveyard, 57=Graveyard",
+  "leg-2 bear 37; zone at P1 turn start (post2_pre): Battlefield (Oracle: survives own end step, sacrificed at the NEXT end step)",
+  "post2: leg-2 bear zone=Graveyard stack_empty=True",
+  "protocol-106 driver (v0.103.0): MulliganDecision via legacy Action; bottom via vi schema/select; DiscardToHandSize via vi; Sneak Attack cast via advertised CastSpell ({3}{R} via vi tapLandForMana/PayMana); activation via advertised ActivateAbility while holding priority ({R} paid); the 'may' via vi exactChoices decideOptionalEffect (accept); the creature choice via the advertised schema/exactChoices card opportunity (Grizzly Bears from hand); trigger-ordering via schema sequence; empty declares; priority-gated passes; 5s re-tick backstop covers priority holders and pending decisions."
+ ],
+ "verdict": "not-reproduced"
+}
