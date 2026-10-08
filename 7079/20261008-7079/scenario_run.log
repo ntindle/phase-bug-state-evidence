@@ -1,0 +1,55 @@
+[11:53:37] server identity hashes verified against the v0.103.0 pin
+[11:53:41] ServerHello: version=0.103.0 build=ec27a8d protocol=106 mode=Full
+[11:53:41] saved parse_magnificent_end.json
+[11:53:41] parse: ModifyCost Reduce clause found=True -> A1=passed
+[11:53:43] P0 creating game (default Bo1, 2 seats)...
+[11:53:43] P1 joining...
+[11:53:44] game DD8PZJ; P0 seat=0 P1 seat=1 RUN_ID=20261008-7079
+[11:53:44] [P0] mulligan -> Keep (hand=['magnificent end', 'plains', 'plains', 'magnificent end', 'forest', 'plains', 'plains'])
+[11:53:44] [P1] mulligan -> Keep (hand=['forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest', 'forest'])
+[11:53:44] DIAG turn=1 active=1 phase=Untap pp=1 life=[20, 20] window=False offered_red=False offered_pr=False end=False/False lands0=[] bear_attacked=False stack=0
+[11:53:44] life = (20, 20)
+[11:53:45] [P1] plays land ? (target 99 untapped)
+[11:53:49] [P0] plays land plains (target 2 untapped)
+[11:53:49] [P0] castdiag t2 PreCombatMain: untapped=['plains'] casts=[] bear_tapped=[]
+[11:53:51] [P0] castdiag t2 PostCombatMain: untapped=['plains'] casts=[] bear_tapped=[]
+[11:53:56] [P1] plays land ? (target 99 untapped)
+[11:53:56] [P1] casting Grizzly Bears oid=80 (engine Auto payment)
+[11:54:05] [P0] plays land plains (target 2 untapped)
+[11:54:05] [P0] castdiag t4 PreCombatMain: untapped=['plains', 'plains'] casts=[] bear_tapped=[]
+[11:54:07] [P0] castdiag t4 PostCombatMain: untapped=['plains', 'plains'] casts=[] bear_tapped=[]
+[11:54:09] [P1] plays land ? (target 99 untapped)
+[11:54:10] [P1] attacks P0 with bears [80] (turn 5)
+[11:54:12] life = (18, 20)
+[11:54:16] exported PRE
+[11:54:16] WINDOW ASSESSED: offered_reduced=False detail={"bear_oid": 80, "bear_tapped": true, "my_priority": true, "offered_oids": [], "p1_attack_turn": 5, "phase": "PreCombatMain", "turn": 6, "untapped_lands": ["plains", "plains"]}
+[11:54:16] [P0] not offered at reduced cost; land hold released (target 5 untapped for the printed-cost control)
+[11:54:16] [P0] plays land plains (target 5 untapped)
+[11:54:16] [P0] castdiag t6 PreCombatMain: untapped=['plains', 'plains', 'plains'] casts=[] bear_tapped=[80]
+[11:54:18] [P0] castdiag t6 PostCombatMain: untapped=['plains', 'plains', 'plains'] casts=[] bear_tapped=[80]
+[11:54:20] [P1] plays land ? (target 99 untapped)
+[11:54:24] life = (16, 20)
+[11:54:28] [P0] plays land plains (target 5 untapped)
+[11:54:29] [P0] castdiag t8 PreCombatMain: untapped=['plains', 'plains', 'plains', 'plains'] casts=[] bear_tapped=[80]
+[11:54:31] [P0] castdiag t8 PostCombatMain: untapped=['plains', 'plains', 'plains', 'plains'] casts=[] bear_tapped=[80]
+[11:54:33] [P1] plays land ? (target 99 untapped)
+[11:54:36] life = (14, 20)
+[11:54:40] [P0] plays land plains (target 5 untapped)
+[11:54:40] [P0] CastSpell offered for magnificent end: {'by': 'P0', 'turn': 10, 'phase': 'PreCombatMain', 'untapped_lands': ['plains', 'plains', 'plains', 'plains', 'plains'], 'oids': ['19', '24', '49', '57', '24', '49', '57', '19']}
+[11:54:40] [P0] printed-cost control: CastSpell offered with 5 untapped lands (turn 10)
+[11:54:40] exported POST
+[11:54:40] loop ended: elapsed=59s
+[11:54:40] loaded pre.json
+[11:54:40] loaded post.json
+[11:54:40] wrote run.json verdict=reproduced
+[11:54:40] A1_parse_gap: passed
+[11:54:40] A2_setup_ok: passed
+[11:54:40] A3_reduced_offer: failed
+[11:54:40] A4_printed_offer: passed
+[11:54:40] A5_reduced_cast: not-run
+[11:54:40] A6_cleanup: passed
+[11:54:40] copied scenario_7079_01030.py into EVDIR
+[11:54:40] server.log: wrote note instead (no runs/<run-id>/server.log)
+[11:54:40] wrote summary.png
+[11:54:40] wrote manifest.sha256 (9 files)
+[11:54:40] scenario finished
