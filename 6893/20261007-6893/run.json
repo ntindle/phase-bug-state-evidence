@@ -1,0 +1,103 @@
+{
+ "issue": 6893,
+ "run_id": "20261007-6893",
+ "game_code": "9T8CPT",
+ "started_at": "2026-10-08T03:44:38",
+ "duration_s": 93.0,
+ "server_identity": {
+  "validated_version": "v0.103.0",
+  "build_commit": "ec27a8d",
+  "protocol_version": 106,
+  "server_binary_sha256": "a991fec48a21e11d8892200fa10fcd9e830bb2adf97ba6dc7b8255d907d54dbc",
+  "card_data_sha256": "40aa768ead511bcdff5df65e0022ecb5b95c474558ec5dc661467c8ce5d3f4fe",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8186038698fdef692d65bc2a3a84cb9831f6f93354b38db7cbd0ec5b7b3deadd",
+ "decks": {
+  "P0": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Day of Judgment",
+    12
+   ],
+   [
+    "Forest",
+    12
+   ],
+   [
+    "Plains",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Shield Broker",
+    12
+   ],
+   [
+    "Perrie, the Pulverizer",
+    12
+   ],
+   [
+    "Boon of Safety",
+    4
+   ],
+   [
+    "Island",
+    12
+   ],
+   [
+    "Plains",
+    8
+   ],
+   [
+    "Forest",
+    8
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-106 port of driver/scenario_6893.py (protocol 69 / v0.80.0, correction run 20260912-6893f) for pinned v0.103.0; behavioral contract A1..A5 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action. The v0.103.0 engine auto-taps reliably; manual taps are a >90s fallback only.",
+  "Shield Broker's ETB and Perrie's ETB target selections are vi schema opportunities whose candidates reference battlefield creatures; the driver answers each once by choosing the P0-owned Bear (the Witherbloom stand-in).",
+  "Stage machine on authoritative state: SETUP (P0 bear, P1 Broker) -> BROKER_RESOLVED (pre_wipe.json: bear 1 shield, controlled by P1) -> WIPE_RESOLVED (post_wipe.json: bear 0 shields, control reverted, Broker in P1 graveyard) -> PERRIE_RESOLVED (post_perrie.json: later shield counter on the bear) -> DONE (post.json one turn later). Boon of Safety is the fallback later-counter source if Perrie's counter misses the Bear.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME -- whether the later shield counter reactivates the ended control effect -- is asserted on the saved states, not the prompt.",
+  "Data-level: v0.103.0 parses Shield Broker's ETB as PutCounter(shield, 1) chaining GainControl(target=ParentTarget, duration=ForAsLongAs(RecipientHasCounters(shield, min 1))) -- unchanged from v0.80.0 (area:engine)."
+ ],
+ "assertions": {
+  "A1_broker_steal": "passed",
+  "A2_wipe_replacement": "passed",
+  "A3_control_reverted": "passed",
+  "A4_no_reactivation": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_broker_steal_detail": "bear oid=48 shield=1 controller=1 zone=Battlefield (pre_wipe.json)",
+  "A2_wipe_replacement_detail": "bear oid=48 shield=0 controller=0 zone=Battlefield (post_wipe.json): shield counter removed instead of destruction",
+  "A3_control_reverted_detail": "bear_controller=0 broker_in_p1_graveyard=True (post_wipe.json)",
+  "A4_no_reactivation_detail": "counter_source=perrie post_perrie: bear oid=48 shield=1 controller=0 zone=Battlefield; post: bear oid=48 shield=1 controller=0 zone=Battlefield",
+  "A5_cleanup_detail": "stage=DONE turns_past_perrie=1 stall=False stages=['SETUP', 'BROKER_RESOLVED', 'WIPE_RESOLVED', 'PERRIE_RESOLVED', 'DONE']"
+ },
+ "notes": [],
+ "verdict": "not-reproduced",
+ "evidence_comment_id": 5645773585,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Grizzly Bears stands in for the reporter's Witherbloom Apprentice as the stolen creature (both ordinary noncommander creatures).",
+  "Perrie, the Pulverizer is the reporter's 'Perry the Piledriver' (the commander that re-entered and placed the later shield counter); Boon of Safety is a fallback shield-counter source used only if Perrie's counter does not land on the Bear.",
+  "Not tested on the original 2026-08-02 build; verdict is scoped to v0.103.0, not a fix claim.",
+  "States are authoritative exports, restorable only via full game replay (scenario_6893_01030.py), not direct load."
+ ],
+ "setup_line": "P0: 12x Grizzly Bears + 12x Day of Judgment + 12x Forest + 12x Plains; P1: 12x Shield Broker + 12x Perrie, the Pulverizer + 4x Boon of Safety + 12x Island + 8x Plains + 8x Forest",
+ "contract_line": "P1 casts Shield Broker, ETB targets P0's Bear (P1 gains control); P0 casts Day of Judgment (Bear's shield counter consumed instead of destruction, control reverts); P1 casts Perrie, ETB targets the Bear (later shield counter). The ended Shield Broker control effect must NOT reactivate: the Bear stays under P0's control one full turn later."
+}
