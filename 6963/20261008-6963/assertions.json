@@ -1,0 +1,35 @@
+{
+ "issue": 6963,
+ "run_id": "20261008-6963",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_drops_play": "passed",
+  "A2_parse_cast_correct": "passed",
+  "A3_control_omenkeel": "passed",
+  "A4_class_gix": "passed",
+  "A5_census": "passed",
+  "G1_attack_ok": "passed",
+  "G2_land_withheld": "passed",
+  "G3_cast_offered": "passed",
+  "G4_bolt_resolves": "not-run",
+  "O1_exile_scope": "failed",
+  "O2_draw_count": "not-run"
+ },
+ "details": {
+  "A1_parse_drops_play": "Elder Brain Play-mode permission nodes: 0 (expected 0; Unimplemented 'play lands' nodes: 1)",
+  "A2_parse_cast_correct": "Cast-mode nodes: 1; any-color mana rider: True",
+  "A3_control_omenkeel": "The Omenkeel emits a Play-mode permission gated on Typed[Land]: True (standalone land-play clauses lower correctly)",
+  "A4_class_gix": "Gix Play-mode permission nodes: 0 expected (same defect as Elder Brain; #6952 duplicate): True",
+  "A5_census": "50 cards with compound 'you may play ... and cast ...' Oracle sentences; 48 emit no Play-mode permission: ['advanced floral invocations', 'all-you-can-eat buffet', 'benjamin sisko, besieged', \"bolas's citadel\", 'brilliant ultimatum', 'case of the locked hothouse', 'case of the lost witness', \"colfenor's plans\", 'coram, the undertaker', 'crystal skull, isu spyglass', 'elder brain', 'experimental frenzy']",
+  "G1_attack_ok": "attack_declared=True (turn 19); P1-owned exiled lands: [(112, 'island'), (74, 'island'), (88, 'island'), (89, 'island'), (93, 'island'), (96, 'island')]",
+  "G2_land_withheld": "PlayLand offers on exiled lands: [] (expected none)",
+  "G3_cast_offered": "CastSpell offers on exiled cards: [{'src_oid': '72', 'name': 'lightning bolt', 'action': 'CastSpell'}, {'src_oid': '19', 'name': 'elder brain', 'action': 'CastSpell'}, {'src_oid': '43', 'name': 'elder brain', 'action': 'CastSpell'}, {'src_oid': '58', 'name': 'elder brain', 'action': 'CastSpell'}, {'src_oid': '29', 'name': 'elder brain', 'action': 'CastSpell'}] (expected >=1)",
+  "G4_bolt_resolves": "bolt_cast=False bolt_done=False life None -> None",
+  "O1_exile_scope": "11 exiled cards; non-P1-owned: [('elder brain', '0'), ('elder brain', '0'), ('elder brain', '0'), ('elder brain', '0')] (expected none)",
+  "O2_draw_count": "p1_hand_at_attack=7 snapshot=True post=False"
+ },
+ "notes": [
+  "verdict=reproduced: Elder Brain's compound permission still drops the Play half on v0.103.0 (parse-level defect)",
+  "verdict=reproduced"
+ ]
+}
