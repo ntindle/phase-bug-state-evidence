@@ -1,0 +1,165 @@
+{
+ "record": {
+  "interactionId": "9IM7N6.0.424",
+  "turn": 26,
+  "phase": "PreCombatMain",
+  "stage": "regen",
+  "purpose": "bolt-regen",
+  "rtype": "schema",
+  "spec_type": "sequence",
+  "candidates": [
+   {
+    "choice_id": "9IM7N6.0.424.t0",
+    "oid": null,
+    "seat": 0,
+    "name": "",
+    "zone": null,
+    "controller": null,
+    "tapped": null,
+    "text": ""
+   },
+   {
+    "choice_id": "9IM7N6.0.424.t1",
+    "oid": null,
+    "seat": 1,
+    "name": "",
+    "zone": null,
+    "controller": null,
+    "tapped": null,
+    "text": ""
+   },
+   {
+    "choice_id": "9IM7N6.0.424.t2",
+    "oid": "5",
+    "seat": null,
+    "name": "mercurial spelldancer",
+    "zone": "Battlefield",
+    "controller": 0,
+    "tapped": false,
+    "text": "Mercurial Spelldancer"
+   }
+  ]
+ },
+ "opportunity": {
+  "interactionId": "9IM7N6.0.424",
+  "response": {
+   "type": "schema",
+   "data": {
+    "spec": {
+     "type": "sequence",
+     "data": {
+      "min": 1,
+      "max": 1,
+      "unique": true,
+      "includeAll": false,
+      "engineValidated": false,
+      "escape": null,
+      "confirm": "explicit"
+     }
+    },
+    "candidates": [
+     {
+      "id": "9IM7N6.0.424.t0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "player",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "seat": 0
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "9IM7N6.0.424.t1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "player",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "seat": 1
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "9IM7N6.0.424.t2",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "5",
+         "name": "Mercurial Spelldancer",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 2,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   },
+   {
+    "type": "selection",
+    "data": {
+     "intent": "damage",
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 1,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 1,
+   "maximum": 1,
+   "aggregate": null,
+   "confirmable": false
+  }
+ }
+}
