@@ -1,0 +1,51 @@
+{
+ "verdict": "reproduced",
+ "legs": {
+  "instant": {
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "passed",
+    "A4_hk_died": "passed",
+    "A5_exile_and_lifeloss": "passed",
+    "A6_free_cast_offered": "passed",
+    "A7_accept_resolves": "failed",
+    "A8_no_dangling": "passed"
+   },
+   "verdict": "reproduced",
+   "notes": [
+    "accept-drive expired (120s): accepted cast did not resolve (exile=['lightning bolt'], gy_has_staged=False, p1_life=19)",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=lightning bolt (want lightning bolt)",
+    "A4: H&K in graveyard in pre_trigger=True",
+    "A5: staged exiled=True (exile=['lightning bolt']); P1 life 20->19 (want 19)",
+    "A6: free-cast offer reached P0=True",
+    "A7: Bolt in P0 GY=False; P1 life=19 (want 16); exile=['lightning bolt']; stack_empty=True",
+    "A8: end stack_empty=True"
+   ]
+  },
+  "sorcery": {
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "failed",
+    "A4_hk_died": "failed",
+    "A5_exile_and_lifeloss": "failed",
+    "A6_free_cast_offered": "failed",
+    "A7_accept_resolves": "not-run",
+    "A8_no_dangling": "not-run"
+   },
+   "verdict": "blocked",
+   "notes": [
+    "could not reach the kill turn by turn 40",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=n/a (want divination)",
+    "A4: H&K in graveyard in pre_trigger=False",
+    "A5: post_trigger missing",
+    "A6: free-cast offer reached P0=False",
+    "A7: not-run (no offer to accept, or no post state)",
+    "A8: not-run (no post state)"
+   ]
+  }
+ }
+}

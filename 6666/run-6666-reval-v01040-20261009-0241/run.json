@@ -1,0 +1,186 @@
+{
+ "issue": 6666,
+ "run_id": "run-6666-reval-v01040-20261009-0241",
+ "verdict": "reproduced",
+ "started_at": "2026-10-09T07:43:48",
+ "duration_s": 321.6,
+ "server": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full",
+  "server_binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.104.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run": "backfill-owned v0.104.0 server on 127.0.0.1:9374 (started by this run run-6666-reval-v01040-20261009-0241; identity verified by ClientHello/ServerHello handshake and recomputed digests this run)",
+  "source": "2026-10-09: latest stable release v0.104.0 (published 2026-10-08) == pinned release dir; ServerHello 0.104.0/4227122/protocol 118 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "server_run_dir": "runs/cron-20261007-0311",
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6666_01040.py"
+ },
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "island",
+    12
+   ],
+   [
+    "swamp",
+    10
+   ],
+   [
+    "mountain",
+    8
+   ],
+   [
+    "hidetsugu and kairi",
+    6
+   ],
+   [
+    "mystical tutor",
+    6
+   ],
+   [
+    "murder",
+    6
+   ],
+   [
+    "lightning bolt | divination (per leg)",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "legs": [
+  {
+   "leg": "instant",
+   "staged": "lightning bolt",
+   "mv": 1,
+   "verdict": "reproduced",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "passed",
+    "A4_hk_died": "passed",
+    "A5_exile_and_lifeloss": "passed",
+    "A6_free_cast_offered": "passed",
+    "A7_accept_resolves": "failed",
+    "A8_no_dangling": "passed"
+   },
+   "notes": [
+    "accept-drive expired (120s): accepted cast did not resolve (exile=['lightning bolt'], gy_has_staged=False, p1_life=19)",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=lightning bolt (want lightning bolt)",
+    "A4: H&K in graveyard in pre_trigger=True",
+    "A5: staged exiled=True (exile=['lightning bolt']); P1 life 20->19 (want 19)",
+    "A6: free-cast offer reached P0=True",
+    "A7: Bolt in P0 GY=False; P1 life=19 (want 16); exile=['lightning bolt']; stack_empty=True",
+    "A8: end stack_empty=True"
+   ],
+   "duration_s": 183.2,
+   "stage": "done",
+   "exports": [
+    "post",
+    "post_trigger",
+    "pre_trigger"
+   ],
+   "rejections": [],
+   "tick_errors": [],
+   "offer_seen": true,
+   "resolved": false
+  },
+  {
+   "leg": "sorcery",
+   "staged": "divination",
+   "mv": 3,
+   "verdict": "blocked",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "failed",
+    "A4_hk_died": "failed",
+    "A5_exile_and_lifeloss": "failed",
+    "A6_free_cast_offered": "failed",
+    "A7_accept_resolves": "not-run",
+    "A8_no_dangling": "not-run"
+   },
+   "notes": [
+    "could not reach the kill turn by turn 40",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=n/a (want divination)",
+    "A4: H&K in graveyard in pre_trigger=False",
+    "A5: post_trigger missing",
+    "A6: free-cast offer reached P0=False",
+    "A7: not-run (no offer to accept, or no post state)",
+    "A8: not-run (no post state)"
+   ],
+   "duration_s": 135.6,
+   "stage": "setup",
+   "exports": [],
+   "rejections": [],
+   "tick_errors": [],
+   "offer_seen": false,
+   "resolved": false
+  }
+ ],
+ "verdicts": {
+  "instant": "reproduced",
+  "sorcery": "blocked"
+ },
+ "assertions": {
+  "instant": {
+   "A1_setup_ok": "passed",
+   "A2_hk_on_battlefield": "passed",
+   "A3_top_staged": "passed",
+   "A4_hk_died": "passed",
+   "A5_exile_and_lifeloss": "passed",
+   "A6_free_cast_offered": "passed",
+   "A7_accept_resolves": "failed",
+   "A8_no_dangling": "passed"
+  },
+  "sorcery": {
+   "A1_setup_ok": "passed",
+   "A2_hk_on_battlefield": "passed",
+   "A3_top_staged": "failed",
+   "A4_hk_died": "failed",
+   "A5_exile_and_lifeloss": "failed",
+   "A6_free_cast_offered": "failed",
+   "A7_accept_resolves": "not-run",
+   "A8_no_dangling": "not-run"
+  }
+ },
+ "notes": [
+  "[instant] accept-drive expired (120s): accepted cast did not resolve (exile=['lightning bolt'], gy_has_staged=False, p1_life=19)",
+  "[instant] A2: H&K reached battlefield=True",
+  "[instant] A3: pre_trigger library top=lightning bolt (want lightning bolt)",
+  "[instant] A4: H&K in graveyard in pre_trigger=True",
+  "[instant] A5: staged exiled=True (exile=['lightning bolt']); P1 life 20->19 (want 19)",
+  "[instant] A6: free-cast offer reached P0=True",
+  "[instant] A7: Bolt in P0 GY=False; P1 life=19 (want 16); exile=['lightning bolt']; stack_empty=True",
+  "[instant] A8: end stack_empty=True",
+  "[sorcery] could not reach the kill turn by turn 40",
+  "[sorcery] A2: H&K reached battlefield=True",
+  "[sorcery] A3: pre_trigger library top=n/a (want divination)",
+  "[sorcery] A4: H&K in graveyard in pre_trigger=False",
+  "[sorcery] A5: post_trigger missing",
+  "[sorcery] A6: free-cast offer reached P0=False",
+  "[sorcery] A7: not-run (no offer to accept, or no post state)",
+  "[sorcery] A8: not-run (no post state)"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 12x/6x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore facility; pre_trigger/post_trigger/post exports are authoritative states restorable only via full game replay, not direct load."
+ ]
+}
