@@ -1,0 +1,132 @@
+{
+ "issue": 4509,
+ "run_id": "run-4509-reval-v01050-20261009-1811",
+ "verdict": "reproduced",
+ "started_at": "2026-10-09T23:17:21",
+ "duration_s": 46.2,
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.105.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "reused live v0.105.0 server on 127.0.0.1:9374 (pid 91740, owned by runs/run-1488-reval-v01050-20261009-1611, pinned 2026-10-09); this run's own game + raw Hello handshake verify the identity; no second server started per AGENTS.md 2026-10-08 lesson",
+  "source": "2026-10-09: latest stable release v0.105.0 (published 2026-10-09) == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "server_run_dir": "runs/run-4509-reval-v01050-20261009-1811",
+ "driver": {
+  "protocol_advertised": 120,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_4509_01050.py"
+ },
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "lost in thought",
+    12
+   ],
+   [
+    "thought scour",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "llanowar elves",
+    12
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    36
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_restricted": "failed",
+  "A3_activation_restricted": "failed",
+  "A4_escape_offered": "failed",
+  "A5_escape_effective": "not-run",
+  "A6_control_binding": "passed"
+ },
+ "notes": [
+  "rejections=0 escape_offered=None elves_attacked=True",
+  "A1: aura_oid=4, enchant_target=64 (llanowar elves, zone=Battlefield, ctrl=1), P1 gy=4",
+  "A2: enchanted Elves attacked (P0 life 20->19); cant-attack restriction dropped",
+  "A3: enchanted Elves activated, P1 green pool 0->1; cant-activate restriction dropped",
+  "A4: no exile-3-to-ignore escape action offered at P1 priority with gy>=3 (scanned action types: ['ActivateAbility', 'PassPriority', 'TapLandForMana'])",
+  "A5: escape payment path not driven (A4 failed)",
+  "A6: unenchanted Bear attacked normally (P0 life 19->17)",
+  "Lost in Thought's combined restriction/escape clause is dropped end-to-end on this build; see assertion notes"
+ ],
+ "observations": {
+  "rejections": [],
+  "tick_errors": [],
+  "escape_scan": {
+   "offered": null,
+   "scan_done": true,
+   "p1_action_types": [
+    "ActivateAbility",
+    "PassPriority",
+    "TapLandForMana"
+   ]
+  }
+ },
+ "driver_state": {
+  "stage": "done",
+  "enchant_target_oid": 64,
+  "aura_oid": 4,
+  "scours_cast": 2,
+  "attack1": {
+   "submitted": true,
+   "turn": 8,
+   "accepted": true,
+   "rejected": null,
+   "elves_attacked": true,
+   "p0_life_pre": 20,
+   "p0_life_post": 19
+  },
+  "activation": {
+   "attempted": true,
+   "offered": true,
+   "rejected": null,
+   "candidates_seen": [
+    {
+     "ability_index": 0,
+     "via": "legal_action"
+    }
+   ],
+   "pool_before": 0,
+   "pool_after": 1
+  },
+  "escape": {
+   "offered": null,
+   "scan_done": true
+  },
+  "bear": {
+   "submitted": true,
+   "oid": 70,
+   "accepted": true,
+   "p0_life_pre": 19,
+   "p0_life_post": 17
+  }
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 12x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore facility; pre.json/post_attack.json/post_control.json are authoritative exports restorable only via full game replay, not direct load."
+ ]
+}
