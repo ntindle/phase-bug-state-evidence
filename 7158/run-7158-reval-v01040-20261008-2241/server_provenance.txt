@@ -1,0 +1,24 @@
+Server provenance for run run-7158-reval-v01040-20261008-2241
+------------------------------------------------------------
+This run REUSED the already-listening isolated v0.104.0 single-user server on
+127.0.0.1:9374 instead of starting its own (per AGENTS.md: probe the
+WebSocket ServerHello first; never misread a 404 as "no server").
+
+  Listening process: PID 12789
+    /home/hatch/workspace/dev/phase-backfill/server/releases/v0.104.0/phase-server-slim-x86_64-unknown-linux-musl
+    --bind 127.0.0.1 --single-user --no-data-download --port 9374
+    --data-dir /home/hatch/workspace/dev/phase-backfill/server/releases/v0.104.0/data
+    --games-db /home/hatch/workspace/dev/phase-backfill/runs/run-7161-reval-v01040-20261008-2041/games.db
+  Owned by run dir: runs/run-7161-reval-v01040-20261008-2041/
+  Server log (owned by that run, not copied here):
+    runs/run-7161-reval-v01040-20261008-2041/server.log
+  ServerHello observed by this run at connect (protocol 118, mode Full):
+    server_version 0.104.0, build_commit 4227122, protocol_version 118,
+    lobby_protocol_version 16, wire_formats [GzipEnvelopeV1]
+  Release pin (minisign-verified 2026-10-08 13:45 CDT, key id 436711b6a2d36828):
+    binary f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d
+    card-data 7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d
+    draft-pools d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc
+Game served: ACI4IN (P0=seat 0, P1=seat 1). This evidence dir's
+wire_log.jsonl contains the complete client-side wire trace; the server-side
+log remains with the owning run above.
