@@ -1,0 +1,36 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_minus3_offered": "passed",
+  "A3_target_resolve": "passed",
+  "A4_kavu_counters": "failed",
+  "A5_bears_counters": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: jared=True kavu=114 colors=['White', 'Blue', 'Black', 'Red', 'Green'] p1bear=110",
+  "A2: minus3 offered=True",
+  "A3: answered=True submissions=[{'ref': '114', 'name': 'Kavu'}, {'ref': '110', 'name': 'Grizzly Bears'}] rejections=0 loyalty=3 stack_empty=True",
+  "A4_kavu_counters: counters=0 detail=[] power/toughness=(3, 3) (expected 5; base (3, 3))",
+  "A5_bears_counters: counters=0 detail=[] power/toughness=(2, 2) (expected 1; base (2, 2))",
+  "A6: stack_empty=True turn=33 phase=PreCombatMain"
+ ],
+ "minus3_offered": true,
+ "target_submissions": [
+  {
+   "ref": "114",
+   "name": "Kavu"
+  },
+  {
+   "ref": "110",
+   "name": "Grizzly Bears"
+  }
+ ],
+ "targets": {
+  "refs": [
+   "114",
+   "110"
+  ],
+  "at": 1791570391.8691127
+ }
+}
