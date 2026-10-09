@@ -1,0 +1,42 @@
+[05:16:12] server identity hashes recomputed against on-disk pinned artifacts
+[05:16:12] ServerHello: version=0.104.0 build=4227122 protocol=118 mode=Full
+[05:16:12] ===== attempt 1 =====
+[05:16:13] game XP0VA0 attempt=1; P0 seat=0 P1 seat=1
+[05:16:13] [6760-a1] keep 7: ['forest', 'llanowar elves', 'llanowar elves', 'forest', 'llanowar elves', 'llanowar elves', 'llanowar elves']
+[05:16:13] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[05:16:13] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[05:16:14] [P16760-a1] playing land island (legacy)
+[05:16:16] [6760-a1] playing land forest (legacy)
+[05:16:19] [P16760-a1] playing land island (legacy)
+[05:16:21] [6760-a1] playing land forest (legacy)
+[05:16:23] [P16760-a1] playing land island (legacy)
+[05:16:26] [6760-a1] playing land forest (legacy)
+[05:16:28] [P16760-a1] playing land island (legacy)
+[05:16:30] [6760-a1] playing land forest (legacy)
+[05:16:33] [P16760-a1] playing land island (legacy)
+[05:16:37] [6760-a1] discarding to hand size via vi (select)
+[05:16:38] [P16760-a1] playing land island (legacy)
+[05:16:42] [6760-a1] discarding to hand size via vi (select)
+[05:16:43] [P16760-a1] playing land island (legacy)
+[05:16:43] [6760-a1] DIAG P06760-a1: rev=187 turn=13 phase=PreCombatMain prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[05:16:43] [6760-a1] DIAG P16760-a1: rev=187 turn=13 phase=PreCombatMain prio=['PassPriority'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[05:16:46] [6760-a1] playing land forest (legacy)
+[05:16:46] [6760-a1] casting Ojer Kaslem, Deepest Growth (oid 12); engine auto-pays (payment_mode Auto)
+[05:16:46] [6760-a1] Ojer Kaslem on battlefield at turn 14
+[05:16:49] [P16760-a1] playing land island (legacy)
+[05:16:52] [6760-a1] P0 attacks P1 with Ojer Kaslem (turn 16)
+[05:16:54] [6760-a1] combat damage landed: P1 life=14
+[05:16:55] [6760-a1] select prompt: spec.type=select constraint={"type": "count", "data": {"min": 0, "max": 1}} n_candidates=6
+[05:16:55]   candidate XP0VA0.0.245.s0: forest (Land) zone=Library ref=47
+[05:16:55]   candidate XP0VA0.0.245.s1: forest (Land) zone=Library ref=59
+[05:16:55]   candidate XP0VA0.0.245.s2: llanowar elves (Creature) zone=Library ref=38
+[05:16:55]   candidate XP0VA0.0.245.s3: llanowar elves (Creature) zone=Library ref=55
+[05:16:55]   candidate XP0VA0.0.245.s4: forest (Land) zone=Library ref=16
+[05:16:55]   candidate XP0VA0.0.245.s5: llanowar elves (Creature) zone=Library ref=34
+[05:16:55] [6760-a1] submitting 2-card selection (creature XP0VA0.0.245.s2 + land XP0VA0.0.245.s0) via select
+[05:16:56] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[05:16:56] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[05:16:56] [6760-a1] submitting 1-card fallback (creature XP0VA0.0.245.s2)
+[05:16:58] [6760-a1] select outcome path=one_accepted: entered=['llanowar elves'] bottomed=5/6
+[05:16:58] attempt 1 assertions: {"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+[05:16:58] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
