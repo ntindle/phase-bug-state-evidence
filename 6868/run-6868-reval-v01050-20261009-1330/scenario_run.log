@@ -1,0 +1,85 @@
+[13:24:14] server identity hashes verified against on-disk pinned artifacts
+[13:24:18] ServerHello: version=0.105.0 build=965e243 protocol=120 mode=Full
+[13:24:18] data-level: minus3 multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 2}} counter_child=Unimplemented/unparsed_quantity
+[13:24:18] P0 creating game...
+[13:24:18] P1 joining...
+[13:24:19] game YUYWRP; P0 seat=0 P1 seat=1
+[13:24:19] [P0] keep 7: ['plains', 'forest', 'plains', 'forest', 'plains', 'swamp', 'mountain']
+[13:24:19] [P1] keep 7: ['swamp', 'island', 'forest', 'mountain', 'mountain', 'grizzly bears', 'plains']
+[13:24:20] [P0] playing land plains
+[13:24:24] [P1] playing land swamp
+[13:24:28] [P0] playing land forest
+[13:24:32] [P1] playing land island
+[13:24:36] [P0] playing land swamp
+[13:24:40] [P1] playing land forest
+[13:24:40] P1 casts Grizzly Bears (oid 110)
+[13:24:40] [P0] action confirmed (stack): Grizzly Bears oid 110
+[13:24:44] [P0] playing land mountain
+[13:24:48] [P1] playing land mountain
+[13:24:52] [P0] playing land plains
+[13:24:56] [P1] playing land mountain
+[13:25:00] [P0] playing land forest
+[13:25:04] [P1] playing land plains
+[13:25:08] [P0] playing land swamp
+[13:25:12] [P1] playing land island
+[13:25:16] [P0] playing land plains
+[13:25:19] DIAG P0: rev=237 turn=16 phase=Draw prio=True decision=False stage=SETUP kavu=False p1bear=True untapped=8
+[13:25:20] [P1] playing land plains
+[13:25:24] [P0] playing land swamp
+[13:25:29] [P1] playing land plains
+[13:25:33] [P0] playing land forest
+[13:25:37] [P1] playing land swamp
+[13:25:41] [P0] playing land plains
+[13:25:45] [P1] playing land forest
+[13:25:49] [P0] playing land forest
+[13:25:52] [P1] playing land plains
+[13:25:56] [P0] playing land mountain
+[13:26:00] [P1] playing land plains
+[13:26:04] [P0] playing land forest
+[13:26:08] [P1] playing land plains
+[13:26:12] [P0] playing land plains
+[13:26:16] [P1] playing land forest
+[13:26:19] DIAG P0: rev=469 turn=31 phase=Draw prio=True decision=False stage=SETUP kavu=False p1bear=True untapped=15
+[13:26:20] [P0] playing land island
+[13:26:20] P0 casts Jared Carthalion (oid 26)
+[13:26:20] [P0] action confirmed (stack): Jared Carthalion oid 26
+[13:26:21] === stage -> PLUS1 ===
+[13:26:21] [P0] Jared +1 options: 0
+[13:26:21] [P0] Jared +1 options: 0
+[13:26:22] [P0] Jared +1 options: 0
+[13:26:22] [P0] Jared +1 options: 2
+[13:26:23] [P0] activates Jared +1 (ability_index 0) turn=31
+[13:26:23] === Kavu token on BF; stage -> MINUS3 (turn 31) ===
+[13:26:26] [P0] Jared -3 options: 0
+[13:26:26] [P0] Jared -3 options: 0
+[13:26:27] [P1] playing land swamp
+[13:26:27] [P0] Jared -3 options: 0
+[13:26:28] [P0] Jared -3 options: 0
+[13:26:28] [P0] Jared -3 options: 0
+[13:26:29] [P0] Jared -3 options: 0
+[13:26:29] [P0] Jared -3 options: 0
+[13:26:30] [P0] Jared -3 options: 0
+[13:26:30] [P0] Jared -3 options: 0
+[13:26:31] [P0] playing land forest
+[13:26:31] [P0] Jared -3 options: 2
+[13:26:31] exported pre_activate.json
+[13:26:31] [P0] activates Jared -3 (ability_index 1) turn=33
+[13:26:31] [P0] -3 target prompt (iid=YUYWRP.0.510, shape=schema/sequence): [('Grizzly Bears', '110', 1), ('Kavu', '114', 0)]
+[13:26:31] [P0] -3: targeted ['Kavu'] [1/2]
+[13:26:31] [P0] -3 target prompt (iid=YUYWRP.0.511, shape=schema/sequence): [('Grizzly Bears', '110', 1)]
+[13:26:31] [P0] -3: targeted ['Grizzly Bears'] [2/2]
+[13:26:31] [P0] -3: both targets answered
+[13:26:34] exported post_activate.json
+[13:26:34] exported post.json
+[13:26:34] === DONE: -3 resolved ===
+[13:26:34] A1_setup_ok: passed
+[13:26:34] A2_minus3_offered: passed
+[13:26:34] A3_target_resolve: passed
+[13:26:34] A4_kavu_counters: failed
+[13:26:34] A5_bears_counters: failed
+[13:26:34] A6_cleanup: passed
+[13:26:34] verdict: reproduced
+[13:26:34] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_minus3_offered": "passed", "A3_target_resolve": "passed", "A4_kavu_counters": "failed", "A5_bears_counters": "failed", "A6_cleanup": "passed"}
+[13:26:35] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6868/run-6868-reval-v01050-20261009-1330/summary.png
+[13:26:35] copied driver into evidence dir
+[13:26:35] wrote manifest.sha256 (12 files)
