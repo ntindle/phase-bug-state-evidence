@@ -1,0 +1,77 @@
+{
+ "run_id": "run-20261008-6250",
+ "issue": 6250,
+ "server_identity": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full",
+  "server_binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.104.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-08: latest stable release v0.104.0 (published 2026-10-08T18:05:18Z) == pinned release dir; ServerHello 0.104.0/4227122/protocol 118 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.104.0 server on 127.0.0.1:9374 owned by a sibling run (runs/run-7161-reval-v01040-20261008-2041, pid 12789); this run's state under runs/run-20261008-6250"
+ },
+ "games": {
+  "accept": {
+   "mode": "accept",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "passed",
+    "A5_outcome": "failed",
+    "A6_cleanup": "failed",
+    "A5_outcome_corrected": "passed (probe_mid.json: all 3 on Ardenn after trigger #1)",
+    "A6_cleanup_corrected": "not-run (post.json never captured; driver single-attach-prompt limitation)"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=3 over 3 candidates; card text requires 'any number'",
+   "attach_spec": {
+    "type": "select",
+    "min": 0,
+    "max": 3,
+    "ncandidates": 3,
+    "candidate_names": [
+     "Colossus Hammer",
+     "Holy Strength",
+     "Plate Armor"
+    ],
+    "raw_constraint": {
+     "min": 0,
+     "max": 3
+    }
+   },
+   "attached_post": []
+  },
+  "decline": {
+   "mode": "decline",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "failed",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=None over 0 candidates; card text requires 'any number'",
+   "attach_spec": {},
+   "decline_hosts": {
+    "holy": "9",
+    "ardenn": "9"
+   }
+  }
+ },
+ "verdict_rule": "reproduced iff the trigger resolves moving fewer attachments than the controller selected; not-reproduced iff all three attach (accept) and decline moves nothing; blocked otherwise",
+ "verdict": "not-reproduced",
+ "verdict_correction": {
+  "auto_verdict": "reproduced",
+  "corrected_at": "2026-10-08T22:15:00-05:00",
+  "reason": "The scenario's automatic 'reproduced' came from accept-leg A5/A6 failing because post.json was never captured: the driver answers only ONE attach prompt per accept leg (G['attach_answered'] gate), so when Ardenn's trigger fired a SECOND time the engine's fresh attach prompt (iid LU6PNR.0.234, 3 candidates) was deliberately ignored and the leg hit its 600s deadline. That is a driver limitation, not the reported bug.",
+  "decisive_evidence": "probe_mid.json: independent probe game (same decks/driver) accepted trigger #1, answered the attach prompt with all 3 candidates; the authoritative export immediately after the SelectCards resolution shows all three attachments on Ardenn: ['colossus hammer', 'holy strength', 'plate armor']. The reported outcome 'attaches only one instead of any number' does not occur.",
+  "engine_behavior_v01040": "Every Ardenn trigger firing offers the full any-number attachment-selection prompt (select, min=0, max=3, 3 candidates); the trigger #1 resolution attached all three. Matches the v0.103.0 not-reproduced result; no regression.",
+  "driver_limitation_noted": "scenario_6250_01040.py answers only the first attach prompt per accept leg; a second trigger firing is left unanswered by design. Future ports should loop the attach handler."
+ }
+}
