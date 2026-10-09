@@ -1,0 +1,33 @@
+Client re-validation for phase-rs/phase #5175
+(run run-5175-reval-v01040-20261009-1245, 2026-10-09)
+
+Client identity:
+- Repo: phase-rs/phase (https://github.com/phase-rs/phase)
+- Checkout: fresh shallow clone, HEAD detached at 965e2432df7250a4d2cca39fa5b698fe0a5e6be1
+  ("release: v0.105.0", 2026-10-09)
+- Target file: client/src/viewmodel/costLabel.ts, unguarded `case "Choice"` at lines 786-793
+- Test file: client/src/viewmodel/__tests__/costLabel.test.ts (repo pins vitest ^4.1.0; ran 4.1.11, node v24.20.0)
+- npm install --legacy-peer-deps --ignore-scripts; @esbuild/linux-x64 0.25.12 binary
+  provisioned from the local npm cache (esbuild postinstall cannot fetch direct from
+  this host) so vitest can run headless.
+
+PR state (checked 2026-10-09 via GitHub API):
+- PR #5175 "fix(client): guard additionalCostChoices Choice branch against a short payload"
+- state: open, merged: false, merged_at: null
+- head: 39b86ba50e28d365a9732e223c7622c5293e269e (jeffrey701:fix/costlabel-choice-guard)
+- base: 05a4c9f6a0d93ac5c0b283a002869db7c00574ea (main)
+- updated: 2026-10-05T23:54:39Z
+
+Guard variant:
+- The PR's published costLabel.ts patch (fetched from the PR files API this run,
+  saved as costlabel-5175.patch) applied with `git apply -C0` to a byte copy of the
+  mainline checkout (checkout-5175-guarded). Applied lines verified byte-identical
+  to the published diff (em-dash/ellipsis comment lines included).
+
+Scope/limitations:
+- Client-subsystem test only: no engine game session; whether the engine can actually
+  emit a short Choice payload was not exercised.
+- Only the Choice branch exercised; other additionalCostChoices branches not re-driven
+  beyond the existing suite.
+- No DOM/browser involved: the crash is in a pure viewmodel function, and the PR's
+  own verification is vitest.
