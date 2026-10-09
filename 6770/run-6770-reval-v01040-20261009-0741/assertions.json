@@ -1,0 +1,16 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_decline_no_move": "passed",
+    "A3_accept_lands_battlefield": "failed",
+    "A4_accept_rest_discarded": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "pre_decline: manabond_bf=1 hand_lands=3 hand_nonlands=3 life=[20, 20]",
+    "decline: hand_same=True bf_lands_same=True",
+    "accept: hand_lands=4 hand_nonlands=3; post: lands->bf=0 lands->gy=4 nonlands->gy=3",
+    "accept zone map: {42: 'Graveyard', 13: 'Graveyard', 47: 'Graveyard', 6: 'Graveyard', 48: 'Graveyard', 52: 'Graveyard', 33: 'Graveyard'}",
+    "post_accept: phase=Upkeep turn=5 stack_empty=True advanced=True"
+  ]
+}
