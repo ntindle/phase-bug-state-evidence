@@ -1,0 +1,24 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_paid": "passed",
+  "A3_exile_observed": "passed",
+  "A4_accept_target_pending": "passed",
+  "A5_exile_returned_early": "passed",
+  "A6_advertised_target_rejected": "passed",
+  "A7_no_damage_no_cast": "passed",
+  "A8_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] activation ok=True; wand tapped=True untapped islands 12->4",
+  "[accept] P1 library 42->14; bolt zone=Exile",
+  "[accept] pre-target: P1 lib=42 (pre-exile 42); bolt zone=Library in-library-membership=True",
+  "[accept] rejection={\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}}; still_pending=True",
+  "[accept] post: life=20/20 bolt zone=missing",
+  "[decline] activation ok=True; wand tapped=True untapped islands 12->4",
+  "[decline] P1 library 42->32; bolt zone=Exile",
+  "[decline] decline: visible bolts=[] life=20/20 dangling=False",
+  "protocol-120 driver (v0.104.0): MulliganDecision via legacy Action (Keep); bottom/SelectCards via vi schema/select gated on waitingForKind.code=='mulligan' + turn 1/Untap; DiscardToHandSize via vi (hand>7 + hand-card select opportunity); activation via advertised ActivateAbility (source_id/_src_oid) with {4} paid via vi tapLandForMana / PayMana actions; optional-cast accept/decline from vi exactChoices decideOptionalEffect surfaces; target submitted per the advertised schema response type; priority-gated passes; sleep(0) yield before leg evaluation; re-tick backstop for priority-holding clients."
+ ],
+ "verdict": "reproduced"
+}
