@@ -1,0 +1,27 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_observed": "passed",
+  "A3_trigger_prompted": "failed",
+  "A4_noncreature_excluded": "not-run",
+  "A5_illegal_branch": "not-run",
+  "A6_control_token": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: turn=8 phase=PostCombatMain p1_gy bear=1 recl=3",
+  "post_exile.json: P1 gy bear=0 recl=0; exile bear=1 recl=3",
+  "post.json: stack_empty=True turn=12 phase=Cleanup",
+  "candidates offered: []",
+  "illegal branch: tried=False accepted=None",
+  "control token obj: None",
+  "protocol-118 driver (v0.104.0): mulligan via legacy MulliganDecision action (always keep; deep mulligans starve the bottom prompt); P1 loads its graveyard with Faithless Looting (cast via legacy Action, {R} via legacy PayMana/vi tapLandForMana, discard-2 via vi schema/select ranked Bear/Reclamation > lands); DiscardToHandSize via vi schema/select; CastSpell via legacy Action with vi castSpell-choice fallback; the test Esper's cast keeps MANA_NEEDS empty (engine auto-pay is the single payer; 2026-10-07 double-pay gate); cast-confirmation guard holds priority/no-new-plays until each cast is confirmed on the stack (2026-10-09 protocol-118 race fix); reflexive trigger prompt detected by vi opportunity candidates referencing Exile-zone objects; 5s re-tick backstop."
+ ],
+ "candidates": [],
+ "illegal": {
+  "tried": false,
+  "accepted": null
+ },
+ "control_token": null,
+ "reclam_token": null
+}
