@@ -1,0 +1,81 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_low_branch": "passed",
+    "A7_exile_ok": "failed",
+    "A4_high_observed": "passed",
+    "A5_reroll_offered": "passed",
+    "A6_reroll_works": "failed"
+  },
+  "notes": [
+    "pre.json: delina_bf=True bear_bf=True life=20/20 phase=PreCombatMain",
+    "target_answers: [(9, '32', 'grizzly bears'), (11, '32', 'grizzly bears')]",
+    "A3 low turn 11 (game 0): token detail {'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'in_combat_attackers': False, 'legendary': False, 'abilities': '[{\"condition\": null, \"cost\": null, \"description\": \"at end of combat, exile ~.\", \"duration\": null, \"effect\": {\"condition\": {\"phase\": \"EndCombat\", \"type\": \"AtNextPhase\"}, \"effect\": {\"condition\": null, \"cost\": null, \"description\": null, \"duration\": null, \"effect\": {\"destination\": \"Exile\", \"enter_tapped'}",
+    "A7: low-turn token oids ['123'] still on BF in post_low.json: ['123']",
+    "high_turn=9 deltas={9: 0, 11: 1}",
+    "reroll_prompts: [(9, True)]",
+    "reroll_answers: [(9, True, 'true')]",
+    "A6 detail: accepted_turns=[9] progressed=False",
+    "attack_turns(game 0)=[7, 9, 11]",
+    "games=[{\"gindex\": 0, \"game_code\": \"B2526J\", \"result\": \"done\", \"attack_turns\": [7, 9, 11], \"deltas\": {\"9\": [], \"11\": [\"123\"]}, \"target_answers\": [[9, \"32\", \"grizzly bears\"], [11, \"32\", \"grizzly bears\"]]}]",
+    "legend_answered=0; final stage=DONE",
+    "data-level: 15-20 branch still parses Unimplemented (create + optional roll again)",
+    "protocol-118 driver (v0.104.0, 01040 port): HELLO advertises protocol 118; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell via advertised actions; mana is engine auto-tapped (manual taps are a >90s last-resort fallback only); Delina trigger target via vi schema/exactChoices candidates referencing BF creatures of seat 0; reroll via decideOptionalEffect (first prompt accepted, later declined as control); DeclareAttackers/Blockers via relations-schema vi opportunity; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop."
+  ],
+  "target_answers": [
+    [
+      9,
+      "32",
+      "grizzly bears"
+    ],
+    [
+      11,
+      "32",
+      "grizzly bears"
+    ]
+  ],
+  "reroll_prompts": [
+    [
+      9,
+      true
+    ]
+  ],
+  "reroll_answers": [
+    [
+      9,
+      true,
+      "true"
+    ]
+  ],
+  "games": [
+    {
+      "gindex": 0,
+      "game_code": "B2526J",
+      "result": "done",
+      "attack_turns": [
+        7,
+        9,
+        11
+      ],
+      "deltas": {
+        "9": [],
+        "11": [
+          "123"
+        ]
+      },
+      "target_answers": [
+        [
+          9,
+          "32",
+          "grizzly bears"
+        ],
+        [
+          11,
+          "32",
+          "grizzly bears"
+        ]
+      ]
+    }
+  ]
+}
