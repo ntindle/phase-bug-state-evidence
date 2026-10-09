@@ -1,0 +1,188 @@
+{
+  "issue": 6609,
+  "run_id": "20261009-0041-6609",
+  "started_at": "2026-10-09T05:44:22Z",
+  "duration_s": 63.7,
+  "server": {
+    "server_version": "v0.104.0",
+    "build_commit": "4227122",
+    "protocol_version": 118,
+    "mode": "Full",
+    "binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+    "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+    "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "signature_note": "v0.104.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-06; data digests match the signed manifest; binary/data digests recomputed against on-disk files this run (/proc/4134/exe hash matches on-disk pinned binary)",
+    "observed_at": "2026-10-09",
+    "source": "ServerHello asserted by handshake this run (v0.104.0, build 4227122, protocol 118) + sha256 re-verified against pinned v0.104.0 release artifacts"
+  },
+  "server_observed": {
+    "server_version": "0.104.0",
+    "build_commit": "4227122",
+    "protocol_version": 118,
+    "mode": "Full"
+  },
+  "server_run_dir": "runs/20261009-0041-6609",
+  "driver": {
+    "protocol_advertised": 118,
+    "client": "driver/client.py"
+  },
+  "scenario": {
+    "file": "scenario_6609_01040.py",
+    "sha256": "93cc944830136af7310b5b552598baadee8b1805479837e054906356b04399b8"
+  },
+  "decks": {
+    "P0": [
+      [
+        "nethergoyf",
+        8
+      ],
+      [
+        "ornithopter",
+        8
+      ],
+      [
+        "rancor",
+        8
+      ],
+      [
+        "shock",
+        8
+      ],
+      [
+        "divination",
+        8
+      ],
+      [
+        "grizzly bears",
+        8
+      ],
+      [
+        "swamp",
+        8
+      ],
+      [
+        "island",
+        8
+      ]
+    ],
+    "P1": [
+      [
+        "lightning bolt",
+        12
+      ],
+      [
+        "mountain",
+        36
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_escape_accepted": "passed",
+    "A3_choice_offered": "passed",
+    "A4_subset_accepted": "failed",
+    "A5_unchosen_remain": "passed",
+    "A6_pt_recomputed": "passed",
+    "A7_cleanup": "passed"
+  },
+  "notes": [
+    "escape_initiated=True escape_cast_accepted=True exile_prompt_seen=True (vi) codes=['candidate'] invalid_tried=True invalid_rejected=None invalid_accepted=True valid_submitted=False valid_accepted=None auto_exile=False rejections=0",
+    "A1: goyf_in_gy=True, types_among_others=['artifact', 'creature', 'enchantment', 'sorcery'] (4), untapped_lands=5, swamp_untapped=True",
+    "A2: goyf_on_bf=True, goyf_in_gy=False",
+    "A3: per-card exile choice offered via vi",
+    "A4: RELATED FAILURE - a 1-card subset (<4 types) was ACCEPTED; the 4-type aggregate constraint is not enforced",
+    "A5: unchosen remaining in gy=['ornithopter', 'rancor']",
+    "A6: goyf P/T=3/4, types in remaining gy=['artifact', 'creature', 'enchantment'] (want 3/4)",
+    "A7: stack_empty=True, final_quiet=True, stuck_watch=False",
+    "the Nethergoyf escape exile-cost path did not behave per the oracle text on this build",
+    "server log read failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/20261009-0041-6609/server.log'"
+  ],
+  "observations": {
+    "phase": "done",
+    "answered_ids": [
+      "CHVOEX.0.57",
+      "CHVOEX.0.174",
+      "CHVOEX.0.213",
+      "CHVOEX.0.216",
+      "CHVOEX.0.276",
+      "CHVOEX.0.298"
+    ],
+    "rejections": [],
+    "goyf_cast": true,
+    "div_never": false,
+    "div_casts": 0,
+    "ornithopter_cast": true,
+    "escape_initiated": true,
+    "escape_cast_accepted": true,
+    "exile_prompt_seen": true,
+    "exile_prompt_kind": "vi",
+    "exile_prompt_codes": [
+      "candidate"
+    ],
+    "invalid_subset_tried": true,
+    "invalid_subset_rejected": null,
+    "valid_subset_submitted": false,
+    "valid_subset_accepted": null,
+    "chosen_names": [],
+    "auto_exile_observed": false,
+    "stuck_watch_fired": false,
+    "awaiting_payment": null,
+    "p1_bolt_pending": false,
+    "p1_bolt_target": 50,
+    "p1_bolt_iid": "CHVOEX.0.216",
+    "done": true,
+    "escape_live": false,
+    "playland_logged": true,
+    "p1_awaiting_payment": {
+      "needs": {
+        "R": 0
+      },
+      "why": "bolt",
+      "since": 1791524707.0263865
+    },
+    "_rej_mark": 0,
+    "invalid_subset_ids": [
+      "CHVOEX.0.298.s0"
+    ],
+    "invalid_subset_accepted": true,
+    "final_quiet": true
+  },
+  "escape_decisions": [
+    {
+      "interactionId": "CHVOEX.0.174",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "CHVOEX.0.174.s0"
+      ]
+    },
+    {
+      "interactionId": "CHVOEX.0.276",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "CHVOEX.0.276.s0"
+      ]
+    },
+    {
+      "interactionId": "CHVOEX.0.298",
+      "why": "invalid_subset_1card",
+      "sub_type": "select",
+      "choice_ids": [
+        "CHVOEX.0.298.s0"
+      ]
+    }
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "8x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "The escape fixture is reconstructed (cast + Bolt), not the reporter's attached game state.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "waiting_for is null on protocol 118: A7 checks the live view for pending real decisions at completion instead of a Priority waiting_for type."
+  ],
+  "setup_line": "P0: 8x Nethergoyf/Ornithopter/Rancor/Shock/Divination/Grizzly Bears + 8x Swamp + 8x Island; P1: 12x Lightning Bolt + 36x Mountain",
+  "contract_line": "Escape Nethergoyf ({2}{B}): engine must offer a per-card exile choice; a 1-card (<4 types) subset must be rejected; a 4-type subset must be accepted; unchosen cards remain; P/T recomputes from the remaining graveyard"
+}
