@@ -1,0 +1,52 @@
+ServerHello OK: {'server_version': '0.104.0', 'build_commit': '4227122', 'protocol_version': 118, 'mode': 'Full'}
+game 7QVY3A; P0 seat=0 P1 seat=1
+P0 keeps (hand=['forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest', 'forest'], mulls=0)
+P1 keeps (hand=['island', 'island', 'island', 'island', 'island', 'island', 'island'], mulls=0)
+DIAG turn=1 active=1 phase=Untap pp=1 hand=['forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest'] dude=[] exp_lvl=1 bears=[] life=[20, 20] stack=0 attacked=False trig=False targ=False
+P0 casts Grizzly Bears
+payment expected for cast_bear: needs={'G': 1, 'generic': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0, 'generic': 1})
+[P0] paying mana via vi: tap Forest for generic (remaining needs={'G': 0, 'generic': 0})
+payment for cast_bear complete (needs exhausted)
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+[P0] discard_to_hand_size: submit select ids=['7QVY3A.0.313.s0'] (rtype=schema spec=select)
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+[P0] discard_to_hand_size: submit select ids=['7QVY3A.0.344.s0'] (rtype=schema spec=select)
+DIAG turn=24 active=0 phase=PreCombatMain pp=0 hand=['grizzly bears', 'grizzly bears', 'forest', 'forest', 'forest', 'forest'] dude=[] exp_lvl=1 bears=[30] life=[20, 20] stack=0 attacked=False trig=False targ=False
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+[P0] discard_to_hand_size: submit select ids=['7QVY3A.0.375.s2'] (rtype=schema spec=select)
+P0 declares no attackers (dude=None lvl=1 ready_bears=[30])
+[P0] discard_to_hand_size: submit select ids=['7QVY3A.0.406.s2'] (rtype=schema spec=select)
+P0 casts Party Dude
+payment expected for cast_dude: needs={'G': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0})
+payment for cast_dude complete (needs exhausted)
+Party Dude on BF (oid 38)
+Dude object level-ish keys: ['class_level']; level read=1
+P0 activates Party Dude level-up idx=0 (-> level 2)
+payment expected for dude_level2: needs={'G': 1, 'generic': 1}
+[P0] paying mana via vi: tap Forest for G (remaining needs={'G': 0, 'generic': 1})
+[P0] paying mana via vi: tap Forest for generic (remaining needs={'G': 0, 'generic': 0})
+payment for dude_level2 complete (needs exhausted)
+P0 activates Party Dude level-up idx=1 (-> level 3)
+payment expected for dude_level3: needs={'G': 1, 'generic': 4}
+PRE: exporting (dude lvl expected=3 field=3, bear 30 ready, P1 life=20)
+exported pre.json
+P0 attacks P1 with Bear (oid 30) on turn 28
+payment for dude_level3 auto-covered (party dude on stack); clearing
+*** PARTY DUDE TRIGGER OBSERVED ON STACK ***
+exported mid_trigger.json
+[P0] Party Dude target prompt answered with the attacking Bear (oid 30); P0 hand at target time: 7
+[P0] submitting advertised target: id=7QVY3A.0.445.t0 kind=sequence (Grizzly Bears)
+exported mid_target.json
+exported mid_pump.json
+mid_pump: bear P/T=9/9 phase=DeclareBlockers
+exported post.json
+server excerpts: 0 matching lines

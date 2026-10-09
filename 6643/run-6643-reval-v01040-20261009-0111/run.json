@@ -1,0 +1,150 @@
+{
+  "issue": 6643,
+  "run_id": "run-6643-reval-v01040-20261009-0111",
+  "started_at": "2026-10-09T06:14:08Z",
+  "duration_s": 92.0,
+  "server": {
+    "server_version": "v0.104.0",
+    "build_commit": "4227122",
+    "protocol_version": 118,
+    "mode": "Full",
+    "binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+    "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+    "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "signature_note": "v0.104.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828); data digests match the signed manifest; digests recomputed against on-disk files this run",
+    "observed_at": "2026-10-09",
+    "source": "ServerHello asserted by handshake this run + sha256 re-verified against pinned v0.104.0 release artifacts"
+  },
+  "server_observed": {
+    "server_version": "0.104.0",
+    "build_commit": "4227122",
+    "protocol_version": 118,
+    "mode": "Full"
+  },
+  "server_run_dir": "runs/run-6337-reval-v01040-20261008-2311",
+  "driver": {
+    "protocol_advertised": 118,
+    "client": "driver/client.py"
+  },
+  "scenario": {
+    "file": "scenario_6643_01040.py",
+    "sha256": "b4931d8f745f3286402de5c1619975520ac35e5c7d7c9e885d4eea86188d7a04"
+  },
+  "decks": {
+    "P0": [
+      [
+        "party dude",
+        8
+      ],
+      [
+        "grizzly bears",
+        12
+      ],
+      [
+        "forest",
+        40
+      ]
+    ],
+    "P1": [
+      [
+        "island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_target_prompted": "passed",
+    "A4_pump_correct": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "attacked=True attack_turn=28 trigger_seen=True target_prompted=True target_answered=True hand_at_target=7 rejections=0 stuck_watch=False",
+    "A1: dude_oid=38 expected_lvl=3 field_lvl=3 ready_bears=[30] life=[20, 20]",
+    "A2: Party Dude Attacks trigger observed on stack: {\"id\": 126, \"source_id\": 38, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 38, \"ability\": {\"effect\": {\"type\": \"Pump\", \"power\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"toughness\": {\"type\": \"Quantity\"",
+    "A3: target_prompted=True target_answered=True attacker_oid=30",
+    "A4: P1 life 20->11 (damage 9), expected 9 (2+X, X=hand 7); mid_pump bear P/T=9/9",
+    "A5: stack=0 entries, party-dude leftovers=0, phase=PostCombatMain turn=28"
+  ],
+  "observations": {
+    "dude_expected_level": 3,
+    "dude_oid": 38,
+    "level_keys_seen": [
+      "class_level"
+    ],
+    "attack_turn": 28,
+    "attacker_oid": 30,
+    "trigger_seen": true,
+    "trigger_entry": "{\"id\": 126, \"source_id\": 38, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 38, \"ability\": {\"effect\": {\"type\": \"Pump\", \"power\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"toughness\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Creature\"], \"controller\": null, \"properties\": [{\"type\": \"Attacking\"}]}}, \"targets\": [], \"source_id\": 38, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 38, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Party Dude\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 1, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Enchantment\"], \"subtypes\": [\"Class\"], \"supertypes\": [], \"keywords\": [], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 38, \"printed_ref\": {\"oracle_id\": \"8df7a58c-053f-4ead-a778-2747718e5f10\", \"face_name\": \"Party Dude\"}, \"is_token\": false, \"face_down\": false, \"mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 0}, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"class_level\": 3, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"ChangesZone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"Token\", \"name\": \"Food\", \"power\": {\"type\": \"Fixed\", \"value\": 0}, \"toughness\": {\"type\": \"Fixed\", \"value\": 0}, \"types\": [\"Artifact\", \"Food\"], \"colors\": [], \"keywords\": [], \"tapped\": false, \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"owner\": {\"type\": \"Controller\"}, \"enters_attacking\": false}, \"cost\": null, \"sub_ability\": null, \"duration\": null, \"description\": null, \"target_prompt\": null, \"condition\": null, \"optional_targeting\": false, \"optional\": false, \"forward_resul",
+    "target_prompted": true,
+    "target_answered": true,
+    "hand_at_target": 7,
+    "interaction_shapes": [],
+    "rejections": [],
+    "no_trigger_deadline_turn": 34,
+    "awaiting_payment": null,
+    "answered_ids": [
+      "7QVY3A.0.313",
+      "7QVY3A.0.344",
+      "7QVY3A.0.375",
+      "7QVY3A.0.406",
+      "7QVY3A.0.445"
+    ],
+    "attacked": true,
+    "done": false,
+    "pre_exported": true,
+    "mid_trigger_exported": true,
+    "mid_target_exported": true,
+    "mid_pump_exported": true,
+    "post_exported": true,
+    "stuck_watch_fired": false,
+    "final_quiet": true
+  },
+  "escape_decisions": [
+    {
+      "interactionId": "7QVY3A.0.313",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "7QVY3A.0.313.s0"
+      ]
+    },
+    {
+      "interactionId": "7QVY3A.0.344",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "7QVY3A.0.344.s0"
+      ]
+    },
+    {
+      "interactionId": "7QVY3A.0.375",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "7QVY3A.0.375.s2"
+      ]
+    },
+    {
+      "interactionId": "7QVY3A.0.406",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "7QVY3A.0.406.s2"
+      ]
+    }
+  ],
+  "verdict": "not-reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense >4-of card counts are a test-harness convenience (engine accepts >4-of for custom games).",
+    "The Party Dude fixture is reconstructed (cast + level-ups), not the reporter's attached game state.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "waiting_for is null on protocol 118: priority is detected via the advertised PassPriority legal action; the Mulligan decision via the advertised MulliganDecision action."
+  ],
+  "setup_line": "P0: 8x Party Dude + 12x Grizzly Bears + 40x Forest; P1: 60x Island",
+  "contract_line": "Cast Party Dude, level to 3 ({1}{G}, {4}{G}), cast a Bear, attack P1: the level-3 Attacks-mode trigger must go on the stack, the up-to-one target-attacking-creature prompt must be offered, and the Bear must get +X/+X with X = P0 hand size"
+}
