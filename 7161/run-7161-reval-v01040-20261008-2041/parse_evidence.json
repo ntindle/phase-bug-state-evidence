@@ -1,0 +1,111 @@
+{
+ "abyssal harvester": {
+  "oracle_text": "{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Graveyard",
+     "destination": "Exile",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": [
+       {
+        "type": "InZone",
+        "zone": "Graveyard"
+       }
+      ]
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": {
+     "type": "Tap"
+    },
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CopyTokenOf",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false,
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "additional_modifications": [
+       {
+        "type": "AddSubtype",
+        "subtype": "Nightmare"
+       }
+      ]
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZoneAll",
+       "origin": null,
+       "destination": "Exile",
+       "target": {
+        "type": "Typed",
+        "type_filters": [
+         {
+          "Subtype": "Nightmare"
+         }
+        ],
+        "controller": "You",
+        "properties": [
+         {
+          "type": "Another"
+         },
+         {
+          "type": "Token"
+         }
+        ]
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": "UntilEndOfTurn",
+    "description": "{T}: Exile target creature card from a graveyard that was put there this turn. Create a token that's a copy of it, except it's a Nightmare in addition to its other types. Then exile all other Nightmare tokens you control.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ]
+ }
+}

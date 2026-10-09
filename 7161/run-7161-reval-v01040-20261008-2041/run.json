@@ -1,0 +1,97 @@
+{
+ "issue": 7161,
+ "run_id": "run-7161-reval-v01040-20261008-2041",
+ "started_at": "2026-10-09T01:51:37",
+ "duration_s": 45.7,
+ "server": {
+  "server_version": "0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118
+ },
+ "server_run_dir": "runs/run-7161-reval-v01040-20261008-2041 (phase-server owned by this run, 127.0.0.1:9374)",
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_7161_01040.py"
+ },
+ "scenario_sha256": "0e659c39abb49cbc99ce3503fa9654b4a952b4f8b10b685aa46dbf4f0400d059",
+ "decks": {
+  "P0": [
+   [
+    "abyssal harvester",
+    12
+   ],
+   [
+    "lightning bolt",
+    12
+   ],
+   [
+    "swamp",
+    20
+   ],
+   [
+    "mountain",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    24
+   ]
+  ]
+ },
+ "observations": {
+  "harv_oid": 2,
+  "harv_cast_turn": 6,
+  "bolt_target_oid": "62",
+  "bear_dead_oid": "62",
+  "kill_turn": 8,
+  "activation_turn": 8,
+  "harv_target_oid": null,
+  "target_prompt_seen": true,
+  "leg2_bear_dead_oid": "66",
+  "token1": [],
+  "token2": [],
+  "watch_timed_out": false,
+  "leg2_timed_out": false
+ },
+ "target_record": {
+  "bear_dead_oid": "62",
+  "harv_target_oid": null,
+  "target_prompt_seen": true,
+  "bolt_target_oid": "62"
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_bear_died": "passed",
+  "A3_bear_exiled": "passed",
+  "A4_token_created": "failed",
+  "A5_others_exiled": "not-run",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: harvester pre-activation: zone=Battlefield tapped=False oid=2",
+  "A2: bear 62 pre: zone=Graveyard kill_turn=8 activation_turn=8",
+  "A3: bear 62 post: zone=Exile (target oid submitted=auto; target prompt seen=True; watch_timed_out=False)",
+  "A4: nightmare-token candidates on P0 BF post: NONE; bear card zone=Exile",
+  "A5: not-run -- leg1 created no token, so the trailing 'exile all other Nightmare tokens' clause is untestable (bear2 zone=Exile)",
+  "A6: final live stack=0 entries; turn=10 phase=PreCombatMain; timeouts=False/False"
+ ],
+ "verdict": "reproduced",
+ "result": "Harvester exiled the Bolted Grizzly Bears from P1's graveyard but created no Nightmare token copy: post state shows the Bear card in Exile and zero Nightmare token objects on P0's battlefield. Matches the reported no-token-after-exile defect (v0.82.0 result confirmed on v0.104.0).",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Attached turn-34 Discord state (Cloudthresher game) not restored; equivalent fixture with Grizzly Bears used (as in the v0.82.0 run).",
+  "Opponent-graveyard targeting only (matches the reported failure mode per triage).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Verdict is scoped to v0.104.0, not a fix claim."
+ ],
+ "setup_line": "P0 12x abyssal harvester + 12x lightning bolt + 20x swamp + 16x mountain vs P1 12x grizzly bears + 24x forest. P0 casts Harvester, Bolts P1's Bear on P0's own turn, activates the tap ability targeting the Bear card (leg2 repeats with a second Bear).",
+ "contract_line": "Per Oracle: exile the creature card, create a Nightmare copy token of it, then exile all other Nightmare tokens you control."
+}
