@@ -1,0 +1,62 @@
+{
+ "run_id": "run-6768-reval-v01040-20261009-0711",
+ "issue": 6768,
+ "date": "2026-10-09T12:17:06Z",
+ "started_at": "2026-10-09T07:16:09-05:00",
+ "server": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "b4fcf6dde106bcdcc40f2a0593dc2eb4e2c7c4221354ecf69665263b6fb1edbd",
+  "run_dir": "runs/run-20261009-061142-backfill (reused live server; ServerHello re-verified 0.104.0/4227122/protocol 118 instead of starting a second server)",
+  "port": 9374
+ },
+ "scenario_sha256": "f897bd461aac1b909d978ffce36765d0a0494cf65e31502dd292ba62ad770376",
+ "decks": {
+  "P0": {
+   "Bruna, the Fading Light": 12,
+   "Gisela, the Broken Blade": 12,
+   "Plains": 36
+  },
+  "P1": {
+   "Forest": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fires": "passed",
+  "A3_exile_observed": "failed",
+  "A4_meld_correct": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre: gisela_bf=1 bruna_bf=1 life=[20, 20]",
+  "trigger evidence hits: ['stack:?']",
+  "resolution state: exile bruna=0 gisela=0; bf bruna=1 gisela=1",
+  "brisela_bf=[0, 0] (expected 1 melded permanent under P0)",
+  "half/brisela zones: {'Library': ['bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'gisela, the broken blade', 'bruna, the fading light'], 'Hand': ['gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'bruna, the fading light'], 'Battlefield': ['bruna, the fading light', 'gisela, the broken blade', 'bruna, the fading light', 'gisela, the broken blade']}",
+  "post: phase=Upkeep turn=14 stack_empty=True advanced=True"
+ ],
+ "stats": {
+  "states_seen": 315,
+  "trigger_observations": 1
+ },
+ "setup_line": "P0: 12x Bruna + 12x Gisela + 36x Plains; P1: 60x Forest dummy; native human seats",
+ "contract_line": "cast Gisela (3W), cast Bruna (5WW, may-return declined), end-step Meld trigger; assert Brisela enters the battlefield",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Bruna/Gisela deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-118 port of scenario_6768_01030.py (verified 2026-10-07, run 20261007-6768, v0.103.0/protocol 106).",
+  "Cast-confirmation guard (protocol 118): after every CastSpell submission the driver holds (no priority pass, no new main-phase plays) until the spell is confirmed on the stack/battlefield; 30s backstop clears a still-in-hand cast as dropped and resets mana_needs/bruna_cast_pending for retry.",
+  "Bruna's may-return declined via 106 decideOptionalEffect bare \"false\" choice, gated on bruna_cast_pending + not bruna_declined (per the #7195 driver lesson).",
+  "Payment via vi tapLandForMana with needs={W:3,generic:1} (Gisela) / {W:2,generic:5} (Bruna); legacy PayMana/ PayManaAbilityMana honored as fallback.",
+  "playLand included in NON_DECISION_CODES (per the #7195 lesson); land plays via legal_actions PlayLand matched by _src_oid with the is_land() helper.",
+  "post_trigger export falls back to P1's turn start if the EndStep/Cleanup window is missed (v0.86.0 run lesson)."
+ ]
+}
