@@ -1,0 +1,76 @@
+{
+ "issue": 6763,
+ "run_id": "run-20261009-0647",
+ "started_at": "2026-10-09T11:55:09",
+ "duration_s": 152.1,
+ "server": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full",
+  "binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "observed_at": "2026-10-09",
+  "source": "2026-10-09: pinned release v0.104.0 == latest stable; ServerHello 0.104.0/4227122/protocol 118 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reusing the pinned v0.104.0 server on 127.0.0.1:9374"
+ },
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8e6505d72ef9fe6a7a02a61e1d0cd3d13ba2a6b07a9cc55db75c6b308c75e0f6",
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "game_A": {
+  "chosen_oid": 50,
+  "trigger_entry_id": 121,
+  "game_code": "9ODKQM"
+ },
+ "game_B": {
+  "chosen_oid": 6,
+  "trigger_entry_id": 121,
+  "game_code": "3N9L03"
+ },
+ "assertions": {
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed"
+ },
+ "notes": [
+  "E1[A]: gy_ballistas=[47, 50] emperor_bf=['73'] trigger_entry=121",
+  "E2[A]: entry targets=[50] chosen=50",
+  "E1[B]: gy_ballistas=[6, 44] emperor_bf=['110'] trigger_entry=121",
+  "E2[B]: entry targets=[6] chosen=6",
+  "E3: chosen_A=50 chosen_B=6 distinct=True",
+  "E4[A]: viewer refs=[50] export refs match=True",
+  "E4[B]: viewer refs=[6] export refs match=True",
+  "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat"
+ ],
+ "revalidation_of": {
+  "run_id": "20261007-6763",
+  "protocol": 106
+ }
+}
