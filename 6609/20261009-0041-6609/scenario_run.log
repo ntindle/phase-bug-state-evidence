@@ -1,0 +1,65 @@
+ServerHello OK: {'server_version': '0.104.0', 'build_commit': '4227122', 'protocol_version': 118, 'mode': 'Full'}
+game CHVOEX; P0 seat=0 P1 seat=1
+P0 keeps (hand=['divination', 'rancor', 'nethergoyf', 'island', 'shock', 'grizzly bears', 'swamp'], mulls=0)
+P1 keeps (hand=['mountain', 'mountain', 'mountain', 'mountain', 'lightning bolt', 'mountain', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['divination', 'rancor', 'nethergoyf', 'island', 'shock', 'grizzly bears'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 plays land swamp
+P1 plays land mountain
+P0 plays land island
+P0 casts Nethergoyf
+payment expected for goyf_cast: needs={'B': 1, 'generic': 1}
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 1, 'generic': 0})
+P1 plays land mountain
+P1 bolts nethergoyf (oid 3)
+[P1] submitting advertised target: id=CHVOEX.0.57.t2 kind=sequence (Nethergoyf)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+[P0] paying mana via vi: tap Swamp for B (remaining needs={'B': 0, 'generic': 0})
+payment for goyf_cast complete (needs exhausted)
+P1 plays land mountain
+P0 plays land swamp
+P1 plays land mountain
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['CHVOEX.0.174.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Rancor', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+P0 casts Ornithopter
+P1 plays land mountain
+P1 bolts ornithopter (oid 50)
+[P1] submitting advertised target: id=CHVOEX.0.213.t2 kind=sequence (Ornithopter)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P1 bolts ornithopter (oid 50)
+[P1] submitting advertised target: id=CHVOEX.0.216.t2 kind=sequence (Ornithopter)
+[P1] paying mana via vi: tap Mountain for R (remaining needs={'R': 0})
+P0 plays land island
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['CHVOEX.0.276.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Rancor', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available'), ('Divination', 'available')]
+P1 plays land mountain
+DIAG turn=18 active=1 phase=End pp=0 hand=['shock', 'grizzly bears', 'nethergoyf', 'nethergoyf', 'shock', 'grizzly bears'] gy0=['nethergoyf', 'divination', 'ornithopter', 'rancor'] goyf_gy=True phase_sm=setup escape_live=False
+P0 plays land swamp
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 3)
+payment expected for escape: needs={'B': 1, 'generic': 2}
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available')]
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=3 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['CHVOEX.0.298.s0'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Ornithopter', 'available'), ('Rancor', 'available')]
+[P0] paying mana via vi: tap Swamp for B (remaining needs={'B': 0, 'generic': 2})
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Swamp', 'available'), ('Island', 'available')]
+[P0] paying mana via vi: tap Island for generic (remaining needs={'B': 0, 'generic': 1})
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Island', 'available'), ('Swamp', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Swamp', 'available'), ('Island', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
