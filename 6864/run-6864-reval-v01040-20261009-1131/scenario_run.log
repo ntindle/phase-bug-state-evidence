@@ -1,0 +1,57 @@
+[11:40:43] ServerHello: version=0.104.0 build=4227122 protocol=118 mode=Full
+[11:40:43] data-level: -6 effect type=Unimplemented name=emblem_creation unimplemented=True
+[11:40:44] P0 creating game...
+[11:40:44] P1 joining...
+[11:40:44] game TPZLVV; P0 seat=0 P1 seat=1
+[11:40:44] [P0] mulligan -> Keep
+[11:40:44] [P1] mulligan -> Keep
+[11:40:45] [P1] playing land island
+[11:40:49] [P0] playing land mountain
+[11:40:52] [P1] playing land plains
+[11:40:57] [P0] playing land mountain
+[11:41:01] [P1] playing land swamp
+[11:41:04] [P0] playing land mountain
+[11:41:08] [P1] playing land swamp
+[11:41:12] [P0] playing land mountain
+[11:41:12] [P0] casts zariel, archduke of avernus (oid=44)
+[11:41:13] [P0] action confirmed (stack): zariel, archduke of avernus oid 44
+[11:41:13] [watch] Zariel loyalty=4 (turn 8)
+[11:41:17] [P1] playing land forest
+[11:41:20] [P0] playing land mountain
+[11:41:24] [P1] playing land island
+[11:41:29] [P0] playing land forest
+[11:41:29] [P0] casts grizzly bears (oid=34)
+[11:41:29] [P0] action confirmed (stack): grizzly bears oid 34
+[11:41:29] [P0] tap land for mana used_for=generic
+[11:41:29] [P0] submitting interaction iid=TPZLVV.0.176 choice=TPZLVV.0.176.c1 (Mountain)
+[11:41:30] === stage -> LOYAL1 ===
+[11:41:30] [P0] Zariel loyalty=4 legacy_activate=False vi_activate=False
+[11:41:31] [P0] activates Zariel +1 (ability_index 0)
+[11:41:32] [P0] action confirmed (battlefield): Zariel +1 oid 44
+[11:41:32] [watch] Zariel loyalty=5 (turn 12)
+[11:41:32] === stage -> LOYAL2 ===
+[11:41:34] [P1] playing land forest
+[11:41:38] [P0] playing land forest
+[11:41:38] [P0] activates Zariel +1 (ability_index 0)
+[11:41:38] [P0] action confirmed (battlefield): Zariel +1 oid 44
+[11:41:38] [watch] Zariel loyalty=6 (turn 14)
+[11:41:38] === stage -> ACTIVATE ===
+[11:41:43] [P1] playing land swamp
+[11:41:47] exported pre_activate.json
+[11:41:47] [P0] activates Zariel ult (ability_index 2)
+[11:41:47] [P0] action confirmed (graveyard): Zariel ult oid 44
+[11:41:47] exported post_activate.json
+[11:41:47] [watch] post-ult emblem scan: []
+[11:41:47] === stage -> COMBAT ===
+[11:41:48] [P0] declares attackers: [34] -> P1
+[11:41:53] exported post.json
+[11:41:53] === DONE (post-combat main reached) ===
+[11:41:53] A1_setup_ok: passed
+[11:41:53] A2_loyalty_paid: passed
+[11:41:53] A3_emblem_created: failed
+[11:41:53] A4_target_prompt: failed
+[11:41:53] A5_untap_resolves: failed
+[11:41:53] A6_additional_combat: failed
+[11:41:53] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_loyalty_paid": "passed", "A3_emblem_created": "failed", "A4_target_prompt": "failed", "A5_untap_resolves": "failed", "A6_additional_combat": "failed"}
+[11:41:54] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6864/run-6864-reval-v01040-20261009-1131/summary.png
+[11:41:54] copied driver into evidence dir
