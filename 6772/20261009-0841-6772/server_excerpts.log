@@ -1,0 +1,10 @@
+Server log carries connection/session events only (no card-level detail).
+Game: B6DH6J. Relevant lines:
+2026-10-09T13:47:01.569632Z  INFO phase_server: phase-server listening bind=127.0.0.1 port=9374
+2026-10-09T13:50:32.515073Z  INFO ws_message: server_core::session: game session created game=B6DH6J player_count=2
+2026-10-09T13:50:32.551185Z  INFO ws_message: phase_server: game created via lobby game=B6DH6J host=P0 players=2
+2026-10-09T13:50:32.664427Z  INFO ws_message: phase_server: JoinGameWithPassword game=B6DH6J joiner=P1
+2026-10-09T13:50:32.664595Z  INFO ws_message: server_core::session: player joined session game=B6DH6J player=PlayerId(1) seat=1
+2026-10-09T13:50:32.692255Z  INFO ws_message: phase_server: player joined game=B6DH6J player=PlayerId(1)
+2026-10-09T13:50:32.946173Z  WARN phase_server: Full snapshot was no longer current game=B6DH6J disposition=SupersededOrRetired
+2026-10-09T13:50:33.145123Z  INFO ws_message:game_session{game=B6DH6J player=PlayerId(1)}: server_core::session: action applied game=B6DH6J player=PlayerId(1) action_type="MulliganDecision" event_count=0
