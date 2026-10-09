@@ -1,0 +1,36 @@
+ServerHello: version=0.104.0 build=4227122 protocol=118 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game WORN1Z; seats 0/1
+[P0] keeps (lands=3)
+[P1] keeps (lands=7)
+[P1] keeps (lands=7)
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P0] playing land forest
+[P0] casting Manabond (oid 10)
+[P0] cast confirmed on stack: Manabond (oid 10)
+[decline-armed] turn 2 hand lands=3 nonlands=3
+exported pre_decline.json
+[pre_decline] turn 2: lands=3 nonlands=3
+[P0] Manabond may-choice answered false (choice WORN1Z.0.36.c0)
+exported post_decline.json
+[post_decline] phase=End turn=2; arming ACCEPT
+[P1] tap land for mana used_for=any needs_left=None
+[P1] playing land forest
+[P1] tap land for mana used_for=any needs_left=None
+[P0] tap land for mana used_for=G needs_left={'G': 0}
+exported pre_accept.json
+[pre_accept] turn 4: lands=4 nonlands=3
+[P0] Manabond may-choice answered true (choice WORN1Z.0.71.c1)
+[P1] tap land for mana used_for=any needs_left=None
+exported post_accept.json
+[post_accept] phase=Upkeep turn=5
+A1_setup_ok: passed
+A2_decline_no_move: passed
+A3_accept_lands_battlefield: failed
+A4_accept_rest_discarded: passed
+A5_cleanup: passed
+verdict: reproduced
+server excerpts: 0 matching lines
