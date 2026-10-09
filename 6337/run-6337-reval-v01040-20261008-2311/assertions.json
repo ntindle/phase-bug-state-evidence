@@ -1,0 +1,21 @@
+{
+ "issue": 6337,
+ "release": "v0.104.0",
+ "run_id": "run-6337-reval-v01040-20261008-2311",
+ "assertions": {
+  "A1_setup_sources_ok": "passed",
+  "A2_suggest_defect_present": "passed",
+  "A3_dominant_colors_total_order": "passed",
+  "A4_suggest_varies": "passed",
+  "A5_dominant_colors_stable": "passed",
+  "A6_control_stable": "passed"
+ },
+ "detail": {
+  "A1_setup_sources_ok": "fetched crates/draft-wasm/src/bot_ai.rs, crates/draft-wasm/src/suggest.rs, crates/phase-ai/src/draft_eval.rs from the v0.104.0 tag via raw.githubusercontent.com; all downloaded",
+  "A2_suggest_defect_present": "find_best_colors (suggest.rs:376): sorted.sort_by(|a, b| b.1.partial_cmp(a.1).unwrap_or(Ordering::Equal)) \u2014 score-only sort, NO tie-break, byte-identical to v0.103.0",
+  "A3_dominant_colors_total_order": "dominant_colors (draft_eval.rs:238): b.1.cmp(&a.1).then_with(|| a.0.cmp(b.0)) \u2014 total order intact, byte-identical to v0.103.0; color_preference (bot_ai.rs:304) still delegates to it",
+  "A4_suggest_varies": "find_best_colors top-2 varied across 30 separate OS processes: 16 distinct orderings on the tied pool (one card of each W/U/B/R/G, constant score 1.0)",
+  "A5_dominant_colors_stable": "dominant_colors returned B,G in all 30 processes",
+  "A6_control_stable": "fixed control (find_best_colors + house-style .then_with tie-break) returned B,G in all 30 processes"
+ }
+}
