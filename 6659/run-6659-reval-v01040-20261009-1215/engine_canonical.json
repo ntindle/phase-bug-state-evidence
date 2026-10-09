@@ -1,0 +1,46 @@
+{
+  "fold_algorithm": "CardDatabase::fold_card_name_key (card_db.rs) feeding canonical_deck_count_key (deck_validation.rs): resolve the entry name through the card database to its canonical printing, then fold (lowercase) to the deck-count key. Both alias spellings resolve to the same canonical key, so the engine merges the buckets.",
+  "inputs": {
+    "card_data": "server/releases/v0.104.0/data/card-data.json",
+    "deck_entries": [
+      {
+        "count": 9,
+        "name": "Nazgul"
+      },
+      {
+        "count": 9,
+        "name": "Nazgûl"
+      }
+    ]
+  },
+  "canonical_keys": [
+    {
+      "name": "Nazgul",
+      "count": 9,
+      "canonical_key": "nazgûl",
+      "resolved_via": "lookup_key accent-insensitive match -> canonical entry 'nazgûl'"
+    },
+    {
+      "name": "Nazgûl",
+      "count": 9,
+      "canonical_key": "nazgûl",
+      "resolved_via": "whole-name exact match (face_index/cards)"
+    }
+  ],
+  "canonical_counts": {
+    "nazgûl": 18
+  },
+  "printed_ceiling_nazgul": {
+    "type": "UpTo",
+    "data": 9
+  },
+  "oracle_text_excerpt": "Deathtouch\nWhen this creature enters, the Ring tempts you.\nWhenever the Ring tempts you, put a +1/+1 counter on each Wraith you control.\nA deck can have up to nine cards named Nazgûl.",
+  "copy_limit_violations": [
+    {
+      "canonical_key": "nazgûl",
+      "count": 18,
+      "ceiling": 9
+    }
+  ],
+  "verdict": "MERGED"
+}
