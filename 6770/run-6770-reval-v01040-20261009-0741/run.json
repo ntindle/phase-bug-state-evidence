@@ -1,0 +1,75 @@
+{
+ "run_id": "run-6770-reval-v01040-20261009-0741",
+ "issue": 6770,
+ "date": "2026-10-09T12:48:10Z",
+ "started_at": "2026-10-09T07:47:37-05:00",
+ "server": {
+  "server_version": "v0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "run_dir": "runs/run-20261009-061142-backfill (shared live server, phase-server PID 5418)",
+  "port": 9374,
+  "signature_note": "v0.104.0 binary + release manifest minisign-verified 2026-10-08 with the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; binary/data digests re-verified against the pinned release artifacts for this run"
+ },
+ "server_observed": {
+  "server_version": "0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118
+ },
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py"
+ },
+ "scenario": {
+  "file": "scenario_6770_01040.py",
+  "sha256": "8b2948f54a66d05219c5c684b5d70cad968178e7437a9e8a956eabf9d6e47fb3"
+ },
+ "decks": {
+  "P0": {
+   "Manabond": 12,
+   "Grizzly Bears": 12,
+   "Forest": 36
+  },
+  "P1": {
+   "Forest": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_decline_no_move": "passed",
+  "A3_accept_lands_battlefield": "failed",
+  "A4_accept_rest_discarded": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre_decline: manabond_bf=1 hand_lands=3 hand_nonlands=3 life=[20, 20]",
+  "decline: hand_same=True bf_lands_same=True",
+  "accept: hand_lands=4 hand_nonlands=3; post: lands->bf=0 lands->gy=4 nonlands->gy=3",
+  "accept zone map: {42: 'Graveyard', 13: 'Graveyard', 47: 'Graveyard', 6: 'Graveyard', 48: 'Graveyard', 52: 'Graveyard', 33: 'Graveyard'}",
+  "post_accept: phase=Upkeep turn=5 stack_empty=True advanced=True"
+ ],
+ "stats": {
+  "states_seen": 166
+ },
+ "setup_line": "P0: 12x Manabond + 12x Grizzly Bears + 36x Forest; P1: 60x Forest dummy; native human seats",
+ "contract_line": "cast Manabond ({G}), ramp with decline-every-turn, DECLINE at first armed end step (no movement), ACCEPT at next end step; assert lands hit the battlefield and the rest of the hand is discarded",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Manabond/Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-118 port of scenario_6770.py (verified 2026-10-07, run 20261007-6770).",
+  "Cast-confirmation guard (protocol 118): after every CastSpell the driver holds (no priority pass, no new main-phase plays) until the spell is confirmed on the stack/battlefield; 30s backstop clears a still-in-hand cast as dropped and resets mana_needs for retry (per the 2026-10-09 #6765 lesson).",
+  "Manabond's may-choice answered via decideOptionalEffect bare true/false choice (role=accept/value, text fallbacks), per the #7195 driver lesson; answered per-opportunity (interactionId), gated per-stage with the answer held until the pre-decision export lands.",
+  "Mulligan/bottom/discard decisions detected via advertised legal actions + viewer_interaction (vi_kind_code / schema opps); waiting_for is null on protocol 118 (per the #6250 lesson).",
+  "Payment via vi tapLandForMana with needs={G:1}; legacy PayMana/ PayManaAbilityMana honored as fallback.",
+  "playLand included in NON_DECISION_CODES (per the #7195 lesson); land plays via legal_actions PlayLand matched by _src_oid with the is_land() helper (card_types.core_types contains 'Land').",
+  "post_decline exported in the end step with the stack empty and before the cleanup discard, so A2 compares decline-only movement.",
+  "post_accept exported at the first P1 turn after accept_turn (trigger resolved, discard done, game advanced)."
+ ]
+}
