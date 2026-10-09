@@ -1,0 +1,320 @@
+{
+ "issue": 6765,
+ "run_id": "run-6765-reval-v01040-20261009-0635",
+ "started_at": "2026-10-09T11:36:17",
+ "duration_s": 346.6,
+ "server": {
+  "server_version": "0.104.0",
+  "build_commit": "4227122",
+  "protocol_version": 118,
+  "mode": "Full",
+  "server_binary_sha256": "f4f3d74a21a5474453d4ca06b9c90e2751af7bea66c0101db26f4baa385f5c9d",
+  "card_data_sha256": "7d131899fb22736dc6068c25ec220f2fed8b71578dba4ba1135c56a19247789d",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "observed_at": "2026-10-09",
+  "source": "2026-10-09: latest stable release v0.104.0 (published 2026-10-08) == pinned release dir; ServerHello 0.104.0/4227122/protocol 118 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh isolated server on 127.0.0.1:9374 started by this run"
+ },
+ "driver": {
+  "protocol_advertised": 118,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c5d682de8c7f20633289b0303bf7ff14faba2cbc11db98d1a228ca72f5563441",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Island",
+    20
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Yidris, Maelstrom Wielder",
+    6
+   ],
+   [
+    "Shock",
+    12
+   ],
+   [
+    "Bloodbraid Elf",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    200
+   ]
+  ]
+ },
+ "assertions": {
+  "A0_connect": "passed",
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_pre_damage_control": "passed",
+  "A4_yidris_grant": "failed",
+  "A5_control_cascade": "passed",
+  "A6_cleanup": "failed"
+ },
+ "notes": [
+  "Yidris on BF (oid 28), cast turn 34",
+  "A3: pre-damage Shock: cascade trigger=None sources=None may=None kind=None exile 0->0",
+  "A4: post-damage Shock: cascade trigger=None sources=None may=None kind=None exile 0->0",
+  "A2: P1 life 18->13 (expect -5); yidris trigger seen=True",
+  "A5: Bloodbraid cascade trigger=True sources=['Bloodbraid Elf#308'] may=None kind=None exile 0->0",
+  "protocol-118 driver (v0.104.0): Yidris cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands for mana itself (no double-payment artifact). Shock casts via CastSpell with {R:1}; Shock targets via the advertised vi target opportunity (schema select/sequence), seat-1 candidate preferred; attackers declared via the advertised DeclareAttackers action with attacks=[[yidris_oid, {type:Player, data:1}]] (AttackTarget tagged union per engine types/actions.rs); cascade signals detected strictly: a TriggeredAbility stack entry whose ability effect type is exactly 'Cascade', a genuine decide/bool may prompt or an all-exile card choice, or a positive exile-zone delta; a genuine decide/bool may prompt is DECLINED after an observed cascade purely to let the game settle (exile card choices are never answered); Yidris stood down after the A4 window so P1 survives for A5.",
+  "P0 deck 20x Forest/Mountain/Island/Swamp + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1 200x Mountain draw-go, never attacks or blocks (engine accepts >4-of and oversized decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability."
+ ],
+ "rejections": [
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545783.6116004,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545792.4074214,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545800.5504758,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545809.3364701,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545817.8038306,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545822.5928063,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545826.4946878,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545835.3048725,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545840.7842445,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545845.869337,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545850.5228832,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545855.4966662,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545859.574753,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545864.8119082,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545878.381393,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545889.988613,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545901.8959486,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545912.790889,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545923.5167854,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545937.3235142,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545944.8190403,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545952.5902836,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545963.5675025,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545963.5675747,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545974.9412465,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545982.9428835,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545982.94301,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545987.2462318,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545993.6608753,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791545995.047769,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791545999.5003164,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791546006.719485,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791546011.6572962,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791546017.9153137,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1791546022.809539,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791546030.2721384,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1791546030.2721963,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Dense playsets (12x Shock, 8x Bloodbraid, 6x Yidris) and oversized decks (106/200 cards) are test-harness conveniences (engine accepts >4-of and >60-card decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability.",
+  "A5's cascade free-cast may prompt is declined after the trigger is observed, purely to let the game settle; exile-zone card choices are never auto-answered.",
+  "A6 cleanup stays failed by design: after the A5 control the game parks at the cascade free-cast card choice, which the driver deliberately never auto-answers (exile-zone card choices are not driver decisions); not an engine defect.",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.104.0, not a fix claim."
+ ],
+ "setup_line": "P0: 80 lands + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1: 200x Mountain (draw-go); oversized decks prevent decking during the 4-color ramp",
+ "contract_line": "Yidris attacks unblocked on a fully-staged turn; pre-damage Shock (when a spare is available) must not cascade; post-damage Shock must gain cascade; Bloodbraid Elf control must cascade natively",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
