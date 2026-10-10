@@ -1,0 +1,60 @@
+{
+ "run_id": "run-6771-reval-v01050-20261010-0941",
+ "issue": 6771,
+ "date": "2026-10-10T14:46:42Z",
+ "started_at": "2026-10-10T09:46:27-05:00",
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "port": 9374
+ },
+ "scenario_sha256": "a8610332948708191cb0f84ed1b7d574a652301601050782a40196ed23cb6310",
+ "decks": {
+  "P0": {
+   "Breakthrough": 12,
+   "Island": 48
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_x_announced": "passed",
+  "A3_draw_completed": "passed",
+  "A4_choose_prompted": "failed",
+  "A5_discard_happened": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre_cast: main=True spell_in_hand=True cast_advertised=True islands_bf=3 hand=6 lib=51",
+  "x prompt offered & answered: True value=2 (wanted 2) range=(0, 2) clamped=False (iids=['EYL442.0.74'])",
+  "draw check: spell_in_gy=True lib 51->47 (delta=4) stack_empty=True",
+  "hand-keep 'choose X' prompt observed after draw: False (count=0)",
+  "hand: pre=6 post=9; oracle with X=2 expects 2; bug expects 9",
+  "post_cast: phase=PostCombatMain turn=5 stack_empty=True"
+ ],
+ "stats": {
+  "states_seen": 82
+ },
+ "setup_line": "P0: 12x Breakthrough + 48x Island; P1: 60x Island dummy; native human seats",
+ "contract_line": "cast Breakthrough ({X}{U}, X=2 wanted), answer the ChooseXValue prompt clamped into the advertised range; engine auto-pays mana (no driver mana taps); assert the draw completes and the 'choose X cards in your hand, discard the rest' half fires (reported broken)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Breakthrough deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-106 port of scenario_6771_v086.py (verified 2026-09-18, run 20260918-6771).",
+  "Merged_actions/vi conventions, NON_DECISION_CODES incl. playLand, vi tapLandForMana payment, and PASSED_REV gating taken from the proven 20261005-6770 template.",
+  "Breakthrough's X announced via a 120 number-schema vi opportunity (wired raw); X=2 wanted, clamped into the advertised [min,max]; the engine auto-pays the full cost (payment_mode Auto).",
+  "Cast-confirmation guard: after the bare CastSpell submission the driver never passes priority until the spell is confirmed on the stack; a 30s backstop clears a dropped cast and retries.",
+  "If the X prompt is never answered the run cannot exercise the bug: verdict stays blocked rather than misfiring 'reproduced'.",
+  "Pinned data parses only Draw(Fixed 4); 'choose X cards in your hand' and 'discard the rest' remain Unimplemented (unparsed_verb_arguments) in v0.105.0 -- see data_evidence.json."
+ ]
+}
