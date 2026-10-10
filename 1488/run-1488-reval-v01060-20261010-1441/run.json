@@ -1,0 +1,94 @@
+{
+ "issue": 1488,
+ "run_id": "run-1488-reval-v01060-20261010-1441",
+ "started_at": "2026-10-10T19:46:07",
+ "duration_s": 18.6,
+ "server": {
+  "server_version": "0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "mode": "Full",
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-10-10",
+  "source": "digests recomputed via sha256sum against the pinned v0.106.0 release files under server/releases/v0.106.0/; raw ServerHello on 127.0.0.1:9374 verified by this run (server_version 0.106.0 / build 29e0db3 / protocol 126 / Full)"
+ },
+ "server_run_dir": "runs/run-1488-reval-v01060-20261010-1441",
+ "driver": {
+  "protocol_advertised": 126,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5dce382a7db0449a354aad7e94ff7cd7843b3ef2a39348e7b767a33970f5d71b",
+ "decks": {
+  "P0": [
+   [
+    "Fateful Tempest",
+    12
+   ],
+   [
+    "Mountain",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_vote_prompted": "failed",
+  "A3_mill": "failed",
+  "A4_damage": "failed",
+  "A5_exile": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "P0 main phase: exporting PRE, then casting Fateful Tempest",
+  "P0 casts Fateful Tempest (turn 6, oid 51)",
+  "exported MID (Tempest on stack)",
+  "Tempest resolved; exporting POST",
+  "exported POST",
+  "pre.json: P0 main phase, Tempest in hand, 3 untapped Mountains, life 20/20",
+  "NO past/present vote opportunity was advertised to any player during the Tempest cast/resolution (REPORTED BUG: council's dilemma vote never happens)",
+  "mill during resolution: 0 card(s) [] (Oracle: 1 per past vote)",
+  "no mill and no damage to P1 during resolution (vote/mill/damage portion did nothing)",
+  "exiled during resolution: 0 card(s) [] (Oracle: 1 per present vote)",
+  "post.json: Tempest in P0 graveyard, stack empty, game advanced (turn 6, phase BeginCombat)"
+ ],
+ "observations": {
+  "vote_seen": false,
+  "vote_opportunities": [],
+  "cast_submitted": false,
+  "cast_turn": null,
+  "cast_phase": null,
+  "cast_oid": null,
+  "votes_cast": 0,
+  "milled": [],
+  "exiled": [],
+  "life_pre": [
+   20,
+   20
+  ],
+  "life_post": [
+   20,
+   20
+  ],
+  "damage_to_p1": 0,
+  "mv_sum_milled": 0
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Fateful Tempest deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "If a vote prompt had appeared, the driver would have voted 'past' for both seats (deterministic test policy).",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 12x Fateful Tempest + 48x Mountain (mulligan to tempest + 2 lands); P1: 60x Mountain dummy",
+ "contract_line": "Cast Fateful Tempest: council's-dilemma vote (past/present) offered to each player, then mill 1 per past vote, damage each opponent = total MV milled, exile top 1 per present vote, may play exiled cards until end of next turn"
+}
