@@ -1,0 +1,63 @@
+{
+ "run_id": "run-6772-reval-v01050-20261010-1013",
+ "issue": 6772,
+ "date": "2026-10-10T15:16:42Z",
+ "started_at": "2026-10-10T10:14:39-05:00",
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "port": 9374
+ },
+ "scenario_sha256": "e6b9a2b85fac956e1e7555d027067ef99145b1181835b37266f913e93efa42c5",
+ "decks": {
+  "P0": {
+   "Ultimecia, Time Sorceress": 12,
+   "Otherworldly Gaze": 12,
+   "Island": 18,
+   "Swamp": 18
+  },
+  "P1": {
+   "Island": 60
+  }
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_transform_resolved": "passed",
+  "A3_extra_turn_next": "failed",
+  "A4_extra_turn_taken": "failed",
+  "A5_single_extra": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre_transform: end_phase=True frontface_bf=True gy=8 (need>=8) islands=7 swamps=4 (need>=4 each) turn=27",
+  "Omnipotent face observed on battlefield: True",
+  "turn sequence: [(1, 0), (2, 1), (3, 0), (4, 1), (5, 0), (6, 1), (7, 0), (8, 1), (9, 0), (10, 1), (11, 0), (12, 1), (13, 0), (14, 1), (15, 0), (16, 1), (17, 0), (18, 1), (19, 0), (20, 1), (21, 0), (22, 1), (23, 0), (24, 1), (25, 0), (26, 1), (27, 0), (28, 1), (29, 0)]; active(T+1)=1",
+  "P0 main phase observed on turn T+1: False",
+  "active(T+2)=0 (expect 1)",
+  "post_extra_turn: turn=29 active=0 phase=Upkeep stack_empty=True"
+ ],
+ "stats": {
+  "states_seen": 734
+ },
+ "setup_line": "P0: 12x Ultimecia, Time Sorceress + 12x Otherworldly Gaze + 18x Island + 18x Swamp; P1: 60x Island dummy; native human seats",
+ "contract_line": "ramp/mill via Gaze surveil until gy>=8, cast Ultimecia ({3}{U}{B}), at P0 End step export pre_transform then accept the optional transform (pay {4}{U}{U}{B}{B}, exile 8), assert an extra turn for P0 immediately follows (reported broken)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x/18x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-120 port of scenario_6772_01030.py (verified 2026-10-07, run 20261007-6772, v0.103.0/protocol 106).",
+  "Cast-confirmation guard (protocol 120): after every CastSpell submission the driver holds (no priority pass, no new main-phase plays) until the spell is confirmed on the stack/battlefield; a 30s backstop clears a still-in-hand cast as dropped and the cast block retries. ultimecia_cast is set on confirmation, never on submission.",
+  "Merged_actions/vi conventions, NON_DECISION_CODES incl. playLand, explicit land-play before the decision gate with an is_land() helper, and PASSED_REV gating taken from the proven 20261005-6770/6771 templates.",
+  "The transform prompt is detected live: decideOptionalEffect exactChoices (Demonstrate-style bare true/false) or a schema decideOptionalCost surface; the raw opportunity is wired.",
+  "Exile-8 answered via schema select whose candidates reference >=8 Graveyard objects (disjoint from surveil: 2-3 candidates).",
+  "Mana paid via vi tapLandForMana with tracked needs; Islands preferred for generic so Swamps stay untapped for the cost.",
+  "Verdict blocked if A1 fails; reproduced iff A1+A2 pass and A3 fails (transform without the extra turn)."
+ ]
+}
