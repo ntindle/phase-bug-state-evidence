@@ -1,0 +1,12 @@
+{
+ "repo": "phase-rs/phase",
+ "ref": "origin/main",
+ "commit": "c35054d8a0e652f0137f6e444d8e3f4da4717b07",
+ "file": "client/src/adapter/p2p-draft-host.ts",
+ "file_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+ "file_note": "bytes identical to the 2026-10-09 check at 4ecf230 (50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0); relevant paths unchanged",
+ "generator_hostDraftCode": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}",
+ "generator_shape_note": "still emits `draft-` + 8 lowercase hex (14 chars); server contract requires exactly 6 uppercase-alphanumeric chars",
+ "uploadBackupSnapshot": "private async uploadBackupSnapshot(snapshot: PersistedDraftHostSession): Promise<void> {\n    if (!this.backupEndpoint || !this.draftCode) return;\n    try {\n      const publicSnapshot = sanitizePublicBackup(snapshot);\n      await fetch(`${this.backupEndpoint}/p2p-draft-backup`, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n          draft_code: this.draftCode,\n          host_peer_id: this.hostPeer.id,\n          snapshot_json: JSON.stringify(publicSnapshot),\n        }),\n      });\n    } catch (err) {\n      console.warn(\"[P2PDraftHost] server backup upload failed:\", err);\n    }\n  }",
+ "upload_status_check_note": "await fetch(...) result is never inspected: no resp.ok / status check; try/catch only catches transport errors, so a 400 rejection resolves silently; the docstring above it ('Failures are silently logged \u2014 P2P works without server backup.') documents the swallow as intentional"
+}
