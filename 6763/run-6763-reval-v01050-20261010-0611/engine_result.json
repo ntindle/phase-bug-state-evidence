@@ -1,0 +1,76 @@
+{
+ "issue": 6763,
+ "run_id": "run-6763-reval-v01050-20261010-0611",
+ "started_at": "2026-10-10T11:14:51",
+ "duration_s": 208.6,
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "observed_at": "2026-10-10",
+  "source": "2026-10-10: latest stable release v0.105.0 == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused live v0.105.0 server on 127.0.0.1:9374"
+ },
+ "driver": {
+  "protocol_advertised": 120,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "092f48d25beb17300e1f2d25a64720dcb6b2f5d46ac57f8ba0932f5198938fb4",
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "game_A": {
+  "chosen_oid": 18,
+  "trigger_entry_id": 121,
+  "game_code": "OJ0JWJ"
+ },
+ "game_B": {
+  "chosen_oid": 22,
+  "trigger_entry_id": 121,
+  "game_code": "9V5PH6"
+ },
+ "assertions": {
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed"
+ },
+ "notes": [
+  "E1[A]: gy_ballistas=[53, 18] emperor_bf=['80'] trigger_entry=121",
+  "E2[A]: entry targets=[18] chosen=18",
+  "E1[B]: gy_ballistas=[22, 1] emperor_bf=['102'] trigger_entry=121",
+  "E2[B]: entry targets=[22] chosen=22",
+  "E3: chosen_A=18 chosen_B=22 distinct=True",
+  "E4[A]: viewer refs=[18] export refs match=True",
+  "E4[B]: viewer refs=[22] export refs match=True",
+  "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat"
+ ],
+ "revalidation_of": {
+  "run_id": "run-20261009-0647",
+  "protocol": 118
+ }
+}
