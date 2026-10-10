@@ -1,0 +1,154 @@
+{
+ "issue": 5653,
+ "run_id": "run-5653-reval-v01060-20261010-1811",
+ "started_at": "2026-10-10T23:17:20",
+ "duration_s": 81.1,
+ "server": {
+  "server_version": "v0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "mode": "Full",
+  "server_binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+  "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+  "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2e84ca6684319384c86",
+  "signature_verified": true,
+  "signature_note": "v0.106.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-09 13:11 run); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-09: latest stable release v0.106.0 (published 2026-10-09T17:49:54Z) == pinned release dir; ServerHello 0.106.0/29e0db3/protocol 126 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server process on 127.0.0.1:9374 (pid 16023) reused from owning run run-20261009-2211-backfill (not restarted per playbook; probe confirmed pinned version/build/protocol)"
+ },
+ "server_run_dir": "runs/run-20261009-2211-backfill",
+ "chains_parse": {
+  "event": "Draw",
+  "condition": "ExceptFirstDrawInDrawStep",
+  "mode": "Mandatory",
+  "chain": [
+   {
+    "effect": "Discard",
+    "count": 1,
+    "condition": null
+   },
+   {
+    "effect": "Draw",
+    "count": 1,
+    "condition": "EffectOutcome{signal: OptionalEffectPerformed}"
+   },
+   {
+    "effect": "Mill",
+    "count": 1,
+    "condition": "Not(EffectOutcome{signal: OptionalEffectPerformed})"
+   }
+  ],
+  "verified_from": "pinned v0.106.0 card-data.json replacements[0] (structure unchanged from v0.78.0/v0.85.0/v0.103.0/v0.104.0)"
+ },
+ "driver": {
+  "protocol_advertised": 126,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_5653_01060.py"
+ },
+ "scenario_sha256": "a1a4d97ceb78d89adaa02f0b9522fc87f07b22e45f04166fb5bf242dbca87ae1",
+ "decks": {
+  "P0": [
+   [
+    "chains of mephistopheles",
+    8
+   ],
+   [
+    "blue sun's zenith",
+    8
+   ],
+   [
+    "island",
+    22
+   ],
+   [
+    "swamp",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_first_draw_untouched": "passed",
+  "A3_replacement_fires": "passed",
+  "A4_draw_branch_fires": "failed",
+  "A5_mill_exactly_once": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "P0 cast Chains of Mephistopheles",
+  "Zenith CastSpell submitted (turn 29)",
+  "Zenith cast confirmed on stack (turn 29)",
+  "P0 targeted P1 with Blue Sun's Zenith",
+  "P0 chose X=1 on the Zenith X-choice prompt",
+  "pre.json: P0 main phase, Chains on BF, Zenith in hand, 15 untapped lands, P1 hand H=7, life 20/20",
+  "P1 hand at pre == 7 (expected 7 = 7 kept + 14 draws - 14 lands; P1 went second), gy empty: draw-step first draws never replaced",
+  "replacement fired: 1 discard(s), no normal draw (hand 7->7)",
+  "draw branch broken: only 1/7 discarded, hand 7->7 (predicted buggy: exactly 1 discard, draw never fires)",
+  "mill branch broken: mills=0 with hand_after=7 (predicted buggy: mill never fires)",
+  "post.json: stack empty, Zenith resolved (shuffled into P0 library per its text)",
+  "Oracle-mandated discard->draw / discard->mill branching is broken: result-referential conditions do not gate the Draw/Mill sub-actions"
+ ],
+ "observations": {
+  "discard_events": [
+   {
+    "turn": 29,
+    "phase": "PreCombatMain",
+    "discarded": [
+     "island"
+    ],
+    "hand_before": 7
+   }
+  ],
+  "resolution": {
+   "H": 7,
+   "discards": 1,
+   "discard_names": [
+    "island"
+   ],
+   "mills": 0,
+   "mill_names": [],
+   "hand_after": 7,
+   "lib_before": 39,
+   "lib_after": 38
+  },
+  "hand_trace": [
+   [
+    29,
+    7,
+    0,
+    39
+   ]
+  ],
+  "p1_turns": [
+   2,
+   4,
+   6,
+   8,
+   10,
+   12,
+   14,
+   16,
+   18,
+   20,
+   22,
+   24,
+   26,
+   28
+  ]
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Chains / 8x Zenith deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Magus of the Chains carries the same Oracle text and parse class; only Chains of Mephistopheles was driven (same-class coverage).",
+  "The correct-behavior trace assumes each chained draw is itself a non-first draw subject to replacement (standard rules reading); the decisive observed facts are the discard/mill counts.",
+  "States are authoritative exports, restorable only via full game replay."
+ ],
+ "setup_line": "P0: 8x chains of mephistopheles + 8x blue sun's zenith + 22x island + 22x swamp (mulligan to chains + 2 lands); P1: 60x island dummy",
+ "contract_line": "P0 casts Blue Sun's Zenith X=1 targeting P1 with Chains of Mephistopheles on the battlefield: the draw is replaced by discard-1; per Oracle, discarding must chain into another draw (until the hand is empty) and mill exactly once, only when no card was discarded"
+}
