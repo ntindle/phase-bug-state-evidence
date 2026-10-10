@@ -7,7 +7,7 @@
  "server_identity": {
   "validated_version": "v0.105.0",
   "build_commit": "965e243",
-  "protocol_version": 118,
+  "protocol_version": 120,
   "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
   "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
   "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
@@ -90,5 +90,14 @@
   "Mana spent is measured as the untapped-Mountain delta; the v0.105.0 engine auto-taps reliably, so the driver never taps manually (manual taps are a >90s last-resort fallback only) and the delta equals exactly what the engine charged (fallback manual taps: LEG1=0, LEG2=0)."
  ],
  "setup_line": "P0: 8x Dargo, the Shipwrecker + 8x Memnite + 4x Goblin Bombardment + 40x Mountain; P1: 60x Mountain (draw-go)",
- "contract_line": "LEG1 (decline additional, 1 prior sac): spend 5. LEG2 (pay additional with 2 Memnites, 1 prior sac): spend 1."
+ "contract_line": "LEG1 (decline additional, 1 prior sac): spend 5. LEG2 (pay additional with 2 Memnites, 1 prior sac): spend 1.",
+ "corrections": [
+  {
+   "at": "2026-10-10T16:35:00-05:00",
+   "field": "server_identity.protocol_version",
+   "from": 118,
+   "to": 120,
+   "reason": "port script left the protocol-118 value in SERVER_IDENTITY; the run actually handshook protocol 120 (ServerHello line in scenario_run.log, driver protocol_advertised 120) and asserted ==120. Metadata-only fix."
+  }
+ ]
 }
