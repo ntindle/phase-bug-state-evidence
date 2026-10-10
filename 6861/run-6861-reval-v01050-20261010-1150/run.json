@@ -1,0 +1,77 @@
+{
+ "issue": 6861,
+ "run_id": "run-6861-reval-v01050-20261010-1150",
+ "game_code": "2TC8R5",
+ "started_at": "2026-10-10T16:47:01",
+ "duration_s": 284.0,
+ "server_identity": {
+  "validated_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 120,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "65d0bcc56467056f37f82e28e04373ed28db3e43b81a071fe9a0fca81abc4e06",
+ "decks": {
+  "P0": [
+   [
+    "Squee, the Immortal",
+    12
+   ],
+   [
+    "Faithless Looting",
+    4
+   ],
+   [
+    "Scavenging Ooze",
+    4
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    30
+   ],
+   [
+    "Forest",
+    30
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_cast_offered": "failed",
+  "A3_exile_cast_completes": "failed",
+  "A4_gy_cast_completes": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: turn=57 phase=PreCombatMain squee_exile=1 squee_gy=1 untapped_lands=22",
+  "post.json: stack_empty=True turn=57 phase=BeginCombat",
+  "exile offered=False (source=none) stack=False bf=False rejected=False",
+  "gy offered=False stack=False bf=False rejected=True",
+  "protocol-120 driver (v0.105.0): mulligan via legacy MulliganDecision action; DiscardToHandSize via vi schema/select; Looting discard via vi hand-card choice; CastSpell/ActivateAbility via legacy Action; mana via legacy PayMana actions (gated on outstanding non-test MANA_NEEDS, 2026-10-07 double-pay gate) and/or vi tapLandForMana menus driven by MANA_NEEDS; test Squee casts keep MANA_NEEDS empty so the engine's auto-tap is the single payer; Ooze target via advertised vi target opportunity; legend rule answered preferring the just-cast Squee; priority-gated passes; 5s re-tick backstop; protocol-120 cast-confirmation guard with 30s backstop after every CastSpell/ActivateAbility."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Squee density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6861_01050.py), not direct load."
+ ],
+ "setup_line": "P0: 12x Squee, the Immortal + 4x Faithless Looting + 4x Scavenging Ooze + 20x Mountain + 20x Forest; P1: 30x Mountain + 30x Forest (draw-go)",
+ "contract_line": "Cast exiled Squee: advertised and completes to the battlefield. Control: cast graveyard Squee completes to the battlefield."
+}
