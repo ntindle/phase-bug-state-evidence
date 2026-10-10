@@ -1,0 +1,18 @@
+2026-10-10 run run-6337-reval-v01050-20261010-0011: re-validation of #6337 on v0.105.0 (stale: validated v0.104.0 2026-10-08).
+- GitHub releases checked: latest stable still v0.105.0 (published 2026-10-09T17:49:54Z); pin unchanged (pinned 2026-10-09).
+- Issue still open, labels: bug, status:confirmed, area:deckbuilder, priority:p2-wrong-game-result.
+- Fetched crates/draft-wasm/src/bot_ai.rs, crates/draft-wasm/src/suggest.rs and crates/phase-ai/src/draft_eval.rs
+  from the v0.105.0 tag via raw.githubusercontent.com.
+  All three are byte-identical to the v0.104.0 copies.
+- find_best_colors (suggest.rs:354; sort at :376): score-only sort, still no secondary tie-break. A2 passed.
+- color_preference (bot_ai.rs:304) still delegates to draft_eval::dominant_colors(&colors, 3).
+- dominant_colors (draft_eval.rs:223; tie-break at :238): total order intact. A3 passed.
+- Built harness (harness/src/main.rs, release) and ran the binary in 30 separate OS processes
+  over the tied pool (one card of each W/U/B/R/G, constant score 1.0).
+  find_best_colors: 16 distinct top-2 orderings in 30 runs (see observations.json). A4 passed.
+  dominant_colors: B,G in all 30 runs. A5 passed.
+  fixed control (house-style .then_with tie-break): B,G in all 30 runs. A6 passed.
+- phase-server (pinned v0.105.0, ServerHello 0.105.0/965e243/protocol 120 verified by live handshake on 127.0.0.1:9374)
+  reused from previous run; no game states apply to this subsystem (playbook deckbuilder rule).
+Verdict: reproduced (unchanged since v0.103.0). No webhook (prior validated verdict already reproduced).
+No muse-job spawn (trigger is NEW reproduced verdicts only).
