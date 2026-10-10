@@ -1,0 +1,88 @@
+{
+ "issue": 6729,
+ "run_id": "run-6729-reval-v01050-20261010-0441",
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.105.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-10-09; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files by this run",
+  "server_run_id": "backfill-owned isolated v0.105.0 server on 127.0.0.1:9374 (runs/run-6729-reval-v01050-20261010-0441/games.db; started by this run after a VM replacement; ServerHello verified by this run's own raw handshake)",
+  "mode": "Full",
+  "source": "2026-10-10: latest stable release v0.105.0 (published 2026-10-09T17:49:54Z) == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by this run's own raw handshake; reused live server (not started by this run)"
+ },
+ "decks": {
+  "P0": [
+   [
+    "green sun's zenith",
+    12
+   ],
+   [
+    "arboreal grazer",
+    12
+   ],
+   [
+    "forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "games": [
+  {
+   "tag": "A",
+   "desc": "Green Sun's Zenith X=1 tutors Arboreal Grazer; the Grazer ETB ('you may put a land card from your hand onto the battlefield tapped') is accepted and a Forest is put tapped; Zenith destination and shuffle counts asserted",
+   "assertions": {
+    "A0_data_level": "passed",
+    "A1_setup_ok": "passed",
+    "A2_grazer_bf": "passed",
+    "A3_etb_triggered": "passed",
+    "A4_zenith_library": "passed",
+    "A5_shuffle_exactly2": "failed",
+    "A6_cleanup": "passed"
+   },
+   "observations": {
+    "zenith_cast": true,
+    "x_chosen": 1,
+    "search_submitted": true,
+    "grazer_oid": "54",
+    "trigger_seen": true,
+    "trigger_entry": "{\"id\": 121, \"source_id\": 54, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 54, \"ability\": {\"effect\": {\"type\": \"ChangeZone\", \"origin\": \"Hand\", \"destination\": \"Battlefield\", \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Land\"], \"controller\": \"You\", \"properties\": [{\"type\": \"InZone\", \"zone\": \"Hand\"}]}, \"owner_library\": false, \"enter_transformed\": false, \"enter_tapped\": true, \"enters_attacking\": false}, \"targets\": [], \"source_id\": 54, \"source_incarnation\": 1, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 54, \"incarnation\": 1}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Arboreal Grazer\", \"power\": 0, \"toughness\": 3, \"base_power\": 0, \"base_toughness\": 3, \"mana_value\": 1, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Creature\"], \"subtypes\": [\"Sloth\", \"Beast\"], \"supertypes\": [], \"keywords\": [\"Reach\"], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 54, \"printed_ref\": {\"oracle_id\": \"d18a0815-59d3-4667-b52b-9acda741215e\", \"face_name\": \"Arboreal Grazer\"}, \"is_token\": false, \"face_down\": false, \"mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 0}, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"ChangesZone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"ChangeZone\", \"origin\": \"Hand\", \"destination\": \"Batt",
+    "optional_accepted": true,
+    "land_put_oid": "56",
+    "pre_bf_forest": 2,
+    "pre_hand_forest": 5,
+    "shuffles_pre": 0,
+    "shuffles_post": 3,
+    "shuffle_kinds": [
+     "LibraryShuffle"
+    ],
+    "rejections": []
+   },
+   "notes": [
+    "A5: 3 shuffle commands during the Zenith resolution (pre=0, post=3, kinds=['LibraryShuffle']); expected 2",
+    "verdict=reproduced (secondary observation from the report): the ETB itself fired and resolved, but the Zenith resolution deviates from the report's expected behavior (wrong destination and/or extra shuffles)",
+    "2026-10-10: manifest.sha256 was recomputed after the run because the driver's finalize() announced 'manifest written' via say() AFTER hashing scenario_run.log, leaving one stale hash; the driver source was fixed (print, not say, for that line) so future runs compute the manifest truly last."
+   ]
+  }
+ ],
+ "verdict": "reproduced",
+ "evidence_dir": "6729/run-6729-reval-v01050-20261010-0441",
+ "duration_s": 14.5,
+ "started_at": "2026-10-10T09:46:49Z",
+ "driver_notes": [
+  "Protocol-120 port of scenario_6729_01040.py (verified 2026-10-09, run run-6729-reval-v01040-20261009-0341): ClientHello protocol 120 exact match; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action with a keep-hunt (Zenith + >=2 Forests, max 4 mulls); bottoming via vi schema/select with waitingForKind 'mulligan'.",
+  "Cast-confirmation guard added (AGENTS.md 2026-10-09): after a CastSpell submission the driver holds priority and starts no new main-phase plays until the Zenith is confirmed on the stack; OBS['zenith_cast'] is set at confirmation, not submission; 30s backstop treats a still-in-hand cast as dropped and re-arms the main-phase cast block. The guard sits after scan_scenario (X-choice still answered) and before main-phase plays / the priority pass.",
+  "real_decision_pending excludes tapLandForMana/untapLandForMana/castSpell/activateAbility/passPriority/candidate/mana/mulliganDecision menus; vi playLand opportunities answered explicitly before the decision gate (is_land helper); mana payment via vi tapLandForMana with needs={generic:1,G:1}; surf_codes None-filtered.",
+  "pre.json is exported immediately before the search-choice submission, so the resolved_rules_journal diff (pre->post) captures exactly the Zenith resolution's shuffle commands.",
+  "2026-10-05 fix (run 20261005-6729): on protocol 106+ the Zenith search and the ETB land target arrive as schema selects whose only surface code is 'candidate', which the NON_DECISION_CODES skip swallowed before the search/ETB branches could answer them (stall at the search select; the earlier 0941 run died at the land select the same way). The skip now runs AFTER the optional/search/ETB-land branches, and the ETB-land branch is additionally guarded by optional_accepted and not post_exported."
+ ]
+}
