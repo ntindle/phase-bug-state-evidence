@@ -1,0 +1,29 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_cast_offered": "failed",
+  "A3_exile_cast_completes": "failed",
+  "A4_gy_cast_completes": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: turn=57 phase=PreCombatMain squee_exile=1 squee_gy=1 untapped_lands=22",
+  "post.json: stack_empty=True turn=57 phase=BeginCombat",
+  "exile offered=False (source=none) stack=False bf=False rejected=False",
+  "gy offered=False stack=False bf=False rejected=True",
+  "protocol-120 driver (v0.105.0): mulligan via legacy MulliganDecision action; DiscardToHandSize via vi schema/select; Looting discard via vi hand-card choice; CastSpell/ActivateAbility via legacy Action; mana via legacy PayMana actions (gated on outstanding non-test MANA_NEEDS, 2026-10-07 double-pay gate) and/or vi tapLandForMana menus driven by MANA_NEEDS; test Squee casts keep MANA_NEEDS empty so the engine's auto-tap is the single payer; Ooze target via advertised vi target opportunity; legend rule answered preferring the just-cast Squee; priority-gated passes; 5s re-tick backstop; protocol-120 cast-confirmation guard with 30s backstop after every CastSpell/ActivateAbility."
+ ],
+ "a2_source": "none",
+ "exile": {
+  "offered": false,
+  "stack": false,
+  "bf": false,
+  "rejected": false
+ },
+ "gy": {
+  "offered": false,
+  "stack": false,
+  "bf": false,
+  "rejected": true
+ }
+}
