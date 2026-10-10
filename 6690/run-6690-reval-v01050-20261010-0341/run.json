@@ -1,0 +1,453 @@
+{
+ "issue": 6690,
+ "run_id": "run-6690-reval-v01050-20261010-0341",
+ "started_at": "2026-10-10T08:56:54",
+ "duration_s": 175.7,
+ "server": {
+  "server_version": "0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 118,
+  "mode": "Full",
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (436711b6a2d36828)",
+  "signature_verified": true,
+  "signature_note": "v0.105.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-10: latest stable release v0.105.0 (published 2026-10-09T17:49:54Z) == pinned release dir (pinned 2026-10-09); ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned v0.105.0 server on 127.0.0.1:9374 (already running; started 2026-10-10 02:13 by run-20261010-0211; reused by this run per the playbook)"
+ },
+ "server_run_dir": "runs/run-20261010-0211",
+ "driver": {
+  "protocol_advertised": 106,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_6690_01050.py",
+ "scenario_sha256": "1cee71b9d32c9d6a93691e109d1917876f4bcc2749bc62737fd1ef87f66f5d08",
+ "decks": {
+  "P0": {
+   "main_deck": [
+    "The Beamtown Bullies",
+    "The Beamtown Bullies",
+    "The Beamtown Bullies",
+    "The Beamtown Bullies",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Grizzly Bears",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Faithless Looting",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Forest",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Mountain",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp",
+    "Swamp"
+   ],
+   "sideboard": [],
+   "commander": []
+  },
+  "P1": {
+   "main_deck": [
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island",
+    "Island"
+   ],
+   "sideboard": [],
+   "commander": []
+  }
+ },
+ "game_code": "UJF9ME",
+ "game_ok": true,
+ "parse_summary": {
+  "bullies_oracle": "Vigilance, haste\n{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, ",
+  "bullies_ability": {
+   "cost": {
+    "type": "Tap"
+   },
+   "target": null,
+   "top_effect": {
+    "type": "Unimplemented",
+    "name": "change_zone_enters_under_anaphor"
+   }
+  },
+  "structural_scan_hits": 0
+ },
+ "probe": {
+  "probe_turn": 37,
+  "bullies_oid": "25",
+  "bullies_cast_turn": 16,
+  "offered": true,
+  "offered_data": {
+   "source_id": 25,
+   "ability_index": 0
+  },
+  "attempted": true,
+  "stack_after": 1,
+  "tapped_after": true,
+  "vi_kind_after": "choose",
+  "stack_detail": [
+   {
+    "id": 121,
+    "source_id": 25,
+    "controller": 0,
+    "kind": {
+     "type": "ActivatedAbility",
+     "data": {
+      "source_id": 25,
+      "ability": {
+       "effect": {
+        "type": "Unimplemented",
+        "name": "change_zone_enters_under_anaphor",
+        "description": "under their control"
+       },
+       "targets": [],
+       "source_id": 25,
+       "source_incarnation": 3,
+       "controller": 0,
+       "kind": "Activated",
+       "sub_ability": {
+        "effect": {
+         "type": "GenericEffect",
+         "static_abilities": [
+          {
+           "mode": "Continuous",
+           "affected": {
+            "type": "SelfRef"
+           },
+           "modifications": [
+            {
+             "type": "AddKeyword",
+             "keyword": "Haste"
+            }
+           ],
+           "condition": null,
+           "affected_zone": null,
+           "effect_zone": null,
+           "active_zones": [],
+           "characteristic_defining": false,
+           "description": "gain haste"
+          }
+         ],
+         "duration": null,
+         "target": null
+        },
+        "targets": [],
+        "source_id": 25,
+        "source_incarnation": 3,
+        "controller": 0,
+        "kind": "Spell",
+        "sub_ability": {
+         "effect": {
+          "type": "Goad",
+          "target": {
+           "type": "ParentTarget"
+          }
+         },
+         "targets": [],
+         "source_id": 25,
+         "source_incarnation": 3,
+         "controller": 0,
+         "kind": "Spell",
+         "sub_ability": {
+          "effect": {
+           "type": "CreateDelayedTrigger",
+           "condition": {
+            "type": "AtNextPhase",
+            "phase": "End"
+           },
+           "effect": {
+            "kind": "Activated",
+            "effect": {
+             "type": "ChangeZone",
+             "origin": null,
+             "destination": "Exile",
+             "target": {
+              "type": "ParentTarget"
+             },
+             "owner_library": false,
+             "enter_transformed": false,
+             "enter_tapped": false,
+             "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "uses_tracked_set": false
+          },
+          "targets": [],
+          "source_id": 25,
+          "source_incarnation": 3,
+          "controller": 0,
+          "kind": "Spell",
+          "sub_ability": null,
+          "duration": null,
+          "condition": null,
+          "context": {
+           "additional_cost_paid": false,
+           "alternative_mana_cost_paid": false,
+           "optional_effect_performed": false,
+           "source_ability_provenance": {
+            "type": "Characteristic",
+            "data": {
+             "type": "Own"
+            }
+           }
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+          "detached_remainder": "NoProducer",
+          "forward_result": false,
+          "sub_link": "SequentialSibling"
+         },
+         "duration": null,
+         "condition": null,
+         "context": {
+          "additional_cost_paid": false,
+          "alternative_mana_cost_paid": false,
+          "optional_effect_performed": false,
+          "source_ability_provenance": {
+           "type": "Characteristic",
+           "data": {
+            "type": "Own"
+           }
+          }
+         },
+         "optional_targeting": false,
+         "optional": false,
+         "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+         "detached_remainder": "NoProducer",
+         "forward_result": false,
+         "sub_link": "SequentialSibling"
+        },
+        "duration": null,
+        "condition": null,
+        "context": {
+         "additional_cost_paid": false,
+         "alternative_mana_cost_paid": false,
+         "optional_effect_performed": false,
+         "source_ability_provenance": {
+          "type": "Characteristic",
+          "data": {
+           "type": "Own"
+          }
+         }
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+        "detached_remainder": "NoProducer",
+        "forward_result": false,
+        "sub_link": "SequentialSibling"
+       },
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "source_ability_provenance": {
+         "type": "Characteristic",
+         "data": {
+          "type": "Own"
+         }
+        }
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "{T}: Target opponent whose turn it is puts target nonlegendary creature card from your graveyard onto the battlefield under their control. It gains haste. Goad it. At the beginning of the next end step, exile it.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "ability_index": 0
+      }
+     }
+    }
+   }
+  ]
+ },
+ "rejections": [
+  {
+   "who": "6690-P1",
+   "type": "ActionRejected",
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_offered": "passed",
+  "A3_no_target_block": "passed",
+  "A4_announced": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.105.0 card-data): Bullies activated ability cost={\"type\": \"Tap\"} target=null top_effect={\"type\": \"Unimplemented\", \"name\": \"change_zone_enters_under_anaphor\"}",
+  "structural scan: 0 activated abilities in the pinned data have a player/opponent ability target + chained ChangeZone from the controller's graveyard (the issue's trigger structure)",
+  "A1 passed: probe point reached on turn 37 (P1's turn, P0 priority): Bullies oid 25 untapped on P0 battlefield (cast turn 16, past summoning sickness), >=1 Grizzly Bears in P0 graveyard",
+  "A2 passed: ActivateAbility advertised for the Bullies (data={\"source_id\": 25, \"ability_index\": 0})",
+  "A3 passed: no 'No legal targets available' rejection on the activation attempt",
+  "A4 passed: activation accepted; stack=1 after the attempt, Bullies tapped=True, vi_kind_after=choose",
+  "A5 passed: settle phase completed with the game advancing; no stall observed",
+  "verdict: not-reproduced - the {T} activation was offered and accepted on the opponent's turn with a nonlegendary creature in the controller's graveyard; the reported activation block is absent on v0.105.0. The pinned parse carries no graveyard target slot (top-level Unimplemented), so the described relative_controller_kind mechanism is not reachable from this card's runtime parse."
+ ],
+ "verdict": "not-reproduced",
+ "validated_at": "2026-10-10",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P1 is a passive second seat (lands only, no attacks, no spells).",
+  "The pinned v0.105.0 parse of the Bullies' ability carries no graveyard target slot (top-level Unimplemented change_zone_enters_under_anaphor): this run tests the ACTIVATION GATE (the reported 'not activatable' failure), not the relative_controller_kind target-slot machinery, which is not reachable from this card's runtime parse. Resolution of the reanimation itself is not asserted.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "history": [
+  {
+   "run_id": "20260910-6690",
+   "release": "v0.78.0",
+   "protocol": 68,
+   "verdict": "not-reproduced",
+   "evidence_commit": "847768678deee21deabc25fd64e34aa48bcff0e7",
+   "note": "prior run; activation accepted on the opponent's turn, no 'No legal targets available'"
+  },
+  {
+   "run_id": "20260917-6690",
+   "release": "v0.85.0",
+   "protocol": 72,
+   "verdict": "not-reproduced",
+   "evidence_commit": "4454d25c69e1674d31b5a1be3d9b448208298d47",
+   "note": "re-validation on v0.85.0; activation offered and accepted, no target block"
+  },
+  {
+   "run_id": "20261005-6690e",
+   "release": "v0.102.0",
+   "protocol": 106,
+   "verdict": "not-reproduced",
+   "evidence_commit": "30fe676343df40fa1f3e873c42d5405d909a7703",
+   "note": "re-validation on v0.102.0 (protocol-106 port); activation offered and accepted on the opponent's turn, no 'No legal targets available'"
+  },
+  {
+   "run_id": "20261007-0341-6690",
+   "release": "v0.103.0",
+   "protocol": 106,
+   "verdict": "not-reproduced",
+   "evidence_commit": "00d58cac5980b6463c448d1ccdf94b975df67659",
+   "note": "re-validation on v0.103.0 (protocol-106 port); activation offered and accepted on the opponent's turn, no 'No legal targets available'"
+  },
+  {
+   "run_id": "run-6690-reval-v01040-20261009-0311",
+   "release": "v0.104.0",
+   "protocol": 118,
+   "verdict": "not-reproduced",
+   "evidence_commit": "1525fa490990ed4fee4ccd5935cd48a9e0097d46",
+   "note": "re-validation on v0.104.0 (protocol-118 port); activation offered and accepted on the opponent's turn, no 'No legal targets available'"
+  }
+ ],
+ "setup_line": "P0 4x The Beamtown Bullies + 12x Grizzly Bears + 8x Faithless Looting + 12x Forest/Mountain/Swamp vs P1 60x Island. P0 bins Bears with Looting, casts the Bullies, and on a later P1 turn (past summoning sickness) with P0 priority attempts the {T} activation.",
+ "contract_line": "The {T} activation must be offered and accepted on the opponent's turn with a nonlegendary creature in the controller's graveyard; a 'No legal targets available' rejection is the reported failure signature."
+}
