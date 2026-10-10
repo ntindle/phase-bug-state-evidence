@@ -1,0 +1,95 @@
+{
+  "issue": 6763,
+  "run_id": "run-6763-reval-v01050-20261010-0611",
+  "started_at": "2026-10-10T11:14:51",
+  "duration_s": 208.6,
+  "server": {
+    "server_version": "v0.105.0",
+    "build_commit": "965e243",
+    "protocol_version": 120,
+    "mode": "Full",
+    "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+    "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+    "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+    "signature_verified": true,
+    "observed_at": "2026-10-10",
+    "source": "2026-10-10: latest stable release v0.105.0 == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused live v0.105.0 server on 127.0.0.1:9374"
+  },
+  "server_run_dir": "runs/run-6729-reval-v01050-20261010-0441 (reused live v0.105.0 server on 127.0.0.1:9374; ServerHello verified by handshake this run)",
+  "driver": {
+    "protocol_advertised": 120,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "092f48d25beb17300e1f2d25a64720dcb6b2f5d46ac57f8ba0932f5198938fb4",
+  "decks": {
+    "P0": [
+      [
+        "Walking Ballista",
+        12
+      ],
+      [
+        "Forest",
+        48
+      ]
+    ],
+    "P1": [
+      [
+        "Emperor of Bones",
+        4
+      ],
+      [
+        "Swamp",
+        56
+      ]
+    ]
+  },
+  "assertions": {
+    "E1_setup_ok": "passed",
+    "E2_trigger_targeted": "passed",
+    "E3_identity_distinct": "passed",
+    "E4_snapshot_captured": "passed",
+    "E5_cleanup": "passed",
+    "U1_rendered_setup": "passed",
+    "U2_target_identity_ui": "passed",
+    "U3_label_indistinguishable": "passed",
+    "U4_arc_indistinguishable": "passed",
+    "U5_viewer_indistinguishable": "passed"
+  },
+  "notes": [
+    "E1[A]: gy_ballistas=[53, 18] emperor_bf=['80'] trigger_entry=121",
+    "E2[A]: entry targets=[18] chosen=18",
+    "E1[B]: gy_ballistas=[22, 1] emperor_bf=['102'] trigger_entry=121",
+    "E2[B]: entry targets=[22] chosen=22",
+    "E3: chosen_A=18 chosen_B=22 distinct=True",
+    "E4[A]: viewer refs=[18] export refs match=True",
+    "E4[B]: viewer refs=[22] export refs match=True",
+    "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat",
+    "U2: variant A targets 18, variant B targets 22",
+    "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+    "U4: arc endpoints identical (48.234375, 67.53125); start-point jitter ['M 136.41994857788086 558.0000305175781 Q 171.06459175904948 298.6087648372077 48.234375 67.53125'] vs ['M 135.9149169921875 558 Q 170.82615988604095 298.6873062068539 48.234375 67.53125'] is <0.1px noise",
+    "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '53 18', 'rect': {'x': 0, 'y': 0, 'w': 96.5, 'h': 135.1}} arcs_A=['M 136.41994857788086 558.0000305175781 Q 171.06459175904948 298.6087648372077 48.234375 67.53125']"
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "12x Walking Ballista deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "UI harness mocks: multiplayerStore, useCardImage, useEngineCardData, useGameDispatch (payload capture), wasmStub. The real StackDisplay + StackTargetArcs + GraveyardPile + ZoneViewer components from the mainline client tree were rendered, driven in headless Chrome via CDP (playwright chrome-headless-shell).",
+    "Not tested on the report's 2026-07-29 build; verdict scoped to v0.105.0 engine + recorded mainline client, not a fix claim.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+  ],
+  "setup_line": "P0: 12x Walking Ballista + 48x Forest; P1: 4x Emperor of Bones + 56x Swamp. P1's Emperor trigger targets one of >=2 Walking Ballistas in P0's graveyard.",
+  "contract_line": "Every player must be able to identify the exact graveyard object targeted by the trigger before responding: the two Ballista oids are distinct objects with the same name, so a name-only label cannot disambiguate them.",
+  "browser": {
+    "binary": "playwright chrome-headless-shell (Chromium 152)",
+    "mode": "headless, driven via CDP (harness manages vite + chrome)"
+  },
+  "client": {
+    "mainline_commit": "49525d9f03e5a97b32f2986bf31d7f59221ec40c",
+    "client_tree": "/home/hatch/workspace/dev/phase-backfill/checkout-6763-20261010",
+    "tested_components": [
+      "StackDisplay",
+      "StackTargetArcs",
+      "GraveyardPile",
+      "ZoneViewer"
+    ]
+  }
+}
