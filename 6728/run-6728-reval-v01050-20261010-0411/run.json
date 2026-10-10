@@ -1,0 +1,55 @@
+{
+ "run_id": "run-6728-reval-v01050-20261010-0411",
+ "issue": 6728,
+ "date": "2026-10-10",
+ "verdict": "reproduced",
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) on the pinned release binary + client source-path inspection at current mainline; frontend P2P browser stack not exercised",
+ "scenario": "P2P draft server-backup HTTP handler exercised against the pinned v0.105.0 binary: client-shaped upload (draft-xxxxxxxx) must be rejected with 400 and create no row; contract-valid 6-char uppercase code must complete create/retrieve/update/delete; GET/DELETE with the client-shaped code must also be rejected. Client-side generator + silent-upload claims re-checked by source inspection at client mainline c35054d8.",
+ "result": "On v0.105.0 the server still rejects the client-generated `draft-xxxxxxxx` identifier with 400 Invalid draft code (no row created); a contract-valid 6-char uppercase code completes create/retrieve/update/delete. Client at mainline c35054d8 still generates `draft-` + 8 lowercase hex and uploadBackupSnapshot still never checks the HTTP status, so the rejected upload stays silent (the docstring above it now calls this intentional: 'Failures are silently logged \u2014 P2P works without server backup.'). Server-side validator byte-identical to v0.102.0/v0.103.0/v0.104.0 (admin.rs blob 3ec97d64).",
+ "assertions": {
+  "total": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at c35054d8a0e652f0137f6e444d8e3f4da4717b07 (sha256 recorded in client_path_evidence.json), not on running the client.",
+  "No game-state pair exists for this report; evidence is HTTP exchanges + source excerpts, per playbook subsystem-equivalent contract."
+ ],
+ "server": {
+  "validated_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "release_manifest": "server/releases/v0.105.0/release-server-v0.105.0.json",
+  "data_dir": "server/releases/v0.105.0/data",
+  "endpoint": "http://127.0.0.1:9374",
+  "games_db": "runs/run-20261010-0211/games.db (shared backfill server on 9374, PID 4165, owned by run-20261010-0211; started 2026-10-10T02:13:36Z)",
+  "server_hello_observed": {
+   "server_version": "0.105.0",
+   "build_commit": "965e243",
+   "protocol_version": 120,
+   "mode": "Full"
+  }
+ },
+ "client": {
+  "repo": "phase-rs/phase",
+  "ref": "origin/main",
+  "checkout": "c35054d8a0e652f0137f6e444d8e3f4da4717b07",
+  "path": "client/src/adapter/p2p-draft-host.ts",
+  "findings": "hostDraftCode() still emits `draft-` + 8 lowercase hex; uploadBackupSnapshot still awaits fetch without inspecting the response status, so a 400 rejection stays silent. File bytes identical to the 2026-10-09 check at 4ecf230 (sha256 50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0); relevant paths unchanged."
+ },
+ "driver": "driver/scenario_6728.py (unchanged; RUN_ID/BASE adapted via env for run-6728-reval-v01050-20261010-0411, port 9374)",
+ "evidence_dir": "evidence/6728/run-6728-reval-v01050-20261010-0411",
+ "server_log": "runs/run-20261010-0211/server.log (shared server; excerpt in evidence/server_excerpts.log)",
+ "prior_run": {
+  "run_id": "run-6728-reval-v01040-20261009-0411",
+  "validated_version": "v0.104.0",
+  "verdict": "reproduced",
+  "evidence_commit": "3d69400609a5ef8cc4be47b0fda686521f08f704"
+ }
+}
