@@ -1,0 +1,28 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_modal_offered": "passed",
+  "A3_choice_accepted": "passed",
+  "A4_front_completes": "passed",
+  "A5_back_reachable": "failed",
+  "A6_cleanup": "not-run",
+  "B1_tergrid_setup": "passed",
+  "B2_tergrid_offered": "passed",
+  "B3_tergrid_accepted": "passed",
+  "B4_tergrid_completes": "passed"
+ },
+ "notes": [
+  "WEDGE: exploratory ChooseModalFace back_face=true was consumed by the engine (server log: 'interaction applied ... action_type=ChooseModalFace') with no rejection and no new revision for 90s+; no client holds priority. The cast-2 spell object (oid 49) sits at zone 'Hand' with 0 stack entries and nobody prompted - the game is soft-locked. Capturing mid_stall.json (authoritative export) and moving to game 2.",
+  "rejections=0 face1_opps=1 face2_opps=1 g2_opps=1 back_probe_accepted=None",
+  "A1: active=0 phase=PreCombatMain tony_in_hand=True untapped_islands=2",
+  "A2: ModalFaceChoice wait seen; faces=[('front', 'front')]; canSubmit=True; kind=choose; chooseModalFace actions=1; actionable=True",
+  "A3: front-face choice accepted; cast resolved to Tony Stark on the battlefield",
+  "A4: tony on P0 BF=[27]; stack_empty=True; life=20/20; turn=3 phase=PreCombatMain",
+  "A5: exploratory ChooseModalFace back_face=true was consumed by the engine with no rejection (server log: 'interaction applied ... action_type=ChooseModalFace') and the game soft-locked (no new revision 90s+, no client holding priority; mid_stall.json captured). Offered faces at ModalFaceChoice waits=['front']; back_probe advertised as legacy action=False. Per CR 712.8a the caster chooses which face to cast, so Iron Man, Tony Stark ({3}{R}{R}) is not safely selectable",
+  "A6: post.json missing",
+  "B2: Tergrid ModalFaceChoice faces=[('front', 'front'), ('back', 'back')] actionable=True",
+  "B4: tergrid on P0 BF=[23]; turn=9 phase=PreCombatMain",
+  "RELATED FAILURE: the v0.20.0 hard stall is gone, but the back face is not safely selectable on this build - either it is never offered, or (as observed here) selecting the advertised back-face choice soft-locks the game. The 'select which side' decision remains broken."
+ ],
+ "verdict": "reproduced"
+}
