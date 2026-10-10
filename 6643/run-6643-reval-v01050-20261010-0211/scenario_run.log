@@ -1,0 +1,27 @@
+ServerHello OK: {'server_version': '0.105.0', 'build_commit': '965e243', 'protocol_version': 120, 'mode': 'Full'}
+game OHK17Y; P0 seat=0 P1 seat=1
+P0 keeps (hand=['forest', 'grizzly bears', 'forest', 'party dude', 'forest', 'forest', 'forest'], mulls=0)
+P1 keeps (hand=['island', 'island', 'island', 'island', 'island', 'island', 'island'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['forest', 'grizzly bears', 'forest', 'party dude', 'forest', 'forest'] dude=[] exp_lvl=1 bears=[] life=[20, 20] stack=0 attacked=False trig=False targ=False
+P0 casts Party Dude
+[p0] submission confirmed (stack): cast_dude
+Party Dude on BF (oid 5)
+Dude object level-ish keys: ['class_level']; level read=1
+P0 activates Party Dude level-up idx=0 (-> level 2)
+[p0] submission confirmed (stack): dude_level2
+P0 casts Grizzly Bears
+[p0] submission confirmed (stack): cast_bear
+P0 declares no attackers (dude=5 lvl=2 ready_bears=[27])
+P0 activates Party Dude level-up idx=1 (-> level 3)
+[p0] submission confirmed (stack): dude_level3
+PRE: exporting (dude lvl expected=3 field=3, bear 27 ready, P1 life=20)
+exported pre.json
+P0 attacks P1 with Bear (oid 27) on turn 9
+*** PARTY DUDE TRIGGER OBSERVED ON STACK ***
+exported mid_trigger.json
+[P0] Party Dude target prompt answered with the attacking Bear (oid 27); P0 hand at target time: 4
+[P0] submitting advertised target: id=OHK17Y.0.147.t0 kind=sequence (Grizzly Bears)
+exported mid_target.json
+exported mid_pump.json
+mid_pump: bear P/T=6/6 phase=DeclareBlockers
+exported post.json
