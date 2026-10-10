@@ -1,0 +1,39 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_additional_offered": "passed",
+    "A3_prior_discount": "failed",
+    "A4_additional_discount": "failed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "pre.json snapshot: {'untapped': 26, 'pool': 0, 'dargo_bf': 0, 'dargo_hand': 6, 'bombard_bf': True, 'memnites_bf': 4}",
+    "WF/decision sequence: ['OptionalCostChoice']",
+    "LEG1: {'untapped_before': 27, 'pool_before': 0, 'untapped_after': 20, 'pool_after': 0, 'spent': 7, 'manual_taps': 0}",
+    "LEG2: {'untapped_before': 20, 'pool_before': 0, 'untapped_after': 17, 'pool_after': 0, 'spent': 3, 'manual_taps': 0}",
+    "legend_answered=1; final step=LEG2",
+    "data-level: v0.105.0 card data still collapses Dargo's cost into a single ModifyCost { Reduce {2}, dynamic_count: TrackedSetSize } with condition AdditionalCostPaid; the 'each other artifact or creature you've sacrificed this turn' reduction is absent from the parse (same as v0.98.0).",
+    "protocol-120 driver (v0.105.0): HELLO advertises protocol 120; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell/ActivateAbility via advertised actions; optional additional cost via decideOptionalCost/decideOptionalEffect opportunity (exactChoices bare true/false or schema); sac count via number schema; permanent selection via select/sequence candidates matched by object reference; mana is engine auto-tapped (manual taps disabled except as a >90s last-resort fallback) so the untapped-Mountain delta equals exactly what the engine charged; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop."
+  ],
+  "wf_sequence": [
+    "OptionalCostChoice"
+  ],
+  "legs": {
+    "LEG1": {
+      "untapped_before": 27,
+      "pool_before": 0,
+      "untapped_after": 20,
+      "pool_after": 0,
+      "spent": 7,
+      "manual_taps": 0
+    },
+    "LEG2": {
+      "untapped_before": 20,
+      "pool_before": 0,
+      "untapped_after": 17,
+      "pool_after": 0,
+      "spent": 3,
+      "manual_taps": 0
+    }
+  }
+}
