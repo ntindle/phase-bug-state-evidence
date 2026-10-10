@@ -1,0 +1,76 @@
+data-level check: ok=True
+ServerHello OK: {'server_version': '0.105.0', 'build_commit': '965e243', 'protocol_version': 120, 'mode': 'Full'}
+P0 hello done; P1 hello done
+game created: code=L4HLM5
+P1 joined: {"state_revision": 2, "state": {"turn_number": 1, "active_player": 1, "phase": "Untap", "players": [{"id": 0, "life": 20, "mana_pool": {"mana": []}, "library": 
+[P0] mulligan #1 (hand=['forest', 'arboreal grazer', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[P1] keep 7 (mulls=0): ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[tick] turn=1 phase=Untap active=1 stack=0 rev=2
+[P0] keep 7 (mulls=1): ['arboreal grazer', 'forest', 'forest', "green sun's zenith", 'forest', 'forest', 'forest']
+[P0] bottoming ['arboreal grazer'] via vi
+[tick] turn=1 phase=Upkeep active=1 stack=0 rev=6
+[P0] interaction rtype=exactChoices spec=None n=1 codes=['candidate', 'passPriority'] choices=[]
+[P1] playing land island via vi
+[P1] submitting interaction iid=L4HLM5.0.8 choice=L4HLM5.0.8.c1 (Island)
+[tick] turn=1 phase=PreCombatMain active=1 stack=0 rev=8
+[tick] turn=1 phase=BeginCombat active=1 stack=0 rev=11
+[tick] turn=1 phase=EndCombat active=1 stack=0 rev=13
+[tick] turn=1 phase=PostCombatMain active=1 stack=0 rev=15
+[tick] turn=1 phase=End active=1 stack=0 rev=17
+[tick] turn=2 phase=Upkeep active=0 stack=0 rev=19
+[tick] turn=2 phase=Draw active=0 stack=0 rev=21
+[P0] interaction rtype=exactChoices spec=None n=7 codes=['candidate', 'passPriority', 'playLand'] choices=[ // Forest // Forest // Forest // Forest // Forest // Forest]
+[P0] playing land forest via vi
+[P0] submitting interaction iid=L4HLM5.0.23 choice=L4HLM5.0.23.c1 (Forest)
+[tick] turn=2 phase=PreCombatMain active=0 stack=0 rev=23
+[P0] interaction rtype=exactChoices spec=None n=4 codes=['candidate', 'castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Green Sun's Zenith // Green Sun's Zenith // Forest]
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['candidate', 'passPriority', 'tapLandForMana'] choices=[ // Forest]
+[tick] turn=2 phase=BeginCombat active=0 stack=0 rev=26
+[tick] turn=2 phase=EndCombat active=0 stack=0 rev=28
+[tick] turn=2 phase=PostCombatMain active=0 stack=0 rev=30
+[tick] turn=2 phase=End active=0 stack=0 rev=32
+[tick] turn=3 phase=Upkeep active=1 stack=0 rev=34
+[tick] turn=3 phase=Draw active=1 stack=0 rev=36
+[P1] playing land island via vi
+[P1] submitting interaction iid=L4HLM5.0.38 choice=L4HLM5.0.38.c1 (Island)
+[tick] turn=3 phase=PreCombatMain active=1 stack=0 rev=38
+[tick] turn=3 phase=BeginCombat active=1 stack=0 rev=41
+[tick] turn=3 phase=EndCombat active=1 stack=0 rev=43
+[tick] turn=3 phase=PostCombatMain active=1 stack=0 rev=45
+[tick] turn=3 phase=End active=1 stack=0 rev=47
+[tick] turn=4 phase=Upkeep active=0 stack=0 rev=49
+[tick] turn=4 phase=Draw active=0 stack=0 rev=51
+[P0] interaction rtype=exactChoices spec=None n=10 codes=['candidate', 'castSpell', 'passPriority', 'playLand', 'tapLandForMana'] choices=[ // Forest // Forest // Forest // Forest // Forest // Forest // Green Sun's Zenith // Green Sun's Zenith // Forest]
+[P0] playing land forest via vi
+[P0] submitting interaction iid=L4HLM5.0.53 choice=L4HLM5.0.53.c1 (Forest)
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=53
+[P0] interaction rtype=exactChoices spec=None n=5 codes=['candidate', 'castSpell', 'passPriority', 'tapLandForMana'] choices=[ // Green Sun's Zenith // Green Sun's Zenith // Forest // Forest]
+P0 casts Green Sun's Zenith (legacy action); awaiting stack confirmation
+[P0] interaction rtype=schema spec=number n=0 codes=[] choices=[]
+[P0] Zenith X-choice -> X=1
+[tick] turn=4 phase=PreCombatMain active=0 stack=1 rev=55
+[P0] Zenith cast confirmed on the stack (oid=59)
+[P0] interaction rtype=schema spec=select n=12 codes=['candidate'] choices=[Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal Grazer // Arboreal G]
+exported pre.json (426148 bytes)
+pre: bf_forest=2 hand_forest=5
+[P0] Zenith search -> Arboreal Grazer
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=58
+Grazer on battlefield: oid 54
+GRAZER ETB TRIGGER observed on stack
+exported mid_trigger.json (457808 bytes)
+[tick] turn=4 phase=PreCombatMain active=0 stack=1 rev=59
+[P0] interaction rtype=exactChoices spec=None n=2 codes=['candidate', 'decideOptionalEffect'] choices=[false // true]
+[P0] submitting interaction iid=L4HLM5.0.61 choice=L4HLM5.0.61.c1 (true)
+[P0] Grazer ETB optional 'you may' -> ACCEPT
+[tick] turn=4 phase=PreCombatMain active=0 stack=0 rev=61
+[P0] interaction rtype=schema spec=select n=5 codes=['candidate'] choices=[Forest // Forest // Forest // Forest // Forest]
+[P0] Grazer ETB land target -> Forest (ref=56)
+exported post.json (472927 bytes)
+post: turn=4 phase=PreCombatMain; resolution complete
+assertions: {"A0_data_level": "passed", "A1_setup_ok": "passed", "A2_grazer_bf": "passed", "A3_etb_triggered": "passed", "A4_zenith_library": "passed", "A5_shuffle_exactly2": "failed", "A6_cleanup": "passed"}
+verdict: reproduced
+note: A5: 3 shuffle commands during the Zenith resolution (pre=0, post=3, kinds=['LibraryShuffle']); expected 2
+note: verdict=reproduced (secondary observation from the report): the ETB itself fired and resolved, but the Zenith resolution deviates from the report's expected behavior (wrong destination and/or extra shuffles)
+server excerpts: 128 lines for L4HLM5
+render: rc=0 wrote /home/hatch/workspace/dev/phase-backfill/evidence/6729/run-6729-reval-v01050-20261010-0441/summary.png 
+manifest.sha256 written (12 files)
