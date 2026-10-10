@@ -1,0 +1,182 @@
+{
+ "issue": 5474,
+ "sibling_issue": 5487,
+ "run_id": "run-5474-reval-v01060-20261010-1745",
+ "started_at": "2026-10-10T17:52:11-0500",
+ "duration_s": 168.4,
+ "server": {
+  "server_version": "v0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "mode": "Full",
+  "server_binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+  "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+  "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2e84ca6684319384c86",
+  "signature_verified": true,
+  "signature_note": "v0.106.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run_id": "backfill-owned isolated v0.106.0 server on 127.0.0.1:9374 (started by this run; this run's own game + raw Hello handshake verify the identity)",
+  "source": "2026-10-10: latest stable release v0.106.0 (published 2026-10-10) == pinned release dir; ServerHello 0.106.0/29e0db3/protocol 126 verified by handshake this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 126,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "6098a0cfcbf5ccd8453fafb55dfb23b57076bbff9150f7f3c32a096d70794069",
+ "decks": {
+  "G1P0": "12x tony stark + 24x island + 24x mountain",
+  "G1P1": "60x forest",
+  "G2P0": "12x tergrid, god of fright + 48x swamp",
+  "G2P1": "60x forest"
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_modal_offered": "passed",
+  "A3_choice_accepted": "passed",
+  "A4_front_completes": "passed",
+  "A5_back_reachable": "failed",
+  "A6_cleanup": "not-run",
+  "B1_tergrid_setup": "passed",
+  "B2_tergrid_offered": "passed",
+  "B3_tergrid_accepted": "passed",
+  "B4_tergrid_completes": "passed"
+ },
+ "notes": [
+  "CORRECTION (2026-10-10 post-run review): the scenario's note strings below carried v0.105.0 boilerplate. The actual v0.106.0 wire behavior differs: the exploratory back-face probe was EXPLICITLY REJECTED by the server (ActionRejected action_not_allowed), not silently consumed; and the post-probe stall was a driver tick-loop limitation (no re-tick without revision change or priority), not an engine freeze \u2014 the authoritative mid_stall.json export shows the ModalFaceChoice still pending with canSubmit=true. The verdict is unchanged (reproduced): the back face is never offered.",
+  "v0.106.0 observations \u2014 cast 2 (Tony Stark #2, {3}{R}{R} available): ModalFaceChoice offered ONLY [('front','front')] (interaction K7Y7OY.0.216, canSubmit=true, authorizedSubmitters=[0]); the back face 'iron man, tony stark' was never offered. Exploratory constructed submission ChooseModalFace back_face=true (advertised=false) -> server ActionRejected {code: action_not_allowed, disposition: unavailable, message: 'That action is not allowed right now.'}. This is a behavior change from v0.105.0, where the same probe was silently consumed (server log 'interaction applied ... action_type=ChooseModalFace') with no rejection.",
+  "Post-probe: no new StateUpdate arrived (revision frozen at 216, turn 14 PreCombatMain, neither client holding priority). The driver's main loop skips re-ticks when the revision is unchanged and the client holds no priority, so the still-pending ModalFaceChoice was never answered and the 60s stall watchdog fired, capturing mid_stall.json. Per that authoritative export the decision was still pending (waiting_for.type=ModalFaceChoice, player 0, object_id 37; front choice K7Y7OY.0.216.c0 available, canSubmit=true). Post-probe stall = driver limitation, not an engine freeze.",
+  "A1: active=0 phase=PreCombatMain tony_in_hand=True untapped_islands=2",
+  "A2: ModalFaceChoice wait seen; faces=[('front', 'front')]; canSubmit=True; kind=choose; chooseModalFace actions=1; actionable=True",
+  "A3: front-face choice accepted; cast resolved to Tony Stark on the battlefield",
+  "A4: tony on P0 BF=[4]; stack_empty=True; life=20/20; turn=4 phase=PreCombatMain",
+  "A5: FAILED - the back face ('iron man, tony stark', {3}{R}{R}) was never offered at any ModalFaceChoice (cast-1 and cast-2 both offered only 'front'); the exploratory back_face=true probe was explicitly rejected (action_not_allowed). Per CR 712.8a the caster chooses which face to cast, so the 'select which side' decision remains broken on v0.106.0. (Driver limitation note: the post-probe stall was the driver's tick loop, not an engine freeze.)",
+  "A6: not-run (game 1 ended via the probe/stall path; no post.json)",
+  "B2: Tergrid ModalFaceChoice faces=[('front', 'front'), ('back', 'back')] actionable=True",
+  "B4: tergrid on P0 BF=[10]; turn=9 phase=PreCombatMain",
+  "RELATED FAILURE (unchanged from v0.105.0): the back face is not safely selectable on this build - it is never offered at the ModalFaceChoice. The v0.20.0 hard stall is gone and the v0.105.0 silent-consume wedge is now an explicit action_not_allowed rejection, but the 'select which side' decision remains broken per CR 712.8a."
+ ],
+ "observations": {
+  "rejections": [
+   {
+    "type": "ActionRejected",
+    "code": "action_not_allowed",
+    "disposition": "unavailable",
+    "message": "That action is not allowed right now.",
+    "related_object_ids": [],
+    "source": "client pump stdout: [P0] ActionRejected (server-sent over wire; not in server INFO log)"
+   }
+  ],
+  "face1_opps": [
+   {
+    "tag": "g1_cast1",
+    "kind_code": "choose",
+    "interaction_ids": [
+     "K7Y7OY.0.57"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "K7Y7OY.0.57.c0",
+      "face": "front",
+      "text": "front",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     }
+    ]
+   }
+  ],
+  "face2_opps": [
+   {
+    "tag": "g1_cast2",
+    "kind_code": "choose",
+    "interaction_ids": [
+     "K7Y7OY.0.216"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "K7Y7OY.0.216.c0",
+      "face": "front",
+      "text": "front",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     }
+    ]
+   }
+  ],
+  "g2_opps": [
+   {
+    "tag": "g2_cast1",
+    "kind_code": "choose",
+    "interaction_ids": [
+     "94HGQE.0.128"
+    ],
+    "response_types": [
+     "exactChoices"
+    ],
+    "faces": [
+     {
+      "id": "94HGQE.0.128.c0",
+      "face": "front",
+      "text": "front",
+      "status": "available"
+     },
+     {
+      "id": "94HGQE.0.128.c1",
+      "face": "back",
+      "text": "back",
+      "status": "available"
+     }
+    ],
+    "canSubmit": true,
+    "choose_modal_face_actions": [
+     {
+      "back_face": false
+     },
+     {
+      "back_face": true
+     }
+    ]
+   }
+  ],
+  "back_probe_sent": true,
+  "back_probe_advertised": false,
+  "back_probe_accepted": false,
+  "tony1_on_bf": true,
+  "ironman_on_bf": null,
+  "tergrid_on_bf": true,
+  "back_probe_rejection": {
+   "type": "ActionRejected",
+   "code": "action_not_allowed",
+   "disposition": "unavailable",
+   "message": "That action is not allowed right now.",
+   "related_object_ids": [],
+   "source": "client pump stdout: [P0] ActionRejected (server-sent over wire; not in server INFO log)"
+  },
+  "post_probe_driver_limitation": "After the probe rejection no new StateUpdate arrived (revision frozen at 216) and P0 held no priority; the driver's main loop skips re-ticks when the revision is unchanged and the client holds no priority, so the still-pending ModalFaceChoice (front choice available, canSubmit=true per the authoritative mid_stall.json export) was never answered. The post-probe stall is a driver tick-loop limitation, NOT an engine freeze. Driver fix for next runs: re-tick pending viewer_interaction decisions even without a revision change."
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x MDFC / high land density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The reporter cast Tony Stark as a commander; the scenario casts it from the main deck. The ModalFaceChoice decision type is identical.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "The back_face=true probe was submitted via the legacy ChooseModalFace action path and is logged as exploratory; on cast 2 the engine advertised that exact action (back_probe_advertised in observations), on cast 1 it did not."
+ ],
+ "setup_line": "G1 P0: 12x tony stark + 24x island + 24x mountain; G1 P1: 60x forest. G2 P0: 12x tergrid, god of fright + 48x swamp; G2 P1: 60x forest.",
+ "contract_line": "Cast the MDFC at main-phase priority; the ModalFaceChoice must offer an actionable face selection, the selection must be accepted, the cast must resolve, and (per CR 712.8a) the back face must be selectable."
+}
