@@ -1,0 +1,76 @@
+[17:52:11] ServerHello: version=0.106.0 build=29e0db3 protocol=126 mode=Full
+[17:52:11] data-level check: ok=True modal_dfc fronts={'tony stark': 'modal_dfc', 'tergrid, god of fright': 'modal_dfc'} backs=True
+[17:52:13] game=K7Y7OY run=run-5474-reval-v01060-20261010-1745
+[17:52:13] [P0] keep 7: ['island', 'tony stark', 'mountain', 'island', 'island', 'tony stark', 'mountain']
+[17:52:13] [P1] mulligan #1 (7 cards, hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[17:52:13] DIAG turn=1 phase=Untap stage=g1_setup tony_bf=[] ironman_bf=[] stack=0
+[17:52:13] [P1] mulligan #2 (7 cards, hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[17:52:13] [P1] mulligan #3 (7 cards, hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[17:52:13] [P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[17:52:14] [P1] bottoming ['forest', 'forest', 'forest'] via vi
+[17:52:14] [P1] playing land forest
+[17:52:17] [P0] playing land island
+[17:52:20] [P1] playing land forest
+[17:52:24] [P0] playing land island
+[17:52:25] [P0] casting tony stark (oid 4) needs={'U': 1, 'generic': 1} via legacy
+[17:52:25] STAGE -> g1_face1 (cast 1 submitted; exporting pre)
+[17:52:25] exported pre.json (turn=4)
+[17:52:25] ModalFaceChoice [g1_cast1]: faces=[('front', 'front')] canSubmit=True kind=choose legalChooseModalFace=1
+[17:52:25] [g1_cast1] answering ModalFaceChoice: face=front choice=K7Y7OY.0.57.c0 (front)
+[17:52:25] [P0] cast confirmed (stack): tony stark oid 4
+[17:52:26] STAGE -> g1_cast2_prep (Tony Stark #1 on BF; exporting post_front)
+[17:52:26] exported post_front.json (turn=4)
+[17:52:27] [P0] cast2 check: can_pay(RR+3)=False tony_oid=57 untapped_mountains=0 untapped_lands=0 hand=['mountain', 'island', 'tony stark', 'mountain', 'island', 'tony stark']
+[17:52:29] [P1] playing land forest
+[17:52:31] [P0] tap land for mana used_for=U needs={'U': 0, 'generic': 1}
+[17:52:31] [P0] submitting interaction iid=K7Y7OY.0.85 choice=K7Y7OY.0.85.c2 (Island)
+[17:52:31] [P0] tap land for mana used_for=generic needs={'U': 0, 'generic': 0}
+[17:52:31] [P0] submitting interaction iid=K7Y7OY.0.86 choice=K7Y7OY.0.86.c2 (Island)
+[17:52:32] [P0] playing land mountain
+[17:52:35] [P1] playing land forest
+[17:52:38] [P0] playing land mountain
+[17:52:42] [P1] playing land forest
+[17:52:48] [P1] playing land forest
+[17:52:51] [P0] cast2 check: can_pay(RR+3)=False tony_oid=57 untapped_mountains=2 untapped_lands=4 hand=['island', 'tony stark', 'island', 'tony stark', 'island', 'island', 'island', 'island']
+[17:52:54] [P0] discarding to hand size via vi (select): picks=['K7Y7OY.0.194.s0']
+[17:52:55] [P1] playing land forest
+[17:52:58] [P0] playing land mountain
+[17:52:58] [P0] casting tony stark (oid 37) needs={'R': 2, 'generic': 3} via legacy
+[17:52:58] STAGE -> g1_face2 (cast 2 submitted; exporting pre_cast2)
+[17:52:58] exported pre_cast2.json (turn=14)
+[17:52:59] ModalFaceChoice [g1_cast2]: faces=[('front', 'front')] canSubmit=True kind=choose legalChooseModalFace=1
+[17:52:59] [P0] exploratory: ChooseModalFace back_face=true (advertised=False)
+[17:53:13] DIAG turn=14 phase=PreCombatMain stage=g1_face2 tony_bf=[4] ironman_bf=[] stack=0
+[17:53:44] WATCHDOG stale P1: rev 216 turn=14 phase=PreCombatMain holding_priority=False stage=g1_face2
+[17:53:44] WATCHDOG stale P0: rev 216 turn=14 phase=PreCombatMain holding_priority=False stage=g1_face2
+[17:54:13] DIAG turn=14 phase=PreCombatMain stage=g1_face2 tony_bf=[4] ironman_bf=[] stack=0
+[17:54:29] WATCHDOG stale P1: rev 216 turn=14 phase=PreCombatMain holding_priority=False stage=g1_face2
+[17:54:29] WATCHDOG stale P0: rev 216 turn=14 phase=PreCombatMain holding_priority=False stage=g1_face2
+[17:54:29] WEDGE detected: engine froze after back-face probe; exporting mid_stall.json
+[17:54:29] exported mid_stall.json (turn=14)
+[17:54:29] game 1 loop ended ok=True stage=game1_done
+[17:54:31] game=94HGQE run=run-5474-reval-v01060-20261010-1745
+[17:54:31] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'tergrid, god of fright']
+[17:54:31] [P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[17:54:31] DIAG turn=1 phase=Untap stage=g2_setup tony_bf=[] ironman_bf=[] stack=0
+[17:54:32] [P0] CAST NOT CONFIRMED after 30s (library): tony stark oid 37 -- clearing for retry
+[17:54:32] [P0] playing land swamp
+[17:54:35] [P1] playing land forest
+[17:54:38] [P0] playing land swamp
+[17:54:41] [P1] playing land forest
+[17:54:45] [P0] playing land swamp
+[17:54:48] [P1] playing land forest
+[17:54:52] [P0] playing land swamp
+[17:54:55] [P1] playing land forest
+[17:54:58] [P0] playing land swamp
+[17:54:58] [P0] casting tergrid, god of fright (oid 10) needs={'B': 2, 'generic': 3} via legacy
+[17:54:58] STAGE -> g2_face (Tergrid cast submitted; exporting g2_pre)
+[17:54:58] exported g2_pre.json (turn=9)
+[17:54:59] ModalFaceChoice [g2_cast1]: faces=[('front', 'front'), ('back', 'back')] canSubmit=True kind=choose legalChooseModalFace=2
+[17:54:59] [g2_cast1] answering ModalFaceChoice: face=front choice=94HGQE.0.128.c0 (front)
+[17:54:59] [P0] cast confirmed (stack): tergrid, god of fright oid 10
+[17:54:59] game 2 done (Tergrid on BF); exporting g2_post
+[17:54:59] exported g2_post.json (turn=9)
+[17:54:59] game 2 loop ended ok=True stage=game2_done
+[17:54:59] verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_modal_offered": "passed", "A3_choice_accepted": "passed", "A4_front_completes": "passed", "A5_back_reachable": "failed", "A6_cleanup": "not-run", "B1_tergrid_setup": "passed", "B2_tergrid_offered": "passed", "B3_tergrid_accepted": "passed", "B4_tergrid_completes": "passed"}
+[17:54:59] closing logs before manifest computation
