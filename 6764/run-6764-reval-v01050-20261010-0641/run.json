@@ -1,0 +1,234 @@
+{
+ "issue": 6764,
+ "run_id": "run-6764-reval-v01050-20261010-0641",
+ "started_at": "2026-10-10T11:46:56",
+ "duration_s": 276.7,
+ "server": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "observed_at": "2026-10-10",
+  "source": "2026-10-10: latest stable release v0.105.0 (published 2026-10-09) == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reusing the pinned v0.105.0 server on 127.0.0.1:9374 (PID 2974, started by run-6729-reval-v01050-20261010-0441 with games.db under runs/run-6729-reval-v01050-20261010-0441/) per the server-reuse rule -- handshake matched the pinned version/build/protocol, so no new server was started.",
+  "shared_with": "run-6729-reval-v01050-20261010-0441"
+ },
+ "driver": {
+  "protocol_advertised": 120,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "c844f1c64d0a9e469cbe7c46a95500e4ab0d2fd7719a58c6902efc5d7103d31c",
+ "decks": {
+  "P0": [
+   [
+    "Knowledge Pool",
+    4
+   ],
+   [
+    "Shock",
+    24
+   ],
+   [
+    "Mountain",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2a_decline_control": "passed",
+  "A2b_accept_may": "passed",
+  "A3_choice_scope": "failed",
+  "A4_free_cast_executes": "not-run",
+  "A5_cleanup": "not-run"
+ },
+ "notes": [
+  "no free-cast card choice appeared within 180s of accepting the may",
+  "protocol-120 driver (v0.105.0): mechanical port of the verified protocol-118 scenario_6764_01040.py. Knowledge Pool cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands for mana itself (no double-payment artifact). Shock casts via CastSpell with {R:1}; Shock targets via the advertised vi target opportunity (schema select/sequence), seat-1 candidate preferred; may-choice via exactChoices decideOptionalEffect accept true/false; the free-cast card choice found by scanning vi opportunities for card-object candidates (hand-zone-only prompts excluded); free cast submitted as {type:<spec.type>, data:{choiceIds:[...]}}; free_cast_window flag marks the card-choice-to-resolution window (driver makes no mana payments at all, so any mana demand by the engine would surface as a stall rather than being silently paid).",
+  "Cast-confirmation guard (AGENTS.md 2026-10-09): after every CastSpell submission the driver withholds priority and starts no new main-phase plays until the cast is confirmed (spell left the hand / on the stack); *_cast flags are set at confirmation, not submission; 30s backstop treats a still-in-hand cast as dropped and re-arms the cast block. The free-cast choice (a viewer interaction, not a legacy CastSpell) gets a progress watcher with no priority hold.",
+  "P0 deck 4x Knowledge Pool + 24x Shock + 32x Mountain; P1 60x Island draw-go, never attacks or blocks (engine accepts >4-of for custom games). Leg 1 (decline) exiles Shock #1, making it part of the legal free-cast set on leg 2 alongside the 6 imprint cards.",
+  "Shared-server reuse: this run did not start its own phase-server; it reused the pinned v0.105.0 server on 127.0.0.1:9374 (PID 2974, owned by run-6729-reval-v01050-20261010-0441) after the handshake matched the pinned version/build/protocol."
+ ],
+ "rejections": [
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791632916.7220566,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791632923.658757,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791632927.4795713,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791632948.5853322,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791632956.0782013,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791632960.3647437,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791632967.8701086,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791632994.0510426,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791632997.7017415,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633000.4622765,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633009.929895,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633014.492117,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633018.6083474,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633023.364398,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633032.526248,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633040.3179123,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633048.8454206,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633053.4092355,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633057.5304725,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633062.0956893,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633066.3502457,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633075.344094,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633079.908492,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633084.194952,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06764-a1",
+   "type": "ActionRejected",
+   "at": 1791633088.9081495,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16764-a1",
+   "type": "ActionRejected",
+   "at": 1791633093.0080855,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Cards exiled by a *different* Knowledge Pool or another effect were not present; the 'exiled with THIS artifact' boundary was tested against the single Pool's imprint set only.",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.105.0, not a fix claim.",
+  "Dense playsets (24x) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Shared server: the games.db belongs to the owning run (run-6729-reval-v01050-20261010-0441); this run's game used a fresh game code, so no state was shared between games."
+ ],
+ "setup_line": "P0: 4x Knowledge Pool + 24x Shock + 32x Mountain; P1: 60x Island (draw-go)",
+ "contract_line": "Pool imprints 3+3; hand-cast Shock exiled by trigger; may-cast choice must offer only other cards exiled with this Pool and the chosen card must cast free",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
