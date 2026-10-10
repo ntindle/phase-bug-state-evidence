@@ -1,0 +1,65 @@
+ServerHello: 0.105.0/965e243/protocol 120/Full
+data-level check: ok=True notes=[]
+=== g1_kicked: plan={'x': 2, 'kick': True, 'targets': [1, 0], 'need_lands': 5} ===
+game W26YFX; P0 seat=0 P1 seat=1
+[P0] mulligan 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] (mull_count=1)
+[P1] keep 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] (mull_count=1)
+DIAG g1_kicked turn=1 active=1 phase=Untap vikind=mulligan P0hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] P0lands=0 life=20/20 stack=0 cast=False x=None kick=False targets=[]
+[P0] keep 7: ['mountain', 'mountain', 'comet storm', 'mountain', 'mountain', 'mountain', 'mountain'] (mull_count=2)
+[P0] bottoming ['mountain'] via vi
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P0] P0 main phase: exporting g1_kicked_pre.json, then casting Comet Storm
+[P0] P0 casts Comet Storm (turn 10, oid 1); cast-confirmation guard armed
+[P0] cast confirmed on stack: Comet Storm oid 1
+[P0] SHAPE rtype=schema spec=sequence n=12 vikind=sequence
+[P0] TARGET #1 -> seat 1 (iid W26YFX.0.145)
+[P0] SHAPE rtype=exactChoices spec=None n=3 vikind=choose
+[P0] KICKER prompt iid=W26YFX.0.146 choices={"W26YFX.0.146.c0": {"codes": ["cancelCast"], "vals": [], "text": "candidate | cancelCast"}, "W26YFX.0.146.c1": {"codes": ["decideOptionalCost"], "vals": [["pay", "false"]], "text": "candidate | decideOptionalCost | false"}, "W26YFX.0.146.c2": {"codes": ["decideOptionalCost"], "vals": [["pay", "true"]], "text": "candidate | decideOptionalCost | true"}}
+[P0] KICKER -> PAY (choice W26YFX.0.146.c2)
+[P0] KICKER prompt iid=W26YFX.0.147 choices={"W26YFX.0.147.c0": {"codes": ["cancelCast"], "vals": [], "text": "candidate | cancelCast"}, "W26YFX.0.147.c1": {"codes": ["decideOptionalCost"], "vals": [["pay", "false"]], "text": "candidate | decideOptionalCost | false"}, "W26YFX.0.147.c2": {"codes": ["decideOptionalCost"], "vals": [["pay", "true"]], "text": "candidate | decideOptionalCost | true"}}
+[P0] KICKER -> STOP (choice W26YFX.0.147.c1)
+[P0] SHAPE rtype=schema spec=number n=0 vikind=choose
+[P0] submitting number X=2
+[P0] X-choice -> X=2 (iid W26YFX.0.148)
+[P0] SHAPE rtype=exactChoices spec=None n=1 vikind=choose
+[P0] exported g1_kicked_on_stack.json (targets=[1], prompts=1, x=2, kick_paid=True)
+[P0] Storm left the stack; exporting POST
+[P0] exported g1_kicked_post.json
+g1_kicked: post exported; game done
+=== g2_control: plan={'x': 1, 'kick': False, 'targets': [1], 'need_lands': 3} ===
+game TAH2J3; P0 seat=0 P1 seat=1
+[P0] keep 7: ['mountain', 'comet storm', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] (mull_count=1)
+[P1] keep 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] (mull_count=1)
+DIAG g2_control turn=1 active=1 phase=Untap vikind=mulligan P0hand=['mountain', 'comet storm', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'] P0lands=0 life=20/20 stack=0 cast=False x=None kick=False targets=[]
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P1] plays land (legacy PlayLand)
+[P0] plays land (legacy PlayLand)
+[P0] P0 main phase: exporting g2_control_pre.json, then casting Comet Storm
+[P0] P0 casts Comet Storm (turn 6, oid 49); cast-confirmation guard armed
+[P0] cast confirmed on stack: Comet Storm oid 49
+[P0] SHAPE rtype=schema spec=sequence n=8 vikind=sequence
+[P0] TARGET #1 -> seat 1 (iid TAH2J3.0.83)
+[P0] SHAPE rtype=exactChoices spec=None n=3 vikind=choose
+[P0] KICKER prompt iid=TAH2J3.0.84 choices={"TAH2J3.0.84.c0": {"codes": ["cancelCast"], "vals": [], "text": "candidate | cancelCast"}, "TAH2J3.0.84.c1": {"codes": ["decideOptionalCost"], "vals": [["pay", "false"]], "text": "candidate | decideOptionalCost | false"}, "TAH2J3.0.84.c2": {"codes": ["decideOptionalCost"], "vals": [["pay", "true"]], "text": "candidate | decideOptionalCost | true"}}
+[P0] KICKER -> STOP (choice TAH2J3.0.84.c1)
+[P0] SHAPE rtype=schema spec=number n=0 vikind=choose
+[P0] submitting number X=1
+[P0] X-choice -> X=1 (iid TAH2J3.0.85)
+[P0] SHAPE rtype=exactChoices spec=None n=1 vikind=choose
+[P0] exported g2_control_on_stack.json (targets=[1], prompts=1, x=1, kick_paid=False)
+[P0] Storm left the stack; exporting POST
+[P0] exported g2_control_post.json
+g2_control: post exported; game done
+VERDICT: reproduced -- kicked-once cast offered 1 target prompt(s) (expected 2); resolution: P1 20->20, P0 20->20; control X=1 no-kick: prompts=1 P1 20->None
