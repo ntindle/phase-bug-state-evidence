@@ -1,0 +1,111 @@
+{
+ "issue": 4345,
+ "run_id": "run-4345-reval-v01050-20261009-2111",
+ "started_at": "2026-10-10T02:18:14",
+ "duration_s": 48.6,
+ "server": {
+  "server_version": "0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "observed_at": "2026-10-09",
+  "source": "ServerHello observed at run start + minisign verified binary/ data manifest (repo-pinned SERVER_ARTIFACT_PUBLIC_KEY, keynum 436711b6a2d36828) + data files matched signed manifest; shared pinned v0.105.0 server on 127.0.0.1:9374 reused (not started by this run; owned by run-backfill-20261009-204729, PID 3407)"
+ },
+ "driver": {
+  "protocol_advertised": 120,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_4345_01050.py"
+ },
+ "scenario_sha256": "a26bbd4db8e54380917d76502360264cfbfced83bafd398aefe6ce32eb28f933",
+ "decks": {
+  "P0": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "ghostly prison",
+    8
+   ],
+   [
+    "plains",
+    52
+   ]
+  ]
+ },
+ "observations": {
+  "tax_waits": [
+   {
+    "turn": 14,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "mode": "pay",
+    "n_choices_avail": 2,
+    "pay_offered": true,
+    "decline_offered": true
+   },
+   {
+    "turn": 16,
+    "phase": "DeclareAttackers",
+    "who": "P0",
+    "mode": "decline",
+    "n_choices_avail": 2,
+    "pay_offered": true,
+    "decline_offered": true
+   }
+  ],
+  "n_tax_waits": 2,
+  "pay_answered": true,
+  "decline_answered": true,
+  "stall_observed": false,
+  "rejections": [],
+  "life_pre": 20,
+  "life_after_pay": 18,
+  "life_post": 18,
+  "pay_attack_turn": 14,
+  "decline_turn": 16,
+  "first_tax_wait_s": 41.9
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_tax_prompted": "passed",
+  "A3_pay_completes": "passed",
+  "A4_decline_resolves": "passed",
+  "A5_no_softlock": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: P1 Prison on BF, 6 ready Bear(s), P1 life 20",
+  "2 CombatTaxPayment wait(s) for P0; every wait offered >=1 available payCombatTax choice",
+  "pay leg: accept=true answered, P1 life 20 -> 18 (unblocked Bear, tax {2} paid)",
+  "decline leg: accept=false answered, no damage (P1 life 18), game advanced past the tax wait (decline turn 16)",
+  "2 CombatTaxPayment wait(s); the acting player had an available submission every time; no tax answer rejected",
+  "post.json: stack empty, game proceeding (turn=16, phase=PostCombatMain, active=P0)",
+  "verdict blocked: report has no testable premise (no board, tax card, mana situation, or branch; reporter never answered the maintainer's 2026-07-19 questions). Generic CombatTaxPayment path exercised on v0.105.0.",
+  "pay leg resolved: P1 life 20 -> 18; switching to decline mode",
+  "decline-mode tax resolved (turn 16)"
+ ],
+ "verdict": "blocked",
+ "result": "CombatTaxPayment decision surfaced and resolved on v0.105.0 with an available submission every time; no softlock.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Grizzly Bears / 8x Ghostly Prison deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The report names no tax card; Ghostly Prison ({2} per attacker) is the driver's chosen representative.",
+  "Not tested on the original 2026-06-26 build v0.6.0; verdict is scoped to v0.105.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Shared pinned server on 127.0.0.1:9374 reused (ServerHello verified at run start); not an isolated per-run server process."
+ ],
+ "setup_line": "P0: 12x Grizzly Bears + 48x Forest (mulligan to Bear+2 lands, cast Bears, attack P1); P1: 8x Ghostly Prison + 52x Plains (mulligan to Prison+3 Plains, cast Prison, never attacks/blocks)",
+ "contract_line": "CombatTaxPayment surfaces when attacking a Prison controller; paying {2} lets the attack proceed; declining does not strand the game; every wait offers an available submission"
+}

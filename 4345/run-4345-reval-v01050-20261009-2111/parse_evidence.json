@@ -1,0 +1,37 @@
+{
+ "ghostly prison": {
+  "name": "Ghostly Prison",
+  "oracle_text": "Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you.",
+  "static_abilities": [
+   {
+    "mode": "CantAttack",
+    "affected": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": "Opponent",
+     "properties": []
+    },
+    "modifications": [],
+    "condition": {
+     "type": "UnlessPay",
+     "cost": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "scaling": {
+      "type": "PerAffectedCreature"
+     },
+     "defended": "Player"
+    },
+    "affected_zone": null,
+    "effect_zone": null,
+    "active_zones": [],
+    "characteristic_defining": false,
+    "description": "Creatures can't attack you unless their controller pays {2} for each creature they control that's attacking you."
+   }
+  ]
+ }
+}
