@@ -1,0 +1,71 @@
+{
+ "run_id": "run-6250-reval-v01050-20261009-2341",
+ "issue": 6250,
+ "server_identity": {
+  "server_version": "v0.105.0",
+  "build_commit": "965e243",
+  "protocol_version": 120,
+  "mode": "Full",
+  "server_binary_sha256": "9466a5fb7e9931103ebeca3d1764e0b2c085f27240ae9e220edf932b55525c38",
+  "card_data_sha256": "08270e6109ed5247c0438431d5c4ddcedbfc3016b5097a347227d0b9bb4f8716",
+  "draft_pools_sha256": "d8d4664a45d095d5f30f570c5463d9a1a5f231049ff30403477efbf4384c79dc",
+  "signature_verified": true,
+  "signature_note": "v0.105.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-09: latest stable release v0.105.0 (published 2026-10-09) == pinned release dir; ServerHello 0.105.0/965e243/protocol 120 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh v0.105.0 server started by this run on 127.0.0.1:9374 (pid 6725) with isolated run dir runs/run-6250-reval-v01050-20261009-2341 (this run)"
+ },
+ "games": {
+  "accept": {
+   "mode": "accept",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "passed",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=3 over 3 candidates; card text requires 'any number'",
+   "attach_spec": {
+    "type": "select",
+    "min": 0,
+    "max": 3,
+    "ncandidates": 3,
+    "candidate_names": [
+     "Colossus Hammer",
+     "Holy Strength",
+     "Plate Armor"
+    ],
+    "raw_constraint": {
+     "min": 0,
+     "max": 3
+    }
+   },
+   "attached_post": [
+    "colossus hammer",
+    "holy strength",
+    "plate armor"
+   ]
+  },
+  "decline": {
+   "mode": "decline",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fired": "passed",
+    "A3_may_answered": "passed",
+    "A4_attach_spec": "not-run",
+    "A5_outcome": "passed",
+    "A6_cleanup": "passed"
+   },
+   "notes": [],
+   "attach_cap_note": "advertised max=None over 0 candidates; card text requires 'any number'",
+   "attach_spec": {},
+   "decline_hosts": {
+    "holy": "19",
+    "ardenn": "19"
+   }
+  }
+ },
+ "verdict_rule": "reproduced iff the trigger resolves moving fewer attachments than the controller selected; not-reproduced iff all three attach (accept) and decline moves nothing (decline A4 not-run by design); blocked otherwise",
+ "verdict": "not-reproduced"
+}
