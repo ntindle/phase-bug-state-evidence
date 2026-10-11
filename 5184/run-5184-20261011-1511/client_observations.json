@@ -1,0 +1,125 @@
+{
+  "environment": {
+    "client": "~/workspace/dev/phase-backfill/checkout-5184-20261011 (full depth-1 clone of phase-rs/phase @ bf02ea2e)",
+    "esbuild": "0.25.12 (worked out of the box; no npm-cache extraction needed this run)",
+    "install": "npm install --legacy-peer-deps --ignore-scripts, EXIT=0, 570 packages",
+    "mainline_tree": "checkout-5184-20261011 (bf02ea2e2bd7004a2239fe56fd3e29502501b073, 2026-10-11T19:30:44Z)",
+    "node": "v24.20.0",
+    "pr_variant_tree": "checkout-5184-20261011-pr (client/ + scripts/ + lobby-worker/ copied from mainline tree; node_modules symlinked; only presets.ts and presets.test.ts replaced with literal PR-head bytes)",
+    "vitest": "4.1.0 (repo-pinned, package.json ^4.1.0)"
+  },
+  "mainline": {
+    "commit": "bf02ea2e2bd7004a2239fe56fd3e29502501b073",
+    "commit_date": "2026-10-11T19:30:44Z",
+    "commit_message": "Jarad, Golgari Lich Lord: pay composite cost legs with distinct objects (#9805)",
+    "driver_test": "presets-5184.driver.test.ts (content-equivalent to the PR's own presets.test.ts; 4 cases D1-D4)",
+    "driver_test_exit": 1,
+    "presets_ts_sha256": "4985b05e9c3c388f7be2704ec4c2ebed60ea208732238180a5435f1a61738dd0 (byte-identical to the aa1fb24 version from the 2026-09-10/16 runs)",
+    "suite": "64 files, 1191 tests: 1189 passed, 2 failed (only the two driver bug cases)"
+  },
+  "observations": [
+    {
+      "id": "D1",
+      "result": "PASS",
+      "test": "mainline: loadPresets() with empty storage returns the 2 DEFAULT_PRESETS"
+    },
+    {
+      "id": "D2",
+      "result": "FAIL (bug reproduced)",
+      "test": "mainline: localStorage = \"{oops\", then loadPresets() -> SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2); expect().not.toThrow() fails"
+    },
+    {
+      "id": "D3",
+      "result": "FAIL (bug reproduced)",
+      "test": "mainline: localStorage = \"not json\", then savePreset({...}) -> SyntaxError: Unexpected token 'o', \"not json\" is not valid JSON; deletePreset similarly throws through loadPresets"
+    },
+    {
+      "id": "D4",
+      "result": "PASS",
+      "test": "mainline: valid preset array in storage round-trips through savePreset/loadPresets"
+    },
+    {
+      "id": "P1",
+      "result": "PASS",
+      "test": "PR variant: corrupt storage (\"{oops\") -> loadPresets() returns DEFAULT_PRESETS, no throw"
+    },
+    {
+      "id": "P2",
+      "result": "PASS",
+      "test": "PR variant: savePreset/deletePreset on corrupt storage do not throw"
+    },
+    {
+      "id": "P3",
+      "result": "PASS",
+      "test": "PR variant: empty storage returns the defaults"
+    },
+    {
+      "id": "P4",
+      "result": "PASS",
+      "test": "PR variant: valid storage round-trips"
+    },
+    {
+      "id": "R1",
+      "result": "PASS",
+      "test": "PR variant full services/__tests__ suite: 64 files, 1191 tests, ALL PASS, EXIT=0 \u2014 zero regressions from the fix"
+    },
+    {
+      "id": "R2",
+      "result": "PASS",
+      "test": "mainline full services/__tests__ suite: 64 files, 1191 tests, 1189 passed; the only 2 failures are D2/D3 (the bug itself)"
+    }
+  ],
+  "pr_variant": {
+    "note": "Presets.ts and presets.test.ts are the literal PR-head blobs from the GitHub contents API at d059c301951e910370a2a2ba0f43ddbfbff37888 (NOT a patch approximation).",
+    "pr_head": "d059c301951e910370a2a2ba0f43ddbfbff37888",
+    "pr_test_exit": 0,
+    "presets_test_ts_sha256": "5f4cc2a6c51016aeb6776c8021d0639003a0bad623677ebc4a4764125f4c5a97",
+    "presets_ts_sha256": "bdd8b608295fe2cff84e684789a54612bf3a14e1da199b436fbbafbc069230ee"
+  },
+  "run_id": "run-5184-20261011-1511",
+  "suite_artifact_note": "The PR variant's first full-suite run showed 13 failures in scryfall/serverDirectory/serverMetrics \u2014 pure checkout artifacts (the PR tree initially held only client/, so repo-root scripts/ and lobby-worker/ were missing; the same ENOENT pattern was documented for the 2026-09-16 subtree copies). After copying scripts/ and lobby-worker/ from the mainline tree, all 64 files / 1191 tests pass, EXIT=0.",
+  "assertions_detail": {
+    "D1_mainline_empty_returns_defaults": "passed",
+    "D2_mainline_corrupt_loadPresets_throws_SyntaxError": "failed (bug reproduced)",
+    "D3_mainline_corrupt_savePreset_deletePreset_throw_SyntaxError": "failed (bug reproduced)",
+    "D4_mainline_valid_storage_roundtrip": "passed",
+    "P1_pr_variant_corrupt_storage_falls_back_to_defaults": "passed",
+    "P2_pr_variant_savePreset_deletePreset_no_throw": "passed",
+    "P3_pr_variant_empty_returns_defaults": "passed",
+    "P4_pr_variant_valid_roundtrip": "passed",
+    "R1_pr_variant_full_services_suite_1191_passed": "passed",
+    "R2_mainline_suite_only_bug_failures": "passed"
+  },
+  "assertions": {
+    "D1_mainline_empty_defaults": {
+      "observed": "PASS \u2014 loadPresets() on empty storage returns the 2 DEFAULT_PRESETS (vitest D1)"
+    },
+    "D2_mainline_corrupt_throws": {
+      "observed": "FAIL (bug reproduced) \u2014 loadPresets() on storage \"{oops\" throws SyntaxError: Expected property name or '}' in JSON at position 1 (vitest D2)"
+    },
+    "D3_mainline_corrupt_save_delete_throw": {
+      "observed": "FAIL (bug reproduced) \u2014 savePreset()/deletePreset() on storage \"not json\" throw SyntaxError: Unexpected token 'o', \"not json\" is not valid JSON (vitest D3)"
+    },
+    "D4_mainline_valid_roundtrip": {
+      "observed": "PASS \u2014 valid preset array round-trips through savePreset/loadPresets (vitest D4)"
+    },
+    "P1_pr_corrupt_falls_back": {
+      "observed": "PASS \u2014 PR variant loadPresets() on corrupt storage returns DEFAULT_PRESETS, no throw (PR's own test, 4/4 green)"
+    },
+    "P2_pr_save_delete_no_throw": {
+      "observed": "PASS \u2014 PR variant savePreset/deletePreset on corrupt storage do not throw"
+    },
+    "P3_pr_empty_defaults": {
+      "observed": "PASS \u2014 PR variant empty storage returns the defaults"
+    },
+    "P4_pr_valid_roundtrip": {
+      "observed": "PASS \u2014 PR variant valid storage round-trips"
+    },
+    "R1_scryfall_failures_preexisting": {
+      "observed": "n/a on current full checkouts \u2014 full services suite is 64 files / 1191 tests, all green on the PR variant (EXIT=0); mainline 1189/1191 with only the 2 bug cases failing"
+    },
+    "R2_no_other_presets_consumers": {
+      "observed": "PASS \u2014 only failures anywhere are the 2 bug cases on mainline; PR variant suite shows zero regressions (1191/1191)"
+    }
+  }
+}
