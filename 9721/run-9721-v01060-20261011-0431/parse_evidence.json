@@ -1,0 +1,206 @@
+{
+ "mizzix's mastery": {
+  "oracle_text": "Exile target card that's an instant or sorcery from your graveyard. For each card exiled this way, copy it, and you may cast the copy without paying its mana cost. Exile Mizzix's Mastery.\nOverload {5}{R}{R}{R} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Red"
+   ],
+   "generic": 3
+  },
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": "Graveyard",
+     "destination": "Exile",
+     "target": {
+      "type": "Or",
+      "filters": [
+       {
+        "type": "Typed",
+        "type_filters": [
+         "Card",
+         "Instant"
+        ],
+        "controller": "You",
+        "properties": [
+         {
+          "type": "InZone",
+          "zone": "Graveyard"
+         }
+        ]
+       },
+       {
+        "type": "Typed",
+        "type_filters": [
+         "Card",
+         "Sorcery"
+        ],
+        "controller": "You",
+        "properties": [
+         {
+          "type": "InZone",
+          "zone": "Graveyard"
+         }
+        ]
+       }
+      ]
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CastCopyOfCard",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "cost": {
+       "type": "Cost",
+       "shards": [],
+       "generic": 0
+      },
+      "count": null
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "ChangeZone",
+       "origin": null,
+       "destination": "Exile",
+       "target": {
+        "type": "SelfRef"
+       },
+       "owner_library": false,
+       "enter_transformed": false,
+       "enter_tapped": false,
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Exile target card that's an instant or sorcery from your graveyard. For each card exiled this way, copy it, and you may cast the copy without paying its mana cost. Exile ~.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ]
+ },
+ "empty the warrens": {
+  "oracle_text": "Create two 1/1 red Goblin creature tokens.\nStorm (When you cast this spell, copy it for each spell cast before it this turn.)",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Red"
+   ],
+   "generic": 3
+  },
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Token",
+     "name": "Goblin",
+     "power": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "toughness": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "types": [
+      "Creature",
+      "Goblin"
+     ],
+     "colors": [
+      "Red"
+     ],
+     "keywords": [],
+     "tapped": false,
+     "count": {
+      "type": "Fixed",
+      "value": 2
+     },
+     "owner": {
+      "type": "Controller"
+     },
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": "Create two 1/1 red Goblin creature tokens.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ]
+ },
+ "dark ritual": {
+  "oracle_text": "Add {B}{B}{B}.",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black"
+   ],
+   "generic": 0
+  },
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Mana",
+     "produced": {
+      "type": "Fixed",
+      "colors": [
+       "Black",
+       "Black",
+       "Black"
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": "Add {B}{B}{B}.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "is_mana_ability": true
+   }
+  ]
+ }
+}
