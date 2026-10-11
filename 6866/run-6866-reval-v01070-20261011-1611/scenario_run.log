@@ -1,0 +1,84 @@
+[16:17:02] server identity hashes verified against on-disk pinned artifacts
+[16:17:04] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[16:17:04] data-level finding: 15-20 branch still parses Unimplemented (create + optional roll again)
+[16:17:05] P0 creating game...
+[16:17:05] P1 joining...
+[16:17:06] game V55GZ3; P0 seat=0 P1 seat=1
+[16:17:06] [P0] mulligan -> Keep (hand=['delina, wild mage', 'grizzly bears', 'delina, wild mage', 'delina, wild mage', 'forest', 'mountain', 'forest'])
+[16:17:06] [P1] mulligan -> Keep (hand=['forest', 'llanowar elves', 'llanowar elves', 'forest', 'forest', 'llanowar elves', 'llanowar elves'])
+[16:17:07] [P0] playing land forest
+[16:17:11] [P1] playing land forest
+[16:17:11] [P1] casts Llanowar Elves (89)
+[16:17:11] [P1] cast confirmed on stack: Llanowar Elves (oid 89)
+[16:17:15] [P0] playing land mountain
+[16:17:15] [P0] casts Grizzly Bears (35)
+[16:17:16] [P0] cast confirmed on stack: Grizzly Bears (oid 35)
+[16:17:20] [P1] playing land forest
+[16:17:21] [P1] casts Llanowar Elves (61)
+[16:17:21] [P1] cast confirmed on stack: Llanowar Elves (oid 61)
+[16:17:21] [P1] casts Llanowar Elves (87)
+[16:17:22] [P1] cast confirmed on stack: Llanowar Elves (oid 87)
+[16:17:22] [P1] casts Llanowar Elves (109)
+[16:17:22] [P1] cast confirmed on stack: Llanowar Elves (oid 109)
+[16:17:26] [P0] playing land forest
+[16:17:28] [P0] declares no attackers (Delina unable, turn 5)
+[16:17:31] [P1] playing land forest
+[16:17:31] [P1] casts Llanowar Elves (102)
+[16:17:31] [P1] cast confirmed on stack: Llanowar Elves (oid 102)
+[16:17:33] [P1] declare no attackers
+[16:17:36] [P0] playing land forest
+[16:17:36] [P0] casts Delina, Wild Mage (51)
+[16:17:37] [P0] cast confirmed on stack: Delina, Wild Mage (oid 51)
+[16:17:37] Delina on BF at turn 7
+[16:17:37] exported pre.json
+[16:17:37] === stage -> ATTACK (bear_bf=True) ===
+[16:17:38] exported pre_attack_g0_7.json
+[16:17:38] --- attack turn 7 (#1) ---
+[16:17:38] [P0] declares no attackers (Delina unable, turn 7)
+[16:17:41] [P1] playing land forest
+[16:17:41] [P1] casts Llanowar Elves (96)
+[16:17:42] [P1] cast confirmed on stack: Llanowar Elves (oid 96)
+[16:17:43] [P1] declare no attackers
+[16:17:46] [P0] playing land mountain
+[16:17:46] exported pre_attack_g0_9.json
+[16:17:46] --- attack turn 9 (#2) ---
+[16:17:47] [P0] declares attackers: Delina alone (turn 9)
+[16:17:48] [P0] Delina trigger targets grizzly bears (turn 9)
+[16:17:48] [P0] submitting interaction iid=V55GZ3.0.160 choice=V55GZ3.0.160.t0 (Grizzly Bears)
+[16:17:48] turn 9: token delta = 1 (new oids ['122'])
+[16:17:48] turn 9: classified LOW (initial_delta=1)
+[16:17:49] [P1] declares blockers: 2 relations for 2 attackers
+[16:17:49] exported mid_low.json
+[16:17:49] === mid_low exported (turn 9, phase=DeclareBlockers) ===
+[16:17:51] exported post_low.json
+[16:17:51] turn 9: low-turn token exiled by PostCombatMain: False
+[16:17:53] [P1] playing land forest
+[16:17:53] [P1] casts Llanowar Elves (73)
+[16:17:53] [P1] cast confirmed on stack: Llanowar Elves (oid 73)
+[16:17:55] [P1] declare no attackers
+[16:17:58] [P0] playing land mountain
+[16:17:58] exported pre_attack_g0_11.json
+[16:17:58] --- attack turn 11 (#3) ---
+[16:18:00] [P0] declares attackers: Delina alone (turn 11)
+[16:18:00] [P0] Delina trigger targets grizzly bears (turn 11)
+[16:18:00] [P0] submitting interaction iid=V55GZ3.0.205 choice=V55GZ3.0.205.t0 (Grizzly Bears)
+[16:18:01] [P0] 'roll again' prompt (turn 11): ACCEPTED
+[16:18:01] [P0] submitting interaction iid=V55GZ3.0.208 choice=V55GZ3.0.208.c1 (true)
+[16:18:01] turn 11: token delta = 0 (new oids [])
+[16:18:01] turn 11: classified HIGH (initial_delta=0, prompt=yes)
+[16:18:01] exported mid_high.json
+[16:18:01] === mid_high exported (turn 11, phase=DeclareAttackers) ===
+[16:18:02] [P1] declares blockers: 1 relations for 1 attackers
+[16:18:04] exported post_high.json
+[16:18:04] === both branches observed; DONE ===
+[16:18:04] A1_setup_ok: passed
+[16:18:04] A2_trigger_fires: passed
+[16:18:04] A3_low_branch: passed
+[16:18:04] A4_high_observed: passed
+[16:18:04] A5_reroll_offered: passed
+[16:18:04] A6_reroll_works: failed
+[16:18:04] A7_exile_ok: failed
+[16:18:04] copied pre_attack_low_g0_9.json
+[16:18:04] copied pre_attack_high_g0_11.json
+[16:18:04] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fires": "passed", "A3_low_branch": "passed", "A7_exile_ok": "failed", "A4_high_observed": "passed", "A5_reroll_offered": "passed", "A6_reroll_works": "failed"}
+[16:18:04] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6866/run-6866-reval-v01070-20261011-1611/summary.png
