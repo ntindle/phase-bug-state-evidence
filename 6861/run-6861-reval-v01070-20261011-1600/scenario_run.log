@@ -1,0 +1,63 @@
+[15:59:45] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[15:59:45] data-level: squee oracle ok=True effects=[]
+[15:59:46] P0 creating game...
+[15:59:46] P1 joining...
+[15:59:47] game KYJ6ZU; P0 seat=0 P1 seat=1
+[15:59:47] [P0] keep 7: ['squee, the immortal', 'forest', 'forest', 'mountain', 'faithless looting', 'mountain', 'mountain']
+[15:59:47] [P1] keep 7: ['mountain', 'forest', 'mountain', 'mountain', 'forest', 'mountain', 'forest']
+[15:59:48] [P0] playing land mountain
+[15:59:51] [P1] playing land mountain
+[15:59:55] [P0] playing land mountain
+[15:59:55] [P0] casts Faithless Looting (oid 15)
+[15:59:56] [P0] action confirmed (stack): Faithless Looting oid 15
+[15:59:56] [P0] tap land for mana used_for=R
+[15:59:56] [P0] submitting interaction iid=KYJ6ZU.0.38 choice=KYJ6ZU.0.38.c1 (Mountain)
+[15:59:56] [P0] Looting discards 2 Squees ['26', '59']
+[15:59:56] Looting resolved (discard done)
+[16:00:01] [P1] playing land forest
+[16:00:05] [P0] playing land forest
+[16:00:09] [P1] playing land mountain
+[16:00:13] [P0] playing land forest
+[16:00:13] [P0] casts Scavenging Ooze (oid 2)
+[16:00:13] [P0] action confirmed (stack): Scavenging Ooze oid 2
+[16:00:13] [P0] tap land for mana used_for=G
+[16:00:13] [P0] submitting interaction iid=KYJ6ZU.0.103 choice=KYJ6ZU.0.103.c1 (Forest)
+[16:00:13] [P0] tap land for mana used_for=generic
+[16:00:13] [P0] submitting interaction iid=KYJ6ZU.0.104 choice=KYJ6ZU.0.104.c1 (Mountain)
+[16:00:18] [P1] playing land mountain
+[16:00:21] [P0] activates Scavenging Ooze (advertised action)
+[16:00:21] [P0] Ooze exiles Squee 26 (choice KYJ6ZU.0.133.t1)
+[16:00:21] [P0] action confirmed (battlefield): Scavenging Ooze oid 2
+[16:00:21] [P0] tap land for mana used_for=G
+[16:00:21] [P0] submitting interaction iid=KYJ6ZU.0.134 choice=KYJ6ZU.0.134.c2 (Forest)
+[16:00:22] Ooze exile done: Squee 26 now in Exile
+[16:00:23] [P0] playing land mountain
+[16:00:27] [P1] playing land forest
+[16:00:31] [P0] playing land mountain
+[16:00:31] exported pre.json
+[16:00:31] === stage -> MAIN (exile=1 gy=1 untapped=6) ===
+[16:00:36] EXILE menu: 8 castSpell choices: [('15', 'Faithless Looting', 'graveyard'), ('15', 'Faithless Looting', 'graveyard'), ('26', 'Squee, the Immortal', 'exile'), ('26', 'Squee, the Immortal', 'exile'), ('49', 'Squee, the Immortal', 'hand'), ('49', 'Squee, the Immortal', 'hand'), ('59', 'Squee, the Immortal', 'graveyard'), ('59', 'Squee, the Immortal', 'graveyard')]
+[16:00:36] EXILE cast: oid=26 offered=True (legal_actions)
+[16:00:36] [P0] action confirmed (stack): Squee, the Immortal oid 26
+[16:00:36] EXILE cast: Squee 26 on stack
+[16:00:36] [P0] passes (EXILE cast on stack)
+[16:00:37] EXILE cast: Squee 26 on battlefield
+[16:00:37] exported post_exile.json
+[16:00:37] === EXILE cast resolved -> GY control (step 2) ===
+[16:00:42] GY menu: 6 castSpell choices: [('15', 'Faithless Looting', 'graveyard'), ('15', 'Faithless Looting', 'graveyard'), ('49', 'Squee, the Immortal', 'hand'), ('49', 'Squee, the Immortal', 'hand'), ('59', 'Squee, the Immortal', 'graveyard'), ('59', 'Squee, the Immortal', 'graveyard')]
+[16:00:42] GY control cast: oid=59 offered=True (legal_actions)
+[16:00:42] [P0] action confirmed (stack): Squee, the Immortal oid 59
+[16:00:42] GYCTL cast: Squee 59 on stack
+[16:00:42] [P0] passes (GYCTL cast on stack)
+[16:00:43] [P0] legend rule: keeping cast Squee 59
+[16:00:43] GYCTL cast: Squee 59 on battlefield
+[16:00:43] exported post_gy.json
+[16:00:43] === GY cast resolved; finishing ===
+[16:00:43] A1_setup_ok: passed
+[16:00:43] A2_exile_cast_offered: passed
+[16:00:43] A3_exile_cast_completes: passed
+[16:00:43] A4_gy_cast_completes: passed
+[16:00:43] A5_cleanup: passed
+[16:00:44] DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_exile_cast_offered": "passed", "A3_exile_cast_completes": "passed", "A4_gy_cast_completes": "passed", "A5_cleanup": "passed"}
+[16:00:44] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6861/run-6861-reval-v01070-20261011-1600/summary.png
+[16:00:44] copied driver into evidence dir
