@@ -1,0 +1,68 @@
+ServerHello: version=0.106.0 build=29e0db3 protocol=126 mode=Full
+game ZKGK1I; P0 seat=0; P1 = native AI Medium
+wrote parse_crown.json
+[P0] mulligan -> Mulligan (lands=1)
+[P0] mulligan -> Mulligan (lands=1)
+[P0] mulligan -> Keep (lands=3)
+[P0] bottoming ['forest', 'forest'] via vi
+[P0] playing land forest
+[P0] playing land forest
+Crown of Skemfar on AI BF oid=62 turn=6 attached_to oid=99 name='Llanowar Elves' controller=1
+exported mid_attach.json
+[P0] playing land forest
+[P0] casting back to nature (oid=24) Crown on AI BF x1; needs={'G': 2, 'generic': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.108 choice=ZKGK1I.0.108.c9 (Forest)
+Crown in AI graveyard turn=7; watch window until turn 19
+exported mid_graveyard.json
+AI RETURN ACTIVATION #1: on stack id=121 turn=8
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.146 choice=ZKGK1I.0.146.c9 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.147 choice=ZKGK1I.0.147.c9 (Forest)
+[P0] playing land forest
+[P0] casting fog (oid=31) AI combat turn=10 phase=DeclareAttackers; needs={'G': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.180 choice=ZKGK1I.0.180.c7 (Forest)
+[P0] playing land forest
+[P0] casting nourish (oid=36) life=13; needs={'G': 1, 'generic': 2}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.243 choice=ZKGK1I.0.243.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.244 choice=ZKGK1I.0.244.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.245 choice=ZKGK1I.0.245.c7 (Forest)
+[P0] playing land forest
+[P0] casting nourish (oid=3) life=7; needs={'G': 1, 'generic': 2}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.322 choice=ZKGK1I.0.322.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.323 choice=ZKGK1I.0.323.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.324 choice=ZKGK1I.0.324.c7 (Forest)
+[P0] casting nourish (oid=14) life=7; needs={'G': 1, 'generic': 2}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=ZKGK1I.0.364 choice=ZKGK1I.0.364.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.365 choice=ZKGK1I.0.365.c7 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=ZKGK1I.0.366 choice=ZKGK1I.0.366.c7 (Forest)
+watch window closed at turn=20; exporting post.json
+exported post.json
+loaded mid_attach.json
+loaded mid_graveyard.json
+loaded post.json
+A1_setup_ok: passed
+A2_correct_target: passed
+A3_return_observed: passed
+A4_no_return_loop: passed
+A5_cleanup: passed
+note: A1: Crown observed on AI BF oid=62 turn=6
+note: A2: enchanted creature oid=99 (Llanowar Elves) controlled by the AI itself (seat 1) - correct target choice
+note: A3: 1 AI return activation(s) observed: [{'turn': 8, 'stack_id': 121, 'via': 'stack', 'ai_untapped_forests': 0, 'p0_life': 20, 'p1_life': 20}]
+note: A4: 1 return activation(s) in the window - no loop
+note: A5: stall=False turns_seen=20 stack_empty=True game_over=False
+VERDICT: not-reproduced
+wrote run.json
+copied shared server.log from /home/hatch/workspace/dev/phase-backfill/runs/backfill-20261010-121157/server.log
+wrote summary.png
