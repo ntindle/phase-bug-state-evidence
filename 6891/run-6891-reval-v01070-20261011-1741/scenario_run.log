@@ -1,0 +1,74 @@
+[17:48:13] server identity hashes verified against on-disk pinned artifacts
+[17:48:19] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[17:48:19] data-level: counter=P1P1 count={'type': 'UpTo', 'max': {'type': 'Ref', 'qty': {'type': 'LifeGainedThisTurn', 'player': {'type': 'Controller'}}}} multi_target={"min": 0, "max": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}}
+[17:48:21] P0 creating game...
+[17:48:21] P1 joining...
+[17:48:24] game 34ER29; P0 seat=0 P1 seat=1
+[17:48:24] [P0] mulligan -> Mulligan (hand=['grizzly bears', 'forest', 'grizzly bears', 'lathiel, the bounteous dawn', 'lathiel, the bounteous dawn', 'forest', 'grizzly bears'])
+[17:48:24] [P1] mulligan -> Keep (hand=['forest', 'grizzly bears', 'forest', 'forest', 'forest', 'forest', 'grizzly bears'])
+[17:48:24] [P0] mulligan -> Keep (hand=['lathiel, the bounteous dawn', 'forest', 'plains', 'forest', 'forest', 'plains', 'lathiel, the bounteous dawn'])
+[17:48:24] [P1] mulligan -> Keep (hand=['forest', 'grizzly bears', 'forest', 'forest', 'forest', 'forest', 'grizzly bears'])
+[17:48:26] [P0] bottoms 1
+[17:48:26] [P16891] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[17:48:28] [P1] playing land forest
+[17:48:32] [P0] playing land forest
+[17:48:37] [P1] playing land forest
+[17:48:37] [P1] casts Grizzly Bears (85)
+[17:48:37] [P0] cast confirmed (stack): Grizzly Bears oid 85
+[17:48:44] [P0] playing land plains
+[17:48:48] [P1] casts Grizzly Bears (94)
+[17:48:49] [P0] cast confirmed (stack): Grizzly Bears oid 94
+[17:48:51] [P1] playing land forest
+[17:48:53] [P1] declare no attackers
+[17:48:57] [P0] playing land forest
+[17:49:01] [P1] playing land forest
+[17:49:02] [P1] declare no attackers
+[17:49:05] [P0] playing land plains
+[17:49:06] [P0] casts Lathiel, the Bounteous Dawn (51)
+[17:49:06] [P0] cast confirmed (stack): Lathiel, the Bounteous Dawn oid 51
+[17:49:10] [P1] playing land forest
+[17:49:12] [P1] declare no attackers
+[17:49:15] [P0] playing land forest
+[17:49:16] [P0] casts Grizzly Bears (2)
+[17:49:16] [P0] cast confirmed (stack): Grizzly Bears oid 2
+[17:49:16] === stage -> ATTACK (turn 10) ===
+[17:49:17] [P0] attacks with Lathiel alone (turn 10)
+[17:49:18] attack resolved: Lathiel attacking (turn 10)
+[17:49:23] [P1] declare no blockers
+[17:49:26] === stage -> ENDSTEP (turn 10) ===
+[17:49:26] Lathiel trigger on stack at End; P0 life=22
+[17:49:26] exported pre_trigger.json
+[17:49:31] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[17:49:31] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=3 nrefs=3
+[17:49:31]     cand id=34ER29.0.175.t0 ref=85 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[17:49:31]     cand id=34ER29.0.175.t1 ref=94 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[17:49:31]     cand id=34ER29.0.175.t2 ref=2 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[17:49:31] [P0] slot 0 targets grizzly bears oid=2 (own=True)
+[17:49:31] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[17:49:31] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=2 nrefs=2
+[17:49:31]     cand id=34ER29.0.176.t0 ref=85 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[17:49:31]     cand id=34ER29.0.176.t1 ref=94 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[17:49:31] [P0] slot 1: chosen oid=2 NOT among candidates -- distinct targets required
+[17:49:31] [P0] slot 1: trying empty selection (up-to path)
+[17:49:31] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=choose wf=Priority
+[17:49:31] [P0] Lathiel slot prompt rtype=exactChoices spec= ncands=4 nrefs=0
+[17:49:31]     cand id=34ER29.0.177.c0 ref=None name=? zone=? text=
+[17:49:31]     cand id=34ER29.0.177.c1 ref=8 name=forest zone=Battlefield text=Forest
+[17:49:31]     cand id=34ER29.0.177.c2 ref=47 name=forest zone=Battlefield text=Forest
+[17:49:31]     cand id=34ER29.0.177.c3 ref=60 name=plains zone=Battlefield text=Plains
+[17:49:31] [P0] ENDSTEP vi: canSubmit=False n_ops=0 kind=choose wf=Priority
+[17:49:32] exported post.json
+[17:49:32] post.json exported; trigger resolved; stopping
+[17:49:32] loop ended: stage=DONE elapsed=73s
+[17:49:32] A1_setup_ok: passed
+[17:49:32] A2_trigger_fired: passed
+[17:49:32] A3_budget: passed
+[17:49:32] A4_slot0_accepted: passed
+[17:49:32] A5_free_distribution: failed
+[17:49:32] A6_decline_path: passed
+[17:49:32] A7_cleanup: passed
+[17:49:32] verdict=reproduced
+[17:49:33] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_budget": "passed", "A4_slot0_accepted": "passed", "A5_free_distribution": "failed", "A6_decline_path": "passed", "A7_cleanup": "passed"}
+[17:49:33] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6891/run-6891-reval-v01070-20261011-1741/summary.png
+[17:49:33] copied driver into evidence dir
+[17:49:33] manifest written (11 files)
