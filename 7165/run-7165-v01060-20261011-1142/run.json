@@ -1,0 +1,169 @@
+{
+ "issue": 7165,
+ "run_id": "run-7165-v01060-20261011-1142",
+ "title": "AI put Crown of Skemfar on my card and spends all of its mana to get it back",
+ "validated_at": "2026-10-11",
+ "server": {
+  "server_version": "v0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "mode": "Full",
+  "server_binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+  "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+  "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2de84ca6684319384c86",
+  "signature_verified": true,
+  "signature_note": "v0.106.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; digests recomputed against on-disk files; ServerHello 0.106.0/29e0db3/protocol 126 verified by live handshake this run on 127.0.0.1:9374."
+ },
+ "scope": "Native Medium AI target choice for the beneficial Aura Crown of Skemfar + the {2}{G} graveyard-return activation policy; native engine, one human-client seat + one native AI seat",
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_correct_target": "passed",
+  "A3_return_observed": "passed",
+  "A4_no_return_loop": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: Crown observed on AI BF oid=62 turn=6",
+  "A2: enchanted creature oid=99 (Llanowar Elves) controlled by the AI itself (seat 1) - correct target choice",
+  "A3: 1 AI return activation(s) observed: [{'turn': 8, 'stack_id': 121, 'via': 'stack', 'ai_untapped_forests': 0, 'p0_life': 20, 'p1_life': 20}]",
+  "A4: 1 return activation(s) in the window - no loop",
+  "A5: stall=False turns_seen=20 stack_empty=True game_over=False"
+ ],
+ "driver_state": {
+  "crown_oid": "62",
+  "attach_turn": 6,
+  "attach_controller": 1,
+  "attach_creature_oid": 99,
+  "attach_creature_name": "Llanowar Elves",
+  "gy_turn": 7,
+  "return_count": 1,
+  "return_events": [
+   {
+    "turn": 8,
+    "stack_id": 121,
+    "via": "stack",
+    "ai_untapped_forests": 0,
+    "p0_life": 20,
+    "p1_life": 20
+   }
+  ],
+  "ai_mana_samples": [
+   [
+    [
+     8,
+     "PreCombatMain"
+    ],
+    1
+   ],
+   [
+    [
+     8,
+     "PostCombatMain"
+    ],
+    1
+   ],
+   [
+    [
+     10,
+     "PreCombatMain"
+    ],
+    3
+   ],
+   [
+    [
+     10,
+     "PostCombatMain"
+    ],
+    0
+   ],
+   [
+    [
+     12,
+     "PreCombatMain"
+    ],
+    2
+   ],
+   [
+    [
+     12,
+     "PostCombatMain"
+    ],
+    2
+   ],
+   [
+    [
+     14,
+     "PreCombatMain"
+    ],
+    6
+   ],
+   [
+    [
+     14,
+     "PostCombatMain"
+    ],
+    7
+   ],
+   [
+    [
+     16,
+     "PreCombatMain"
+    ],
+    8
+   ],
+   [
+    [
+     16,
+     "PostCombatMain"
+    ],
+    8
+   ],
+   [
+    [
+     18,
+     "PreCombatMain"
+    ],
+    9
+   ],
+   [
+    [
+     18,
+     "PostCombatMain"
+    ],
+    9
+   ]
+  ],
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20
+  ],
+  "rejections": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via one human-client seat and one native Medium AI seat.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P0 never attacks or blocks; combat interaction is minimized by fixture design (Fog/Nourish keep P0 alive).",
+  "The {2}{G} return is detected as a Graveyard->Hand zone transition of an AI-controlled Crown (no other graveyard recursion exists in either deck), plus on-stack activation scans."
+ ],
+ "evidence_dir": "7165/run-7165-v01060-20261011-1142"
+}
