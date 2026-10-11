@@ -1,0 +1,46 @@
+phase-rs/phase#5184 re-validation run on current mainline (2026-10-11)
+====================================================================
+Issue: fix(client): fall back to defaults when preset storage is corrupt
+       (open, unmerged fix PR by jeffrey701; branch fix/load-presets-corrupt-storage;
+        head d059c301951e910370a2a2ba0f43ddbfbff37888; labels: bug, defer-fe)
+Run id: run-5184-20261011-1511
+Context: freshness re-validation. Prior runs: 20260909-5184 (validated 2026-09-10,
+reproduced, published commit b3fee804b4d7, comment 5610957892) and 20260916-5184
+(corroboration, published commit 17702efd6cb3), both on mainline aa1fb24 (2026-09-10).
+This run re-validates on current mainline (bf02ea2e, 2026-10-11).
+
+15:11 CDT - run start; backfill.lock written (run_id run-5184-20261011-1511)
+15:11 CDT - pip deps present (websockets, pillow, pynacl); no reinstall needed
+15:12 CDT - release check: latest stable phase-rs/phase release is v0.107.0
+           (published 2026-10-11T17:08:47Z) - matches the pin from 12:16 CDT today.
+           No advancement. phase-server NOT started: this is a client-subsystem
+           case (no engine session involved; engine_exercised=false).
+15:12 CDT - issue state check via GitHub API: #5184 open (state=open, merged=false,
+           head d059c301951e910370a2a2ba0f43ddbfbff37888, unchanged).
+15:13 CDT - mainline presets.ts @ bf02ea2e byte-identical to aa1fb24 version
+           (sha256 4985b05e9c3c388f7be2704ec4c2ebed60ea208732238180a5435f1a61738dd0),
+           JSON.parse still unguarded at line 39.
+15:13 CDT - cloning current mainline (bf02ea2e) for a real test run...
+15:35 CDT - fresh depth-1 clone of phase-rs/phase @ bf02ea2e into
+           checkout-5184-20261011 (workspace disk, not /tmp).
+15:40 CDT - npm install --legacy-peer-deps --ignore-scripts: EXIT=0 (570 packages);
+           esbuild 0.25.12 binary works out of the box this run.
+15:41 CDT - PR-variant tree checkout-5184-20261011-pr: client/ copied, node_modules
+           symlinked, presets.ts + presets.test.ts replaced with literal PR-head
+           blobs (byte-verified vs GitHub contents API @ d059c301951e910370a2a2ba0f43ddbfbff37888).
+15:43 CDT - driver test on mainline (vitest 4.1.0, --coverage.enabled=false):
+             D1 empty->defaults: PASS
+             D2 corrupt storage ("{oops") loadPresets: FAIL - SyntaxError thrown
+                (Expected property name or '}' in JSON at position 1)
+             D3 corrupt storage ("not json") savePreset/deletePreset: FAIL - SyntaxError thrown
+                (Unexpected token 'o', "not json" is not valid JSON)
+             D4 valid storage round-trip: PASS
+             => the reported defect reproduces on current mainline bf02ea2e.
+15:44 CDT - PR's own presets.test.ts on the PR variant: 4/4 PASS, EXIT=0.
+15:47 CDT - full services/__tests__ suite on mainline: 64 files, 1189 passed / 2 failed
+           (only the 2 driver bug cases; no pre-existing failures on the full checkout).
+15:55 CDT - full services/__tests__ suite on PR variant: 64 files, 1191 passed / 0 failed,
+           EXIT=0. (First PR-tree run showed 13 failures in scryfall/serverDirectory/
+           serverMetrics - pure checkout artifacts: scripts/ and lobby-worker/ were
+           missing from the initial client-only copy. After copying them, all green.)
+           Zero regressions from the fix.
