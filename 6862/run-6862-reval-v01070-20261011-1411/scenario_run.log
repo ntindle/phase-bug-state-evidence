@@ -1,0 +1,54 @@
+[14:15:45] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[14:15:45] data-level: oracle ok=True creature_filter=True exiled_by_source=True multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}}
+[14:15:46] P0 creating game...
+[14:15:47] P1 joining...
+[14:15:47] game 558JV3; P0 seat=0 P1 seat=1
+[14:15:47] [P0] mulligan -> Keep (7: ['swamp', 'espers to magicite', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'])
+[14:15:47] [P1] mulligan -> Keep (7: ['mountain', 'sylvan reclamation', 'forest', 'forest', 'faithless looting', 'grizzly bears', 'forest'])
+[14:15:48] [P0] playing land swamp
+[14:15:52] [P1] playing land mountain
+[14:15:52] [P1] casts Faithless Looting (oid=91)
+[14:15:53] [P0] action confirmed (stack): Faithless Looting oid 91
+[14:15:53] [P1] Looting discards: ['grizzly bears', 'sylvan reclamation']
+[14:15:53] Looting resolved (discard done)
+[14:15:57] [P0] playing land swamp
+[14:16:00] [P1] tap land for mana used_for=R
+[14:16:00] [P1] submitting interaction iid=558JV3.0.51 choice=558JV3.0.51.c1 (Mountain)
+[14:16:02] [P1] playing land mountain
+[14:16:05] [P0] playing land swamp
+[14:16:09] [P1] playing land mountain
+[14:16:13] [P0] playing land swamp
+[14:16:13] === stage -> CAST (bear_gy=1 recl_gy=1 untapped=4) ===
+[14:16:13] [P0] CAST menu: legacy=False vi=False menu=[]
+[14:16:15] exported pre.json
+[14:16:15] [P0] casts Esper's to Magicite (oid=59)
+[14:16:15] [P0] action confirmed (stack): Espers to Magicite oid 59
+[14:16:15] Esper's 59 on stack
+[14:16:16] Esper's resolved: P1 gy bear=0 recl=0; exile bear=1 recl=1
+[14:16:16] exported post_exile.json
+[14:16:18] [P1] playing land mountain
+[14:16:18] [P1] casts Faithless Looting (oid=113)
+[14:16:19] [P0] action confirmed (stack): Faithless Looting oid 113
+[14:16:19] [P1] tap land for mana used_for=R
+[14:16:19] [P1] submitting interaction iid=558JV3.0.123 choice=558JV3.0.123.c1 (Mountain)
+[14:16:19] [P1] Looting discards: ['grizzly bears', 'sylvan reclamation']
+[14:16:19] Looting resolved (discard done)
+[14:16:27] [P1] playing land mountain
+[14:16:34] [P1] playing land forest
+[14:16:40] [P0] discards 1: ['swamp']
+[14:16:42] [P1] playing land mountain
+[14:16:48] [P0] discards 1: ['swamp']
+[14:16:49] [P1] playing land forest
+[14:16:52] no trigger prompt 10 turns post-resolution (resolved turn 7, now turn 17); stopping gracefully
+[14:16:52] exported post.json
+[14:16:52] A1_setup_ok: passed
+[14:16:52] A2_exile_observed: passed
+[14:16:52] A3_trigger_prompted: failed
+[14:16:52] A4_noncreature_excluded: not-run
+[14:16:52] A5_illegal_branch: not-run
+[14:16:52] A6_control_token: not-run
+[14:16:52] A7_cleanup: passed
+[14:16:53] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_exile_observed": "passed", "A3_trigger_prompted": "failed", "A4_noncreature_excluded": "not-run", "A5_illegal_branch": "not-run", "A6_control_token": "not-run", "A7_cleanup": "passed"}
+[14:16:54] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6862/run-6862-reval-v01070-20261011-1411/summary.png
+[14:16:54] copied driver into evidence dir
+[14:16:54] wrote manifest.sha256 (10 files)
