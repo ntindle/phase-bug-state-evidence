@@ -1,0 +1,38 @@
+{
+ "issue": 6337,
+ "run_id": "run-6337-reval-v01060-20261011-0211",
+ "title": "Draft color selection is non-deterministic (missing HashMap tie-break)",
+ "release": "v0.106.0",
+ "build_commit": "29e0db3",
+ "protocol_version": 126,
+ "validated_at": "2026-10-10",
+ "verdict": "reproduced",
+ "scope": "draft-wasm/phase-ai color-selection helpers on v0.106.0 sources; 30 separate OS processes over the issue's tied repro pool; no game states exist for a deckbuilder report",
+ "result": "Re-validated on v0.106.0 sources: all three source files byte-identical to v0.105.0. find_best_colors top-2 varied across runs (15 distinct orderings in 30 processes). color_preference still delegates to deterministic dominant_colors (B,G in all 30 runs), as does the house-style control.",
+ "limitations": [
+  "Browser/UI \"Suggest deck\" click path not exercised; the helper function it calls is exercised verbatim from the release sources.",
+  "Real score_card gives per-card quality scores; constant score reproduces the reported tie condition only.",
+  "No engine game states apply to this subsystem (per playbook deckbuilder rule)."
+ ],
+ "server_identity": {
+  "source": "pinned release dir server/releases/v0.106.0; ServerHello 0.106.0/29e0db3/protocol 126 verified by live handshake this run on 127.0.0.1:9374 (fresh server started this run, run-20261011-021138)",
+  "server_version": "v0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "server_binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+  "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+  "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2e84ca6684319384c86"
+ },
+ "source_files": {
+  "bot_ai.rs": "a3bab1fca230e63ff88413dbddc16ecf9f62b00d6b55774bca69f9a5d2dbcec1",
+  "suggest.rs": "bf54f94c7c1f99aa550ed7e639a9705c1f4570ba1a913ae7a798e176f6dcc43a",
+  "draft_eval.rs": "7283544f82dded24bb2a4f8018fcdd68664769ff313498dc277e413cc5059d8c",
+  "tag": "v0.106.0",
+  "fetched_via": "raw.githubusercontent.com"
+ },
+ "harness": {
+  "src_sha256": "28fb2126388d0b042ddaff7a418d70ee4c41128b37446388497078688cdee8fe",
+  "binary": "harness/target/release/issue6337",
+  "adaptations": "verbatim copies of find_best_colors (suggest.rs) and dominant_colors (draft_eval.rs) with local DraftCard stub and constant score_card 1.0 (issue's tie condition); control adds house-style .then_with tie-break"
+ }
+}
