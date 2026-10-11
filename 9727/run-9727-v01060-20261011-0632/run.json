@@ -1,0 +1,267 @@
+{
+ "issue": 9727,
+ "run_id": "run-9727-v01060-20261011-0632",
+ "started_at": "2026-10-11T11:31:16",
+ "duration_s": 26.5,
+ "server": {
+  "server_version": "0.106.0",
+  "build_commit": "29e0db3",
+  "protocol_version": 126,
+  "mode": "Full",
+  "binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+  "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+  "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2e84ca6684319384c86",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (436711b6a2d36828)",
+  "signature_verified": true,
+  "signature_note": "v0.106.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-11: latest stable release v0.106.0 (published 2026-10-10T17:09:24Z) == pinned release dir (pinned 2026-10-09); ServerHello 0.106.0/29e0db3/protocol 126 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned v0.106.0 server on 127.0.0.1:9374 (already running; reused per playbook)"
+ },
+ "server_run_dir": "runs/run-20261011-0241",
+ "driver": {
+  "protocol_advertised": 126,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_9727_01060.py",
+ "scenario_sha256": "dbe171d8b6f86e1967d9836e9e583475abd9dea718472d31d185c7690d7dcc44",
+ "decks": {
+  "P0": {
+   "main_deck": [
+    "Fortress Kin-Guard",
+    "Fortress Kin-Guard",
+    "Fortress Kin-Guard",
+    "Fortress Kin-Guard",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains"
+   ],
+   "sideboard": [],
+   "commander": []
+  },
+  "P1": {
+   "main_deck": [
+    "Flicker Of Fate",
+    "Flicker Of Fate",
+    "Flicker Of Fate",
+    "Flicker Of Fate",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains",
+    "Plains"
+   ],
+   "sideboard": [],
+   "commander": []
+  }
+ },
+ "game": {
+  "assertions": {
+   "A1_setup_ok": "passed",
+   "A2_flicker_ok": "passed",
+   "A3_control_ok": "passed",
+   "A4_original_scope": "failed",
+   "A5_final_state": "passed"
+  },
+  "notes": [
+   "A1 passed: etb_seen=True guard_oid_A=60 flicker_cast=True target_done=True",
+   "A2 passed: guard_oid=60 incarnation 3 -> 5 endure_triggers_on_stack_after_flicker=2",
+   "A3 passed: new trigger prompted and was answered (chosen optionIndex=0); max_counters_during=1",
+   "A4 note: original trigger offered option indices [0, 1]; chose optionIndex 1 (BRANCH_INDEX_ORIG=1)",
+   "A4 FAILED: original trigger's COUNTER branch put 1 +1/+1 counter(s) on the returned incarnation 5 (counters={'P1P1': 1}) - the reported bug",
+   "A5 note (bug outcome): returned incarnation has 1 counter(s); P0 spirit tokens=0",
+   "BUG SIGNATURE: the original (pre-flicker) Endure trigger's counter branch put a +1/+1 counter on the returned incarnation (3 -> 5, same object_id)"
+  ],
+  "verdict": "reproduced",
+  "guard_oid_A": "60",
+  "guard_oid_B": "60",
+  "guard_incarnation_A": 3,
+  "guard_incarnation_B": 5,
+  "endure_answers": [
+   {
+    "which": "new",
+    "offered": [
+     0,
+     1
+    ],
+    "chosen_index": 0,
+    "stack_at_prompt": [
+     [
+      "fortress kin-guard",
+      "TriggeredAbility",
+      "When ~ enters, it endures 1.",
+      "60"
+     ]
+    ]
+   },
+   {
+    "which": "orig",
+    "offered": [
+     0,
+     1
+    ],
+    "chosen_index": 1,
+    "stack_at_prompt": []
+   }
+  ],
+  "stack_after_flicker": [
+   [
+    "fortress kin-guard",
+    "TriggeredAbility",
+    "When ~ enters, it endures 1.",
+    "60"
+   ],
+   [
+    "fortress kin-guard",
+    "TriggeredAbility",
+    "When ~ enters, it endures 1.",
+    "60"
+   ]
+  ],
+  "final_counters": 1,
+  "final_counter_detail": {
+   "P1P1": 1
+  },
+  "final_tokens": 0,
+  "game_code": "U8OL3S",
+  "rejections": [
+   {
+    "who": "9727-P0-g1",
+    "type": "ActionRejected",
+    "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+   }
+  ],
+  "max_turn": 6,
+  "blocked": null
+ },
+ "assertions": {
+  "g1_A1_setup_ok": "passed",
+  "g1_A2_flicker_ok": "passed",
+  "g1_A3_control_ok": "passed",
+  "g1_A4_original_scope": "failed",
+  "g1_A5_final_state": "passed"
+ },
+ "notes": [
+  "2026-10-11 05:11 first runtime validation of #9727 (statically traced filing; no runtime test before this run).",
+  "A1 passed: etb_seen=True guard_oid_A=60 flicker_cast=True target_done=True",
+  "A2 passed: guard_oid=60 incarnation 3 -> 5 endure_triggers_on_stack_after_flicker=2",
+  "A3 passed: new trigger prompted and was answered (chosen optionIndex=0); max_counters_during=1",
+  "A4 note: original trigger offered option indices [0, 1]; chose optionIndex 1 (BRANCH_INDEX_ORIG=1)",
+  "A4 FAILED: original trigger's COUNTER branch put 1 +1/+1 counter(s) on the returned incarnation 5 (counters={'P1P1': 1}) - the reported bug",
+  "A5 note (bug outcome): returned incarnation has 1 counter(s); P0 spirit tokens=0",
+  "BUG SIGNATURE: the original (pre-flicker) Endure trigger's counter branch put a +1/+1 counter on the returned incarnation (3 -> 5, same object_id)"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-10-11",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P1 is a passive second seat except for the scripted Flicker of Fate response (lands only, no attacks).",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "history": [],
+ "setup_line": "P0 4x Fortress Kin-Guard + 56x Plains vs P1 4x Flicker of Fate + 56x Plains. P0 casts Kin-Guard on its third turn (P1 has two lands); P1 responds to the ETB Endure trigger with Flicker of Fate targeting it; flicker resolves (Kin-Guard returns, new ETB trigger on top); new trigger resolved with the counter branch; original trigger resolved last.",
+ "contract_line": "The original trigger must not offer the counter branch on the returned incarnation (CR 400.7: new object) - token branch only. The new incarnation's own trigger is the legitimate control and must offer the counter branch."
+}

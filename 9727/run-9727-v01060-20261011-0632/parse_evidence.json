@@ -1,0 +1,139 @@
+{
+ "fortress kin-guard": {
+  "oracle_text": "When this creature enters, it endures 1. (Put a +1/+1 counter on it or create a 1/1 white Spirit creature token.)",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White"
+   ],
+   "generic": 1
+  },
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "ChangesZone",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Endure",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "subject": {
+       "type": "SelfRef"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": "Battlefield",
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "When ~ enters, it endures 1.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "scryfall_oracle_id": "fa3ed0f6-e44e-433d-80d3-824de5e6135a"
+ },
+ "flicker of fate": {
+  "oracle_text": "Exile target creature or enchantment, then return it to the battlefield under its owner's control.",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White"
+   ],
+   "generic": 1
+  },
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": null,
+     "destination": "Exile",
+     "target": {
+      "type": "Or",
+      "filters": [
+       {
+        "type": "Typed",
+        "type_filters": [
+         "Creature"
+        ],
+        "controller": null,
+        "properties": []
+       },
+       {
+        "type": "Typed",
+        "type_filters": [
+         "Enchantment"
+        ],
+        "controller": null,
+        "properties": []
+       }
+      ]
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "ChangeZone",
+      "origin": null,
+      "destination": "Battlefield",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "owner_library": false,
+      "enter_transformed": false,
+      "enter_tapped": false,
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": "Exile target creature or enchantment, then return it to the battlefield under its owner's control.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "scryfall_oracle_id": "d5b9d250-92f5-40d8-b962-4ae4adb466c8"
+ }
+}

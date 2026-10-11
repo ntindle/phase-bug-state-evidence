@@ -1,0 +1,39 @@
+[06:31:16] starting issue #9727 run run-9727-v01060-20261011-0632 (pinned v0.106.0, protocol 126)
+[06:31:16] ServerHello: version=0.106.0 build=29e0db3 protocol=126
+[06:31:21] parse: kin-guard/flicker oracle captured
+[06:31:21] [game1] created code=U8OL3S
+[06:31:22] [P0] mulligan: keep (mulls=0, lands=6, fortress kin-guard=True, hand=['fortress kin-guard', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[06:31:22] [P1] mulligan: mulligan (mulls=0, lands=7, flicker of fate=False, hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[06:31:22] [game1] DIAG turn=1 active=1 phase=Untap stack=0 stage=develop A=None B=None answers=0
+[06:31:22] [P1] mulligan: keep (mulls=1, lands=5, flicker of fate=True, hand=['flicker of fate', 'flicker of fate', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[06:31:22] [P1] bottoming ['plains']
+[06:31:23] [P1] post-mulligan hand check: flicker=True hand=['flicker of fate', 'flicker of fate', 'plains', 'plains', 'plains', 'plains']
+[06:31:23] [P1] playing land plains
+[06:31:26] [P0] playing land plains
+[06:31:29] [P1] playing land plains
+[06:31:32] [P0] playing land plains
+[06:31:36] [P1] playing land plains
+[06:31:39] [P0] playing land plains
+[06:31:39] [P0] casting Fortress Kin-Guard (turn 6)
+[06:31:39] [P0] tap land for mana used_for=W remaining={'W': 0, 'generic': 1}
+[06:31:39] [P0] cast fortress kin-guard confirmed; resuming
+[06:31:40] [9727-P0-g1] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[06:31:40] [P0] original Endure trigger on stack; incarnation A oid=60
+[06:31:40] exported pre_flicker.json (356390 bytes)
+[06:31:40] [P1] PROBE: casting Flicker of Fate targeting incarnation A (oid 60) in response to the ETB trigger
+[06:31:40] [P1] tap land for mana used_for=W remaining={'W': 0, 'generic': 1}
+[06:31:40] [P1] flicker target: choice pending but no candidate matched incarnation A (oid 60); holding priority
+[06:31:41] [P1] cast flicker of fate confirmed; resuming
+[06:31:41] [P0] flicker resolved: guard oid 60 (incarnation 3) flickered; stack=[('fortress kin-guard', 'TriggeredAbility', 'When ~ enters, it endures 1.', '60'), ('fortress kin-guard', 'TriggeredAbility', 'When ~ enters, it endures 1.', '60')]
+[06:31:41] exported pre_triggers.json (415316 bytes)
+[06:31:41] [game1] incarnation check: A=3 B=5
+[06:31:41] [P0] Endure branch prompt (trigger=new, answers_so_far=0, endure_on_stack=1): offered option indices=[0, 1]; taking index=0
+[06:31:41] [P0] dumped first endure opportunity to endure_opp_raw.json
+[06:31:41] [P0] Endure (new): choosing optionIndex 0
+[06:31:42] [P0] Endure branch prompt (trigger=orig, answers_so_far=1, endure_on_stack=0): offered option indices=[0, 1]; taking index=1
+[06:31:42] [P0] Endure (orig): choosing optionIndex 1
+[06:31:43] [P0] triggers done; endure_answers=[('new', 0), ('orig', 1)]
+[06:31:43] exported post.json (421452 bytes)
+[06:31:43] [game1] contract complete; finishing
+[06:31:45] rendered /home/hatch/workspace/dev/phase-backfill/evidence/9727/run-9727-v01060-20261011-0632/summary.png
+[06:31:45] server excerpts: 18 lines
