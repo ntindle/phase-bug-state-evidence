@@ -1,0 +1,80 @@
+{
+ "issue": 6872,
+ "run_id": "run-6872-reval-v01070-20261011-1713",
+ "game_code": "4TJ2ME",
+ "started_at": "2026-10-11T22:20:23",
+ "duration_s": 75.1,
+ "server_identity": {
+  "validated_version": "v0.107.0",
+  "build_commit": "eccd25f",
+  "protocol_version": 130,
+  "server_binary_sha256": "f89957a1e5aa0fc1e68bf61a1eccc4ad6b257bc57d98aa270869fcad78456397",
+  "card_data_sha256": "2021496869e2e86df276f1a07de001d50e7220087d46ac21acd69d04d73f9433",
+  "draft_pools_sha256": "a44926f1b80be0c64e794e5562b9eeccd9d704488a7b02fc3ccca2130eea0d1c",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 130,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "d4e77ad40e8578073f252a3699645028b1de9786e0f131c4048f4b5243c5be2c",
+ "decks": {
+  "P0": [
+   [
+    "Yargle, Glutton of Urborg",
+    8
+   ],
+   [
+    "The Dominion Bracelet",
+    4
+   ],
+   [
+    "Swamp",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Swamp",
+    60
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-130 port of scenario_6872_01030.py (protocol 106 / v0.103.0) for pinned v0.107.0; behavioral contract A1..A5 and verdict logic unchanged.",
+  "Conventions adopted from scenario_6866_01020.py / scenario_6872_01030.py: protocol-130 HELLO (exact match); priority = top-level PassPriority, all decisions via viewer_interaction (waiting_for is gone); MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan' at turn 1/Untap; DiscardToHandSize via vi schema/select.",
+  "ActivateAbility submitted only while holding priority; CastSpell test casts keep MANA_NEEDS empty (engine auto-tap is the single payer, 2026-10-07 double-pay gate); activations still drive vi tapLandForMana via MANA_NEEDS; sleep(0) yield before leg evaluation; 5s re-tick backstop for priority-holding clients; cast-confirmation guard after every CastSpell/ActivateAbility (protocol-118/120/130 necessity).",
+  "real_decision_pending excludes the 130 priority-menu codes (passPriority, tapLandForMana, untapLandForMana, castSpell, activateAbility, candidate, mana, mulliganDecision, playLand); playLand vi opportunities answered before the decision gate; land matching via is_land().",
+  "Declares: relations-schema vi opportunity answered first (P1 blockers get a 25s grace window); the vi fallback only answers relations-schema opportunities (select/sequence are decisions, never declares).",
+  "Granted-ability follow-ups answered from advertised opportunities only: opponent target -> P1 seat candidate; exile cost -> Bracelet reference candidate.",
+  "A4 marker search excludes grant-definition blobs (abilities/static_abilities/static_definitions/deck_pools/definition stripped) so the definition's own ControlNextTurn tag cannot read as a registered control effect.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "The grant probe re-runs on every P0 main phase (turn-gated): the granted ability must be advertised whenever P0 could legally activate it, so a single snapshot is insufficient evidence of absence. A2 passes if ANY probe advertised it.",
+  "P0's pre_grant export and grant probe are gated on my_main(state, 0) (the first 106 attempt exported pre_grant on P1's turn, failing A1's fresh-main check).",
+  "Discard diagnostic: do_discard now wire-logs the full (oid, name, rank) ranking; the first 106 attempt discarded a spare Bracelet at hand-size 8 for an undetermined reason (harmless: one Bracelet was already equipped).",
+  "Card-data v0.107.0: the Bracelet still parses GrantAbility {15}/Exile(GrantingObject), cost_reduction Power, ControlNextTurn(Opponent), AsSorcery -- identical to the v0.98.0 and v0.103.0 parses; the bug is runtime exposure, not data."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_granted_exposed": "passed",
+  "A3_activation_completes": "passed",
+  "A4_control_recorded": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: attached=True yargle=10/4 fresh_main=True",
+  "A2: ever_advertised=True last_advertised_count=2 probe_turns=14 obj_desc_match=True not_offered=False",
+  "A3: bracelet_zones=[('21', 'Library'), ('32', 'Library'), ('35', 'Exile'), ('52', 'Library')] stack_clear_of_grant=True no_rejection=True",
+  "A4: markers_outside_defs=[('post_activate.json', 'scheduled_turn_controls')] scheduled_turn_controls_nonempty=True p0_decides_for_p1=False control_snaps=7",
+  "A5: stack_empty=True game_over=False turn=16"
+ ],
+ "verdict": "not-reproduced",
+ "evidence_comment_id": 5641216179,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x Yargle / 4x Bracelet density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6872_01070.py), not direct load."
+ ],
+ "setup_line": "P0: 8x Yargle, Glutton of Urborg + 4x The Dominion Bracelet + 48x Swamp; P1: 60x Swamp (passive)",
+ "contract_line": "Equip Bracelet to Yargle; the equipped creature must expose the granted {15}/exile sorcery ability as an activatable action, and activating it must register control of P1's next turn."
+}
