@@ -1,0 +1,219 @@
+{"t": 1791758899.4945233, "event": "server_hello", "payload": {"version": "0.107.0", "build": "eccd25f", "protocol": 130}}
+{"t": 1791758899.5007005, "event": "data_level", "payload": {"name": "Lathiel, the Bounteous Dawn", "oracle_text": "Lifelink\nAt the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.", "counter_type": "P1P1", "count": "{'type': 'UpTo', 'max': {'type': 'Ref', 'qty': {'type': 'LifeGainedThisTurn', 'player': {'type': 'Controller'}}}}", "distribute": {"type": "Counters", "data": "P1P1"}, "multi_target": {"min": 0, "max": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}}, "target": {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": [{"type": "Another"}]}, "condition": {"type": "QuantityComparison", "lhs": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}, "comparator": "GE", "rhs": {"type": "Fixed", "value": 1}}}}
+{"t": 1791758904.210708, "event": "game", "payload": {"code": "34ER29", "p0": 0, "p1": 1}}
+{"t": 1791758904.4618154, "event": "mulligan", "payload": {"who": "P0", "decision": "Mulligan"}}
+{"t": 1791758904.465188, "event": "mulligan", "payload": {"who": "P1", "decision": "Keep"}}
+{"t": 1791758904.7254272, "event": "mulligan", "payload": {"who": "P0", "decision": "Keep"}}
+{"t": 1791758904.7308762, "event": "mulligan", "payload": {"who": "P1", "decision": "Keep"}}
+{"t": 1791758906.5719879, "event": "bottom", "payload": {"who": "P0", "count": 1}}
+{"t": 1791758906.572055, "event": "interaction_submit", "payload": {"who": "P0", "submission": {"interactionId": "34ER29.0.5", "response": {"type": "select", "data": {"choiceIds": ["34ER29.0.5.s3"]}}}, "stage": "SETUP", "response": {"type": "select", "data": {"choiceIds": ["34ER29.0.5.s3"]}}}}
+{"t": 1791758906.5722766, "event": "rejected", "payload": {"who": "P16891", "type": "ActionRejected", "data": {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}}}
+{"t": 1791758907.0982912, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758907.3532724, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758908.120391, "event": "play_land", "payload": {"who": "P1", "oid": "76"}}
+{"t": 1791758908.1204476, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PlayLand", "data": {"object_id": 76, "card_id": 76}, "_src_oid": "76"}, "stage": "SETUP"}}
+{"t": 1791758908.3732016, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758908.630771, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758908.89028, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758909.1430175, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758909.3952558, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758909.6564867, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758909.9124057, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758910.1732607, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758910.679935, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758910.93591, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758911.1878498, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758911.4438636, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758911.6956723, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758911.9476607, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758912.4523947, "event": "play_land", "payload": {"who": "P0", "oid": "34"}}
+{"t": 1791758912.4524534, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PlayLand", "data": {"object_id": 34, "card_id": 34}, "_src_oid": "34"}, "stage": "SETUP"}}
+{"t": 1791758912.710006, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758912.9650543, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758913.2251809, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758913.4773076, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758913.730281, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758913.9832742, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758914.2362478, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758914.4908626, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758914.7426827, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758914.9966354, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758915.2522736, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758915.758726, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758916.0110276, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758916.2912085, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758917.0496101, "event": "play_land", "payload": {"who": "P1", "oid": "67"}}
+{"t": 1791758917.049668, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PlayLand", "data": {"object_id": 67, "card_id": 67}, "_src_oid": "67"}, "stage": "SETUP"}}
+{"t": 1791758917.554353, "event": "cast_submit", "payload": {"tag": "p1-bear", "oid": "85", "turn": 3}}
+{"t": 1791758917.5544105, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "CastSpell", "data": {"object_id": 85, "card_id": 85, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1791758917.8073359, "event": "cast_confirmed", "payload": {"name": "Grizzly Bears", "oid": "85", "zone": "stack"}}
+{"t": 1791758917.8084564, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758918.0643914, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758918.3163111, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758918.5717719, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758920.3583925, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758920.6102347, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758920.8623068, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758921.3694024, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758921.6233635, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758921.876595, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758922.133231, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758922.385299, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758922.9146059, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758923.1683178, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758923.4231699, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758923.677388, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758924.1851916, "event": "play_land", "payload": {"who": "P0", "oid": "32"}}
+{"t": 1791758924.1852577, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PlayLand", "data": {"object_id": 32, "card_id": 32}, "_src_oid": "32"}, "stage": "SETUP"}}
+{"t": 1791758924.4408596, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758924.698411, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758924.958143, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758925.4712725, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758925.7240932, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758925.9773178, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758926.2319133, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758926.4842207, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758926.7433026, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758926.9968104, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758927.2500765, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758927.7683191, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758928.02904, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758928.2822099, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758928.788424, "event": "cast_submit", "payload": {"tag": "p1-bear", "oid": "94", "turn": 5}}
+{"t": 1791758928.7884781, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "CastSpell", "data": {"object_id": 94, "card_id": 94, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1791758929.0660224, "event": "cast_confirmed", "payload": {"name": "Grizzly Bears", "oid": "94", "zone": "stack"}}
+{"t": 1791758929.0663826, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758929.3583767, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758931.1480315, "event": "play_land", "payload": {"who": "P1", "oid": "120"}}
+{"t": 1791758931.1481006, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PlayLand", "data": {"object_id": 120, "card_id": 120}, "_src_oid": "120"}, "stage": "SETUP"}}
+{"t": 1791758931.5797606, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758932.3451045, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758933.1055298, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758933.614776, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758933.8672912, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}, "stage": "SETUP"}}
+{"t": 1791758934.1220975, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758934.3770435, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758934.628647, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758934.8814523, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758935.137404, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758935.6511905, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758935.909593, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758936.1611266, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758936.4163146, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758936.6706038, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758937.1734338, "event": "play_land", "payload": {"who": "P0", "oid": "8"}}
+{"t": 1791758937.1734915, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PlayLand", "data": {"object_id": 8, "card_id": 8}, "_src_oid": "8"}, "stage": "SETUP"}}
+{"t": 1791758937.4554038, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758937.9614959, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758938.213302, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758938.4660444, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758938.7190204, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758938.9702904, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758939.2242727, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758939.4760664, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758939.7273037, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758939.981986, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758940.2356265, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758940.489753, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758940.744046, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758940.9972334, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758941.5024054, "event": "play_land", "payload": {"who": "P1", "oid": "66"}}
+{"t": 1791758941.5024626, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PlayLand", "data": {"object_id": 66, "card_id": 66}, "_src_oid": "66"}, "stage": "SETUP"}}
+{"t": 1791758941.7555099, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758942.0078275, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758942.2634158, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758942.5152955, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758942.7672193, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}, "stage": "SETUP"}}
+{"t": 1791758943.021681, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758943.2731287, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758943.5279946, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758943.7798455, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758944.0331016, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758944.2882285, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758944.5417976, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758944.7970743, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758945.0502102, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758945.3044407, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758945.8083575, "event": "play_land", "payload": {"who": "P0", "oid": "60"}}
+{"t": 1791758945.8084116, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PlayLand", "data": {"object_id": 60, "card_id": 60}, "_src_oid": "60"}, "stage": "SETUP"}}
+{"t": 1791758946.0597842, "event": "cast_submit", "payload": {"tag": "lathiel", "oid": "51", "turn": 8}}
+{"t": 1791758946.0598845, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "CastSpell", "data": {"object_id": 51, "card_id": 51, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1791758946.31149, "event": "cast_confirmed", "payload": {"name": "Lathiel, the Bounteous Dawn", "oid": "51", "zone": "stack"}}
+{"t": 1791758946.3117056, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758946.5666478, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758946.8202841, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758947.0719957, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758947.333305, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758947.8361883, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758948.088644, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758948.3408327, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758948.5928626, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758948.8445566, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758949.096364, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758949.3488412, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758949.6008286, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758949.8530464, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758950.1055255, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758950.3605292, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758950.8893797, "event": "play_land", "payload": {"who": "P1", "oid": "114"}}
+{"t": 1791758950.889436, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PlayLand", "data": {"object_id": 114, "card_id": 114}, "_src_oid": "114"}, "stage": "SETUP"}}
+{"t": 1791758951.1410143, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758951.3932958, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758951.6453383, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758951.8974392, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758952.1497455, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}, "stage": "SETUP"}}
+{"t": 1791758952.6595454, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758952.9125998, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758953.1991084, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758953.7288117, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758953.9808133, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758954.2341292, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758954.4873877, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758954.7413695, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758954.9932797, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758955.2461064, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758955.750772, "event": "play_land", "payload": {"who": "P0", "oid": "47"}}
+{"t": 1791758955.750829, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PlayLand", "data": {"object_id": 47, "card_id": 47}, "_src_oid": "47"}, "stage": "SETUP"}}
+{"t": 1791758956.002771, "event": "cast_submit", "payload": {"tag": "own-bear", "oid": "2", "turn": 10}}
+{"t": 1791758956.002829, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "CastSpell", "data": {"object_id": 2, "card_id": 2, "targets": [], "payment_mode": {"type": "Auto"}}}, "stage": "SETUP"}}
+{"t": 1791758956.25528, "event": "cast_confirmed", "payload": {"name": "Grizzly Bears", "oid": "2", "zone": "stack"}}
+{"t": 1791758956.255487, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758956.5072446, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758956.7594671, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "SETUP"}}
+{"t": 1791758956.7631347, "event": "stage", "payload": {"to": "ATTACK", "turn": 10}}
+{"t": 1791758957.0143979, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758957.2665076, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758957.524355, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758957.7781727, "event": "attack_submit", "payload": {"data": {"attacks": [[51, {"type": "Player", "data": 1}]], "bands": []}, "turn": 10}}
+{"t": 1791758957.7782373, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "DeclareAttackers", "data": {"attacks": [[51, {"type": "Player", "data": 1}]], "bands": []}}, "stage": "ATTACK"}}
+{"t": 1791758958.031778, "event": "attack_resolved", "payload": {"turn": 10, "oid": 51}}
+{"t": 1791758963.048155, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758963.2993953, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758963.5512867, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "DeclareBlockers", "data": {"assignments": []}}, "stage": "ATTACK"}}
+{"t": 1791758963.804041, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758964.0558348, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758964.3081114, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758964.5599117, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758964.811226, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758965.0661833, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758965.5690649, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758965.8212342, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ATTACK"}}
+{"t": 1791758966.0752537, "event": "stage", "payload": {"to": "ENDSTEP", "turn": 10}}
+{"t": 1791758966.07544, "event": "trigger_on_stack", "payload": {"p0_life": 22, "stack_id": 121}}
+{"t": 1791758971.1431837, "event": "endstep_vi_heartbeat", "payload": {"canSubmit": true, "n_ops": 1, "kind": "sequence", "phase": "End", "waiting_for": "TriggerTargetSelection"}}
+{"t": 1791758971.1435328, "event": "lathiel_prompt", "payload": {"rtype": "schema", "spec_type": "sequence", "spec": {"type": "sequence", "data": {"min": 0, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "ncands": 3, "nrefs": 3, "opportunity": {"interactionId": "34ER29.0.175", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 0, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "34ER29.0.175.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "85", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1, "power": 2, "tapped": false}}], "status": {"type": "available"}}, {"id": "34ER29.0.175.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "94", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1, "power": 2, "tapped": false}}], "status": {"type": "available"}}, {"id": "34ER29.0.175.t2", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "2", "name": "Grizzly Bears", "zone": "battlefield", "controller": 0, "power": 2, "tapped": false}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "modify", "constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}}], "progress": {"selected": 0, "minimum": 0, "maximum": 1, "aggregate": null, "confirmable": true}}}}
+{"t": 1791758971.1437762, "event": "slot_target_attempt", "payload": {"iid": "34ER29.0.175", "slot": 0, "ref": "2", "name": "grizzly bears", "is_own": true, "choice_id": "34ER29.0.175.t2", "stage": "ENDSTEP"}}
+{"t": 1791758971.143916, "event": "interaction_submit", "payload": {"who": "P0", "submission": {"interactionId": "34ER29.0.175", "response": {"type": "sequence", "data": {"choiceIds": ["34ER29.0.175.t2"]}}}, "stage": "ENDSTEP", "response": {"type": "sequence", "data": {"choiceIds": ["34ER29.0.175.t2"]}}}}
+{"t": 1791758971.39606, "event": "endstep_vi_heartbeat", "payload": {"canSubmit": true, "n_ops": 1, "kind": "sequence", "phase": "End", "waiting_for": "TriggerTargetSelection"}}
+{"t": 1791758971.3962727, "event": "lathiel_prompt", "payload": {"rtype": "schema", "spec_type": "sequence", "spec": {"type": "sequence", "data": {"min": 0, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "ncands": 2, "nrefs": 2, "opportunity": {"interactionId": "34ER29.0.176", "response": {"type": "schema", "data": {"spec": {"type": "sequence", "data": {"min": 0, "max": 1, "unique": true, "includeAll": false, "engineValidated": false, "escape": null, "confirm": "explicit"}}, "candidates": [{"id": "34ER29.0.176.t0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "85", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1, "power": 2, "tapped": false}}], "status": {"type": "available"}}, {"id": "34ER29.0.176.t1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "object", "data": {"role": "candidate", "index": null, "reference": "94", "name": "Grizzly Bears", "zone": "battlefield", "controller": 1, "power": 2, "tapped": false}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}, {"type": "selection", "data": {"intent": "modify", "constraint": {"type": "count", "data": {"min": 0, "max": 1}}, "confirm": "explicit"}}], "progress": {"selected": 0, "minimum": 0, "maximum": 1, "aggregate": null, "confirmable": true}}}}
+{"t": 1791758971.3964653, "event": "slot_excludes_chosen_creature", "payload": {"iid": "34ER29.0.176", "slot": 1, "chosen_oid": "2", "candidates": ["85", "94"]}}
+{"t": 1791758971.3965738, "event": "slot_empty_attempt", "payload": {"iid": "34ER29.0.176", "slot": 1}}
+{"t": 1791758971.396612, "event": "interaction_submit", "payload": {"who": "P0", "submission": {"interactionId": "34ER29.0.176", "response": {"type": "sequence", "data": {"choiceIds": []}}}, "stage": "ENDSTEP", "response": {"type": "sequence", "data": {"choiceIds": []}}}}
+{"t": 1791758971.3968663, "event": "slot0_accepted", "payload": {}}
+{"t": 1791758971.6487563, "event": "endstep_vi_heartbeat", "payload": {"canSubmit": true, "n_ops": 1, "kind": "choose", "phase": "End", "waiting_for": "Priority"}}
+{"t": 1791758971.6490672, "event": "lathiel_prompt", "payload": {"rtype": "exactChoices", "spec_type": "", "spec": {}, "ncands": 4, "nrefs": 0, "opportunity": {"interactionId": "34ER29.0.177", "response": {"type": "exactChoices", "data": {"choices": [{"id": "34ER29.0.177.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}, {"id": "34ER29.0.177.c1", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "tapLandForMana", "actionId": "a40d4dae2a7b2e3ebb4df131069f07c7ee648cfa2015eeed187c840495d867ebc"}}, {"type": "object", "data": {"role": "source", "index": null, "reference": "8", "name": "Forest", "zone": "battlefield", "controller": 0, "power": null, "tapped": false}}, {"type": "mana", "data": {"role": "producedMana", "index": 0, "symbols": ["G"], "restrictions": []}}], "status": {"type": "available"}}, {"id": "34ER29.0.177.c2", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "tapLandForMana", "actionId": "ad31f3f91454e02bd599d7b54d60e398321732930ec55e4a5dad9cdb69766c111"}}, {"type": "object", "data": {"role": "source", "index": null, "reference": "47", "name": "Forest", "zone": "battlefield", "controller": 0, "power": null, "tapped": false}}, {"type": "mana", "data": {"role": "producedMana", "index": 0, "symbols": ["G"], "restrictions": []}}], "status": {"type": "available"}}, {"id": "34ER29.0.177.c3", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "tapLandForMana", "actionId": "a3f24e5c13243ecd6c5cfbec1dd1184c2d2ddda029773f9960cb65b46939d0123"}}, {"type": "object", "data": {"role": "source", "index": null, "reference": "60", "name": "Plains", "zone": "battlefield", "controller": 0, "power": null, "tapped": false}}, {"type": "mana", "data": {"role": "producedMana", "index": 0, "symbols": ["W"], "restrictions": []}}], "status": {"type": "available"}}]}}, "surfaces": [{"type": "summary", "data": {"code": "decision"}}], "progress": {"selected": 0, "minimum": 0, "maximum": null, "aggregate": null, "confirmable": false}}}}
+{"t": 1791758971.6495793, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ENDSTEP"}}
+{"t": 1791758971.9025643, "event": "endstep_vi_heartbeat", "payload": {"canSubmit": false, "n_ops": 0, "kind": "choose", "phase": "End", "waiting_for": "Priority"}}
+{"t": 1791758971.9029744, "event": "action_submit", "payload": {"who": "P16891", "action": {"type": "PassPriority"}, "stage": "ENDSTEP"}}
+{"t": 1791758972.1549268, "event": "action_submit", "payload": {"who": "P06891", "action": {"type": "PassPriority"}, "stage": "ENDSTEP"}}
+{"t": 1791758972.3104372, "event": "loop_end", "payload": {"stage": "DONE"}}
