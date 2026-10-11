@@ -1,0 +1,63 @@
+[18:50:30] server identity hashes verified against on-disk pinned artifacts
+[18:50:33] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[18:50:33] data-level: trigger mode=Taps constraint=None condition=None effect=PutCounter+Draw
+[18:50:33] data-level: structured teamwork qualifier present=False (description mentions teamwork=True)
+[18:50:34] P0 creating game...
+[18:50:34] P1 joining...
+[18:50:35] game WA78AW; P0 seat=0 P1 seat=1
+[18:50:35] [P0] mulligan -> Keep (hand=['grizzly bears', 'agent maria hill', 'grizzly bears', 'agent maria hill', 'forest', 'grizzly bears', 'plains'])
+[18:50:35] [P1] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'plains'])
+[18:50:36] [P0] playing land forest
+[18:50:40] [P1] playing land plains
+[18:50:44] [P0] playing land plains
+[18:50:44] [P0] casts Agent Maria Hill (48)
+[18:50:44] [P0] action confirmed (stack): Agent Maria Hill oid 48
+[18:50:49] [P1] playing land plains
+[18:50:53] [P0] playing land forest
+[18:50:53] [P0] casts Grizzly Bears (34)
+[18:50:53] [P0] action confirmed (stack): Grizzly Bears oid 34
+[18:50:55] [P0] declare no attackers
+[18:50:58] [P1] playing land plains
+[18:51:01] [P0] playing land forest
+[18:51:01] === stage -> TEAMWORK (turn 7) ===
+[18:51:02] exported pre_teamwork.json
+[18:51:02] [P0] casts Beast Mode (1)
+[18:51:02] [P0] creature-candidate prompt (kind=sequence rtype=schema): [('Agent Maria Hill', '48'), ('Grizzly Bears', '34')]
+[18:51:02] [P0] Beast Mode targets Bears (ref=34)
+[18:51:02] [P0] submitting interaction iid=WA78AW.0.105 choice=WA78AW.0.105.t1 (Grizzly Bears)
+[18:51:02] [P0] teamwork OptionalCostChoice (kind=choose): ['', 'false', 'true']
+[18:51:02] [P0] teamwork -> PAY (true)
+[18:51:02] [P0] submitting interaction iid=WA78AW.0.106 choice=WA78AW.0.106.c2 (true)
+[18:51:03] [P0] teamwork taps Hill ONLY (ref=48)
+[18:51:03] [P0] submitting interaction iid=WA78AW.0.107 choice=WA78AW.0.107.s0 (Agent Maria Hill)
+[18:51:03] [P0] action confirmed (stack): Beast Mode oid 1
+[18:51:03] Beast Mode on stack (target hint: Grizzly Bears)
+[18:51:03] Hill trigger on stack
+[18:51:04] stack empty after Beast Mode + Hill trigger; exporting post_teamwork
+[18:51:04] exported post_teamwork.json
+[18:51:04] === stage -> ATTACK ===
+[18:51:05] [P0] declares no attackers (Hill unable, turn 7)
+[18:51:08] [P1] playing land plains
+[18:51:12] [P0] playing land forest
+[18:51:13] [P0] declares attackers: Hill alone (turn 9)
+[18:51:13] [P0] blind declare empty (106 shape)
+[18:51:13] [P06876] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[18:51:18] [P0] blind declare empty (106 shape)
+[18:51:19] [P06876] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[18:51:19] [P0] blind declare empty (106 shape)
+[18:51:19] [P06876] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[18:51:24] [P0] blind declare empty (106 shape)
+[18:51:24] [P06876] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[18:51:26] PostCombatMain on attack turn; exporting post_attack
+[18:51:26] exported post_attack.json
+[18:51:26] loop ended: stage=ATTACK elapsed=53s
+[18:51:26] A1_setup_ok: passed
+[18:51:26] A2_teamwork_cast: passed
+[18:51:26] A3_teamwork_trigger_ok: failed
+[18:51:26] A4_attack_no_trigger: failed
+[18:51:26] A5_cleanup: passed
+[18:51:26] verdict: reproduced
+[18:51:27] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_teamwork_cast": "passed", "A3_teamwork_trigger_ok": "failed", "A4_attack_no_trigger": "failed", "A5_cleanup": "passed"}
+[18:51:27] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6876/run-6876-reval-v01070-20261011-1841/summary.png
+[18:51:27] copied driver into evidence dir
+[18:51:27] manifest written (12 files)
