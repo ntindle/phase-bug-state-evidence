@@ -1,0 +1,76 @@
+[17:20:20] server identity hashes verified against on-disk pinned artifacts
+[17:20:23] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[17:20:23] data-level: grant kind=Activated effect=ControlNextTurn mana_generic=15 exile_filter=GrantingObject restrictions=['AsSorcery']
+[17:20:24] P0 creating game...
+[17:20:24] P1 joining...
+[17:20:24] game 4TJ2ME; P0 seat=0 P1 seat=1
+[17:20:24] [P0] mulligan -> Keep (hand=['swamp', 'the dominion bracelet', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'])
+[17:20:24] [P1] mulligan -> Keep (hand=['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'])
+[17:20:25] [P1] mulligan -> Keep (hand=['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'])
+[17:20:25] [P16872] ActionRejected: {"rejection": {"code": "action_not_allowed", "disposition": "unavailable", "message": "That action is not allowed right now.", "related_object_ids": []}}
+[17:20:26] [P1] playing land swamp
+[17:20:30] [P0] playing land swamp
+[17:20:34] [P1] playing land swamp
+[17:20:39] [P0] playing land swamp
+[17:20:43] [P1] playing land swamp
+[17:20:47] [P0] playing land swamp
+[17:20:51] [P1] playing land swamp
+[17:20:55] [P0] playing land swamp
+[17:20:59] [P1] playing land swamp
+[17:21:04] [P0] playing land swamp
+[17:21:04] P0 casts Yargle, Glutton of Urborg (oid 60)
+[17:21:04] [P0] action confirmed (stack): Yargle, Glutton of Urborg oid 60
+[17:21:05] Yargle on BF turn 10
+[17:21:09] [P1] playing land swamp
+[17:21:13] [P0] playing land swamp
+[17:21:13] P0 casts The Dominion Bracelet (oid 35)
+[17:21:13] [P0] action confirmed (stack): The Dominion Bracelet oid 35
+[17:21:14] [P0] equip options: 2
+[17:21:14] P0 activates Equip {1}
+[17:21:14] [P1] action confirmed (battlefield): The Dominion Bracelet oid 35
+[17:21:14] [P0] tap land for mana used_for=B
+[17:21:14] [P0] submitting interaction iid=4TJ2ME.0.179 choice=4TJ2ME.0.179.c1 (Swamp)
+[17:21:15] [P0] equip auto-targeted Yargle (no prompt)
+[17:21:15] Bracelet attached to Yargle turn 12
+[17:21:15] === stage -> PROOF ===
+[17:21:16] [P0] declare no attackers
+[17:21:19] [P1] playing land swamp
+[17:21:23] [P0] playing land swamp
+[17:21:23] exported pre_grant.json
+[17:21:23] [P0] pre_grant exported (turn 14); Yargle oid=60
+[17:21:24] DIAG P0: rev=213 turn=14 phase=PreCombatMain prio=True decision=False stage=PROOF attached=True grant_act=False untapped_swamps=7
+[17:21:28] [P0] grant probe (turn 14): advertised ActivateAbility on Yargle = 2; object abilities = 1
+[17:21:28]     obj ability: {15}, Exile The Dominion Bracelet: You control target opponent during their next turn. This ability 
+[17:21:28] [P0] activates granted ability on equipped Yargle
+[17:21:28] [P0] action confirmed (battlefield): Yargle, Glutton of Urborg oid 60
+[17:21:28] [P0] grant exile_cost prompt: [(None, 'The Dominion Bracelet', '35')]
+[17:21:28] [P0] submitting interaction iid=4TJ2ME.0.214 choice=4TJ2ME.0.214.s0 ()
+[17:21:28] [P0] grant exile-cost chooses the Bracelet
+[17:21:29] [P0] tap land for mana used_for=generic
+[17:21:29] [P0] submitting interaction iid=4TJ2ME.0.215 choice=4TJ2ME.0.215.c1 (Swamp)
+[17:21:29] grant ability on stack: sid=122
+[17:21:29] exported mid_grant.json
+[17:21:29] [P0] tap land for mana used_for=generic
+[17:21:29] [P0] submitting interaction iid=4TJ2ME.0.216 choice=4TJ2ME.0.216.c1 (Swamp)
+[17:21:30] grant ability resolved (left the stack)
+[17:21:30] exported post_activate.json
+[17:21:30] === stage -> CONTROL_OBSERVE ===
+[17:21:31] [P0] declare no attackers
+[17:21:33] [P0] tap land for mana used_for=generic
+[17:21:33] [P0] submitting interaction iid=4TJ2ME.0.230 choice=4TJ2ME.0.230.c1 (Swamp)
+[17:21:33] [P0] tap land for mana used_for=generic
+[17:21:33] [P0] submitting interaction iid=4TJ2ME.0.231 choice=4TJ2ME.0.231.c1 (Swamp)
+[17:21:33] [P0] tap land for mana used_for=generic
+[17:21:33] [P0] submitting interaction iid=4TJ2ME.0.232 choice=4TJ2ME.0.232.c1 (Swamp)
+[17:21:38] control observation window done; exporting post
+[17:21:38] exported post.json
+[17:21:38] A1_setup_ok: passed
+[17:21:38] A2_granted_exposed: passed
+[17:21:38] A3_activation_completes: passed
+[17:21:38] A4_control_recorded: passed
+[17:21:38] A5_cleanup: passed
+[17:21:38] verdict: not-reproduced
+[17:21:39] DONE verdict=not-reproduced assertions={"A1_setup_ok": "passed", "A2_granted_exposed": "passed", "A3_activation_completes": "passed", "A4_control_recorded": "passed", "A5_cleanup": "passed"}
+[17:21:40] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6872/run-6872-reval-v01070-20261011-1713/summary.png
+[17:21:40] copied driver into evidence dir
+[17:21:40] manifest written (13 files)
