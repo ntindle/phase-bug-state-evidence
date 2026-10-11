@@ -1,0 +1,183 @@
+{
+  "issue": 6609,
+  "run_id": "run-6609-reval-v01060-20261010-2242",
+  "started_at": "2026-10-11T03:45:07Z",
+  "duration_s": 39.0,
+  "server": {
+    "server_version": "v0.106.0",
+    "build_commit": "29e0db3",
+    "protocol_version": 126,
+    "mode": "Full",
+    "binary_sha256": "5d31aeec7387c22b5af84f7befa83c14f785d8505c0f9102f4fddac743d1d47a",
+    "card_data_sha256": "59d60da9833ff7cd464fca2c93f4d6b49d74a8ad0d04092055634442c70cbc41",
+    "draft_pools_sha256": "fad736f3ae13b3fb2f0908319eae98af501e36cc30fbe2e84ca6684319384c86",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "signature_note": "v0.106.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-10; data digests match the signed manifest; binary digest recomputed against the on-disk pinned binary this run (running process pid 6077, owned by backfill run-6557, reused per AGENTS.md - no second server started on the occupied port 9374)",
+    "observed_at": "2026-10-10",
+    "source": "ServerHello asserted by handshake this run (v0.106.0, build 29e0db3, protocol 126) + sha256 re-verified against pinned v0.106.0 release artifacts"
+  },
+  "server_observed": {
+    "server_version": "0.106.0",
+    "build_commit": "29e0db3",
+    "protocol_version": 126,
+    "mode": "Full"
+  },
+  "server_run_dir": "runs/run-6609-reval-v01060-20261010-2242",
+  "driver": {
+    "protocol_advertised": 126,
+    "client": "driver/client.py"
+  },
+  "scenario": {
+    "file": "scenario_6609_01060.py",
+    "sha256": "fa0c39bc0d95380a73936de144df692f9b0d15a97a64f83ee3996f05a5567915"
+  },
+  "decks": {
+    "P0": [
+      [
+        "nethergoyf",
+        8
+      ],
+      [
+        "ornithopter",
+        8
+      ],
+      [
+        "rancor",
+        8
+      ],
+      [
+        "shock",
+        8
+      ],
+      [
+        "divination",
+        8
+      ],
+      [
+        "grizzly bears",
+        8
+      ],
+      [
+        "swamp",
+        8
+      ],
+      [
+        "island",
+        8
+      ]
+    ],
+    "P1": [
+      [
+        "lightning bolt",
+        12
+      ],
+      [
+        "mountain",
+        36
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_escape_accepted": "passed",
+    "A3_choice_offered": "passed",
+    "A4_subset_accepted": "failed",
+    "A5_unchosen_remain": "passed",
+    "A6_pt_recomputed": "passed",
+    "A7_cleanup": "passed"
+  },
+  "notes": [
+    "escape_initiated=True escape_cast_accepted=True exile_prompt_seen=True (vi) codes=['candidate'] invalid_tried=True invalid_rejected=None invalid_accepted=True valid_submitted=False valid_accepted=None auto_exile=False rejections=0",
+    "A1: goyf_in_gy=True, types_among_others=['artifact', 'creature', 'enchantment', 'instant'] (4), untapped_lands=3, swamp_untapped=True",
+    "A2: goyf_on_bf=True, goyf_in_gy=False",
+    "A3: per-card exile choice offered via vi",
+    "A4: RELATED FAILURE - a 1-card subset (<4 types) was ACCEPTED; the 4-type aggregate constraint is not enforced",
+    "A5: unchosen remaining in gy=['ornithopter', 'rancor']",
+    "A6: goyf P/T=3/4, types in remaining gy=['artifact', 'creature', 'enchantment'] (want 3/4)",
+    "A7: stack_empty=True, final_quiet=True, stuck_watch=False",
+    "the Nethergoyf escape exile-cost path did not behave per the oracle text on this build",
+    "server log read failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/run-6609-reval-v01060-20261010-2242/server.log'"
+  ],
+  "observations": {
+    "phase": "done",
+    "answered_ids": [
+      "FB3DMB.0.59",
+      "FB3DMB.0.93",
+      "FB3DMB.0.178",
+      "FB3DMB.0.208",
+      "FB3DMB.0.230"
+    ],
+    "rejections": [],
+    "goyf_cast": true,
+    "div_never": false,
+    "div_casts": 0,
+    "ornithopter_cast": true,
+    "escape_initiated": true,
+    "escape_cast_accepted": true,
+    "exile_prompt_seen": true,
+    "exile_prompt_kind": "vi",
+    "exile_prompt_codes": [
+      "candidate"
+    ],
+    "invalid_subset_tried": true,
+    "invalid_subset_rejected": null,
+    "valid_subset_submitted": false,
+    "valid_subset_accepted": null,
+    "chosen_names": [],
+    "auto_exile_observed": false,
+    "stuck_watch_fired": false,
+    "paying": {
+      "p0": null,
+      "p1": null
+    },
+    "p1_bolt_pending": false,
+    "p1_bolt_target": 63,
+    "p1_bolt_iid": "FB3DMB.0.93",
+    "done": true,
+    "escape_live": false,
+    "playland_logged": true,
+    "_rej_mark": 0,
+    "invalid_subset_ids": [
+      "FB3DMB.0.230.s1"
+    ],
+    "invalid_subset_accepted": true,
+    "final_quiet": true
+  },
+  "escape_decisions": [
+    {
+      "interactionId": "FB3DMB.0.178",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "FB3DMB.0.178.s0"
+      ]
+    },
+    {
+      "interactionId": "FB3DMB.0.208",
+      "why": "discard_to_hand_size",
+      "sub_type": "select",
+      "choice_ids": [
+        "FB3DMB.0.208.s0"
+      ]
+    },
+    {
+      "interactionId": "FB3DMB.0.230",
+      "why": "invalid_subset_1card",
+      "sub_type": "select",
+      "choice_ids": [
+        "FB3DMB.0.230.s1"
+      ]
+    }
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "8x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "The escape fixture is reconstructed (cast + Bolt), not the reporter's attached game state.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "waiting_for is null on protocol 126: A7 checks the live view for pending real decisions at completion instead of a Priority waiting_for type."
+  ],
+  "setup_line": "P0: 8x Nethergoyf/Ornithopter/Rancor/Shock/Divination/Grizzly Bears + 8x Swamp + 8x Island; P1: 12x Lightning Bolt + 36x Mountain",
+  "contract_line": "Escape Nethergoyf ({2}{B}): engine must offer a per-card exile choice; a 1-card (<4 types) subset must be rejected; a 4-type subset must be accepted; unchosen cards remain; P/T recomputes from the remaining graveyard"
+}
