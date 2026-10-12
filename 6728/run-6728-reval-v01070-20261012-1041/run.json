@@ -1,0 +1,44 @@
+{
+ "issue": 6728,
+ "run_id": "run-6728-reval-v01070-20261012-1041",
+ "date": "2026-10-12",
+ "verdict": "reproduced",
+ "server": {
+  "validated_version": "v0.107.0",
+  "build_commit": "eccd25f",
+  "protocol_version": 130,
+  "server_binary_sha256": "f89957a1e5aa0fc1e68bf61a1eccc4ad6b257bc57d98aa270869fcad78456397",
+  "card_data_sha256": "2021496869e2e86df276f1a07de001d50e7220087d46ac21acd69d04d73f9433",
+  "draft_pools_sha256": "a44926f1b80be0c64e794e5562b9eeccd9d704488a7b02fc3ccca2130eea0d1c",
+  "identity": "ServerHello: server_version 0.107.0, build eccd25f, protocol 130, mode Full",
+  "run_dir": "runs/run-6728-reval-v01070-20261012-1041",
+  "endpoint": "http://127.0.0.1:9374"
+ },
+ "client": {
+  "checkout": "d44fbcf4",
+  "findings": "hostDraftCode() still emits `draft-` + 8 lowercase hex (p2p-draft-host.ts byte-identical to the 2026-10-11 check, sha256 50456ed3...). uploadBackupSnapshot still awaits fetch without inspecting the response status, so a 400 rejection stays silent. UNCHANGED: the production new P2PDraftHost(...) call (draftPodHostAdapter.ts:312) still passes config.backupEndpoint, so blocker #1 stays wired and the upload branch can be entered when a hosting server is configured \u2014 then fails on the draft-code mismatch (blocker #2).",
+  "path": "client/src/adapter/p2p-draft-host.ts",
+  "ref": "origin/main",
+  "repo": "phase-rs/phase"
+ },
+ "driver": "driver/scenario_6728.py (unchanged; RUN_ID/BASE adapted via env, sha256 2721c922044b686acae50d53313b03b6019945d4b9438e40a746bc391bc47545)",
+ "evidence_dir": "evidence/6728/run-6728-reval-v01070-20261012-1041",
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) on the pinned v0.107.0 binary + client source-path inspection at current mainline; frontend P2P browser stack not exercised",
+ "result": "On v0.107.0 the server still rejects the client-generated `draft-xxxxxxxx` identifier with 400 Invalid draft code (no row created); a contract-valid 6-char uppercase code completes create/retrieve/update/delete. Server validator byte-identical to v0.102.0-v0.106.0 (admin.rs blob 3ec97d64). Client at mainline tip d44fbcf4 still generates `draft-` + 8 lowercase hex and uploadBackupSnapshot still never checks the HTTP status, so the rejected upload stays silent. Blocker #1 stays wired: the production construction path passes config.backupEndpoint, so the upload branch is entered when a hosting server is configured \u2014 and then hits the code-format rejection.",
+ "assertions": {
+  "passed": 10,
+  "failed": 0,
+  "total": 10
+ },
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at d44fbcf4 (sha256 recorded in client_path_evidence.json), not on running the client.",
+  "No game-state pair exists for this report; evidence is HTTP exchanges + source excerpts, per playbook subsystem-equivalent contract."
+ ],
+ "prior_run": {
+  "evidence_commit": "b81a627ecb632abe8e9c47f731f07727382f8740",
+  "run_id": "run-6728-reval-v01060-20261011-0211",
+  "validated_version": "v0.106.0",
+  "verdict": "reproduced"
+ }
+}

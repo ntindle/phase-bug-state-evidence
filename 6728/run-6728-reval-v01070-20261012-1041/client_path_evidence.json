@@ -1,0 +1,12 @@
+{
+  "repo": "phase-rs/phase",
+  "ref": "origin/main",
+  "checkout_tip": "d44fbcf4",
+  "file": "client/src/adapter/p2p-draft-host.ts",
+  "file_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+  "file_note": "byte-identical to the 2026-10-11 check at 49525d9f (50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0); client-side backup logic unchanged at current mainline tip",
+  "generator_hostDraftCode": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}",
+  "generator_shape_note": "still emits `draft-` + 8 lowercase hex (14 chars); server contract requires exactly 6 uppercase-alphanumeric chars (crates/phase-server/src/admin.rs is_valid_draft_code)",
+  "uploadBackupSnapshot": "awaits fetch(...) without inspecting the response: no resp.ok / status check; try/catch only catches transport errors, so a 400 rejection resolves silently. cleanupServerBackup (DELETE path) likewise discards its fetch response.",
+  "construction_path_change": "UNCHANGED since the issue was filed (verified 2026-10-11, still true at d44fbcf4): the production new P2PDraftHost(...) call in client/src/adapter/draftPodHostAdapter.ts:312 passes config.backupEndpoint as the constructor argument (endpoint derived from the configured hosting server via configuredBackupEndpoint() in client/src/stores/draftPodStore.ts). So blocker #1 from the issue no longer holds when a hosting server is configured; the upload branch CAN now be entered — and then fails on the draft-code mismatch (blocker #2)."
+}
