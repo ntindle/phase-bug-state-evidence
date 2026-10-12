@@ -1,0 +1,27 @@
+{
+  "run_id": "run-5189-reval-v01070-20261012-0811",
+  "issue": 5189,
+  "verdict": "reproduced",
+  "prior_validated_verdict": "reproduced",
+  "validated_version": "client-mainline@ee83a528505c919cd4b8ec8f228d4fd595a49e7a",
+  "validated_at": "2026-10-12T08:30:00-05:00",
+  "scope": "phase-rs/phase#5189 (open, unmerged PR by jeffrey701): the debug triple-tap gesture in useKeyboardShortcuts.ts fires at tapCount >= 2 and resets on every non-3-finger touchstart, so it can never accumulate three real-hardware 3-finger taps. Shipped logic extracted at mainline tip ee83a528 (gesture block byte-identical to validated a0f9c55) and driven via the repo's vitest suite.",
+  "evidence_files": [
+    "driver_mainline_old_logic.test.ts",
+    "vitest_mainline_driver_reval.log",
+    "client_observations.json",
+    "run.json",
+    "summary.png",
+    "manifest.sha256"
+  ],
+  "limitations": [
+    "Client-subsystem test only: no engine game session; phase-server v0.107.0/eccd25f/protocol 130 was verified live on 127.0.0.1:9374 for the release check but not exercised (the defect is a pure client gesture recognizer).",
+    "No DOM/browser involved: the defect is in the gesture-counting logic; this re-validation is vitest-only, same as the original run.",
+    "The PR-variant (published patch applied) was not re-run: the mainline reproduction is unchanged, the PR head is unchanged, and the gesture block at tip is byte-identical to the validated version, so the 2026-09-09 PR-variant result still stands."
+  ],
+  "release_check": {
+    "latest_stable": "v0.107.0 (published 2026-10-11T17:08:47Z)",
+    "pin_match": true,
+    "server_live": "127.0.0.1:9374 ServerHello 0.107.0/eccd25f/protocol 130/Full"
+  }
+}
