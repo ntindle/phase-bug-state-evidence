@@ -1,0 +1,47 @@
+[14:15:50] server identity hashes recomputed against on-disk pinned artifacts
+[14:15:50] ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+[14:15:50] ===== attempt 1 =====
+[14:15:51] game PF2BF6 attempt=1; P0 seat=0 P1 seat=1
+[14:15:51] [6760-a1] keep 7: ['forest', 'llanowar elves', 'forest', 'llanowar elves', 'forest', 'llanowar elves', 'forest']
+[14:15:51] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[14:15:52] [6760-a1] keep 7: ['forest', 'llanowar elves', 'forest', 'llanowar elves', 'forest', 'llanowar elves', 'forest']
+[14:15:52] [P16760-a1] playing land island (legacy)
+[14:15:54] [6760-a1] playing land forest (legacy)
+[14:15:57] [P16760-a1] playing land island (legacy)
+[14:15:59] [6760-a1] playing land forest (legacy)
+[14:16:01] [P16760-a1] playing land island (legacy)
+[14:16:04] [6760-a1] playing land forest (legacy)
+[14:16:06] [P16760-a1] playing land island (legacy)
+[14:16:08] [6760-a1] playing land forest (legacy)
+[14:16:11] [P16760-a1] playing land island (legacy)
+[14:16:13] [6760-a1] playing land forest (legacy)
+[14:16:15] [P16760-a1] playing land island (legacy)
+[14:16:18] [6760-a1] playing land forest (legacy)
+[14:16:21] [P16760-a1] playing land island (legacy)
+[14:16:21] [6760-a1] DIAG P06760-a1: rev=190 turn=13 phase=BeginCombat prio=['PassPriority'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[14:16:21] [6760-a1] DIAG P16760-a1: rev=190 turn=13 phase=BeginCombat prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[14:16:23] [6760-a1] playing land forest (legacy)
+[14:16:25] [P16760-a1] playing land island (legacy)
+[14:16:28] [6760-a1] playing land forest (legacy)
+[14:16:30] [P16760-a1] playing land island (legacy)
+[14:16:33] [6760-a1] casting Ojer Kaslem, Deepest Growth (oid 21); engine auto-pays (payment_mode Auto)
+[14:16:33] [6760-a1] cast confirmed on stack: Ojer Kaslem, Deepest Growth (oid 21)
+[14:16:33] [6760-a1] Ojer Kaslem on battlefield at turn 18
+[14:16:35] [P16760-a1] playing land island (legacy)
+[14:16:38] [6760-a1] playing land forest (legacy)
+[14:16:38] [6760-a1] P0 attacks P1 with Ojer Kaslem (turn 20)
+[14:16:41] [6760-a1] combat damage landed: P1 life=14
+[14:16:42] [6760-a1] select prompt: spec.type=select constraint={"type": "count", "data": {"min": 0, "max": 1}} n_candidates=6
+[14:16:42]   candidate PF2BF6.0.305.s0: forest (Land) zone=Library ref=1
+[14:16:42]   candidate PF2BF6.0.305.s1: llanowar elves (Creature) zone=Library ref=32
+[14:16:42]   candidate PF2BF6.0.305.s2: llanowar elves (Creature) zone=Library ref=46
+[14:16:42]   candidate PF2BF6.0.305.s3: llanowar elves (Creature) zone=Library ref=44
+[14:16:42]   candidate PF2BF6.0.305.s4: forest (Land) zone=Library ref=27
+[14:16:42]   candidate PF2BF6.0.305.s5: forest (Land) zone=Library ref=9
+[14:16:42] [6760-a1] submitting 2-card selection (creature PF2BF6.0.305.s1 + land PF2BF6.0.305.s0) via select
+[14:16:42] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[14:16:42] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[14:16:42] [6760-a1] submitting 1-card fallback (creature PF2BF6.0.305.s1)
+[14:16:45] [6760-a1] select outcome path=one_accepted: entered=['llanowar elves'] bottomed=5/6
+[14:16:45] attempt 1 assertions: {"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+[14:16:45] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
