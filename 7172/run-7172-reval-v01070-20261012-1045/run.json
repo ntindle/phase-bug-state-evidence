@@ -1,0 +1,174 @@
+{
+ "issue": 7172,
+ "run_id": "run-7172-reval-v01070-20261012-1045",
+ "started_at": "2026-10-12T10:47:29",
+ "validated_at": "2026-10-12",
+ "duration_s": 44.1,
+ "server": {
+  "server_version": "v0.107.0",
+  "build_commit": "eccd25f",
+  "protocol_version": 130,
+  "mode": "Full",
+  "binary_sha256": "f89957a1e5aa0fc1e68bf61a1eccc4ad6b257bc57d98aa270869fcad78456397",
+  "card_data_sha256": "2021496869e2e86df276f1a07de001d50e7220087d46ac21acd69d04d73f9433",
+  "draft_pools_sha256": "a44926f1b80be0c64e794e5562b9eeccd9d704488a7b02fc3ccca2130eea0d1c",
+  "signature_key_id": "4564436711b6a2d3",
+  "signature_verified": true,
+  "signature_note": "v0.107.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 4564436711b6a2d3); data digests match the signed manifest; ServerHello handshake re-verified this run (0.107.0/eccd25f/protocol 130/Full)"
+ },
+ "server_run_dir": "runs/run-7172-reval-v01070-20261012-1045",
+ "server_ownership": "reused the live v0.107.0 server on 127.0.0.1:9374 (started by an earlier backfill run); games are isolated per game id; ServerHello handshake re-verified this run (0.107.0/eccd25f/protocol 130/Full)",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 130,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1e7fb5f4247b33d2147bb87890c0a8857a588cfda36d2cdb1f81103787e29c7e",
+ "decks": {
+  "P0": [
+   [
+    "deadpool, trading card",
+    12
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "swamp",
+    12
+   ],
+   [
+    "mountain",
+    12
+   ],
+   [
+    "lightning bolt",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    24
+   ],
+   [
+    "lightning bolt",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_no_exchange_choice": "passed",
+  "A4_enters_unchanged": "passed",
+  "A5_card_otherwise_live": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: as-enters effect.type=Unimplemented (name=unknown); exchange-in-desc=True; replacements=[]; upkeep_trigger=LoseLife",
+  "A1: the as-enters exchange clause is STILL Unimplemented/unknown on v0.107.0 with no registered replacement -- the parse-level root cause persists",
+  "A2: p1_bears_bf=1 deadpool_in_hand=True p0_untapped_lands=4 (mountain,swamp)",
+  "A3: deadpool_entered=True, exchange_prompt_seen=False, n_entry_window_prompts=17, kinds_seen=['candidate', 'passPriority', 'activateAbility', 'castSpell', 'tapLandForMana', 'playLand']",
+  "A4: deadpool_bf=1 pt=(5,3); p1_bears_bf=1 pt=(2,2)",
+  "A5: upkeep_trigger=True life 17->14; sac_ability_advertised=True ([{'ability_index': 1, 'source_id': 5}])",
+  "A6: stack_empty=True post_turn=14",
+  "verdict=reproduced: Deadpool entered with a legal exchange candidate on the battlefield, but the controller was never offered the optional text-box exchange - the exact reported symptom",
+  "server.log excerpt failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/run-7172-reval-v01070-20261012-1045/server.log'",
+  "CORRECTION 2026-10-12 (same-day, pure function of saved evidence): A5 re-evaluated from obs.json/scenario_run.log with the delta rule. The turn-12 upkeep fired the -3 trigger (20->17) before the watch recorded 'before'; the watch then recorded the turn-14 upkeep resolution 17->14 (exactly -3) and the {3}-sacrifice ActivateAbility (ability_index 1) was advertised for Deadpool. The control is satisfied; the original strict 20->17 absolute framing was a driver-checker bug (fixed in scenario_7172_01070.py). The verdict (reproduced) is unchanged; the verdict rule depends only on A2/A3."
+ ],
+ "observations": {
+  "a1_detail": {
+   "effect_type": "Unimplemented",
+   "effect_name": "unknown",
+   "description": "As ~ enters, you may exchange his text box and another creature's.",
+   "replacements": [],
+   "n_triggers": 1,
+   "n_abilities": 2,
+   "upkeep_trigger_kind": "LoseLife",
+   "card_data_key": "deadpool, trading card"
+  },
+  "a2": {
+   "p1_bears_bf": 1,
+   "deadpool_in_hand": true,
+   "p0_untapped_lands": 4
+  },
+  "a3": {
+   "deadpool_entered": true,
+   "exchange_prompt_seen": false,
+   "entry_window_kinds": [
+    "candidate",
+    "passPriority",
+    "activateAbility",
+    "castSpell",
+    "tapLandForMana",
+    "playLand"
+   ],
+   "n_entry_window_prompts": 17
+  },
+  "a4": {
+   "deadpool_bf": 1,
+   "deadpool_pt": [
+    5,
+    3
+   ],
+   "p1_bears_bf": 1,
+   "bears_pt": [
+    2,
+    2
+   ]
+  },
+  "a5": {
+   "upkeep_trigger_seen": true,
+   "upkeep_life": [
+    17,
+    14
+   ],
+   "sac_ability_advertised": true,
+   "activated_abilities_seen": [
+    {
+     "ability_index": 1,
+     "source_id": 5
+    }
+   ]
+  },
+  "a6": {
+   "stack_empty": true,
+   "post_turn": 14
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is near-passive (lands + one Grizzly Bears, never attacks/blocks) so the entry window stays clean.",
+  "The accept-branch (choosing to exchange) and the decline control are not-run: no exchange choice exists to answer.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 0.35.0 report build; verdict is scoped to v0.107.0, not a fix claim."
+ ],
+ "setup_line": "P0: 12x deadpool trading card + 12x grizzly bears + 12x swamp + 12x mountain + 12x lightning bolt (mulligan to Deadpool + lands; cast Deadpool {2}{B}{R} on turn 5+ with a P1 Bears on the BF as the exchange candidate); P1: 12x grizzly bears + 24x forest + 24x lightning bolt (lands + one Bears, never attacks)",
+ "contract_line": "As Deadpool enters, you may exchange his text box and another creature's.",
+ "prior_validation": {
+  "run": "20260915-7172",
+  "verdict": "reproduced",
+  "validated_version": "v0.83.0"
+ },
+ "evidence_files": [
+  "pre.json",
+  "entry.json",
+  "post.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_7172_01070.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "obs.json",
+  "data_evidence.json"
+ ]
+}
