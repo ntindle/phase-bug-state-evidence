@@ -1,0 +1,51 @@
+{
+  "run_id": "run-5189-reval-v01070-20261012-0811",
+  "validated_at": "2026-10-12T08:30:00-05:00",
+  "method": "re-validation on current mainline tip: extracted the shipped gesture block from client/src/hooks/useKeyboardShortcuts.ts at tip and re-ran the verbatim-replica vitest driver (driver_mainline_old_logic.test.ts, unchanged from the 2026-09-09 evidence run).",
+  "client": {
+    "mainline_commit": "ee83a528505c919cd4b8ec8f228d4fd595a49e7a",
+    "mainline_commit_subject": "feat(card-data): serve Simplified Chinese card text and art (#9799)",
+    "checkout": "~/workspace/dev/phase-backfill/checkout-5189-20261012 (git worktree of origin/main @ ee83a528)",
+    "node_modules": "~/workspace/dev/phase/client/node_modules (vitest 4.1.0, --coverage.enabled=false)",
+    "file_sha256_tip": "2ed1d027b987f7246afe8194cc066cd1329232e3f70234b8b35a6a6099cd7349",
+    "file_sha256_a0f9c55": "78861a05517de6e303cd3bd5c3e6ced596e501520f31e9df96bbe500169fdf06",
+    "file_diff_tip_vs_a0f9c55": "4 hunks, all outside the gesture block (import line, getCanActForWaitingState guard on PassPriority dispatch, dispatchAction rename, export-result handling). The triple-tap gesture block (lines 39-63) is byte-identical at both commits.",
+    "gesture_block_present": "yes: 'if (e.touches.length !== REQUIRED_FINGERS) { tapCount = 0; return; }' and 'if (tapCount >= 2) { tapCount = 0; useUiStore.getState().toggleDebugPanel(); }' both present verbatim at tip",
+    "pr_head": "8e1803eea18486eb18900013d3de5da943129922",
+    "pr_merged": false,
+    "pr_updated_at": "2026-09-10T03:26:26Z (unchanged since the 2026-09-09 validation)",
+    "pr_state": "open, unmerged, by jeffrey701, labels [bug, defer-fe]"
+  },
+  "assertions": {
+    "A2_mainline_real_hardware_triple_tap": {
+      "status": "failed (bug reproduced)",
+      "expected": "documented behavior: toggle fires after 3 x 3-finger taps",
+      "observed": "0 toggles: each tap arrives as 1-, then 2-, then 3-finger touchstarts; the leading events reset tapCount to 0 every time (defect 1)"
+    },
+    "A3_mainline_double_tap_threshold": {
+      "status": "failed (bug reproduced)",
+      "expected": "documented triple-tap: no toggle before 3 taps",
+      "observed": "1 toggle after only 2 x 3-finger touchstarts (fires at tapCount >= 2, defect 2)"
+    },
+    "A4_mainline_control_isolated_events_accumulate": {
+      "status": "passed",
+      "observed": "1 toggle after 2 isolated 3-finger touchstarts, proving the interleaved 1-/2-finger events are what zero the counter"
+    }
+  },
+  "vitest": {
+    "file": "driver_mainline_old_logic.test.ts",
+    "result": "3/3 passed",
+    "log": "vitest_mainline_driver_reval.log"
+  },
+  "result": "reproduced (unchanged from 2026-09-09): the shipped gesture logic is byte-identical at mainline tip ee83a528; a real-hardware triple-tap sequence yields 0 toggles and a mere double-tap yields 1 toggle. Fix PR #5189 still open/unmerged (head 8e1803e, updated 2026-09-10).",
+  "limitations": [
+    "Client-subsystem test only: no engine game session; phase-server v0.107.0/eccd25f/protocol 130 was verified live on 127.0.0.1:9374 for the release check but not exercised (the defect is a pure client gesture recognizer).",
+    "No DOM/browser involved: the defect is in the gesture-counting logic; this re-validation is vitest-only, same as the original run.",
+    "The PR-variant (published patch applied) was not re-run: the mainline reproduction is unchanged, the PR head is unchanged, and the gesture block at tip is byte-identical to the validated version, so the 2026-09-09 PR-variant result still stands."
+  ],
+  "release_check": {
+    "latest_stable": "v0.107.0 (published 2026-10-11T17:08:47Z)",
+    "pin_match": true,
+    "server_live": "127.0.0.1:9374 ServerHello 0.107.0/eccd25f/protocol 130/Full"
+  }
+}
