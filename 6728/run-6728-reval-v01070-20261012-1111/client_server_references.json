@@ -1,0 +1,17 @@
+{
+ "server": {
+  "path": "crates/phase-server/src/admin.rs",
+  "tag": "v0.107.0",
+  "blob": "3ec97d644e1553bec24d9191fcf6fa7fe8cdcf9a",
+  "note": "byte-identical to v0.102.0-v0.106.0",
+  "validator_excerpt": "                \"status\": format!(\"{:?}\", s.session.status),\n                \"elapsed_minutes\": now.saturating_sub(s.session.created_at) / 60,\n            })\n        })\n        .collect();\n    Json(serde_json::json!({ \"drafts\": list }))\n}\n\n/// GET /admin/drafts/:code \u2014 Inspect full draft session state.\npub async fn admin_get_draft(\n    State(app_state): State<AppState>,\n    Path(code): Path<String>,\n) -> impl IntoResponse {\n    if !is_valid_draft_code(&code) {\n        return (StatusCode::BAD_REQUEST, \"Invalid draft code\").into_response();\n    }"
+ },
+ "client": {
+  "path": "client/src/adapter/p2p-draft-host.ts",
+  "commit": "d44fbcf4076088a80ac0655753b2e0cca8be728c",
+  "sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+  "note": "bytes identical to 2026-10-11 check; uploadBackupSnapshot never inspects fetch status",
+  "hostDraftCode_excerpt": " * encoding of it protected nothing. Two independent draws, so the public\n * identifier carries no information about the private one.\n */\nfunction hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}\n",
+  "uploadBackupSnapshot_excerpt": "  private async uploadBackupSnapshot(snapshot: PersistedDraftHostSession): Promise<void> {\n    if (!this.backupEndpoint || !this.draftCode) return;\n    try {\n      const publicSnapshot = sanitizePublicBackup(snapshot);\n      await fetch(`${this.backupEndpoint}/p2p-draft-backup`, {\n        method: \"POST\",\n        headers: { \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n          draft_code: this.draftCode,\n          host_peer_id: this.hostPeer.id,\n          snapshot_json: JSON.stringify(publicSnapshot),\n        }),\n      });\n    } catch (err) {\n      console.warn(\"[P2PDraftHost] server backup upload failed:\", err);\n    }\n  }\n\n  /**\n   * Delete the server backup on clean draft completion (best-effort).\n   */\n  private async cleanupServerBackup(): Promise<void> {\n    if (!this.backupEndpoint || !this.draftCode) return;\n    try {\n      const params = new URLSearchParams({ host_peer_id: this.hostPeer.id });\n      await fetch(\n        `${this.backupEndpoint}/p2p-draft-backup/${this.draftCode}?${params}`,\n        { method: \"DELETE\" },\n      );\n    } catch {\n      // Best-effort cleanup\n    }\n  }\n\n  /**\n   * Restore host state from a persisted snapshot."
+ }
+}
