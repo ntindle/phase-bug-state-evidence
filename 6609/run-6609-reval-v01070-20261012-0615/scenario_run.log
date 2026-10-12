@@ -1,0 +1,51 @@
+ServerHello OK: {'server_version': '0.107.0', 'build_commit': 'eccd25f', 'protocol_version': 130, 'mode': 'Full'}
+game HFIJRY; P0 seat=0 P1 seat=1
+P0 keeps (hand=['divination', 'swamp', 'swamp', 'swamp', 'rancor', 'divination', 'shock'], mulls=0)
+P1 keeps (hand=['mountain', 'mountain', 'lightning bolt', 'mountain', 'mountain', 'mountain', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['divination', 'swamp', 'swamp', 'swamp', 'rancor', 'divination'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 plays land swamp
+P1 plays land mountain
+P0 plays land swamp
+P0 casts Nethergoyf
+[p0] cast confirmed (stack): goyf_cast
+P1 plays land mountain
+P1 bolts nethergoyf (oid 39)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=HFIJRY.0.56.t2 kind=sequence (Nethergoyf)
+P0 plays land swamp
+P1 plays land mountain
+P0 plays land swamp
+P1 plays land mountain
+P0 casts Ornithopter
+[p0] cast confirmed (stack): ornithopter
+P1 plays land mountain
+P1 bolts ornithopter (oid 11)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=HFIJRY.0.152.t2 kind=sequence (Ornithopter)
+P1 plays land mountain
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['HFIJRY.0.237.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Rancor', 'available'), ('Divination', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available'), ('Divination', 'available'), ('Rancor', 'available'), ('Shock', 'available')]
+P1 plays land mountain
+P0 plays land swamp
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['HFIJRY.0.297.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Rancor', 'available'), ('Divination', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available'), ('Divination', 'available'), ('Rancor', 'available'), ('Shock', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 39)
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Swamp', 'available'), ('Swamp', 'available'), ('Swamp', 'available'), ('Swamp', 'available'), ('Swamp', 'available')]
+[p0] cast confirmed (stack): escape
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=3 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['HFIJRY.0.318.s0'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Ornithopter', 'available'), ('Divination', 'available'), ('Rancor', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Swamp', 'available'), ('Swamp', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
+server excerpts: 0 matching lines
