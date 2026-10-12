@@ -1,0 +1,42 @@
+{
+ "run_id": "run-6728-reval-v01070-20261012-1111",
+ "date": "2026-10-12",
+ "issue": 6728,
+ "server": {
+  "validated_version": "v0.107.0",
+  "build_commit": "eccd25f",
+  "protocol_version": 130,
+  "server_binary_sha256": "f89957a1e5aa0fc1e68bf61a1eccc4ad6b257bc57d98aa270869fcad78456397",
+  "card_data_sha256": "2021496869e2e86df276f1a07de001d50e7220087d46ac21acd69d04d73f9433",
+  "draft_pools_sha256": "a44926f1b80be0c64e794e5562b9eeccd9d704488a7b02fc3ccca2130eea0d1c",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "server_hello": "0.107.0/eccd25f/protocol 130/Full (live handshake, 127.0.0.1:9374)",
+  "release_dir": "server/releases/v0.107.0",
+  "validator_blob": "crates/phase-server/src/admin.rs blob 3ec97d644e1553bec24d9191fcf6fa7fe8cdcf9a at v0.107.0 tag commit eccd25f; byte-identical to v0.102.0-v0.106.0"
+ },
+ "client": {
+  "checkout": "d44fbcf4076088a80ac0655753b2e0cca8be728c",
+  "p2p_draft_host_ts_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+  "notes": "file bytes identical to 2026-10-11 check; hostDraftCode() still emits draft- + 8 lowercase hex; uploadBackupSnapshot still never checks fetch response status; DraftPodHostAdapter.initialize() (line 324) still passes config.backupEndpoint (blocker #1 still wired)"
+ },
+ "scenario": {
+  "file": "driver/scenario_6728.py",
+  "sha256": "2721c922044b686acae50d53313b03b6019945d4b9438e40a746bc391bc47545",
+  "base": "http://127.0.0.1:9374",
+  "notes": "reused unchanged via BACKFILL_BASE/BACKFILL_RUN_ID env"
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "passed": 10,
+  "failed": 0,
+  "total": 10
+ },
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) against pinned v0.107.0 binary; client-side claims by source inspection at origin/main d44fbcf4",
+ "result": "Client-shaped upload (draft-abc12345) still rejected with 400 Invalid draft code, no row created; contract-valid 6-char uppercase code completes create/retrieve/update/delete. Failure path unchanged since v0.78.0/v0.85.0 runs.",
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at d44fbcf4 (sha256 recorded), not on running the client.",
+  "No game-state pair exists for this report; evidence is HTTP exchanges + source excerpts, per playbook subsystem-equivalent contract."
+ ]
+}
