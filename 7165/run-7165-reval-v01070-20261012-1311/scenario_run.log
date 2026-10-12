@@ -1,0 +1,87 @@
+ServerHello: version=0.107.0 build=eccd25f protocol=130 mode=Full
+game HDQOFD; P0 seat=0; P1 = native AI Medium
+wrote parse_crown.json
+[P0] mulligan -> Mulligan (lands=1)
+[P0] mulligan -> Keep (lands=3)
+[P0] bottoming ['forest'] via vi
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.8 choice=HDQOFD.0.8.c1 (Forest)
+[P0] casting fog (oid=55) proactive AI turn=2 phase=PreCombatMain; needs={'G': 1}
+[P0] fog cast confirmed (oid=55)
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.45 choice=HDQOFD.0.45.c1 (Forest)
+[P0] casting fog (oid=58) proactive AI turn=4 phase=Upkeep; needs={'G': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.58 choice=HDQOFD.0.58.c1 (Forest)
+[P0] fog cast confirmed (oid=58)
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.126 choice=HDQOFD.0.126.c1 (Forest)
+Crown of Skemfar on AI BF oid=105 turn=8 attached_to oid=119 name='Llanowar Elves' controller=1
+exported mid_attach.json
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.167 choice=HDQOFD.0.167.c1 (Forest)
+[P0] casting back to nature (oid=16) Crown on AI BF x1; needs={'G': 2, 'generic': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.169 choice=HDQOFD.0.169.c7 (Forest)
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.170 choice=HDQOFD.0.170.c7 (Forest)
+[P0] back to nature cast confirmed (oid=16)
+Crown in AI graveyard turn=9; watch window until turn 21
+exported mid_graveyard.json
+AI RETURN ACTIVATION #1: on stack id=121 turn=10
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.209 choice=HDQOFD.0.209.c1 (Forest)
+[P0] casting back to nature (oid=20) Crown on AI BF x1; needs={'G': 2, 'generic': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.211 choice=HDQOFD.0.211.c5 (Forest)
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.212 choice=HDQOFD.0.212.c5 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=HDQOFD.0.213 choice=HDQOFD.0.213.c5 (Forest)
+[P0] back to nature cast confirmed (oid=20)
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.256 choice=HDQOFD.0.256.c1 (Forest)
+[P0] casting nourish (oid=21) life=10; needs={'G': 1, 'generic': 2}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.258 choice=HDQOFD.0.258.c3 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=HDQOFD.0.259 choice=HDQOFD.0.259.c3 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=HDQOFD.0.260 choice=HDQOFD.0.260.c3 (Forest)
+[P0] nourish cast confirmed (oid=21)
+AI RETURN ACTIVATION #2: on stack id=122 turn=14
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.309 choice=HDQOFD.0.309.c1 (Forest)
+[P0] casting nourish (oid=51) life=9; needs={'G': 1, 'generic': 2}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.311 choice=HDQOFD.0.311.c1 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=HDQOFD.0.312 choice=HDQOFD.0.312.c1 (Forest)
+[P0] tap land for mana used_for=generic
+[P0] submitting interaction iid=HDQOFD.0.313 choice=HDQOFD.0.313.c1 (Forest)
+[P0] nourish cast confirmed (oid=51)
+[P0] casting fog (oid=6) proactive AI turn=18 phase=Upkeep; needs={'G': 1}
+[P0] tap land for mana used_for=G
+[P0] submitting interaction iid=HDQOFD.0.364 choice=HDQOFD.0.364.c1 (Forest)
+[P0] fog cast confirmed (oid=6)
+[P0] playing land forest via vi
+[P0] submitting interaction iid=HDQOFD.0.393 choice=HDQOFD.0.393.c1 (Forest)
+game over; exporting post.json before session expires
+export post.json FAILED: export failed: {'message': "This socket's game session identity is no longer current"}
+export post.json FAILED: export failed: {'message': "This socket's game session identity is no longer current"}
+loaded mid_attach.json
+loaded mid_graveyard.json
+A1_setup_ok: passed
+A2_correct_target: passed
+A3_return_observed: not-run
+A4_no_return_loop: not-run
+A5_cleanup: passed
+note: A1: Crown observed on AI BF oid=105 turn=8
+note: A2: enchanted creature oid=119 (Llanowar Elves) controlled by the AI itself (seat 1) - correct target choice
+note: A3 not-run: watch window interrupted (game_over=True stall=False turns_seen=20) before the 12-turn window closed
+note: A4 not-run: return leg never started or watch interrupted
+note: A5: game over (post.json unexportable: session invalidated at game end); stall=False turns_seen=20
+VERDICT: blocked
+wrote run.json
+server excerpts: 0 lines for HDQOFD
+wrote summary.png
