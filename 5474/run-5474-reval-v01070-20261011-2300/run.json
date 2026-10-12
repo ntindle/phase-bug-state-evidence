@@ -1,0 +1,163 @@
+{
+  "issue": 5474,
+  "sibling_issue": 5487,
+  "run_id": "run-5474-reval-v01070-20261011-2300",
+  "started_at": "2026-10-11T22:44:19-0500",
+  "duration_s": 160.3,
+  "server": {
+    "server_version": "v0.107.0",
+    "build_commit": "eccd25f",
+    "protocol_version": 130,
+    "mode": "Full",
+    "server_binary_sha256": "f89957a1e5aa0fc1e68bf61a1eccc4ad6b257bc57d98aa270869fcad78456397",
+    "card_data_sha256": "2021496869e2e86df276f1a07de001d50e7220087d46ac21acd69d04d73f9433",
+    "draft_pools_sha256": "a44926f1b80be0c64e794e5562b9eeccd9d704488a7b02fc3ccca2130eea0d1c",
+    "signature_verified": true,
+    "signature_note": "v0.107.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+    "server_run_id": "backfill-owned isolated v0.107.0 server on 127.0.0.1:9374 (pid 4062, phase-server-slim-x86_64-unknown-linux-musl from the pinned v0.107.0 release dir; NOT started by this run -- reused the live backfill-owned process; this run's own ServerHello handshake 0.107.0/eccd25f/protocol 130 verifies the identity)",
+    "source": "2026-10-11: latest stable release v0.107.0 (published 2026-10-11T17:08:47Z) == pinned release dir; ServerHello 0.107.0/eccd25f/protocol 130 verified by handshake this run; hashes recomputed against on-disk artifacts this run"
+  },
+  "server_port": 9374,
+  "driver": {
+    "protocol_advertised": 130,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "19a31d6a6615f8ca92111d0cdd6c131a3477e8e0d01c044c89f493610478fcf8",
+  "decks": {
+    "G1P0": "12x tony stark + 24x island + 24x mountain",
+    "G1P1": "60x forest",
+    "G2P0": "12x tergrid, god of fright + 48x swamp",
+    "G2P1": "60x forest"
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_modal_offered": "passed",
+    "A3_choice_accepted": "passed",
+    "A4_front_completes": "passed",
+    "A5_back_reachable": "failed",
+    "A6_cleanup": "not-run",
+    "B1_tergrid_setup": "passed",
+    "B2_tergrid_offered": "passed",
+    "B3_tergrid_accepted": "passed",
+    "B4_tergrid_completes": "passed"
+  },
+  "notes": [
+    "v0.107.0 OBSERVED: cast-2 ModalFaceChoice offered faces=['front'] only (back face never offered even with {3}{R}{R} available). The exploratory ChooseModalFace back_face=true was EXPLICITLY REJECTED (ActionRejected action_not_allowed, 'That action is not allowed right now.') -- same behavior change as v0.106.0, versus v0.105.0's silent consumption. After the rejection the revision froze (rev 155, 90s+, no client holding priority); the authoritative mid_stall.json export shows the ModalFaceChoice decision for oid 31 (Tony Stark, zone Hand) still PENDING with canSubmit=true -- the post-probe stall was the driver's tick-loop limitation (no re-tick without revision change or priority), not an engine freeze. Captured mid_stall.json and moved to game 2 (Tergrid).",
+    "rejections=1 (ActionRejected action_not_allowed on the back_face=true probe) face1_opps=1 face2_opps=1 g2_opps=1 back_probe_accepted=False",
+    "A1: active=0 phase=PreCombatMain tony_in_hand=True untapped_islands=2",
+    "A2: ModalFaceChoice wait seen; faces=[('front', 'front')]; canSubmit=True; kind=choose; chooseModalFace actions=1; actionable=True",
+    "A3: front-face choice accepted; cast resolved to Tony Stark on the battlefield",
+    "A4: tony on P0 BF=[17]; stack_empty=True; life=20/20; turn=4 phase=PreCombatMain",
+    "A5: cast-2 ModalFaceChoice offered faces=['front'] only (back_probe advertised as legacy action=False); exploratory ChooseModalFace back_face=true EXPLICITLY REJECTED (ActionRejected action_not_allowed). Per CR 712.8a the caster chooses which face to cast, so Iron Man, Tony Stark ({3}{R}{R}) is not safely selectable. mid_stall.json: ModalFaceChoice still pending for oid 31, canSubmit=true.",
+    "A6: post.json missing",
+    "B2: Tergrid ModalFaceChoice faces=[('front', 'front'), ('back', 'back')] actionable=True",
+    "B4: tergrid on P0 BF=[13]; turn=10 phase=PreCombatMain",
+    "RELATED FAILURE: the v0.20.0 hard stall is gone, but the back face is not safely selectable on this build -- it is never offered at the cast-2 ModalFaceChoice, and the constructed back_face=true submission is explicitly rejected (ActionRejected action_not_allowed) rather than applied. The 'select which side' decision remains broken."
+  ],
+  "observations": {
+    "rejections": [],
+    "face1_opps": [
+      {
+        "tag": "g1_cast1",
+        "kind_code": "choose",
+        "interaction_ids": [
+          "HZYAF3.0.57"
+        ],
+        "response_types": [
+          "exactChoices"
+        ],
+        "faces": [
+          {
+            "id": "HZYAF3.0.57.c0",
+            "face": "front",
+            "text": "front",
+            "status": "available"
+          }
+        ],
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          }
+        ]
+      }
+    ],
+    "face2_opps": [
+      {
+        "tag": "g1_cast2",
+        "kind_code": "choose",
+        "interaction_ids": [
+          "HZYAF3.0.155"
+        ],
+        "response_types": [
+          "exactChoices"
+        ],
+        "faces": [
+          {
+            "id": "HZYAF3.0.155.c0",
+            "face": "front",
+            "text": "front",
+            "status": "available"
+          }
+        ],
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          }
+        ]
+      }
+    ],
+    "g2_opps": [
+      {
+        "tag": "g2_cast1",
+        "kind_code": "choose",
+        "interaction_ids": [
+          "B42LYC.0.143"
+        ],
+        "response_types": [
+          "exactChoices"
+        ],
+        "faces": [
+          {
+            "id": "B42LYC.0.143.c0",
+            "face": "front",
+            "text": "front",
+            "status": "available"
+          },
+          {
+            "id": "B42LYC.0.143.c1",
+            "face": "back",
+            "text": "back",
+            "status": "available"
+          }
+        ],
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          },
+          {
+            "back_face": true
+          }
+        ]
+      }
+    ],
+    "back_probe_sent": true,
+    "back_probe_advertised": false,
+    "back_probe_accepted": null,
+    "tony1_on_bf": true,
+    "ironman_on_bf": null,
+    "tergrid_on_bf": true
+  },
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "12x MDFC / high land density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "The reporter cast Tony Stark as a commander; the scenario casts it from the main deck. The ModalFaceChoice decision type is identical.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "The back_face=true probe was submitted via the legacy ChooseModalFace action path and is logged as exploratory; on cast 2 the engine advertised that exact action (back_probe_advertised in observations), on cast 1 it did not."
+  ],
+  "setup_line": "G1 P0: 12x tony stark + 24x island + 24x mountain; G1 P1: 60x forest. G2 P0: 12x tergrid, god of fright + 48x swamp; G2 P1: 60x forest.",
+  "contract_line": "Cast the MDFC at main-phase priority; the ModalFaceChoice must offer an actionable face selection, the selection must be accepted, the cast must resolve, and (per CR 712.8a) the back face must be selectable."
+}
