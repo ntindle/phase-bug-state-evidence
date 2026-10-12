@@ -1,0 +1,53 @@
+Client re-validation for phase-rs/phase #5175
+(run run-5175-reval-20261012-0415, 2026-10-12)
+
+Client identity:
+- Repo: phase-rs/phase (https://github.com/phase-rs/phase)
+- Mainline checkout: existing shallow clone
+  (~/workspace/dev/phase-backfill/checkout-5175-20261009), HEAD 965e2432
+  ("release: v0.105.0", 2026-10-09). Current mainline HEAD 9b6f354f7c8400dea9c63eaed1ea99ddda3e7a79
+  ("docs(engine): describe the client wire as viewer-filtered (#9823)",
+  2026-10-12T04:16:02Z) fetched shallowly into the same checkout.
+- Target file: client/src/viewmodel/costLabel.ts — VERIFIED BYTE-IDENTICAL
+  between 965e2432 and 9b6f354f (sha256
+  fd78b073fc5852f401c86ab84b9ad0c8be9e8463dd87c0909da6fa4a715be5a3
+  on both). Unguarded `case "Choice"` still at lines 786-793 in current mainline.
+  The only client diff 965e2432..9b6f354f touching the test's imports is
+  client/src/adapter/types.ts (unrelated additions: CopyTargetSlot fields,
+  MulliganDecision free_reveals_taken, new WaitingFor variants; zero mentions of
+  AdditionalCost; types are erased at runtime in any case).
+- Test file: client/src/viewmodel/__tests__/costLabel.test.ts (repo pins vitest
+  ^4.1.0; ran 4.1.11, node v24.20.0). Unchanged 965e2432..9b6f354f.
+- npm install --legacy-peer-deps --ignore-scripts (pre-existing node_modules from
+  the 2026-10-09 run reused; @esbuild/linux-x64 0.25.12 binary already provisioned).
+
+PR state (checked 2026-10-12 via GitHub API):
+- PR #5175 "fix(client): guard additionalCostChoices Choice branch against a short payload"
+- state: open, merged: false, merged_at: null
+- head: 39b86ba50e28d365a9732e223c7622c5293e269e (jeffrey701:fix/costlabel-choice-guard)
+- base: 05a4c9f6a0d93ac5c0b283a002869db7c00574ea (main)
+- updated: 2026-10-09T18:11:57Z (unchanged since the 2026-10-09 re-validation)
+
+Guard variant:
+- Fresh shallow checkout copy (~/workspace/dev/phase-backfill/checkout-5175-20261012-guarded,
+  no .git; client/node_modules symlinked to the main checkout's install).
+- The PR's published costLabel.ts patch (fetched from the PR files API this run;
+  byte-identical to the 2026-10-09 saved patch modulo git headers) applied with
+  `git apply -C0` to the guarded copy. Applied lines verified identical to the
+  published diff.
+- NOTE: the PR also ships a new test block in costLabel.test.ts (25 additions);
+  saved here as costlabel-test-5175.patch for reference but NOT applied to the
+  guarded copy — the backfill contract test (contract5175.test.ts) is the
+  independent assertion vehicle, and the existing suite (33/33) is the regression
+  check.
+
+Scope/limitations:
+- Client-subsystem test only: no engine game session; whether the engine can actually
+  emit a short Choice payload was not exercised.
+- Only the Choice branch exercised; other additionalCostChoices branches not re-driven
+  beyond the existing suite.
+- No DOM/browser involved: the crash is in a pure viewmodel function, and the PR's
+  own verification is vitest.
+- The target file is byte-identical between the last validated mainline (965e2432)
+  and current mainline (9b6f354f); the vitest runs executed against the 965e2432
+  tree, which is the identical code under test.
