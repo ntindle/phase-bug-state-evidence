@@ -1,0 +1,45 @@
+ServerHello: 0.107.0/eccd25f/protocol 130/Full
+game DSHQ5N; P0 seat=0 P1 seat=1
+[P0] keep 7: ['deadpool, trading card', 'swamp', 'grizzly bears', 'mountain', 'mountain', 'deadpool, trading card', 'deadpool, trading card'] (mull_count=1)
+[P1] keep 7: ['forest', 'lightning bolt', 'forest', 'forest', 'grizzly bears', 'lightning bolt', 'forest'] (mull_count=1)
+DIAG turn=1 active=1 phase=Untap legal=['MulliganDecision', 'MulliganDecision', 'MulliganDecision', 'MulliganDecision'] vikind=mulligan P0hand=['deadpool, trading card', 'swamp', 'grizzly bears', 'mountain', 'mountain', 'deadpool, trading card'] dp_entered=False p1_bears_bf=0 life=20/20 stage=setup exp={"pre": false, "entry": false, "post": false}
+[P0] playing land swamp
+[P1] casting Grizzly Bears (exchange candidate; turn 3)
+[p1] cast confirmed (stack): bear
+[P0] playing land mountain
+[P0] playing land mountain
+[P0] discarding to hand size via vi: ['grizzly bears']
+[P0] playing land mountain
+exported pre.json (turn=10 phase=PreCombatMain)
+[P0] casting Deadpool, Trading Card (primary; p1_bears=[63], turn=10)
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.149 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[p0] cast confirmed (stack): deadpool
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.151 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] Deadpool ENTERED battlefield oid=5 turn=10 phase=PreCombatMain p/t=5/3
+[P0] exchange candidates (P1 creatures) at entry: []
+exported entry.json (turn=10 phase=PreCombatMain)
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.153 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.155 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.157 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.159 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.162 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.164 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.167 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.169 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.172 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.174 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.176 rtype=exactChoices flavored=False codes=['candidate', 'passPriority']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.177 rtype=exactChoices flavored=False codes=['activateAbility', 'candidate', 'castSpell', 'passPriority', 'tapLandForMana']
+[P0] ActivateAbility advertised for Deadpool: {'ability_index': 1, 'source_id': 5}
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.179 rtype=exactChoices flavored=False codes=['activateAbility', 'candidate', 'castSpell', 'passPriority', 'tapLandForMana']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.181 rtype=exactChoices flavored=False codes=['activateAbility', 'candidate', 'castSpell', 'passPriority', 'tapLandForMana']
+[P0] ENTRY-WINDOW prompt iid=DSHQ5N.0.183 rtype=exactChoices flavored=False codes=['activateAbility', 'candidate', 'castSpell', 'passPriority', 'playLand', 'tapLandForMana']
+[P0] entry window closed (5s); exchange_prompt_seen=False kinds_seen=['candidate', 'passPriority', 'activateAbility', 'castSpell', 'tapLandForMana', 'playLand']
+[P0] playing land mountain
+P0 declares no attackers (turn 12)
+[P0] upkeep entered (turn 14), life before=17
+[P0] upkeep trigger RESOLVED: life 17->14
+exported post.json (turn=14 phase=Upkeep)
+post exported; finishing
+server.log excerpt failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/run-7172-reval-v01070-20261012-1045/server.log'
+saved summary.png (50591 bytes)
