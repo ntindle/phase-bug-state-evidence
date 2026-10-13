@@ -1,0 +1,64 @@
+[01:33:10] starting issue #9839 run run-9839-v01080-20261013-0111
+[01:33:10] ServerHello: version=0.108.0 build=b8fa1d3 protocol=134 mode=Full
+[01:33:10] parse summary: {"taster": {"trigger_mode": "ChangesZone", "trigger_valid_target": {"type": "Player"}, "reveal_effect": "RevealHand", "reveal_count": {"type": "Ref", "qty": {"type": "ObjectCount", "filter": {"type": "Typed", "type_filters": [{"Subtype": "Goblin"}], "controller": "You", "properties": []}}}, "declares_chosen_group": 2147483648, "sub_effect": "ChooseFromZone", "sub_sub_effect": "ChangeZone", "oracle_text": "When this creature enters, target opponent reveals X cards from their hand, where X is the number of Goblins you control. You choose one of those cards. That player exiles it. If an instant or sorcery card is exiled this way, you may cast it for as long as you control this creature, and mana of any type can be spent to cast that spell."}, "sprite": {"trigger_mode": "ChangesZone", "trigger_valid_target": {"type": "Player"}, "reveal_effect": "RevealHand", "reveal_count": {"type": "Ref", "qty": {"type": "ObjectCount", "filter": {"type": "Typed", "type_filters": [{"Subtype": "Faerie"}], "controller": "You", "properties": []}}}, "declares_chosen_group": 2147483648, "sub_effect": "ChooseFromZone", "sub_sub_effect": "DiscardCard", "oracle_text": "Flying\nWhen this creature enters, target player reveals X cards from their hand, where X is the number of Faeries you control. You choose one of those cards. That player discards that card."}}
+[01:33:11] [A] game 3MUR9L P0seat=0 P1seat=1
+[01:33:11] [P0] mulligan #2 (7: ['swamp', 'mountain', 'mountain', 'swamp', 'mountain', 'akki avalanchers', 'mountain'])
+[01:33:11] [P1] keep 7: ['island', 'lightning bolt', 'lightning bolt', 'island', 'island', 'island', 'island']
+[01:33:11] [A] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[01:33:12] [P0] keep 7: ['mountain', 'mountain', 'taster of wares', 'mountain', 'swamp', 'mountain', 'mountain']
+[01:33:12] [P0] bottoming ['Mountain'] via vi
+[01:33:12] [P0] playing land mountain
+[01:33:15] [P1] discarding to hand size via vi: picks=['3MUR9L.0.23.c1']
+[01:33:20] [P1] playing land island
+[01:33:22] [P0] playing land mountain
+[01:33:25] [P1] discarding to hand size via vi: picks=['3MUR9L.0.53.c1']
+[01:33:31] [P1] playing land island
+[01:33:33] [P0] playing land mountain
+[01:33:33] [P0] casting akki avalanchers (oid=22)
+[01:33:34] [P0] cast confirmed (stack): akki avalanchers oid 22
+[01:33:34] [A] P0 main phase: exporting PRE_CAST_A, casting taster of wares
+[01:33:35] [A] P0 main phase: exporting PRE_CAST_A, casting taster of wares
+[01:33:36] [P1] discarding to hand size via vi: picks=['3MUR9L.0.86.c1']
+[01:33:42] [P1] playing land island
+[01:33:44] [P0] playing land swamp
+[01:33:44] [A] P0 main phase: exporting PRE_CAST_A, casting taster of wares
+[01:33:44] [P0] casting taster of wares (oid=31)
+[01:33:45] [P0] cast confirmed (stack): taster of wares oid 31
+[01:33:45] [A] exported PRE_RESOLVE_A (x=2, P1hand=7)
+[01:33:45] [A] taster of wares on battlefield; cast confirmed
+[01:33:45] [P0] CHOOSE-1 offered: 2 candidates [Lightning Bolt:?; Lightning Bolt:?]
+[01:33:45] [P0] answering choose-1: picked LAST candidate 'Lightning Bolt'
+[01:33:46] [A] exported POST_A (rev_advanced=True, p1_lost_card=False, timed_out=False); done
+[01:33:46] [A] done flag set; finishing game
+[01:33:46] [A] game A finished ok=True
+[01:33:46] [B] game RRTOWZ P0seat=0 P1seat=1
+[01:33:46] [P0] mulligan #2 (7: ['island', 'island', 'cloud sprite', 'swamp', 'swamp', 'island', 'swamp'])
+[01:33:46] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[01:33:46] [B] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[01:33:46] [P0] keep 7: ['swamp', 'thieving sprite', 'island', 'eye collector', 'cloud sprite', 'swamp', 'thieving sprite']
+[01:33:47] [P0] bottoming ['Swamp'] via vi
+[01:33:47] [P1] playing land island
+[01:33:50] [P0] playing land swamp
+[01:33:51] [P0] casting eye collector (oid=30)
+[01:33:51] [P0] cast confirmed (stack): eye collector oid 30
+[01:33:54] [P1] playing land island
+[01:33:56] [P0] playing land island
+[01:33:56] [P0] casting cloud sprite (oid=5)
+[01:33:57] [P0] cast confirmed (stack): cloud sprite oid 5
+[01:33:57] [B] P0 main phase: exporting PRE_CAST_B, casting thieving sprite
+[01:33:58] [B] P0 main phase: exporting PRE_CAST_B, casting thieving sprite
+[01:34:00] [P1] playing land island
+[01:34:02] [P0] playing land island
+[01:34:02] [B] P0 main phase: exporting PRE_CAST_B, casting thieving sprite
+[01:34:02] [P0] casting thieving sprite (oid=40)
+[01:34:03] [P0] cast confirmed (stack): thieving sprite oid 40
+[01:34:03] [P0] trigger target prompt: answering P1 (seat 1)
+[01:34:03] [P0] submitting advertised target: id=RRTOWZ.0.94.t1 kind=sequence seat=1 ()
+[01:34:05] [B] exported PRE_RESOLVE_B (x=3, P1hand=6)
+[01:34:05] [B] thieving sprite on battlefield; cast confirmed
+[01:34:05] [P0] CHOOSE-1 offered: 3 candidates [Island:?; Island:?; Island:?]
+[01:34:05] [P0] answering choose-1: picked LAST candidate 'Island'
+[01:34:05] [B] exported POST_B (rev_advanced=True, p1_lost_card=False, timed_out=False); done
+[01:34:05] [B] done flag set; finishing game
+[01:34:05] [B] game B finished ok=True
+[01:34:05] rendered summary.png
