@@ -1,0 +1,92 @@
+{
+ "issue": 9857,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9857",
+ "run_id": "run-9857-v01090-20261013-1745",
+ "started_at": "2026-10-13T22:34:35",
+ "finished_at": "2026-10-13T22:35:34",
+ "duration_s": 58.8,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); fresh game created by this run; evidence under evidence/9857/run-9857-v01090-20261013-1745"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9857/run-9857-v01090-20261013-1745",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a26571015aacac930d7d9225e85f1be746b54fd908cc0e52059d77c0d513b04a",
+ "decks": {
+  "P0": [
+   [
+    "Plains",
+    44
+   ],
+   [
+    "Holy Strength",
+    8
+   ],
+   [
+    "Teferi's Protection",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    22
+   ],
+   [
+    "Swamp",
+    22
+   ],
+   [
+    "Prodigal Pyromancer",
+    8
+   ],
+   [
+    "Wall of Putrid Flesh",
+    8
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_baseline_prevented": "passed",
+  "A3_phaseout": "passed",
+  "A4_decisive": "failed",
+  "A5_bonus_dropped": "passed"
+ },
+ "notes": [
+  "A1 passed: Holy Strength (oid 33) attached to Prodigal Pyromancer (oid 82); Pyromancer was 2/3 while the Aura was phased in (+1/+2 applied)",
+  "A2 passed: baseline ping (Aura phased in) was PREVENTED -- Wall damage_marked stayed 0; the prevention machinery is live",
+  "A3 passed: after Teferi's Protection, Holy Strength is PhasedOut while the Pyromancer and Wall are PhasedIn (pyro P/T at phase-out: (1, 1))",
+  "A4 FAILED (the reported bug): post-phase ping damage was STILL prevented (Wall damage_marked == 0) with the Holy Strength phased out -- the EnchantedBy fallback counted the phased-out Aura",
+  "A5 passed (observation): the Pyromancer is 1/1 right after the phase-out -- the phased-out Aura's own static no longer applies",
+  "pre_phase.json captured and parses",
+  "post_phase.json captured and parses",
+  "post_ping1.json captured and parses",
+  "post_ping2.json captured and parses",
+  "final_export.json captured and parses",
+  "protocol-140 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions (targets answered via the engine's vi target selection after CastSpell, CR 601.2c); ActivateAbility submitted while holding priority; priority-gated passes; sleep(0) yield before leg evaluation.",
+  "verdict logic: reproduced = baseline prevention live (A2 passed) and the phase-out happened as designed (A3 passed) but the post-phase ping was still prevented (A4 failed: Wall damage_marked == 0 with the Holy Strength phased out) -- the EnchantedBy fallback counted the phased-out Aura. not-reproduced = the post-phase ping damage went through (A4 passed). blocked = the setup legs never completed."
+ ],
+ "verdict": "reproduced",
+ "result": "A1 passed; A2 passed; A3 passed; A4 failed; A5 passed",
+ "scope": "Wall of Putrid Flesh 'enchanted creatures' prevention filter (FilterProp::EnchantedBy fallback, non-Aura source) against a creature whose only Aura is phased out; two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The ping legs require the Pyromancer untapped in its controller's main phase with an empty stack; missed windows mark the leg not-run.",
+  "Phase-status reads use the runtime object's phase_status field; the verbatim objects are preserved in the exported states."
+ ],
+ "setup_line": "P0 44x Plains + 8x Holy Strength ({W} Aura, +1/+2) + 8x Teferi's Protection ({2}{W}); P1 22x Mountain + 22x Swamp + 8x Prodigal Pyromancer ({2}{R} 1/1, {T}: 1 damage to any target) + 8x Wall of Putrid Flesh ({2}{B} 2/4, prevent all damage by enchanted creatures)",
+ "contract_line": "Baseline: ping the Wall while the Pyromancer is enchanted -> damage prevented (Wall damage 0). Phase out the Holy Strength via Teferi's Protection. Post-phase ping -> damage must go through (Wall damage 1) per CR 702.26b; still prevented (damage 0) = the reported bug."
+}

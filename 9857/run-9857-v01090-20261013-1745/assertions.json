@@ -1,0 +1,24 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_baseline_prevented": "passed",
+  "A3_phaseout": "passed",
+  "A4_decisive": "failed",
+  "A5_bonus_dropped": "passed"
+ },
+ "notes": [
+  "A1 passed: Holy Strength (oid 33) attached to Prodigal Pyromancer (oid 82); Pyromancer was 2/3 while the Aura was phased in (+1/+2 applied)",
+  "A2 passed: baseline ping (Aura phased in) was PREVENTED -- Wall damage_marked stayed 0; the prevention machinery is live",
+  "A3 passed: after Teferi's Protection, Holy Strength is PhasedOut while the Pyromancer and Wall are PhasedIn (pyro P/T at phase-out: (1, 1))",
+  "A4 FAILED (the reported bug): post-phase ping damage was STILL prevented (Wall damage_marked == 0) with the Holy Strength phased out -- the EnchantedBy fallback counted the phased-out Aura",
+  "A5 passed (observation): the Pyromancer is 1/1 right after the phase-out -- the phased-out Aura's own static no longer applies",
+  "pre_phase.json captured and parses",
+  "post_phase.json captured and parses",
+  "post_ping1.json captured and parses",
+  "post_ping2.json captured and parses",
+  "final_export.json captured and parses",
+  "protocol-140 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions (targets answered via the engine's vi target selection after CastSpell, CR 601.2c); ActivateAbility submitted while holding priority; priority-gated passes; sleep(0) yield before leg evaluation.",
+  "verdict logic: reproduced = baseline prevention live (A2 passed) and the phase-out happened as designed (A3 passed) but the post-phase ping was still prevented (A4 failed: Wall damage_marked == 0 with the Holy Strength phased out) -- the EnchantedBy fallback counted the phased-out Aura. not-reproduced = the post-phase ping damage went through (A4 passed). blocked = the setup legs never completed."
+ ],
+ "verdict": "reproduced"
+}
