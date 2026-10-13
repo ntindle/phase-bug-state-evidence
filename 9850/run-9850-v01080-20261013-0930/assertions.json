@@ -1,0 +1,23 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_cast_ok": "failed",
+  "A4_attack_restricted": "not-run",
+  "A5_ability_restricted": "not-run",
+  "A2_parse_gate": "failed",
+  "A6_data_shape": "passed"
+ },
+ "notes": [
+  "A3 FAILED: Gobsmacked uncastable in-game -- 8 consecutive P0 main phases with the card in hand and >=2 untapped lands, zero cast actions advertised (see cast_diag wire entries). The card does not 'show as supported' in-game; it is effectively dead.",
+  "pre_cast.json missing/unparseable",
+  "post_cast.json missing/unparseable",
+  "A4 not-run: no P1 DeclareAttackers step observed after the aura resolved",
+  "A5 not-run: no P1 main phase observed after the aura resolved",
+  "parse: gate_dropped=True modes=['CantAttackOrBlock', 'CantBeActivated'] conditions=[None, None] swallow_warnings=1",
+  "attack step: None",
+  "ability check: None",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The Aura target prompt is answered with the chosen creature; any other prompt during the cast (e.g. the Unimplemented 'choose a person outside the game' ETB) is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'as long as' gate (both statics condition null, concrete modes, SwallowedClause/Condition_AsLongAs warning) -- the reported outcome. not-reproduced = the gate is present as a real or explicit-unknown condition, or the card reads unsupported."
+ ],
+ "verdict": "reproduced"
+}
