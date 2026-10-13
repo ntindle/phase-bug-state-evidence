@@ -1,0 +1,220 @@
+{
+ "issue": 9843,
+ "run_id": "run-9843-v01080-20261013-0415",
+ "started_at": "2026-10-13T08:58:43",
+ "duration_s": 85.6,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-12 16:20 run; binary digest matches the GitHub asset digest); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server on 127.0.0.1:9374 started by this run backfill-20261013-084136"
+ },
+ "server_run_dir": "runs/backfill-20261013-084136",
+ "parse_summary": {
+  "unless_pay": {
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [],
+     "generic": 1
+    }
+   },
+   "payer": {
+    "type": "ParentTargetController"
+   }
+  },
+  "oracle_text": "{T}: Counter target spell unless its controller pays {1} and 1 life."
+ },
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_9843_01080.py"
+ },
+ "scenario_sha256": "2a9766dec82909535b70d566852987fb0b9fe94e2aa74c3832171dbf4327c4cc",
+ "decks": {
+  "P0": [
+   [
+    "shock",
+    8
+   ],
+   [
+    "mountain",
+    52
+   ]
+  ],
+  "P1": [
+   [
+    "mundungu",
+    8
+   ],
+   [
+    "island",
+    26
+   ],
+   [
+    "swamp",
+    26
+   ]
+  ]
+ },
+ "games": {
+  "pay": {
+   "ok": true,
+   "notes": [
+    "unless opportunity archived: /home/hatch/workspace/dev/phase-backfill/evidence/9843/run-9843-v01080-20261013-0415/opportunity_unless_pay_VW4WPD_0_139.json"
+   ],
+   "prompt_log": []
+  },
+  "decline": {
+   "ok": true,
+   "notes": [
+    "unless opportunity archived: /home/hatch/workspace/dev/phase-backfill/evidence/9843/run-9843-v01080-20261013-0415/opportunity_unless_decline_1UV314_0_123.json",
+    "A1: unless_pay={\"cost\": {\"type\": \"Mana\", \"cost\": {\"type\": \"Cost\", \"shards\": [], \"generic\": 1}}, \"payer\": {\"type\": \"ParentTargetController\"}}",
+    "A4: unless_prompt_seen=True offered_has_life=False choice_text='pay=false'",
+    "A6: post P1_life=20 P0_life=20 shock_gy=True stack_empty=True"
+   ],
+   "prompt_log": []
+  }
+ },
+ "observations": {
+  "snaps": {
+   "pay": {
+    "pre_ability": {
+     "P0": [
+      6,
+      49,
+      0
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 20
+    },
+    "pre_unless": {
+     "P0": [
+      6,
+      49,
+      0
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 20
+    },
+    "post": {
+     "P0": [
+      5,
+      49,
+      1
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 18
+    }
+   },
+   "decline": {
+    "pre_ability": {
+     "P0": [
+      7,
+      49,
+      0
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 20
+    },
+    "pre_unless": {
+     "P0": [
+      7,
+      49,
+      0
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 20
+    },
+    "post": {
+     "P0": [
+      6,
+      49,
+      1
+     ],
+     "P1": [
+      4,
+      51,
+      0
+     ],
+     "P0_life": 20,
+     "P1_life": 20
+    }
+   }
+  },
+  "snap_lines": [
+   "pre_ability: P0 hand/lib/gy=(6, 49, 0) life=20 | P1 hand/lib/gy=(4, 51, 0) life=20",
+   "pre_unless: P0 hand/lib/gy=(6, 49, 0) life=20 | P1 hand/lib/gy=(4, 51, 0) life=20",
+   "post: P0 hand/lib/gy=(5, 49, 1) life=20 | P1 hand/lib/gy=(4, 51, 0) life=18"
+  ],
+  "outcome_lines": [
+   "post: P0_life=20 P1_life=18 shock_in_P0_gy=True stack_empty=True",
+   "unless_prompt_seen=True answered=True offered_has_life=False choice='pay=true'"
+  ],
+  "unless_choice_text": "pay=true",
+  "unless_offered_has_life": false
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_target": "passed",
+  "A4_unless": "passed",
+  "A5_pay": "failed",
+  "A7_cleanup": "passed"
+ },
+ "assertions_decline": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_target": "passed",
+  "A4_unless": "passed",
+  "A6_decline": "passed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "unless opportunity archived: /home/hatch/workspace/dev/phase-backfill/evidence/9843/run-9843-v01080-20261013-0415/opportunity_unless_pay_VW4WPD_0_139.json",
+  "A1: unless_pay={\"cost\": {\"type\": \"Mana\", \"cost\": {\"type\": \"Cost\", \"shards\": [], \"generic\": 1}}, \"payer\": {\"type\": \"ParentTargetController\"}}",
+  "A4: unless_prompt_seen=True offered_has_life=False choice_text='pay=true'",
+  "A5: post P1_life=18 P0_life=20 shock_gy=True stack_empty=True"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Not tested on the original build; verdict is scoped to v0.108.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 8x shock + 52 mountain vs P1 8x mundungu + 26 island + 26 swamp (P1 casts Mundungu turn 3; P0 casts Shock targeting P1 on turn 5; P1 activates Mundungu targeting Shock; P0 pays/declines the unless cost).",
+ "contract_line": "Per the issue's Expected: the spell's controller must pay both {1} and 1 life to avoid being countered. The reported bug: paying {1} alone avoids the counter (life stays 20)."
+}
