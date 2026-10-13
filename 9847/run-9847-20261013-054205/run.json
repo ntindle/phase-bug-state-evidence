@@ -1,0 +1,84 @@
+{
+ "issue": 9847,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9847",
+ "run_id": "run-9847-20261013-054205",
+ "started_at": "2026-10-13T11:04:16",
+ "finished_at": "2026-10-13T11:07:34",
+ "duration_s": 198.1,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 already running from the 05:13 run; scenario games created via CreateGameWithSettings; evidence under evidence/9847/run-9847-20261013-054205"
+ },
+ "server_run_dir": "runs/run-9846-20261013-051252 (v0.108.0 server on 127.0.0.1:9374 started 05:13 by the #9846 run; evidence under evidence/9847/run-9847-20261013-054205)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "fb68acfb174b1303e6f50a3bb0d86805c1ca09ebf4c3f01e254783f3387bbaa4",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    52
+   ],
+   [
+    "Teferi, Temporal Pilgrim",
+    4
+   ],
+   [
+    "Aegis Turtle",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    52
+   ],
+   [
+    "Aegis Turtle",
+    8
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_fixture_ok": "passed",
+  "A3_pre_ult_export": "passed",
+  "A4_bug_outcome": "failed",
+  "A5_correct_outcome": "failed",
+  "A6_opp_never_asked": "passed",
+  "A7_data_shape": "passed",
+  "A8_binding_defect": "passed"
+ },
+ "notes": [
+  "ambiguous board outcome: pre P0=2 P1=3 post P0=1 P1=3; teferi_present_post=True; see wire log",
+  "pre-ult counts: {'p0_turtles': 2, 'p1_turtles': 3}; post-ult counts: {'p0_turtles': 1, 'p1_turtles': 3, 'teferi_present': True, 'p0_hand_size': 6, 'p1_hand_size': 3}",
+  "ult target prompt candidates: [{'name': 'island', 'owner_seat': 0, 'surface_ref': '45'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '46'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '23'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '8'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '9'}, {'name': 'teferi, temporal pilgrim', 'owner_seat': 0, 'surface_ref': '22'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '30'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '34'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '16'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '33'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '43'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '51'}, {'name': 'aegis turtle', 'owner_seat': 0, 'surface_ref': '41'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '12'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '57'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '13'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '31'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '20'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '59'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '26'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '11'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '29'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '47'}, {'name': 'aegis turtle', 'owner_seat': 0, 'surface_ref': '15'}]",
+  "P1 offered a real decision during ult window: False",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; loyalty abilities via ActivateAbility matched on Loyalty cost amount ([0] to ramp, -12 at >=12 loyalty); priority-gated passes; sleep(0) yield before leg evaluation; loyalty tracked arithmetically (4 + draw-step triggers + resolved [0] draws) and cross-checked against the state's counter read.",
+  "verdict logic: reproduced = fixture complete and P0's own turtles were bounced/shuffled away (0 remain) while P1's turtles were untouched. not-reproduced = fixture complete and P1's turtles were bounced/shuffled away (0 remain) while P0's were untouched.",
+  "A8 binding_defect=passed: the -12's TargetOnly permanent-choice was offered to the ACTIVATOR (P0), not the target opponent (P1): 24 candidates, all owner_seat=0 (21 Islands + Teferi + 2 turtles = P0's whole battlefield); P1 was never asked (A6 passed). The driver chose an Aegis Turtle; it was bounced to P0's hand (P0 BF turtles 2->1, P0 hand +1 turtle).",
+  "DEVIATION from the issue's data-read inference: the nested ChangeZone (shuffle each nonland permanent the activator controls into its owner's library) did NOT fire at runtime -- P0 kept 1 turtle + Teferi (loyalty 24-12=12) on the battlefield and P1's 3 turtles were untouched. A4 therefore failed on its 'shuffled away' half (bounce half held). Engine-side cause of the non-firing ChangeZone was not isolated; backfill scope is reproduction.",
+  "verdict=reproduced: the reported anaphor-binding defect (choice goes to the wrong player with the wrong candidate set; opponent never asked) reproduced exactly as titled. The shuffle deviation is preserved above, not driven past."
+ ],
+ "verdict": "reproduced",
+ "result": "A1 passed; A2 passed; A3 passed; A4 failed (bounce held, shuffle did not fire); A5 failed; A6 passed; A7 passed; A8 passed; pre P0/P1 turtles=2/3 post P0/P1 turtles=1/3; verdict=reproduced (binding defect; shuffle deviation documented)",
+ "scope": "Teferi, Temporal Pilgrim -12 ability: which player's permanents are bounced/shuffled and whether the opponent is asked; two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "Loyalty tracked arithmetically (4 + resolved draw-step triggers + resolved [0] draws) and cross-checked against the state's counter read when available; see wire log loyalty_check entries.",
+  "The -12's TargetOnly permanent choice is answered by the driver (documented decision: prefer a turtle); the decisive assertion is the resolution outcome (board counts), not the prompt."
+ ],
+ "setup_line": "P0 52x Island + 4x Teferi, Temporal Pilgrim ({3}{U}{U}, loyalty 4) + 4x Aegis Turtle ({U} 0/5); P1 52x Island + 8x Aegis Turtle",
+ "contract_line": "Cast Teferi, ramp loyalty to >=12 via [0] (draw-step + [0] draws each trigger the loyalty counter), then activate -12 at sorcery speed. Expected (correct): target opponent P1 chooses a permanent -> bounced; P1's nonland permanents shuffled into library. Bug: the activator P0's own permanents are bounced/shuffled; P1 never asked."
+}
