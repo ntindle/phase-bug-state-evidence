@@ -1,0 +1,105 @@
+{
+ "ok": true,
+ "notes": [],
+ "oracle_text": "Whenever you draw a card, put a loyalty counter on Teferi.\n[0]: Draw a card.\n[\u22122]: Create a 2/2 blue Spirit creature token with vigilance and \"Whenever you draw a card, put a +1/+1 counter on this token.\"\n[\u221212]: Target opponent chooses a permanent they control and returns it to its owner's hand. Then they shuffle each nonland permanent they control into its owner's library.",
+ "minus12_ability": {
+  "kind": "Activated",
+  "effect": {
+   "type": "TargetOnly",
+   "target": {
+    "type": "Typed",
+    "type_filters": [
+     "Permanent"
+    ],
+    "controller": "You",
+    "properties": []
+   }
+  },
+  "declares_chosen_group": 0,
+  "cost": {
+   "type": "Loyalty",
+   "amount": -12
+  },
+  "sub_ability": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Bounce",
+    "target": {
+     "type": "ParentTarget"
+    },
+    "destination": null
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": null,
+     "destination": "Library",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Permanent",
+       {
+        "Non": "Land"
+       }
+      ],
+      "controller": "You",
+      "properties": []
+     },
+     "owner_library": true,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Shuffle",
+      "target": {
+       "type": "ParentTargetOwner"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "target_choice_timing": "Resolution",
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "duration": null,
+  "description": "[\u221212]: Target opponent chooses a permanent they control and returns it to its owner's hand. Then they shuffle each nonland permanent they control into its owner's library.",
+  "target_prompt": null,
+  "activation_restrictions": [
+   {
+    "type": "AsSorcery"
+   }
+  ],
+  "condition": null,
+  "optional_targeting": false,
+  "optional": false,
+  "forward_result": false
+ }
+}
