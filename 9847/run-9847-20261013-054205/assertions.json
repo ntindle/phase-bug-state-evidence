@@ -1,0 +1,24 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_fixture_ok": "passed",
+  "A3_pre_ult_export": "passed",
+  "A4_bug_outcome": "failed",
+  "A5_correct_outcome": "failed",
+  "A6_opp_never_asked": "passed",
+  "A7_data_shape": "passed",
+  "A8_binding_defect": "passed"
+ },
+ "notes": [
+  "ambiguous board outcome: pre P0=2 P1=3 post P0=1 P1=3; teferi_present_post=True; see wire log",
+  "pre-ult counts: {'p0_turtles': 2, 'p1_turtles': 3}; post-ult counts: {'p0_turtles': 1, 'p1_turtles': 3, 'teferi_present': True, 'p0_hand_size': 6, 'p1_hand_size': 3}",
+  "ult target prompt candidates: [{'name': 'island', 'owner_seat': 0, 'surface_ref': '45'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '46'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '23'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '8'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '9'}, {'name': 'teferi, temporal pilgrim', 'owner_seat': 0, 'surface_ref': '22'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '30'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '34'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '16'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '33'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '43'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '51'}, {'name': 'aegis turtle', 'owner_seat': 0, 'surface_ref': '41'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '12'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '57'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '13'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '31'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '20'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '59'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '26'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '11'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '29'}, {'name': 'island', 'owner_seat': 0, 'surface_ref': '47'}, {'name': 'aegis turtle', 'owner_seat': 0, 'surface_ref': '15'}]",
+  "P1 offered a real decision during ult window: False",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; loyalty abilities via ActivateAbility matched on Loyalty cost amount ([0] to ramp, -12 at >=12 loyalty); priority-gated passes; sleep(0) yield before leg evaluation; loyalty tracked arithmetically (4 + draw-step triggers + resolved [0] draws) and cross-checked against the state's counter read.",
+  "verdict logic: reproduced = fixture complete and P0's own turtles were bounced/shuffled away (0 remain) while P1's turtles were untouched. not-reproduced = fixture complete and P1's turtles were bounced/shuffled away (0 remain) while P0's were untouched.",
+  "A8 binding_defect=passed: the -12's TargetOnly permanent-choice was offered to the ACTIVATOR (P0), not the target opponent (P1): 24 candidates, all owner_seat=0 (21 Islands + Teferi + 2 turtles = P0's whole battlefield); P1 was never asked (A6 passed). The driver chose an Aegis Turtle; it was bounced to P0's hand (P0 BF turtles 2->1, P0 hand +1 turtle).",
+  "DEVIATION from the issue's data-read inference: the nested ChangeZone (shuffle each nonland permanent the activator controls into its owner's library) did NOT fire at runtime -- P0 kept 1 turtle + Teferi (loyalty 24-12=12) on the battlefield and P1's 3 turtles were untouched. A4 therefore failed on its 'shuffled away' half (bounce half held). Engine-side cause of the non-firing ChangeZone was not isolated; backfill scope is reproduction.",
+  "verdict=reproduced: the reported anaphor-binding defect (choice goes to the wrong player with the wrong candidate set; opponent never asked) reproduced exactly as titled. The shuffle deviation is preserved above, not driven past."
+ ],
+ "verdict": "reproduced"
+}
