@@ -1,0 +1,23 @@
+{
+ "assertions": {
+  "test_A1_setup_ok": "passed",
+  "test_A2_fixture_ok": "passed",
+  "test_A3_cast_paid": "passed",
+  "test_A4_resolved": "passed",
+  "test_A5_telemetry": "failed",
+  "control_A1_setup_ok": "passed",
+  "control_A2_fixture_ok": "passed",
+  "control_A3_cast_paid": "passed",
+  "control_A4_resolved": "passed",
+  "control_A5_telemetry": "failed"
+ },
+ "notes": [
+  "[test] test leg: root-Unimplemented spell resolved with no unimplemented_oracle_ids entry (the reported bug)",
+  "[test] telemetry ids: []",
+  "[control] control leg: nested Unimplemented resolved but no telemetry recorded (telemetry path broken?)",
+  "[control] telemetry ids: []",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana (PayMana fallback); cast via advertised legal action (vi castSpell fallback); priority-gated passes; sleep(0) yield before leg evaluation.",
+  "verdict logic (corrected 2026-10-13): reproduced = test-leg spell resolved (A4) with no unimplemented_oracle_ids entry (A5 failed). The control leg's nested-Unimplemented A5 is not a verdict gate: that tail is skipped by the deliberate tail_family_has_runtime_evidence policy, a separate mechanism from the reported execute_effect early return. Engine's own F1 test f1_unimplemented_oracle_ids_not_recorded_for_bare_top_level_unimplemented pins this defect."
+ ],
+ "verdict": "reproduced"
+}
