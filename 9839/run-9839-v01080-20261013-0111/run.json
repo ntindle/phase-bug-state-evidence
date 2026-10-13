@@ -1,0 +1,271 @@
+{
+ "issue": 9839,
+ "run_id": "run-9839-v01080-20261013-0111",
+ "started_at": "2026-10-13T06:33:10",
+ "duration_s": 55.4,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-12 16:20 run; binary digest matches the GitHub asset digest); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server on 127.0.0.1:9374 reused (already listening; started by run-5654-reval-v01080-20261012-2341)"
+ },
+ "server_run_dir": "runs/run-5654-reval-v01080-20261012-2341",
+ "parse_summary": {
+  "taster": {
+   "trigger_mode": "ChangesZone",
+   "trigger_valid_target": {
+    "type": "Player"
+   },
+   "reveal_effect": "RevealHand",
+   "reveal_count": {
+    "type": "Ref",
+    "qty": {
+     "type": "ObjectCount",
+     "filter": {
+      "type": "Typed",
+      "type_filters": [
+       {
+        "Subtype": "Goblin"
+       }
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    }
+   },
+   "declares_chosen_group": 2147483648,
+   "sub_effect": "ChooseFromZone",
+   "sub_sub_effect": "ChangeZone",
+   "oracle_text": "When this creature enters, target opponent reveals X cards from their hand, where X is the number of Goblins you control. You choose one of those cards. That player exiles it. If an instant or sorcery card is exiled this way, you may cast it for as long as you control this creature, and mana of any type can be spent to cast that spell."
+  },
+  "sprite": {
+   "trigger_mode": "ChangesZone",
+   "trigger_valid_target": {
+    "type": "Player"
+   },
+   "reveal_effect": "RevealHand",
+   "reveal_count": {
+    "type": "Ref",
+    "qty": {
+     "type": "ObjectCount",
+     "filter": {
+      "type": "Typed",
+      "type_filters": [
+       {
+        "Subtype": "Faerie"
+       }
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    }
+   },
+   "declares_chosen_group": 2147483648,
+   "sub_effect": "ChooseFromZone",
+   "sub_sub_effect": "DiscardCard",
+   "oracle_text": "Flying\nWhen this creature enters, target player reveals X cards from their hand, where X is the number of Faeries you control. You choose one of those cards. That player discards that card."
+  }
+ },
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_9839_01080.py"
+ },
+ "scenario_sha256": "43ad21ac1581234ee2c1a431b91422bc0e8e470b13c476ba5301d6b588f9d78c",
+ "decks": {
+  "A_P0": [
+   [
+    "taster of wares",
+    4
+   ],
+   [
+    "akki avalanchers",
+    8
+   ],
+   [
+    "mountain",
+    24
+   ],
+   [
+    "swamp",
+    24
+   ]
+  ],
+  "A_P1": [
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "divination",
+    4
+   ],
+   [
+    "island",
+    48
+   ]
+  ],
+  "B_P0": [
+   [
+    "thieving sprite",
+    4
+   ],
+   [
+    "cloud sprite",
+    8
+   ],
+   [
+    "eye collector",
+    8
+   ],
+   [
+    "island",
+    20
+   ],
+   [
+    "swamp",
+    20
+   ]
+  ],
+  "B_P1": [
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "divination",
+    4
+   ],
+   [
+    "island",
+    48
+   ]
+  ]
+ },
+ "games": {
+  "A": {
+   "ok": true,
+   "notes": [
+    "P0 cast akki avalanchers (turn 5)",
+    "P0 cast taster of wares (turn 7)"
+   ]
+  },
+  "B": {
+   "ok": true,
+   "notes": [
+    "P0 cast eye collector (turn 2)",
+    "P0 cast cloud sprite (turn 4)",
+    "P0 cast thieving sprite (turn 6)",
+    "trigger target prompt answered for P1 (seat 1)"
+   ]
+  }
+ },
+ "observations": {
+  "snaps": {
+   "preA": {
+    "P0": [
+     3,
+     51,
+     0
+    ],
+    "P1": [
+     7,
+     50,
+     0
+    ]
+   },
+   "postA": {
+    "P0": [
+     3,
+     51,
+     0
+    ],
+    "P1": [
+     7,
+     50,
+     0
+    ]
+   },
+   "preB": {
+    "P0": [
+     3,
+     51,
+     0
+    ],
+    "P1": [
+     6,
+     51,
+     0
+    ]
+   },
+   "postB": {
+    "P0": [
+     3,
+     51,
+     0
+    ],
+    "P1": [
+     6,
+     51,
+     0
+    ]
+   }
+  }
+ },
+ "assertions": {
+  "A2_parse_taster": "passed",
+  "A2_parse_sprite": "passed",
+  "A1_setup_A": "passed",
+  "A3_target_A": "passed",
+  "A4_reveal_choice_A": "failed",
+  "A5_chooser_bounded_A": "passed",
+  "A6_outcome_A": "not-run",
+  "A7_cleanup_A": "passed",
+  "A1_setup_B": "passed",
+  "A3_target_B": "passed",
+  "A4_reveal_choice_B": "failed",
+  "A5_chooser_bounded_B": "passed",
+  "A6_outcome_B": "not-run",
+  "A7_cleanup_B": "passed"
+ },
+ "notes": [
+  "A2 parse Taster of Wares (pinned v0.108.0): trigger_mode=ChangesZone, reveal=RevealHand count={\"type\": \"Ref\", \"qty\": {\"type\": \"ObjectCount\", \"filter\": {\"type\": \"Typed\", \"type_filters\": [{\"Subtype\": \"Goblin\"}], \"con, declares_chosen_group=2147483648, sub=ChooseFromZone, sub_sub=ChangeZone: shape as expected",
+  "A2 parse Thieving Sprite (pinned v0.108.0): trigger_mode=ChangesZone, reveal=RevealHand count={\"type\": \"Ref\", \"qty\": {\"type\": \"ObjectCount\", \"filter\": {\"type\": \"Typed\", \"type_filters\": [{\"Subtype\": \"Faerie\"}], \"con, declares_chosen_group=2147483648, sub=ChooseFromZone, sub_sub=DiscardCard: shape as expected",
+  "A1 setup (A): key_on_bf=True, trigger_on_stack=True, P1hand=7, x=2: ok",
+  "A3 target (A): no target prompt observed; trigger reached resolution targeting P1 (auto/pre-selected)",
+  "A4 reveal_choice (A): FAILED -- no choose-X-from-hand prompt was ever offered to P1 (the targeted player); the engine revealed positionally. This is the reported bug.",
+  "A5 chooser_bounded (A): P0 'choose one of those cards' offered 2 candidates vs revealed x=2: bounded",
+  "A6 outcome (A): not-run -- P0's choose-1 was submitted (picked 'Lightning Bolt') but 0 card(s) left P1 hand []; library 50->50. The choice submission (vi choose, no rejection) did not yield an observable exile; unresolved whether driver shape or engine application. See note above.",
+  "A7 cleanup (A): stack empty=True",
+  "A1 setup (B): key_on_bf=True, trigger_on_stack=True, P1hand=6, x=3: ok",
+  "A3 target (B): trigger target prompt answered for P1",
+  "A4 reveal_choice (B): FAILED -- no choose-X-from-hand prompt was ever offered to P1 (the targeted player); the engine revealed positionally. This is the reported bug.",
+  "A5 chooser_bounded (B): P0 'choose one of those cards' offered 3 candidates vs revealed x=3: bounded",
+  "A6 outcome (B): not-run -- P0's choose-1 was submitted (picked 'Island') but 0 card(s) left P1 hand []; library 51->51. The choice submission (vi choose, no rejection) did not yield an observable graveyard; unresolved whether driver shape or engine application. See note above.",
+  "A7 cleanup (B): stack empty=True",
+  "game results: A=reproduced B=reproduced",
+  "in-engine reveal deviates from Oracle: P1 was never offered the choose-X reveal choice and/or P0's choose-1 was unbounded",
+  "P0 cast akki avalanchers (turn 5)",
+  "P0 cast taster of wares (turn 7)",
+  "P0 cast eye collector (turn 2)",
+  "P0 cast cloud sprite (turn 4)",
+  "P0 cast thieving sprite (turn 6)",
+  "trigger target prompt answered for P1 (seat 1)"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x/8x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "The 'fewer than X cards reveals all' edge was not driven (P1 held ~7 cards vs X=3 in both games); recorded as a limitation.",
+  "Not tested on the original 2026-07-12 build; verdict is scoped to v0.108.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "A: P0 4x taster of wares + 8x akki avalanchers + 24 mountain + 24 swamp vs P1 8x lightning bolt + 4x divination + 48 island (P0 casts 2 Avalanchers then Taster, X=3 Goblins; ETB targets P1). B: P0 4x thieving sprite + 8x cloud sprite + 8x eye collector + 20 island + 20 swamp vs P1 same as A (P0 casts Cloud Sprite + Eye Collector then Sprite, X=3 Faeries; ETB targets P1).",
+ "contract_line": "Per Oracle, the targeted player chooses which X cards to reveal from their hand; the controller then chooses 1 of exactly those X (exiled by Taster, discarded by Sprite)."
+}
