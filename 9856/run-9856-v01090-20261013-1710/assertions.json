@@ -1,0 +1,25 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A4_damage_not_prevented": "passed",
+  "A5_rechoice_not_stored": "passed",
+  "A2_prevention_unimpl": "failed",
+  "A3_rechoice_persist": "failed",
+  "A6_oracle_intact": "passed"
+ },
+ "notes": [
+  "A1 passed: Chromatic Armor (oid 37) entered with 1 sleight counter, ETB color choice offered and answered Red (attached_to=None)",
+  "A4 passed (documents the consequence of the unimplemented prevention): Lightning Bolt's 3 damage to the enchanted Elite Vanguard was NOT prevented -- Vanguard (oid 32) left the battlefield (zone=Graveyard), Armor zone=Graveyard, P0 life after=20",
+  "A5 object inspection: chosen-hits at entry=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/mana_spent_source_snapshots[0]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[1]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[2]/lki/chosen_attributes', [])], chosen-hits after {X}+Blue=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/mana_spent_source_snapshots[0]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[1]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[2]/lki/chosen_attributes', [])], chosen-hits in final export (zone=Graveyard)=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color')]; etb answer shape=text/value, x answer shape=text/value",
+  "A5 passed: a chosen color IS recorded on the Armor object after the {X} re-choice",
+  "pre_bolt.json captured and parses",
+  "post_bolt.json captured and parses",
+  "final_export.json captured and parses",
+  "armor_object_at_entry.json captured and parses",
+  "armor_object_after_x.json captured and parses",
+  "parse: prevention_unimplemented=[{'name': 'prevention_source_scope', 'description': 'Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color.'}] prevention_implemented_effects=0 has_last_chosen_scope=False etb_choose_persist=True x_choose_persist=False x_clause_unimplemented=[{'name': 'unrecognized_clause_head', 'description': 'X is the number of sleight counters on ~'}] n_replacements=2",
+  "protocol-140 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions (targets answered via the engine's vi target selection after CastSpell, CR 601.2c); ActivateAbility submitted while holding priority; priority-gated passes; sleep(0) yield before leg evaluation; color choices answered via the Choose-Color vi opportunity.",
+  "verdict logic: reproduced = the pinned card-data.json entry for Chromatic Armor parses the prevention sentence as Unimplemented (prevention_source_scope) -- 'sources of the last chosen color' has no representation -- corroborated by the persist:false re-choice and the game legs where they completed. not-reproduced = the scope is represented."
+ ],
+ "verdict": "reproduced"
+}
