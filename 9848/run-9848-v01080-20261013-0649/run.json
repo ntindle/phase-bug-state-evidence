@@ -1,0 +1,75 @@
+{
+ "issue": 9848,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9848",
+ "run_id": "run-9848-v01080-20261013-0649",
+ "started_at": "2026-10-13T11:49:05",
+ "finished_at": "2026-10-13T11:49:38",
+ "duration_s": 33.2,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 started by this run; scenario games created via CreateGameWithSettings; evidence under evidence/9848/run-9848-v01080-20261013-0649"
+ },
+ "server_run_dir": "runs/backfill-20261013-114139 (v0.108.0 server on 127.0.0.1:9374 started by this run; evidence under evidence/9848/run-9848-v01080-20261013-0649)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "ea42c7e19b0f875b969c08f0d0ca8c3b87cb4df351962f66132ac2bc1211b2a9",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Reservoir Kraken",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    52
+   ],
+   [
+    "Aegis Turtle",
+    8
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_fixture_ok": "passed",
+  "A3_pre_trigger_export": "passed",
+  "A4_no_spurious_stacktime_target": "passed",
+  "A5_opponent_asked_at_resolution": "passed",
+  "A6_resolution_effect": "failed",
+  "A7_data_shape": "passed"
+ },
+ "notes": [
+  "spurious stack-time prompts observed: 0",
+  "opponent asked at resolution: passed",
+  "post state: {'kraken_present': True, 'kraken_tapped': True, 'fish_tokens': 1, 'tapped_creature_oid': '101', 'tapped_creature_name': 'aegis turtle', 'tapped_creature_tapped': False, 'p0_bf': ['fish', 'island', 'island', 'island', 'reservoir kraken', 'island'], 'p1_bf': ['aegis turtle', 'island', 'island', 'island']}",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. Trigger window opens when the Kraken BeginCombat trigger is observed on the stack; a target-shaped prompt while it is on the stack (pre-resolution) is classified spurious; prompts after it leaves the stack are legitimate resolution choices.",
+  "verdict logic: reproduced = fixture complete and a target-selection prompt was observed while the Kraken trigger was on the stack pre-resolution. not-reproduced = fixture complete, no such prompt, and the opponent was asked at resolution."
+ ],
+ "verdict": "not-reproduced",
+ "result": "A1 passed; A2 passed; A3 passed; A4 passed; A5 passed; A6 failed; A7 passed; spurious_prompts=0 post={'kraken_present': True, 'kraken_tapped': True, 'fish_tokens': 1, 'tapped_creature_oid': '101', 'tapped_creature_name': 'aegis turtle', 'tapped_creature_tapped': False, 'p0_bf': ['fish', 'island', 'island', 'island', 'reservoir kraken', 'island'], 'p1_bf': ['aegis turtle', 'island', 'island', 'island']}",
+ "scope": "Reservoir Kraken BeginCombat intervening-if trigger: whether a target-selection prompt is raised at stack time; two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The spurious prompt is answered by the driver (first candidate) to let the game proceed, per the issue's note that the end result is correct once answered; the full prompt shape is preserved in the wire log before answering.",
+  "Trigger-on-stack detection falls back to 'any stack entry during BeginCombat with an untapped Kraken out' -- this fixture has no other triggers; the matched stack entry is wire-logged."
+ ],
+ "setup_line": "P0 56x Island + 4x Reservoir Kraken ({2}{U}{U} 6/6 trample ward {2}); P1 52x Island + 8x Aegis Turtle ({U} 0/5)",
+ "contract_line": "Cast Reservoir Kraken, reach a BeginCombat step with it untapped. Expected (correct): no target-selection prompt at stack time; at resolution the opponent is asked whether to tap an untapped creature they control. Bug: a TriggerTargetSelection prompt is raised at stack time."
+}
