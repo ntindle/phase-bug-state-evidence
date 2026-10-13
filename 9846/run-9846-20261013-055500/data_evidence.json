@@ -1,0 +1,92 @@
+{
+ "ok": true,
+ "notes": [],
+ "oracle_text": "Whenever you cast your first spell each turn, choose an opponent at random. Vial Smasher deals damage equal to that spell's mana value to that player or a planeswalker that player controls.\nPartner (You can have two commanders if both have partner.)",
+ "trigger": {
+  "mode": "SpellCast",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "Choose",
+    "choice_type": "Opponent",
+    "persist": false,
+    "selection": {
+     "type": "Random"
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "DealDamage",
+     "amount": {
+      "type": "Ref",
+      "qty": {
+       "type": "ObjectManaValue",
+       "scope": {
+        "type": "Demonstrative"
+       }
+      }
+     },
+     "target": {
+      "type": "Or",
+      "filters": [
+       {
+        "type": "TriggeringPlayer"
+       },
+       {
+        "type": "Typed",
+        "type_filters": [
+         "Planeswalker"
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      ]
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "valid_card": null,
+  "origin": null,
+  "destination": null,
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": null,
+  "optional": false,
+  "damage_kind": "Any",
+  "secondary": false,
+  "valid_target": {
+   "type": "Typed",
+   "type_filters": [],
+   "controller": "You",
+   "properties": []
+  },
+  "valid_source": null,
+  "description": "Whenever you cast your first spell each turn, choose an opponent at random. ~ deals damage equal to that spell's mana value to that player or a planeswalker that player controls.",
+  "constraint": {
+   "type": "NthSpellThisTurn",
+   "n": 1
+  },
+  "condition": null,
+  "batched": false
+ }
+}
