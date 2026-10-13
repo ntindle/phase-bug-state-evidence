@@ -1,0 +1,19 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_fixture_ok": "passed",
+  "A3_trigger_seen": "failed",
+  "A4_bug_self_damage": "failed",
+  "A5_correct_outcome": "failed"
+ },
+ "notes": [
+  "Discriminating follow-up: same fixture, Strike targeted P0 itself (seat 0) to test whether the trigger's valid_target filter (Typed{controller: 'You'}) suppresses opponent-targeted first spells.",
+  "Observed: trigger still never fired; final life P0=17 P1=20 (P0 took only the Strike's 3). The valid_target-filter hypothesis is ruled out; suppression is independent of the first spell's target.",
+  "Data-level (the issue's 'Actual'): v0.108.0 card-data lowers Vial Smasher's trigger DealDamage target to Or[TriggeringPlayer, Typed{Planeswalker, controller: You}] -- exactly the reported wrong anaphor binding (see data_evidence.json).",
+  "Runtime: the VS trigger NEVER fired in either live run (triggers_fired_this_game=[] in pre- and post-resolution authoritative states), so the mis-bound damage never manifested -- it is masked by a trigger-suppression defect (related failure, VS-specific).",
+  "Control: Guttersnipe's SpellCast trigger (no constraint) fired and resolved correctly on the same build/protocol (P1 20->15 = 3 Strike + 2 trigger), so the SpellCast trigger mode itself works.",
+  "The exact engine-side cause of the VS trigger suppression was not isolated (engine debugging is out of backfill scope); candidates are the NthSpellThisTurn{1} constraint or the trigger's valid_target=Typed{controller: You} filter.",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; Strike target via vi sequence candidate seat; priority-gated passes; sleep(0) yield before leg evaluation."
+ ],
+ "verdict": "reproduced"
+}
