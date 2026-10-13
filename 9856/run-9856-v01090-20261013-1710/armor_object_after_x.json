@@ -1,0 +1,517 @@
+{
+ "id": 37,
+ "card_id": 37,
+ "owner": 0,
+ "base_controller": 0,
+ "controller": 0,
+ "zone": "Battlefield",
+ "display_visible_to_viewer": true,
+ "tapped": false,
+ "face_down": false,
+ "flipped": false,
+ "transformed": false,
+ "damage_marked": 0,
+ "dealt_deathtouch_damage": false,
+ "attached_to": {
+  "type": "Object",
+  "data": 32
+ },
+ "attachments": [],
+ "counters": {
+  "sleight": 2
+ },
+ "name": "Chromatic Armor",
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "card_types": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Aura"
+  ]
+ },
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "Blue"
+  ],
+  "generic": 1
+ },
+ "keywords": [
+  {
+   "Enchant": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "prevention_source_scope",
+    "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "PutCounter",
+    "counter_type": "sleight",
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "SelfRef"
+    }
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "X"
+     ],
+     "generic": 0
+    }
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "X is the number of sleight counters on ~"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": "{X}: Put a sleight counter on ~ and choose a color. X is the number of sleight counters on ~.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "trigger_definitions": [],
+ "replacement_definitions": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": true
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "As ~ enters, choose a color.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  },
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "sleight",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "~ enters with a sleight counter on it.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "static_definitions": [],
+ "color": [
+  "Blue",
+  "White"
+ ],
+ "printed_ref": {
+  "oracle_id": "65b3a40e-1d2b-4b24-996f-c935414ded7d",
+  "face_name": "Chromatic Armor"
+ },
+ "base_power": null,
+ "base_toughness": null,
+ "base_name": "Chromatic Armor",
+ "base_card_types": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Aura"
+  ]
+ },
+ "base_mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "Blue"
+  ],
+  "generic": 1
+ },
+ "base_keywords": [
+  {
+   "Enchant": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  }
+ ],
+ "base_abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "prevention_source_scope",
+    "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "PutCounter",
+    "counter_type": "sleight",
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "SelfRef"
+    }
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "X"
+     ],
+     "generic": 0
+    }
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "X is the number of sleight counters on ~"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": "{X}: Put a sleight counter on ~ and choose a color. X is the number of sleight counters on ~.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "base_replacement_definitions": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": true
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "As ~ enters, choose a color.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  },
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "sleight",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "~ enters with a sleight counter on it.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "base_color": [
+  "Blue",
+  "White"
+ ],
+ "base_printed_ref": {
+  "oracle_id": "65b3a40e-1d2b-4b24-996f-c935414ded7d",
+  "face_name": "Chromatic Armor"
+ },
+ "base_characteristics_initialized": true,
+ "timestamp": 8,
+ "incarnation": 3,
+ "entered_battlefield_turn": 5,
+ "summoning_sick": true,
+ "unimplemented_mechanics": [
+  "Effect: prevention_source_scope"
+ ],
+ "chosen_attributes": [
+  {
+   "type": "Color",
+   "value": "Red"
+  }
+ ],
+ "cast_from_zone": "Hand",
+ "cast_controller": 0,
+ "mana_spent_to_cast": true,
+ "colors_spent_to_cast": {
+  "white": 2,
+  "blue": 1
+ },
+ "mana_spent_to_cast_amount": 3,
+ "mana_spent_source_snapshots": [
+  {
+   "source_id": 8,
+   "lki": {
+    "name": "Plains",
+    "power": null,
+    "toughness": null,
+    "base_power": null,
+    "base_toughness": null,
+    "mana_value": 0,
+    "controller": 0,
+    "owner": 0,
+    "card_types": [
+     "Land"
+    ],
+    "subtypes": [
+     "Plains"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "keywords": [],
+    "colors": [],
+    "chosen_attributes": [],
+    "counters": {},
+    "tapped": true,
+    "is_suspected": false,
+    "attachments": []
+   }
+  },
+  {
+   "source_id": 42,
+   "lki": {
+    "name": "Island",
+    "power": null,
+    "toughness": null,
+    "base_power": null,
+    "base_toughness": null,
+    "mana_value": 0,
+    "controller": 0,
+    "owner": 0,
+    "card_types": [
+     "Land"
+    ],
+    "subtypes": [
+     "Island"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "keywords": [],
+    "colors": [],
+    "chosen_attributes": [],
+    "counters": {},
+    "tapped": true,
+    "is_suspected": false,
+    "attachments": []
+   }
+  },
+  {
+   "source_id": 40,
+   "lki": {
+    "name": "Plains",
+    "power": null,
+    "toughness": null,
+    "base_power": null,
+    "base_toughness": null,
+    "mana_value": 0,
+    "controller": 0,
+    "owner": 0,
+    "card_types": [
+     "Land"
+    ],
+    "subtypes": [
+     "Plains"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "keywords": [],
+    "colors": [],
+    "chosen_attributes": [],
+    "counters": {},
+    "tapped": true,
+    "is_suspected": false,
+    "attachments": []
+   }
+  }
+ ]
+}
