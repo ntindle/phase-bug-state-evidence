@@ -1,0 +1,225 @@
+{
+ "issue": 1235,
+ "issue_url": "https://github.com/phase-rs/phase/issues/1235",
+ "run_id": "run-1235-reval-v01080-20261012-1812",
+ "started_at": "2026-10-12T23:17:09",
+ "finished_at": "2026-10-12T23:23:27",
+ "duration_s": 378.4,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-12: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh backfill-owned v0.108.0 server on 127.0.0.1:9375 (owned by this run, pinned 2026-10-12)"
+ },
+ "server_run_dir": "runs/run-1235-reval-v01080-20261012-1812 (fresh v0.108.0 server on 127.0.0.1:9375, owned by this run, pinned 2026-10-12; evidence under evidence/1235/run-1235-reval-v01080-20261012-1812)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "48cdd01e6b45ada0add924e8eccfbead114839515236b98013ea81927714e35e",
+ "games": {
+  "A": {
+   "spell": "banefire",
+   "cost": "{X}{R}",
+   "desired_x": 0,
+   "deck": [
+    [
+     "banefire",
+     12
+    ],
+    [
+     "krark-clan ironworks",
+     12
+    ],
+    [
+     "memnite",
+     12
+    ],
+    [
+     "mountain",
+     24
+    ]
+   ],
+   "game_code": "8K5AN7",
+   "duration_s": 58.7,
+   "x_max_observed": 7,
+   "x_acceptance": 5,
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_x_cap_overcounted": "passed",
+    "A3_cast_x0_completes": "passed"
+   },
+   "offered_seen": true,
+   "obs": 4
+  },
+  "B": {
+   "spell": "endless one",
+   "cost": "{X}",
+   "desired_x": 3,
+   "deck": [
+    [
+     "endless one",
+     12
+    ],
+    [
+     "krark-clan ironworks",
+     8
+    ],
+    [
+     "phyrexian altar",
+     4
+    ],
+    [
+     "memnite",
+     12
+    ],
+    [
+     "mountain",
+     24
+    ]
+   ],
+   "game_code": "F9D50P",
+   "duration_s": 105.7,
+   "x_max_observed": 5,
+   "x_acceptance": 4,
+   "assertions": {
+    "B1_setup_ok": "passed",
+    "B2_x_cap_overcounted": "passed",
+    "B3_x3_payment": "stalled_unpayable"
+   },
+   "offered_seen": true,
+   "obs": 4
+  },
+  "C": {
+   "spell": "endless one",
+   "cost": "{X}",
+   "desired_x": 2,
+   "deck": [
+    [
+     "endless one",
+     12
+    ],
+    [
+     "krark-clan ironworks",
+     8
+    ],
+    [
+     "phyrexian altar",
+     4
+    ],
+    [
+     "memnite",
+     12
+    ],
+    [
+     "mountain",
+     24
+    ]
+   ],
+   "game_code": "E5M35T",
+   "duration_s": 213.9,
+   "x_max_observed": 15,
+   "x_acceptance": null,
+   "assertions": {
+    "C1_setup_ok": "passed",
+    "C2_x_cap_observed": "observed_max=15",
+    "C3_cast_x2_completes": "passed"
+   },
+   "offered_seen": true,
+   "obs": 4
+  }
+ },
+ "decks": {
+  "A": "12x Banefire + 12x Krark-Clan Ironworks + 12x Memnite + 24x Mountain",
+  "B": "12x Endless One + 8x Krark-Clan Ironworks + 4x Phyrexian Altar + 12x Memnite + 24x Mountain",
+  "C": "12x Endless One + 8x Krark-Clan Ironworks + 4x Phyrexian Altar + 12x Memnite + 24x Mountain",
+  "P1": "60x Forest (draw-go)"
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_x_cap_overcounted": "passed",
+  "A3_cast_x0_completes": "passed",
+  "B1_setup_ok": "passed",
+  "B2_x_cap_overcounted": "passed",
+  "B3_x3_payment": "stalled_unpayable",
+  "B3_x3_counters": "not-run",
+  "C1_setup_ok": "passed",
+  "C2_x_cap_observed": "observed_max=15",
+  "C3_cast_x2_completes": "passed"
+ },
+ "notes": [
+  "--- game A (banefire {X}{R}, X=0) duration 58.7s; x_max_observed=7; offered_seen=True ---",
+  "P0 casts memnite (oid 3) needs={'generic': 0}",
+  "P0 casts krark-clan ironworks (oid 58) needs={'generic': 4}",
+  "P0 casts krark-clan ironworks (oid 53) needs={'generic': 4}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 14)",
+  "gate: CastSpell(banefire) offered_seen=True (obs=4)",
+  "-> act phase",
+  "casting banefire",
+  "targeted P1 for banefire",
+  "X-choice offered: min=0 max=7 (turn 16, bf=[('krark-clan ironworks', 2), ('memnite', 1), ('mountain', 4), ('mountain(tapped)', 3)])",
+  "A2_x_cap_overcounted: max=7 vs bounded-flow acceptance 5 (mtn=4 kci=2 memnite=1); delta=+2 -> passed",
+  "chose X=0 for banefire",
+  "A3: cast Banefire (oid 14) resolved at X=0; P1 life=20 (want 20) -> passed",
+  "POST exported",
+  "--- game B (endless one {X}, X=3) duration 105.7s; x_max_observed=5; offered_seen=True ---",
+  "P0 casts memnite (oid 2) needs={'generic': 0}",
+  "P0 casts phyrexian altar (oid 21) needs={'generic': 3}",
+  "P0 casts krark-clan ironworks (oid 5) needs={'generic': 4}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 10)",
+  "gate: CastSpell(endless one) offered_seen=True (obs=4)",
+  "-> act phase",
+  "casting endless one",
+  "X-choice offered: min=0 max=5 (turn 12, bf=[('krark-clan ironworks', 1), ('memnite', 1), ('mountain', 2), ('mountain(tapped)', 3), ('phyrexian altar', 1)])",
+  "B2_x_cap_overcounted: max=5 vs bounded-flow acceptance 4 (mtn=2 kci=1 memnite=1); delta=+1 -> passed",
+  "chose X=3 for endless one",
+  "spend pool mana for payment (paid=1/3)",
+  "unmatched interaction while expecting=pay: rtype=exactChoices",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "expecting pay timed out; clearing",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "pay telemetry: pool={'R': 2}, stack_spells=1, ones_bf=0, vikind=choose, pending_cast=True",
+  "B3: X=3 payment STALLED after 60s: pool={'R': 2}, gy=[], KCI activations offered=2, Altar activations offered=2, vikind=choose",
+  "POST exported",
+  "--- game C (endless one {X}, X=2) duration 213.9s; x_max_observed=15; offered_seen=True ---",
+  "P0 casts krark-clan ironworks (oid 5) needs={'generic': 4}",
+  "P0 casts memnite (oid 41) needs={'generic': 0}",
+  "P0 casts phyrexian altar (oid 30) needs={'generic': 3}",
+  "setup complete -> assert phase",
+  "PRE exported; setup ready (turn 43)",
+  "gate: CastSpell(endless one) offered_seen=True (obs=4)",
+  "-> act phase",
+  "casting endless one",
+  "X-choice offered: min=0 max=15 (turn 45, bf=[('krark-clan ironworks', 1), ('memnite', 1), ('mountain', 12), ('phyrexian altar', 1)])",
+  "C2_x_cap_observed: max=15",
+  "chose X=2 for endless one",
+  "unmatched interaction while expecting=pay: rtype=exactChoices",
+  "C: payment done (stack_spells=1, ones_bf=0); letting it resolve",
+  "expecting pay timed out; clearing",
+  "C3: Endless One on battlefield with 2 +1/+1 counters (want 2) -> passed",
+  "POST exported"
+ ],
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2 x_cap_overcounted: passed (observed max=7, acceptance=5); A3 cast_x0_completes: passed; B1 setup_ok: passed; B2 x_cap_overcounted: passed (observed max=5, acceptance=4); B3 x3_payment: stalled_unpayable; B3 x3_counters: not-run; C1 setup_ok: passed; C2 x_cap_observed: observed_max=15; C3 cast_x2_completes: passed",
+ "scope": "feasible_mana_capacity per-permanent sum over-count in chain-sacrifice configurations (Krark-Clan Ironworks / Phyrexian Altar); X-choice advertised max vs the issue's acceptance caps; manual-payment outcome for an over-counted commit. Native engine, two human-client seats.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x spell density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "setup_line": "A: 2x Krark-Clan Ironworks + Mountain + Memnite, Banefire in hand. B/C: KCI + Phyrexian Altar + Memnite, Endless One in hand. Empty pool, own main phase.",
+ "contract_line": "A: X-choice max over-counted iff bug present (acceptance: n_mtn + 2*min(n_kci, n_memnite) - 1); X=0 cast completes. B: X-choice max over-counted iff bug present (acceptance: n_mtn + 2); commit X=3, good-faith manual payment, record completion or stall. C: commit X=2, KCI sac Memnite pays {2}, Endless One enters with 2 counters.",
+ "contract": "Game A ({X}{R} Banefire, 2 KCI + Mountains + Memnite): X chooser max above the bounded-flow acceptance records the over-count; then X=0 cast completes as a control. Game B ({X} Endless One, KCI + Altar + Memnite): X chooser max above acceptance records the over-count; then X=3 is committed and paid manually in good faith (KCI activations, auto PayMana, never cancel) to record completion or an unpayable stall. Game C (same board): X=2 commits; KCI sac of Memnite pays {2}; Endless One must enter with exactly 2 +1/+1 counters."
+}
