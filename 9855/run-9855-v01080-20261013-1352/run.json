@@ -1,0 +1,113 @@
+{
+ "issue": 9855,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9855",
+ "run_id": "run-9855-v01080-20261013-1352",
+ "started_at": "2026-10-13T18:41:11",
+ "finished_at": "2026-10-13T18:42:14",
+ "duration_s": 62.8,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release; reused by this run); scenario games created via CreateGameWithSettings; evidence under evidence/9855/run-9855-v01080-20261013-1352"
+ },
+ "server_run_dir": "backfill-owned v0.108.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release; reused by this run); evidence under evidence/9855/run-9855-v01080-20261013-1352",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1f5fa430a3bb3fc4a2b83e78c46b8ca71df51534234fffc4e75174b1e3a0bbf0",
+ "decks": {
+  "P0": [
+   [
+    "Plains",
+    28
+   ],
+   [
+    "Island",
+    28
+   ],
+   [
+    "Personal Decoy",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Swamp",
+    24
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Hero's Downfall",
+    12
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A6_attack_target_offer": "failed",
+  "A7_destroy_exiles": "failed",
+  "A2_exile_replacement": "failed",
+  "A3_cant_be_attacked": "failed",
+  "A4_no_unimplemented": "failed",
+  "A5_oracle_intact": "passed"
+ },
+ "notes": [
+  "A1 passed: Personal Decoy (oid 18) entered with 20 loyalty counters == P0 life 20 at entry (the ETB replacement parsed and works)",
+  "A6 FAILED (bug behavior): P1's declare-attackers opportunity (rev 218) offered P0 -- the Decoy's controller -- as an attack target while Personal Decoy (oid 18) was on the battlefield; attackers=[{'id': 'GP1IB5.0.218.r0', 'ref': '123', 'name': 'Grizzly Bears'}] targets=[{'kind': 'player', 'seat': 0}, {'kind': 'object', 'ref': '18', 'name': 'Personal Decoy'}]. Per the oracle ('You can't be attacked'), P0 must not be a legal attack target.",
+  "A7 FAILED (bug behavior): the destroyed Decoy went to Graveyard instead of Exile (oid 18)",
+  "attack_offering.json captured and parses",
+  "post_destroy.json captured and parses",
+  "parse: ltb_exile_replacement=False cant_be_attacked=False unimplemented_marker=False parse_warnings=False n_replacements=1 replacement_effects=[('Moved', 'PutCounter')] n_static_abilities=0",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation; DeclareAttackers observed via the vi schema/relations opportunity (observation only -- empty attacks declared); Hero's Downfall target answered via vi target selection preferring the Decoy.",
+  "verdict logic: reproduced = the pinned card-data.json entry for Personal Decoy carries no leaves-the-battlefield exile replacement -- the reported outcome -- corroborated by the missing can't-be-attacked static, the absence of any unimplemented marker, and the game legs where they completed. not-reproduced = the replacement is present."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "oracle": "Personal Decoy enters with a number of loyalty counters on it equal to your life total. If it would leave the battlefield, exile it instead of putting it anywhere else. You can't be attacked.\n[+1]: You gain 1 life.\n[\u22124]: Draw a card.",
+  "n_abilities": 2,
+  "ability_kinds": [
+   "Activated",
+   "Activated"
+  ],
+  "n_replacements": 1,
+  "replacement_effects": [
+   [
+    "Moved",
+    "PutCounter"
+   ]
+  ],
+  "n_static_abilities": 0,
+  "n_triggers": 0,
+  "has_ltb_exile_replacement": false,
+  "has_cant_be_attacked_static": false,
+  "has_unimplemented_marker": false,
+  "has_parse_warnings": false,
+  "oracle_has_exile_sentence": true,
+  "oracle_has_cba_sentence": true
+ },
+ "result": "A1 passed; A2 failed; A3 failed; A4 failed; A5 passed; A6 failed; A7 failed",
+ "scope": "Personal Decoy LTB-exile replacement + can't-be-attacked static: parse-level presence in the pinned v0.108.0 card-data.json (decisive), plus two in-game legs (declare-attackers target offering; Hero's Downfall destroy zone check); two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The attack leg observes the engine's advertised attack targets rather than submitting an attack; the destroy leg requires P1 to draw and cast Hero's Downfall with the Decoy on the battlefield -- missing preconditions mark those legs not-run.",
+  "Counter reads are a best-effort parse of the runtime object's counters payload; the verbatim payload is preserved in wire_log.jsonl under decoy_entered."
+ ],
+ "setup_line": "P0 28x Plains + 28x Island + 4x Personal Decoy ({5}{W}{U} Planeswalker -- Duck); P1 24x Forest + 24x Swamp + 4x Grizzly Bears ({1}{G} 2/2) + 12x Hero's Downfall ({1}{B}{B} destroy target creature or planeswalker)",
+ "contract_line": "Parse (decisive): Personal Decoy must carry a leaves-the-battlefield exile replacement and a can't-be-attacked static, or an unimplemented marker. Game (confirming): P1's declare-attackers must not offer P0 as a target while the Decoy is out; a destroyed Decoy must go to exile, not the graveyard."
+}

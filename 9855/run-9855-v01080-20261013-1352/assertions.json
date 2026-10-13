@@ -1,0 +1,22 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A6_attack_target_offer": "failed",
+  "A7_destroy_exiles": "failed",
+  "A2_exile_replacement": "failed",
+  "A3_cant_be_attacked": "failed",
+  "A4_no_unimplemented": "failed",
+  "A5_oracle_intact": "passed"
+ },
+ "notes": [
+  "A1 passed: Personal Decoy (oid 18) entered with 20 loyalty counters == P0 life 20 at entry (the ETB replacement parsed and works)",
+  "A6 FAILED (bug behavior): P1's declare-attackers opportunity (rev 218) offered P0 -- the Decoy's controller -- as an attack target while Personal Decoy (oid 18) was on the battlefield; attackers=[{'id': 'GP1IB5.0.218.r0', 'ref': '123', 'name': 'Grizzly Bears'}] targets=[{'kind': 'player', 'seat': 0}, {'kind': 'object', 'ref': '18', 'name': 'Personal Decoy'}]. Per the oracle ('You can't be attacked'), P0 must not be a legal attack target.",
+  "A7 FAILED (bug behavior): the destroyed Decoy went to Graveyard instead of Exile (oid 18)",
+  "attack_offering.json captured and parses",
+  "post_destroy.json captured and parses",
+  "parse: ltb_exile_replacement=False cant_be_attacked=False unimplemented_marker=False parse_warnings=False n_replacements=1 replacement_effects=[('Moved', 'PutCounter')] n_static_abilities=0",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation; DeclareAttackers observed via the vi schema/relations opportunity (observation only -- empty attacks declared); Hero's Downfall target answered via vi target selection preferring the Decoy.",
+  "verdict logic: reproduced = the pinned card-data.json entry for Personal Decoy carries no leaves-the-battlefield exile replacement -- the reported outcome -- corroborated by the missing can't-be-attacked static, the absence of any unimplemented marker, and the game legs where they completed. not-reproduced = the replacement is present."
+ ],
+ "verdict": "reproduced"
+}

@@ -1,0 +1,137 @@
+{
+ "issue": 9855,
+ "card": "personal decoy",
+ "oracle_text": "Personal Decoy enters with a number of loyalty counters on it equal to your life total. If it would leave the battlefield, exile it instead of putting it anywhere else. You can't be attacked.\n[+1]: You gain 1 life.\n[\u22124]: Draw a card.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "GainLife",
+    "amount": {
+     "type": "Fixed",
+     "value": 1
+    }
+   },
+   "cost": {
+    "type": "Loyalty",
+    "amount": 1
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "[+1]: You gain 1 life.",
+   "target_prompt": null,
+   "activation_restrictions": [
+    {
+     "type": "AsSorcery"
+    }
+   ],
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Draw",
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "Controller"
+    }
+   },
+   "cost": {
+    "type": "Loyalty",
+    "amount": -4
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "[\u22124]: Draw a card.",
+   "target_prompt": null,
+   "activation_restrictions": [
+    {
+     "type": "AsSorcery"
+    }
+   ],
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "replacements": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "loyalty",
+     "count": {
+      "type": "Ref",
+      "qty": {
+       "type": "LifeTotal",
+       "player": {
+        "type": "Controller"
+       }
+      }
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "~ enters with a number of loyalty counters on it equal to your life total. If it would leave the battlefield, exile it instead of putting it anywhere else. You can't be attacked.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "static_abilities": [],
+ "triggers": [],
+ "metadata": {
+  "source_printing_ids": [
+   "caa7922e-3313-4f12-b91e-95aaa2d76cc2",
+   "df46b3ce-3a40-45a1-9bd6-46e6b64e5f64"
+  ]
+ },
+ "analysis": {
+  "oracle": "Personal Decoy enters with a number of loyalty counters on it equal to your life total. If it would leave the battlefield, exile it instead of putting it anywhere else. You can't be attacked.\n[+1]: You gain 1 life.\n[\u22124]: Draw a card.",
+  "n_abilities": 2,
+  "ability_kinds": [
+   "Activated",
+   "Activated"
+  ],
+  "n_replacements": 1,
+  "replacement_effects": [
+   [
+    "Moved",
+    "PutCounter"
+   ]
+  ],
+  "n_static_abilities": 0,
+  "n_triggers": 0,
+  "has_ltb_exile_replacement": false,
+  "has_cant_be_attacked_static": false,
+  "has_unimplemented_marker": false,
+  "has_parse_warnings": false,
+  "oracle_has_exile_sentence": true,
+  "oracle_has_cba_sentence": true
+ }
+}
