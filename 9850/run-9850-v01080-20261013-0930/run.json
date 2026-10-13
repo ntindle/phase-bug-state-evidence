@@ -1,0 +1,108 @@
+{
+ "issue": 9850,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9850",
+ "run_id": "run-9850-v01080-20261013-0930",
+ "started_at": "2026-10-13T14:19:09",
+ "finished_at": "2026-10-13T14:19:23",
+ "duration_s": 14.1,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 started by this run; scenario games created via CreateGameWithSettings; evidence under evidence/9850/run-9850-v01080-20261013-0930"
+ },
+ "server_run_dir": "runs/run-9850-v01080-20261013-0841 (v0.108.0 server on 127.0.0.1:9374 started by this run; evidence under evidence/9850/run-9850-v01080-20261013-0930)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3566a34a48b7d298588aade204c909950a834bfa805b259e5bf5ad7a63934b84",
+ "decks": {
+  "P0": [
+   [
+    "Plains",
+    56
+   ],
+   [
+    "Gobsmacked",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    52
+   ],
+   [
+    "Llanowar Elves",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_cast_ok": "failed",
+  "A4_attack_restricted": "not-run",
+  "A5_ability_restricted": "not-run",
+  "A2_parse_gate": "failed",
+  "A6_data_shape": "passed"
+ },
+ "notes": [
+  "A3 FAILED: Gobsmacked uncastable in-game -- 8 consecutive P0 main phases with the card in hand and >=2 untapped lands, zero cast actions advertised (see cast_diag wire entries). The card does not 'show as supported' in-game; it is effectively dead.",
+  "pre_cast.json missing/unparseable",
+  "post_cast.json missing/unparseable",
+  "A4 not-run: no P1 DeclareAttackers step observed after the aura resolved",
+  "A5 not-run: no P1 main phase observed after the aura resolved",
+  "parse: gate_dropped=True modes=['CantAttackOrBlock', 'CantBeActivated'] conditions=[None, None] swallow_warnings=1",
+  "attack step: None",
+  "ability check: None",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The Aura target prompt is answered with the chosen creature; any other prompt during the cast (e.g. the Unimplemented 'choose a person outside the game' ETB) is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'as long as' gate (both statics condition null, concrete modes, SwallowedClause/Condition_AsLongAs warning) -- the reported outcome. not-reproduced = the gate is present as a real or explicit-unknown condition, or the card reads unsupported."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "oracle_has_gate": true,
+  "n_statics": 2,
+  "static_modes": [
+   "CantAttackOrBlock",
+   "CantBeActivated"
+  ],
+  "static_conditions": [
+   null,
+   null
+  ],
+  "all_conditions_null": true,
+  "swallowed_clause_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_AsLongAs",
+    "gap_kind": "unparsed_condition",
+    "guard": "you can see the chosen person from your seat",
+    "description": "As long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be act"
+   }
+  ],
+  "statics_unimplemented": false,
+  "gate_dropped": true
+ },
+ "result": "A1 passed; A2 failed; A3 failed; A4 not-run; A5 not-run; A6 passed",
+ "scope": "Gobsmacked 'as long as you can see the chosen person from your seat' gate: parse-level presence of the condition on the two statics, plus in-game confirmation that the card casts, attaches, and applies the restrictions unconditionally; two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The 'as long as you can see the chosen person' condition is a physical-game condition the engine cannot evaluate; the game checks confirm unconditional application, they cannot distinguish a correctly-gated static from a dropped gate.",
+  "The 'choose a person outside the game' ETB clause parses as Unimplemented; any prompt it raises is recorded, never auto-answered.",
+  "The offered-attacker set is a best-effort read of the DeclareAttackers action payload and viewer-interaction candidates; the raw payload is preserved in wire_log.jsonl."
+ ],
+ "setup_line": "P0 56x Plains + 4x Gobsmacked ({1}{W} Aura); P1 52x Forest + 4x Llanowar Elves ({G} 1/1, {T}: add {G}) + 4x Grizzly Bears ({1}{G} 2/2)",
+ "contract_line": "Parse (decisive): Gobsmacked's CantAttackOrBlock and CantBeActivated statics must carry the 'as long as' gate or the card must read unsupported. Game (confirming): cast Gobsmacked on P1's Elves; the enchanted Elves must not be offered as an attacker and must offer no ActivateAbility, while the control Bears/Elves behave normally."
+}
