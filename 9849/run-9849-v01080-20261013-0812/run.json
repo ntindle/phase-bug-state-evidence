@@ -1,0 +1,61 @@
+{
+  "assertions": {
+    "A1_coverage_json_parses": {
+      "reason": "blocked: no coverage_report binary",
+      "status": "not-run"
+    },
+    "A2_coverage_byte_identical": {
+      "reason": "blocked: no coverage_report binary",
+      "status": "not-run"
+    },
+    "A3_semantic_audit_json_parses": {
+      "reason": "blocked: no oracle_gen binary",
+      "status": "not-run"
+    },
+    "A4_semantic_audit_byte_identical": {
+      "reason": "blocked: no oracle_gen binary",
+      "status": "not-run"
+    }
+  },
+  "attempts": [
+    "Listed v0.108.0 release assets via GitHub API: 4 phase-server-slim binaries + minisigs + release-server-v0.108.0.json + update.json. No coverage_report / oracle_gen binaries.",
+    "Searched workspace (driver/, server/releases/, checkout-*/target/{debug,release}) for prebuilt coverage_report / oracle_gen binaries: none found.",
+    "Verified CLI surfaces against v0.108.0 source so the preserved scenario is accurate: crates/engine/src/bin/oracle_gen.rs has the 'semantic-audit' subcommand; crates/engine/src/bin/coverage_report.rs supports --brief and uses HashMap in its summary path.",
+    "Build feasibility: no cargo/rustc on this VM; free shows 7G total / ~1G available / 0 swap. Not attempted."
+  ],
+  "blocked_reason": "Required tool binaries unavailable: coverage_report and oracle_gen are not published as official v0.108.0 release artifacts (release ships phase-server-slim only), no prebuilt binaries exist in the workspace, and building from the v0.108.0 tag on this VM is infeasible (no Rust toolchain; 7 GB RAM with ~1 GB available; prior native engine linking exhausted memory; playbook keeps this workflow on official artifacts).",
+  "ended_at": "2026-10-13T13:25:00Z",
+  "issue": 9849,
+  "issue_title": "Coverage and semantic-audit JSON output is not byte-reproducible",
+  "limitations": [
+    "No engine/game test applicable: this is a data-pipeline determinism report, not a game-rule bug.",
+    "Tool behavior at the pinned release was verified at the source level only (CLI surfaces, HashMap usage); no execution performed.",
+    "The reporter's root-cause claim (unseeded HashMap iteration + count-only sort + top-N truncate) was not independently re-verified by execution."
+  ],
+  "next_action": "Build coverage_report and oracle_gen from the v0.108.0 tag on a host with a Rust toolchain and sufficient memory (e.g. spark-vm), then run driver/scenario_9849.py --coverage-bin <path> --oracle-gen-bin <path> --data-dir <v0.108.0 data dir> --out-dir <dir> --tool-commit <v0.108.0 tag commit>. The scenario asserts A2/A4 byte-identity (expected to fail per the report => reproduced).",
+  "release_check": {
+    "latest_stable": "v0.108.0",
+    "matches_pin": true,
+    "published_at": "2026-10-12T21:10:34Z",
+    "repin_needed": false
+  },
+  "run_id": "run-9849-v01080-20261013-0812",
+  "scenario": {
+    "path": "scenario_9849.py",
+    "sha256": "6ab9f6e2607e36e35fb853c35bc854baa33755d8b812a43fa7b02816267accd6",
+    "status": "written and preserved; not executed (binaries unavailable)"
+  },
+  "scope": "Data-pipeline report (area:card-data): coverage_report and oracle_gen semantic-audit summary builders. No game-state pair exists for this subsystem; the equivalent observable contract is two runs over identical inputs producing byte-identical JSON (scenario_9849.py).",
+  "server_identity": {
+    "binary": "phase-server-slim-x86_64-unknown-linux-musl",
+    "build_commit": "b8fa1d3",
+    "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c4a53d4ae6850e8e813",
+    "data_manifest": "release-server-v0.108.0.json",
+    "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+    "note": "Server itself was not needed for this data-pipeline issue; ServerHello re-verified this run (0.108.0 / b8fa1d3 / protocol 134) on 127.0.0.1:9374.",
+    "pinned_version": "v0.108.0",
+    "protocol_version": 134
+  },
+  "started_at": "2026-10-13T13:12:37Z",
+  "verdict": "blocked"
+}
