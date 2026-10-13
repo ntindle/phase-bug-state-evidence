@@ -1,0 +1,26 @@
+{
+ "oracle_text": "{T}: Counter target spell unless its controller pays {1} and 1 life.",
+ "ability_kind": "Activated",
+ "ability_cost": {
+  "type": "Tap"
+ },
+ "effect": {
+  "type": "Counter",
+  "target": {
+   "type": "StackSpell"
+  }
+ },
+ "unless_pay": {
+  "cost": {
+   "type": "Mana",
+   "cost": {
+    "type": "Cost",
+    "shards": [],
+    "generic": 1
+   }
+  },
+  "payer": {
+   "type": "ParentTargetController"
+  }
+ }
+}
