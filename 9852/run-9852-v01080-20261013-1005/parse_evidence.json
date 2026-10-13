@@ -1,0 +1,71 @@
+{
+ "issue": 9852,
+ "card": "undercover operative",
+ "oracle_text": "You may have this creature enter as a copy of any creature on the battlefield, except it enters with a shield counter on it if you control that creature. (If it would be dealt damage or destroyed, remove a shield counter from it instead.)",
+ "replacements": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "BecomeCopy",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": []
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": "You may have ~ enter as a copy of any creature on the battlefield, except it enters with a shield counter on it if you control that creature.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Optional",
+    "decline": null
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "You may have ~ enter as a copy of any creature on the battlefield, except it enters with a shield counter on it if you control that creature.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "analysis": {
+  "oracle_has_except_clause": true,
+  "n_becomecopy_effects": 1,
+  "effect_has_additional_modifications": [
+   false
+  ],
+  "additional_modification_kinds": [],
+  "effect_targets": [
+   {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  ],
+  "control_cards_additional_modifications": {
+   "evil twin": [
+    "GrantAbility"
+   ],
+   "sakashima's student": [
+    "AddSubtype"
+   ]
+  },
+  "card_reads_unsupported": false,
+  "exception_dropped": true
+ }
+}

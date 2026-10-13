@@ -1,0 +1,111 @@
+{
+ "issue": 9852,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9852",
+ "run_id": "run-9852-v01080-20261013-1005",
+ "started_at": "2026-10-13T14:44:11",
+ "finished_at": "2026-10-13T14:45:46",
+ "duration_s": 95.1,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 (started by the 9850 run earlier today, same verified release, reused by this run); scenario games created via CreateGameWithSettings; evidence under evidence/9852/run-9852-v01080-20261013-1005"
+ },
+ "server_run_dir": "runs/run-9850-v01080-20261013-0841 (v0.108.0 server on 127.0.0.1:9374, started by the 9850 run earlier today on the same verified release; reused by this run; evidence under evidence/9852/run-9852-v01080-20261013-1005)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "74e408723c011ef41875fb15d28fb36068cb49162df62eb6f99ccfbc1c7cf9b8",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    48
+   ],
+   [
+    "Merfolk of the Pearl Trident",
+    8
+   ],
+   [
+    "Undercover Operative",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    52
+   ],
+   [
+    "Merfolk of the Pearl Trident",
+    8
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_no_shield_copy_own": "passed",
+  "A4_no_shield_copy_opp": "passed",
+  "A2_parse_exception": "failed",
+  "A5_data_shape": "passed"
+ },
+ "notes": [
+  "A3: copy of P0's own undercover operative (oid 22) entered with NO shield counter -- the dropped exception, manifested in-game",
+  "A4: control copy of P1's undercover operative (oid 8) entered with no shield counter, as expected",
+  "pre_cast_own.json captured and parses",
+  "post_cast_own.json captured and parses",
+  "pre_cast_opp.json captured and parses",
+  "post_cast_opp.json captured and parses",
+  "parse: exception_dropped=True n_becomecopy=1 has_mods=[False] controls={'evil twin': ['GrantAbility'], \"sakashima's student\": ['AddSubtype']}",
+  "casts: [{'branch': 'own', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'may_answered': True, 'copy_chosen': True, 'entered': True, 'copy_oid': '22', 'copy_name': 'undercover operative', 'copy_target_oid': '10', 'shield': 0, 'pre_exported': True, 'post_exported': True}, {'branch': 'opp', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'may_answered': True, 'copy_chosen': True, 'entered': True, 'copy_oid': '8', 'copy_name': 'undercover operative', 'copy_target_oid': '91', 'shield': 0, 'pre_exported': True, 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The 'may' replacement prompt is answered ACCEPT via vi exactChoices decideOptionalEffect role/value; the copy-target choice is answered with the branch's chosen creature; any other prompt during the cast is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'except it enters with a shield counter if you control that creature' exception (no additional_modifications on the BecomeCopy effect while the oracle has the clause) -- the reported outcome. not-reproduced = the exception is present as a modification, or the card reads unsupported."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "oracle_has_except_clause": true,
+  "n_becomecopy_effects": 1,
+  "effect_has_additional_modifications": [
+   false
+  ],
+  "additional_modification_kinds": [],
+  "effect_targets": [
+   {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  ],
+  "control_cards_additional_modifications": {
+   "evil twin": [
+    "GrantAbility"
+   ],
+   "sakashima's student": [
+    "AddSubtype"
+   ]
+  },
+  "card_reads_unsupported": false,
+  "exception_dropped": true
+ },
+ "result": "A1 passed; A2 failed; A3 passed; A4 passed; A5 passed",
+ "scope": "Undercover Operative BecomeCopy exception: parse-level presence of the shield-counter exception on the BecomeCopy effect, plus in-game confirmation that a copy of the controller's own creature enters without a shield counter (control: copy of the opponent's creature enters without one too); two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The 'if you control that creature' condition is evaluated by the engine at copy time; the game checks confirm the observed counter absence on both branches.",
+  "Shield-counter reads are a best-effort parse of the runtime object's counters payload; the verbatim payload is preserved in wire_log.jsonl under copy_entered.",
+  "The copy permanent is located by its spell oid (object moved zones); if the engine re-issues the oid, the fallback is the newest P0 creature permanent, recorded in the wire log."
+ ],
+ "setup_line": "P0 48x Island + 8x Merfolk of the Pearl Trident ({U} 1/1) + 4x Undercover Operative ({2}{U}{U} 0/0 Shapeshifter Rogue); P1 52x Island + 8x Merfolk of the Pearl Trident",
+ "contract_line": "Parse (decisive): Undercover Operative's BecomeCopy effect must carry the 'except it enters with a shield counter on it if you control that creature' exception or the card must read unsupported. Game (confirming): cast the Operative, accept the may-copy replacement, copy P0's own Merfolk -- the copy must enter with a shield counter (expected absent under the bug); control: copy P1's Merfolk -- no shield counter expected."
+}

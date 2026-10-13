@@ -1,0 +1,22 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_no_shield_copy_own": "passed",
+  "A4_no_shield_copy_opp": "passed",
+  "A2_parse_exception": "failed",
+  "A5_data_shape": "passed"
+ },
+ "notes": [
+  "A3: copy of P0's own undercover operative (oid 22) entered with NO shield counter -- the dropped exception, manifested in-game",
+  "A4: control copy of P1's undercover operative (oid 8) entered with no shield counter, as expected",
+  "pre_cast_own.json captured and parses",
+  "post_cast_own.json captured and parses",
+  "pre_cast_opp.json captured and parses",
+  "post_cast_opp.json captured and parses",
+  "parse: exception_dropped=True n_becomecopy=1 has_mods=[False] controls={'evil twin': ['GrantAbility'], \"sakashima's student\": ['AddSubtype']}",
+  "casts: [{'branch': 'own', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'may_answered': True, 'copy_chosen': True, 'entered': True, 'copy_oid': '22', 'copy_name': 'undercover operative', 'copy_target_oid': '10', 'shield': 0, 'pre_exported': True, 'post_exported': True}, {'branch': 'opp', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'may_answered': True, 'copy_chosen': True, 'entered': True, 'copy_oid': '8', 'copy_name': 'undercover operative', 'copy_target_oid': '91', 'shield': 0, 'pre_exported': True, 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The 'may' replacement prompt is answered ACCEPT via vi exactChoices decideOptionalEffect role/value; the copy-target choice is answered with the branch's chosen creature; any other prompt during the cast is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'except it enters with a shield counter if you control that creature' exception (no additional_modifications on the BecomeCopy effect while the oracle has the clause) -- the reported outcome. not-reproduced = the exception is present as a modification, or the card reads unsupported."
+ ],
+ "verdict": "reproduced"
+}
