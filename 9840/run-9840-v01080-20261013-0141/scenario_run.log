@@ -1,0 +1,20 @@
+[02:01:38] starting issue #9840 run run-9840-v01080-20261013-0141
+[02:01:38] ServerHello: version=0.108.0 build=b8fa1d3 protocol=134 mode=Full
+[02:01:38] parse summary (blackmail): {"mana_cost": {"type": "Cost", "shards": ["Black"], "generic": 0}, "ability_kind": "Spell", "effect_type": "Unimplemented", "effect_name": "unparsed_verb_arguments", "effect_description": "reveal three cards from their hand and you choose one of them", "sub_effect_type": "DiscardCard", "sub_effect_count": 1, "sub_effect_target": {"type": "ParentTarget"}, "sub_link": null, "oracle_text": "Target player reveals three cards from their hand and you choose one of them. That player discards that card."}
+[02:01:39] [B9840] game BO8UWT P0seat=0 P1seat=1
+[02:01:39] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'blackmail', 'swamp']
+[02:01:39] [P1] keep 7: ['lightning bolt', 'island', 'divination', 'island', 'island', 'island', 'island']
+[02:01:39] [B9840] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[02:01:40] [P1] playing land island
+[02:01:42] [P0] discarding to hand size via vi: picks=['BO8UWT.0.21.c1']
+[02:01:47] [P0] REJECTION: {"type": "ActionRejected", "data": {"rejection": {"code": "invalid_interaction_response", "disposition": "invalid", "message": "That response is not valid for this interaction.", "related_object_ids": []}}}
+[02:01:47] [P0] playing land swamp
+[02:01:47] [B9840] P0 main phase: exporting PRE_CAST, casting Blackmail
+[02:01:47] [P0] casting blackmail (oid=20)
+[02:01:48] [P0] cast confirmed (stack): blackmail oid 20
+[02:01:48] [B9840] Blackmail on the stack; resolution window open
+[02:01:48] [B9840] Blackmail left the stack; resolution observed
+[02:01:48] [B9840] exported POST (rev_advanced=False, p1_lost_card=False, timed_out=False); done
+[02:01:48] [B9840] done flag set; finishing game
+[02:01:48] [B9840] game finished ok=True
+[02:01:48] rendered summary.png
