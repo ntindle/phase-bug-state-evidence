@@ -1,0 +1,61 @@
+{
+ "oracle_text": "Choose a card type. Target opponent reveals their hand. Create two 1/1 green Saproling creature tokens for each card of the chosen type revealed this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)",
+ "choose_effect": {
+  "type": "Choose",
+  "choice_type": "CardType",
+  "persist": true
+ },
+ "reveal_effect": {
+  "type": "RevealHand",
+  "target": {
+   "type": "Typed",
+   "type_filters": [],
+   "controller": "Opponent",
+   "properties": []
+  },
+  "reveal": true
+ },
+ "token_effect": {
+  "type": "Token",
+  "name": "Saproling",
+  "power": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "types": [
+   "Creature",
+   "Saproling"
+  ],
+  "colors": [
+   "Green"
+  ],
+  "keywords": [],
+  "tapped": false,
+  "count": {
+   "type": "Ref",
+   "qty": {
+    "type": "FilteredTrackedSetSize",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      "Card"
+     ],
+     "controller": null,
+     "properties": [
+      {
+       "type": "IsChosenCardType"
+      }
+     ]
+    }
+   }
+  },
+  "owner": {
+   "type": "Controller"
+  },
+  "enters_attacking": false
+ }
+}
