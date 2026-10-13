@@ -1,0 +1,211 @@
+{
+ "name": "Chromatic Armor",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "White",
+   "Blue"
+  ],
+  "generic": 1
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Aura"
+  ]
+ },
+ "power": null,
+ "toughness": null,
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Enchant creature\nAs this Aura enters, choose a color.\nThis Aura enters with a sleight counter on it.\nPrevent all damage that would be dealt to enchanted creature by sources of the last chosen color.\n{X}: Put a sleight counter on this Aura and choose a color. X is the number of sleight counters on this Aura.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [
+  {
+   "Enchant": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "prevention_source_scope",
+    "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "PutCounter",
+    "counter_type": "sleight",
+    "count": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "SelfRef"
+    }
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "X"
+     ],
+     "generic": 0
+    }
+   },
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Unimplemented",
+      "name": "unrecognized_clause_head",
+      "description": "X is the number of sleight counters on ~"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "duration": null,
+   "description": "{X}: Put a sleight counter on ~ and choose a color. X is the number of sleight counters on ~.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "triggers": [],
+ "static_abilities": [],
+ "replacements": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Choose",
+     "choice_type": "Color",
+     "persist": true
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "As ~ enters, choose a color.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  },
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "sleight",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "~ enters with a sleight counter on it.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "color_override": [
+  "Blue",
+  "White"
+ ],
+ "color_identity": [
+  "Blue",
+  "White"
+ ],
+ "scryfall_oracle_id": "65b3a40e-1d2b-4b24-996f-c935414ded7d",
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "premodern": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "ICE"
+ ]
+}
