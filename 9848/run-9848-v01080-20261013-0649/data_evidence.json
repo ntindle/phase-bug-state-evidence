@@ -1,0 +1,145 @@
+{
+ "ok": true,
+ "notes": [],
+ "oracle_text": "Trample, ward {2}\nAt the beginning of each combat, if this creature is untapped, any opponent may tap an untapped creature they control. If they do, tap this creature and create a 1/1 blue Fish creature token with \"This token can't be blocked.\"",
+ "trigger": {
+  "mode": "Phase",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "SetTapState",
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": "You",
+     "properties": [
+      {
+       "type": "Untapped"
+      }
+     ]
+    },
+    "scope": {
+     "type": "Single"
+    },
+    "state": {
+     "type": "Tap"
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "SetTapState",
+     "target": {
+      "type": "SelfRef"
+     },
+     "scope": {
+      "type": "Single"
+     },
+     "state": {
+      "type": "Tap"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Fish",
+      "power": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "types": [
+       "Creature",
+       "Fish"
+      ],
+      "colors": [
+       "Blue"
+      ],
+      "keywords": [],
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false,
+      "static_abilities": [
+       {
+        "mode": "CantBeBlocked",
+        "affected": {
+         "type": "SelfRef"
+        },
+        "modifications": [],
+        "condition": null,
+        "affected_zone": null,
+        "effect_zone": null,
+        "active_zones": [],
+        "characteristic_defining": false,
+        "description": "~ can't be blocked."
+       }
+      ]
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": {
+     "type": "EffectOutcome",
+     "signal": "OptionalEffectPerformed"
+    },
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": true,
+   "optional_for": "AnyOpponent",
+   "forward_result": false
+  },
+  "valid_card": null,
+  "origin": null,
+  "destination": null,
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": "BeginCombat",
+  "optional": false,
+  "damage_kind": "Any",
+  "secondary": false,
+  "valid_target": null,
+  "valid_source": null,
+  "description": "At the beginning of each combat, if ~ is untapped, any opponent may tap an untapped creature they control. If they do, tap ~ and create a 1/1 blue Fish creature token with \"~ can't be blocked.\"",
+  "constraint": null,
+  "condition": {
+   "type": "Not",
+   "condition": {
+    "type": "SourceIsTapped"
+   }
+  },
+  "batched": false
+ }
+}
