@@ -1,0 +1,90 @@
+{
+ "issue": 9850,
+ "card": "gobsmacked",
+ "oracle_text": "Enchant nonland permanent\nAs this Aura enters, choose a person outside the game.\nAs long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be activated.",
+ "static_abilities": [
+  {
+   "mode": "CantAttackOrBlock",
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "As long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be activated."
+  },
+  {
+   "mode": {
+    "CantBeActivated": {
+     "who": "AllPlayers",
+     "source_filter": {
+      "type": "SelfRef"
+     },
+     "exemption": "None",
+     "kind": null
+    }
+   },
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "As long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be activated."
+  }
+ ],
+ "parse_warnings": [
+  {
+   "type": "SwallowedClause",
+   "detector": "Condition_AsLongAs",
+   "description": "As long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be act",
+   "line_index": 2,
+   "unit_span": {
+    "first_line": 2,
+    "last_line": 2,
+    "start_byte": 81,
+    "end_byte": 228,
+    "precision": "Exact",
+    "ordinal_within_span": 0
+   },
+   "items": [
+    1,
+    2
+   ],
+   "gap": {
+    "kind": "unparsed_condition",
+    "guard": "you can see the chosen person from your seat"
+   }
+  }
+ ],
+ "analysis": {
+  "oracle_has_gate": true,
+  "n_statics": 2,
+  "static_modes": [
+   "CantAttackOrBlock",
+   "CantBeActivated"
+  ],
+  "static_conditions": [
+   null,
+   null
+  ],
+  "all_conditions_null": true,
+  "swallowed_clause_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_AsLongAs",
+    "gap_kind": "unparsed_condition",
+    "guard": "you can see the chosen person from your seat",
+    "description": "As long as you can see the chosen person from your seat, enchanted permanent can't attack or block, and its activated abilities can't be act"
+   }
+  ],
+  "statics_unimplemented": false,
+  "gate_dropped": true
+ }
+}
