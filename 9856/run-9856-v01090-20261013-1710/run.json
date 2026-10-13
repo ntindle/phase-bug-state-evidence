@@ -1,0 +1,130 @@
+{
+ "issue": 9856,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9856",
+ "run_id": "run-9856-v01090-20261013-1710",
+ "started_at": "2026-10-13T22:03:38",
+ "finished_at": "2026-10-13T22:04:23",
+ "duration_s": 44.4,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); fresh game created by this run; evidence under evidence/9856/run-9856-v01090-20261013-1710"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9856/run-9856-v01090-20261013-1710",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "5ab3600b50e25bc60c8165d2aea9011c9ea5c18c32b3f942327751af59f51dcf",
+ "decks": {
+  "P0": [
+   [
+    "Plains",
+    24
+   ],
+   [
+    "Island",
+    24
+   ],
+   [
+    "Elite Vanguard",
+    6
+   ],
+   [
+    "Chromatic Armor",
+    6
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    28
+   ],
+   [
+    "Island",
+    28
+   ],
+   [
+    "Lightning Bolt",
+    4
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A4_damage_not_prevented": "passed",
+  "A5_rechoice_not_stored": "passed",
+  "A2_prevention_unimpl": "failed",
+  "A3_rechoice_persist": "failed",
+  "A6_oracle_intact": "passed"
+ },
+ "notes": [
+  "A1 passed: Chromatic Armor (oid 37) entered with 1 sleight counter, ETB color choice offered and answered Red (attached_to=None)",
+  "A4 passed (documents the consequence of the unimplemented prevention): Lightning Bolt's 3 damage to the enchanted Elite Vanguard was NOT prevented -- Vanguard (oid 32) left the battlefield (zone=Graveyard), Armor zone=Graveyard, P0 life after=20",
+  "A5 object inspection: chosen-hits at entry=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/mana_spent_source_snapshots[0]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[1]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[2]/lki/chosen_attributes', [])], chosen-hits after {X}+Blue=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/mana_spent_source_snapshots[0]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[1]/lki/chosen_attributes', []), ('/mana_spent_source_snapshots[2]/lki/chosen_attributes', [])], chosen-hits in final export (zone=Graveyard)=[('/abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_abilities[1]/sub_ability/effect/choice_type', 'Color'), ('/base_replacement_definitions[0]/execute/effect/choice_type', 'Color'), ('/chosen_attributes', [{'type': 'Color', 'value': 'Red'}]), ('/replacement_definitions[0]/execute/effect/choice_type', 'Color')]; etb answer shape=text/value, x answer shape=text/value",
+  "A5 passed: a chosen color IS recorded on the Armor object after the {X} re-choice",
+  "pre_bolt.json captured and parses",
+  "post_bolt.json captured and parses",
+  "final_export.json captured and parses",
+  "armor_object_at_entry.json captured and parses",
+  "armor_object_after_x.json captured and parses",
+  "parse: prevention_unimplemented=[{'name': 'prevention_source_scope', 'description': 'Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color.'}] prevention_implemented_effects=0 has_last_chosen_scope=False etb_choose_persist=True x_choose_persist=False x_clause_unimplemented=[{'name': 'unrecognized_clause_head', 'description': 'X is the number of sleight counters on ~'}] n_replacements=2",
+  "protocol-140 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions (targets answered via the engine's vi target selection after CastSpell, CR 601.2c); ActivateAbility submitted while holding priority; priority-gated passes; sleep(0) yield before leg evaluation; color choices answered via the Choose-Color vi opportunity.",
+  "verdict logic: reproduced = the pinned card-data.json entry for Chromatic Armor parses the prevention sentence as Unimplemented (prevention_source_scope) -- 'sources of the last chosen color' has no representation -- corroborated by the persist:false re-choice and the game legs where they completed. not-reproduced = the scope is represented."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "card": "Chromatic Armor",
+  "entry_found": true,
+  "oracle_has_prevention_sentence": true,
+  "oracle_has_last_chosen": true,
+  "prevention_unimplemented": [
+   {
+    "name": "prevention_source_scope",
+    "description": "Prevent all damage that would be dealt to enchanted creature by sources of the last chosen color."
+   }
+  ],
+  "prevention_implemented_effects": 0,
+  "has_last_chosen_scope": false,
+  "color_chooses": [
+   {
+    "persist": false
+   },
+   {
+    "persist": true
+   }
+  ],
+  "etb_choose_persist": true,
+  "x_ability_choose_persist": false,
+  "x_clause_unimplemented": [
+   {
+    "name": "unrecognized_clause_head",
+    "description": "X is the number of sleight counters on ~"
+   }
+  ],
+  "n_abilities": 2,
+  "n_replacements": 2,
+  "replacement_descriptions": [
+   "As ~ enters, choose a color.",
+   "~ enters with a sleight counter on it."
+  ]
+ },
+ "result": "A1 passed; A2 failed; A3 failed; A4 passed; A5 passed; A6 passed",
+ "scope": "Chromatic Armor 'sources of the last chosen color' prevention scope + {X} re-choice persistence: parse-level presence in the pinned v0.109.0 card-data.json (decisive), plus three in-game legs (ETB color choice; {X} activation + re-choice with object inspection; Lightning Bolt damage to the enchanted creature); two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The Bolt leg requires P1 to draw Lightning Bolt with the Armor on the battlefield -- missing preconditions mark that leg not-run.",
+  "The {X} activation leg depends on how the engine values X (the 'X is the number of sleight counters' clause is unimplemented in the pinned data); the observed cost handling is recorded in the wire log.",
+  "Chosen-color reads are a best-effort recursive search of the runtime Armor object for chosen/choice/color fields; the verbatim objects are preserved in armor_object_at_entry.json and armor_object_after_x.json."
+ ],
+ "setup_line": "P0 24x Plains + 24x Island + 6x Elite Vanguard ({W} 2/1) + 6x Chromatic Armor ({1}{W}{U} Aura); P1 28x Mountain + 28x Island + 4x Lightning Bolt ({R} 3 damage to any target)",
+ "contract_line": "Parse (decisive): the 'sources of the last chosen color' prevention scope must be represented, or confirmed Unimplemented; the {X} re-Choose must persist like the ETB Choose. Game (confirming): ETB offers a color choice; {X} re-choice is inspected on the object; Lightning Bolt damage to the enchanted creature is applied (prevention absent)."
+}
