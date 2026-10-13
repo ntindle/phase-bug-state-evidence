@@ -1,0 +1,29 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_neither_leg": "passed",
+  "A4_reveal_leg": "failed",
+  "A5_control_leg": "failed",
+  "A2_parse_gate": "failed",
+  "A6_data_shape": "passed"
+ },
+ "notes": [
+  "neither leg: Sentinels (oid 32) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=False, revealed=None)",
+  "post_cast_neither.json captured and parses",
+  "reveal leg: Sentinels (oid 54) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=True, revealed=True)",
+  "post_cast_reveal.json captured and parses",
+  "control leg: Sentinels (oid 24) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=False, revealed=None)",
+  "post_cast_control.json captured and parses",
+  "A3_neither_leg: neither leg: Sentinels entered with 0 +1/+1 counter(s), expected 0 (prompt_offered=False, revealed=None)",
+  "A4_reveal_leg FAILED: reveal leg: Sentinels entered with 0 +1/+1 counter(s), expected 1 (prompt_offered=True, revealed=True)",
+  "A5_control_leg FAILED: control leg: Sentinels entered with 0 +1/+1 counter(s), expected 1 (prompt_offered=False, revealed=None)",
+  "neither-leg nuance: the engine did not offer the optional reveal prompt on the neither cast because P0 held no Dragon card in hand at the time (prompt_offered=false) -- the optional cost was correctly skipped, not declined.",
+  "parse: no_typed_gate=True effect=Unimplemented name=enters_with_gate condition=None additional_cost=Optional parse_warnings=None",
+  "casts[neither]: [{'branch': 'neither', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'reveal_handled': False, 'revealed': None, 'revealed_oid': None, 'entered': True, 'sentinels_oid': '32', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "casts[reveal]: [{'branch': 'reveal', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': True, 'reveal_handled': True, 'revealed': True, 'revealed_oid': '4', 'entered': True, 'sentinels_oid': '54', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "casts[control]: [{'branch': 'control', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'reveal_handled': False, 'revealed': None, 'revealed_oid': None, 'entered': True, 'sentinels_oid': '24', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. One short game per leg with per-leg opener requirements (neither: Sentinels+2 Forests, no Dragon in hand; reveal: +Whelp; control: +Whelp+Mountain, Whelp cast first). The optional reveal additional cost (hand-card candidates with no action surface) is answered REVEAL-the-Whelp on the reveal branch and declined (if a decline path exists) on the other branches; any other prompt is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output carries no typed gate for the 'enters with a +1/+1 counter if you revealed a Dragon card or controlled a Dragon as you cast this spell' clause -- the whole clause lowers as Unimplemented 'enters_with_gate' (condition null) while the optional Reveal-Dragon additional cost parses but nothing consumes it -- the reported outcome. not-reproduced = a typed gate exists."
+ ],
+ "verdict": "reproduced"
+}

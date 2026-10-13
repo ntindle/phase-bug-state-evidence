@@ -1,0 +1,119 @@
+{
+ "issue": 9854,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9854",
+ "run_id": "run-9854-v01080-20261013-1135",
+ "started_at": "2026-10-13T16:28:08",
+ "finished_at": "2026-10-13T16:29:41",
+ "duration_s": 92.8,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release; reused by this run); scenario games created via CreateGameWithSettings; evidence under evidence/9854/run-9854-v01080-20261013-1135"
+ },
+ "server_run_dir": "backfill-owned v0.108.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release; reused by this run); evidence under evidence/9854/run-9854-v01080-20261013-1135",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "00b872b5652f44105a23520a032e136b1db90939490a51e062333f9f4afa28f7",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    44
+   ],
+   [
+    "Mountain",
+    8
+   ],
+   [
+    "Fearsome Whelp",
+    4
+   ],
+   [
+    "Scaleguard Sentinels",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_neither_leg": "passed",
+  "A4_reveal_leg": "failed",
+  "A5_control_leg": "failed",
+  "A2_parse_gate": "failed",
+  "A6_data_shape": "passed"
+ },
+ "notes": [
+  "neither leg: Sentinels (oid 32) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=False, revealed=None)",
+  "post_cast_neither.json captured and parses",
+  "reveal leg: Sentinels (oid 54) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=True, revealed=True)",
+  "post_cast_reveal.json captured and parses",
+  "control leg: Sentinels (oid 24) entered with 0 +1/+1 counter(s) (P/T 2/3; prompt_offered=False, revealed=None)",
+  "post_cast_control.json captured and parses",
+  "A3_neither_leg: neither leg: Sentinels entered with 0 +1/+1 counter(s), expected 0 (prompt_offered=False, revealed=None)",
+  "A4_reveal_leg FAILED: reveal leg: Sentinels entered with 0 +1/+1 counter(s), expected 1 (prompt_offered=True, revealed=True)",
+  "A5_control_leg FAILED: control leg: Sentinels entered with 0 +1/+1 counter(s), expected 1 (prompt_offered=False, revealed=None)",
+  "neither-leg nuance: the engine did not offer the optional reveal prompt on the neither cast because P0 held no Dragon card in hand at the time (prompt_offered=false) -- the optional cost was correctly skipped, not declined.",
+  "parse: no_typed_gate=True effect=Unimplemented name=enters_with_gate condition=None additional_cost=Optional parse_warnings=None",
+  "casts[neither]: [{'branch': 'neither', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'reveal_handled': False, 'revealed': None, 'revealed_oid': None, 'entered': True, 'sentinels_oid': '32', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "casts[reveal]: [{'branch': 'reveal', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': True, 'reveal_handled': True, 'revealed': True, 'revealed_oid': '4', 'entered': True, 'sentinels_oid': '54', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "casts[control]: [{'branch': 'control', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'reveal_handled': False, 'revealed': None, 'revealed_oid': None, 'entered': True, 'sentinels_oid': '24', 'counters': 0, 'counters_raw': {}, 'power': '2', 'toughness': '3', 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. One short game per leg with per-leg opener requirements (neither: Sentinels+2 Forests, no Dragon in hand; reveal: +Whelp; control: +Whelp+Mountain, Whelp cast first). The optional reveal additional cost (hand-card candidates with no action surface) is answered REVEAL-the-Whelp on the reveal branch and declined (if a decline path exists) on the other branches; any other prompt is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output carries no typed gate for the 'enters with a +1/+1 counter if you revealed a Dragon card or controlled a Dragon as you cast this spell' clause -- the whole clause lowers as Unimplemented 'enters_with_gate' (condition null) while the optional Reveal-Dragon additional cost parses but nothing consumes it -- the reported outcome. not-reproduced = a typed gate exists."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "oracle": "As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nThis creature enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+  "n_spell_abilities": 1,
+  "gate_effect_type": "Unimplemented",
+  "gate_effect_name": "enters_with_gate",
+  "gate_description": "~ enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+  "gate_condition": null,
+  "gate_optional": false,
+  "additional_cost_type": "Optional",
+  "additional_cost_data": {
+   "cost": {
+    "type": "Reveal",
+    "count": 1,
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Dragon"
+      }
+     ],
+     "controller": null,
+     "properties": []
+    }
+   }
+  },
+  "parse_warnings": null,
+  "no_typed_gate": true,
+  "typed_gate_present": false
+ },
+ "result": "A1 passed; A2 failed; A3 passed; A4 failed; A5 failed; A6 passed",
+ "scope": "Scaleguard Sentinels 'enters with a +1/+1 counter if you revealed a Dragon card or controlled a Dragon as you cast this spell' gate: parse-level presence of a typed gate linking the optional reveal additional cost with the as-cast control snapshot, plus three in-game legs (neither / reveal / control); two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The reveal/control legs can only run if the engine offers the optional reveal prompt and the legs' preconditions are drawn; missing preconditions mark those legs not-run.",
+  "+1/+1-counter reads are a best-effort parse of the runtime object's counters payload; the verbatim payload plus P/T are preserved in wire_log.jsonl under sentinels_entered.",
+  "The Sentinels permanent is located as the newest P0 'scaleguard sentinels' permanent after resolution; if the engine re-issues the oid, the fallback is recorded in the wire log."
+ ],
+ "setup_line": "P0 44x Forest + 8x Mountain + 4x Fearsome Whelp ({1}{R} 2/2 Dragon) + 4x Scaleguard Sentinels ({G}{G} 2/3 Human Soldier); P1 60x Island",
+ "contract_line": "Parse (decisive): the 'enters with a +1/+1 counter if you revealed a Dragon card or controlled a Dragon as you cast this spell' clause must carry a typed gate, or the card must read unsupported. Game (confirming): neither leg (no reveal, no Dragon) -> 2/3 no counter; reveal leg (revealed a Dragon) -> 3/4 one counter; control leg (controlled a Dragon, no reveal) -> 3/4 one counter."
+}

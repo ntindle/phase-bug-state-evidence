@@ -1,0 +1,72 @@
+{
+ "issue": 9854,
+ "card": "scaleguard sentinels",
+ "oracle_text": "As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nThis creature enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "enters_with_gate",
+    "description": "~ enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "~ enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ],
+ "additional_cost": {
+  "type": "Optional",
+  "data": {
+   "cost": {
+    "type": "Reveal",
+    "count": 1,
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Dragon"
+      }
+     ],
+     "controller": null,
+     "properties": []
+    }
+   }
+  }
+ },
+ "analysis": {
+  "oracle": "As an additional cost to cast this spell, you may reveal a Dragon card from your hand.\nThis creature enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+  "n_spell_abilities": 1,
+  "gate_effect_type": "Unimplemented",
+  "gate_effect_name": "enters_with_gate",
+  "gate_description": "~ enters with a +1/+1 counter on it if you revealed a Dragon card or controlled a Dragon as you cast this spell.",
+  "gate_condition": null,
+  "gate_optional": false,
+  "additional_cost_type": "Optional",
+  "additional_cost_data": {
+   "cost": {
+    "type": "Reveal",
+    "count": 1,
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Dragon"
+      }
+     ],
+     "controller": null,
+     "properties": []
+    }
+   }
+  },
+  "parse_warnings": null,
+  "no_typed_gate": true,
+  "typed_gate_present": false
+ }
+}
