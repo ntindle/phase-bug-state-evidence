@@ -1,0 +1,19 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_fixture_ok": "passed",
+  "A3_pre_trigger_export": "passed",
+  "A4_no_spurious_stacktime_target": "passed",
+  "A5_opponent_asked_at_resolution": "passed",
+  "A6_resolution_effect": "failed",
+  "A7_data_shape": "passed"
+ },
+ "notes": [
+  "spurious stack-time prompts observed: 0",
+  "opponent asked at resolution: passed",
+  "post state: {'kraken_present': True, 'kraken_tapped': True, 'fish_tokens': 1, 'tapped_creature_oid': '101', 'tapped_creature_name': 'aegis turtle', 'tapped_creature_tapped': False, 'p0_bf': ['fish', 'island', 'island', 'island', 'reservoir kraken', 'island'], 'p1_bf': ['aegis turtle', 'island', 'island', 'island']}",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. Trigger window opens when the Kraken BeginCombat trigger is observed on the stack; a target-shaped prompt while it is on the stack (pre-resolution) is classified spurious; prompts after it leaves the stack are legitimate resolution choices.",
+  "verdict logic: reproduced = fixture complete and a target-selection prompt was observed while the Kraken trigger was on the stack pre-resolution. not-reproduced = fixture complete, no such prompt, and the opponent was asked at resolution."
+ ],
+ "verdict": "not-reproduced"
+}
