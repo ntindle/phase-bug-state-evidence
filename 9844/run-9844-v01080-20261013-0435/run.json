@@ -1,0 +1,148 @@
+{
+ "issue": 9844,
+ "run_id": "run-9844-v01080-20261013-0435",
+ "started_at": "2026-10-13T09:19:04",
+ "duration_s": 19.2,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-12 16:20 run; binary digest matches the GitHub asset digest); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server on 127.0.0.1:9374 started by earlier run backfill-20261013-084136, reused per playbook"
+ },
+ "server_run_dir": "runs/backfill-20261013-084136",
+ "parse_summary": {
+  "token_count": {
+   "type": "Ref",
+   "qty": {
+    "type": "FilteredTrackedSetSize",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      "Card"
+     ],
+     "controller": null,
+     "properties": [
+      {
+       "type": "IsChosenCardType"
+      }
+     ]
+    }
+   }
+  },
+  "oracle_text": "Choose a card type. Target opponent reveals their hand. Create two 1/1 green Saproling creature tokens for each card of the chosen type revealed this way. (Artifact, battle, creature, enchantment, instant, kindred, land, planeswalker, and sorcery are card types.)"
+ },
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_9844_01080.py"
+ },
+ "scenario_sha256": "7e7a796f26f874dec12883e2ea5f44498b59ec0db2eb0421fc52f31390e3f16d",
+ "decks": {
+  "P0": [
+   [
+    "fertile imagination",
+    16
+   ],
+   [
+    "forest",
+    44
+   ]
+  ],
+  "P1": [
+   [
+    "diregraf ghoul",
+    60
+   ]
+  ]
+ },
+ "games": {
+  "main": {
+   "ok": true,
+   "notes": [
+    "card-type opportunity archived: /home/hatch/workspace/dev/phase-backfill/evidence/9844/run-9844-v01080-20261013-0435/opportunity_cardtype_T9XQBN_0_100.json"
+   ],
+   "prompt_log": []
+  }
+ },
+ "observations": {
+  "snaps": {
+   "main": {
+    "pre_resolve": {
+     "P0": [
+      5,
+      50,
+      0
+     ],
+     "P1": [
+      7,
+      50,
+      3
+     ],
+     "P1_hand_creatures": 7,
+     "P1_hand_names": [
+      "diregraf ghoul"
+     ]
+    },
+    "post_resolve": {
+     "P0": [
+      5,
+      50,
+      1
+     ],
+     "P1": [
+      7,
+      50,
+      3
+     ],
+     "P0_saprolings": 7,
+     "P0_bf_names": [
+      "forest",
+      "saproling"
+     ]
+    }
+   }
+  },
+  "snap_lines": [
+   "pre_resolve: P0 hand/lib/gy=(5, 50, 0) | P1 hand/lib/gy=(7, 50, 3) P1_hand_creatures=7",
+   "post_resolve: P0 hand/lib/gy=(5, 50, 1) | P1 hand/lib/gy=(7, 50, 3) P0_saprolings=7"
+  ],
+  "outcome_lines": [
+   "revealed creatures N=7 -> expected 2*N=14 saprolings; observed=7",
+   "cardtype_prompt_seen=True answered=True choice='Creature'",
+   "post: stack_empty=True fi_in_P0_gy=True"
+  ],
+  "revealed_creatures_N": 7,
+  "observed_saprolings": 7,
+  "expected_saprolings": 14,
+  "card_type_choice": "Creature"
+ },
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_reveal": "passed",
+  "A4_bug": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "card-type opportunity archived: /home/hatch/workspace/dev/phase-backfill/evidence/9844/run-9844-v01080-20261013-0435/opportunity_cardtype_T9XQBN_0_100.json",
+  "A1: token count={\"type\": \"Ref\", \"qty\": {\"type\": \"FilteredTrackedSetSize\", \"filter\": {\"type\": \"Typed\", \"type_filters\": [\"Card\"], \"controller\": null, \"properties\": [{\"type\": \"IsChosenCardType\"}]}}}",
+  "A2: fi_cast=True pre_done=True cardtype_seen=True answered=True choice='Creature' post_done=True target_auto=None",
+  "A3: P1 hand creatures at reveal N=7; hand=['diregraf ghoul']",
+  "A4: P0 saprolings=7 (expected 2*N=14); P0 bf names=['forest', 'saproling']"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "16x/60x deck densities are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Not tested on the original build; verdict is scoped to v0.108.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 16x fertile imagination + 44 forest vs P1 60x diregraf ghoul (P0 casts Fertile Imagination turn 4 targeting P1; chooses Creature at the card-type prompt; P1 reveals hand; tokens counted in post state).",
+ "contract_line": "Per the issue's Expected: create 2 x (number of cards of the chosen type in the revealed hand) Saprolings. The reported bug: only 1 x that number is created."
+}
