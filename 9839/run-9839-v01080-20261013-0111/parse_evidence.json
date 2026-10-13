@@ -1,0 +1,56 @@
+{
+ "taster": {
+  "trigger_mode": "ChangesZone",
+  "trigger_valid_target": {
+   "type": "Player"
+  },
+  "reveal_effect": "RevealHand",
+  "reveal_count": {
+   "type": "Ref",
+   "qty": {
+    "type": "ObjectCount",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Goblin"
+      }
+     ],
+     "controller": "You",
+     "properties": []
+    }
+   }
+  },
+  "declares_chosen_group": 2147483648,
+  "sub_effect": "ChooseFromZone",
+  "sub_sub_effect": "ChangeZone",
+  "oracle_text": "When this creature enters, target opponent reveals X cards from their hand, where X is the number of Goblins you control. You choose one of those cards. That player exiles it. If an instant or sorcery card is exiled this way, you may cast it for as long as you control this creature, and mana of any type can be spent to cast that spell."
+ },
+ "sprite": {
+  "trigger_mode": "ChangesZone",
+  "trigger_valid_target": {
+   "type": "Player"
+  },
+  "reveal_effect": "RevealHand",
+  "reveal_count": {
+   "type": "Ref",
+   "qty": {
+    "type": "ObjectCount",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Faerie"
+      }
+     ],
+     "controller": "You",
+     "properties": []
+    }
+   }
+  },
+  "declares_chosen_group": 2147483648,
+  "sub_effect": "ChooseFromZone",
+  "sub_sub_effect": "DiscardCard",
+  "oracle_text": "Flying\nWhen this creature enters, target player reveals X cards from their hand, where X is the number of Faeries you control. You choose one of those cards. That player discards that card."
+ }
+}
