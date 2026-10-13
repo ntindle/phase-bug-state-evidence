@@ -1,0 +1,224 @@
+{
+ "issue": 9840,
+ "run_id": "run-9840-v01080-20261013-0141",
+ "started_at": "2026-10-13T07:01:38",
+ "duration_s": 10.4,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-12 16:20 run; binary digest matches the GitHub asset digest); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server on 127.0.0.1:9374 reused (already listening; started by run-5654-reval-v01080-20261012-2341)"
+ },
+ "server_run_dir": "runs/run-5654-reval-v01080-20261012-2341",
+ "parse_summary": {
+  "blackmail": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black"
+    ],
+    "generic": 0
+   },
+   "ability_kind": "Spell",
+   "effect_type": "Unimplemented",
+   "effect_name": "unparsed_verb_arguments",
+   "effect_description": "reveal three cards from their hand and you choose one of them",
+   "sub_effect_type": "DiscardCard",
+   "sub_effect_count": 1,
+   "sub_effect_target": {
+    "type": "ParentTarget"
+   },
+   "sub_link": null,
+   "oracle_text": "Target player reveals three cards from their hand and you choose one of them. That player discards that card."
+  },
+  "hollow_specter": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black",
+     "Black"
+    ],
+    "generic": 1
+   },
+   "ability_kind": null,
+   "effect_type": null,
+   "effect_name": null,
+   "effect_description": null,
+   "sub_effect_type": null,
+   "sub_effect_count": null,
+   "sub_effect_target": null,
+   "sub_link": null,
+   "oracle_text": "Flying\nWhenever this creature deals combat damage to a player, you may pay {X}. If you do, that player reveals X cards from their hand and you choose one of them. That player discards that card."
+  },
+  "cabal_interrogator": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black"
+    ],
+    "generic": 1
+   },
+   "ability_kind": "Activated",
+   "effect_type": "Unimplemented",
+   "effect_name": "unparsed_verb_arguments",
+   "effect_description": "reveal X cards from their hand and you choose one of them",
+   "sub_effect_type": "DiscardCard",
+   "sub_effect_count": 1,
+   "sub_effect_target": {
+    "type": "ParentTarget"
+   },
+   "sub_link": null,
+   "oracle_text": "{X}{B}, {T}: Target player reveals X cards from their hand and you choose one of them. That player discards that card. Activate only as a sorcery."
+  },
+  "mires_toll": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black"
+    ],
+    "generic": 0
+   },
+   "ability_kind": "Spell",
+   "effect_type": "RevealHand",
+   "effect_name": null,
+   "effect_description": null,
+   "sub_effect_type": "ChooseFromZone",
+   "sub_effect_count": 1,
+   "sub_effect_target": null,
+   "sub_link": null,
+   "oracle_text": "Target player reveals a number of cards from their hand equal to the number of Swamps you control. You choose one of them. That player discards that card."
+  },
+  "taster_of_wares": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black"
+    ],
+    "generic": 2
+   },
+   "ability_kind": null,
+   "effect_type": null,
+   "effect_name": null,
+   "effect_description": null,
+   "sub_effect_type": null,
+   "sub_effect_count": null,
+   "sub_effect_target": null,
+   "sub_link": null,
+   "oracle_text": "When this creature enters, target opponent reveals X cards from their hand, where X is the number of Goblins you control. You choose one of those cards. That player exiles it. If an instant or sorcery card is exiled this way, you may cast it for as long as you control this creature, and mana of any type can be spent to cast that spell."
+  }
+ },
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_9840_01080.py"
+ },
+ "scenario_sha256": "4a1c455c53819c12ee4a3b527ec06a1f8dff19fa2fc717e665bebbb896e67bae",
+ "decks": {
+  "P0": [
+   [
+    "blackmail",
+    4
+   ],
+   [
+    "swamp",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "divination",
+    4
+   ],
+   [
+    "island",
+    48
+   ]
+  ]
+ },
+ "games": {
+  "blackmail": {
+   "ok": true,
+   "notes": [
+    "P0 cast Blackmail (turn 2)"
+   ]
+  }
+ },
+ "observations": {
+  "snaps": {
+   "pre": {
+    "P0": [
+     7,
+     52,
+     0
+    ],
+    "P1": [
+     6,
+     53,
+     0
+    ]
+   },
+   "post": {
+    "P0": [
+     6,
+     52,
+     1
+    ],
+    "P1": [
+     6,
+     53,
+     0
+    ]
+   }
+  },
+  "target_answered": false,
+  "target_chosen_seat": null,
+  "untargeted_cast": "NO target prompt was ever offered; the engine advertised CastSpell with targets:[] and the spell was cast untargeted",
+  "discard_prompt": null,
+  "p0_choose1": null,
+  "p0_choose1_picked": ""
+ },
+ "assertions": {
+  "A2_parse_blackmail": "passed",
+  "A1_setup": "passed",
+  "A3_cast": "passed",
+  "A4_reveal": "failed",
+  "A5_chooser": "failed",
+  "A6_outcome": "failed",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "A2 parse Blackmail (pinned v0.108.0): ability_kind=Spell, effect=Unimplemented (name='unparsed_verb_arguments'), sub_effect=DiscardCard count=1 target={\"type\": \"ParentTarget\"}: shape as documented",
+  "A2 parse Hollow Specter: effect=None (name=None) sub=None",
+  "A2 parse Cabal Interrogator: effect=Unimplemented (name='unparsed_verb_arguments') sub=DiscardCard",
+  "A2 parse Mire's Toll: effect=RevealHand (name=None) sub=ChooseFromZone",
+  "A2 parse Taster of Wares: effect=None (name=None) sub=None",
+  "A1 setup: blackmail_in_P0_hand=True, P1hand=6, life 20/20: ok",
+  "A3 cast: Blackmail reached the stack (target_answered=False). NO target prompt was ever offered; the engine advertised CastSpell with targets:[] and the spell was cast untargeted",
+  "A4 reveal: FAILED -- Blackmail resolved with NO reveal of P1's hand: the reveal clause is Effect::Unimplemented, so the reported shape ('you choose one of the revealed cards') cannot occur. This is the reported bug.",
+  "A5 chooser: FAILED -- resolution completed with no choose-1 prompt at all (neither the controller nor the target chose; the card's choice clause is Unimplemented)",
+  "A6 outcome: FAILED -- cards leaving P1 hand: none (chosen=''); library 53->53. Oracle expects exactly the controller-chosen revealed card discarded.",
+  "A7 cleanup: stack empty=True",
+  "reproduced: Blackmail resolves without the Oracle reveal-then-controller-choose-then-discard flow (see A4/A5/A6)",
+  "P0 cast Blackmail (turn 2)"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Hollow Specter and Cabal Interrogator were not driven (shared grammar; their parsed shapes were documented from the pinned card data).",
+  "Not tested on the original build; verdict is scoped to v0.108.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 4x blackmail + 56 swamp vs P1 8x lightning bolt + 4x divination + 48 island (P0 casts Blackmail targeting P1 on turn 1).",
+ "contract_line": "Per Oracle, target reveals 3 cards from hand (all if <3); the controller chooses 1 of those; the target discards the chosen card."
+}
