@@ -1,0 +1,67 @@
+[23:46:49] starting issue #5654 run run-5654-reval-v01080-20261012-2341
+[23:46:49] ServerHello: version=0.108.0 build=b8fa1d3 protocol=134 mode=Full
+[23:46:49] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[23:46:51] [A] game 555X26 P0seat=0 P1seat=1
+[23:46:51] [P0] mulligan #2 (7: ['island', 'swamp', 'island', 'swamp', 'island', 'swamp', 'swamp'])
+[23:46:51] [P1] keep 7: ['island', 'island', 'divination', 'island', 'island', 'island', 'island']
+[23:46:51] [A] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:46:51] [P0] mulligan #3 (7: ['swamp', 'island', 'island', 'swamp', 'island', 'island', 'swamp'])
+[23:46:51] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'notion thief', 'island', 'swamp', 'swamp']
+[23:46:52] [P0] bottoming ['Swamp', 'Swamp'] via vi
+[23:46:52] [P0] playing land swamp
+[23:46:55] [P1] discarding to hand size via vi: picks=['555X26.0.24.c1']
+[23:47:00] [P1] playing land island
+[23:47:02] [P0] playing land island
+[23:47:05] [P1] discarding to hand size via vi: picks=['555X26.0.54.c1']
+[23:47:10] [P1] playing land island
+[23:47:13] [P0] playing land swamp
+[23:47:15] [P1] discarding to hand size via vi: picks=['555X26.0.84.c1']
+[23:47:20] [P1] playing land island
+[23:47:22] [P0] playing land swamp
+[23:47:23] [P0] casting notion thief (oid=21)
+[23:47:23] [A] P0 casts Notion Thief (turn 7)
+[23:47:23] [P1] cast confirmed (stack): notion thief oid 21
+[23:47:26] [P1] discarding to hand size via vi: picks=['555X26.0.117.c1']
+[23:47:31] [P1] playing land island
+[23:47:31] [A] P1 main phase: exporting PRE_A, then casting Divination
+[23:47:31] [P1] casting divination (oid=114)
+[23:47:32] [A] P1 casts Divination (turn 8)
+[23:47:32] [P0] cast confirmed (stack): divination oid 114
+[23:47:32] [P1] Divination confirmed on stack
+[23:47:32] [P1] Divination confirmed on stack
+[23:47:32] [P1] Divination confirmed on stack
+[23:47:32] [A] Divination resolved; exporting POST_A
+[23:47:33] [A] exported POST_A
+[23:47:33] [A] done flag set; finishing game
+[23:47:33] [A] game A finished ok=True
+[23:47:33] [B] game OU9AF4 P0seat=0 P1seat=1
+[23:47:33] [P0] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'plagiarize']
+[23:47:33] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[23:47:33] [B] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:47:34] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:47:34] [P1] playing land island
+[23:47:36] [P0] discarding to hand size via vi: picks=['OU9AF4.0.21.c1']
+[23:47:42] [P0] playing land island
+[23:47:43] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:47:44] [P1] playing land island
+[23:47:46] [P0] discarding to hand size via vi: picks=['OU9AF4.0.51.c1']
+[23:47:51] [P0] playing land island
+[23:47:53] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:47:54] [P1] playing land island
+[23:47:56] [P0] discarding to hand size via vi: picks=['OU9AF4.0.81.c1']
+[23:48:01] [P0] playing land island
+[23:48:04] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:48:05] [P1] playing land island
+[23:48:07] [P0] discarding to hand size via vi: picks=['OU9AF4.0.111.c1']
+[23:48:12] [P0] playing land island
+[23:48:15] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:48:15] [P0] casting plagiarize (oid=31)
+[23:48:15] [B] P0 casts Plagiarize (turn 9)
+[23:48:15] [P1] cast confirmed (stack): plagiarize oid 31
+[23:48:17] [B] P1 past draw step; exporting POST_B
+[23:48:17] [B] exported POST_B
+[23:48:17] [B] done flag set; finishing game
+[23:48:17] [B] game B finished ok=True
+[23:48:17] [A] deltas P0 hand 3->5 lib 52->50; P1 hand 7->6 lib 49->49
+[23:48:17] [B] deltas P0 hand 7->6 lib 49->49; P1 hand 6->7 lib 50->49
+[23:48:17] rendered summary.png
