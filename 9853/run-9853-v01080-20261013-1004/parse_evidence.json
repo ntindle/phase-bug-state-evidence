@@ -1,0 +1,125 @@
+{
+ "issue": 9853,
+ "card": "rescuer sphinx",
+ "oracle_text": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +1/+1 counter on it.",
+ "replacements": [
+  {
+   "event": "Moved",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PutCounter",
+     "counter_type": "P1P1",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "SelfRef"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "mode": {
+    "type": "Mandatory"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   },
+   "description": "As ~ enters, you may return a nonland permanent you control to its owner's hand. If you do, ~ enters with a +1/+1 counter on it.",
+   "condition": null,
+   "destination_zone": "Battlefield"
+  }
+ ],
+ "analysis": {
+  "oracle_has_if_you_do": true,
+  "oracle_has_may_return": true,
+  "n_replacements": 1,
+  "replacement_event": "Moved",
+  "replacement_mode": {
+   "type": "Mandatory"
+  },
+  "replacement_condition": null,
+  "replacement_description": "As ~ enters, you may return a nonland permanent you control to its owner's hand. If you do, ~ enters with a +1/+1 counter on it.",
+  "execute_kind": "Spell",
+  "execute_optional": false,
+  "execute_condition": null,
+  "execute_sub_ability": null,
+  "effect_type": "PutCounter",
+  "effect_counter_type": "P1P1",
+  "effect_count": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "effect_target": {
+   "type": "SelfRef"
+  },
+  "parse_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Optional_YouMay",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "line_index": 1,
+    "unit_span": {
+     "first_line": 0,
+     "last_line": 1,
+     "start_byte": 0,
+     "end_byte": 159,
+     "precision": "Exact",
+     "ordinal_within_span": 0
+    },
+    "items": [
+     0
+    ]
+   },
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_If",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "line_index": 1,
+    "unit_span": {
+     "first_line": 0,
+     "last_line": 1,
+     "start_byte": 0,
+     "end_byte": 159,
+     "precision": "Exact",
+     "ordinal_within_span": 0
+    },
+    "items": [
+     0
+    ],
+    "gap": {
+     "kind": "unparsed_condition",
+     "guard": "you do"
+    }
+   }
+  ],
+  "swallowed_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Optional_YouMay",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "gap": null
+   },
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_If",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "gap": {
+     "kind": "unparsed_condition",
+     "guard": "you do"
+    }
+   }
+  ],
+  "condition_dropped": true,
+  "card_reads_unsupported": false
+ }
+}

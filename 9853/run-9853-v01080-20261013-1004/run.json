@@ -1,0 +1,166 @@
+{
+ "issue": 9853,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9853",
+ "run_id": "run-9853-v01080-20261013-1004",
+ "started_at": "2026-10-13T15:06:27",
+ "finished_at": "2026-10-13T15:07:23",
+ "duration_s": 56.1,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.108.0 server on 127.0.0.1:9374 (backfill-owned, pid 4038, --single-user --no-data-download, started earlier today on the same verified release; reused by this run); scenario games created via CreateGameWithSettings; evidence under evidence/9853/run-9853-v01080-20261013-1004"
+ },
+ "server_run_dir": "backfill-owned v0.108.0 server on 127.0.0.1:9374 (pid 4038, --single-user --no-data-download, started earlier today on the same verified release; reused by this run); evidence under evidence/9853/run-9853-v01080-20261013-1004",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "bf81bf8223df4bc823546ebef7446d116d726ec838603a6a9647c791018a0c41",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    48
+   ],
+   [
+    "Merfolk of the Pearl Trident",
+    8
+   ],
+   [
+    "Rescuer Sphinx",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    52
+   ],
+   [
+    "Merfolk of the Pearl Trident",
+    8
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_no_return_no_counter": "failed",
+  "A4_accept_one_counter": "not-run",
+  "A2_parse_condition": "failed",
+  "A5_data_shape": "passed"
+ },
+ "notes": [
+  "A3 FAILED: decline branch: the Sphinx (oid 10) entered WITH 1 +1/+1 counter(s) (counters_raw={'P1P1': 1}, P/T 4/3) although no nonland permanent was returned (prompt_offered=False, may_accepted=None) -- the reported wrong-game-result",
+  "A4 not-run: the 'you may return a nonland permanent' prompt was never offered (the optional gate is absent entirely), so the accept branch cannot be exercised; the accept-branch Sphinx (oid 53) entered with 1 +1/+1 counter(s)",
+  "pre_cast_decline.json captured and parses",
+  "post_cast_decline.json captured and parses",
+  "pre_cast_accept.json captured and parses",
+  "post_cast_accept.json captured and parses",
+  "parse: condition_dropped=True effect=PutCounter mode={'type': 'Mandatory'} exec_optional=False exec_condition=None swallowed=[('SwallowedClause', 'Optional_YouMay'), ('SwallowedClause', 'Condition_If')]",
+  "casts: [{'branch': 'decline', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'may_answered': False, 'may_accepted': None, 'return_target_chosen': False, 'returned_oid': None, 'returned_name': None, 'entered': True, 'sphinx_oid': '10', 'counters': 1, 'counters_raw': {'P1P1': 1}, 'power': '4', 'toughness': '3', 'pre_exported': True, 'post_exported': True}, {'branch': 'accept', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'may_answered': False, 'may_accepted': None, 'return_target_chosen': False, 'returned_oid': None, 'returned_name': None, 'entered': True, 'sphinx_oid': '53', 'counters': 1, 'counters_raw': {'P1P1': 1}, 'power': '4', 'toughness': '3', 'pre_exported': True, 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The 'may return' prompt (exactChoices decideOptionalEffect) is answered DECLINE on the decline branch and ACCEPT on the accept branch (with the branch's Merfolk as the return target); any other prompt during a cast is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'If you do' condition and the optional 'you may return a nonland permanent' gate (PutCounter lowered Mandatory/unconditional, condition null everywhere, SwallowedClause warnings for Optional_YouMay and Condition_If 'you do') -- the reported outcome. not-reproduced = the condition is carried (or the card reads unsupported)."
+ ],
+ "verdict": "reproduced",
+ "parse_evidence": {
+  "oracle_has_if_you_do": true,
+  "oracle_has_may_return": true,
+  "n_replacements": 1,
+  "replacement_event": "Moved",
+  "replacement_mode": {
+   "type": "Mandatory"
+  },
+  "replacement_condition": null,
+  "replacement_description": "As ~ enters, you may return a nonland permanent you control to its owner's hand. If you do, ~ enters with a +1/+1 counter on it.",
+  "execute_kind": "Spell",
+  "execute_optional": false,
+  "execute_condition": null,
+  "execute_sub_ability": null,
+  "effect_type": "PutCounter",
+  "effect_counter_type": "P1P1",
+  "effect_count": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "effect_target": {
+   "type": "SelfRef"
+  },
+  "parse_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Optional_YouMay",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "line_index": 1,
+    "unit_span": {
+     "first_line": 0,
+     "last_line": 1,
+     "start_byte": 0,
+     "end_byte": 159,
+     "precision": "Exact",
+     "ordinal_within_span": 0
+    },
+    "items": [
+     0
+    ]
+   },
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_If",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "line_index": 1,
+    "unit_span": {
+     "first_line": 0,
+     "last_line": 1,
+     "start_byte": 0,
+     "end_byte": 159,
+     "precision": "Exact",
+     "ordinal_within_span": 0
+    },
+    "items": [
+     0
+    ],
+    "gap": {
+     "kind": "unparsed_condition",
+     "guard": "you do"
+    }
+   }
+  ],
+  "swallowed_warnings": [
+   {
+    "type": "SwallowedClause",
+    "detector": "Optional_YouMay",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "gap": null
+   },
+   {
+    "type": "SwallowedClause",
+    "detector": "Condition_If",
+    "description": "Flying\nAs this creature enters, you may return a nonland permanent you control to its owner's hand. If you do, this creature enters with a +",
+    "gap": {
+     "kind": "unparsed_condition",
+     "guard": "you do"
+    }
+   }
+  ],
+  "condition_dropped": true,
+  "card_reads_unsupported": false
+ },
+ "result": "A1 passed; A2 failed; A3 failed; A4 not-run; A5 passed",
+ "scope": "Rescuer Sphinx 'enters with a +1/+1 counter' gate: parse-level presence of the 'If you do' condition and the optional 'may return a nonland permanent' gate on the PutCounter replacement, plus in-game confirmation that the Sphinx enters with a +1/+1 counter even when nothing was returned (decline leg) and that the accept branch cannot be exercised because the prompt is never offered; two-player game; native human seats, no AI",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "The accept leg (A4) can only run if the engine offers the 'you may return' prompt; under the reported bug the gate is absent, so A4 is expected to be not-run.",
+  "+1/+1-counter reads are a best-effort parse of the runtime object's counters payload; the verbatim payload plus P/T are preserved in wire_log.jsonl under sphinx_entered.",
+  "The Sphinx permanent is located by its spell oid (object moved zones); if the engine re-issues the oid, the fallback is the newest P0 'rescuer sphinx' permanent, recorded in the wire log."
+ ],
+ "setup_line": "P0 48x Island + 8x Merfolk of the Pearl Trident ({U} 1/1) + 4x Rescuer Sphinx ({2}{U}{U} 3/2 flyer); P1 52x Island + 8x Merfolk of the Pearl Trident",
+ "contract_line": "Parse (decisive): Rescuer Sphinx's PutCounter replacement must carry the 'If you do' condition and the optional 'may return a nonland permanent' gate, or the card must read unsupported. Game (confirming): cast the Sphinx while controlling a Merfolk; no return prompt is expected under the bug. Decline leg: the Sphinx must enter with no +1/+1 counter when nothing was returned (bug: it enters with one). Accept leg (control): return the Merfolk; the Sphinx must enter with exactly one +1/+1 counter."
+}

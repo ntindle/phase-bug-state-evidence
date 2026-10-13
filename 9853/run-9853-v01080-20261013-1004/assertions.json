@@ -1,0 +1,22 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A3_no_return_no_counter": "failed",
+  "A4_accept_one_counter": "not-run",
+  "A2_parse_condition": "failed",
+  "A5_data_shape": "passed"
+ },
+ "notes": [
+  "A3 FAILED: decline branch: the Sphinx (oid 10) entered WITH 1 +1/+1 counter(s) (counters_raw={'P1P1': 1}, P/T 4/3) although no nonland permanent was returned (prompt_offered=False, may_accepted=None) -- the reported wrong-game-result",
+  "A4 not-run: the 'you may return a nonland permanent' prompt was never offered (the optional gate is absent entirely), so the accept branch cannot be exercised; the accept-branch Sphinx (oid 53) entered with 1 +1/+1 counter(s)",
+  "pre_cast_decline.json captured and parses",
+  "post_cast_decline.json captured and parses",
+  "pre_cast_accept.json captured and parses",
+  "post_cast_accept.json captured and parses",
+  "parse: condition_dropped=True effect=PutCounter mode={'type': 'Mandatory'} exec_optional=False exec_condition=None swallowed=[('SwallowedClause', 'Optional_YouMay'), ('SwallowedClause', 'Condition_If')]",
+  "casts: [{'branch': 'decline', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'may_answered': False, 'may_accepted': None, 'return_target_chosen': False, 'returned_oid': None, 'returned_name': None, 'entered': True, 'sphinx_oid': '10', 'counters': 1, 'counters_raw': {'P1P1': 1}, 'power': '4', 'toughness': '3', 'pre_exported': True, 'post_exported': True}, {'branch': 'accept', 'submitted': True, 'seen_on_stack': True, 'resolved': True, 'prompt_offered': False, 'may_answered': False, 'may_accepted': None, 'return_target_chosen': False, 'returned_oid': None, 'returned_name': None, 'entered': True, 'sphinx_oid': '53', 'counters': 1, 'counters_raw': {'P1P1': 1}, 'power': '4', 'toughness': '3', 'pre_exported': True, 'post_exported': True}]",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana; casts via advertised legal actions; priority-gated passes; sleep(0) yield before leg evaluation. The 'may return' prompt (exactChoices decideOptionalEffect) is answered DECLINE on the decline branch and ACCEPT on the accept branch (with the branch's Merfolk as the return target); any other prompt during a cast is recorded, never auto-answered.",
+  "verdict logic: reproduced = the parse output drops the 'If you do' condition and the optional 'you may return a nonland permanent' gate (PutCounter lowered Mandatory/unconditional, condition null everywhere, SwallowedClause warnings for Optional_YouMay and Condition_If 'you do') -- the reported outcome. not-reproduced = the condition is carried (or the card reads unsupported)."
+ ],
+ "verdict": "reproduced"
+}
