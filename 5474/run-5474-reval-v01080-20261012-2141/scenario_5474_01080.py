@@ -163,7 +163,7 @@ RUNLOG = open(f"{EVDIR}/scenario_run.log", "w")
 SERVER_IDENTITY = {
     "server_version": "v0.108.0",
     "build_commit": "b8fa1d3",
-    "protocol_version": 130,
+    "protocol_version": 134,
     "mode": "Full",
     "server_binary_sha256": "",
     "card_data_sha256": "",
