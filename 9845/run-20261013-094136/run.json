@@ -1,0 +1,90 @@
+{
+ "issue": 9845,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9845",
+ "run_id": "run-20261013-094136",
+ "started_at": "2026-10-13T09:52:27",
+ "finished_at": "2026-10-13T09:55:51",
+ "duration_s": 203.6,
+ "server_identity": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused live v0.108.0 server on 127.0.0.1:9374 (pid 4659, started 2026-10-13 03:42 by run backfill-20261013-084136, pinned 2026-10-12); scenario games created via CreateGameWithSettings; evidence under evidence/9845/run-20261013-094136"
+ },
+ "server_run_dir": "runs/backfill-20261013-084136 (reused live v0.108.0 server on 127.0.0.1:9374, pid 4659, started 2026-10-13 03:42 by that run; evidence under evidence/9845/run-20261013-094136)",
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "faf9c4302f42f25be54247ff070b2a25d7d57609a2629e56630732675b7851e0",
+ "decks": {
+  "test_P0": [
+   [
+    "Plains",
+    56
+   ],
+   [
+    "Blood of the Martyr",
+    4
+   ]
+  ],
+  "test_P1": [
+   [
+    "Island",
+    60
+   ]
+  ],
+  "control_P0": [
+   [
+    "Mountain",
+    56
+   ],
+   [
+    "Aardwolf's Advantage",
+    4
+   ]
+  ],
+  "control_P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "test_A1_setup_ok": "passed",
+  "test_A2_fixture_ok": "passed",
+  "test_A3_cast_paid": "passed",
+  "test_A4_resolved": "passed",
+  "test_A5_telemetry": "failed",
+  "control_A1_setup_ok": "passed",
+  "control_A2_fixture_ok": "passed",
+  "control_A3_cast_paid": "passed",
+  "control_A4_resolved": "passed",
+  "control_A5_telemetry": "failed"
+ },
+ "notes": [
+  "[test] test leg: root-Unimplemented spell resolved with no unimplemented_oracle_ids entry (the reported bug)",
+  "[test] telemetry ids: []",
+  "[control] control leg: nested Unimplemented resolved but no telemetry recorded (telemetry path broken?)",
+  "[control] telemetry ids: []",
+  "protocol-134 driver: CreateGameWithSettings/JoinGameWithPassword/start_when_full; MulliganDecision via legacy Action (Keep); DiscardToHandSize via vi select; mana via vi tapLandForMana (PayMana fallback); cast via advertised legal action (vi castSpell fallback); priority-gated passes; sleep(0) yield before leg evaluation.",
+  "verdict logic (corrected 2026-10-13): reproduced = test-leg spell resolved (A4) with no unimplemented_oracle_ids entry (A5 failed). The control leg's nested-Unimplemented A5 is not a verdict gate: that tail is skipped by the deliberate tail_family_has_runtime_evidence policy, a separate mechanism from the reported execute_effect early return. Engine's own F1 test f1_unimplemented_oracle_ids_not_recorded_for_bare_top_level_unimplemented pins this defect."
+ ],
+ "verdict": "reproduced",
+ "result": "test: A1 passed; A2 passed; A3 passed; A4 passed; A5 failed | control: A1 passed; A2 passed; A3 passed; A4 passed; A5 failed | VERDICT-CORRECTION 2026-10-13: initial 'blocked' label was wrong (it demanded the control leg record telemetry, impossible by the deliberate tail policy); corrected to 'reproduced' per the test leg, which is the reported failure.",
+ "scope": "Blood of the Martyr root-Unimplemented resolution vs Aardwolf's Advantage nested-Unimplemented control; native human seats (no AI)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "Telemetry observed via the authoritative export's unimplemented_oracle_ids field; the game_summary surface was not exercised separately."
+ ],
+ "setup_line": "test: P0 56x Plains + 4x Blood of the Martyr ({W}{W}{W}, Spell root Unimplemented), P1 60x Island; control: P0 56x Mountain + 4x Aardwolf's Advantage ({2}{R}, Spell root PumpAll + Unimplemented sub), P1 60x Island",
+ "contract_line": "Cast the test spell on turn 3, let it resolve, then read unimplemented_oracle_ids from the authoritative export. Expected per issue: recorded. Bug: empty."
+}
