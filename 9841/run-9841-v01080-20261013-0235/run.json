@@ -1,0 +1,259 @@
+{
+ "issue": 9841,
+ "run_id": "run-9841-v01080-20261013-0235",
+ "started_at": "2026-10-13T07:21:21",
+ "duration_s": 11.3,
+ "server": {
+  "server_version": "v0.108.0",
+  "build_commit": "b8fa1d3",
+  "protocol_version": 134,
+  "mode": "Full",
+  "server_binary_sha256": "83a3d30919ea7d56b98054048566d105116523abb2b88e5e4478c40ecb00c1f7",
+  "card_data_sha256": "2f65a5829b509ad69a32110ff9a1361363e7f97f24c41c6a53d4ae6850e8e813",
+  "draft_pools_sha256": "8c9945e3c7d511ebb1ca9ff37bee5b1f58144c1c4b5d6bed52f81d6d050c7297",
+  "signature_verified": true,
+  "signature_note": "v0.108.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode (pin verified 2026-10-12 16:20 run; binary digest matches the GitHub asset digest); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.108.0 (published 2026-10-12T21:10:34Z) == pinned release dir; ServerHello 0.108.0/b8fa1d3/protocol 134 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server on 127.0.0.1:9374 reused (already listening; started by run-5654-reval-v01080-20261012-2341)"
+ },
+ "server_run_dir": "runs/run-5654-reval-v01080-20261012-2341",
+ "parse_summary": {
+  "mires_toll": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Black"
+    ],
+    "generic": 0
+   },
+   "ability_kind": "Spell",
+   "effect_type": "RevealHand",
+   "effect_name": null,
+   "effect_description": null,
+   "effect_target": {
+    "type": "Player"
+   },
+   "effect_card_filter": {
+    "type": "Any"
+   },
+   "effect_count": {
+    "type": "Ref",
+    "qty": {
+     "type": "ObjectCount",
+     "filter": {
+      "type": "Typed",
+      "type_filters": [
+       {
+        "Subtype": "Swamp"
+       }
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    }
+   },
+   "sub_effect_type": "ChooseFromZone",
+   "sub_effect_count": 1,
+   "sub_effect_target": null,
+   "sub_link": null,
+   "oracle_text": "Target player reveals a number of cards from their hand equal to the number of Swamps you control. You choose one of them. That player discards that card."
+  },
+  "thought_rattle": {
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Blue",
+     "Black"
+    ],
+    "generic": 0
+   },
+   "ability_kind": "Spell",
+   "effect_type": "RevealHand",
+   "effect_name": null,
+   "effect_description": null,
+   "effect_target": {
+    "type": "Typed",
+    "type_filters": [],
+    "controller": "Opponent",
+    "properties": []
+   },
+   "effect_card_filter": {
+    "type": "Any"
+   },
+   "effect_count": null,
+   "sub_effect_type": "ChooseFromZone",
+   "sub_effect_count": 1,
+   "sub_effect_target": null,
+   "sub_link": null,
+   "oracle_text": "Target opponent reveals each nonland card in their hand. You choose one of those cards. Exile that card.\nThreshold \u2014 If seven or more cards are in your graveyard, seek a Rat card. It perpetually gains \"This spell costs {1} less to cast.\"\nYou gain 1 life for each Rat card in your hand."
+  }
+ },
+ "driver": {
+  "protocol_advertised": 134,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_9841_01080.py"
+ },
+ "scenario_sha256": "f4211cbb0da3260bddb231fbcf80c11df46693540a5893d18a5696d48906c5f7",
+ "decks": {
+  "P0": [
+   [
+    "mire's toll",
+    4
+   ],
+   [
+    "swamp",
+    56
+   ]
+  ],
+  "P1": [
+   [
+    "lightning bolt",
+    8
+   ],
+   [
+    "divination",
+    4
+   ],
+   [
+    "island",
+    48
+   ]
+  ]
+ },
+ "games": {
+  "mires_toll": {
+   "ok": true,
+   "notes": [
+    "P0 cast Mire's Toll (turn 4, 2 swamps)"
+   ]
+  }
+ },
+ "observations": {
+  "snaps": {
+   "pre": {
+    "P0": [
+     6,
+     52,
+     0
+    ],
+    "P1": [
+     6,
+     52,
+     0
+    ]
+   },
+   "post": {
+    "P0": [
+     5,
+     52,
+     1
+    ],
+    "P1": [
+     5,
+     52,
+     1
+    ]
+   }
+  },
+  "target_answered": true,
+  "target_chosen_seat": 1,
+  "swamps_at_cast": 2,
+  "p0_prompt_sequence": [
+   {
+    "seq": 1,
+    "kind_code": "choose",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "n_candidates": 2,
+    "candidates": [
+     "Lightning Bolt:?",
+     "Island:?"
+    ],
+    "ack_like": true,
+    "at": 1791876092.5991814,
+    "seat": "P0"
+   },
+   {
+    "seq": 2,
+    "kind_code": "select",
+    "rtype": "schema",
+    "spec_type": "select",
+    "n_candidates": 2,
+    "candidates": [
+     "Lightning Bolt:?",
+     "Island:?"
+    ],
+    "ack_like": false,
+    "at": 1791876092.7501004,
+    "seat": "P0"
+   }
+  ],
+  "p1_prompt_sequence": [],
+  "reveal_acked": {
+   "P0": {
+    "kind_code": "choose",
+    "rtype": "exactChoices",
+    "spec_type": null,
+    "n_candidates": 2,
+    "candidates": [
+     "Lightning Bolt:?",
+     "Island:?"
+    ],
+    "ack_like": true,
+    "at": 1791876092.5991814,
+    "seat": "P0"
+   }
+  },
+  "p1_reveal_choice": null,
+  "choose1": {
+   "kind_code": "select",
+   "rtype": "schema",
+   "spec_type": "select",
+   "n_candidates": 2,
+   "candidates": [
+    "Lightning Bolt:?",
+    "Island:?"
+   ],
+   "ack_like": false,
+   "at": 1791876092.7501004,
+   "seat": "P0",
+   "p1_hand": 6,
+   "picked": "Island"
+  },
+  "choose1_picked": "Island",
+  "choose1_first_was_choose": false
+ },
+ "assertions": {
+  "A2_parse_mires_toll": "passed",
+  "A2_parse_thought_rattle": "passed",
+  "A1_setup": "passed",
+  "A3_cast": "passed",
+  "A4_reveal": "passed",
+  "A5_no_redundant_ack": "failed",
+  "A6_chooser": "passed",
+  "A7_outcome": "passed",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "A2 parse Mire's Toll (pinned v0.108.0): ability_kind=Spell, effect=RevealHand (target={\"type\": \"Player\"}), sub_effect=ChooseFromZone count=1: choose clause modelled",
+  "A2 parse Thought Rattle (not driven): effect=RevealHand (target={\"type\": \"Typed\", \"type_filters\": [], \"controller\": \"Opponent\", \"properties\": []}, filter={\"type\": \"Any\"})",
+  "A1 setup: mires_toll_in_P0_hand=True, swamps_at_cast=2, P1hand=6, life 20/20: ok",
+  "A3 cast: Mire's Toll reached the stack; targeted P1 (seat 1): True",
+  "A4 reveal: passed -- p1_reveal_choice=False, choose1_n=2 (expected 2), candidates_from_P1_hand=True",
+  "A5 no_redundant_ack: FAILED (= bug reproduced) -- P0 was offered a reveal ack (kind='choose', n_cand=2) during resolution. ack_at=1791876092.6 choose_at=1791876092.8 ack_first=True P0 prompt sequence: [('choose', 2, True), ('select', 2, False)]",
+  "A6 chooser: passed -- P0 (controller) offered choose-1 with 2 candidates (expected 2 from P1's hand): [Lightning Bolt:?; Island:?]",
+  "A7 outcome: passed -- P1 hand lost ['island'] (picked='Island'); in P1 gy: True; library 52->52; mires_toll in P0 gy: True",
+  "A8 cleanup: stack empty=True",
+  "reproduced: the choosing player (P0) was offered a RevealChoice acknowledgement during resolution -- two prompts for one decision, exactly the reported UX defect",
+  "P0 cast Mire's Toll (turn 4, 2 swamps)"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x key-card deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Thought Rattle was not driven (its RevealHand parse shape was documented from the pinned card data; threshold/seek clauses untested).",
+  "Not tested on the original build; verdict is scoped to v0.108.0, not a fix claim.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 4x mire's toll + 56 swamp vs P1 8x lightning bolt + 4x divination + 48 island (P0 casts Mire's Toll targeting P1 on turn 2 with 2 Swamps).",
+ "contract_line": "Per the issue's Expected: target reveals 2 cards (= Swamps controlled); the controller gets ONE selection prompt (ChooseFromZoneChoice) over the revealed cards; the target discards the chosen card. The reported bug is a redundant RevealChoice ack before the choose prompt."
+}

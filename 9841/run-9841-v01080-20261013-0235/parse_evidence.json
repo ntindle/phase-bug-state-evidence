@@ -1,0 +1,71 @@
+{
+ "mires_toll": {
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black"
+   ],
+   "generic": 0
+  },
+  "ability_kind": "Spell",
+  "effect_type": "RevealHand",
+  "effect_name": null,
+  "effect_description": null,
+  "effect_target": {
+   "type": "Player"
+  },
+  "effect_card_filter": {
+   "type": "Any"
+  },
+  "effect_count": {
+   "type": "Ref",
+   "qty": {
+    "type": "ObjectCount",
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Swamp"
+      }
+     ],
+     "controller": "You",
+     "properties": []
+    }
+   }
+  },
+  "sub_effect_type": "ChooseFromZone",
+  "sub_effect_count": 1,
+  "sub_effect_target": null,
+  "sub_link": null,
+  "oracle_text": "Target player reveals a number of cards from their hand equal to the number of Swamps you control. You choose one of them. That player discards that card."
+ },
+ "thought_rattle": {
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Blue",
+    "Black"
+   ],
+   "generic": 0
+  },
+  "ability_kind": "Spell",
+  "effect_type": "RevealHand",
+  "effect_name": null,
+  "effect_description": null,
+  "effect_target": {
+   "type": "Typed",
+   "type_filters": [],
+   "controller": "Opponent",
+   "properties": []
+  },
+  "effect_card_filter": {
+   "type": "Any"
+  },
+  "effect_count": null,
+  "sub_effect_type": "ChooseFromZone",
+  "sub_effect_count": 1,
+  "sub_effect_target": null,
+  "sub_link": null,
+  "oracle_text": "Target opponent reveals each nonland card in their hand. You choose one of those cards. Exile that card.\nThreshold \u2014 If seven or more cards are in your graveyard, seek a Rat card. It perpetually gains \"This spell costs {1} less to cast.\"\nYou gain 1 life for each Rat card in your hand."
+ }
+}

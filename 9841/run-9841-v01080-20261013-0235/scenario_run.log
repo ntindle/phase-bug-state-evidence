@@ -1,0 +1,29 @@
+[02:21:21] starting issue #9841 run run-9841-v01080-20261013-0235
+[02:21:21] ServerHello: version=0.108.0 build=b8fa1d3 protocol=134 mode=Full
+[02:21:21] parse summary (mires_toll): {"mana_cost": {"type": "Cost", "shards": ["Black"], "generic": 0}, "ability_kind": "Spell", "effect_type": "RevealHand", "effect_name": null, "effect_description": null, "effect_target": {"type": "Player"}, "effect_card_filter": {"type": "Any"}, "effect_count": {"type": "Ref", "qty": {"type": "ObjectCount", "filter": {"type": "Typed", "type_filters": [{"Subtype": "Swamp"}], "controller": "You", "properties": []}}}, "sub_effect_type": "ChooseFromZone", "sub_effect_count": 1, "sub_effect_target": null, "sub_link": null, "oracle_text": "Target player reveals a number of cards from their hand equal to the number of Swamps you control. You choose one of them. That player discards that card."}
+[02:21:22] [B9841] game 7L607Z P0seat=0 P1seat=1
+[02:21:22] [P0] mulligan #2 (7: ['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'])
+[02:21:22] [P1] keep 7: ['lightning bolt', 'island', 'island', 'island', 'island', 'island', 'island']
+[02:21:22] [B9841] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[02:21:23] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', "mire's toll", 'swamp', 'swamp']
+[02:21:23] [P0] bottoming ['Swamp'] via vi
+[02:21:23] [P1] playing land island
+[02:21:25] [P0] playing land swamp
+[02:21:28] [P1] playing land island
+[02:21:31] [P0] playing land swamp
+[02:21:31] [B9841] P0 main phase turn 4: exporting PRE_CAST (2 swamps), casting Mire's Toll
+[02:21:31] [P0] casting mire's toll (oid=27)
+[02:21:32] [P0] spell target prompt: answering P1 (seat 1)
+[02:21:32] [P0] submitting advertised target: id=7L607Z.0.55.t1 kind=sequence seat=1 ()
+[02:21:32] [P0] cast confirmed (stack): mire's toll oid 27
+[02:21:32] [B9841] Mire's Toll on the stack; resolution window open
+[02:21:32] [P0] resolution prompt #1: kind='choose' rtype=exactChoices n_cand=2 ack_like=True [Lightning Bolt:?; Island:?]
+[02:21:32] [P0] answering reveal ACK (first/only choice)
+[02:21:32] [P0] ack-style answer: 'Lightning Bolt'
+[02:21:32] [P0] resolution prompt #2: kind='select' rtype=schema n_cand=2 ack_like=False [Lightning Bolt:?; Island:?]
+[02:21:32] [P0] answering choose-1: picked LAST 'Island'
+[02:21:32] [B9841] Mire's Toll left the stack; resolution observed
+[02:21:32] [B9841] exported POST (rev_advanced=False, p1_lost_card=True, timed_out=False); done
+[02:21:32] [B9841] done flag set; finishing game
+[02:21:32] [B9841] game finished ok=True
+[02:21:33] rendered summary.png
