@@ -1,0 +1,90 @@
+{
+ "issue": 9865,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9865",
+ "run_id": "run-9865-v01090-20261014-0510",
+ "started_at": "2026-10-14T04:43:09",
+ "finished_at": "2026-10-14T04:47:10",
+ "duration_s": 241.5,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9865/run-9865-v01090-20261014-0510"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9865/run-9865-v01090-20261014-0510",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8abf4d9d56484706921c5ecd6014847e9711ea1fc09661cd4106e8991ae1d62b",
+ "decks": {
+  "P0": [
+   [
+    "Kathril, Aspect Warper",
+    6
+   ],
+   [
+    "Vampire Nighthawk",
+    6
+   ],
+   [
+    "Viscera Seer",
+    6
+   ],
+   [
+    "Grizzly Bears",
+    6
+   ],
+   [
+    "Swamp",
+    16
+   ],
+   [
+    "Forest",
+    10
+   ],
+   [
+    "Plains",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_counters_placed": "passed",
+  "A2b_single_recipient": "passed",
+  "A3_kathril_p1p1": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: PRE has Kathril in P0 hand, Nighthawk in P0 graveyard, Bears on P0 BF (P0 life=20, P1 life=20)",
+  "A2 passed: exactly 3 keyword counters placed on P0 creatures (per-creature: {'21': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '32': {'name': 'plains', 'counters': {}, 'keyword_total': 0}, '39': {'name': 'grizzly bears', 'counters': {'deathtouch': 1, 'flying': 1, 'lifelink': 1}, 'keyword_total': 3}, '43': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '53': {'name': 'forest', 'counters': {}, 'keyword_total': 0}, '55': {'name': 'kathril, aspect warper', 'counters': {'p1p1': 1}, 'keyword_total': 0}, '6': {'name': 'forest', 'counters': {}, 'keyword_total': 0}})",
+  "A2b passed: all keyword counters on exactly 1 recipient (oid 39 = grizzly bears) -- the discriminating configuration (3 counters, 1 object)",
+  "A3 FAILED: Kathril has 1 +1/+1 counter(s) (expected 3; P/T 4/4, bug predicts 4/4) -- object-count signature (TrackedSetSize = 1 recipient)",
+  "A4 passed: POST stack empty, Kathril on P0 BF"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_setup_ok passed; A2_counters_placed passed; A2b_single_recipient passed; A3_kathril_p1p1 failed; A4_cleanup passed; kathril={'oids': ['55'], 'counters': {'p1p1': 1}, 'p1p1': 1, 'power': 4, 'toughness': 4}; bears={'oids': ['39'], 'counters': {'deathtouch': 1, 'flying': 1, 'lifelink': 1}}; keyword_counters={'total': 3, 'recipients': ['39'], 'per_creature': {'21': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '32': {'name': 'plains', 'counters': {}, 'keyword_total': 0}, '39': {'name': 'grizzly bears', 'counters': {'deathtouch': 1, 'flying': 1, 'lifelink': 1}, 'keyword_total': 3}, '43': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '53': {'name': 'forest', 'counters': {}, 'keyword_total': 0}, '55': {'name': 'kathril, aspect warper', 'counters': {'p1p1': 1}, 'keyword_total': 0}, '6': {'name': 'forest', 'counters': {}, 'keyword_total': 0}}}; etb_picks=[{'keyword': '?', 'oid': '39', 'name': 'grizzly bears'}, {'keyword': '?', 'oid': '39', 'name': 'grizzly bears'}, {'keyword': '?', 'oid': '39', 'name': 'grizzly bears'}]",
+ "scope": "Kathril ETB 'for each counter put on a creature this way' quantity: 3 keyword counters (flying, deathtouch, lifelink from the Vampire Nighthawk in the graveyard) all placed on the same creature (Grizzly Bears); Kathril's +1/+1 count measured. Native engine, two human-client seats.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "6x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Only the 3-keyword configuration was exercised in-game (Nighthawk in the graveyard); the full eleven-keyword run was not attempted. The 3-on-1 configuration already discriminates counter-counting (3) from object-counting (1).",
+  "Verdict rule: reproduced = A1 + A2 + A2b passed and A3 failed. not-reproduced = all assertions passed. blocked = setup never completed, counters never placed, or recipients spread (non-discriminating)."
+ ],
+ "setup_line": "P0 6x Kathril + 6x Vampire Nighthawk + 6x Viscera Seer + 6x Grizzly Bears + 16x Swamp + 10x Forest + 10x Plains; P1 60x Forest (draw-go). P0: Bears -> Seer -> Nighthawk -> sac Nighthawk via Seer -> sac Seer to itself -> cast Kathril, answering all 3 ETB counter placements with Grizzly Bears.",
+ "contract_line": "3 keyword counters on 1 creature -> Kathril gets 3 +1/+1 counters (6/6). Bug: TrackedSetSize counts the 1 recipient object -> Kathril gets 1 +1/+1 counter (4/4)."
+}
