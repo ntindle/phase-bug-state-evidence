@@ -1,0 +1,1122 @@
+{
+ "kathril, aspect warper": {
+  "name": "Kathril, Aspect Warper",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "Black",
+    "Green"
+   ],
+   "generic": 2
+  },
+  "card_type": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Nightmare",
+    "Insect"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "When Kathril enters, put a flying counter on any creature you control if a creature card in your graveyard has flying. Repeat this process for first strike, double strike, deathtouch, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance. Then put a +1/+1 counter on Kathril for each counter put on a creature this way.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "ChangesZone",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "PutCounter",
+      "counter_type": "flying",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": "You",
+       "properties": []
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "PutCounter",
+       "counter_type": "first strike",
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "target": {
+        "type": "Typed",
+        "type_filters": [
+         "Creature"
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "PutCounter",
+        "counter_type": "double strike",
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "target": {
+         "type": "Typed",
+         "type_filters": [
+          "Creature"
+         ],
+         "controller": "You",
+         "properties": []
+        }
+       },
+       "cost": null,
+       "sub_ability": {
+        "kind": "Spell",
+        "effect": {
+         "type": "PutCounter",
+         "counter_type": "deathtouch",
+         "count": {
+          "type": "Fixed",
+          "value": 1
+         },
+         "target": {
+          "type": "Typed",
+          "type_filters": [
+           "Creature"
+          ],
+          "controller": "You",
+          "properties": []
+         }
+        },
+        "cost": null,
+        "sub_ability": {
+         "kind": "Spell",
+         "effect": {
+          "type": "PutCounter",
+          "counter_type": "hexproof",
+          "count": {
+           "type": "Fixed",
+           "value": 1
+          },
+          "target": {
+           "type": "Typed",
+           "type_filters": [
+            "Creature"
+           ],
+           "controller": "You",
+           "properties": []
+          }
+         },
+         "cost": null,
+         "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+           "type": "PutCounter",
+           "counter_type": "indestructible",
+           "count": {
+            "type": "Fixed",
+            "value": 1
+           },
+           "target": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature"
+            ],
+            "controller": "You",
+            "properties": []
+           }
+          },
+          "cost": null,
+          "sub_ability": {
+           "kind": "Spell",
+           "effect": {
+            "type": "PutCounter",
+            "counter_type": "lifelink",
+            "count": {
+             "type": "Fixed",
+             "value": 1
+            },
+            "target": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "You",
+             "properties": []
+            }
+           },
+           "cost": null,
+           "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+             "type": "PutCounter",
+             "counter_type": "menace",
+             "count": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "target": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "You",
+              "properties": []
+             }
+            },
+            "cost": null,
+            "sub_ability": {
+             "kind": "Spell",
+             "effect": {
+              "type": "PutCounter",
+              "counter_type": "reach",
+              "count": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "target": {
+               "type": "Typed",
+               "type_filters": [
+                "Creature"
+               ],
+               "controller": "You",
+               "properties": []
+              }
+             },
+             "cost": null,
+             "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+               "type": "PutCounter",
+               "counter_type": "trample",
+               "count": {
+                "type": "Fixed",
+                "value": 1
+               },
+               "target": {
+                "type": "Typed",
+                "type_filters": [
+                 "Creature"
+                ],
+                "controller": "You",
+                "properties": []
+               }
+              },
+              "cost": null,
+              "sub_ability": {
+               "kind": "Spell",
+               "effect": {
+                "type": "PutCounter",
+                "counter_type": "vigilance",
+                "count": {
+                 "type": "Fixed",
+                 "value": 1
+                },
+                "target": {
+                 "type": "Typed",
+                 "type_filters": [
+                  "Creature"
+                 ],
+                 "controller": "You",
+                 "properties": []
+                }
+               },
+               "cost": null,
+               "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                 "type": "PutCounter",
+                 "counter_type": "P1P1",
+                 "count": {
+                  "type": "Ref",
+                  "qty": {
+                   "type": "TrackedSetSize"
+                  }
+                 },
+                 "target": {
+                  "type": "SelfRef"
+                 }
+                },
+                "cost": null,
+                "sub_ability": null,
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": false,
+                "forward_result": false,
+                "sub_link": "SequentialSibling"
+               },
+               "duration": null,
+               "description": null,
+               "target_prompt": null,
+               "condition": {
+                "type": "QuantityCheck",
+                "lhs": {
+                 "type": "Ref",
+                 "qty": {
+                  "type": "ObjectCount",
+                  "filter": {
+                   "type": "Typed",
+                   "type_filters": [
+                    "Creature"
+                   ],
+                   "controller": "You",
+                   "properties": [
+                    {
+                     "type": "InZone",
+                     "zone": "Graveyard"
+                    },
+                    {
+                     "type": "WithKeyword",
+                     "value": "Vigilance"
+                    }
+                   ]
+                  }
+                 }
+                },
+                "comparator": "GE",
+                "rhs": {
+                 "type": "Fixed",
+                 "value": 1
+                }
+               },
+               "optional_targeting": false,
+               "optional": false,
+               "target_choice_timing": "Resolution",
+               "forward_result": false,
+               "sub_link": "SequentialSibling",
+               "sibling_condition": "ReplicatedOrBranch"
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": {
+               "type": "QuantityCheck",
+               "lhs": {
+                "type": "Ref",
+                "qty": {
+                 "type": "ObjectCount",
+                 "filter": {
+                  "type": "Typed",
+                  "type_filters": [
+                   "Creature"
+                  ],
+                  "controller": "You",
+                  "properties": [
+                   {
+                    "type": "InZone",
+                    "zone": "Graveyard"
+                   },
+                   {
+                    "type": "WithKeyword",
+                    "value": "Trample"
+                   }
+                  ]
+                 }
+                }
+               },
+               "comparator": "GE",
+               "rhs": {
+                "type": "Fixed",
+                "value": 1
+               }
+              },
+              "optional_targeting": false,
+              "optional": false,
+              "target_choice_timing": "Resolution",
+              "forward_result": false,
+              "sub_link": "SequentialSibling",
+              "sibling_condition": "ReplicatedOrBranch"
+             },
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": {
+              "type": "QuantityCheck",
+              "lhs": {
+               "type": "Ref",
+               "qty": {
+                "type": "ObjectCount",
+                "filter": {
+                 "type": "Typed",
+                 "type_filters": [
+                  "Creature"
+                 ],
+                 "controller": "You",
+                 "properties": [
+                  {
+                   "type": "InZone",
+                   "zone": "Graveyard"
+                  },
+                  {
+                   "type": "WithKeyword",
+                   "value": "Reach"
+                  }
+                 ]
+                }
+               }
+              },
+              "comparator": "GE",
+              "rhs": {
+               "type": "Fixed",
+               "value": 1
+              }
+             },
+             "optional_targeting": false,
+             "optional": false,
+             "target_choice_timing": "Resolution",
+             "forward_result": false,
+             "sub_link": "SequentialSibling",
+             "sibling_condition": "ReplicatedOrBranch"
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": {
+             "type": "QuantityCheck",
+             "lhs": {
+              "type": "Ref",
+              "qty": {
+               "type": "ObjectCount",
+               "filter": {
+                "type": "Typed",
+                "type_filters": [
+                 "Creature"
+                ],
+                "controller": "You",
+                "properties": [
+                 {
+                  "type": "InZone",
+                  "zone": "Graveyard"
+                 },
+                 {
+                  "type": "WithKeyword",
+                  "value": "Menace"
+                 }
+                ]
+               }
+              }
+             },
+             "comparator": "GE",
+             "rhs": {
+              "type": "Fixed",
+              "value": 1
+             }
+            },
+            "optional_targeting": false,
+            "optional": false,
+            "target_choice_timing": "Resolution",
+            "forward_result": false,
+            "sub_link": "SequentialSibling",
+            "sibling_condition": "ReplicatedOrBranch"
+           },
+           "duration": null,
+           "description": null,
+           "target_prompt": null,
+           "condition": {
+            "type": "QuantityCheck",
+            "lhs": {
+             "type": "Ref",
+             "qty": {
+              "type": "ObjectCount",
+              "filter": {
+               "type": "Typed",
+               "type_filters": [
+                "Creature"
+               ],
+               "controller": "You",
+               "properties": [
+                {
+                 "type": "InZone",
+                 "zone": "Graveyard"
+                },
+                {
+                 "type": "WithKeyword",
+                 "value": "Lifelink"
+                }
+               ]
+              }
+             }
+            },
+            "comparator": "GE",
+            "rhs": {
+             "type": "Fixed",
+             "value": 1
+            }
+           },
+           "optional_targeting": false,
+           "optional": false,
+           "target_choice_timing": "Resolution",
+           "forward_result": false,
+           "sub_link": "SequentialSibling",
+           "sibling_condition": "ReplicatedOrBranch"
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": {
+           "type": "QuantityCheck",
+           "lhs": {
+            "type": "Ref",
+            "qty": {
+             "type": "ObjectCount",
+             "filter": {
+              "type": "Typed",
+              "type_filters": [
+               "Creature"
+              ],
+              "controller": "You",
+              "properties": [
+               {
+                "type": "InZone",
+                "zone": "Graveyard"
+               },
+               {
+                "type": "WithKeyword",
+                "value": "Indestructible"
+               }
+              ]
+             }
+            }
+           },
+           "comparator": "GE",
+           "rhs": {
+            "type": "Fixed",
+            "value": 1
+           }
+          },
+          "optional_targeting": false,
+          "optional": false,
+          "target_choice_timing": "Resolution",
+          "forward_result": false,
+          "sub_link": "SequentialSibling",
+          "sibling_condition": "ReplicatedOrBranch"
+         },
+         "duration": null,
+         "description": null,
+         "target_prompt": null,
+         "condition": {
+          "type": "QuantityCheck",
+          "lhs": {
+           "type": "Ref",
+           "qty": {
+            "type": "ObjectCount",
+            "filter": {
+             "type": "Typed",
+             "type_filters": [
+              "Creature"
+             ],
+             "controller": "You",
+             "properties": [
+              {
+               "type": "InZone",
+               "zone": "Graveyard"
+              },
+              {
+               "type": "WithKeyword",
+               "value": "Hexproof"
+              }
+             ]
+            }
+           }
+          },
+          "comparator": "GE",
+          "rhs": {
+           "type": "Fixed",
+           "value": 1
+          }
+         },
+         "optional_targeting": false,
+         "optional": false,
+         "target_choice_timing": "Resolution",
+         "forward_result": false,
+         "sub_link": "SequentialSibling",
+         "sibling_condition": "ReplicatedOrBranch"
+        },
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": {
+         "type": "QuantityCheck",
+         "lhs": {
+          "type": "Ref",
+          "qty": {
+           "type": "ObjectCount",
+           "filter": {
+            "type": "Typed",
+            "type_filters": [
+             "Creature"
+            ],
+            "controller": "You",
+            "properties": [
+             {
+              "type": "InZone",
+              "zone": "Graveyard"
+             },
+             {
+              "type": "WithKeyword",
+              "value": "Deathtouch"
+             }
+            ]
+           }
+          }
+         },
+         "comparator": "GE",
+         "rhs": {
+          "type": "Fixed",
+          "value": 1
+         }
+        },
+        "optional_targeting": false,
+        "optional": false,
+        "target_choice_timing": "Resolution",
+        "forward_result": false,
+        "sub_link": "SequentialSibling",
+        "sibling_condition": "ReplicatedOrBranch"
+       },
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": {
+        "type": "QuantityCheck",
+        "lhs": {
+         "type": "Ref",
+         "qty": {
+          "type": "ObjectCount",
+          "filter": {
+           "type": "Typed",
+           "type_filters": [
+            "Creature"
+           ],
+           "controller": "You",
+           "properties": [
+            {
+             "type": "InZone",
+             "zone": "Graveyard"
+            },
+            {
+             "type": "WithKeyword",
+             "value": "DoubleStrike"
+            }
+           ]
+          }
+         }
+        },
+        "comparator": "GE",
+        "rhs": {
+         "type": "Fixed",
+         "value": 1
+        }
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "target_choice_timing": "Resolution",
+       "forward_result": false,
+       "sub_link": "SequentialSibling",
+       "sibling_condition": "ReplicatedOrBranch"
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "QuantityCheck",
+       "lhs": {
+        "type": "Ref",
+        "qty": {
+         "type": "ObjectCount",
+         "filter": {
+          "type": "Typed",
+          "type_filters": [
+           "Creature"
+          ],
+          "controller": "You",
+          "properties": [
+           {
+            "type": "InZone",
+            "zone": "Graveyard"
+           },
+           {
+            "type": "WithKeyword",
+            "value": "FirstStrike"
+           }
+          ]
+         }
+        }
+       },
+       "comparator": "GE",
+       "rhs": {
+        "type": "Fixed",
+        "value": 1
+       }
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "target_choice_timing": "Resolution",
+      "forward_result": false,
+      "sub_link": "SequentialSibling",
+      "sibling_condition": "ReplicatedOrBranch"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": {
+      "type": "QuantityCheck",
+      "lhs": {
+       "type": "Ref",
+       "qty": {
+        "type": "ObjectCount",
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Creature"
+         ],
+         "controller": "You",
+         "properties": [
+          {
+           "type": "InZone",
+           "zone": "Graveyard"
+          },
+          {
+           "type": "WithKeyword",
+           "value": "Flying"
+          }
+         ]
+        }
+       }
+      },
+      "comparator": "GE",
+      "rhs": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "optional_targeting": false,
+     "optional": false,
+     "target_choice_timing": "Resolution",
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": "Battlefield",
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "When ~ enters, put a flying counter on any creature you control if a creature card in your graveyard has flying. Repeat this process for first strike, double strike, deathtouch, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance. Then put a +1/+1 counter on ~ for each counter put on a creature this way.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": [
+   "Black",
+   "Green",
+   "White"
+  ],
+  "color_identity": [
+   "Black",
+   "Green",
+   "White"
+  ],
+  "scryfall_oracle_id": "730897a9-3ead-4990-9492-1a2040d8ccac",
+  "brawl_commander": true,
+  "is_commander": true,
+  "metadata": {
+   "source_printing_ids": [
+    "ebc57f73-a517-463e-8d55-56aa996d091e"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "C20",
+   "OC20"
+  ],
+  "rulings": [
+   {
+    "date": "2020-04-17",
+    "text": "For each applicable keyword, the appropriate counter may be put on any creature you control, including Kathril. The counters don't need to all be put on the same creature."
+   },
+   {
+    "date": "2020-04-17",
+    "text": "Once Kathril's ability begins resolving, no player may take other actions until it's done and you've put +1/+1 counters on Kathril."
+   },
+   {
+    "date": "2020-04-17",
+    "text": "You check once for each keyword. If you have two creature cards with flying in your graveyard, you put just one flying counter on a creature you control, not two."
+   },
+   {
+    "date": "2020-06-23",
+    "text": "If cards in your graveyard have multiple hexproof abilities (such as hexproof, hexproof from white, and hexproof from black), a counter of each variant kind will be put onto a creature."
+   }
+  ],
+  "rarities": [
+   "mythic"
+  ]
+ },
+ "vampire nighthawk": {
+  "name": "Vampire Nighthawk",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black",
+    "Black"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Vampire",
+    "Shaman"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Flying\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [
+   "Deathtouch",
+   "Flying",
+   "Lifelink"
+  ],
+  "abilities": [],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "feb244f8-bcb1-44cf-9940-2719221a7309",
+  "metadata": {
+   "source_printing_ids": [
+    "0a1934ab-3171-4fc6-8033-ad998899ba73",
+    "222439ec-009c-4a18-a6e2-e205155027d3",
+    "2c0cbb60-d75c-4bb4-9f20-b3382481b288",
+    "301ff69c-2590-45af-893b-7ac0285e450b",
+    "44f19fe3-7a17-4c45-adfa-590f73dfebfa",
+    "48d19aeb-d60f-411c-b83b-389aa575fa9a",
+    "51901ebb-27ba-4dc3-9224-2bd31024c2b7",
+    "533c2bb2-6ddf-4927-bf6a-b6aa2fcd6e28",
+    "5832552d-fa6e-40c2-9a0e-ac8c9ba57a2d",
+    "7aff07f9-9528-4149-9af0-f4e3c66c9dc5",
+    "93933cd6-dfc9-4901-be1c-2bf05c1785ec",
+    "99062073-16e0-4e5f-b8e0-d60e28be5921",
+    "9ba96d96-8d9e-47c8-ab39-17479564aadf",
+    "c6572c70-7162-440d-a315-9fb31cc4849d",
+    "c98ccdac-3c6f-464f-962d-73fd4b8c597f",
+    "e45b33c3-be86-4f8a-bdb5-df3fcb7e4cde",
+    "f5a3c19b-c8b3-4b22-87d4-6d998e473da2"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pioneer": "legal",
+   "standard": "legal",
+   "standardbrawl": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "C13",
+   "C17",
+   "C20",
+   "C21",
+   "CMD",
+   "DCI",
+   "DDK",
+   "DDP",
+   "E01",
+   "E02",
+   "FDN",
+   "J25",
+   "M13",
+   "MM3",
+   "PLST",
+   "PRM",
+   "SCD",
+   "VOC",
+   "ZEN"
+  ],
+  "rarities": [
+   "uncommon"
+  ]
+ },
+ "viscera seer": {
+  "name": "Viscera Seer",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black"
+   ],
+   "generic": 0
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Vampire",
+    "Wizard"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "Scry",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": {
+     "type": "Sacrifice",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": null,
+      "properties": []
+     },
+     "count": 1
+    },
+    "sub_ability": null,
+    "duration": null,
+    "description": "Sacrifice a creature: Scry 1.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black"
+  ],
+  "scryfall_oracle_id": "f82a4e85-526d-4456-b700-7760043a31be",
+  "metadata": {
+   "source_printing_ids": [
+    "24277de8-7412-496c-bd44-61d9629a3473",
+    "486fd8a2-dd97-4082-84ef-4795c7e559a0",
+    "6179f847-e334-4f7f-9a4e-0013942a394f",
+    "d0f3a502-064e-4700-a730-2e86f985bbc3",
+    "d2e1c1c3-641a-4cd5-b46d-e03e5e529cc7",
+    "d49203dd-89b6-4e91-b3ff-5f9f5ce981f8",
+    "dba1cf83-e13d-401e-b76f-b12a51b307f9",
+    "f511830b-1c1f-4d30-aa5d-4314726d142e"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pauper": "legal",
+   "paupercommander": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "C13",
+   "CMR",
+   "LCC",
+   "M11",
+   "PLST",
+   "PRM",
+   "PZ1",
+   "SLD",
+   "SOC",
+   "TDC"
+  ],
+  "rulings": [
+   {
+    "date": "2010-08-15",
+    "text": "If you sacrifice an attacking or blocking creature during the declare blockers step, it won't deal combat damage. If you wait until the combat damage step, but that creature is dealt lethal damage, it'll be destroyed before you get a chance to sacrifice it."
+   },
+   {
+    "date": "2010-08-15",
+    "text": "You can sacrifice Viscera Seer to activate its own ability."
+   }
+  ],
+  "rarities": [
+   "common"
+  ]
+ },
+ "grizzly bears": {
+  "name": "Grizzly Bears",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Green"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Bear"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": null,
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Green"
+  ],
+  "scryfall_oracle_id": "14c8f55d-d177-4c25-a931-ebeb9e6062a0",
+  "metadata": {
+   "source_printing_ids": [
+    "409f9b88-f03e-40b6-9883-68c14c37c0de",
+    "94a39e27-d1d7-486c-8f1e-4a0a1c8b5dce",
+    "bf11596e-e798-4126-b56c-e23a1ca2a25d"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pauper": "legal",
+   "paupercommander": "legal",
+   "premodern": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "10E",
+   "2ED",
+   "30A",
+   "3ED",
+   "4BB",
+   "4ED",
+   "5ED",
+   "6ED",
+   "7ED",
+   "8ED",
+   "9ED",
+   "CED",
+   "CEI",
+   "FBB",
+   "ITP",
+   "J21",
+   "LEA",
+   "LEB",
+   "POR",
+   "RQS",
+   "S99",
+   "SLZ",
+   "SUM"
+  ],
+  "rarities": [
+   "common"
+  ]
+ }
+}
