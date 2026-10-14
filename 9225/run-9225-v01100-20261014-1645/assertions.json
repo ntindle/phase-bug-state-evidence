@@ -1,0 +1,101 @@
+{
+ "server_identity": {
+  "server_version": "0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.110.0 (published 2026-10-14) == pinned release dir; ServerHello 0.110.0/9bfd12e/protocol 142/Full read live this run"
+ },
+ "issue": 9225,
+ "run_id": "run-9225-v01100-20261014-1645",
+ "obs": {
+  "attempt": 1,
+  "assert": {
+   "A1_setup_ok": "passed",
+   "A2_all_milled_land": "passed",
+   "A3_treasure_count": "failed",
+   "A4_cleanup": "passed"
+  },
+  "notes": [
+   "A1 passed: PRE has Locke on P0 BF, P0 active in PreCombatMain (turn 15)",
+   "A2 passed: each player milled exactly 1 land ({0: {'milled': 1, 'names': ['Mountain'], 'all_land': True}, 1: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 2: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 3: {'milled': 1, 'names': ['Forest'], 'all_land': True}})",
+   "A3 FAILED: 4 Treasure tokens on the battlefield (expected 1) -- non-1 count; objects=[('242', 0, 0), ('243', 1, 1), ('244', 2, 2), ('245', 3, 3)]",
+   "A4 passed: POST stack empty, game ongoing"
+  ],
+  "game_code": "UNP497",
+  "ctx": {
+   "attempt": 1,
+   "phase": "observe",
+   "locke_cast": true,
+   "cast_oid": 29,
+   "attack_declared": true,
+   "trigger_resolved": true,
+   "treasure_seen": 4,
+   "decline_ambiguous": null
+  },
+  "mill_detail": {
+   "0": {
+    "milled": 1,
+    "names": [
+     "Mountain"
+    ],
+    "all_land": true
+   },
+   "1": {
+    "milled": 1,
+    "names": [
+     "Forest"
+    ],
+    "all_land": true
+   },
+   "2": {
+    "milled": 1,
+    "names": [
+     "Forest"
+    ],
+    "all_land": true
+   },
+   "3": {
+    "milled": 1,
+    "names": [
+     "Forest"
+    ],
+    "all_land": true
+   }
+  },
+  "treasures": {
+   "count": 4,
+   "objects": [
+    [
+     "242",
+     0,
+     0
+    ],
+    [
+     "243",
+     1,
+     1
+    ],
+    [
+     "244",
+     2,
+     2
+    ],
+    [
+     "245",
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "locke, treasure hunter": "Locke can't be blocked by creatures with greater power.\nMug \u2014 Whenever Locke attacks, each player mills a card. If a land card was milled this way, create a Treasure token. Until end of turn, you may cast a spell from among those cards."
+ }
+}
