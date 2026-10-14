@@ -1,0 +1,149 @@
+{
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9865/run-9865-v01090-20261014-0510"
+ },
+ "issue": 9865,
+ "run_id": "run-9865-v01090-20261014-0510",
+ "obs": {
+  "attempt": 2,
+  "assert": {
+   "A1_setup_ok": "passed",
+   "A2_counters_placed": "passed",
+   "A2b_single_recipient": "passed",
+   "A3_kathril_p1p1": "failed",
+   "A4_cleanup": "passed"
+  },
+  "notes": [
+   "A1 passed: PRE has Kathril in P0 hand, Nighthawk in P0 graveyard, Bears on P0 BF (P0 life=20, P1 life=20)",
+   "A2 passed: exactly 3 keyword counters placed on P0 creatures (per-creature: {'21': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '32': {'name': 'plains', 'counters': {}, 'keyword_total': 0}, '39': {'name': 'grizzly bears', 'counters': {'deathtouch': 1, 'flying': 1, 'lifelink': 1}, 'keyword_total': 3}, '43': {'name': 'swamp', 'counters': {}, 'keyword_total': 0}, '53': {'name': 'forest', 'counters': {}, 'keyword_total': 0}, '55': {'name': 'kathril, aspect warper', 'counters': {'p1p1': 1}, 'keyword_total': 0}, '6': {'name': 'forest', 'counters': {}, 'keyword_total': 0}})",
+   "A2b passed: all keyword counters on exactly 1 recipient (oid 39 = grizzly bears) -- the discriminating configuration (3 counters, 1 object)",
+   "A3 FAILED: Kathril has 1 +1/+1 counter(s) (expected 3; P/T 4/4, bug predicts 4/4) -- object-count signature (TrackedSetSize = 1 recipient)",
+   "A4 passed: POST stack empty, Kathril on P0 BF"
+  ],
+  "game_code": "65H81Q",
+  "ctx": {
+   "phase": "etb",
+   "kathril_cast": true,
+   "cast_oid": 55,
+   "sac_picks": [
+    {
+     "want": "vampire nighthawk",
+     "oid": "3"
+    },
+    {
+     "want": "viscera seer",
+     "oid": "48"
+    }
+   ],
+   "seer_activations": 2,
+   "etb_picks": [
+    {
+     "keyword": "?",
+     "oid": "39",
+     "name": "grizzly bears"
+    },
+    {
+     "keyword": "?",
+     "oid": "39",
+     "name": "grizzly bears"
+    },
+    {
+     "keyword": "?",
+     "oid": "39",
+     "name": "grizzly bears"
+    }
+   ],
+   "opp_dumps": 7
+  },
+  "kathril": {
+   "oids": [
+    "55"
+   ],
+   "counters": {
+    "p1p1": 1
+   },
+   "p1p1": 1,
+   "power": 4,
+   "toughness": 4
+  },
+  "bears": {
+   "oids": [
+    "39"
+   ],
+   "counters": {
+    "deathtouch": 1,
+    "flying": 1,
+    "lifelink": 1
+   }
+  },
+  "keyword_counters": {
+   "total": 3,
+   "recipients": [
+    "39"
+   ],
+   "per_creature": {
+    "21": {
+     "name": "swamp",
+     "counters": {},
+     "keyword_total": 0
+    },
+    "32": {
+     "name": "plains",
+     "counters": {},
+     "keyword_total": 0
+    },
+    "39": {
+     "name": "grizzly bears",
+     "counters": {
+      "deathtouch": 1,
+      "flying": 1,
+      "lifelink": 1
+     },
+     "keyword_total": 3
+    },
+    "43": {
+     "name": "swamp",
+     "counters": {},
+     "keyword_total": 0
+    },
+    "53": {
+     "name": "forest",
+     "counters": {},
+     "keyword_total": 0
+    },
+    "55": {
+     "name": "kathril, aspect warper",
+     "counters": {
+      "p1p1": 1
+     },
+     "keyword_total": 0
+    },
+    "6": {
+     "name": "forest",
+     "counters": {},
+     "keyword_total": 0
+    }
+   }
+  },
+  "post_life": [
+   20,
+   20
+  ]
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "kathril, aspect warper": "When Kathril enters, put a flying counter on any creature you control if a creature card in your graveyard has flying. Repeat this process for first strike, double strike, deathtouch, hexproof, indestructible, lifelink, menace, reach, trample, and vigilance. Then put a +1/+1 counter on Kathril for each counter put on a creature this way.",
+  "vampire nighthawk": "Flying\nDeathtouch (Any amount of damage this deals to a creature is enough to destroy it.)\nLifelink (Damage dealt by this creature also causes you to gain that much life.)",
+  "viscera seer": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom.)",
+  "grizzly bears": null
+ }
+}
