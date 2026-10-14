@@ -1,0 +1,151 @@
+{
+ "issue": 9862,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9862",
+ "run_id": "run-9862-v01090-20261014-0920",
+ "started_at": "2026-10-14T09:19:32",
+ "finished_at": "2026-10-14T09:23:22",
+ "duration_s": 229.4,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9862/run-9862-v01090-20261014-0920"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9862/run-9862-v01090-20261014-0920",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "991260651933dcd0263bf5fb80df8d15e965a442e276c64ea52572d85be89670",
+ "decks": {
+  "leg_A_P0": [
+   [
+    "Kamahl's Summons",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "leg_A_P1": [
+   [
+    "Grizzly Bears",
+    24
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "leg_A_P2": [
+   [
+    "Grizzly Bears",
+    24
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "leg_B_P0": [
+   [
+    "Truce",
+    12
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ],
+  "leg_B_P1": [
+   [
+    "Plains",
+    60
+   ]
+  ],
+  "leg_B_P2": [
+   [
+    "Plains",
+    60
+   ]
+  ],
+  "leg_C_P0": [
+   [
+    "Temporary Truce",
+    12
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ],
+  "leg_C_P1": [
+   [
+    "Plains",
+    60
+   ]
+  ],
+  "leg_C_P2": [
+   [
+    "Plains",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "leg_A_A1_setup_ok": "passed",
+  "leg_A_A2_reveal_prompts": "failed",
+  "leg_A_A3_p1_bear": "failed",
+  "leg_A_A4_caster_reveal": "failed",
+  "leg_A_A5_cleanup": "passed",
+  "leg_B_B1_setup_ok": "passed",
+  "leg_B_B2_draw_choices": "passed",
+  "leg_B_B3_draw_counts": "passed",
+  "leg_B_B4_life_gain": "failed",
+  "leg_B_B5_cleanup": "passed",
+  "leg_C_C1_setup_ok": "passed",
+  "leg_C_C2_decline_choices": "passed",
+  "leg_C_C3_draw_counts": "passed",
+  "leg_C_C4_life_gain": "failed",
+  "leg_C_C5_cleanup": "passed"
+ },
+ "notes": [
+  "leg A: A1_setup_ok leg A passed (setup): kamahl's summons in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+  "leg A: A2 leg A FAILED: optionals={0: True, 1: True, 2: False} picks={} -- the optionals were answered per policy but NO reveal select was offered to any seat (expected P1 to pick 1 Bears). The reveal step is skipped entirely: the engine resolves with an empty revealed set.",
+  "leg A: A3 leg A FAILED: P1 has 0 Bear tokens in POST (expected 1 under the intended reveal policy). P1 revealed NOTHING -- no reveal select was offered -- so the 0 Bears reflect a skipped reveal step, not a miscounted reveal. All seats: {'0': [], '1': [], '2': []}",
+  "leg A: A4 leg A FAILED: P0 ACCEPTed the may-reveal optional but was never offered a reveal select before the spell resolved (caster reveal skipped)",
+  "leg A: A5 leg A passed: POST stack empty, Kamahl's Summons in P0 graveyard, no hand changed by the spell (P1/P2 hands identical PRE->POST; P0 hand = PRE minus the cast Summons)",
+  "leg B: B1_setup_ok leg B passed (setup): truce in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+  "leg B: B2 leg B passed: all seats ACCEPTed + chooseBranch 1",
+  "leg B: B3 leg B passed: each seat drew exactly 1 (library -1 each; hand deltas {0: 0, 1: 1, 2: 1}, P0's includes the cast Truce leaving hand)",
+  "leg B: B4 leg B FAILED: life deltas={'0': 0, '1': 0, '2': 0} (expected +2 each) -- the reported signature (drew 1, no life)",
+  "leg B: B5 leg B passed: POST stack empty, Truce in P0 graveyard",
+  "leg C: C1_setup_ok leg C passed (setup): temporary truce in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+  "leg C: C2 leg C passed: all seats DECLINEed the may-draw optional",
+  "leg C: C3 leg C passed: each seat drew 0 (library unchanged)",
+  "leg C: C4 leg C FAILED: life deltas={'0': 4, '1': 0, '2': 0} (expected +4 each) -- patched-variant signature: caster +4 only, others +0 (clause-wide count, caster binding)",
+  "leg C: C5 leg C passed: POST stack empty, Temporary Truce in P0 graveyard"
+ ],
+ "verdict": "reproduced",
+ "result": "Leg A: A1_setup_ok passed; A2_reveal_prompts failed; A3_p1_bear failed; A4_caster_reveal failed; A5_cleanup passed; ctx={'spell_cast': True, 'cast_oid': 25, 'optionals': {'0': True, '1': True, '2': False}, 'branches': {}, 'picks': {}, 'spell_prompts_seen': 3, 'select_after_decline': False, 'branch_unanswered': False}; bears={'0': [], '1': [], '2': []};  | Leg B: B1_setup_ok passed; B2_draw_choices passed; B3_draw_counts passed; B4_life_gain failed; B5_cleanup passed; ctx={'spell_cast': True, 'cast_oid': 18, 'optionals': {'0': True, '1': True, '2': True}, 'branches': {'0': 1, '1': 1, '2': 1}, 'picks': {}, 'spell_prompts_seen': 6, 'select_after_decline': False, 'branch_unanswered': False}; drawn={'0': 1, '1': 1, '2': 1}; life_delta={'0': 0, '1': 0, '2': 0};  | Leg C: C1_setup_ok passed; C2_decline_choices passed; C3_draw_counts passed; C4_life_gain failed; C5_cleanup passed; ctx={'spell_cast': True, 'cast_oid': 11, 'optionals': {'0': False, '1': False, '2': False}, 'branches': {}, 'picks': {}, 'spell_prompts_seen': 3, 'select_after_decline': False, 'branch_unanswered': False}; drawn={'0': 0, '1': 0, '2': 0}; life_delta={'0': 4, '1': 0, '2': 0}; ",
+ "scope": "Per-player 'this way' counts (publish_player_scope_clause_results / tracked-set reader): Leg A Kamahl's Summons (P0 accept, P1 accept + reveal 1 Bears, P2 decline); Leg B Truce (all accept + draw 1); Leg C Temporary Truce (all decline, draw 0). Native engine, three human-client seats.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "12x/24x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Verdict rule: not-reproduced = all three legs all assertions passed. reproduced = any leg has setup passed + (A3 failed [revealed creature -> no Bear] or A4 failed [caster never offered reveal] or B4 failed [drew 1 -> no life] or C4 failed [declined -> no life]). blocked = setup never completed, prompts never offered, etc."
+ ],
+ "setup_line": "Leg A: P0 12x Kamahl's Summons + 12x Grizzly Bears + 36x Forest; P1/P2 24x Grizzly Bears + 36x Forest. Leg B: P0 12x Truce + 48x Plains; P1/P2 60x Plains. Leg C: P0 12x Temporary Truce + 48x Plains; P1/P2 60x Plains. P0 casts on its own main phase once affordable.",
+ "contract_line": "Kamahl: 1 Bear per revealed creature, per player; Truce draw-1-each: +2 life each; Temporary Truce all-decline: +4 life each. Bug: per-player results are not carried to the per-player follow-up (clause-wide tracked set, caster binding)."
+}
