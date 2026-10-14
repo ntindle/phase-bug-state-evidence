@@ -1,0 +1,85 @@
+{
+ "issue": 9859,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9859",
+ "run_id": "run-9859-v01090-20261014-0515",
+ "started_at": "2026-10-14T00:19:41",
+ "finished_at": "2026-10-14T00:21:50",
+ "duration_s": 128.7,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9859/run-9859-v01090-20261014-0515"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9859/run-9859-v01090-20261014-0515",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "52c109f74fc430b85983d31e91bd8a0137a5f5e68cb8eb8b013bd7473ddb1500",
+ "decks": {
+  "P0": [
+   [
+    "Mountain",
+    35
+   ],
+   [
+    "Tempt with Mayhem",
+    25
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    40
+   ],
+   [
+    "Lightning Bolt",
+    20
+   ]
+  ],
+  "P2": [
+   [
+    "Mountain",
+    60
+   ]
+  ],
+  "P3": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_opponents_copied": "passed",
+  "A3_controller_copies": "failed",
+  "A4_damage_correct": "failed",
+  "A5_bug_signature": "passed"
+ },
+ "notes": [
+  "A1 passed: 4-player Free-For-All game; P1 cast Lightning Bolt (target P3, oid 81), P0 answered with Tempt with Mayhem (targeting that Bolt, engine auto-targeted); Tempt resolved (in P0 graveyard)",
+  "A2 passed: stack checkpoint after Tempt resolved shows each opponent controlling exactly 1 Bolt copy (P1 count 2 = original + copy; counts={1: 2, 2: 1, 3: 1, 0: 1})",
+  "A3 FAILED (reported bug): P0 controls 1 copies on the stack after Tempt resolved (expected 4 = 1 + 3 opponents who copied): {1: 2, 2: 1, 3: 1, 0: 1}. The controller's copy count does not grow by one per opponent who copied.",
+  "A4 FAILED: final lives [20, 20, 17, 8] do not match the oracle outcome [20, 20, 8, 8] (P2 should take 3 x 4 P0 copies, P3 12)",
+  "A5 passed (reported-bug signature): final lives [20, 20, 17, 8] == [20, 20, 17, 8]: P2 took exactly 3 (exactly one P0 copy reached P2) while P3 took 12 (original + 3 opponent copies). With all 3 opponent may-copy prompts accepted and P0's retarget answered to P2, this is the reported bug even if the stack checkpoint counting failed to observe the copies."
+ ],
+ "verdict": "reproduced",
+ "result": "A1 passed; A2 passed; A3 failed; A4 failed; A5 passed; controller_copies=1; stack_counts={1: 2, 2: 1, 3: 1, 0: 1}; final_lives=[20, 20, 17, 8]",
+ "scope": "Tempt with Mayhem tempting-offer copy count (1 + number of opponents who copied) in a real 4-player Free-For-All game; native engine, four human-client seats; target spell Lightning Bolt",
+ "limitations": [
+  "Browser UI not exercised; native engine via four human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "25x/20x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Verdict rule: not-reproduced = A1 passed, all 3 opponent may-copy prompts accepted, and A4 passed (oracle damage [20,20,8,8] observed -- damage is ground truth and outranks the checkpoint). reproduced = A1 passed + all opponents accepted + (A3 failed, i.e. checkpoint saw P0 copies != 4, or A5 passed, i.e. final lives exactly the reported-bug signature [20,20,17,8]), or A3 passed but A4 failed (related damage failure). blocked = Tempt resolution never observed."
+ ],
+ "setup_line": "P0 35x Mountain + 25x Tempt with Mayhem; P1 40x Mountain + 20x Lightning Bolt; P2/P3 60x Mountain. FFA 4-player, starting life 20.",
+ "contract_line": "P1 casts Lightning Bolt targeting P3 (once P0 holds 3+ untapped Mountains); P0 answers with Tempt with Mayhem targeting that Bolt. All 3 opponents accept the may-copy (decline retarget, copies keep P3); P0 accepts retarget for its copies and answers P2. Expected: P0 makes 4 copies (1+3); P2 life 8, P3 life 8. Bug: P0 makes 1 copy; P2 life 17."
+}
