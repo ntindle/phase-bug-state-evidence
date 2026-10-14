@@ -1,0 +1,191 @@
+{
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9862/run-9862-v01090-20261014-0920"
+ },
+ "issue": 9862,
+ "run_id": "run-9862-v01090-20261014-0920",
+ "legs": {
+  "A": {
+   "leg": "A",
+   "attempt": 1,
+   "assert": {
+    "A1_setup_ok": "passed",
+    "A2_reveal_prompts": "failed",
+    "A3_p1_bear": "failed",
+    "A4_caster_reveal": "failed",
+    "A5_cleanup": "passed"
+   },
+   "notes": [
+    "A1_setup_ok leg A passed (setup): kamahl's summons in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+    "A2 leg A FAILED: optionals={0: True, 1: True, 2: False} picks={} -- the optionals were answered per policy but NO reveal select was offered to any seat (expected P1 to pick 1 Bears). The reveal step is skipped entirely: the engine resolves with an empty revealed set.",
+    "A3 leg A FAILED: P1 has 0 Bear tokens in POST (expected 1 under the intended reveal policy). P1 revealed NOTHING -- no reveal select was offered -- so the 0 Bears reflect a skipped reveal step, not a miscounted reveal. All seats: {'0': [], '1': [], '2': []}",
+    "A4 leg A FAILED: P0 ACCEPTed the may-reveal optional but was never offered a reveal select before the spell resolved (caster reveal skipped)",
+    "A5 leg A passed: POST stack empty, Kamahl's Summons in P0 graveyard, no hand changed by the spell (P1/P2 hands identical PRE->POST; P0 hand = PRE minus the cast Summons)"
+   ],
+   "game_code": "UN3LS6",
+   "ctx": {
+    "spell_cast": true,
+    "cast_oid": 25,
+    "optionals": {
+     "0": true,
+     "1": true,
+     "2": false
+    },
+    "branches": {},
+    "picks": {},
+    "spell_prompts_seen": 3,
+    "select_after_decline": false,
+    "branch_unanswered": false
+   },
+   "bears": {
+    "0": [],
+    "1": [],
+    "2": []
+   },
+   "bear_detail": {
+    "0": [],
+    "1": [],
+    "2": []
+   }
+  },
+  "B": {
+   "leg": "B",
+   "attempt": 1,
+   "assert": {
+    "B1_setup_ok": "passed",
+    "B2_draw_choices": "passed",
+    "B3_draw_counts": "passed",
+    "B4_life_gain": "failed",
+    "B5_cleanup": "passed"
+   },
+   "notes": [
+    "B1_setup_ok leg B passed (setup): truce in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+    "B2 leg B passed: all seats ACCEPTed + chooseBranch 1",
+    "B3 leg B passed: each seat drew exactly 1 (library -1 each; hand deltas {0: 0, 1: 1, 2: 1}, P0's includes the cast Truce leaving hand)",
+    "B4 leg B FAILED: life deltas={'0': 0, '1': 0, '2': 0} (expected +2 each) -- the reported signature (drew 1, no life)",
+    "B5 leg B passed: POST stack empty, Truce in P0 graveyard"
+   ],
+   "game_code": "QYZWC0",
+   "ctx": {
+    "spell_cast": true,
+    "cast_oid": 18,
+    "optionals": {
+     "0": true,
+     "1": true,
+     "2": true
+    },
+    "branches": {
+     "0": 1,
+     "1": 1,
+     "2": 1
+    },
+    "picks": {},
+    "spell_prompts_seen": 6,
+    "select_after_decline": false,
+    "branch_unanswered": false
+   },
+   "life": {
+    "pre": {
+     "0": 20,
+     "1": 20,
+     "2": 20
+    },
+    "post": {
+     "0": 20,
+     "1": 20,
+     "2": 20
+    },
+    "delta": {
+     "0": 0,
+     "1": 0,
+     "2": 0
+    }
+   },
+   "drawn": {
+    "0": 1,
+    "1": 1,
+    "2": 1
+   },
+   "hand_delta": {
+    "0": 0,
+    "1": 1,
+    "2": 1
+   }
+  },
+  "C": {
+   "leg": "C",
+   "attempt": 1,
+   "assert": {
+    "C1_setup_ok": "passed",
+    "C2_decline_choices": "passed",
+    "C3_draw_counts": "passed",
+    "C4_life_gain": "failed",
+    "C5_cleanup": "passed"
+   },
+   "notes": [
+    "C1_setup_ok leg C passed (setup): temporary truce in P0 hand in PRE; P0 life=20, P1 life=20, P2 life=20",
+    "C2 leg C passed: all seats DECLINEed the may-draw optional",
+    "C3 leg C passed: each seat drew 0 (library unchanged)",
+    "C4 leg C FAILED: life deltas={'0': 4, '1': 0, '2': 0} (expected +4 each) -- patched-variant signature: caster +4 only, others +0 (clause-wide count, caster binding)",
+    "C5 leg C passed: POST stack empty, Temporary Truce in P0 graveyard"
+   ],
+   "game_code": "AK61GD",
+   "ctx": {
+    "spell_cast": true,
+    "cast_oid": 11,
+    "optionals": {
+     "0": false,
+     "1": false,
+     "2": false
+    },
+    "branches": {},
+    "picks": {},
+    "spell_prompts_seen": 3,
+    "select_after_decline": false,
+    "branch_unanswered": false
+   },
+   "life": {
+    "pre": {
+     "0": 20,
+     "1": 20,
+     "2": 20
+    },
+    "post": {
+     "0": 24,
+     "1": 20,
+     "2": 20
+    },
+    "delta": {
+     "0": 4,
+     "1": 0,
+     "2": 0
+    }
+   },
+   "drawn": {
+    "0": 0,
+    "1": 0,
+    "2": 0
+   },
+   "hand_delta": {
+    "0": -1,
+    "1": 0,
+    "2": 0
+   }
+  }
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "kamahl's summons": "Each player may reveal any number of creature cards from their hand. Then each player creates a 2/2 green Bear creature token for each card they revealed this way.",
+  "truce": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.",
+  "temporary truce": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life."
+ }
+}
