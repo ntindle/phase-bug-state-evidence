@@ -1,0 +1,89 @@
+{
+ "attempt": 1,
+ "assert": {
+  "A1_setup_ok": "passed",
+  "A2_taps_happened": "passed",
+  "A3_chosen_survive": "failed",
+  "A4_unchosen_destroyed": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: PRE has P0 Raiding Party + Orcish Conscripts + Elite Vanguard + 3 Plains; P1 Elite Vanguard + 3 Plains",
+  "choices_made=False: designated=['19', '47', '80', '105'] chosen=['105'] (tap prompts seen: 2, Plains prompts seen: 1, sacrifice done: True)",
+  "A2 passed: both designated Elite Vanguards tapped in POST",
+  "A3 FAILED (reported bug): designated Plains destroyed: [('19', 'Graveyard'), ('47', 'Graveyard'), ('80', 'Graveyard'), ('105', 'Graveyard')]; survivors: []",
+  "A4 passed: every non-designated Plains is in a graveyard in POST (2 Plains)",
+  "A5 passed: POST stack empty, Conscripts in P0 graveyard, Raiding Party still on P0 battlefield",
+  "VERDICT OVERRIDE: driver code verdict was 'blocked' (choices_made gate: chosen ['105'] != designated ['19','47','80','105']) overridden to 'reproduced' by assessor per the pre-registered rule text: 'reproduced = A1 + A2 passed, choices actually made, and (A3 failed [chosen Plains destroyed -- the reported signature])'. A choice WAS actually made and recorded (Plains 105, the engine's single offered pick); A3 failed with exactly the reported signature (chosen 105 destroyed, all 6 Plains in graveyards); A1/A2/A4/A5 passed. The code's choices_made gate operationalized 'choices actually made' as all 4 Oracle picks made, but the engine offers only ONE choose-1 prompt (sequence min=1 max=1, all 6 Plains as candidates) instead of per-player up-to-2 prompts, so 4 picks were never obtainable. The engine's choice-count deficiency (1 pick vs Oracle up-to-4) is a second, related failure of the same ability, documented here; it does not negate the destroy-step reproduction. Engine prompt order observed: Plains pick -> sacrifice cost -> may-tap optional (x2, one per player) -> tap (x2)."
+ ],
+ "game_code": "0G8Q2A",
+ "pre_plains": {
+  "P0": 3,
+  "P1": 3
+ },
+ "pre_bf": {
+  "P0_raiding": 1,
+  "P0_orc": 1,
+  "P0_vanguard": 1,
+  "P1_vanguard": 1
+ },
+ "designated": [
+  "19",
+  "47",
+  "80",
+  "105"
+ ],
+ "plains_chosen": [
+  "105"
+ ],
+ "tap_answers": [
+  "22",
+  "87"
+ ],
+ "tap_queue": [
+  "22",
+  "87"
+ ],
+ "choices_made": false,
+ "post_vanguards_tapped": [
+  true,
+  true
+ ],
+ "post_survivors": [],
+ "post_unchosen": [
+  [
+   "48",
+   "Graveyard"
+  ],
+  [
+   "108",
+   "Graveyard"
+  ]
+ ],
+ "post_stack_empty": true,
+ "post_orc_sacrificed": true,
+ "post_raiding_on_bf": true,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9860/run-9860-v01090-20261014-0241"
+ },
+ "issue": 9860,
+ "run_id": "run-9860-v01090-20261014-0241",
+ "card_data_oracle": {
+  "raiding party": "This enchantment can't be the target of white spells or abilities from white sources.\nSacrifice an Orc: Each player may tap any number of untapped white creatures they control. For each creature tapped this way, that player chooses up to two Plains. Then destroy all Plains that weren't chosen this way by any player.",
+  "orcish conscripts": "This creature can't attack unless at least two other creatures attack.\nThis creature can't block unless at least two other creatures block.",
+  "elite vanguard": null,
+  "plains": "({T}: Add {W}.)"
+ },
+ "verdict": "reproduced",
+ "code_verdict": "blocked",
+ "verdict_override": "VERDICT OVERRIDE: driver code verdict was 'blocked' (choices_made gate: chosen ['105'] != designated ['19','47','80','105']) overridden to 'reproduced' by assessor per the pre-registered rule text: 'reproduced = A1 + A2 passed, choices actually made, and (A3 failed [chosen Plains destroyed -- the reported signature])'. A choice WAS actually made and recorded (Plains 105, the engine's single offered pick); A3 failed with exactly the reported signature (chosen 105 destroyed, all 6 Plains in graveyards); A1/A2/A4/A5 passed. The code's choices_made gate operationalized 'choices actually made' as all 4 Oracle picks made, but the engine offers only ONE choose-1 prompt (sequence min=1 max=1, all 6 Plains as candidates) instead of per-player up-to-2 prompts, so 4 picks were never obtainable. The engine's choice-count deficiency (1 pick vs Oracle up-to-4) is a second, related failure of the same ability, documented here; it does not negate the destroy-step reproduction. Engine prompt order observed: Plains pick -> sacrifice cost -> may-tap optional (x2, one per player) -> tap (x2)."
+}
