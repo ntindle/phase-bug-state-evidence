@@ -1,0 +1,108 @@
+{
+ "issue": 9858,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9858",
+ "run_id": "run-9858-v01090-20261013-2130",
+ "started_at": "2026-10-13T21:03:27",
+ "finished_at": "2026-10-13T21:07:21",
+ "duration_s": 234.2,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9858/run-9858-v01090-20261013-2130"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9858/run-9858-v01090-20261013-2130",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "a07d0d0c028b5450a8597231a3c6234cb1d4b48c7f6eee92c1917eac4f1a5d8a",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    16
+   ],
+   [
+    "Plains",
+    8
+   ],
+   [
+    "Island",
+    8
+   ],
+   [
+    "Forbidden Orchard",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Fractured Identity",
+    8
+   ],
+   [
+    "Rocky Rebuke",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    28
+   ],
+   [
+    "Grizzly Bears",
+    32
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    28
+   ],
+   [
+    "Grizzly Bears",
+    32
+   ]
+  ],
+  "P3": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_teammate_not_offered": "failed",
+  "A3_opponent_offered": "passed",
+  "A4_resolution_correct": "failed"
+ },
+ "notes": [
+  "A1 passed: 2HG game (format TwoHeadedGiant, teams P0/P1 vs P2/P3 per topology PlayerId/2); fixture vehicle fractured put a creature under teammate P1's control; P0 cast Rocky Rebuke with own creature oid 24, teammate creature oid 248, opponent creature oid 129 all on the battlefield",
+  "A2 FAILED (reported bug): at the second-target selection ('target creature an opponent controls'), a teammate-controlled creature was offered: [{'oid': '248', 'name': 'grizzly bears', 'controller': 1}]. A teammate is not an opponent (CR 102.3).",
+  "A3 passed: an opponent-controlled creature was offered at the second-target selection (targeting works for true opponents)",
+  "A4 FAILED (bug end-to-end, token): Rocky Rebuke resolved dealing damage to the targeted TEAMMATE's creature (oid 248), a token; it is absent from the post-resolution export (tokens cease to exist on leaving the battlefield, CR 704.5d) and its controller controls no creatures -- the illegally-targeted Rebuke dealt lethal damage to it"
+ ],
+ "verdict": "reproduced",
+ "result": "A1 passed; A2 failed; A3 passed; A4 failed; fixture_vehicle=fractured",
+ "scope": "Rocky Rebuke second-target filter ('target creature an opponent controls', ControllerRef::Opponent) in a real Two-Headed Giant game; native engine, four human-client seats; fixture vehicles Forbidden Orchard / Fractured Identity to put a creature under teammate P1's control",
+ "limitations": [
+  "Browser UI not exercised; native engine via four human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "12x/8x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Forbidden Orchard's second ability is parsed by the engine as a TapsForMana trigger, not a second activated ability; the fixture uses that trigger as implemented.",
+  "Verdict rule: reproduced = A2 failed (teammate offered), or A2 passed but A4 failed (related resolution failure). not-reproduced = A2 passed and A4 passed. blocked = target selection never observed."
+ ],
+ "setup_line": "P0 16x Forest + 8x Plains + 8x Island + 4x Forbidden Orchard + 8x Grizzly Bears + 8x Fractured Identity + 8x Rocky Rebuke; P1/P2 28x Forest + 32x Grizzly Bears; P3 60x Forest. 2HG, teams P0/P1 vs P2/P3, starting life 30.",
+ "contract_line": "Put a creature under teammate P1's control (Orchard Spirit token or Fractured Identity copy), then cast Rocky Rebuke: first target own creature, second target must NOT include P1's creature (CR 102.3) but MUST include a P2/P3 creature; if P1's creature is offered and targeted, its death = the bug end-to-end."
+}
