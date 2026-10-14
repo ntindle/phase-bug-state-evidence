@@ -1,0 +1,207 @@
+{
+ "leg": "B",
+ "kind": "chooseBranch",
+ "tag": "P2B1",
+ "waiting_for": {
+  "type": "ChooseOneOfBranch",
+  "data": {
+   "player": 2,
+   "controller": 2,
+   "source_id": 18,
+   "branches": [
+    {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 0
+      },
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": "Draw no cards",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": "Draw 1 card",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    {
+     "kind": "Spell",
+     "effect": {
+      "type": "Draw",
+      "count": {
+       "type": "Fixed",
+       "value": 2
+      },
+      "target": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": "Draw 2 cards",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    }
+   ],
+   "branch_descriptions": [
+    "Draw no cards",
+    "Draw 1 card",
+    "Draw 2 cards"
+   ],
+   "context": {
+    "additional_cost_paid": false,
+    "alternative_mana_cost_paid": false,
+    "optional_effect_performed": true,
+    "cast_from_zone": "Hand",
+    "cast_controller": 0,
+    "cast_phase": "PreCombatMain"
+   }
+  }
+ },
+ "opportunity": {
+  "interactionId": "QYZWC0.0.153",
+  "response": {
+   "type": "exactChoices",
+   "data": {
+    "choices": [
+     {
+      "id": "QYZWC0.0.153.c0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "action",
+        "data": {
+         "code": "chooseBranch",
+         "actionId": "aada6b3fa0410cf82f70bc785d0e86d697be797af891a4fcf6271e5da5001dc2a"
+        }
+       },
+       {
+        "type": "value",
+        "data": {
+         "role": "optionIndex",
+         "index": null,
+         "value": "0"
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "QYZWC0.0.153.c1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "action",
+        "data": {
+         "code": "chooseBranch",
+         "actionId": "a2dce05469cf49458a88daf07c28e4d821a6f3834a36bf0f6f9bc1e2e27038f54"
+        }
+       },
+       {
+        "type": "value",
+        "data": {
+         "role": "optionIndex",
+         "index": null,
+         "value": "1"
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "QYZWC0.0.153.c2",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "action",
+        "data": {
+         "code": "chooseBranch",
+         "actionId": "ac3bfad803b4ba4fbddab89144f917210eab2224be98d1334abf31b310172e42a"
+        }
+       },
+       {
+        "type": "value",
+        "data": {
+         "role": "optionIndex",
+         "index": null,
+         "value": "2"
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 0,
+   "maximum": null,
+   "aggregate": null,
+   "confirmable": false
+  }
+ },
+ "text_blob": "0 | 0 | 1 | 1 | 2 | 2"
+}
