@@ -1,0 +1,84 @@
+{
+ "issue": 9225,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9225",
+ "run_id": "run-9225-v01100-20261014-1645",
+ "started_at": "2026-10-14T16:58:54",
+ "finished_at": "2026-10-14T17:00:59",
+ "duration_s": 125.1,
+ "server_identity": {
+  "server_version": "0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.110.0 (published 2026-10-14) == pinned release dir; ServerHello 0.110.0/9bfd12e/protocol 142/Full read live this run"
+ },
+ "server_run_dir": "backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9225/run-9225-v01100-20261014-1645",
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "27c065ac142fa8785c4377de289e754e5f6a3ed2d32d7a0f3312f1de18b10c98",
+ "decks": {
+  "P0": [
+   [
+    "Locke, Treasure Hunter",
+    4
+   ],
+   [
+    "Swamp",
+    28
+   ],
+   [
+    "Mountain",
+    28
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P2": [
+   [
+    "Forest",
+    60
+   ]
+  ],
+  "P3": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_all_milled_land": "passed",
+  "A3_treasure_count": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: PRE has Locke on P0 BF, P0 active in PreCombatMain (turn 15)",
+  "A2 passed: each player milled exactly 1 land ({0: {'milled': 1, 'names': ['Mountain'], 'all_land': True}, 1: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 2: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 3: {'milled': 1, 'names': ['Forest'], 'all_land': True}})",
+  "A3 FAILED: 4 Treasure tokens on the battlefield (expected 1) -- non-1 count; objects=[('242', 0, 0), ('243', 1, 1), ('244', 2, 2), ('245', 3, 3)]",
+  "A4 passed: POST stack empty, game ongoing"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_setup_ok passed; A2_all_milled_land passed; A3_treasure_count failed; A4_cleanup passed; treasures={'count': 4, 'objects': [('242', 0, 0), ('243', 1, 1), ('244', 2, 2), ('245', 3, 3)]}; mill_detail={0: {'milled': 1, 'names': ['Mountain'], 'all_land': True}, 1: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 2: {'milled': 1, 'names': ['Forest'], 'all_land': True}, 3: {'milled': 1, 'names': ['Forest'], 'all_land': True}}",
+ "scope": "Locke, Treasure Hunter's Mug trigger in a 4-player free-for-all: each player mills 1 card (a land, by construction); the 'if a land was milled this way, create a Treasure token' clause must create exactly 1 Treasure total. Native engine, four human-client seats.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "4x/28x/60x deck densities are test-harness conveniences (engine accepts >4-of for custom games); all-land opponent decks make every mill hit a land deterministically.",
+  "The third clause ('you may cast a spell from among those cards') is a separate defect fixed upstream by #9230 and is out of scope; the driver declines its prompt when offered. Milled cards are lands (not castable as spells).",
+  "Verdict rule: reproduced = A1 + A2 passed and A3 failed (Treasure count != 1). not-reproduced = all assertions passed. blocked = setup never completed, a mill missed a land, or the trigger never observably resolved."
+ ],
+ "setup_line": "P0 4x Locke + 28x Swamp + 28x Mountain; P1/P2/P3 60x Forest (draw-go). P0 mulligans until Locke in hand, ramps 3 lands, casts Locke, attacks P1 with Locke; all seats declare no blockers; driver passes priority and declines the cast-permission prompt.",
+ "contract_line": "Each player mills exactly 1 land -> exactly 1 Treasure token total (oracle + 2025-06-06 ruling). Bug: 3 Treasures (one per opponent)."
+}
