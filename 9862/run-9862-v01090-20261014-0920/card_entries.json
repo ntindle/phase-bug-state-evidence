@@ -1,0 +1,366 @@
+{
+ "kamahl's summons": {
+  "name": "Kamahl's Summons",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Green"
+   ],
+   "generic": 3
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Sorcery"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Each player may reveal any number of creature cards from their hand. Then each player creates a 2/2 green Bear creature token for each card they revealed this way.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "RevealHand",
+     "target": {
+      "type": "Any"
+     },
+     "card_filter": {
+      "type": "None"
+     },
+     "count": null,
+     "reveal": true
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Bear",
+      "power": {
+       "type": "Fixed",
+       "value": 2
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 2
+      },
+      "types": [
+       "Creature",
+       "Bear"
+      ],
+      "colors": [
+       "Green"
+      ],
+      "keywords": [],
+      "tapped": false,
+      "count": {
+       "type": "Ref",
+       "qty": {
+        "type": "TrackedSetSize"
+       }
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "player_scope": {
+      "type": "All"
+     },
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Each player may reveal any number of creature cards from their hand. Then each player creates a 2/2 green Bear creature token for each card they revealed this way.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Green"
+  ],
+  "scryfall_oracle_id": "8b6ef0a2-cd90-44c8-8f11-e1983f2b1dfd",
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "premodern": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "ONS"
+  ]
+ },
+ "truce": {
+  "name": "Truce",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White"
+   ],
+   "generic": 2
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Draw",
+     "count": {
+      "type": "UpTo",
+      "max": {
+       "type": "Fixed",
+       "value": 2
+      }
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "GainLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 2
+      },
+      "player": {
+       "type": "ParentTargetController"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "repeat_for": {
+      "type": "ClampMin",
+      "inner": {
+       "type": "Offset",
+       "inner": {
+        "type": "Multiply",
+        "factor": -1,
+        "inner": {
+         "type": "Ref",
+         "qty": {
+          "type": "TrackedSetSize"
+         }
+        }
+       },
+       "offset": 2
+      },
+      "minimum": 0
+     },
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "White"
+  ],
+  "scryfall_oracle_id": "fe4aa72b-f176-461a-aca0-1519721609b2",
+  "metadata": {
+   "source_printing_ids": [
+    "97cc05bf-c3d3-4c09-8a4c-a748856b225c"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "premodern": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "5ED",
+   "HML",
+   "PTC"
+  ],
+  "rarities": [
+   "rare"
+  ]
+ },
+ "temporary truce": {
+  "name": "Temporary Truce",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Sorcery"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Draw",
+     "count": {
+      "type": "UpTo",
+      "max": {
+       "type": "Fixed",
+       "value": 2
+      }
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "GainLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 2
+      },
+      "player": {
+       "type": "ParentTargetController"
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "repeat_for": {
+      "type": "ClampMin",
+      "inner": {
+       "type": "Offset",
+       "inner": {
+        "type": "Multiply",
+        "factor": -1,
+        "inner": {
+         "type": "Ref",
+         "qty": {
+          "type": "TrackedSetSize"
+         }
+        }
+       },
+       "offset": 2
+      },
+      "minimum": 0
+     },
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Each player may draw up to two cards. For each card less than two a player draws this way, that player gains 2 life.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "White"
+  ],
+  "scryfall_oracle_id": "ffe6371c-d137-4062-8c6e-6e9794ab25bc",
+  "metadata": {
+   "source_printing_ids": [
+    "093f2bc9-b37d-4e74-9841-5910d121129a"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "MB2",
+   "POR"
+  ],
+  "rarities": [
+   "rare"
+  ]
+ }
+}
