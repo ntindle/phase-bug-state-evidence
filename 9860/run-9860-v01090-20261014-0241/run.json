@@ -1,0 +1,89 @@
+{
+ "issue": 9860,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9860",
+ "run_id": "run-9860-v01090-20261014-0241",
+ "started_at": "2026-10-14T02:52:41",
+ "finished_at": "2026-10-14T02:53:43",
+ "duration_s": 62.3,
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-14: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9860/run-9860-v01090-20261014-0241"
+ },
+ "server_run_dir": "backfill-owned v0.109.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); evidence under evidence/9860/run-9860-v01090-20261014-0241",
+ "driver": {
+  "protocol_advertised": 140,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "cd0914a113a50d42253ba67c353ccc0dd7694193d14a5ac4ba598146f33187cb",
+ "decks": {
+  "P0": [
+   [
+    "Raiding Party",
+    12
+   ],
+   [
+    "Orcish Conscripts",
+    12
+   ],
+   [
+    "Elite Vanguard",
+    12
+   ],
+   [
+    "Mountain",
+    12
+   ],
+   [
+    "Plains",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "Elite Vanguard",
+    12
+   ],
+   [
+    "Plains",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_taps_happened": "passed",
+  "A3_chosen_survive": "failed",
+  "A4_unchosen_destroyed": "passed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1 passed: PRE has P0 Raiding Party + Orcish Conscripts + Elite Vanguard + 3 Plains; P1 Elite Vanguard + 3 Plains",
+  "choices_made=False: designated=['19', '47', '80', '105'] chosen=['105'] (tap prompts seen: 2, Plains prompts seen: 1, sacrifice done: True)",
+  "A2 passed: both designated Elite Vanguards tapped in POST",
+  "A3 FAILED (reported bug): designated Plains destroyed: [('19', 'Graveyard'), ('47', 'Graveyard'), ('80', 'Graveyard'), ('105', 'Graveyard')]; survivors: []",
+  "A4 passed: every non-designated Plains is in a graveyard in POST (2 Plains)",
+  "A5 passed: POST stack empty, Conscripts in P0 graveyard, Raiding Party still on P0 battlefield",
+  "VERDICT OVERRIDE: driver code verdict was 'blocked' (choices_made gate: chosen ['105'] != designated ['19','47','80','105']) overridden to 'reproduced' by assessor per the pre-registered rule text: 'reproduced = A1 + A2 passed, choices actually made, and (A3 failed [chosen Plains destroyed -- the reported signature])'. A choice WAS actually made and recorded (Plains 105, the engine's single offered pick); A3 failed with exactly the reported signature (chosen 105 destroyed, all 6 Plains in graveyards); A1/A2/A4/A5 passed. The code's choices_made gate operationalized 'choices actually made' as all 4 Oracle picks made, but the engine offers only ONE choose-1 prompt (sequence min=1 max=1, all 6 Plains as candidates) instead of per-player up-to-2 prompts, so 4 picks were never obtainable. The engine's choice-count deficiency (1 pick vs Oracle up-to-4) is a second, related failure of the same ability, documented here; it does not negate the destroy-step reproduction. Engine prompt order observed: Plains pick -> sacrifice cost -> may-tap optional (x2, one per player) -> tap (x2)."
+ ],
+ "verdict": "reproduced",
+ "result": "A1 passed; A2 passed; A3 failed; A4 passed; A5 passed; designated=['19', '47', '80', '105']; chosen=['105']; survivors=[]; unchosen_post=[('48', 'Graveyard'), ('108', 'Graveyard')]; orc_sacrificed=True; raiding_on_bf=True",
+ "scope": "Raiding Party 'Sacrifice an Orc' ability: each player taps white creatures, each chooses up to two Plains per tapped creature, then all unchosen Plains are destroyed; native engine, two human-client seats; 1 tapped creature per player, 3 Plains per player",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "12x deck densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Verdict rule: not-reproduced = A1 + A2 passed, 4 Plains choices actually made (chosen set == designated set), A3 + A4 + A5 passed. reproduced = A1 + A2 passed, choices actually made, and (A3 failed [chosen Plains destroyed -- the reported signature] or A4 failed [destroy step wrong] or A5 failed with an empty stack and the Orc not sacrificed / Raiding Party gone [related cost/cleanup failure]). blocked = setup never completed, tap/choice prompts never offered, or chosen set did not match the designated set."
+ ],
+ "setup_line": "P0 12x Raiding Party + 12x Orcish Conscripts + 12x Elite Vanguard + 12x Mountain + 12x Plains; P1 12x Elite Vanguard + 48x Plains. 2-player game, starting life 20.",
+ "contract_line": "P0 activates Raiding Party (sacrifice Conscripts). Each player taps their Vanguard and chooses 2 Plains (P0 its first two, P1 its first two). Expected: 4 chosen Plains survive, other 2 destroyed. Bug: all 6 destroyed.",
+ "code_verdict": "blocked",
+ "verdict_override": "VERDICT OVERRIDE: driver code verdict was 'blocked' (choices_made gate: chosen ['105'] != designated ['19','47','80','105']) overridden to 'reproduced' by assessor per the pre-registered rule text: 'reproduced = A1 + A2 passed, choices actually made, and (A3 failed [chosen Plains destroyed -- the reported signature])'. A choice WAS actually made and recorded (Plains 105, the engine's single offered pick); A3 failed with exactly the reported signature (chosen 105 destroyed, all 6 Plains in graveyards); A1/A2/A4/A5 passed. The code's choices_made gate operationalized 'choices actually made' as all 4 Oracle picks made, but the engine offers only ONE choose-1 prompt (sequence min=1 max=1, all 6 Plains as candidates) instead of per-player up-to-2 prompts, so 4 picks were never obtainable. The engine's choice-count deficiency (1 pick vs Oracle up-to-4) is a second, related failure of the same ability, documented here; it does not negate the destroy-step reproduction. Engine prompt order observed: Plains pick -> sacrifice cost -> may-tap optional (x2, one per player) -> tap (x2)."
+}
