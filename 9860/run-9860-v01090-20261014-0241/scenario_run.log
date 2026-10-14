@@ -1,0 +1,52 @@
+[02:52:41] server identity hashes recomputed against on-disk pinned artifacts
+[02:52:41] ServerHello: version=0.109.0 build=932e389 protocol=140 mode=Full
+[02:52:42] game 0G8Q2A attempt=1; seats=[0, 1]
+[02:52:42] [9860-1] keep 7: ['mountain', 'mountain', 'raiding party', 'raiding party', 'raiding party', 'plains', 'elite vanguard']
+[02:52:42] [P19860-1] keep 7: ['plains', 'plains', 'elite vanguard', 'plains', 'plains', 'plains', 'plains']
+[02:52:42] [diag] P09860-1: rev=2 turn=1 phase=Untap active=1 stack=0 n_acts=4 activated=None taps=None plains_chosen=None lives=[20, 20]
+[02:52:42] [diag] P1P19860-1: rev=2 turn=1 phase=Untap active=1 stack=0 n_acts=4 activated=None taps=None plains_chosen=None lives=[20, 20]
+[02:52:43] [P19860-1] playing land plains
+[02:52:43] [P19860-1] casting elite vanguard (oid 87)
+[02:52:48] [9860-1] playing land plains
+[02:52:48] [9860-1] casting elite vanguard (oid 22) needs={'W': 1}
+[02:52:51] [P19860-1] tap land for mana used_for=W
+[02:52:52] [P19860-1] playing land plains
+[02:52:56] [9860-1] tap land for mana used_for=W
+[02:52:57] [9860-1] playing land mountain
+[02:53:01] [P19860-1] playing land plains
+[02:53:12] [diag] P09860-1: rev=117 turn=7 phase=End active=1 stack=0 n_acts=3 activated=None taps=None plains_chosen=None lives=[20, 20]
+[02:53:12] [diag] P1P19860-1: rev=117 turn=7 phase=End active=1 stack=0 n_acts=0 activated=None taps=None plains_chosen=None lives=[20, 20]
+[02:53:14] [9860-1] playing land plains
+[02:53:14] [9860-1] casting raiding party (oid 11) needs={'R': 1, 'generic': 2}
+[02:53:21] [9860-1] tap land for mana used_for=R
+[02:53:21] [9860-1] tap land for mana used_for=generic
+[02:53:22] [9860-1] tap land for mana used_for=generic
+[02:53:30] [P19860-1] discarding to hand size: ['Plains']
+[02:53:31] [9860-1] casting orcish conscripts (oid 12) needs={'R': 1}
+[02:53:39] [P19860-1] discarding to hand size: ['Plains']
+[02:53:39] [9860-1] tap land for mana used_for=R
+[02:53:40] [9860-1] playing land plains
+[02:53:41] [9860-1] PRE exported; designated Plains=['19', '47', '80', '105'] tap_queue=['22', '87']; activating Raiding Party
+[02:53:41] [9860-1] Raiding prompt #1 kind=plains: blob=Plains | Plains | Plains | Plains | Plains | Plains | Plains | Plains | Plains | Plains | Plains | Plains
+[02:53:41] [9860-1] choosing Plains (schema, 1): ['105']
+[02:53:41] [9860-1] Raiding prompt #2 kind=sacrifice: blob=Orcish Conscripts | Orcish Conscripts
+[02:53:41] [9860-1] answering sacrifice cost with Orc oid 12
+[02:53:42] [9860-1] Raiding prompt #3 kind=optional: blob=false | false | true | true
+[02:53:42] [9860-1] Raiding prompt #4 kind=tap: blob=Elite Vanguard | Elite Vanguard
+[02:53:42] [9860-1] tapping Vanguard(s): ['22']
+[02:53:43] [P19860-1] Raiding prompt #5 kind=optional: blob=false | false | true | true
+[02:53:43] [diag] P09860-1: rev=233 turn=14 phase=PreCombatMain active=0 stack=0 n_acts=0 activated=True taps=['22'] plains_chosen=['105'] lives=[20, 20]
+[02:53:43] [diag] P1P19860-1: rev=233 turn=14 phase=PreCombatMain active=0 stack=0 n_acts=2 activated=True taps=['22'] plains_chosen=['105'] lives=[20, 20]
+[02:53:43] [P19860-1] Raiding prompt #6 kind=tap: blob=Elite Vanguard | Elite Vanguard
+[02:53:43] [P19860-1] tapping Vanguard(s): ['22', '87']
+[02:53:43] [9860-1] Raiding resolution settled: BF Plains 6 -> 0; exporting POST
+[02:53:43] [9860-1] POST exported after resolution settled
+[02:53:43] assertions: {"A1_setup_ok": "passed", "A2_taps_happened": "passed", "A3_chosen_survive": "failed", "A4_unchosen_destroyed": "passed", "A5_cleanup": "passed"}
+[02:53:43] note: A1 passed: PRE has P0 Raiding Party + Orcish Conscripts + Elite Vanguard + 3 Plains; P1 Elite Vanguard + 3 Plains
+[02:53:43] note: choices_made=False: designated=['19', '47', '80', '105'] chosen=['105'] (tap prompts seen: 2, Plains prompts seen: 1, sacrifice done: True)
+[02:53:43] note: A2 passed: both designated Elite Vanguards tapped in POST
+[02:53:43] note: A3 FAILED (reported bug): designated Plains destroyed: [('19', 'Graveyard'), ('47', 'Graveyard'), ('80', 'Graveyard'), ('105', 'Graveyard')]; survivors: []
+[02:53:43] note: A4 passed: every non-designated Plains is in a graveyard in POST (2 Plains)
+[02:53:43] note: A5 passed: POST stack empty, Conscripts in P0 graveyard, Raiding Party still on P0 battlefield
+[02:53:43] VERDICT: blocked
+[02:53:44] summary.png rendered from saved assertions
