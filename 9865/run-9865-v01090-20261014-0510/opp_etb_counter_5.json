@@ -1,0 +1,136 @@
+{
+ "kind": "etb_counter",
+ "tag": "P0K2",
+ "waiting_for": {
+  "type": "ChooseFromZoneChoice",
+  "data": {
+   "player": 0,
+   "cards": [
+    39,
+    55
+   ],
+   "count": 1,
+   "source_id": 55
+  }
+ },
+ "opportunity": {
+  "interactionId": "65H81Q.0.205",
+  "response": {
+   "type": "schema",
+   "data": {
+    "spec": {
+     "type": "select",
+     "data": {
+      "constraint": {
+       "type": "count",
+       "data": {
+        "min": 1,
+        "max": 1
+       }
+      },
+      "confirm": "explicit"
+     }
+    },
+    "candidates": [
+     {
+      "id": "65H81Q.0.205.s0",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "39",
+         "name": "Grizzly Bears",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 2,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     },
+     {
+      "id": "65H81Q.0.205.s1",
+      "surfaces": [
+       {
+        "type": "summary",
+        "data": {
+         "code": "candidate"
+        }
+       },
+       {
+        "type": "object",
+        "data": {
+         "role": "candidate",
+         "index": null,
+         "reference": "55",
+         "name": "Kathril, Aspect Warper",
+         "zone": "battlefield",
+         "controller": 0,
+         "power": 3,
+         "tapped": false
+        }
+       }
+      ],
+      "status": {
+       "type": "available"
+      }
+     }
+    ]
+   }
+  },
+  "surfaces": [
+   {
+    "type": "summary",
+    "data": {
+     "code": "decision"
+    }
+   },
+   {
+    "type": "selection",
+    "data": {
+     "intent": "choose",
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 1,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   },
+   {
+    "type": "object",
+    "data": {
+     "role": "source",
+     "index": null,
+     "reference": "55",
+     "name": "Kathril, Aspect Warper",
+     "zone": "battlefield",
+     "controller": 0,
+     "power": 3,
+     "tapped": false
+    }
+   }
+  ],
+  "progress": {
+   "selected": 0,
+   "minimum": 1,
+   "maximum": 1,
+   "aggregate": null,
+   "confirmable": false
+  }
+ },
+ "text_blob": "Grizzly Bears | Grizzly Bears | Kathril, Aspect Warper | Kathril, Aspect Warper"
+}
