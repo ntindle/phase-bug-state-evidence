@@ -1,0 +1,84 @@
+{
+ "attempt": 1,
+ "assert": {
+  "A1_setup_ok": "passed",
+  "A2_teammate_not_offered": "failed",
+  "A3_opponent_offered": "passed",
+  "A4_resolution_correct": "failed"
+ },
+ "notes": [
+  "A1 passed: 2HG game (format TwoHeadedGiant, teams P0/P1 vs P2/P3 per topology PlayerId/2); fixture vehicle fractured put a creature under teammate P1's control; P0 cast Rocky Rebuke with own creature oid 24, teammate creature oid 248, opponent creature oid 129 all on the battlefield",
+  "A2 FAILED (reported bug): at the second-target selection ('target creature an opponent controls'), a teammate-controlled creature was offered: [{'oid': '248', 'name': 'grizzly bears', 'controller': 1}]. A teammate is not an opponent (CR 102.3).",
+  "A3 passed: an opponent-controlled creature was offered at the second-target selection (targeting works for true opponents)",
+  "A4 FAILED (bug end-to-end, token): Rocky Rebuke resolved dealing damage to the targeted TEAMMATE's creature (oid 248), a token; it is absent from the post-resolution export (tokens cease to exist on leaving the battlefield, CR 704.5d) and its controller controls no creatures -- the illegally-targeted Rebuke dealt lethal damage to it"
+ ],
+ "game_code": "8QXZKR",
+ "server_identity": {
+  "server_version": "v0.109.0",
+  "build_commit": "932e389",
+  "protocol_version": 140,
+  "mode": "Full",
+  "server_binary_sha256": "b2522f3657873456f1a5d17c2c97842e2ea2c6833afcbb7bc492696ff89142d5",
+  "card_data_sha256": "9089f823081843e8ad700ce362a448a3ba165d377a23465c86355e8ed07e5225",
+  "draft_pools_sha256": "2543f1bdfb3e4c2469ff3193b91a936d3ddc6bde99c6f5d19926cae4743c7309",
+  "signature_verified": true,
+  "signature_note": "v0.109.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-13: latest stable release v0.109.0 (published 2026-10-13T18:43:00Z) == pinned release dir; ServerHello 0.109.0/932e389/protocol 140 verified by handshake this run; hashes recomputed against on-disk artifacts this run; v0.109.0 server on 127.0.0.1:9374 (backfill-owned, --single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9858/run-9858-v01090-20261013-2130"
+ },
+ "issue": 9858,
+ "run_id": "run-9858-v01090-20261013-2130",
+ "format_config": {
+  "format": "TwoHeadedGiant",
+  "starting_life": 30,
+  "min_players": 4,
+  "max_players": 4,
+  "deck_size": {
+   "type": "Minimum",
+   "data": 60
+  },
+  "singleton": false,
+  "command_zone": false,
+  "commander_damage_threshold": null,
+  "range_of_influence": null,
+  "team_based": true,
+  "archenemy_player": null,
+  "uses_commander": false,
+  "sideboard_policy": {
+   "type": "Unlimited"
+  },
+  "default_deck_copy_limit": {
+   "type": "UpTo",
+   "data": 4
+  },
+  "supplies_fixed_deck": false,
+  "allow_debug_actions": false,
+  "custom_rules": null
+ },
+ "card_data_oracle": {
+  "rocky rebuke": "Target creature you control deals damage equal to its power to target creature an opponent controls.",
+  "forbidden orchard": "{T}: Add one mana of any color.\nWhenever you tap this land for mana, target opponent creates a 1/1 colorless Spirit creature token.",
+  "fractured identity": "Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.",
+  "grizzly bears": null
+ },
+ "verdict": "reproduced",
+ "fixture_vehicle": "fractured",
+ "orchard_trigger_offered_teammate": false,
+ "orchard_trigger_players": [
+  {
+   "id": "8QXZKR.0.96.t0",
+   "seat": 2,
+   "text": ""
+  },
+  {
+   "id": "8QXZKR.0.96.t1",
+   "seat": 3,
+   "text": ""
+  }
+ ],
+ "a4_second_target": "248",
+ "a4_second_is_teammate": true,
+ "a4_second_is_token": true,
+ "a4_zone": null,
+ "a4_timeout": true,
+ "a4_own_target_zone": "Battlefield"
+}
