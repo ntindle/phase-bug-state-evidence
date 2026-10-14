@@ -1,0 +1,542 @@
+{
+ "rocky rebuke": {
+  "name": "Rocky Rebuke",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Green"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Target creature you control deals damage equal to its power to target creature an opponent controls.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "TargetOnly",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Creature"
+      ],
+      "controller": "You",
+      "properties": []
+     }
+    },
+    "declares_chosen_group": 0,
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "DealDamage",
+      "amount": {
+       "type": "Ref",
+       "qty": {
+        "type": "Power",
+        "scope": {
+         "type": "Target"
+        }
+       }
+      },
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": "Opponent",
+       "properties": []
+      },
+      "damage_source": "Target"
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": "Target creature you control deals damage equal to its power to target creature an opponent controls.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Green"
+  ],
+  "scryfall_oracle_id": "fd85db70-8616-42df-9dac-bad7923f88d7",
+  "metadata": {
+   "source_printing_ids": [
+    "52fd910f-6d42-41f5-a4be-f375aa254ea2"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pauper": "legal",
+   "paupercommander": "legal",
+   "pioneer": "legal",
+   "standard": "legal",
+   "standardbrawl": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "TLA"
+  ],
+  "rarities": [
+   "common"
+  ]
+ },
+ "forbidden orchard": {
+  "name": "Forbidden Orchard",
+  "mana_cost": {
+   "type": "NoCost"
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Land"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "{T}: Add one mana of any color.\nWhenever you tap this land for mana, target opponent creates a 1/1 colorless Spirit creature token.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Activated",
+    "effect": {
+     "type": "Mana",
+     "produced": {
+      "type": "AnyOneColor",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "color_options": [
+       "White",
+       "Blue",
+       "Black",
+       "Red",
+       "Green"
+      ]
+     }
+    },
+    "cost": {
+     "type": "Tap"
+    },
+    "sub_ability": null,
+    "duration": null,
+    "description": "{T}: Add one mana of any color.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "is_mana_ability": true
+   }
+  ],
+  "triggers": [
+   {
+    "mode": "TapsForMana",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Spirit",
+      "power": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "types": [
+       "Creature",
+       "Spirit"
+      ],
+      "colors": [],
+      "keywords": [],
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "owner": {
+       "type": "Typed",
+       "type_filters": [],
+       "controller": "Opponent",
+       "properties": []
+      },
+      "enters_attacking": false
+     },
+     "declares_chosen_group": 2147483648,
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": {
+     "type": "Controller"
+    },
+    "valid_source": null,
+    "description": "Whenever you tap ~ for mana, target opponent creates a 1/1 colorless Spirit creature token.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "scryfall_oracle_id": "cfd60d1f-9832-4408-b84e-0fd3018b015b",
+  "metadata": {
+   "related_token_ids": [
+    "50da239a-24c1-58b6-a8fd-28fc4d4bce23",
+    "833fee32-d935-51e4-b378-8fa466620a49",
+    "b7f9eab4-27e1-51b9-993b-bf16a3aae914"
+   ],
+   "source_printing_ids": [
+    "17db644c-1acf-477d-9c20-f72221f1108a",
+    "36dd80b6-28ff-488a-bc39-fb661da52e30",
+    "3f79add5-6c23-4a36-86d3-8647605d2a71",
+    "54e03a6c-1c0a-4a24-a3fe-2f3244938769",
+    "8eb3e78b-4ca4-444a-9661-c0df4e36226e"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "2X2",
+   "C16",
+   "CHK",
+   "EXP",
+   "PLST",
+   "PRM",
+   "V12"
+  ],
+  "rarities": [
+   "rare"
+  ]
+ },
+ "fractured identity": {
+  "name": "Fractured Identity",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "Blue"
+   ],
+   "generic": 3
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Sorcery"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "ChangeZone",
+     "origin": null,
+     "destination": "Exile",
+     "target": {
+      "type": "Typed",
+      "type_filters": [
+       "Permanent",
+       {
+        "Non": "Land"
+       }
+      ],
+      "controller": null,
+      "properties": []
+     },
+     "owner_library": false,
+     "enter_transformed": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "CopyTokenOf",
+      "target": {
+       "type": "TrackedSet",
+       "id": 0
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false,
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "player_scope": {
+      "type": "AllExcept",
+      "exclude": {
+       "type": "ParentObjectTargetController"
+      }
+     },
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": "Exile target nonland permanent. Each player other than its controller creates a token that's a copy of it.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": [
+   "Blue",
+   "White"
+  ],
+  "color_identity": [
+   "Blue",
+   "White"
+  ],
+  "scryfall_oracle_id": "1515b0c2-1b55-4cd4-ad81-fb6b1f3e8188",
+  "metadata": {
+   "related_token_ids": [
+    "3ae3c4af-2b85-5943-bab1-760e1b7da047",
+    "4d2ba458-569a-5a74-b079-cd2b89ec3f47",
+    "553b5e02-de02-59fb-9901-28d367ab1c19"
+   ],
+   "source_printing_ids": [
+    "2c69c743-59bd-4cac-b8e7-f3424677ac57",
+    "3373a8a7-69a3-4011-a3dc-4e7c252dcd92",
+    "8db735ea-f9cf-4e3c-9200-4f180df55baa",
+    "ac1e9cd6-7be2-4c9a-a94f-3ea7e69e49db",
+    "b2f73f5d-1aad-48c2-9e74-5f7bdd87900f",
+    "b7d6477d-d1f5-4890-a1ba-abdbd8094b23",
+    "bd1db186-dd74-4e05-905c-34321fb3d641",
+    "c127a3c8-be41-4135-8de6-c6331f4b880b"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "C17",
+   "OTP",
+   "PZ2",
+   "SLD",
+   "WHO"
+  ],
+  "rulings": [
+   {
+    "date": "2017-08-25",
+    "text": "Any enters-the-battlefield abilities of the copied permanent will trigger when the tokens enter the battlefield. Any \"As [this permanent] enters the battlefield\" or \"[This permanent] enters the battlefield with\" abilities of the copied permanent will also work."
+   },
+   {
+    "date": "2017-08-25",
+    "text": "If the copied permanent had {X} in its mana cost, X is 0."
+   },
+   {
+    "date": "2017-08-25",
+    "text": "If the copied permanent is a token, the tokens created by Fractured Identity copy the original characteristics of that token as stated by the effect that put it onto the battlefield."
+   },
+   {
+    "date": "2017-08-25",
+    "text": "If the copied permanent was copying something else, the tokens enter the battlefield as whatever that permanent was copying."
+   },
+   {
+    "date": "2017-08-25",
+    "text": "If the exiled permanent was a commander, the tokens won't be commanders."
+   },
+   {
+    "date": "2017-08-25",
+    "text": "The tokens copy exactly what was printed on the permanent and nothing else (unless that permanent was copying something else or was a token; see below). They don't copy whether that permanent was tapped or untapped, whether it had any counters on it or Auras and/or Equipment attached to it, or any non-copy effects that changed its power, toughness, types, color, and so on."
+   }
+  ],
+  "rarities": [
+   "rare",
+   "mythic"
+  ]
+ },
+ "grizzly bears": {
+  "name": "Grizzly Bears",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Green"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Bear"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": null,
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Green"
+  ],
+  "scryfall_oracle_id": "14c8f55d-d177-4c25-a931-ebeb9e6062a0",
+  "metadata": {
+   "source_printing_ids": [
+    "409f9b88-f03e-40b6-9883-68c14c37c0de",
+    "94a39e27-d1d7-486c-8f1e-4a0a1c8b5dce",
+    "bf11596e-e798-4126-b56c-e23a1ca2a25d"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pauper": "legal",
+   "paupercommander": "legal",
+   "premodern": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "10E",
+   "2ED",
+   "30A",
+   "3ED",
+   "4BB",
+   "4ED",
+   "5ED",
+   "6ED",
+   "7ED",
+   "8ED",
+   "9ED",
+   "CED",
+   "CEI",
+   "FBB",
+   "ITP",
+   "J21",
+   "LEA",
+   "LEB",
+   "POR",
+   "RQS",
+   "S99",
+   "SLZ",
+   "SUM"
+  ],
+  "rarities": [
+   "common"
+  ]
+ }
+}
