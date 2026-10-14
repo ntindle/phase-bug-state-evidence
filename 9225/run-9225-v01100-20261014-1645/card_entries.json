@@ -1,0 +1,255 @@
+{
+ "locke, treasure hunter": {
+  "name": "Locke, Treasure Hunter",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black",
+    "Red"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Creature"
+   ],
+   "subtypes": [
+    "Human",
+    "Rogue"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 2
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 3
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Locke can't be blocked by creatures with greater power.\nMug \u2014 Whenever Locke attacks, each player mills a card. If a land card was milled this way, create a Treasure token. Until end of turn, you may cast a spell from among those cards.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "Attacks",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Mill",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Controller"
+      },
+      "destination": "Graveyard"
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Token",
+       "name": "Treasure",
+       "power": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "toughness": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "types": [
+        "Artifact",
+        "Treasure"
+       ],
+       "colors": [],
+       "keywords": [],
+       "tapped": false,
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "owner": {
+        "type": "Controller"
+       },
+       "enters_attacking": false
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "GrantCastingPermission",
+        "permission": {
+         "type": "PlayFromExile",
+         "duration": "UntilEndOfTurn",
+         "granted_to": 0,
+         "mode": "Cast",
+         "single_use": true
+        },
+        "target": {
+         "type": "TrackedSet",
+         "id": 0
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": "UntilEndOfTurn",
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false,
+       "sub_link": "SequentialSibling"
+      },
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "ZoneChangedThisWay",
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         "Land"
+        ],
+        "controller": null,
+        "properties": []
+       }
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false,
+     "player_scope": {
+      "type": "All"
+     }
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "Whenever ~ attacks, each player mills a card. If a land card was milled this way, create a Treasure token. Until end of turn, you may cast a spell from among those cards.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [
+   {
+    "mode": {
+     "CantBeBlockedBy": {
+      "filter": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": null,
+       "properties": [
+        {
+         "type": "PowerGTSource"
+        }
+       ]
+      }
+     }
+    },
+    "affected": {
+     "type": "SelfRef"
+    },
+    "modifications": [],
+    "condition": null,
+    "affected_zone": null,
+    "effect_zone": null,
+    "active_zones": [],
+    "characteristic_defining": false,
+    "description": "~ can't be blocked by creatures with greater power."
+   }
+  ],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Black",
+   "Red"
+  ],
+  "scryfall_oracle_id": "a800bec4-bacc-43f9-a773-dd795959935b",
+  "brawl_commander": true,
+  "is_commander": true,
+  "metadata": {
+   "related_token_ids": [
+    "ce4fe62d-f077-54ec-83ec-f719fbf726a8"
+   ],
+   "source_printing_ids": [
+    "42cd66f2-0704-4c8e-b5de-6df93f4a8bed",
+    "af4481b1-43b0-43e6-a9ea-f4ec0a551e61",
+    "d089946c-87c5-4135-8372-ed7b8a03548c"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "oathbreaker": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "FIC"
+  ],
+  "rulings": [
+   {
+    "date": "2025-06-06",
+    "text": "As long as one or more lands were milled this way, you'll create a Treasure token. Additional land cards milled beyond the first won't cause you to create additional Treasures."
+   },
+   {
+    "date": "2025-06-06",
+    "text": "If you cast a spell from among the milled cards using another permission, Locke's effect doesn't apply. You can cast another spell from among the milled cards using the permission granted by Locke's last ability."
+   },
+   {
+    "date": "2025-06-06",
+    "text": "Losing control of Locke after the last ability has triggered won't affect your ability to cast a spell from among the milled cards."
+   },
+   {
+    "date": "2025-06-06",
+    "text": "Once Locke has been blocked, changing its power or the power of the blocking creature won't cause Locke to become unblocked."
+   },
+   {
+    "date": "2025-06-06",
+    "text": "You must follow the normal timing permissions and restrictions of the spell you cast from among those cards."
+   },
+   {
+    "date": "2025-06-06",
+    "text": "You must pay the costs to cast that spell. If it has an alternative cost, you may cast it for that cost instead."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ }
+}
