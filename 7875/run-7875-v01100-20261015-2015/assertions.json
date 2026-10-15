@@ -1,0 +1,46 @@
+{
+ "server_identity": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 pinned release dir re-verified this run: GitHub still lists v0.110.0 (published 2026-10-14) as the latest stable engine release, so the pin did not advance; binary + data digests recomputed against the on-disk artifacts and ServerHello 0.110.0/9bfd12e/protocol 142 confirmed by live handshake on 127.0.0.1:9374.",
+  "source": "2026-10-15: latest stable release v0.110.0 == pinned release dir; backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, started by the 13:41 run, reused here); scenario games created via CreateGameWithSettings; evidence under evidence/7875/run-7875-v01100-20261015-2015"
+ },
+ "issue": 7875,
+ "run_id": "run-7875-v01100-20261015-2015",
+ "obs": {
+  "attempt": 1,
+  "assert": {
+   "A1_setup_ok": "passed",
+   "A2_attack_trigger": "failed",
+   "A3_tap_interaction": "failed",
+   "A4_accept_effect": "not-run",
+   "A5_post_clean": "passed"
+  },
+  "notes": [
+   "A1_setup_ok=passed: Battlesphere resolved; ETB produced 4 untapped Myr tokens",
+   "A3_tap_interaction=not-run: attack trigger never observed on the stack and the game never demonstrably moved past declare-attackers",
+   "A4_accept_effect=not-run: no tap interaction was offered; accept branch not exercised",
+   "A5_post_clean=passed: POST exported; stack empty and no pending real decisions on either client view",
+   "A2_attack_trigger=failed: DeclareAttackers applied (server log event_count=2); Battlesphere tapped (attacked); game advanced to DeclareBlockers phase with the trigger never appearing on the stack in any observed state",
+   "A3_tap_interaction=failed: REPRODUCED BUG: no decideOptionalEffect may-prompt and no Myr-candidate selection was ever offered; the game moved from DeclareAttackers to DeclareBlockers with an empty stack"
+  ],
+  "game_code": "5IJPC8",
+  "trigger_seen": false,
+  "interaction_done": false,
+  "tapped_oids": null,
+  "post_power": 4,
+  "post_p1_life": 20,
+  "attackers_declared": true,
+  "post_phase": "DeclareBlockers"
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "myr battlesphere": "When this creature enters, create four 1/1 colorless Myr artifact creature tokens.\nWhenever this creature attacks, you may tap X untapped Myr you control. If you do, this creature gets +X/+0 until end of turn and deals X damage to the player or planeswalker it's attacking."
+ }
+}
