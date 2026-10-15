@@ -1,0 +1,119 @@
+{
+ "gush": {
+  "name": "Gush",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Blue"
+   ],
+   "generic": 4
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "You may return two Islands you control to their owner's hand rather than pay this spell's mana cost.\nDraw two cards.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Draw",
+     "count": {
+      "type": "Fixed",
+      "value": 2
+     },
+     "target": {
+      "type": "Controller"
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": "Draw two cards.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Blue"
+  ],
+  "scryfall_oracle_id": "16d8ee99-8ec8-429f-9ba7-818a74b6f910",
+  "casting_options": [
+   {
+    "kind": "AlternativeCost",
+    "cost": {
+     "type": "EffectCost",
+     "effect": {
+      "type": "Bounce",
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        {
+         "Subtype": "Island"
+        }
+       ],
+       "controller": "You",
+       "properties": []
+      },
+      "destination": null,
+      "selection": "at_resolution"
+     }
+    }
+   }
+  ],
+  "metadata": {
+   "source_printing_ids": [
+    "5a692b6e-0606-40cf-b00f-b4569826bbac",
+    "7469bdb4-1fb9-4944-8d1e-93cf944bdc5d",
+    "c815745d-936b-44af-8c39-361b5db58923",
+    "d4a3a921-3b7f-474c-b8c3-67a1a6ba5cc1",
+    "e755bbef-bf34-49c0-ae72-d70e3599de52",
+    "f205a94c-9a28-4a43-ba86-fa73112e360f",
+    "f5d939e4-7c3e-45c1-9aeb-ff31a21fb2db"
+   ]
+  },
+  "legalities": {
+   "commander": "legal",
+   "duel": "legal",
+   "legacy": "banned",
+   "oathbreaker": "legal",
+   "pauper": "banned",
+   "paupercommander": "legal",
+   "premodern": "legal",
+   "vintage": "restricted"
+  },
+  "printings": [
+   "DD2",
+   "JVC",
+   "MB2",
+   "MMQ",
+   "PEWK",
+   "PLST",
+   "PMEI",
+   "PRM",
+   "VMA",
+   "WC01"
+  ],
+  "rarities": [
+   "common",
+   "uncommon"
+  ]
+ }
+}
