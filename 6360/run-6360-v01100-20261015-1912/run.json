@@ -1,0 +1,72 @@
+{
+ "issue": 6360,
+ "issue_url": "https://github.com/phase-rs/phase/issues/6360",
+ "run_id": "run-6360-v01100-20261015-1912",
+ "started_at": "2026-10-15T14:02:03",
+ "finished_at": "2026-10-15T14:07:08",
+ "duration_s": 305.5,
+ "server_identity": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 pinned release dir re-verified this run: GitHub still lists v0.110.0 (published 2026-10-14) as the latest stable engine release, so the pin did not advance; binary + data digests recomputed against the on-disk artifacts and ServerHello 0.110.0/9bfd12e/protocol 142 confirmed by live handshake on 127.0.0.1:9374. NOTE: the card-data digest recorded in earlier v0.110.0 ledger entries (b365361edafd3d901e361fe1eef845ca4748c7b2b371ee27e300013f64f37f00) does not match the on-disk card-data.json (c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74); flagged for reconciliation, not blocking this run.",
+  "source": "2026-10-15: latest stable release v0.110.0 == pinned release dir; backfill-owned server started this run (--single-user --no-data-download) on 127.0.0.1:9374 with a fresh run games.db; scenario games created via CreateGameWithSettings; evidence under evidence/6360/run-6360-v01100-20261015-1912"
+ },
+ "server_run_dir": "backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release, fresh games.db); evidence under evidence/6360/run-6360-v01100-20261015-1912",
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "3b18d4da63bfc2cc3a7a25769282f81115aed7f3d7a321634f224796e26b4da5",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Consult the Star Charts",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_and_kicker": "passed",
+  "A3_dig_choice_pending": "passed",
+  "A4_spell_zone_during": "failed",
+  "A5_resolution_completes": "passed",
+  "A6_rest_to_library": "passed"
+ },
+ "notes": [
+  "A1_setup_ok=passed: Consult in hand, >=4 untapped Islands; cast submitted",
+  "A3_dig_choice_pending=passed: mid-resolution keep-choice offered with 4 candidates",
+  "A2_cast_and_kicker=passed: kicker paid once; cast completed through to the mid-resolution keep choice",
+  "A4_spell_zone_during=failed: REPRODUCED BUG: Consult object 21 is in the Graveyard while its mid-resolution keep choice is still pending",
+  "A5_resolution_completes=passed: 2 kept cards in hand, 2 rest in library, Consult in graveyard, no pending prompts",
+  "A6_rest_to_library=passed: 2 non-kept cards in the Library zone; bottom/random-order placement noted but not asserted by position (all Islands, order not distinguished)"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_setup_ok passed; A2_cast_and_kicker passed; A3_dig_choice_pending passed; A4_spell_zone_during failed; A5_resolution_completes passed; A6_rest_to_library passed; spell_zone_during_choice=Graveyard",
+ "scope": "Consult the Star Charts kicked cast ({2}{U}{U}), look at top 4 (4 lands controlled), keep 2, rest to bottom in random order. Native engine, two human-client seats; asserts the cast spell object stays on the Stack while its mid-resolution keep-cards choice is pending (CR 608.2m).",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "56x/60x Island densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Bottom/random-order disposition of the rest cards is observed by zone only, not asserted by position (all looked-at cards are Islands).",
+  "Verdict rule: reproduced = A1+A2+A3 passed and A4 failed (spell in Graveyard while its keep choice is pending). not-reproduced = all assertions passed. blocked = setup never completed or the keep-choice was never offered."
+ ],
+ "setup_line": "P0 56x Island + 4x Consult the Star Charts; P1 60x Island (draw-go). P0 ramps to 4 Islands, casts Consult kicked, answers the mid-resolution keep-2 choice.",
+ "contract_line": "Spell must remain on the stack while its keep-cards choice is pending (CR 608.2m); it moves to the graveyard only as the final step of resolution. Bug: the spell object is already in the Graveyard while the choice is pending."
+}
