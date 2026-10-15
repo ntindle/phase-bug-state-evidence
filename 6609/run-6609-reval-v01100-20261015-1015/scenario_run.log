@@ -1,0 +1,76 @@
+ServerHello OK: {'server_version': '0.110.0', 'build_commit': '9bfd12e', 'protocol_version': 142, 'mode': 'Full'}
+game MGDDTS; P0 seat=0 P1 seat=1
+P0 mulligans #1 (hand=['ornithopter', 'rancor', 'ornithopter', 'nethergoyf', 'shock', 'nethergoyf', 'island'])
+P1 keeps (hand=['lightning bolt', 'lightning bolt', 'mountain', 'mountain', 'mountain', 'lightning bolt', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['ornithopter', 'rancor', 'ornithopter', 'nethergoyf', 'shock', 'nethergoyf'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 keeps (hand=['divination', 'ornithopter', 'island', 'swamp', 'divination', 'divination', 'rancor'], mulls=1)
+P0 bottoms 1 via vi (select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Ornithopter', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Rancor', 'available')]
+P0 plays land swamp
+P0 casts Ornithopter
+[p0] cast confirmed (stack): ornithopter
+P1 plays land mountain
+P0 plays land island
+P0 casts Nethergoyf
+[p0] cast confirmed (stack): goyf_cast
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+P1 bolts nethergoyf (oid 51)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=MGDDTS.0.62.t3 kind=sequence (Nethergoyf)
+P1 bolts nethergoyf (oid 51)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=MGDDTS.0.64.t3 kind=sequence (Nethergoyf)
+P0 plays land swamp
+P0 casts Divination
+[p0] cast confirmed (stack): divination
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+P1 bolts ornithopter (oid 61)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=MGDDTS.0.104.t2 kind=sequence (Ornithopter)
+P1 bolts ornithopter (oid 61)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=MGDDTS.0.106.t2 kind=sequence (Ornithopter)
+P0 plays land swamp
+P0 casts Divination
+[p0] cast confirmed (stack): divination
+P1 plays land mountain
+P0 plays land island
+P0 casts Divination
+[p0] cast confirmed (stack): divination
+P1 plays land mountain
+P0 plays land swamp
+P1 plays land mountain
+P1 plays land mountain
+[P0] discard_to_hand_size: submit select ids=['MGDDTS.0.260.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Rancor', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Ornithopter', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Grizzly Bears', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: divination zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 51)
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Ornithopter', 'available')]
+[p0] cast confirmed (stack): escape
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=5 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['MGDDTS.0.281.s0'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Divination', 'available'), ('Ornithopter', 'available'), ('Divination', 'available'), ('Divination', 'available'), ('Rancor', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Swamp', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
