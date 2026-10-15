@@ -1,0 +1,201 @@
+{
+ "consult the star charts": {
+  "name": "Consult the Star Charts",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Blue"
+   ],
+   "generic": 1
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Instant"
+   ],
+   "subtypes": []
+  },
+  "power": null,
+  "toughness": null,
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\nLook at the top X cards of your library, where X is the number of lands you control. Put one of those cards into your hand. If this spell was kicked, put two of those cards into your hand instead. Put the rest on the bottom of your library in a random order.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [
+   {
+    "Kicker": {
+     "type": "Cost",
+     "shards": [
+      "Blue"
+     ],
+     "generic": 1
+    }
+   }
+  ],
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "Dig",
+     "player": {
+      "type": "Controller"
+     },
+     "count": {
+      "type": "Ref",
+      "qty": {
+       "type": "ObjectCount",
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         "Land"
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      }
+     },
+     "destination": "Hand",
+     "keep_count": 2,
+     "up_to": false,
+     "filter": {
+      "type": "Any"
+     },
+     "rest_destination": "Library",
+     "rest_order": "random",
+     "reveal": false,
+     "enter_tapped": false,
+     "enters_attacking": false
+    },
+    "cost": null,
+    "sub_ability": null,
+    "else_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Dig",
+      "player": {
+       "type": "Controller"
+      },
+      "count": {
+       "type": "Ref",
+       "qty": {
+        "type": "ObjectCount",
+        "filter": {
+         "type": "Typed",
+         "type_filters": [
+          "Land"
+         ],
+         "controller": "You",
+         "properties": []
+        }
+       }
+      },
+      "destination": "Hand",
+      "keep_count": 1,
+      "up_to": false,
+      "filter": {
+       "type": "Any"
+      },
+      "rest_destination": "Library",
+      "rest_order": "random",
+      "reveal": false,
+      "enter_tapped": false,
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": "Look at the top X cards of your library, where X is the number of lands you control. Put one of those cards into your hand. If this spell was kicked, put two of those cards into your hand instead. Put the rest on the bottom of your library in a random order.",
+    "target_prompt": null,
+    "condition": {
+     "type": "AdditionalCostPaidInstead"
+    },
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   }
+  ],
+  "triggers": [],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "color_identity": [
+   "Blue"
+  ],
+  "scryfall_oracle_id": "e921839f-9d91-41a9-bc89-016af3c757aa",
+  "additional_cost": {
+   "type": "Kicker",
+   "data": {
+    "costs": [
+     {
+      "type": "Mana",
+      "cost": {
+       "type": "Cost",
+       "shards": [
+        "Blue"
+       ],
+       "generic": 1
+      }
+     }
+    ]
+   }
+  },
+  "metadata": {
+   "source_printing_ids": [
+    "94d11159-c389-4461-abf9-2a3be6b39d8d",
+    "a16a6555-2e3a-4587-aacd-0307d696b26c"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "pioneer": "legal",
+   "standard": "legal",
+   "standardbrawl": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "EOE",
+   "PEOE"
+  ],
+  "rulings": [
+   {
+    "date": "2025-07-25",
+    "text": "If a spell\u2019s kicker cost was paid, the spell is \u201ckicked.\u201d"
+   },
+   {
+    "date": "2025-07-25",
+    "text": "If you copy a kicked spell on the stack, the copy is also kicked."
+   },
+   {
+    "date": "2025-07-25",
+    "text": "The kicker ability doesn\u2019t let you pay a kicker cost more than once."
+   },
+   {
+    "date": "2025-07-25",
+    "text": "The value of X is calculated only once, as Consult the Star Charts resolves."
+   },
+   {
+    "date": "2025-07-25",
+    "text": "To determine a spell\u2019s total cost, start with the mana cost (or an alternative cost if another card\u2019s effect allows you to pay one instead), add any cost increases (such as kicker), then apply any cost reductions. The spell\u2019s mana value remains unchanged, no matter what the total cost to cast it was."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ }
+}
