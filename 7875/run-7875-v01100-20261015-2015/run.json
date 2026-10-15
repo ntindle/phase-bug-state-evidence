@@ -1,0 +1,71 @@
+{
+ "issue": 7875,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7875",
+ "run_id": "run-7875-v01100-20261015-2015",
+ "started_at": "2026-10-15T15:18:15",
+ "finished_at": "2026-10-15T15:19:17",
+ "duration_s": 62.2,
+ "server_identity": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 pinned release dir re-verified this run: GitHub still lists v0.110.0 (published 2026-10-14) as the latest stable engine release, so the pin did not advance; binary + data digests recomputed against the on-disk artifacts and ServerHello 0.110.0/9bfd12e/protocol 142 confirmed by live handshake on 127.0.0.1:9374.",
+  "source": "2026-10-15: latest stable release v0.110.0 == pinned release dir; backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, started by the 13:41 run, reused here); scenario games created via CreateGameWithSettings; evidence under evidence/7875/run-7875-v01100-20261015-2015"
+ },
+ "server_run_dir": "backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release, reused from the 13:41 run); evidence under evidence/7875/run-7875-v01100-20261015-2015",
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "ff2864ce4461d8637aab29addc2c80a5418eea0db467ade2bde85c616a47d3d3",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Myr Battlesphere",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attack_trigger": "failed",
+  "A3_tap_interaction": "failed",
+  "A4_accept_effect": "not-run",
+  "A5_post_clean": "passed"
+ },
+ "notes": [
+  "A1_setup_ok=passed: Battlesphere resolved; ETB produced 4 untapped Myr tokens",
+  "A3_tap_interaction=not-run: attack trigger never observed on the stack and the game never demonstrably moved past declare-attackers",
+  "A4_accept_effect=not-run: no tap interaction was offered; accept branch not exercised",
+  "A5_post_clean=passed: POST exported; stack empty and no pending real decisions on either client view",
+  "A2_attack_trigger=failed: DeclareAttackers applied (server log event_count=2); Battlesphere tapped (attacked); game advanced to DeclareBlockers phase with the trigger never appearing on the stack in any observed state",
+  "A3_tap_interaction=failed: REPRODUCED BUG: no decideOptionalEffect may-prompt and no Myr-candidate selection was ever offered; the game moved from DeclareAttackers to DeclareBlockers with an empty stack"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_setup_ok passed; A2_attack_trigger failed; A3_tap_interaction failed; A4_accept_effect not-run; A5_post_clean passed",
+ "scope": "Myr Battlesphere cast for {7}, ETB creates 4 Myr tokens, Battlesphere attacks P1; asserts the 'whenever attacks' trigger reaches the stack and the optional tap-X-Myr interaction is offered; accept branch taps 2 Myr and checks +2/+0 and 2 damage to the defending player. Native engine, two human-client seats.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "56x/60x Island + 4x Battlesphere densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "Only the accept branch of the optional tap is exercised; the decline control is not run in this leg.",
+  "Verdict rule: reproduced = A1 passed, attackers declared, and (A3 failed OR (A3 passed and A4 failed)). not-reproduced = A1-A4 all passed. blocked = setup/trigger never completed or the interaction shape was unanswerable."
+ ],
+ "setup_line": "P0 56x Island + 4x Myr Battlesphere; P1 60x Island (draw-go). P0 ramps to 7 Islands, casts Battlesphere, lets the ETB create 4 Myr tokens, attacks with Battlesphere, answers the tap-Myr interaction.",
+ "contract_line": "On attack, the trigger must offer the optional 'tap X untapped Myr you control'; tapping X Myr gives +X/+0 until EOT and deals X damage to the defending player. Bug: no interaction appears; the Myr cannot be tapped."
+}
