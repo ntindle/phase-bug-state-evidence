@@ -1,0 +1,80 @@
+{
+  "issue": 6760,
+  "run_id": "run-6760-reval-v01100-20261015-0841",
+  "started_at": "2026-10-15T13:47:36",
+  "duration_s": 52.4,
+  "server": {
+    "server_version": "0.110.0",
+    "build_commit": "9bfd12e",
+    "protocol_version": 142,
+    "mode": "Full",
+    "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+    "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+    "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+    "signature_verified": true,
+    "observed_at": "2026-10-15",
+    "source": "2026-10-15: latest stable release v0.110.0 (published 2026-10-14T16:29:26Z) == pinned release dir; ServerHello 0.110.0/9bfd12e/protocol 142 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused live v0.110.0 server on 127.0.0.1:9374 (pid 1482, started by the 08:15 run this morning, single-user) -- server identity verified via actual WebSocket handshake, not the PID alone"
+  },
+  "driver": {
+    "protocol_advertised": 142,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "66bcf20c2c555eeaf48202ec93dabdc0012f43bebccbb348b94c70df822591ca",
+  "decks": {
+    "P0": [
+      [
+        "Ojer Kaslem, Deepest Growth",
+        4
+      ],
+      [
+        "Forest",
+        24
+      ],
+      [
+        "Llanowar Elves",
+        32
+      ]
+    ],
+    "P1": [
+      [
+        "Island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_damage_and_reveal": "passed",
+    "A4_both_categories": "passed",
+    "A5_two_cards_enter": "failed",
+    "A6_rest_to_bottom": "passed",
+    "A7_cleanup": "failed",
+    "A3_may_accepted": "passed"
+  },
+  "notes": [
+    "2-card submission rejected ({\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\",); single-card fallback entered=True; the land 'forest' ended in zone Library (never put onto the battlefield)",
+    "protocol-142 driver (v0.110.0): Ojer cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands or submits legacy PayMana actions itself (no double-payment artifact). Attack via DeclareAttackers attacks=[[oid,{type:Player,data:1}]]; P1 declares no blockers via DeclareBlockers assignments=[]; mulligan answered as-is with decision='keep'; discard via DiscardToHandSize viewer_interaction select submission; land plays via legacy PlayLand + vi playLand opportunity (answered before the decision gate); may-choice via exactChoices decideOptionalEffect accept choice; revealed-card selection via schema prompt submitted as {type:<spec.type>, data:{choiceIds:[...]}}.",
+    "P0 deck 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1 60x Island draw-go, never blocks (engine accepts >4-of for custom games)."
+  ],
+  "rejections": [
+    {
+      "who": "P0",
+      "type": "ActionRejected",
+      "at": 1792072105.940946,
+      "data": "{\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\", \"related_object_ids\": []}}"
+    }
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Not tested on the original 2026-07-29 build; verdict is scoped to v0.110.0, not a fix claim.",
+    "4x/24x/32x deck density is a test-harness convenience (engine accepts >4-of for custom games)."
+  ],
+  "setup_line": "P0: 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1: 60x Island (never blocks)",
+  "contract_line": "Ojer deals 6 combat damage -> reveal 6 -> may put a creature AND a land onto the battlefield",
+  "stats": {
+    "states_seen": "n/a",
+    "trigger_observations": "n/a"
+  }
+}
