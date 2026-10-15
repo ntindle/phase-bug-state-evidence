@@ -1,0 +1,59 @@
+{
+ "generated_from": "card-data.json (v0.110.0 pinned release)",
+ "sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+ "replacement_mode_census": {
+  "Mandatory": 2657,
+  "Optional": 119,
+  "MayCost": 36
+ },
+ "optional_by_event": {
+  "Draw": 19,
+  "Moved": 95,
+  "DamageDone": 1,
+  "CreateToken": 3,
+  "Discard": 1
+ },
+ "optional_moved_mentioning_graveyard_not_etb": [],
+ "hymn to tourach": {
+  "oracle_text": "Target player discards two cards at random.",
+  "n_abilities": 1,
+  "n_triggers": 0,
+  "n_replacements": 0,
+  "parse_warnings": []
+ },
+ "library of leng": {
+  "oracle_text": "You have no maximum hand size.\nIf an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard.",
+  "n_abilities": 0,
+  "n_triggers": 0,
+  "n_replacements": 1,
+  "parse_warnings": [],
+  "replacements": [
+   {
+    "event": "Discard",
+    "mode": {
+     "type": "Optional",
+     "decline": null
+    },
+    "valid_card": {
+     "type": "Typed",
+     "type_filters": [],
+     "controller": "You",
+     "properties": []
+    },
+    "description": "If an effect causes you to discard a card, discard it, but you may put it on top of your library instead of into your graveyard."
+   }
+  ]
+ },
+ "pulmonic sliver": {
+  "oracle_text": "All Sliver creatures have flying.\nAll Slivers have \"If this permanent would be put into a graveyard, you may put it on top of its owner's library instead.\"",
+  "n_abilities": 0,
+  "n_triggers": 0,
+  "n_replacements": 0,
+  "parse_warnings": [
+   [
+    "SwallowedClause",
+    "All Slivers have \"If this permanent would be put into a graveyard, you may put it on top of its owner's library instead."
+   ]
+  ]
+ }
+}
