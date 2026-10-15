@@ -1,0 +1,70 @@
+[15:18:14] server identity pinned: v0.110.0 / 9bfd12e / protocol 142
+[15:18:14] Myr Battlesphere oracle: When this creature enters, create four 1/1 colorless Myr artifact creature tokens.
+Whenever this creature attacks, you may tap X untapped Myr you control. If you do, this creature gets +X/+0 until end
+[15:18:15] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[15:18:16] leg attempt=1 game 5IJPC8; seats=[0, 1]
+[15:18:16] [P0B1] keeping opening hand
+[15:18:16] [P1B1] keeping opening hand
+[15:18:16] [diag] P0B1: rev=2 turn=1 phase=Untap active=1 stack=0 hand=7 islands=0 myr=0 bs=None cast=False atk=False trig=False interact=False
+[15:18:16] [diag] P1B1: rev=2 turn=1 phase=Untap active=1 stack=0 hand=7 islands=0 myr=0 bs=None cast=False atk=False trig=False interact=False
+[15:18:17] [P1B1] playing island
+[15:18:17] [P1B1] playing island via vi prompt (oid 61)
+[15:18:21] [P0B1] playing island
+[15:18:21] [P0B1] playing island via vi prompt (oid 13)
+[15:18:25] [P1B1] playing island
+[15:18:25] [P1B1] playing island via vi prompt (oid 61)
+[15:18:29] [P0B1] playing island
+[15:18:29] [P0B1] playing island via vi prompt (oid 13)
+[15:18:33] [P1B1] playing island
+[15:18:33] [P1B1] playing island via vi prompt (oid 61)
+[15:18:36] [P0B1] playing island
+[15:18:36] [P0B1] playing island via vi prompt (oid 13)
+[15:18:40] [P1B1] playing island
+[15:18:40] [P1B1] playing island via vi prompt (oid 61)
+[15:18:44] [P0B1] playing island
+[15:18:44] [P0B1] playing island via vi prompt (oid 13)
+[15:18:47] [diag] P0B1: rev=122 turn=9 phase=Upkeep active=1 stack=0 hand=7 islands=4 myr=0 bs=None cast=False atk=False trig=False interact=False
+[15:18:47] [diag] P1B1: rev=122 turn=9 phase=Upkeep active=1 stack=0 hand=6 islands=4 myr=0 bs=None cast=False atk=False trig=False interact=False
+[15:18:48] [P1B1] playing island
+[15:18:48] [P1B1] playing island via vi prompt (oid 67)
+[15:18:52] [P0B1] playing island
+[15:18:52] [P0B1] playing island via vi prompt (oid 13)
+[15:18:55] [P1B1] playing island
+[15:18:55] [P1B1] playing island via vi prompt (oid 64)
+[15:18:59] [P0B1] playing island
+[15:18:59] [P0B1] playing island via vi prompt (oid 13)
+[15:19:02] [P1B1] playing island
+[15:19:02] [P1B1] playing island via vi prompt (oid 64)
+[15:19:06] [P0B1] playing island
+[15:19:06] [P0B1] playing island via vi prompt (oid 1)
+[15:19:08] [P0B1] exported pre_cast.json (turn=14, rev=None)
+[15:19:08] [P0B1] casting Myr Battlesphere (oid 16), needs={'generic': 7}
+[15:19:08] [P0B1] Battlesphere on stack; payment complete (auto-pay worked)
+[15:19:08] [P0B1] Battlesphere on battlefield (oid 16); untapped Myr tokens: 0
+[15:19:10] [P0B1] Battlesphere on battlefield (oid 16); untapped Myr tokens: 0
+[15:19:10] [P0B1] Battlesphere on battlefield (oid 16); untapped Myr tokens: 4
+[15:19:10] assertion A1_setup_ok: passed -- Battlesphere resolved; ETB produced 4 untapped Myr tokens
+[15:19:12] [P1B1] playing island
+[15:19:12] [P1B1] playing island via vi prompt (oid 64)
+[15:19:16] [P0B1] playing island
+[15:19:16] [P0B1] playing island via vi prompt (oid 1)
+[15:19:17] [P0B1] declaring attackers: Myr Battlesphere (oid 16) -> P1; advertised shape keys=['attacks', 'bands']
+[15:19:17] [diag] P0B1: rev=243 turn=16 phase=DeclareAttackers active=0 stack=0 hand=6 islands=8 myr=4 bs=16 cast=True atk=True trig=False interact=False
+[15:19:17] [diag] P1B1: rev=243 turn=16 phase=DeclareAttackers active=0 stack=0 hand=6 islands=8 myr=0 bs=None cast=True atk=True trig=False interact=False
+[15:19:17] [leg] combat settled; exporting POST
+[15:19:17] [P0B1] exported post.json (turn=16, rev=None)
+[15:19:17] [eval] battlesphere oid=16 power=4; P1 life=20; myr tokens=4 tapped=0
+[15:19:17] assertion A3_tap_interaction: not-run -- attack trigger never observed on the stack and the game never demonstrably moved past declare-attackers
+[15:19:17] assertion A4_accept_effect: not-run -- no tap interaction was offered; accept branch not exercised
+[15:19:17] assertion A5_post_clean: passed -- POST exported; stack empty and no pending real decisions on either client view
+[15:19:17] assertion A1_setup_ok: passed
+[15:19:17] assertion A2_attack_trigger: not-run
+[15:19:17] assertion A3_tap_interaction: not-run
+[15:19:17] assertion A4_accept_effect: not-run
+[15:19:17] assertion A5_post_clean: passed
+[15:19:17] note: A1_setup_ok=passed: Battlesphere resolved; ETB produced 4 untapped Myr tokens
+[15:19:17] note: A3_tap_interaction=not-run: attack trigger never observed on the stack and the game never demonstrably moved past declare-attackers
+[15:19:17] note: A4_accept_effect=not-run: no tap interaction was offered; accept branch not exercised
+[15:19:17] note: A5_post_clean=passed: POST exported; stack empty and no pending real decisions on either client view
+[15:19:17] VERDICT: blocked
+[15:19:18] summary.png rendered from saved assertions
