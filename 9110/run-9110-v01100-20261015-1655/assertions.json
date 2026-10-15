@@ -1,0 +1,64 @@
+{
+ "server_identity": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 pinned release dir: binary digest recomputed this run and matches the pinned record; GitHub still lists v0.110.0 (published 2026-10-14) as the latest stable engine release, so the pin did not advance; ServerHello 0.110.0/9bfd12e/protocol 142 confirmed by live handshake on 127.0.0.1:9374.",
+  "source": "2026-10-15: latest stable release v0.110.0 == pinned release dir; backfill-owned v0.110.0 server on 127.0.0.1:9374 (--single-user --no-data-download, verified release); scenario games created via CreateGameWithSettings; evidence under evidence/9110/run-9110-v01100-20261015-1655"
+ },
+ "issue": 9110,
+ "run_id": "run-9110-v01100-20261015-1655",
+ "obs": {
+  "attempt": 1,
+  "assert": {
+   "A1_harness_ok": "passed",
+   "A2_alt_cost_paid": "failed",
+   "A3_alt_draw": "passed",
+   "A4_post_clean": "passed"
+  },
+  "notes": [
+   "A1_harness_ok=passed: control cast paid {4}{U} (5 Islands tapped), resolved, drew exactly 2",
+   "A2_alt_cost_paid=failed: REPRODUCED BUG: Gush was cast via its alternative cost but NO Island left the battlefield -- cast for free",
+   "A3_alt_draw=passed: alternative-cost Gush resolved; P0 drew exactly 2",
+   "A4_post_clean=passed: POST_ALT exported; cast Gush (oid 24) in graveyard; stack empty, no pending real decisions"
+  ],
+  "game_code": "56UV67",
+  "control_drew": 2,
+  "alt_drew": 2,
+  "alt_returned_oids": [],
+  "cost_choice_text": "true",
+  "islands_selected": null
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "gush": "You may return two Islands you control to their owner's hand rather than pay this spell's mana cost.\nDraw two cards.",
+  "casting_options": [
+   {
+    "kind": "AlternativeCost",
+    "cost": {
+     "type": "EffectCost",
+     "effect": {
+      "type": "Bounce",
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        {
+         "Subtype": "Island"
+        }
+       ],
+       "controller": "You",
+       "properties": []
+      },
+      "destination": null,
+      "selection": "at_resolution"
+     }
+    }
+   }
+  ]
+ }
+}
