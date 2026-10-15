@@ -1,0 +1,20 @@
+{
+ "ok": true,
+ "notes": [],
+ "front_oracle": "Whenever Ultimecia enters or attacks, surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)\nAt the beginning of your end step, you may pay {4}{U}{U}{B}{B} and exile eight cards from your graveyard. If you do, transform Ultimecia.",
+ "back_oracle": "Menace (This creature can't be blocked except by two or more creatures.)\nTime Compression \u2014 When this creature transforms into Ultimecia, Omnipotent, take an extra turn after this one.",
+ "parsed_triggers": {
+  "front_end_trigger": {
+   "optional": true,
+   "pay_cost": "['Black', 'Black', 'Blue', 'Blue']+4 generic",
+   "exile": "Graveyard->Exile own cards min8 max8",
+   "transform": true,
+   "description": "At the beginning of your end step, you may pay {4}{U}{U}{B}{B} and exile eight cards from your graveyard. If you do, transform ~."
+  },
+  "back_transformed_trigger": {
+   "effect": "ExtraTurn",
+   "target": "Controller",
+   "description": "When ~ transforms into ~, take an extra turn after this one."
+  }
+ }
+}
