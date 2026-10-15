@@ -1,0 +1,587 @@
+{
+ "issue": 7159,
+ "title": "The Irencrag - equip {3} missing after the become-Equipment transformation.",
+ "run_id": "run-7159-reval-v01100-20261014-2111",
+ "validated_at": "2026-10-14",
+ "validated_version": "v0.110.0",
+ "server": {
+  "server_version": "0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "observed_at": "2026-10-14",
+  "source": "isolated v0.110.0 single-user server on 127.0.0.1:9374 (ServerHello re-verified at run start) + verified pin (minisign-verify of binary + signed data manifest with the repo-pinned key)."
+ },
+ "server_hello_observed": {
+  "type": "ServerHello",
+  "data": {
+   "server_version": "0.110.0",
+   "build_commit": "9bfd12e",
+   "protocol_version": 142,
+   "mode": "Full",
+   "lobby_protocol_version": 16,
+   "wire_formats": [
+    "GzipEnvelopeV1"
+   ]
+  }
+ },
+ "protocol_version": 142,
+ "scope": "The Irencrag {2} (pinned card-data AST: ChangesZone trigger -> optional become legendary Equipment named Everflame, Heroes' Legacy; sub_ability: RemoveAllAbilities + GrantStaticAbility(+3/+3, EquippedBy) + GrantAbility equip {3} x2 (duplicated grant)). Isamaru, Hound of Konda as the legendary ETB trigger; native engine, two human-client seats",
+ "decks": {
+  "P0": [
+   [
+    "The Irencrag",
+    12
+   ],
+   [
+    "Isamaru, Hound of Konda",
+    12
+   ],
+   [
+    "Plains",
+    18
+   ],
+   [
+    "Mountain",
+    18
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_ok": "passed",
+  "A2_setup_ok": "passed",
+  "A3_option_offered": "passed",
+  "A4_transform_ok": "passed",
+  "A5_mana_lost": "passed",
+  "A6_equip_offered": "failed",
+  "A7_equip_resolves": "not-run",
+  "A8_cleanup": "passed"
+ },
+ "notes": [
+  "A1: become-Equipment mods ['SetTextName', 'AddSupertype', 'AddType', 'RemoveAllSubtypes', 'AddSubtype']; sub mods ['RemoveAllAbilities', 'GrantStaticAbility', 'GrantAbility', 'GrantAbility']; equip grants ['equip {3}', 'equip {3} and'] (duplicated grant: True) -> passed",
+  "A2: trigger not on stack in live sampling or pre.json stack (stack empties fast once the option is pending)",
+  "A2: trigger fire established via the optional-effect prompt itself (the prompt is the trigger's optional decision); the stack entry resolved too fast for sampling",
+  "A3: option offered=True accepted(accept=true)=True",
+  "A4: name=\"Everflame, Heroes' Legacy\" card_types={'supertypes': ['Legendary'], 'core_types': ['Artifact'], 'subtypes': ['Equipment']} -> name_ok=True legendary=True artifact=True equipment=True",
+  "A5: current abilities=2 mana_remaining=0 equip_granted=2 has_mana_ability_flag=None (base_abilities still lists the printed mana ability: 1)",
+  "A6: equip offered=False scans=21 clean_main_turns=6",
+  "A6: ability_index=None descs=[]",
+  "A7: equip never offered -> not-run",
+  "A8: post stack depth=0 turn=15 resolve_turn=5"
+ ],
+ "verdict": "reproduced",
+ "result": "A1_parse_ok: passed; A2_setup_ok: passed; A3_option_offered: passed; A4_transform_ok: passed; A5_mana_lost: passed; A6_equip_offered: failed; A7_equip_resolves: not-run; A8_cleanup: passed",
+ "trigger_stack_record": null,
+ "transform_record": {
+  "oid": 8,
+  "card_name": "Everflame, Heroes' Legacy",
+  "card_types": {
+   "supertypes": [
+    "Legendary"
+   ],
+   "core_types": [
+    "Artifact"
+   ],
+   "subtypes": [
+    "Equipment"
+   ]
+  },
+  "zone": "Battlefield",
+  "controller": 0,
+  "tapped": false
+ },
+ "offer_scans": [
+  {
+   "rev": 79,
+   "turn": 5,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "PassPriority"
+   ],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 80,
+   "turn": 5,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 85,
+   "turn": 5,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "PassPriority"
+   ],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 86,
+   "turn": 5,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 108,
+   "turn": 7,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.108.c7"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 109,
+   "turn": 7,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 115,
+   "turn": 7,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.115.c7"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 116,
+   "turn": 7,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 138,
+   "turn": 9,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.138.c8"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 139,
+   "turn": 9,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 145,
+   "turn": 9,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.145.c8"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 146,
+   "turn": 9,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 168,
+   "turn": 11,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.168.c9"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 169,
+   "turn": 11,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 175,
+   "turn": 11,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.175.c9"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 176,
+   "turn": 11,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 198,
+   "turn": 13,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.198.c11"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 199,
+   "turn": 13,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 205,
+   "turn": 13,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.205.c11"
+     }
+    ]
+   }
+  },
+  {
+   "rev": 206,
+   "turn": 13,
+   "n_activations_for_object": 0,
+   "ability_index": null,
+   "descriptions": [],
+   "equip_offered": false,
+   "all_action_types": [],
+   "detail": {
+    "merged": [],
+    "vi": []
+   }
+  },
+  {
+   "rev": 228,
+   "turn": 15,
+   "n_activations_for_object": 1,
+   "ability_index": 0,
+   "descriptions": [
+    "",
+    "Everflame, Heroes' Legacy"
+   ],
+   "equip_offered": false,
+   "all_action_types": [
+    "ActivateAbility",
+    "CastSpell",
+    "PassPriority",
+    "PlayLand",
+    "TapLandForMana"
+   ],
+   "detail": {
+    "merged": [
+     {
+      "ability_index": 0,
+      "description": "",
+      "ability_tag": null
+     }
+    ],
+    "vi": [
+     {
+      "text": "Everflame, Heroes' Legacy",
+      "choice_id": "01F29G.0.228.c12"
+     }
+    ]
+   }
+  }
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Mana ability absence judged from the transformed object's effective ability list in mid.json, not from offer counts."
+ ],
+ "evidence_files": [
+  "mid.json",
+  "parse_irencrag.json",
+  "post.json",
+  "pre.json",
+  "scenario_7159_01100.py",
+  "scenario_run.log",
+  "server.log",
+  "wire_log.jsonl"
+ ],
+ "done_reason": "post-resolution observation window complete",
+ "prior_run": {
+  "run_id": "20260914-7159",
+  "validated_version": "v0.82.0",
+  "verdict": "reproduced"
+ }
+}
