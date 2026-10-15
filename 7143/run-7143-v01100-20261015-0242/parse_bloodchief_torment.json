@@ -1,0 +1,93 @@
+{
+ "bloodchief_ascension": {
+  "oracle_text": "At the beginning of each end step, if an opponent lost 2 or more life this turn, you may put a quest counter on this enchantment. (Damage causes loss of life.)\nWhenever a card is put into an opponent's graveyard from anywhere, if this enchantment has three or more quest counters on it, you may have that player lose 2 life. If you do, you gain 2 life.",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "Black"
+   ],
+   "generic": 0
+  },
+  "abilities": [],
+  "static_abilities": []
+ },
+ "torment_of_hailfire": {
+  "oracle_text": "Repeat the following process X times. Each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [
+    "X",
+    "Black",
+    "Black"
+   ],
+   "generic": 0
+  },
+  "abilities": [
+   {
+    "kind": "Spell",
+    "effect": {
+     "type": "LoseLife",
+     "amount": {
+      "type": "Fixed",
+      "value": 3
+     }
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": "Repeat the following process X times. Each opponent loses 3 life unless that player sacrifices a nonland permanent of their choice or discards a card.",
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "unless_pay": {
+     "cost": {
+      "type": "OneOf",
+      "costs": [
+       {
+        "type": "Sacrifice",
+        "target": {
+         "type": "Typed",
+         "type_filters": [
+          "Permanent",
+          {
+           "Non": "Land"
+          }
+         ],
+         "controller": "You",
+         "properties": []
+        },
+        "count": 1
+       },
+       {
+        "type": "Discard",
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "filter": null,
+        "random": false,
+        "self_ref": false
+       }
+      ]
+     },
+     "payer": {
+      "type": "ScopedPlayer"
+     }
+    },
+    "repeat_for": {
+     "type": "Ref",
+     "qty": {
+      "type": "Variable",
+      "name": "X"
+     }
+    },
+    "forward_result": false,
+    "player_scope": {
+     "type": "Opponent"
+    }
+   }
+  ],
+  "static_abilities": []
+ }
+}
