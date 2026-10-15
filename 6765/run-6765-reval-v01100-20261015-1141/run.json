@@ -1,0 +1,146 @@
+{
+ "issue": 6765,
+ "run_id": "run-6765-reval-v01100-20261015-1141",
+ "started_at": "2026-10-15T16:48:51",
+ "duration_s": 220.6,
+ "server": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "observed_at": "2026-10-15",
+  "source": "2026-10-15: latest stable release v0.110.0 (published 2026-10-14T16:29:26Z) == pinned release dir (pinned 2026-10-14); ServerHello 0.110.0/9bfd12e/protocol 142 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned pinned v0.110.0 server process on 127.0.0.1:9374 (pid 4534, games.db and log under runs/run-6764-reval-v01100-20261015-1111/) reused per the server-reuse rule (not restarted; release check confirmed still current)"
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "762c3ed92930387a80083b884ce61ece560d584a43f1e16c180af5428483f7cd",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Island",
+    20
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Yidris, Maelstrom Wielder",
+    6
+   ],
+   [
+    "Shock",
+    12
+   ],
+   [
+    "Bloodbraid Elf",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    200
+   ]
+  ]
+ },
+ "assertions": {
+  "A0_connect": "passed",
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_pre_damage_control": "not-run",
+  "A4_yidris_grant": "failed",
+  "A5_control_cascade": "passed",
+  "A6_cleanup": "failed"
+ },
+ "notes": [
+  "Yidris on BF (oid 48), cast turn 7",
+  "A3 skipped: only 1 Shock(s) in hand; the A4 window takes priority",
+  "A4: post-damage Shock: cascade trigger=None sources=None may=None kind=None exile 0->0",
+  "A2: P1 life 20->15 (expect -5); yidris trigger seen=True",
+  "A5: Bloodbraid cascade trigger=True sources=['Bloodbraid Elf#308'] may=None kind=None exile 0->0",
+  "protocol-142 driver (v0.110.0): Yidris cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands for mana itself (no double-payment artifact). Shock casts via CastSpell with {R:1}; Shock targets via the advertised vi target opportunity (schema select/sequence), seat-1 candidate preferred; attackers declared via the advertised DeclareAttackers action with attacks=[[yidris_oid, {type:Player, data:1}]] (AttackTarget tagged union per engine types/actions.rs); cascade signals detected strictly: a TriggeredAbility stack entry whose ability effect type is exactly 'Cascade', a genuine decide/bool may prompt or an all-exile card choice, or a positive exile-zone delta; a genuine decide/bool may prompt is DECLINED after an observed cascade purely to let the game settle (exile card choices are never answered); Yidris stood down after the A4 window so P1 survives for A5.",
+  "P0 deck 20x Forest/Mountain/Island/Swamp + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1 200x Mountain draw-go, never attacks or blocks (engine accepts >4-of and oversized decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability."
+ ],
+ "rejections": [
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1792082941.862634,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1792083013.7079756,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1792083022.6466603,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1792083037.7281015,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1792083046.1734788,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1792083048.9387527,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P06765-a1",
+   "type": "ActionRejected",
+   "at": 1792083053.065858,
+   "data": "{\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}"
+  },
+  {
+   "who": "P16765-a1",
+   "type": "ActionRejected",
+   "at": 1792083056.462233,
+   "data": "{\"rejection\": {\"code\": \"wrong_player\", \"disposition\": \"unauthorized\", \"message\": \"That action belongs to a different player.\", \"related_object_ids\": []}}"
+  }
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Dense playsets (12x Shock, 8x Bloodbraid, 6x Yidris) and oversized decks (106/200 cards) are test-harness conveniences (engine accepts >4-of and >60-card decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability.",
+  "A5's cascade free-cast may prompt is declined after the trigger is observed, purely to let the game settle; exile-zone card choices are never auto-answered.",
+  "A6 cleanup stays failed by design: after the A5 control the game parks at the cascade free-cast card choice, which the driver deliberately never auto-answers (exile-zone card choices are not driver decisions); not an engine defect.",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.110.0, not a fix claim."
+ ],
+ "setup_line": "P0: 80 lands + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1: 200x Mountain (draw-go); oversized decks prevent decking during the 4-color ramp",
+ "contract_line": "Yidris attacks unblocked on a fully-staged turn; pre-damage Shock (when a spare is available) must not cascade; post-damage Shock must gain cascade; Bloodbraid Elf control must cascade natively",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
