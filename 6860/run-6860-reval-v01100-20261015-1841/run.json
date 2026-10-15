@@ -1,0 +1,94 @@
+{
+ "issue": 6860,
+ "run_id": "run-6860-reval-v01100-20261015-1841",
+ "game_code": "14DWGL",
+ "started_at": "2026-10-15T23:46:00",
+ "duration_s": 265.4,
+ "server_identity": {
+  "validated_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "ea956239ef9595263561012557899092c13ae9c6c39790e4458262d148b12caa",
+ "decks": {
+  "P0": [
+   [
+    "Dargo, the Shipwrecker",
+    8
+   ],
+   [
+    "Memnite",
+    8
+   ],
+   [
+    "Goblin Bombardment",
+    4
+   ],
+   [
+    "Mountain",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_additional_offered": "passed",
+  "A3_prior_discount": "failed",
+  "A4_additional_discount": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json snapshot: {'untapped': 21, 'pool': 0, 'dargo_bf': 0, 'dargo_hand': 2, 'bombard_bf': True, 'memnites_bf': 5}",
+  "WF/decision sequence: ['OptionalCostChoice']",
+  "LEG1: {'untapped_before': 22, 'pool_before': 0, 'untapped_after': 15, 'pool_after': 0, 'spent': 7, 'manual_taps': 0}",
+  "LEG2: {'untapped_before': 15, 'pool_before': 0, 'untapped_after': 12, 'pool_after': 0, 'spent': 3, 'manual_taps': 0}",
+  "legend_answered=1; final step=LEG2",
+  "data-level: v0.110.0 card data still collapses Dargo's cost into a single ModifyCost { Reduce {2}, dynamic_count: TrackedSetSize } with condition AdditionalCostPaid; the 'each other artifact or creature you've sacrificed this turn' reduction is absent from the parse (same as v0.98.0).",
+  "protocol-142 driver (v0.110.0): HELLO advertises protocol 142; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell/ActivateAbility via advertised actions; optional additional cost via decideOptionalCost/decideOptionalEffect opportunity (exactChoices bare true/false or schema); sac count via number schema; permanent selection via select/sequence candidates matched by object reference; mana is engine auto-tapped (manual taps disabled except as a >90s last-resort fallback) so the untapped-Mountain delta equals exactly what the engine charged; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop."
+ ],
+ "wf_sequence": [
+  "OptionalCostChoice"
+ ],
+ "legs": {
+  "LEG1": {
+   "untapped_before": 22,
+   "pool_before": 0,
+   "untapped_after": 15,
+   "pool_after": 0,
+   "spent": 7,
+   "manual_taps": 0
+  },
+  "LEG2": {
+   "untapped_before": 15,
+   "pool_before": 0,
+   "untapped_after": 12,
+   "pool_after": 0,
+   "spent": 3,
+   "manual_taps": 0
+  }
+ },
+ "data_finding": "v0.110.0 card data still collapses Dargo's cost into a single ModifyCost { Reduce {2}, dynamic_count: TrackedSetSize } with condition AdditionalCostPaid; the 'each other artifact or creature you've sacrificed this turn' reduction is absent from the parse (same as v0.98.0).",
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6860_01020.py), not direct load.",
+  "Mana spent is measured as the untapped-Mountain delta; the v0.110.0 engine auto-taps reliably, so the driver never taps manually (manual taps are a >90s last-resort fallback only) and the delta equals exactly what the engine charged (fallback manual taps: LEG1=0, LEG2=0)."
+ ],
+ "setup_line": "P0: 8x Dargo, the Shipwrecker + 8x Memnite + 4x Goblin Bombardment + 40x Mountain; P1: 60x Mountain (draw-go)",
+ "contract_line": "LEG1 (decline additional, 1 prior sac): spend 5. LEG2 (pay additional with 2 Memnites, 1 prior sac): spend 1."
+}
