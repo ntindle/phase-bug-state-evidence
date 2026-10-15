@@ -1,0 +1,394 @@
+{
+ "run_id": "run-7143-v01100-20261015-0242",
+ "issue": 7143,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-15",
+ "server": {
+  "server_version": "0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e6d9d16c03e78c9acc948530908132cb9b99200986c5b5211ce16a96e2beee2b",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "Bloodchief Ascension",
+    4
+   ],
+   [
+    "Bump in the Night",
+    8
+   ],
+   [
+    "Torment of Hailfire",
+    4
+   ],
+   [
+    "Dark Ritual",
+    4
+   ],
+   [
+    "Swamp",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "Memnite",
+    60
+   ]
+  ]
+ },
+ "setup_line": "P0 4x Bloodchief Ascension / 8x Bump in the Night / 4x Torment of Hailfire / 4x Dark Ritual / 40x Swamp; P1 60x Memnite. P0 casts Ascension ASAP, then one Bump per turn (target P1) until 3 quest counters (end-step may-offers accepted). P0 ramps to 12 untapped Swamps, then casts Torment X=10 (engine Auto payment; X=10 via schema-number prompt). P1 casts a Memnite each own main phase. Each unless-pay rep: sacrifice a Memnite while any remain, else discard, else decline. Bloodchief may-offers: accept first 4 (P1 life>3), decline the rest.",
+ "contract_line": "With Bloodchief Ascension at 3 quest counters, Torment of Hailfire X=10 should raise one Ascension may-trigger per card put into the opponent's graveyard (10 sacrifices). Report: zero triggers offered. Expected: A1-A4 pass, A5 fails in the bug direction.",
+ "driver_notes": [
+  "Protocol-142 mechanical port of driver/scenario_7143_01030.py (v0.103.0 / protocol 106): server identity, card-data path, digests, ServerHello assertions, and run.json metadata updated; also fixes a bf_ids->bf_oids typo (NameError) that had been introduced in the driver copy after the 2026-10-08 run; contract and assertions unchanged.",
+  "Protocol-106 port of driver/scenario_7143.py (v0.82.0 / protocol 70); the behavioral contract, assertions A1..A7 and the verdict rule are unchanged.",
+  "my_priority = PassPriority in legal_actions; casts gated on it.",
+  "CastSpell carries payment_mode Auto on 106: the engine taps mana itself; the driver never answers tapLandForMana and runs no driver-side mana payment (legacy PayMana actions are answered if they appear).",
+  "waiting_for is gone (null) on 106; all prompts arrive as viewer_interaction opportunities. decideOptionalEffect exactChoices with role=accept value=true/false carry the quest-counter and bloodchief may-offers; they are discriminated by phase (end-step -> quest offer, else -> bloodchief trigger offer).",
+  "Torment's ChooseX is answered as X=10 via the schema-number shape (scenario_6983_01030.py shape); X=10 is confirmed when the first unless-pay prompt arrives.",
+  "UnlessPaymentChooseCost arrives as exactChoices with a chooseUnlessCostBranch action code; value surfaces carry role=costBranch value=decline, or role=costBranchIndex value=0 (sacrifice) / value=1 (discard) per Torment's oracle order (\"sacrifices ... or discards\"); the follow-up selection's candidate zones (battlefield vs hand) confirm the mapping live. Paid branches have a schema-select follow-up (choose which permanent/card).",
+  "The stack-watch branch always falls through to the pass-priority gate (never returns early); both seats must pass in succession for a stack entry to resolve.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_cast_x10": "passed",
+  "A3_ten_choices": "passed",
+  "A4_sacrifices": "passed",
+  "A5_triggers": "failed",
+  "A6_effect": "passed",
+  "A7_cleanup": "passed"
+ },
+ "observations": {
+  "unexpected_prompts": [],
+  "rejections": [
+   {
+    "at": 1792050349.8881485,
+    "who": "P17143r",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "action_not_allowed",
+      "disposition": "unavailable",
+      "message": "That action is not allowed right now.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ],
+  "tick_errors": [],
+  "notes": [
+   "stall: no revision for 150s"
+  ],
+  "target_selections": [],
+  "life_trace": [
+   [
+    2.6,
+    [
+     20,
+     20
+    ]
+   ],
+   [
+    26.7,
+    [
+     20,
+     17
+    ]
+   ],
+   [
+    49.4,
+    [
+     20,
+     14
+    ]
+   ],
+   [
+    179.0,
+    [
+     20,
+     11
+    ]
+   ],
+   [
+    201.1,
+    [
+     22,
+     9
+    ]
+   ]
+  ],
+  "offer_scans": [],
+  "unless_shapes": [
+   "A3KXMA.0.462",
+   "A3KXMA.0.463",
+   "A3KXMA.0.464",
+   "A3KXMA.0.465",
+   "A3KXMA.0.466",
+   "A3KXMA.0.467",
+   "A3KXMA.0.468",
+   "A3KXMA.0.469",
+   "A3KXMA.0.470",
+   "A3KXMA.0.471",
+   "A3KXMA.0.472",
+   "A3KXMA.0.473",
+   "A3KXMA.0.474",
+   "A3KXMA.0.475",
+   "A3KXMA.0.476",
+   "A3KXMA.0.477",
+   "A3KXMA.0.478",
+   "A3KXMA.0.479",
+   "A3KXMA.0.480",
+   "A3KXMA.0.481"
+  ],
+  "optional_shapes": [
+   "A3KXMA.0.91",
+   "A3KXMA.0.163",
+   "A3KXMA.0.433",
+   "A3KXMA.0.484",
+   "A3KXMA.0.496"
+  ]
+ },
+ "driver_state": {
+  "stage": "settle",
+  "stage_t0": 1792050566.956644,
+  "ascension_cast": true,
+  "bumps_cast": 3,
+  "bump_in_flight": false,
+  "bump_turn": 24,
+  "quest_counters": 4,
+  "quest_offers": 4,
+  "quest_accepts": 4,
+  "pre_exported": true,
+  "post_torment_exported": true,
+  "post_exported": true,
+  "pre_p1_gy_memnites": 0,
+  "pre_p1_bf_memnites": 19,
+  "p1_life_pre_torment": 11,
+  "p0_life_pre_torment": 20,
+  "torment_cast": true,
+  "torment_in_flight": false,
+  "torment_resolved": true,
+  "torment_on_stack_seen": true,
+  "x_answered": true,
+  "x_confirmed": true,
+  "torment_x": 10,
+  "unless_prompts": 10,
+  "unless_reps": [
+   {
+    "rep": 1,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 19,
+    "p1_hand": 0,
+    "p1_gy_memnites": 0,
+    "p1_life": 11,
+    "sacrificed_oid": "67"
+   },
+   {
+    "rep": 2,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 18,
+    "p1_hand": 0,
+    "p1_gy_memnites": 1,
+    "p1_life": 11,
+    "sacrificed_oid": "68"
+   },
+   {
+    "rep": 3,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 17,
+    "p1_hand": 0,
+    "p1_gy_memnites": 2,
+    "p1_life": 11,
+    "sacrificed_oid": "85"
+   },
+   {
+    "rep": 4,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 16,
+    "p1_hand": 0,
+    "p1_gy_memnites": 3,
+    "p1_life": 11,
+    "sacrificed_oid": "88"
+   },
+   {
+    "rep": 5,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 15,
+    "p1_hand": 0,
+    "p1_gy_memnites": 4,
+    "p1_life": 11,
+    "sacrificed_oid": "91"
+   },
+   {
+    "rep": 6,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 14,
+    "p1_hand": 0,
+    "p1_gy_memnites": 5,
+    "p1_life": 11,
+    "sacrificed_oid": "114"
+   },
+   {
+    "rep": 7,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 13,
+    "p1_hand": 0,
+    "p1_gy_memnites": 6,
+    "p1_life": 11,
+    "sacrificed_oid": "120"
+   },
+   {
+    "rep": 8,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 12,
+    "p1_hand": 0,
+    "p1_gy_memnites": 7,
+    "p1_life": 11,
+    "sacrificed_oid": "69"
+   },
+   {
+    "rep": 9,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 11,
+    "p1_hand": 0,
+    "p1_gy_memnites": 8,
+    "p1_life": 11,
+    "sacrificed_oid": "71"
+   },
+   {
+    "rep": 10,
+    "branch": "sacrifice",
+    "kinds": [
+     "decline",
+     "sacrifice",
+     "discard"
+    ],
+    "p1_bf_memnites": 10,
+    "p1_hand": 0,
+    "p1_gy_memnites": 9,
+    "p1_life": 11,
+    "sacrificed_oid": "101"
+   }
+  ],
+  "unless_loop_started": true,
+  "unless_quiet_ticks": 0,
+  "resolve_settle_t0": null,
+  "bc_offers": 1,
+  "bc_answered": 1,
+  "bc_accepted": 1,
+  "bc_log": [
+   {
+    "offer": 1,
+    "iid": "A3KXMA.0.484",
+    "accept": true,
+    "p0_life_before": 20,
+    "p1_life_before": 11
+   }
+  ],
+  "expected_triggers": 10,
+  "settle_t0": 1792050656.9956594,
+  "land_turn": -1,
+  "p1_mem_turn": -1,
+  "game_code": "A3KXMA",
+  "game_over": false,
+  "x_shape_wired": false,
+  "last_unless_tick": 1792050546.8768594,
+  "unless_pending_followup": null,
+  "pt_bc_offers_so_far": 1
+ },
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "notes": [
+  "A1: asc_bf=1 quest=3 p1_memnites_bf=19 life=20/11 (expect 20/11; bumps=3)",
+  "A2: torment_cast=True x_submitted=10 x_answered=True x_confirmed=True resolved_to_gy=True",
+  "A3: unless-pay prompts offered=10 (expect 10); branches=['sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice', 'sacrifice']",
+  "A4: p1 gy memnites 0->10 (delta 10, expect 10); sacrifice reps=10/10; p1 bf memnites 19->11 (observation only: P1 casts fresh Memnites during the quiet window)",
+  "A5: bloodchief may-offers=1 (expect 10 = gy moves); answered=1 accepted=1",
+  "A6: accepted=1 (declined=0) life post=22/9 (expect 22/9)",
+  "A7: stack_empty=True winner=None game_over_flag=False",
+  "verdict=reproduced: cards moved to opponent's graveyard during Torment but Bloodchief Ascension produced 1 trigger offers vs 10 moves",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "post_torment.json",
+  "post.json",
+  "run.json",
+  "parse_bloodchief_torment.json",
+  "scenario_7143_01100.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log",
+  "summary.png",
+  "manifest.sha256"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense test decks are a harness convenience (engine accepts >4-of for custom games); P1's 60x Memnite deck exists to supply 10 sacrifice fodder.",
+  "P1 never attacks; P0 never attacks. Life changes come only from Bump in the Night, Torment unless-pay declines, and Bloodchief trigger accepts.",
+  "Dark Ritual is deck filler and is never cast in this scenario; Torment's {X}{B}{B} is paid by the engine's auto-tap of 12 Swamps.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Turn order is randomized by the engine; the driver keys on active_player, not order."
+ ],
+ "duration_s": 480.5
+}
