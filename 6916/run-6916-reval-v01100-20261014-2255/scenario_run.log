@@ -1,0 +1,51 @@
+[22:49:36] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[22:49:36] data-level check: ok=True notes=['is_commander=True', 'replacements=1', 'replacement: ~ enters under the control of an opponent of your choice.', 'abilities=1']
+[22:49:38] game 49EQ0O; seats P0=0 P1=1 P2=2 RUN_ID=run-6916-reval-v01100-20261014-2255
+[22:49:38] [P0] mulligan -> Keep (lands=7 hand=['swamp', 'swamp', 'swamp', 'swamp', 'mountain', 'mountain', 'mountain'])
+[22:49:38] [P1] mulligan -> Keep (lands=7 hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[22:49:38] [P2] mulligan -> Keep (lands=7 hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[22:49:38] DIAG turn=1 active=1 phase=Untap P0lands=0 P1lands=0 xcast=False entered=False ctrl=None choice=False p1act=False pre=False mid=False post=False stack=0
+[22:49:38] [P1] UNEXPECTED PROMPT iid=49EQ0O.0 codes=['candidate', 'mulliganDecision'] n=2
+[22:49:38] [P2] UNEXPECTED PROMPT iid=49EQ0O.0 codes=['candidate', 'mulliganDecision'] n=2
+[22:49:39] [P1] playing land forest
+[22:49:45] [P2] playing land forest
+[22:49:49] [P0] playing land swamp
+[22:49:54] [P1] playing land forest
+[22:49:59] [P2] playing land forest
+[22:50:04] [P0] playing land swamp
+[22:50:09] [P1] playing land forest
+[22:50:13] [P2] playing land forest
+[22:50:19] [P0] playing land swamp
+[22:50:23] [P1] playing land forest
+[22:50:28] [P2] playing land forest
+[22:50:32] [P0] playing land swamp
+[22:50:37] [P1] playing land forest
+[22:50:38] DIAG turn=13 active=1 phase=PreCombatMain P0lands=4 P1lands=5 xcast=False entered=False ctrl=None choice=False p1act=False pre=False mid=False post=False stack=0
+[22:50:42] [P2] playing land forest
+[22:50:46] [P0] playing land mountain
+[22:50:47] [P0] casting xantcha, sleeper agent (oid 181) needs={'B': 1, 'R': 1, 'generic': 1}
+[22:50:48] [P1] cast confirmed (stack): xantcha, sleeper agent oid 181
+[22:50:48] [P0] tap land for mana used_for=B needs={'B': 0, 'R': 1, 'generic': 1}
+[22:50:48] [P0] submitting interaction iid=49EQ0O.0.321 choice=49EQ0O.0.321.c1 (Swamp)
+[22:50:48] [P0] tap land for mana used_for=generic needs={'B': 0, 'R': 1, 'generic': 0}
+[22:50:48] [P0] submitting interaction iid=49EQ0O.0.322 choice=49EQ0O.0.322.c1 (Swamp)
+[22:50:49] [P0] ENTER-CHOICE prompt: seats=[1, 2] codes=['candidate', 'chooseEntryController']
+[22:50:49] [P0] ENTER-CHOICE pick: seat=2 text=''
+[22:50:49] [P0] submitting interaction iid=49EQ0O.0.326 choice=49EQ0O.0.326.c1 ()
+[22:50:49] Xantcha entered: oid=181 owner=0 controller=2 choice_offered=True
+[22:50:49] exported mid.json (turn=15)
+[22:50:54] [P1] activating Xantcha's ability pre_life={0: 40, 1: 40, 2: 40} pre_hand={0: 7, 1: 8, 2: 7}
+[22:50:55] [P1] playing land forest
+[22:50:59] [P1] discarding to hand size via vi (select): picks=['49EQ0O.0.368.s0']
+[22:51:00] exported post.json (turn=17)
+[22:51:00] exported POST (act_done=True no_offer_done=False)
+[22:51:00] [P2-controller] Xantcha activation offered: True
+[22:51:00] [P2] playing land forest
+[22:51:02] [P2] declaring Xantcha 181 attacking P1
+[22:51:05] post exported; finishing
+[22:51:05] loaded mid.json
+[22:51:05] loaded post.json
+[22:51:05] verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_choice_offered": "passed", "A3_controlled_by_chosen": "passed", "A4_any_player_activate": "passed", "A5_activation_effect": "failed", "A6_cleanup": "passed"}
+[22:51:05] exported pre.json (turn=17)
+[22:51:05] copied scenario_6916_01100.py into EVDIR
+[22:51:05] closing logs before manifest computation
