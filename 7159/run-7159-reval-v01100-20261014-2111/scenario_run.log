@@ -1,0 +1,69 @@
+ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+A1 parse_ok: passed (main=True sub=True equip_grants=2 duplicated=True)
+game 01F29G; seats P0=0 P1=1 RUN_ID=run-7159-reval-v01100-20261014-2111
+[P1] vi waitingForKind: mulligan
+[P1] mulligan: 7 lands, hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'] -> keep
+[P0] mulligan: 5 lands, hand=['plains', 'mountain', 'the irencrag', 'the irencrag', 'mountain', 'mountain', 'mountain'] -> keep
+[P0] vi waitingForKind: choose
+[P0] playing land plains
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] playing land mountain
+[P0] casts The Irencrag (engine auto-pays)
+[P0] phantom-cast recovery: irencrag still in hand at rev 38 (submitted at 37); retrying
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] playing land mountain
+[P0] casts Isamaru, Hound of Konda (engine auto-pays)
+exported pre.json
+[P0] optional-effect prompt offered
+[P0] submitting interaction iid=01F29G.0.75 choice=01F29G.0.75.c1 (true)
+[P0] optional effect ACCEPTED (accept=true)
+[P0] casts The Irencrag (engine auto-pays)
+[P0] phantom-cast recovery: irencrag still in hand at rev 77 (submitted at 76); retrying
+[P0] TRANSFORMED: oid=8 {"oid": 8, "card_name": "Everflame, Heroes' Legacy", "card_types": {"supertypes": ["Legendary"], "core_types": ["Artifact"], "subtypes": ["Equipment"]}, "zone": "Battlefield", "controller": 0, "tapped": false}
+exported mid.json
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: relations
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: relations
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: relations
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: relations
+[P0] vi waitingForKind: choose
+[P0] vi waitingForKind: select
+[P1] discarding to hand size via vi (select): ['forest']
+[P0] vi waitingForKind: choose
+[P0] equip giveup: no equip offer across 6 clean main-phase turns
+DONE: post-resolution observation window complete
+exported post.json
+finalizing...
+scenario source copied to evidence
+server.log copied to evidence
+NOTE: A1: become-Equipment mods ['SetTextName', 'AddSupertype', 'AddType', 'RemoveAllSubtypes', 'AddSubtype']; sub mods ['RemoveAllAbilities', 'GrantStaticAbility', 'GrantAbility', 'GrantAbility']; equip grants ['equip {3}', 'equip {3} and'] (duplicated grant: True) -> passed
+NOTE: A2: trigger not on stack in live sampling or pre.json stack (stack empties fast once the option is pending)
+NOTE: A2: trigger fire established via the optional-effect prompt itself (the prompt is the trigger's optional decision); the stack entry resolved too fast for sampling
+NOTE: A3: option offered=True accepted(accept=true)=True
+NOTE: A4: name="Everflame, Heroes' Legacy" card_types={'supertypes': ['Legendary'], 'core_types': ['Artifact'], 'subtypes': ['Equipment']} -> name_ok=True legendary=True artifact=True equipment=True
+NOTE: A5: current abilities=2 mana_remaining=0 equip_granted=2 has_mana_ability_flag=None (base_abilities still lists the printed mana ability: 1)
+NOTE: A6: equip offered=False scans=21 clean_main_turns=6
+NOTE: A6: ability_index=None descs=[]
+NOTE: A7: equip never offered -> not-run
+NOTE: A8: post stack depth=0 turn=15 resolve_turn=5
+VERDICT: reproduced
+wrote summary.png (1000x951)
+writing manifest; done: post-resolution observation window complete
