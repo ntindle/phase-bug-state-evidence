@@ -1,0 +1,48 @@
+{
+ "run_id": "run-6728-reval-v01100-20261015-0911",
+ "issue": 6728,
+ "date": "2026-10-15",
+ "server": {
+  "validated_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "handshake": "ServerHello 0.110.0/9bfd12e/protocol 142/Full verified by live handshake on 127.0.0.1:9374 (pid 1482, pinned 2026-10-14)",
+  "endpoint_base": "http://127.0.0.1:9374"
+ },
+ "client": {
+  "checkout": "f672f801cbea4548f4ff459581d2e0106fa9f14e",
+  "checkout_date": "2026-10-15T14:13:09Z",
+  "note": "mainline tip (release: v0.111.0 commit); source inspection only",
+  "files": {
+   "client/src/adapter/p2p-draft-host.ts": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+   "client/src/adapter/draftPodHostAdapter.ts": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3"
+  },
+  "findings": [
+   "hostDraftCode generator (p2p-draft-host.ts:336) still emits `draft-` + 8 lowercase hex \u2014 server-invalid shape unchanged",
+   "Production path (draftPodHostAdapter.ts:324) still passes config.backupEndpoint \u2014 blocker #1 stays wired",
+   "uploadBackupSnapshot (p2p-draft-host.ts:3712-3724) still awaits fetch without checking response.ok \u2014 HTTP 400 still silent"
+  ]
+ },
+ "scenario": {
+  "file": "driver/scenario_6728.py",
+  "sha256": "2721c922044b686acae50d53313b03b6019945d4b9438e40a746bc391bc47545",
+  "unchanged_from": "run-6728-reval-v01070-20261012-1041"
+ },
+ "assertions": {
+  "total": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "verdict": "reproduced",
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) on pinned v0.110.0 binary + client source-path inspection at mainline f672f801; frontend P2P browser stack not exercised",
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at f672f801 (sha256 recorded above), not on running the client.",
+  "No game-state pair exists for this report; evidence is the wire log of HTTP exchanges against the live handler plus pre/post backup-row reads."
+ ],
+ "prior_validated_verdict": "reproduced"
+}
