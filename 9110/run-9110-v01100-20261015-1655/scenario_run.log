@@ -1,0 +1,69 @@
+[16:43:50] server identity pinned: v0.110.0 / 9bfd12e / protocol 142
+[16:43:50] Gush oracle: You may return two Islands you control to their owner's hand rather than pay this spell's mana cost.
+Draw two cards.
+[16:43:50] Gush casting_options: [{"kind": "AlternativeCost", "cost": {"type": "EffectCost", "effect": {"type": "Bounce", "target": {"type": "Typed", "type_filters": [{"Subtype": "Island"}], "controller": "You", "properties": []}, "destination": null, "selection": "at_resolution"}}}]
+[16:43:51] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[16:43:52] leg attempt=1 game 56UV67; seats=[0, 1]
+[16:43:52] [P0G1] keeping opening hand
+[16:43:52] [P1G1] keeping opening hand
+[16:43:52] [diag] P0G1: rev=2 turn=1 phase=Untap active=1 stack=0 hand=7 islands=0 gush_hand=18 ctl_done=False alt_cast=None alt_done=False
+[16:43:52] [diag] P1G1: rev=2 turn=1 phase=Untap active=1 stack=0 hand=7 islands=0 gush_hand=None ctl_done=False alt_cast=None alt_done=False
+[16:43:53] [P1G1] playing island
+[16:43:53] [P1G1] playing island via vi prompt (oid 63)
+[16:43:56] [P0G1] playing island
+[16:43:56] [P0G1] playing island via vi prompt (oid 6)
+[16:44:00] [P1G1] playing island
+[16:44:00] [P1G1] playing island via vi prompt (oid 63)
+[16:44:04] [P0G1] playing island
+[16:44:04] [P0G1] playing island via vi prompt (oid 6)
+[16:44:08] [P1G1] playing island
+[16:44:08] [P1G1] playing island via vi prompt (oid 63)
+[16:44:11] [P0G1] playing island
+[16:44:11] [P0G1] playing island via vi prompt (oid 6)
+[16:44:15] [P1G1] playing island
+[16:44:15] [P1G1] playing island via vi prompt (oid 63)
+[16:44:18] [P0G1] playing island
+[16:44:18] [P0G1] playing island via vi prompt (oid 16)
+[16:44:22] [diag] P0G1: rev=124 turn=9 phase=Draw active=1 stack=0 hand=7 islands=4 gush_hand=18 ctl_done=False alt_cast=None alt_done=False
+[16:44:22] [diag] P1G1: rev=124 turn=9 phase=Draw active=1 stack=0 hand=7 islands=4 gush_hand=None ctl_done=False alt_cast=None alt_done=False
+[16:44:23] [P1G1] playing island
+[16:44:23] [P1G1] playing island via vi prompt (oid 64)
+[16:44:26] [P0G1] playing island
+[16:44:26] [P0G1] playing island via vi prompt (oid 16)
+[16:44:27] [P0G1] exported pre_control.json (turn=10, rev=None)
+[16:44:28] [P0G1] exported pre_control.json (turn=10, rev=None)
+[16:44:28] [P0G1] control: casting Gush (oid 18); advertised data keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[16:44:28] [P0G1] control: cost choice -> mana [value-surface] (false)
+[16:44:28] [P0G1] control: Gush on stack; tapped islands=5, lib=48, hand=6
+[16:44:28] [P0G1] exported control_stack.json (turn=10, rev=None)
+[16:44:29] [P0G1] control: Gush resolved; drew=2 (lib 48->46), hand 6->8
+[16:44:29] [P0G1] exported control_post.json (turn=10, rev=None)
+[16:44:29] assertion A1_harness_ok: passed -- control cast paid {4}{U} (5 Islands tapped), resolved, drew exactly 2
+[16:44:30] [P0G1] discarding island (oid 50) to hand size
+[16:44:32] [P1G1] playing island
+[16:44:32] [P1G1] playing island via vi prompt (oid 61)
+[16:44:35] [P0G1] playing island
+[16:44:35] [P0G1] playing island via vi prompt (oid 12)
+[16:44:35] [P0G1] exported pre_alt.json (turn=12, rev=None)
+[16:44:35] [P0G1] alt: pre_alt exported; battlefield islands=6, hand=7, lib=45
+[16:44:35] [P0G1] alt: casting Gush (oid 24); advertised data keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[16:44:35] [P0G1] alt: cost choice -> alt [value-surface] (true)
+[16:44:36] [P0G1] alt: Gush on stack; pre-cast islands still on battlefield=6, returned to hand=0 (oids []), tapped islands now=0
+[16:44:36] [P0G1] exported alt_stack.json (turn=12, rev=None)
+[16:44:36] [P0G1] alt: Gush resolved; drew=2 (lib 45->43), hand 6->8
+[16:44:36] [P0G1] exported post_alt.json (turn=12, rev=None)
+[16:44:36] [eval] alt: 6 pre-cast islands -> hand=0 (oids []), still on battlefield=6, elsewhere=0; tapped islands now=0
+[16:44:36] assertion A2_alt_cost_paid: failed -- REPRODUCED BUG: Gush was cast via its alternative cost but NO Island left the battlefield -- cast for free
+[16:44:36] assertion A3_alt_draw: passed -- alternative-cost Gush resolved; P0 drew exactly 2
+[16:44:36] assertion A4_post_clean: passed -- POST_ALT exported; cast Gush (oid 24) in graveyard; stack empty, no pending real decisions
+[16:44:36] [leg] alt leg complete; finishing
+[16:44:36] assertion A1_harness_ok: passed
+[16:44:36] assertion A2_alt_cost_paid: failed
+[16:44:36] assertion A3_alt_draw: passed
+[16:44:36] assertion A4_post_clean: passed
+[16:44:36] note: A1_harness_ok=passed: control cast paid {4}{U} (5 Islands tapped), resolved, drew exactly 2
+[16:44:36] note: A2_alt_cost_paid=failed: REPRODUCED BUG: Gush was cast via its alternative cost but NO Island left the battlefield -- cast for free
+[16:44:36] note: A3_alt_draw=passed: alternative-cost Gush resolved; P0 drew exactly 2
+[16:44:36] note: A4_post_clean=passed: POST_ALT exported; cast Gush (oid 24) in graveyard; stack empty, no pending real decisions
+[16:44:36] VERDICT: reproduced
+[16:44:36] summary.png rendered from saved assertions
