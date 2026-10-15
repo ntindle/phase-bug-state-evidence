@@ -1,0 +1,45 @@
+ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+parse_trickery.json written; chain: Counter -> Unimplemented -> Mill -> ExileFromTopUntil -> GrantCastingPermission -> PutAtLibraryPosition; unimplemented: ['Choose 1, 2, or 3 at random']
+game VCOUAS; seats P0=0 P1=1 RUN_ID=run-7166-reval-v01100-20261015-0035
+[P1] vi waitingForKind: mulligan
+[P1] mulligan #1: hand=['lightning bolt', 'grizzly bears', 'lightning bolt', 'mountain', 'grizzly bears', 'lightning bolt', 'grizzly bears'] -> keep
+[P0] mulligan #1: hand=["tibalt's trickery", 'mountain', 'mountain', 'mountain', 'mountain', "tibalt's trickery", 'mountain'] -> keep
+[P0] vi waitingForKind: choose
+[P0] playing land mountain
+[P1] playing land mountain
+[P0] playing land mountain
+[P1] casts Lightning Bolt (oid=64) targeting P0
+[P0] vi waitingForKind: sequence
+[P1] prompt (bolt-target): rtype=schema n=2 texts=['', ''] seats=[0, 1] refs=['None', 'None']
+[P1] submitting interaction iid=VCOUAS.0.52 choice=VCOUAS.0.52.t0 ()
+[P1] answered bolt-target: 
+[P0] vi waitingForKind: choose
+[P0] casts Tibalt's Trickery (oid=5) in response to Bolt
+[P0] prompt (trickery-target): rtype=exactChoices n=1 texts=[''] seats=[None] refs=['None']
+[P0] submitting interaction iid=VCOUAS.0.55 choice=VCOUAS.0.55.c0 ()
+[P0] answered trickery-target: 
+exported pre_trickery.json
+pre_trickery exported; stack target evidence: {"id": 5, "source_id": 5}
+[P1] playing land mountain
+Trickery resolved turn=4; P1 gy=['Lightning Bolt'] mill_count=0
+[P0] ActionRejected: {"rejection": {"code": "wrong_player", "disposition": "unauthorized", "message": "That action belongs to a different player.", "related_object_ids": []}}
+[P0] playing land mountain
+[P1] playing land mountain
+exporting post.json turn=6 (10s after resolution, stack empty)
+exported post.json
+[P0] playing land mountain
+DONE: cleanup window closed turn=9
+exported post.json
+finalizing...
+scenario source copied to evidence
+server.log copied to evidence (this run's isolated server)
+A1_setup_ok: passed
+A2_countered: passed
+A3_mill: failed
+A4_exile_until: failed
+A5_free_cast: not-run
+A6_bottom_rest: not-run
+A7_cleanup: passed
+VERDICT: reproduced
+wrote summary.png (1000x909)
+writing manifest; done: cleanup window closed turn=9
