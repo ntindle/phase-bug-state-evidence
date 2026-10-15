@@ -1,0 +1,7 @@
+# Server log excerpts for game 8BP60V (attempt 2, the reproduced run)
+# Source: runs/run-6360-v01100-20261015-1845/server.log (INFO level; no finer resolution tracing at this level)
+
+2026-10-15T19:07:06.563595Z  INFO ws_message:game_session{game=8BP60V player=PlayerId(0)}: server_core::session: action applied game=8BP60V player=PlayerId(0) action_type="CastSpell" event_count=1
+
+# The decisive observation is the authoritative during.json export:
+# waiting_for.type=DigChoice, stack=[], Consult object 21 zone=Graveyard
