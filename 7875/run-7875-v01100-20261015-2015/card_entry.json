@@ -1,0 +1,303 @@
+{
+ "myr battlesphere": {
+  "name": "Myr Battlesphere",
+  "mana_cost": {
+   "type": "Cost",
+   "shards": [],
+   "generic": 7
+  },
+  "card_type": {
+   "supertypes": [],
+   "core_types": [
+    "Artifact",
+    "Creature"
+   ],
+   "subtypes": [
+    "Myr",
+    "Construct"
+   ]
+  },
+  "power": {
+   "type": "Fixed",
+   "value": 4
+  },
+  "toughness": {
+   "type": "Fixed",
+   "value": 7
+  },
+  "loyalty": null,
+  "defense": null,
+  "oracle_text": "When this creature enters, create four 1/1 colorless Myr artifact creature tokens.\nWhenever this creature attacks, you may tap X untapped Myr you control. If you do, this creature gets +X/+0 until end of turn and deals X damage to the player or planeswalker it's attacking.",
+  "non_ability_text": null,
+  "flavor_name": null,
+  "keywords": [],
+  "abilities": [],
+  "triggers": [
+   {
+    "mode": "ChangesZone",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "Token",
+      "name": "Myr",
+      "power": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "toughness": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "types": [
+       "Artifact",
+       "Creature",
+       "Myr"
+      ],
+      "colors": [],
+      "keywords": [],
+      "tapped": false,
+      "count": {
+       "type": "Fixed",
+       "value": 4
+      },
+      "owner": {
+       "type": "Controller"
+      },
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": "Battlefield",
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "When ~ enters, create four 1/1 colorless Myr artifact creature tokens.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   },
+   {
+    "mode": "Attacks",
+    "execute": {
+     "kind": "Spell",
+     "effect": {
+      "type": "PayCost",
+      "cost": {
+       "type": "TapCreatures",
+       "requirement": {
+        "requirement": "count",
+        "count": 4294967295
+       },
+       "filter": {
+        "type": "Typed",
+        "type_filters": [
+         {
+          "Subtype": "Myr"
+         }
+        ],
+        "controller": "You",
+        "properties": []
+       }
+      },
+      "payer": {
+       "type": "Controller"
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Pump",
+       "power": {
+        "type": "Variable",
+        "value": "X"
+       },
+       "toughness": {
+        "type": "Fixed",
+        "value": 0
+       },
+       "target": {
+        "type": "SelfRef"
+       }
+      },
+      "cost": null,
+      "sub_ability": {
+       "kind": "Spell",
+       "effect": {
+        "type": "DealDamage",
+        "amount": {
+         "type": "Ref",
+         "qty": {
+          "type": "Variable",
+          "name": "X"
+         }
+        },
+        "target": {
+         "type": "Or",
+         "filters": [
+          {
+           "type": "ParentTarget"
+          },
+          {
+           "type": "Typed",
+           "type_filters": [
+            "Planeswalker"
+           ],
+           "controller": null,
+           "properties": []
+          }
+         ]
+        }
+       },
+       "cost": null,
+       "sub_ability": null,
+       "duration": null,
+       "description": null,
+       "target_prompt": null,
+       "condition": null,
+       "optional_targeting": false,
+       "optional": false,
+       "forward_result": false
+      },
+      "duration": "UntilEndOfTurn",
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "EffectOutcome",
+       "signal": "OptionalEffectPerformed"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": true,
+     "forward_result": false
+    },
+    "valid_card": {
+     "type": "SelfRef"
+    },
+    "origin": null,
+    "destination": null,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "phase": null,
+    "optional": false,
+    "damage_kind": "Any",
+    "secondary": false,
+    "valid_target": null,
+    "valid_source": null,
+    "description": "Whenever ~ attacks, you may tap X untapped Myr you control. If you do, ~ gets +X/+0 until end of turn and deals X damage to the player or planeswalker it's attacking.",
+    "constraint": null,
+    "condition": null,
+    "batched": false
+   }
+  ],
+  "static_abilities": [],
+  "replacements": [],
+  "color_override": null,
+  "scryfall_oracle_id": "c53ba31a-ba27-4e17-9a92-311acb1cab29",
+  "metadata": {
+   "related_token_ids": [
+    "05d27210-820f-5d3f-988c-2c92c209ed6f",
+    "0b4fa871-1396-5317-bd87-054487b0f7d4",
+    "37c45f60-9cdb-5706-8070-48d24b7ece38",
+    "44586189-4455-5ae5-9f5e-1d18f8ab2ef5",
+    "709d174f-95d0-511f-bb30-b60775c04ef7",
+    "7a2e1064-95a1-5bc7-8723-e75792067dad",
+    "8c375c93-936a-5b6c-a422-5b92064e876d",
+    "9729cb0e-a120-5c5c-bf42-a83fa344276d",
+    "a6d6b609-7dcf-5dac-b4d3-e4ea052cc8ad",
+    "c132d7da-7709-5e7f-b34c-a9beed9fffd0",
+    "d300dc0e-fe5c-534c-ac74-aaa150bdd12b",
+    "eb9fbc1a-6716-57be-9fa4-1a3288306b7e"
+   ],
+   "source_printing_ids": [
+    "0db4cf09-8cf0-4aa7-8bfe-fe600352032d",
+    "2b3d86bd-0686-42bc-b540-3c1e2cb75e35",
+    "31837c7c-267a-4483-8712-406bfa7c4fde",
+    "4119859e-5e58-4cdc-8ad2-45a322f31f0d",
+    "71e7ef4a-2032-4571-afc6-5207d4b40c3d",
+    "79d3ab85-0de2-4a6f-8ed0-c32853025520",
+    "7d2ca7dc-a999-4708-aeec-9f8e0f0db1e5",
+    "88d33b63-9a49-4c67-9932-270997f6625b",
+    "a04ed861-56dc-4b7f-aa62-f6232ecc1ef7",
+    "b0ae94ed-7314-470b-baba-f2f58bbc894a",
+    "bc47978f-de61-446b-a41b-aa101c6bd292",
+    "c9474949-9a13-4a84-87ff-e52c44abb4a5",
+    "d8299d1e-84c1-4c02-a00d-6e7a662e1a7a",
+    "e225aa6b-bcf0-4672-8c95-b18e39e0b826",
+    "ee943152-c0a5-41b5-9ee3-539b92018aca"
+   ]
+  },
+  "legalities": {
+   "brawl": "legal",
+   "commander": "legal",
+   "duel": "legal",
+   "historic": "legal",
+   "legacy": "legal",
+   "modern": "legal",
+   "oathbreaker": "legal",
+   "timeless": "legal",
+   "vintage": "legal"
+  },
+  "printings": [
+   "2XM",
+   "BRC",
+   "C13",
+   "C14",
+   "C16",
+   "C18",
+   "C21",
+   "CM2",
+   "DDU",
+   "FDC",
+   "M3C",
+   "MOC",
+   "ONC",
+   "SLD",
+   "SOM",
+   "TDC"
+  ],
+  "rulings": [
+   {
+    "date": "2020-08-07",
+    "text": "As the last ability resolves, you can tap untapped Myr you control even if Myr Battlesphere is no longer on the battlefield by then. If that has happened, Myr Battlesphere won't be able to get the +X/+0 bonus, but it will still deal X damage to the appropriate player or planeswalker."
+   },
+   {
+    "date": "2020-08-07",
+    "text": "You can tap any untapped Myr you control as the last ability resolves, not just the Myr tokens you created with the first ability. This includes Myr that haven't been under your control since your most recent turn began."
+   },
+   {
+    "date": "2020-08-07",
+    "text": "You choose the value for X as the last ability resolves. You can't choose a value for X that's greater than the number of untapped Myr you control."
+   }
+  ],
+  "rarities": [
+   "rare"
+  ]
+ }
+}
