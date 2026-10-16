@@ -1,0 +1,216 @@
+{
+ "run_id": "run-6912-reval-v01100-20261016-0341-retry",
+ "issue": 6912,
+ "cz_choice": "zone",
+ "date": "2026-10-16T08:52:19Z",
+ "started_at": "2026-10-16T03:51:24-05:00",
+ "server": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "port": 9374,
+  "signature_note": "v0.110.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-14; data digests match the signed manifest; binary/data digests recomputed against the on-disk pinned release dir this run; ServerHello 0.110.0/9bfd12e/protocol 142 verified by handshake this run; server started by this run on 127.0.0.1:9374 with isolated run dir runs/run-6912-reval-v01100-20261016-0341-retry"
+ },
+ "scenario": "driver/scenario_6912_01100.py",
+ "scenario_sha256": "f11367ec64114de9dbda595fa1fca54811300a5aa21f51d4f37d641e86171076",
+ "format_config": "CommanderDraft (>=60 cards, no singleton; commanders placed in command zone)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "chaos warp",
+     12
+    ],
+    [
+     "mountain",
+     48
+    ]
+   ],
+   "commander": [
+    "zurgo bellstriker"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_targeted": "passed",
+  "A3_replacement_offered": "passed",
+  "A4_zone_correct": "passed",
+  "A5_owner_routing": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "repl_seen": {
+   "turn": 9,
+   "revision": 201,
+   "chooser": 1
+  },
+  "repl_chooser": 1,
+  "repl_choices": [
+   {
+    "i": 0,
+    "text": "0",
+    "optionIndex": "0",
+    "mentions_command_zone": false
+   },
+   {
+    "i": 1,
+    "text": "1",
+    "optionIndex": "1",
+    "mentions_command_zone": false
+   }
+  ],
+  "repl_chosen": {
+   "i": 0,
+   "text": "0",
+   "how": "optionIndex mapping from runs 20260912-6912a/b: idx 0 == command zone"
+  },
+  "repl_guess": null,
+  "repl_chooser_wrong": false,
+  "cast_turn": 9,
+  "wf_types_resolution": [
+   "TargetSelection",
+   "Priority",
+   "Priority",
+   "Priority",
+   "ReplacementChoice",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority"
+  ],
+  "reveal_prompts": [],
+  "auto_answered": []
+ },
+ "notes": [
+  "post: ayula_zone=Command p1_lib 50->48 p0_lib 50->50 new_on_p1_bf=['forest'] new_on_p0_bf=[]",
+  "A5 accounting: p1 hand 7->7 gy 0->1",
+  "A5 draws=1 draws_sane=True",
+  "verdict=not-reproduced cz_choice=zone"
+ ],
+ "stats": {
+  "states_seen": 309
+ },
+ "setup_line": "P0: 12x Chaos Warp + 48x Mountain (commander Zurgo Bellstriker, never cast); P1: 60x Forest (commander Ayula, Queen Among Bears); P2: 60x Forest; native human seats",
+ "contract_line": "P0 casts Chaos Warp targeting P1's commander Ayula; P1 (owner) answers the commander replacement choice with the command zone (zone branch); warp must then shuffle/reveal/put from P1's library and put the revealed Forest onto P1's battlefield.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "Dense 12x Chaos Warp / 48x Mountain decks are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The revealed top card is random; the assertions verify the routing outcome (owner's library, permanent->BF) rather than a specific revealed card.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-142 re-validation port of scenario_6912_01030.py (v0.103.0 / protocol 106, verified 2026-10-07, verdict not-reproduced); behavioral contract A1..A6 and verdict logic unchanged.",
+  "Protocol-142 conventions from the proven scenario_6911_01100.py and scenario_6916_01100.py runs: waiting_for is gone (null); MulliganDecision answered via the advertised legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; bare CastSpell with engine auto-pay (targets via the engine's vi TargetSelection after the cast, never injected); the 2026-10-09 cast-confirmation guard holds priority passes and new main-phase plays until a cast is confirmed (30s backstop re-arms); turn order is randomized so all sequencing keys off active_player.",
+  "CommanderDraft 3-seat setup proven on protocol 142 in scenario_6916_01100.py."
+ ]
+}
