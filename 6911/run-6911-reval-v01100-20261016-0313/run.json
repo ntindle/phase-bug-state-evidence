@@ -1,0 +1,96 @@
+{
+ "issue": 6911,
+ "run_id": "run-6911-reval-v01100-20261016-0313",
+ "date": "2026-10-16T08:15:43",
+ "game_code": "MROQGF",
+ "server": {
+  "server_version": "0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "mode": "Full"
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "91a3a14d40b3c797bf6f22fea8aa6a0cda9630945690238a154c3952b02453a7",
+ "decks": {
+  "P0": [
+   [
+    "Entish Restoration",
+    12
+   ],
+   [
+    "Baloth Gorger",
+    8
+   ],
+   [
+    "Forest",
+    40
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "setup_line": "P0 12x Entish Restoration / 8x Baloth Gorger (4/4) / 40x Forest; P1 12x Grizzly Bears / 48x Forest, passive",
+ "contract_line": "ER resolution must first prompt the caster to sacrifice a land, then offer the up-to-3 basic land search (4+ power creature controlled)",
+ "driver_notes": [
+  "Protocol-142 re-validation port of driver/scenario_6911_01030.py (v0.103.0 / protocol 106, verified 2026-10-07, verdict reproduced); behavioral contract A1..A5 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action; the v0.110.0 engine auto-taps reliably; manual taps are a >90s fallback only (driver taps on top of engine auto-taps double-pay).",
+  "Resolution prompts (sacrifice/search) are classified from candidate object surfaces: sacrifice = all P0-controlled Battlefield lands; search = all Library-zone basic lands. Answered before the priority-pass gate; the pass gate always runs at the end of the tick.",
+  "Data-level: v0.110.0 parses Entish Restoration correctly (Sacrifice{1, Land} with a ConditionInstead sub_ability carrying SearchLibrary up-to-3 / else up-to-2) -- the defect is at resolution time, not in the data.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_sacrifice_prompted": "failed",
+  "A3_land_sacrificed": "not-run",
+  "A4_search_up_to_three": "passed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "pre_exported=True gorger_on_bf_at_cast=True er_cast_turn=9",
+  "A2_sacrifice_prompted": "prompt_sequence=['search'] sac_idx=None search_idx=0",
+  "A3_land_sacrificed": "sac_oid=None; no sacrifice prompt answered; p0_forests_left_bf_pre_to_post=[]",
+  "A4_search_up_to_three": "search_max=3 chosen=3 entered_tapped=[True, True, True] bf_forests pre=4 post=7 expected_post=7",
+  "A5_cleanup": "er_in_gy=True stack_empty=True turn=9"
+ },
+ "prompt_sequence": [
+  "search"
+ ],
+ "sac_oid": null,
+ "search_max": 3,
+ "search_chosen": [
+  "5",
+  "60",
+  "30"
+ ],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5651198580,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-driver seats.",
+  "12x/8x deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The up-to-2 branch (no 4+ creature) was not exercised; both branches share the sacrifice node.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 1,
+  "P1": 0
+ },
+ "rejections": [],
+ "stall_observed": false,
+ "notes": []
+}
