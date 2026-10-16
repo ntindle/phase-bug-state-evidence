@@ -1,0 +1,52 @@
+[20:16:16] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[20:16:16] data-level: -6 effect type=Unimplemented name=emblem_creation unimplemented=True
+[20:16:16] P0 creating game...
+[20:16:16] P1 joining...
+[20:16:18] game UTVSPL; P0 seat=0 P1 seat=1
+[20:16:18] [P0] mulligan -> Keep
+[20:16:18] [P1] mulligan -> Keep
+[20:16:19] [P0] playing land mountain
+[20:16:23] [P1] playing land plains
+[20:16:26] [P0] playing land mountain
+[20:16:31] [P1] playing land swamp
+[20:16:35] [P0] playing land forest
+[20:16:35] [P0] casts grizzly bears (oid=12)
+[20:16:35] [P0] action confirmed (stack): grizzly bears oid 12
+[20:16:35] [P0] tap land for mana used_for=generic
+[20:16:35] [P0] submitting interaction iid=UTVSPL.0.68 choice=UTVSPL.0.68.c1 (Mountain)
+[20:16:40] [P1] playing land swamp
+[20:16:43] [P0] playing land mountain
+[20:16:44] [P0] casts zariel, archduke of avernus (oid=1)
+[20:16:44] [P0] action confirmed (stack): zariel, archduke of avernus oid 1
+[20:16:44] [watch] Zariel loyalty=4 (turn 7)
+[20:16:44] === stage -> LOYAL1 ===
+[20:16:45] [P0] Zariel loyalty=4 legacy_activate=False vi_activate=False
+[20:16:46] [P0] activates Zariel +1 (ability_index 0)
+[20:16:46] [P0] action confirmed (battlefield): Zariel +1 oid 1
+[20:16:46] [watch] Zariel loyalty=5 (turn 7)
+[20:16:46] === stage -> LOYAL2 ===
+[20:16:49] [P1] playing land island
+[20:16:53] [P0] playing land forest
+[20:16:53] [P0] activates Zariel +1 (ability_index 0)
+[20:16:53] [P0] action confirmed (battlefield): Zariel +1 oid 1
+[20:16:53] [watch] Zariel loyalty=6 (turn 9)
+[20:16:53] === stage -> ACTIVATE ===
+[20:16:58] [P1] playing land plains
+[20:17:01] exported pre_activate.json
+[20:17:01] [P0] activates Zariel ult (ability_index 2)
+[20:17:02] [P0] action confirmed (graveyard): Zariel ult oid 1
+[20:17:02] exported post_activate.json
+[20:17:02] [watch] post-ult emblem scan: []
+[20:17:02] === stage -> COMBAT ===
+[20:17:03] [P0] declares attackers: [12] -> P1
+[20:17:08] exported post.json
+[20:17:08] === DONE (post-combat main reached) ===
+[20:17:08] A1_setup_ok: passed
+[20:17:08] A2_loyalty_paid: passed
+[20:17:08] A3_emblem_created: failed
+[20:17:08] A4_target_prompt: failed
+[20:17:08] A5_untap_resolves: failed
+[20:17:08] A6_additional_combat: failed
+[20:17:09] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_loyalty_paid": "passed", "A3_emblem_created": "failed", "A4_target_prompt": "failed", "A5_untap_resolves": "failed", "A6_additional_combat": "failed"}
+[20:17:09] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6864/run-6864-reval-v01100-20261015-2015/summary.png
+[20:17:09] copied driver into evidence dir
