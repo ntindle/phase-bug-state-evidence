@@ -1,0 +1,21 @@
+[23:25:40] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[23:25:40] data-level check: ok=True looting_shards=['Red']
+[23:25:41] game=X2WF9Y run=run-9728-v01110-20261016-2342
+[23:25:41] [P0] keep 7: ['faithless looting', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain']
+[23:25:41] [P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[23:25:41] DIAG turn=1 phase=Untap stage=setup looting_zone=Hand stack=0 discard_picks=0
+[23:25:42] [P1] playing land forest
+[23:25:45] [P0] playing land mountain
+[23:25:45] exporting pre (true pre-cast state)
+[23:25:45] exported pre.json (turn=2)
+[23:25:45] [P0] casting faithless looting (oid 57) needs={'R': 1} via legacy
+[23:25:45] STAGE -> looting_cast (Looting submitted)
+[23:25:45] [P0] cast confirmed (stack): faithless looting oid 57
+[23:25:45] [P0] Looting discard pause observed via vi (kind=select, n=2, cands=8); exporting mid_pause before answering
+[23:25:46] exported mid_pause.json (turn=2)
+[23:25:46] [P0] answering Looting discard: ['mountain', 'mountain']
+[23:25:46] Looting resolved into P0 graveyard with empty stack; exporting post
+[23:25:46] exported post.json (turn=2)
+[23:25:46] loop ended ok=True stage=done
+[23:25:46] verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_cast_paid": "passed", "A3_discard_pause": "passed", "A4_final_part_timing": "failed", "A5_mid_pause_zone": "failed", "A6_cleanup": "passed"}
+[23:25:46] closing logs before manifest computation
