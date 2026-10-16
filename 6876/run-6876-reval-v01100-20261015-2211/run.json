@@ -1,0 +1,84 @@
+{
+ "issue": 6876,
+ "run_id": "run-6876-reval-v01100-20261015-2211",
+ "game_code": "AFNI5Y",
+ "started_at": "2026-10-16T03:13:49",
+ "duration_s": 80.4,
+ "server_identity": {
+  "validated_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "7507284ca7cb5838f85ee4e6f025b6d0545773ca48abc45a8372de7280a67f1a",
+ "decks": {
+  "P0": [
+   [
+    "Agent Maria Hill",
+    4
+   ],
+   [
+    "Beast Mode",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Plains",
+    15
+   ],
+   [
+    "Forest",
+    15
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    40
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-142 port of driver/scenario_6876_01070.py (protocol 130 / v0.107.0) for pinned v0.110.0; behavioral contract A1..A5 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action on P0 main/priority; the v0.110.0 engine auto-taps reliably, so manual mana taps engage only as a fallback if a cast sits >90s with a tap menu visible; cast-confirmation guard after every CastSpell (protocol-118/120/130/142 necessity).",
+  "Beast Mode prompts answered generically: target selection -> the Bears (schema select/sequence or exactChoices); decideOptionalCost teamwork -> pay (bare true/false role=accept surfaces); TapCreatures payment -> Hill ONLY.",
+  "DeclareAttackers via relations-schema vi opportunity answered first (Hill alone vs P1); the vi fallback only answers relations-schema opportunities (select/sequence are decisions, never declares). P1 declares no blockers.",
+  "real_decision_pending excludes the 142 priority-menu codes; playLand vi codes answered before the decision gate; land matching via is_land().",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.110.0 parses Hill's trigger as mode=Taps with no structured teamwork qualifier (constraint/condition/origin all empty) -- the qualifier survives only in the description string, which is consistent with the runtime firing on any tap (area:parser)."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_teamwork_cast": "passed",
+  "A3_teamwork_trigger_ok": "failed",
+  "A4_attack_no_trigger": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "A1: pre turn=14 hill={'oid': '4', 'tapped': False, 'counters': 0, 'power': 2} bears=1 beast_in_hand=True",
+  "A2: beast_casts=1 teamwork_pay=1 tap_hill=1 beast_zones=['Graveyard', 'Library'] hill_tapped_post=True beast_target_hint=Grizzly Bears",
+  "A3: hill_counters_post=1 hand pre=5 post=4",
+  "A4: hill_counters_final=2 hand post=4 final=5 p1_life=16 expected=17 (hill power 3)",
+  "A5: stack_empty=True game_over=False turn=16"
+ ],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5643039882,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x Hill / 8x Beast Mode / 8x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6876_01100.py), not direct load."
+ ],
+ "setup_line": "P0: 4x Agent Maria Hill + 8x Beast Mode + 8x Grizzly Bears + 15x Plains + 15x Forest; P1: 40x Plains (passive)",
+ "contract_line": "Cast Beast Mode with teamwork paid by tapping only Hill: her trigger must put exactly one +1/+1 counter and draw one card. Attacking with Hill (a non-teamwork tap) must not fire it."
+}
