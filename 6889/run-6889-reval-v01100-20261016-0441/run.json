@@ -1,0 +1,1114 @@
+{
+ "issue": 6889,
+ "run_id": "run-6889-reval-v01100-20261016-0441",
+ "game_code": "CU90KM",
+ "started_at": "2026-10-16T04:44:06",
+ "duration_s": 41.8,
+ "server_identity": {
+  "validated_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "2e488fb08f8009865fe8892edbac9bf56e4bbaec6ab55adbe24db20540d149dd",
+ "decks": {
+  "P0": [
+   [
+    "Tolsimir, Friend to Wolves",
+    12
+   ],
+   [
+    "Forest",
+    24
+   ],
+   [
+    "Plains",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-142 port of driver/scenario_6889_01070.py (protocol 130 /v0.107.0) for pinned v0.110.0; behavioral contract A1..A6 andverdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action; the engine auto-taps reliably;manual taps are a >90s fallback only; the cast-confirmation guard(AGENTS.md 2026-10-09) holds priority with no new main-phase playsuntil the submitted Tolsimir object leaves Hand.",
+  "Tolsimir cast needs 2 untapped Forests + 1 untapped Plains + 2 more untapped lands ({2}{G}{G}{W}); pre.json exported with P0 life right before the cast.",
+  "The fight prompt (if any) would be a vi schema opportunity whose candidates reference P1 battlefield creatures; answered by targeting a Grizzly Bear. All TRIGGER-stage prompt shapes are logged to the wire log.",
+  "Wolf-trigger stack scan collects every nested string of each stack entry (no assumed description nesting) and matches 'wolf' + 'gain 3 life'.",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.110.0 parses the Wolf-enter trigger with execute.effect=GainLife{3}, sub_ability=null, valid_target=null -- the fight clause is absent at the data layer exactly as on v0.80.0/v0.103.0 (area:parser).",
+  "Post-run correction (2026-10-16): the scripted verdict 'blocked' (A1 bear count 1/2) was overridden to 'reproduced' with documentation in assertions.json/run.json, because the v0.110.0 parse regression makes the reported no-fight failure AND the life-gain failure decisive on the saved authoritative states; re-running for a second bear would not change any assertion outcome (target_prompt null)."
+ ],
+ "assertions": {
+  "A1_setup_ok": "failed",
+  "A1_setup_ok_detail": "tolsimir_bf=True voja_bf=True p1_bears_mid=1 NOTE: P1 fielded only 1 bear at the mid export (P1 drew no second bear before Voja entered); irrelevant to the outcome -- the v0.110.0 trigger carries target_prompt=null and no target definition, so no fight prompt is possible at any bear count.",
+  "A2_wolf_trigger": "passed",
+  "A2_wolf_trigger_detail": {
+   "trigger_stack_ids": [
+    121,
+    123
+   ],
+   "resolved": true,
+   "stack_entry": {
+    "id": 121,
+    "source_id": 48,
+    "controller": 0,
+    "kind": {
+     "type": "TriggeredAbility",
+     "data": {
+      "source_id": 48,
+      "ability": {
+       "effect": {
+        "type": "Token",
+        "name": "Voja, Friend to Elves",
+        "power": {
+         "type": "Fixed",
+         "value": 3
+        },
+        "toughness": {
+         "type": "Fixed",
+         "value": 3
+        },
+        "types": [
+         "Creature",
+         "Wolf"
+        ],
+        "colors": [
+         "Green",
+         "White"
+        ],
+        "keywords": [],
+        "tapped": false,
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "owner": {
+         "type": "Controller"
+        },
+        "enters_attacking": false,
+        "supertypes": [
+         "Legendary"
+        ]
+       },
+       "targets": [],
+       "source_id": 48,
+       "source_incarnation": 3,
+       "trigger_source": {
+        "identity": {
+         "reference": {
+          "object_id": 48,
+          "incarnation": 3
+         },
+         "expected_zone": "Battlefield"
+        },
+        "lki": {
+         "name": "Tolsimir, Friend to Wolves",
+         "power": 3,
+         "toughness": 3,
+         "base_power": 3,
+         "base_toughness": 3,
+         "mana_value": 5,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Elf",
+          "Scout"
+         ],
+         "supertypes": [
+          "Legendary"
+         ],
+         "keywords": [],
+         "colors": [
+          "Green",
+          "White"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": false,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 48,
+        "printed_ref": {
+         "oracle_id": "3cef501b-5ce1-4699-89a5-3949f7e65bf1",
+         "face_name": "Tolsimir, Friend to Wolves"
+        },
+        "is_token": false,
+        "face_down": false,
+        "mana_cost": {
+         "type": "Cost",
+         "shards": [
+          "Green",
+          "Green",
+          "White"
+         ],
+         "generic": 2
+        },
+        "transformed": false,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "ChangesZone",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Token",
+             "name": "Voja, Friend to Elves",
+             "power": {
+              "type": "Fixed",
+              "value": 3
+             },
+             "toughness": {
+              "type": "Fixed",
+              "value": 3
+             },
+             "types": [
+              "Creature",
+              "Wolf"
+             ],
+             "colors": [
+              "Green",
+              "White"
+             ],
+             "keywords": [],
+             "tapped": false,
+             "count": {
+              "type": "Fixed",
+              "value": 1
+             },
+             "owner": {
+              "type": "Controller"
+             },
+             "enters_attacking": false,
+             "supertypes": [
+              "Legendary"
+             ]
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "SelfRef"
+           },
+           "origin": null,
+           "destination": "Battlefield",
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         },
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 1
+           }
+          },
+          "definition": {
+           "mode": "ChangesZone",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Unimplemented",
+             "name": "unparsed_verb_arguments",
+             "description": "gain 3 life and that creature fights up to one target creature you don't control"
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "Typed",
+            "type_filters": [
+             {
+              "Subtype": "Wolf"
+             }
+            ],
+            "controller": "You",
+            "properties": []
+           },
+           "origin": null,
+           "destination": "Battlefield",
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": null,
+           "valid_source": null,
+           "description": "Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 12,
+        "entered_battlefield_turn": 10,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": true,
+        "colors_spent_to_cast": {
+         "white": 3,
+         "green": 2
+        },
+        "mana_spent_to_cast_amount": 5,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 18,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 58,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 60,
+          "lki": {
+           "name": "Plains",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Plains"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 42,
+          "lki": {
+           "name": "Plains",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Plains"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 32,
+          "lki": {
+           "name": "Plains",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Plains"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "trigger_definition_ref": {
+        "source": {
+         "object_id": 48,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        }
+       },
+       "controller": 0,
+       "original_controller": 0,
+       "kind": "Spell",
+       "sub_ability": null,
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "cast_from_zone": "Hand"
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "ability_index": 0,
+       "may_trigger_origin": {
+        "type": "Definition",
+        "definition_ref": {
+         "source": {
+          "object_id": 48,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         }
+        }
+       }
+      },
+      "condition": null,
+      "trigger_event": {
+       "type": "ZoneChanged",
+       "data": {
+        "object_id": 48,
+        "from": "Stack",
+        "to": "Battlefield",
+        "record": {
+         "object_id": 48,
+         "name": "Tolsimir, Friend to Wolves",
+         "core_types": [
+          "Creature"
+         ],
+         "subtypes": [
+          "Elf",
+          "Scout"
+         ],
+         "supertypes": [
+          "Legendary"
+         ],
+         "keywords": [],
+         "trigger_definitions": [
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 0
+            }
+           },
+           "definition": {
+            "mode": "ChangesZone",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Token",
+              "name": "Voja, Friend to Elves",
+              "power": {
+               "type": "Fixed",
+               "value": 3
+              },
+              "toughness": {
+               "type": "Fixed",
+               "value": 3
+              },
+              "types": [
+               "Creature",
+               "Wolf"
+              ],
+              "colors": [
+               "Green",
+               "White"
+              ],
+              "keywords": [],
+              "tapped": false,
+              "count": {
+               "type": "Fixed",
+               "value": 1
+              },
+              "owner": {
+               "type": "Controller"
+              },
+              "enters_attacking": false,
+              "supertypes": [
+               "Legendary"
+              ]
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "valid_card": {
+             "type": "SelfRef"
+            },
+            "origin": null,
+            "destination": "Battlefield",
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": null,
+            "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+            "constraint": null,
+            "condition": null,
+            "batched": false
+           }
+          },
+          {
+           "occurrence": {
+            "type": "Printed",
+            "data": {
+             "base_set": 1,
+             "printed_index": 1
+            }
+           },
+           "definition": {
+            "mode": "ChangesZone",
+            "execute": {
+             "kind": "Spell",
+             "effect": {
+              "type": "Unimplemented",
+              "name": "unparsed_verb_arguments",
+              "description": "gain 3 life and that creature fights up to one target creature you don't control"
+             },
+             "cost": null,
+             "sub_ability": null,
+             "duration": null,
+             "description": null,
+             "target_prompt": null,
+             "condition": null,
+             "optional_targeting": false,
+             "optional": false,
+             "forward_result": false
+            },
+            "valid_card": {
+             "type": "Typed",
+             "type_filters": [
+              {
+               "Subtype": "Wolf"
+              }
+             ],
+             "controller": "You",
+             "properties": []
+            },
+            "origin": null,
+            "destination": "Battlefield",
+            "trigger_zones": [
+             "Battlefield"
+            ],
+            "phase": null,
+            "optional": false,
+            "damage_kind": "Any",
+            "secondary": false,
+            "valid_target": null,
+            "valid_source": null,
+            "description": "Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+            "constraint": null,
+            "condition": null,
+            "batched": false
+           }
+          }
+         ],
+         "trigger_source_context": {
+          "identity": {
+           "reference": {
+            "object_id": 48,
+            "incarnation": 2
+           },
+           "expected_zone": "Stack"
+          },
+          "lki": {
+           "name": "Tolsimir, Friend to Wolves",
+           "power": 3,
+           "toughness": 3,
+           "base_power": 3,
+           "base_toughness": 3,
+           "mana_value": 5,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Creature"
+           ],
+           "subtypes": [
+            "Elf",
+            "Scout"
+           ],
+           "supertypes": [
+            "Legendary"
+           ],
+           "keywords": [],
+           "colors": [
+            "Green",
+            "White"
+           ],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": false,
+           "is_suspected": false,
+           "attachments": []
+          },
+          "card_id": 48,
+          "printed_ref": {
+           "oracle_id": "3cef501b-5ce1-4699-89a5-3949f7e65bf1",
+           "face_name": "Tolsimir, Friend to Wolves"
+          },
+          "is_token": false,
+          "face_down": false,
+          "mana_cost": {
+           "type": "Cost",
+           "shards": [
+            "Green",
+            "Green",
+            "White"
+           ],
+           "generic": 2
+          },
+          "transformed": false,
+          "is_renowned": false,
+          "is_saddled": false,
+          "trigger_entries": [
+           {
+            "occurrence": {
+             "type": "Printed",
+             "data": {
+              "base_set": 1,
+              "printed_index": 0
+             }
+            },
+            "definition": {
+             "mode": "ChangesZone",
+             "execute": {
+              "kind": "Spell",
+              "effect": {
+               "type": "Token",
+               "name": "Voja, Friend to Elves",
+               "power": {
+                "type": "Fixed",
+                "value": 3
+               },
+               "toughness": {
+                "type": "Fixed",
+                "value": 3
+               },
+               "types": [
+                "Creature",
+                "Wolf"
+               ],
+               "colors": [
+                "Green",
+                "White"
+               ],
+               "keywords": [],
+               "tapped": false,
+               "count": {
+                "type": "Fixed",
+                "value": 1
+               },
+               "owner": {
+                "type": "Controller"
+               },
+               "enters_attacking": false,
+               "supertypes": [
+                "Legendary"
+               ]
+              },
+              "cost": null,
+              "sub_ability": null,
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+             },
+             "valid_card": {
+              "type": "SelfRef"
+             },
+             "origin": null,
+             "destination": "Battlefield",
+             "trigger_zones": [
+              "Battlefield"
+             ],
+             "phase": null,
+             "optional": false,
+             "damage_kind": "Any",
+             "secondary": false,
+             "valid_target": null,
+             "valid_source": null,
+             "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+             "constraint": null,
+             "condition": null,
+             "batched": false
+            }
+           },
+           {
+            "occurrence": {
+             "type": "Printed",
+             "data": {
+              "base_set": 1,
+              "printed_index": 1
+             }
+            },
+            "definition": {
+             "mode": "ChangesZone",
+             "execute": {
+              "kind": "Spell",
+              "effect": {
+               "type": "Unimplemented",
+               "name": "unparsed_verb_arguments",
+               "description": "gain 3 life and that creature fights up to one target creature you don't control"
+              },
+              "cost": null,
+              "sub_ability": null,
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+             },
+             "valid_card": {
+              "type": "Typed",
+              "type_filters": [
+               {
+                "Subtype": "Wolf"
+               }
+              ],
+              "controller": "You",
+              "properties": []
+             },
+             "origin": null,
+             "destination": "Battlefield",
+             "trigger_zones": [
+              "Battlefield"
+             ],
+             "phase": null,
+             "optional": false,
+             "damage_kind": "Any",
+             "secondary": false,
+             "valid_target": null,
+             "valid_source": null,
+             "description": "Whenever a Wolf you control enters, you gain 3 life and that creature fights up to one target creature you don't control.",
+             "constraint": null,
+             "condition": null,
+             "batched": false
+            }
+           }
+          ],
+          "timestamp": 0,
+          "combat_status": {
+           "attacking": false,
+           "blocking": false,
+           "blocked": false,
+           "attacking_alone": false,
+           "blocking_alone": false,
+           "defending_player": null
+          },
+          "cast_from_zone": "Hand",
+          "cast_controller": 0,
+          "phase_status": {
+           "status": "PhasedIn"
+          },
+          "mana_spent_to_cast": true,
+          "colors_spent_to_cast": {
+           "white": 3,
+           "green": 2
+          },
+          "mana_spent_to_cast_amount": 5,
+          "mana_spent_source_snapshots": [
+           {
+            "source_id": 18,
+            "lki": {
+             "name": "Forest",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Forest"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 58,
+            "lki": {
+             "name": "Forest",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Forest"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 60,
+            "lki": {
+             "name": "Plains",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Plains"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 42,
+            "lki": {
+             "name": "Plains",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Plains"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           },
+           {
+            "source_id": 32,
+            "lki": {
+             "name": "Plains",
+             "power": null,
+             "toughness": null,
+             "base_power": null,
+             "base_toughness": null,
+             "mana_value": 0,
+             "controller": 0,
+             "owner": 0,
+             "card_types": [
+              "Land"
+             ],
+             "subtypes": [
+              "Plains"
+             ],
+             "supertypes": [
+              "Basic"
+             ],
+             "keywords": [],
+             "colors": [],
+             "chosen_attributes": [],
+             "counters": {},
+             "tapped": true,
+             "is_suspected": false,
+             "attachments": []
+            }
+           }
+          ]
+         },
+         "power": 3,
+         "toughness": 3,
+         "base_power": 3,
+         "base_toughness": 3,
+         "colors": [
+          "Green",
+          "White"
+         ],
+         "mana_value": 5,
+         "controller": 0,
+         "owner": 0,
+         "arrival": {
+          "owner": 0,
+          "controller": 0
+         },
+         "from_zone": "Stack",
+         "cast_from_zone": "Hand",
+         "played_from_zone": null,
+         "to_zone": "Battlefield",
+         "attachments": [],
+         "linked_exile_snapshot": [],
+         "is_token": false,
+         "combat_status": {
+          "attacking": false,
+          "blocking": false,
+          "blocked": false,
+          "attacking_alone": false,
+          "blocking_alone": false,
+          "defending_player": null
+         },
+         "co_departed": [],
+         "entered_incarnation": 3,
+         "attached_to": null,
+         "turn_zone_change_index": 3,
+         "recorded_turn_number": 10,
+         "is_suspected": false
+        }
+       }
+      },
+      "description": "When ~ enters, create Voja, Friend to Elves, a legendary 3/3 green and white Wolf creature token.",
+      "source_name": "Tolsimir, Friend to Wolves"
+     }
+    }
+   }
+  },
+  "A3_life_gain": "failed",
+  "A3_life_gain_detail": "P0 life pre=20 post-trigger=20 (expect +3) REGRESSION vs v0.107.0: the wolf-enter trigger now parses as Unimplemented/unparsed_verb_arguments (see data_evidence.json diff), so the life gain itself no longer happens; the trigger resolved on an empty stack in post.json with life unchanged.",
+  "A4_fight_prompted": "failed",
+  "A4_fight_prompted_detail": {
+   "fight_prompted": false,
+   "fight_answered": false,
+   "target_oid": null,
+   "wf_seq": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+   ],
+   "note": "direct stack evidence: the trigger carried no target definition (see A2 detail + data_evidence.json); no target-selection wait appeared On v0.110.0 the trigger is Unimplemented by parse, so no fight targeting can exist (target_prompt null, sub_ability null)."
+  },
+  "A5_fight_resolved": "not-run",
+  "A5_fight_resolved_detail": "no fight prompt; nothing to resolve",
+  "A6_cleanup": "passed",
+  "A6_cleanup_detail": "stack_empty=True trigger_resolved=True"
+ },
+ "notes": [
+  "Verdict corrected from the scenario's scripted 'blocked' (its A1+A2+A3-pass shorthand was calibrated on v0.107.0's GainLife{3} parse; on v0.110.0 A3 cannot pass by construction). Playbook-grounded reproduced: the reported no-fight failure is recorded on authoritative states, plus the clearly-identified related regression that the life gain is also gone.",
+  "P1 fielded only 1 Grizzly Bear at the mid export (no second bear drawn before Voja entered); irrelevant to the outcome -- target_prompt=null on this build, so no fight prompt is possible at any bear count.",
+  "mid_trigger.json captures the wolf-enter trigger ON THE STACK (id 123, TriggeredAbility, effect.type=Unimplemented); post.json shows it resolved with an empty stack and life unchanged at 20."
+ ],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5644562700,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Tolsimir / 12x Grizzly Bears density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6889_01100.py), not direct load.",
+  "The decline branch ('up to one' choosing zero targets) was not separately exercised -- no target prompt appeared at all.",
+  "Native AI seats not used; the trigger/fight path is engine-level and seat-independent.",
+  "Not tested on the report's original build; verdict is scoped to v0.110.0, not a fix claim.",
+  "Only 1 P1 bear on the battlefield at the trigger window (A1 recorded as failed); the fight prompt is impossible on this build regardless of bear count (target_prompt null)."
+ ],
+ "setup_line": "P0: 12x Tolsimir, Friend to Wolves + 24x Forest + 24x Plains; P1: 12x Grizzly Bears + 48x Forest (fields 2 bears, then holds)",
+ "contract_line": "Cast Tolsimir; when the Voja token enters, the Wolf-enter trigger must gain 3 life AND offer the fight target prompt ('fights up to one target creature you don't control').",
+ "result": "v0.110.0 re-validation: REPRODUCED, and strictly worse than reported. The reported failure persists -- the wolf-enter trigger never offers the fight target prompt and no fight resolves. Additionally the v0.110.0 card-data parser regressed: Tolsimir's wolf-enter trigger now parses as execute.effect=Unimplemented/unparsed_verb_arguments (v0.107.0 parsed it as GainLife{3}; oracle text identical in both releases), so the trigger resolved on the stack (mid_trigger.json stack id 123) doing nothing at all: P0 life stayed 20 (was +3 on v0.107.0), no target prompt, target_prompt=null, sub_ability=null. The whole trigger effect is dead at the data layer (area:parser)."
+}
