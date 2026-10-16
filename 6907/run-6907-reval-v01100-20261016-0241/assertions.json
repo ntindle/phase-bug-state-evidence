@@ -1,0 +1,1728 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_control_move": "passed",
+    "A3_counter_prompted": "failed",
+    "A4_exact_move": "not-run",
+    "A5_default_documents": "passed",
+    "A6_cleanup": "passed"
+  },
+  "details": {
+    "A1_setup_ok": "ng=True warden=True township=True bears=True warden_counters={'shield': 2} single_shield_type=True p0_main=True turn=64",
+    "A2_control_move": "warden delta={'shield': -1} {'shield': 2}->{'shield': 1}; bears delta={'shield': 1} {}->{'shield': 1}",
+    "A3_counter_prompted": "no counter-type choice offered during PROOF activation (decisions recorded in PROOF: 0)",
+    "A4_exact_move": "no counter choice was offered (A3 failed)",
+    "A5_default_documents": "engine default moved counter class(es) ['shield']: warden {'P1P1': 1, 'shield': 1}->{'P1P1': 1}, bears {'P1P1': 1, 'shield': 1}->{'P1P1': 1, 'shield': 2}",
+    "A6_cleanup": "post_proof turn=66 phase=PreCombatMain stack_empty=True"
+  },
+  "notes": [
+    "control-stage counter-like decisions: 0"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "OptionalEffectChoice",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority"
+  ],
+  "target_sels": [
+    {
+      "interactionId": "3JYNAX.0.995",
+      "turn": 64,
+      "phase": "PreCombatMain",
+      "stage": "CONTROL",
+      "candidates": [
+        {
+          "choice_id": "3JYNAX.0.995.t0",
+          "oid": "48",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t1",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t2",
+          "oid": "33",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t3",
+          "oid": "22",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t4",
+          "oid": "21",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t5",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t6",
+          "oid": "34",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t7",
+          "oid": "60",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t8",
+          "oid": "16",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t9",
+          "oid": "12",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t10",
+          "oid": "15",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t11",
+          "oid": "6",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t12",
+          "oid": "53",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t13",
+          "oid": "58",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t14",
+          "oid": "29",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t15",
+          "oid": "28",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t16",
+          "oid": "2",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t17",
+          "oid": "49",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t18",
+          "oid": "24",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t19",
+          "oid": "7",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t20",
+          "oid": "44",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t21",
+          "oid": "54",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t22",
+          "oid": "50",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t23",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t24",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t25",
+          "oid": "40",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t26",
+          "oid": "35",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t27",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t28",
+          "oid": "47",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t29",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t30",
+          "oid": "38",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t31",
+          "oid": "5",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t32",
+          "oid": "36",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.995.t33",
+          "oid": "17",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        }
+      ]
+    },
+    {
+      "interactionId": "3JYNAX.0.996",
+      "turn": 64,
+      "phase": "PreCombatMain",
+      "stage": "CONTROL",
+      "candidates": [
+        {
+          "choice_id": "3JYNAX.0.996.t0",
+          "oid": "91",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t1",
+          "oid": "48",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t2",
+          "oid": "63",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t3",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t4",
+          "oid": "111",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t5",
+          "oid": "33",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t6",
+          "oid": "114",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t7",
+          "oid": "22",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t8",
+          "oid": "115",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t9",
+          "oid": "21",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t10",
+          "oid": "94",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t11",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t12",
+          "oid": "34",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t13",
+          "oid": "100",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t14",
+          "oid": "60",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t15",
+          "oid": "67",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t16",
+          "oid": "16",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t17",
+          "oid": "12",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t18",
+          "oid": "105",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t19",
+          "oid": "15",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t20",
+          "oid": "72",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t21",
+          "oid": "6",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t22",
+          "oid": "88",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t23",
+          "oid": "53",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t24",
+          "oid": "110",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t25",
+          "oid": "58",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t26",
+          "oid": "108",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t27",
+          "oid": "29",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t28",
+          "oid": "97",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t29",
+          "oid": "28",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t30",
+          "oid": "98",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t31",
+          "oid": "2",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t32",
+          "oid": "103",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t33",
+          "oid": "49",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t34",
+          "oid": "106",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t35",
+          "oid": "24",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t36",
+          "oid": "117",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t37",
+          "oid": "7",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t38",
+          "oid": "116",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t39",
+          "oid": "44",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t40",
+          "oid": "92",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t41",
+          "oid": "54",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t42",
+          "oid": "104",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t43",
+          "oid": "50",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t44",
+          "oid": "64",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t45",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t46",
+          "oid": "83",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t47",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t48",
+          "oid": "61",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t49",
+          "oid": "40",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t50",
+          "oid": "73",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t51",
+          "oid": "35",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t52",
+          "oid": "82",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t53",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t54",
+          "oid": "112",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t55",
+          "oid": "47",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t56",
+          "oid": "87",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t57",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t58",
+          "oid": "69",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t59",
+          "oid": "38",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t60",
+          "oid": "120",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t61",
+          "oid": "5",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t62",
+          "oid": "84",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t63",
+          "oid": "36",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t64",
+          "oid": "101",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.996.t65",
+          "oid": "17",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        }
+      ]
+    },
+    {
+      "interactionId": "3JYNAX.0.1038",
+      "turn": 66,
+      "phase": "PreCombatMain",
+      "stage": "PROOF",
+      "candidates": [
+        {
+          "choice_id": "3JYNAX.0.1038.t0",
+          "oid": "48",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t1",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t2",
+          "oid": "33",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t3",
+          "oid": "22",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t4",
+          "oid": "21",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t5",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t6",
+          "oid": "34",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t7",
+          "oid": "60",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t8",
+          "oid": "16",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t9",
+          "oid": "12",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t10",
+          "oid": "15",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t11",
+          "oid": "6",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t12",
+          "oid": "53",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t13",
+          "oid": "58",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t14",
+          "oid": "29",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t15",
+          "oid": "28",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t16",
+          "oid": "2",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t17",
+          "oid": "49",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t18",
+          "oid": "24",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t19",
+          "oid": "7",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t20",
+          "oid": "44",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t21",
+          "oid": "54",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t22",
+          "oid": "50",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t23",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t24",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t25",
+          "oid": "40",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t26",
+          "oid": "35",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t27",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t28",
+          "oid": "47",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t29",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t30",
+          "oid": "38",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t31",
+          "oid": "5",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t32",
+          "oid": "36",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1038.t33",
+          "oid": "17",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        }
+      ]
+    },
+    {
+      "interactionId": "3JYNAX.0.1039",
+      "turn": 66,
+      "phase": "PreCombatMain",
+      "stage": "PROOF",
+      "candidates": [
+        {
+          "choice_id": "3JYNAX.0.1039.t0",
+          "oid": "91",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t1",
+          "oid": "48",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t2",
+          "oid": "63",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t3",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t4",
+          "oid": "111",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t5",
+          "oid": "33",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t6",
+          "oid": "114",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t7",
+          "oid": "22",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t8",
+          "oid": "115",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t9",
+          "oid": "21",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t10",
+          "oid": "94",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t11",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t12",
+          "oid": "34",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t13",
+          "oid": "100",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t14",
+          "oid": "60",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t15",
+          "oid": "67",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t16",
+          "oid": "16",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t17",
+          "oid": "12",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t18",
+          "oid": "105",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t19",
+          "oid": "15",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t20",
+          "oid": "72",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t21",
+          "oid": "6",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t22",
+          "oid": "88",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t23",
+          "oid": "53",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t24",
+          "oid": "110",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t25",
+          "oid": "58",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t26",
+          "oid": "108",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t27",
+          "oid": "29",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t28",
+          "oid": "97",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t29",
+          "oid": "28",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t30",
+          "oid": "98",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t31",
+          "oid": "2",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t32",
+          "oid": "103",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t33",
+          "oid": "49",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t34",
+          "oid": "106",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t35",
+          "oid": "24",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t36",
+          "oid": "117",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t37",
+          "oid": "7",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t38",
+          "oid": "116",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t39",
+          "oid": "44",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t40",
+          "oid": "92",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t41",
+          "oid": "54",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t42",
+          "oid": "104",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t43",
+          "oid": "50",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t44",
+          "oid": "64",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t45",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t46",
+          "oid": "83",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t47",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t48",
+          "oid": "61",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t49",
+          "oid": "40",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t50",
+          "oid": "73",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t51",
+          "oid": "35",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t52",
+          "oid": "82",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t53",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t54",
+          "oid": "112",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t55",
+          "oid": "47",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t56",
+          "oid": "87",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t57",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t58",
+          "oid": "69",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t59",
+          "oid": "38",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t60",
+          "oid": "120",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t61",
+          "oid": "5",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t62",
+          "oid": "84",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t63",
+          "oid": "36",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t64",
+          "oid": "101",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t65",
+          "oid": "17",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        },
+        {
+          "choice_id": "3JYNAX.0.1039.t66",
+          "oid": "109",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        }
+      ]
+    }
+  ],
+  "decisions": [],
+  "counter_choice_pick": null,
+  "data_level_ok": true
+}
