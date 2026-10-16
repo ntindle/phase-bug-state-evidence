@@ -1,0 +1,169 @@
+{
+ "name": "Shadow Kin",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Blue"
+  ],
+  "generic": 3
+ },
+ "card_type": {
+  "supertypes": [],
+  "core_types": [
+   "Creature"
+  ],
+  "subtypes": [
+   "Shapeshifter"
+  ]
+ },
+ "power": {
+  "type": "Fixed",
+  "value": 2
+ },
+ "toughness": {
+  "type": "Fixed",
+  "value": 2
+ },
+ "loyalty": null,
+ "defense": null,
+ "oracle_text": "Flash\nAt the beginning of your upkeep, each player mills three cards. You may exile a creature card from among the cards milled this way. If you do, this creature becomes a copy of that card, except it has this ability.",
+ "non_ability_text": null,
+ "flavor_name": null,
+ "keywords": [
+  "Flash"
+ ],
+ "abilities": [],
+ "triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "Mill",
+     "count": {
+      "type": "Fixed",
+      "value": 3
+     },
+     "target": {
+      "type": "Controller"
+     },
+     "destination": "Graveyard"
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "ChangeZone",
+      "origin": null,
+      "destination": "Exile",
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        "Creature"
+       ],
+       "controller": null,
+       "properties": []
+      },
+      "owner_library": false,
+      "enter_transformed": false,
+      "enter_tapped": false,
+      "enters_attacking": false
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "BecomeCopy",
+       "target": {
+        "type": "ParentTarget"
+       },
+       "duration": "Permanent",
+       "additional_modifications": [
+        {
+         "type": "RetainPrintedTriggerFromSource",
+         "source_trigger_index": 0
+        }
+       ]
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": "Permanent",
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "EffectOutcome",
+       "signal": "OptionalEffectPerformed"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": true,
+     "target_choice_timing": "Resolution",
+     "forward_result": false,
+     "sub_link": "SequentialSibling"
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "player_scope": {
+     "type": "All"
+    }
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "Upkeep",
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of your upkeep, each player mills three cards. You may exile a creature card from among the cards milled this way. If you do, ~ becomes a copy of that card, except it has this ability.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": null,
+   "batched": false
+  }
+ ],
+ "static_abilities": [],
+ "replacements": [],
+ "color_override": null,
+ "color_identity": [
+  "Blue"
+ ],
+ "scryfall_oracle_id": "7ecc506e-bed0-4ae2-9d2f-5143ef63f62c",
+ "metadata": {
+  "source_printing_ids": [
+   "00ca621f-c409-4255-828b-c9957e82c06f",
+   "6a2a7521-dab2-433d-985a-f647e64ed78b"
+  ]
+ },
+ "legalities": {
+  "commander": "legal",
+  "duel": "legal",
+  "legacy": "legal",
+  "oathbreaker": "legal",
+  "vintage": "legal"
+ },
+ "printings": [
+  "MIC"
+ ],
+ "rarities": [
+  "rare"
+ ]
+}
