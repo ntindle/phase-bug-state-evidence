@@ -1,0 +1,71 @@
+[00:14:25] server identity hashes verified against on-disk pinned artifacts
+[00:14:28] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[00:14:28] data-level: counter=P1P1 count={'type': 'UpTo', 'max': {'type': 'Ref', 'qty': {'type': 'LifeGainedThisTurn', 'player': {'type': 'Controller'}}}} multi_target={"min": 0, "max": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}}
+[00:14:29] P0 creating game...
+[00:14:29] P1 joining...
+[00:14:30] game LZZEY8; P0 seat=0 P1 seat=1
+[00:14:30] [P0] mulligan -> Mulligan (hand=['grizzly bears', 'forest', 'lathiel, the bounteous dawn', 'grizzly bears', 'grizzly bears', 'forest', 'lathiel, the bounteous dawn'])
+[00:14:30] [P1] mulligan -> Keep (hand=['grizzly bears', 'grizzly bears', 'forest', 'grizzly bears', 'forest', 'grizzly bears', 'forest'])
+[00:14:31] [P0] mulligan -> Mulligan (hand=['forest', 'grizzly bears', 'forest', 'plains', 'forest', 'plains', 'grizzly bears'])
+[00:14:31] [P0] mulligan -> Keep (hand=['forest', 'forest', 'lathiel, the bounteous dawn', 'grizzly bears', 'lathiel, the bounteous dawn', 'plains', 'forest'])
+[00:14:32] [P0] bottoms 2
+[00:14:32] [P0] playing land forest
+[00:14:36] [P1] playing land forest
+[00:14:40] [P0] playing land forest
+[00:14:44] [P1] playing land forest
+[00:14:45] [P1] casts Grizzly Bears (75)
+[00:14:45] [P0] cast confirmed (stack): Grizzly Bears oid 75
+[00:14:49] [P0] playing land forest
+[00:14:53] [P1] casts Grizzly Bears (89)
+[00:14:53] [P0] cast confirmed (stack): Grizzly Bears oid 89
+[00:14:54] [P1] playing land forest
+[00:14:55] [P1] declare no attackers
+[00:14:58] [P0] playing land plains
+[00:14:58] [P0] casts Lathiel, the Bounteous Dawn (25)
+[00:14:58] [P0] cast confirmed (stack): Lathiel, the Bounteous Dawn oid 25
+[00:15:02] [P1] playing land forest
+[00:15:03] [P1] declare no attackers
+[00:15:06] [P0] playing land plains
+[00:15:06] [P0] casts Grizzly Bears (43)
+[00:15:07] [P0] cast confirmed (stack): Grizzly Bears oid 43
+[00:15:07] === stage -> ATTACK (turn 9) ===
+[00:15:08] [P0] attacks with Lathiel alone (turn 9)
+[00:15:08] attack resolved: Lathiel attacking (turn 9)
+[00:15:14] [P1] declare no blockers
+[00:15:16] === stage -> ENDSTEP (turn 9) ===
+[00:15:16] Lathiel trigger on stack at End; P0 life=22
+[00:15:16] exported pre_trigger.json
+[00:15:21] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[00:15:21] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=3 nrefs=3
+[00:15:21]     cand id=LZZEY8.0.160.t0 ref=75 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[00:15:21]     cand id=LZZEY8.0.160.t1 ref=89 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[00:15:21]     cand id=LZZEY8.0.160.t2 ref=43 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[00:15:21] [P0] slot 0 targets grizzly bears oid=43 (own=True)
+[00:15:21] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[00:15:21] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=2 nrefs=2
+[00:15:21]     cand id=LZZEY8.0.161.t0 ref=75 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[00:15:21]     cand id=LZZEY8.0.161.t1 ref=89 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[00:15:21] [P0] slot 1: chosen oid=43 NOT among candidates -- distinct targets required
+[00:15:21] [P0] slot 1: trying empty selection (up-to path)
+[00:15:22] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=choose wf=Priority
+[00:15:22] [P0] Lathiel slot prompt rtype=exactChoices spec= ncands=4 nrefs=0
+[00:15:22]     cand id=LZZEY8.0.162.c0 ref=None name=? zone=? text=
+[00:15:22]     cand id=LZZEY8.0.162.c1 ref=15 name=forest zone=Battlefield text=Forest
+[00:15:22]     cand id=LZZEY8.0.162.c2 ref=39 name=plains zone=Battlefield text=Plains
+[00:15:22]     cand id=LZZEY8.0.162.c3 ref=57 name=plains zone=Battlefield text=Plains
+[00:15:22] [P0] ENDSTEP vi: canSubmit=False n_ops=0 kind=choose wf=Priority
+[00:15:22] exported post.json
+[00:15:22] post.json exported; trigger resolved; stopping
+[00:15:22] loop ended: stage=DONE elapsed=55s
+[00:15:22] A1_setup_ok: passed
+[00:15:22] A2_trigger_fired: passed
+[00:15:22] A3_budget: passed
+[00:15:22] A4_slot0_accepted: passed
+[00:15:22] A5_free_distribution: failed
+[00:15:22] A6_decline_path: passed
+[00:15:22] A7_cleanup: passed
+[00:15:22] verdict=reproduced
+[00:15:23] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_budget": "passed", "A4_slot0_accepted": "passed", "A5_free_distribution": "failed", "A6_decline_path": "passed", "A7_cleanup": "passed"}
+[00:15:24] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6891/run-6891-reval-v01100-20261016-0011/summary.png
+[00:15:24] copied driver into evidence dir
+[00:15:24] manifest written (11 files)
