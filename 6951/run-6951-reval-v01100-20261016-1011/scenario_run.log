@@ -1,0 +1,87 @@
+[05:18:29] server identity hashes verified against the v0.110.0 pin
+[05:18:32] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[05:18:32] data-level: ch2_unimplemented=True ch3_typed=True
+[05:18:33] P0 creating game (default Bo1, 2 seats)...
+[05:18:34] P1 joining...
+[05:18:36] game SRCAPL; P0 seat=0 P1 seat=1
+[05:18:36] [P0] mulligan -> Keep (hand=['forest', 'forest', 'plains', 'forest', 'forest', 'grizzly bears', 'forest'])
+[05:18:36] [P1] mulligan -> Keep (hand=['lightning bolt', 'mountain', 'mountain', 'mountain', 'lightning bolt', 'mountain', 'mountain'])
+[05:18:36] DIAG turn=1 active=0 phase=Untap pp=0 P0untapped=0 P1untapped=0 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=[] stack=0 bear_cast=False bolt1=False/False ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[05:18:37] [P0] playing land forest
+[05:18:41] [P1] playing land mountain
+[05:18:45] [P0] playing land forest
+[05:18:45] [P0] casting Grizzly Bears (engine Auto payment) (oid 1)
+[05:18:45] [P0] bear cast confirmed on stack
+[05:18:51] [P1] casting Lightning Bolt #1 at the Bear (engine Auto payment) (oid 98)
+[05:18:51] target selection #1 (stage bolt1): ?(?,pNone,seat=0), ?(?,pNone,seat=1), grizzly bears(Battlefield,p0,seat=None)
+[05:18:51] [P1] answering bolt1 target: grizzly bears (oid 1) via sequence
+[05:18:51] [P1] submitting interaction iid=SRCAPL.0.42 choice=SRCAPL.0.42.t2 (Grizzly Bears)
+[05:18:52] [P0] bolt1 cast confirmed on stack
+[05:18:57] [P1] playing land mountain
+[05:19:01] [P0] playing land plains
+[05:19:04] [P1] playing land mountain
+[05:19:08] [P0] playing land forest
+[05:19:12] [P1] playing land mountain
+[05:19:16] [P0] playing land forest
+[05:19:20] [P1] playing land mountain
+[05:19:23] [P0] playing land forest
+[05:19:27] [P1] playing land mountain
+[05:19:31] [P0] playing land plains
+[05:19:35] [P1] playing land mountain
+[05:19:36] DIAG turn=14 active=1 phase=EndCombat pp=1 P0untapped=7 P1untapped=7 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=['1'] stack=0 bear_cast=True bolt1=True/True ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[05:19:38] [P0] playing land forest
+[05:19:42] [P1] playing land mountain
+[05:19:46] [P0] playing land plains
+[05:19:50] [P1] playing land mountain
+[05:19:54] [P0] playing land plains
+[05:20:00] [P1] playing land mountain
+[05:20:05] [P0] playing land forest
+[05:20:08] [P1] playing land mountain
+[05:20:12] [P0] playing land forest
+[05:20:17] [P1] playing land mountain
+[05:20:21] [P0] playing land forest
+[05:20:24] [P1] playing land mountain
+[05:20:28] [P0] playing land plains
+[05:20:32] [P1] playing land mountain
+[05:20:36] [P0] playing land forest
+[05:20:36] DIAG turn=29 active=0 phase=PreCombatMain pp=0 P0untapped=15 P1untapped=14 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=['1'] stack=0 bear_cast=True bolt1=True/True ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[05:20:40] [P1] playing land mountain
+[05:20:43] [P0] casting Elspeth Conquers Death on turn 31 (engine Auto payment) (oid 22)
+[05:20:44] [P0] ecd cast confirmed on stack
+[05:20:49] ECD on BF: oid=22
+[05:20:53] [P1] playing land mountain
+[05:20:56] chapter II reached (turn-arithmetic fallback)
+[05:20:58] [P0] playing land forest
+[05:21:00] [P1] casting Lightning Bolt #2 at P0 face IN the chapter-II window (turn 34) (oid 108)
+[05:21:01] target selection #2 (stage bolt2): ?(?,pNone,seat=0), ?(?,pNone,seat=1)
+[05:21:01] [P1] answering bolt2 target:  (oid None) via sequence
+[05:21:01] [P1] submitting interaction iid=SRCAPL.0.510 choice=SRCAPL.0.510.t0 ()
+[05:21:01] [P0] bolt2 cast confirmed on stack
+[05:21:02] bolt2 resolved on turn 34: P1 tapped Mountains = 1
+[05:21:02] exported mid.json
+[05:21:02] MID exported: after chapter II
+[05:21:03] [P1] playing land mountain
+[05:21:05] chapter III reached (turn-arithmetic fallback)
+[05:21:05] exported pre.json
+[05:21:05] PRE exported: chapter III reached, Bear in P0 yard
+[05:21:07] target selection #3 (stage unexpected-target): 0(?,pNone,seat=None), 1(?,pNone,seat=None)
+[05:21:07] [P0] target prompt is not the ch3 yard-Bear prompt; leaving unanswered
+[05:21:07] [P0] counter choice: picked 'optionIndex 0'
+[05:21:07] [P0] submitting interaction iid=SRCAPL.0.534 choice=SRCAPL.0.534.c0 (0)
+[05:21:11] [P1] playing land mountain
+[05:21:14] [P0] playing land plains
+[05:21:15] exported post.json
+[05:21:15] POST exported: Bear returned with counter; stopping
+[05:21:15] loop ended: stage=DONE elapsed=163s
+[05:21:15] A1_ch2_unimplemented: passed
+[05:21:15] A2_ch3_typed: passed
+[05:21:15] A3_reached_ch3: passed
+[05:21:15] A4_tax_consistent: passed
+[05:21:15] A5_returned: passed
+[05:21:15] A6_counter: passed
+[05:21:15] A7_cleanup: passed
+[05:21:15] verdict=reproduced
+[05:21:15] wrote run.json verdict=reproduced
+[05:21:15] copied scenario_6951_01100.py into EVDIR
+[05:21:15] server.log copy failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/run-6951-reval-v01100-20261016-1011/server.log' (shared pinned server; run log kept in scenario_run.log)
+[05:21:15] wrote summary.png
