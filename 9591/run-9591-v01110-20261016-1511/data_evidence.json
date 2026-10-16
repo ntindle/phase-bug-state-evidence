@@ -1,0 +1,51 @@
+{
+ "card": "Void Winnower",
+ "oracle_text": "Your opponents can't cast spells with even mana values. (Zero is even.)\nYour opponents can't block with creatures with even mana values.",
+ "static_abilities": [
+  {
+   "mode": {
+    "CantBeCast": {
+     "who": "Opponents"
+    }
+   },
+   "affected": null,
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Your opponents can't cast spells with even mana values."
+  },
+  {
+   "mode": "CantBlock",
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Your opponents can't block with creatures with even mana values."
+  }
+ ],
+ "finding": "The 'even mana values' line parses to CantBeCast{who:Opponents} with affected=null; the reported defect is that the runtime treats a missing filter as applying to every spell.",
+ "probe_cards": {
+  "lightning_bolt": {
+   "type": "Cost",
+   "shards": [
+    "Red"
+   ],
+   "generic": 0
+  },
+  "lightning_strike": {
+   "type": "Cost",
+   "shards": [
+    "Red"
+   ],
+   "generic": 1
+  }
+ }
+}
