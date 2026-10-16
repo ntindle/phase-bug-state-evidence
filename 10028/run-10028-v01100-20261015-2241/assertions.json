@@ -1,0 +1,42 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_first_plus1": "passed",
+    "A3_second_refused": "passed",
+    "A4_third_refused": "passed",
+    "A5_etb_blink": "passed",
+    "B1_control_first_ok": "passed",
+    "B2_control_second_refused": "passed"
+  },
+  "notes": [
+    "pre.json: oath_bf=True ajani_oid=2 loyalty=4 life=(20, 20) phase=PreCombatMain turn=10",
+    "mid1.json: loyalty=5 life=22 (expected 5/22)",
+    "oath game 2nd attempt: advertised=False accepted=False",
+    "oath game 3rd attempt: advertised=False accepted=False",
+    "A5: blink land oid=32 name=plains zone=Battlefield controller=0 (pre zone=Exile)",
+    "control_mid.json: loyalty=5 life=22 (expected 5/22)",
+    "control 2nd attempt: advertised=False accepted=False",
+    "ACT2: not advertised; stale probe -> loyalty=5 life=22 new_rejections=1 accepted=False",
+    "ACT2 rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [2]}}}",
+    "ACT3: not advertised; stale probe -> loyalty=5 life=22 new_rejections=1 accepted=False",
+    "ACT3 rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [2]}}}",
+    "control: control 2nd: not advertised; probe -> loyalty=5 new_rejections=1 accepted=False",
+    "control: control rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [12]}}}",
+    "protocol-142 driver: HELLO advertises protocol 142; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; BottomCards/DiscardToHandSize via vi schema/select; CastSpell via advertised actions as-is; mana engine auto-tapped with a 30s cast-confirmation guard; never inject targets into CastSpell (Oath ETB target chosen via vi TargetSelection candidates); ActivateAbility matched on source oid + Loyalty cost amount; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop.",
+    "data-level: {\"oath_twice_line_unimplemented\": false, \"oath_static_count\": 0, \"ajani_plus1_parse\": [{\"effect\": \"GainLife\", \"description\": \"[+1]: You gain 2 life.\"}], \"ajani_loyalty\": \"4\", \"ajani_mana\": {\"type\": \"Cost\", \"shards\": [\"White\", \"White\"], \"generic\": 2}, \"oath_mana\": {\"type\": \"Cost\", \"shards\": [\"White\", \"Blue\"], \"generic\": 3}}"
+  ],
+  "oath_game": {
+    "act2_advertised": false,
+    "act2_accepted": false,
+    "act3_advertised": false,
+    "act3_accepted": false,
+    "blink_oid": "32",
+    "blink_name": "plains",
+    "blink_returned": true,
+    "rejections": []
+  },
+  "control_game": {
+    "act2_advertised": false,
+    "act2_accepted": false
+  }
+}

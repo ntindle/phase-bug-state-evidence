@@ -1,0 +1,80 @@
+[04:01:33] server identity hashes verified against on-disk pinned artifacts
+[04:01:35] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[04:01:35] data-level: oath twice line Unimplemented: False; ajani +1 parse: [{'effect': 'GainLife', 'description': '[+1]: You gain 2 life.'}]
+[04:01:35] === GAME A: oath game ===
+[04:01:36] [oath] P0 creating game...
+[04:01:36] [oath] P1 joining...
+[04:01:36] [oath] game E81SXP; P0 seat=0 P1 seat=1
+[04:01:36] [P0oath] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'oath of teferi', 'island', 'ajani goldmane'])
+[04:01:36] [P1oath] mulligan -> Keep (hand=['island', 'island', 'island', 'island', 'plains', 'plains', 'plains'])
+[04:01:37] [P1oath] playing land island
+[04:01:41] [P0oath] playing land plains
+[04:01:45] [P1oath] playing land island
+[04:01:49] [P0oath] playing land plains
+[04:01:53] [P1oath] playing land island
+[04:01:57] [P0oath] playing land plains
+[04:02:01] [P1oath] playing land island
+[04:02:04] [P0oath] playing land plains
+[04:02:05] [P0oath] casts Ajani Goldmane (2)
+[04:02:05] [P0oath] cast confirmed on stack: Ajani Goldmane (oid 2)
+[04:02:10] [P1oath] playing land plains
+[04:02:14] [P0oath] playing land island
+[04:02:14] [P0oath] casts Oath of Teferi (16)
+[04:02:14] [P0oath] cast confirmed on stack: Oath of Teferi (oid 16)
+[04:02:15] [P0oath] Oath ETB exiles plains (oid 32, turn 10)
+[04:02:15] [P0oath] submitting interaction iid=E81SXP.0.148 choice=E81SXP.0.148.t0 (Plains)
+[04:02:16] exported pre.json
+[04:02:16] [P0oath] PRE exported: oath+ajani BF, loyalty=4, life=20, blink land zone=Exile
+[04:02:21] [P0oath] activates Ajani +1 (ACT1) via advertised action
+[04:02:21] [P0oath] ACT1 activation confirmed: loyalty 4 -> 5
+[04:02:22] exported mid1.json
+[04:02:22] [P0oath] ACT1 resolved: loyalty 4->5, life 20->22; mid1.json exported; -> ACT2 (holding turn 10)
+[04:02:27] [P0oath] act2: refused_*.json snapshot written
+[04:02:27] [P0oath] act2: not advertised; probing with stale action
+[04:02:36] DIAG oath p0: rev=154 turn=10 phase=PreCombatMain stage=ACT2 prio=True decision=False
+[04:03:12] exported mid2.json
+[04:03:12] [P0oath] ACT2 done (accepted=False); -> ACT3
+[04:03:17] [P0oath] act3: refused_*.json snapshot written
+[04:03:17] [P0oath] act3: not advertised; probing with stale action
+[04:03:36] DIAG oath p0: rev=154 turn=10 phase=PreCombatMain stage=ACT3 prio=True decision=False
+[04:04:03] exported mid3.json
+[04:04:03] [P0oath] ACT3 done (accepted=False); -> BLINK
+[04:04:10] exported post.json
+[04:04:10] [P0oath] BLINK: land 32 back on BF; post.json exported; DONE
+[04:04:10] === GAME A ended: stage=DONE duration=154.1s ===
+[04:04:10] === GAME B: control game ===
+[04:04:10] [ctrl] P0 creating game...
+[04:04:11] [ctrl] P1 joining...
+[04:04:11] [ctrl] game ZOPY8P; P0 seat=0 P1 seat=1
+[04:04:11] [P0ctrl] mulligan -> Keep (hand=['plains', 'plains', 'plains', 'plains', 'plains', 'plains', 'ajani goldmane'])
+[04:04:11] [P1ctrl] mulligan -> Keep (hand=['island', 'island', 'island', 'island', 'plains', 'plains', 'plains'])
+[04:04:12] [P0ctrl] playing land plains
+[04:04:16] [P1ctrl] playing land island
+[04:04:20] [P0ctrl] playing land plains
+[04:04:23] [P1ctrl] playing land island
+[04:04:28] [P0ctrl] playing land plains
+[04:04:32] [P1ctrl] playing land island
+[04:04:36] [P0ctrl] playing land plains
+[04:04:36] [P0ctrl] casts Ajani Goldmane (12)
+[04:04:37] [P0ctrl] cast confirmed on stack: Ajani Goldmane (oid 12)
+[04:04:37] exported control_pre.json
+[04:04:37] [P0ctrl] control PRE exported (no oath)
+[04:04:42] [P0ctrl] activates Ajani +1 (CACT1) via advertised action
+[04:04:42] [P0ctrl] CACT1 activation confirmed: loyalty 4 -> 5
+[04:04:43] exported control_mid.json
+[04:04:43] [P0ctrl] control ACT1 resolved; -> CACT2 (holding turn 7)
+[04:04:48] [P0ctrl] control_2nd: refused_*.json snapshot written
+[04:04:48] [P0ctrl] control_2nd: not advertised; probing with stale action
+[04:05:11] DIAG ctrl p0: rev=103 turn=7 phase=PreCombatMain stage=CACT2 prio=True decision=False
+[04:05:33] exported control_post.json
+[04:05:33] [P0ctrl] control 2nd done (accepted=False); DONE
+[04:05:33] === GAME B ended: stage=DONE duration=82.2s ===
+[04:05:33] A1_setup_ok: passed
+[04:05:33] A2_first_plus1: passed
+[04:05:33] A3_second_refused: passed
+[04:05:33] A4_third_refused: passed
+[04:05:33] A5_etb_blink: passed
+[04:05:33] B1_control_first_ok: passed
+[04:05:33] B2_control_second_refused: passed
+[04:05:33] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_first_plus1": "passed", "A3_second_refused": "passed", "A4_third_refused": "passed", "A5_etb_blink": "passed", "B1_control_first_ok": "passed", "B2_control_second_refused": "passed"}
+[04:05:34] rendered /home/hatch/workspace/dev/phase-backfill/evidence/10028/run-10028-v01100-20261015-2241/summary.png

@@ -1,0 +1,148 @@
+{
+ "issue": 10028,
+ "run_id": "run-10028-v01100-20261015-2241",
+ "started_at": "2026-10-16T04:01:35",
+ "duration_s": 238.4,
+ "server_identity": {
+  "validated_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "bf3d6fc36d13e6a302a109a70d623bc9b7d9bb2b6cb52e956fea8c4b0afabf03",
+ "decks": {
+  "P0_oath": [
+   [
+    "Plains",
+    20
+   ],
+   [
+    "Island",
+    16
+   ],
+   [
+    "Ajani Goldmane",
+    4
+   ],
+   [
+    "Oath of Teferi",
+    4
+   ]
+  ],
+  "P0_control": [
+   [
+    "Plains",
+    32
+   ],
+   [
+    "Ajani Goldmane",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Plains",
+    30
+   ],
+   [
+    "Island",
+    30
+   ]
+  ]
+ },
+ "games": {
+  "oath": {
+   "code": "E81SXP",
+   "stage": "DONE",
+   "duration_s": 154.1
+  },
+  "control": {
+   "code": "ZOPY8P",
+   "stage": "DONE",
+   "duration_s": 82.2
+  }
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_first_plus1": "passed",
+  "A3_second_refused": "passed",
+  "A4_third_refused": "passed",
+  "A5_etb_blink": "passed",
+  "B1_control_first_ok": "passed",
+  "B2_control_second_refused": "passed"
+ },
+ "notes": [
+  "pre.json: oath_bf=True ajani_oid=2 loyalty=4 life=(20, 20) phase=PreCombatMain turn=10",
+  "mid1.json: loyalty=5 life=22 (expected 5/22)",
+  "oath game 2nd attempt: advertised=False accepted=False",
+  "oath game 3rd attempt: advertised=False accepted=False",
+  "A5: blink land oid=32 name=plains zone=Battlefield controller=0 (pre zone=Exile)",
+  "control_mid.json: loyalty=5 life=22 (expected 5/22)",
+  "control 2nd attempt: advertised=False accepted=False",
+  "ACT2: not advertised; stale probe -> loyalty=5 life=22 new_rejections=1 accepted=False",
+  "ACT2 rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [2]}}}",
+  "ACT3: not advertised; stale probe -> loyalty=5 life=22 new_rejections=1 accepted=False",
+  "ACT3 rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [2]}}}",
+  "control: control 2nd: not advertised; probe -> loyalty=5 new_rejections=1 accepted=False",
+  "control: control rejection detail: {\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": [12]}}}",
+  "protocol-142 driver: HELLO advertises protocol 142; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; BottomCards/DiscardToHandSize via vi schema/select; CastSpell via advertised actions as-is; mana engine auto-tapped with a 30s cast-confirmation guard; never inject targets into CastSpell (Oath ETB target chosen via vi TargetSelection candidates); ActivateAbility matched on source oid + Loyalty cost amount; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop.",
+  "data-level: {\"oath_twice_line_unimplemented\": false, \"oath_static_count\": 0, \"ajani_plus1_parse\": [{\"effect\": \"GainLife\", \"description\": \"[+1]: You gain 2 life.\"}], \"ajani_loyalty\": \"4\", \"ajani_mana\": {\"type\": \"Cost\", \"shards\": [\"White\", \"White\"], \"generic\": 2}, \"oath_mana\": {\"type\": \"Cost\", \"shards\": [\"White\", \"Blue\"], \"generic\": 3}}"
+ ],
+ "oath_game": {
+  "act2_advertised": false,
+  "act2_accepted": false,
+  "act3_advertised": false,
+  "act3_accepted": false,
+  "blink_oid": "32",
+  "blink_name": "plains",
+  "blink_returned": true,
+  "rejections": []
+ },
+ "control_game": {
+  "act2_advertised": false,
+  "act2_accepted": false
+ },
+ "data_finding": {
+  "oath_twice_line_unimplemented": false,
+  "oath_static_count": 0,
+  "ajani_plus1_parse": [
+   {
+    "effect": "GainLife",
+    "description": "[+1]: You gain 2 life."
+   }
+  ],
+  "ajani_loyalty": "4",
+  "ajani_mana": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "White"
+   ],
+   "generic": 2
+  },
+  "oath_mana": {
+   "type": "Cost",
+   "shards": [
+    "White",
+    "Blue"
+   ],
+   "generic": 3
+  }
+ },
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_10028.py), not direct load.",
+  "Refusal of the 2nd/3rd activation is recorded as the engine not advertising ActivateAbility for the walker, plus a stale re-submission probe; a structured rejection is captured when the engine sends one."
+ ],
+ "setup_line": "Oath game: P0 20x Plains / 16x Island / 4x Ajani Goldmane / 4x Oath of Teferi; control game: P0 32x Plains / 4x Ajani Goldmane; P1 both games 30x Plains / 30x Island (passive).",
+ "contract_line": "Ajani Goldmane +1 (implemented GainLife): with Oath of Teferi on the battlefield the 2nd +1 in the turn must be refused (reported: the twice line is Unimplemented, so once-per-turn stands); without Oath the 2nd +1 must also be refused (control); the ETB blink must return the exiled land at the next end step."
+}
