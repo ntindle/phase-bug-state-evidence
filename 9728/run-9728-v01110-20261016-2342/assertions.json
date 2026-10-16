@@ -1,0 +1,24 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_paid": "passed",
+  "A3_discard_pause": "passed",
+  "A4_final_part_timing": "failed",
+  "A5_mid_pause_zone": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "rejections=0 discard_opps=1 discard_picks_total=2 cast_confirmed=True",
+  "A1: active=0 phase=PreCombatMain looting_in_hand=True untapped_mountains=1 pre_hand=7",
+  "A2: cast_looting_left_hand=True tapped_mountains=1",
+  "A3: pre_hand=7 mid_hand=8 draw2_ok=True",
+  "A3: pause answered with ['mountain', 'mountain'] rejections_in_stage=0",
+  "A4: zone_changes_this_turn entries=8; looting->GY moves=[(5, 'Stack')]; discard->GY moves=[(6, 'Mountain', 'Hand'), (7, 'Mountain', 'Hand')]",
+  "A4: Looting ->GY at index 5 BEFORE the discards (max index 7): the spell was put into the graveyard at the pause, before the final part -- the reported defect",
+  "A5: at the discard pause Looting (oid 57) zone='Graveyard' (must not be prematurely delivered)",
+  "A6: P0 graveyard oids=[57, 30, 55] names=['faithless looting', 'mountain', 'mountain']",
+  "A6: looting_in_P0_gy=True stack_empty=True turn=2 phase=PreCombatMain",
+  "the resolving spell was put into its owner's graveyard before every paused instruction was answered (CR 608.2c/608.2n final-part violation)"
+ ],
+ "verdict": "reproduced"
+}
