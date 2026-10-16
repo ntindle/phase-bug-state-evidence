@@ -1,0 +1,137 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_low_branch": "passed",
+    "A7_exile_ok": "failed",
+    "A4_high_observed": "passed",
+    "A5_reroll_offered": "passed",
+    "A6_reroll_works": "failed"
+  },
+  "notes": [
+    "pre.json: delina_bf=True bear_bf=True life=20/20 phase=PreCombatMain",
+    "target_answers: [(15, '26', 'grizzly bears'), (17, '26', 'grizzly bears'), (19, '26', 'grizzly bears'), (21, '26', 'grizzly bears'), (23, '26', 'grizzly bears'), (25, '26', 'grizzly bears')]",
+    "A3 low turn 15 (game 0): token detail {'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'in_combat_attackers': False, 'legendary': False, 'abilities': '[{\"condition\": null, \"cost\": null, \"description\": \"at end of combat, exile ~.\", \"duration\": null, \"effect\": {\"condition\": {\"phase\": \"EndCombat\", \"type\": \"AtNextPhase\"}, \"effect\": {\"condition\": null, \"cost\": null, \"description\": null, \"duration\": null, \"effect\": {\"destination\": \"Exile\", \"enter_tapped'}",
+    "A7: low-turn token oids ['122'] still on BF in post_low.json: ['122']",
+    "high_turn=25 deltas={15: 1, 17: 1, 19: 1, 21: 1, 23: 1, 25: 0}",
+    "reroll_prompts: [(25, True)]",
+    "reroll_answers: [(25, True, 'true')]",
+    "A6 detail: accepted_turns=[25] progressed=False",
+    "attack_turns(game 0)=[13, 15, 17, 19, 21, 23, 25]",
+    "games=[{\"gindex\": 0, \"game_code\": \"7ESUSR\", \"result\": \"done\", \"attack_turns\": [13, 15, 17, 19, 21, 23, 25], \"deltas\": {\"15\": [\"122\"], \"17\": [\"124\"], \"19\": [\"126\"], \"21\": [\"128\"], \"23\": [\"130\"], \"25\": []}, \"target_answers\": [[15, \"26\", \"grizzly bears\"], [17, \"26\", \"grizzly bears\"], [19, \"26\", \"grizzly bears\"], [21, \"26\", \"grizzly bears\"], [23, \"26\", \"grizzly bears\"], [25, \"26\", \"grizzly bears\"]]}]",
+    "legend_answered=0; final stage=DONE",
+    "data-level: 15-20 branch still parses Unimplemented (create + optional roll again)",
+    "protocol-142 driver (v0.110.0, 01100 port): HELLO advertises protocol 142; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell via advertised actions; mana is engine auto-tapped (manual taps are a >90s last-resort fallback only); Delina trigger target via vi schema/exactChoices candidates referencing BF creatures of seat 0; reroll via decideOptionalEffect (first prompt accepted, later declined as control); DeclareAttackers/Blockers via relations-schema vi opportunity; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop."
+  ],
+  "target_answers": [
+    [
+      15,
+      "26",
+      "grizzly bears"
+    ],
+    [
+      17,
+      "26",
+      "grizzly bears"
+    ],
+    [
+      19,
+      "26",
+      "grizzly bears"
+    ],
+    [
+      21,
+      "26",
+      "grizzly bears"
+    ],
+    [
+      23,
+      "26",
+      "grizzly bears"
+    ],
+    [
+      25,
+      "26",
+      "grizzly bears"
+    ]
+  ],
+  "reroll_prompts": [
+    [
+      25,
+      true
+    ]
+  ],
+  "reroll_answers": [
+    [
+      25,
+      true,
+      "true"
+    ]
+  ],
+  "games": [
+    {
+      "gindex": 0,
+      "game_code": "7ESUSR",
+      "result": "done",
+      "attack_turns": [
+        13,
+        15,
+        17,
+        19,
+        21,
+        23,
+        25
+      ],
+      "deltas": {
+        "15": [
+          "122"
+        ],
+        "17": [
+          "124"
+        ],
+        "19": [
+          "126"
+        ],
+        "21": [
+          "128"
+        ],
+        "23": [
+          "130"
+        ],
+        "25": []
+      },
+      "target_answers": [
+        [
+          15,
+          "26",
+          "grizzly bears"
+        ],
+        [
+          17,
+          "26",
+          "grizzly bears"
+        ],
+        [
+          19,
+          "26",
+          "grizzly bears"
+        ],
+        [
+          21,
+          "26",
+          "grizzly bears"
+        ],
+        [
+          23,
+          "26",
+          "grizzly bears"
+        ],
+        [
+          25,
+          "26",
+          "grizzly bears"
+        ]
+      ]
+    }
+  ]
+}
