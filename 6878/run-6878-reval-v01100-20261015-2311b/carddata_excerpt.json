@@ -1,0 +1,52 @@
+{
+ "name": "Duskwatch Recruiter",
+ "oracle_text": "{2}{G}: Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.\nAt the beginning of each upkeep, if no spells were cast last turn, transform this creature.",
+ "abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Dig",
+    "player": {
+     "type": "Controller"
+    },
+    "count": {
+     "type": "Fixed",
+     "value": 3
+    },
+    "destination": "Hand",
+    "keep_count": 1,
+    "up_to": true,
+    "filter": {
+     "type": "Typed",
+     "type_filters": [
+      "Creature"
+     ],
+     "controller": null,
+     "properties": []
+    },
+    "rest_destination": "Library",
+    "reveal": true,
+    "enter_tapped": false,
+    "enters_attacking": false
+   },
+   "cost": {
+    "type": "Mana",
+    "cost": {
+     "type": "Cost",
+     "shards": [
+      "Green"
+     ],
+     "generic": 2
+    }
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{2}{G}: Look at the top three cards of your library. You may reveal a creature card from among them and put it into your hand. Put the rest on the bottom of your library in any order.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}

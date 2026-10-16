@@ -1,0 +1,70 @@
+[23:20:30] server identity hashes verified against on-disk pinned artifacts
+[23:20:32] ServerHello: version=0.110.0 build=9bfd12e protocol=142 mode=Full
+[23:20:32] data-level: Dig count=3 keep=1 up_to=True rest_dest=Library rest_order=<field absent>
+[23:20:33] P0 creating game...
+[23:20:34] P1 joining...
+[23:20:34] game S9Z5MC; P0 seat=0 P1 seat=1
+[23:20:34] [P0] mulligan -> Keep (hand=['forest', 'grizzly bears', 'llanowar elves', 'duskwatch recruiter', 'forest', 'llanowar elves', 'duskwatch recruiter'])
+[23:20:34] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'llanowar elves', 'forest', 'forest', 'forest'])
+[23:20:35] [P1] playing land forest
+[23:20:39] [P0] playing land forest
+[23:20:42] [P1] playing land forest
+[23:20:47] [P0] playing land forest
+[23:20:51] [P1] playing land forest
+[23:20:55] [P0] playing land forest
+[23:20:55] [P0] casts Duskwatch Recruiter (2)
+[23:20:55] [P0] action confirmed (stack): Duskwatch Recruiter oid 2
+[23:20:56] === stage -> R1ARM (turn 6) ===
+[23:20:57] [P0] safety cast Llanowar Elves (turn 6)
+[23:20:57] [P0] action confirmed (stack): Llanowar Elves oid 7
+[23:21:00] [P1] casts Llanowar Elves (turn 7)
+[23:21:00] [P0] action confirmed (stack): Llanowar Elves oid 43
+[23:21:01] [P1] playing land forest
+[23:21:04] exported pre_r1.json
+[23:21:04] [P0] r1 top3: [('37', 'duskwatch recruiter'), ('8', 'forest'), ('3', 'forest')]
+[23:21:04] [P0] activates Duskwatch Recruiter (r1; legacy)
+[23:21:04] [P0] r1 Dig prompt kind=choose rtype=exactChoices spec= nrefs=1
+[23:21:04]     cand id=S9Z5MC.0.117.c0 ref=None name=? zone=None text=
+[23:21:04]     cand id=S9Z5MC.0.117.c1 ref=7 name=llanowar elves zone=Battlefield text=Llanowar Elves
+[23:21:04] [P0] r1 Dig prompt kind=select rtype=schema spec=select nrefs=1
+[23:21:04]     cand id=S9Z5MC.0.119.s0 ref=37 name=duskwatch recruiter zone=Library text=Duskwatch Recruiter
+[23:21:04] [P0] r1 Dig keep answered cids=['S9Z5MC.0.119.s0'] kept=['37'] rest=['8', '3']
+[23:21:04] [P1 view during Dig r1] {'37': {'name': 'Duskwatch Recruiter', 'zone': 'Library', 'face_down': False, 'revealed': None}, '8': {'name': 'Forest', 'zone': 'Library', 'face_down': False, 'revealed': None}, '3': {'name': 'Forest', 'zone': 'Library', 'face_down': False, 'revealed': None}}
+[23:21:05] exported post_r1.json
+[23:21:05] === r1 resolved; post exported; rest_positions={'8': 27, '3': 28} kept_in_hand=['37'] ===
+[23:21:05] === stage -> R2ARM ===
+[23:21:06] [P0] playing land forest
+[23:21:06] [P0] safety cast Llanowar Elves (turn 8)
+[23:21:06] [P0] action confirmed (stack): Llanowar Elves oid 4
+[23:21:08] [P0] declare no attackers
+[23:21:11] [P1] casts Llanowar Elves (turn 9)
+[23:21:11] [P0] action confirmed (stack): Llanowar Elves oid 72
+[23:21:11] [P1] playing land forest
+[23:21:13] [P1] declare no attackers
+[23:21:15] exported pre_r2.json
+[23:21:15] [P0] r2 top3: [('29', 'forest'), ('39', 'forest'), ('38', 'duskwatch recruiter')]
+[23:21:15] [P0] activates Duskwatch Recruiter (r2; legacy)
+[23:21:15] [P0] r2 Dig prompt kind=choose rtype=exactChoices spec= nrefs=4
+[23:21:15]     cand id=S9Z5MC.0.159.c0 ref=None name=? zone=None text=
+[23:21:15]     cand id=S9Z5MC.0.159.c1 ref=2 name=duskwatch recruiter zone=Battlefield text=Duskwatch Recruiter
+[23:21:15]     cand id=S9Z5MC.0.159.c2 ref=4 name=llanowar elves zone=Battlefield text=Llanowar Elves
+[23:21:15]     cand id=S9Z5MC.0.159.c3 ref=7 name=llanowar elves zone=Battlefield text=Llanowar Elves
+[23:21:15]     cand id=S9Z5MC.0.159.c4 ref=34 name=forest zone=Battlefield text=Forest
+[23:21:15] [P0] r2 Dig prompt kind=select rtype=schema spec=select nrefs=1
+[23:21:15]     cand id=S9Z5MC.0.161.s0 ref=38 name=duskwatch recruiter zone=Library text=Duskwatch Recruiter
+[23:21:15] [P0] r2 Dig keep answered cids=[] kept=[] rest=['29', '39', '38']
+[23:21:16] exported post_r2.json
+[23:21:16] === r2 resolved; post exported; rest_positions={'29': 25, '39': 26, '38': 27} kept_in_hand=[] ===
+[23:21:16] loop ended: stage=DIG2 elapsed=43s
+[23:21:16] A1_setup_ok: passed
+[23:21:16] A2_keep_offered: passed
+[23:21:16] A3_order_offered_r1: failed
+[23:21:16] A4_rest_preserved_r1: passed
+[23:21:16] A5_no_opponent_leak: failed
+[23:21:16] A6_decline_branch_r2: failed
+[23:21:16] A7_cleanup: passed
+[23:21:16] verdict=reproduced
+[23:21:17] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_keep_offered": "passed", "A3_order_offered_r1": "failed", "A4_rest_preserved_r1": "passed", "A5_no_opponent_leak": "failed", "A6_decline_branch_r2": "failed", "A7_cleanup": "passed"}
+[23:21:17] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6878/run-6878-reval-v01100-20261015-2311b/summary.png
+[23:21:17] copied driver into evidence dir
+[23:21:17] manifest written (13 files)

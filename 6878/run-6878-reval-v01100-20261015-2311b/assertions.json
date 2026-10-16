@@ -1,0 +1,114 @@
+{
+ "issue": 6878,
+ "run_id": "run-6878-reval-v01100-20261015-2311b",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A2_keep_offered_detail": {
+   "top3": [
+    [
+     "37",
+     "duskwatch recruiter"
+    ],
+    [
+     "8",
+     "forest"
+    ],
+    [
+     "3",
+     "forest"
+    ]
+   ],
+   "keep_offered_refs": [
+    "37"
+   ],
+   "keep_kind": "select",
+   "keep_spec": {
+    "type": "select",
+    "data": {
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  },
+  "A3_order_offered_r1": "failed",
+  "A3_order_offered_r1_detail": {
+   "rest_oids": [
+    "8",
+    "3"
+   ],
+   "order_spec": null
+  },
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "8",
+    "3"
+   ],
+   "positions": {
+    "8": 27,
+    "3": 28
+   },
+   "library_len": 29,
+   "post_bottom_tail": [
+    "21",
+    "9",
+    "11",
+    "25",
+    "8",
+    "3"
+   ]
+  },
+  "A5_no_opponent_leak": "failed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "37": {
+     "name": "Duskwatch Recruiter",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "8": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "3": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    }
+   },
+   "leaked": [
+    "8",
+    "3"
+   ]
+  },
+  "A6_decline_branch_r2": "failed",
+  "A6_decline_branch_r2_detail": {
+   "kept": [],
+   "rest_oids": [
+    "29",
+    "39",
+    "38"
+   ],
+   "rest_positions": {
+    "29": 25,
+    "39": 26,
+    "38": 27
+   },
+   "order_offered": false
+  },
+  "A7_cleanup": "passed"
+ },
+ "notes": []
+}
