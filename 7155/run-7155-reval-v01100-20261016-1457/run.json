@@ -1,0 +1,86 @@
+{
+ "issue": 7155,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7155",
+ "run_id": "run-7155-reval-v01100-20261016-1457",
+ "started_at": "2026-10-16T15:12:27",
+ "finished_at": "2026-10-16T15:12:55",
+ "duration_s": 28.3,
+ "server_identity": {
+  "server_version": "v0.110.0",
+  "build_commit": "9bfd12e",
+  "protocol_version": 142,
+  "mode": "Full",
+  "server_binary_sha256": "346ad6a1a8cd887bb49108fa132476bea36e42e7cfc5116fe2cbdf8ad369e3f2",
+  "card_data_sha256": "c77b20203d2c21a497e0281d4ebee7a9ad7cb19d8a88c62c45298c7f9a606d74",
+  "draft_pools_sha256": "7e45abbf0a964959192d2528c067a2a9caab04438640ab63b9ad79d2ce0e4676",
+  "signature_verified": true,
+  "signature_note": "v0.110.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY in prehashed (blake2b-512) mode at pin time; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-16: latest stable release v0.110.0 == pinned release dir; ServerHello 0.110.0/9bfd12e/protocol 142 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned isolated v0.110.0 single-user server on 127.0.0.1:9374 (started this run)"
+ },
+ "server_run_dir": "runs/backfill-20261016-1457 (run dir); backfill-owned isolated v0.110.0 single-user server on 127.0.0.1:9374 started by this run",
+ "driver": {
+  "protocol_advertised": 142,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "9b95c516f68abe7bf35294009bccd3ec675b38545f234c2eec3a0caa5ba0f790",
+ "decks": {
+  "P0": [
+   [
+    "Fiend Artisan",
+    4
+   ],
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_parse_cost": "passed",
+  "A2_setup_ok": "passed",
+  "A3_activation_offered": "passed",
+  "A4_x_prompt": "failed",
+  "A5_cost_paid": "failed",
+  "A6_search_prompt": "not-run",
+  "A7_resolution": "not-run",
+  "A8_cleanup": "failed"
+ },
+ "notes": [
+  "activation_ok=False",
+  "A2: artisan_bf=True tapped=False elves_bf=2 untapped_lands=3 (bg=3, need>=3)",
+  "A3: ActivateAbility offered=True (attempts=1)",
+  "A4: X answered=True (X=2); prompt still pending at end=True; interaction Number{2} rejected=True; legacy ChooseX{2} rejected=True",
+  "A5: artisan_tapped=False elves_in_gy=0 untapped_delta=0 (need>=3)",
+  "A6: library search offered+answered (Bears picked)=False (search_prompted=False)",
+  "A7: bears_on_bf=False stack_empty=True",
+  "A8: stack_empty=True x_prompt_still_pending=True",
+  "protocol-142 driver: MulliganDecision via legacy Action; bottom/SelectCards + DiscardToHandSize via vi schema/select; casts use the engine's Auto payment (no driver-side taps for casts); ActivateAbility submitted holding priority; {X} answered from a pure numeric menu or schema-number; {2}{B/G} driven via vi tapLandForMana choices only when offered (engine may auto-pay); sacrifice = Elves via vi object references; search = schema select picking Grizzly Bears; priority-gated passes; sleep(0) yield before leg evaluation; re-tick backstop; stack-watch falls through to the pass gate."
+ ],
+ "verdict": "reproduced",
+ "result": "A1_parse_cost: passed; A2_setup_ok: passed; A3_activation_offered: passed; A4_x_prompt: failed; A5_cost_paid: failed; A6_search_prompt: not-run; A7_resolution: not-run; A8_cleanup: failed",
+ "scope": "Fiend Artisan {X}{B/G},{T},Sacrifice-another-creature activation path; native human seats (no AI); X=2, sacrifice a Llanowar Elves, search for Grizzly Bears",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "setup_line": "P0: 4x Fiend Artisan / 12x Llanowar Elves / 4x Grizzly Bears / 20x Swamp / 20x Forest; P1: 60x Forest (passive). P0 mulligans for Artisan, casts Elves + Artisan (engine Auto payment).",
+ "contract_line": "P0 activates the Artisan (X=2) on a main phase with an empty stack: answers the X prompt, pays {2}{B/G}, taps, sacrifices an Elves, answers the search with Grizzly Bears; the Bears must enter the battlefield and the ability must resolve. The report says the game does not let you pay for the ability."
+}
