@@ -1,0 +1,61 @@
+[
+  {
+    "dir": "recv",
+    "summary": {
+      "build_commit": "33aa23a",
+      "lobby_protocol_version": 16,
+      "mode": "Full",
+      "protocol_version": 144,
+      "server_version": "0.111.0",
+      "wire_formats": [
+        "GzipEnvelopeV1"
+      ]
+    },
+    "type": "ServerHello"
+  },
+  {
+    "dir": "send",
+    "summary": {
+      "protocol_version": 144
+    },
+    "type": "ClientHello"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"display_name\": \"backfill-7171-01110\", \"source\": {\"type\": \"Uniform\", \"data\": {\"set_codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}, \"kind\": \"Sealed\", \"public\": false, \"password\": null, \"timer_seconds\": null, \"tournament_format\": \"Swiss\", \"pod_policy\": \"Casual\", \"pod_size\": 8}",
+    "type": "CreateDraftWithSettings"
+  },
+  {
+    "dir": "recv",
+    "summary": {
+      "draft_code": "XQRL6B",
+      "seat_index": 0
+    },
+    "type": "DraftCreated"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"XQRL6B\", \"action\": {\"type\": \"StartDraft\"}}",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"XQRL6B\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Jungle Hollow\", \"Blazing Volley\", \"Ram Through\", \"Crystacean\", \"Fertilid\", \"Serrated Scorpion\", \"Go for Blood\", \"Migratory Greathorn\", \"Blisterspit Gremlin\", \"Adventurous Impulse\", \"Cloudpiercer\", \"Drannith Magistrate\", \"Savai Crystal\", \"Will of the All-Hunter\", \"Fight as One\", \"Tranquil Cove\", \"Heightened",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"distribution\": \"AllAtOnce\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\": \"Direct\", \"pool\": [{\"instance_id\": \"IKO-0-0-0\", \"name\": \"Jungle Hollow\", \"set_code\": \"IKO\", \"collec",
+    "type": "DraftStateUpdate"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"XQRL6B\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Jungle Hollow\", \"Blazing Volley\", \"Ram Through\", \"Crystacean\", \"Fertilid\", \"Serrated Scorpion\", \"Go for Blood\", \"Migratory Greathorn\", \"Blisterspit Gremlin\", \"Adventurous Impulse\", \"Cloudpiercer\", \"Drannith Magistrate\", \"Savai Crystal\", \"Will of the All-Hunter\", \"Fight as One\", \"Tranquil Cove\", \"Heightened",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"distribution\": \"AllAtOnce\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\":",
+    "type": "DraftStateUpdate"
+  }
+]

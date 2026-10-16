@@ -1,0 +1,40 @@
+{
+ "run_id": "run-7171-reval-v01110-20261016-1530",
+ "issue": 7171,
+ "title": "No way to add/set Companion in Build Deck after Draft",
+ "validated_version": "v0.111.0",
+ "build_commit": "33aa23a",
+ "protocol_version": 144,
+ "server_version": "0.111.0",
+ "validated_at": "2026-10-16",
+ "server_binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+ "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+ "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+ "signature_verified": true,
+ "signature_key_id": "436711b6a2d36828",
+ "data_manifest": "release-server-v0.111.0.json (signed, SHA-256 verified against manifest)",
+ "scenario": "driver/scenario_7171_01110.py",
+ "scenario_sha256": "57c5213467f3cc8396a5e18cf3497cae3dedadfb8e51f0b87ef2d6d0f67ef02d",
+ "scope": "Sealed iko event (6 packs/seat, 8 seats) driven to Deckbuilding over WS protocol 144; Deckbuilding DraftPlayerView + DraftAction::SubmitDeck probed for a companion designation path; engine DeckList companion slot verified in the v0.111.0 source (deck_loading.rs).",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_draft_reaches_deckbuilding": "passed",
+  "A2_lutri_drafted": "not-run",
+  "A3_companion_control_in_view": "failed",
+  "A4_companion_designation_path": "failed",
+  "A5_valid_submitdeck_accepted": "passed",
+  "A6_engine_companion_capable": "passed"
+ },
+ "result": "Deckbuilding view carries no 'companion' key (no companion control advertised); SubmitDeck with an extra 'companions' field is accepted as DraftStateUpdate but the field is silently discarded \u2014 no companion designation is stored or visible post-probe; plain SubmitDeck accepted (control). Same failure shape as the v0.83.0 run.",
+ "limitations": [
+  "Browser UI not exercised; native server draft WebSocket API only.",
+  "Lutri, the Spellchaser did not appear in this seat's packs (A2 not-run); the probe used another pool card as the companion designation target. The protocol path \u2014 not the specific card \u2014 is what the issue reports missing.",
+  "Sealed used instead of pick-and-pass: the bug lives in the kind-independent Build Deck/SubmitDeck path.",
+  "Verdict is scoped to v0.111.0; this re-validation does not claim the bug is fixed or unfixed in any other build."
+ ],
+ "evidence_commit": null,
+ "publication": {
+  "status": "pending",
+  "prior_comment_url": "https://github.com/phase-rs/phase/issues/7171#issuecomment-5677333775"
+ }
+}
