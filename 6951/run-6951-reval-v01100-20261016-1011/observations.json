@@ -1,0 +1,111 @@
+{
+ "issue": 6951,
+ "run_id": "run-6951-reval-v01100-20261016-1011",
+ "target_selections": [
+  {
+   "interactionId": "SRCAPL.0.42",
+   "turn": 3,
+   "phase": "PreCombatMain",
+   "stage": "bolt1",
+   "rtype": "schema",
+   "spec_type": "sequence",
+   "candidates": [
+    {
+     "choice_id": "SRCAPL.0.42.t0",
+     "oid": null,
+     "seat": 0,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "SRCAPL.0.42.t1",
+     "oid": null,
+     "seat": 1,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "SRCAPL.0.42.t2",
+     "oid": "1",
+     "seat": null,
+     "name": "grizzly bears",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Grizzly Bears"
+    }
+   ]
+  },
+  {
+   "interactionId": "SRCAPL.0.510",
+   "turn": 34,
+   "phase": "Upkeep",
+   "stage": "bolt2",
+   "rtype": "schema",
+   "spec_type": "sequence",
+   "candidates": [
+    {
+     "choice_id": "SRCAPL.0.510.t0",
+     "oid": null,
+     "seat": 0,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "SRCAPL.0.510.t1",
+     "oid": null,
+     "seat": 1,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    }
+   ]
+  },
+  {
+   "interactionId": "SRCAPL.0.534",
+   "turn": 35,
+   "phase": "PreCombatMain",
+   "stage": "unexpected-target",
+   "rtype": "exactChoices",
+   "spec_type": null,
+   "candidates": [
+    {
+     "choice_id": "SRCAPL.0.534.c0",
+     "oid": null,
+     "seat": null,
+     "name": "0",
+     "zone": null,
+     "controller": null,
+     "text": "0"
+    },
+    {
+     "choice_id": "SRCAPL.0.534.c1",
+     "oid": null,
+     "seat": null,
+     "name": "1",
+     "zone": null,
+     "controller": null,
+     "text": "1"
+    }
+   ]
+  },
+  {
+   "stage": "counter_choice",
+   "pick": "optionIndex 0"
+  }
+ ],
+ "unexpected_prompts": [],
+ "auto_answered": [],
+ "tick_errors": [],
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced: chapter-II noncreature tax still Unimplemented on v0.110.0 (deck-builder Effect:noncreature flag persists)",
+  "verdict=reproduced"
+ ]
+}
