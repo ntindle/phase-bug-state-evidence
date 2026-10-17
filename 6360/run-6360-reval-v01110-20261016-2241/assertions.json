@@ -1,0 +1,65 @@
+{
+ "server_identity": {
+  "server_version": "v0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "server_binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode by the pinning run on 2026-10-16; data digests match the signed manifest. Binary + data digests recomputed against the on-disk artifacts this run; ServerHello 0.111.0/33aa23a/protocol 144 confirmed by live handshake on 127.0.0.1:9374.",
+  "source": "2026-10-16: latest stable release v0.111.0 == pinned release dir; backfill-owned server (started 2026-10-16 16:11 CDT, --single-user --no-data-download) on 127.0.0.1:9374 reused, ServerHello re-verified by this run; scenario games created via CreateGameWithSettings; evidence under evidence/6360/run-6360-reval-v01110-20261016-2241"
+ },
+ "issue": 6360,
+ "run_id": "run-6360-reval-v01110-20261016-2241",
+ "obs": {
+  "attempt": 1,
+  "assert": {
+   "A1_setup_ok": "passed",
+   "A2_cast_and_kicker": "passed",
+   "A3_dig_choice_pending": "passed",
+   "A4_spell_zone_during": "failed",
+   "A5_resolution_completes": "passed",
+   "A6_rest_to_library": "passed"
+  },
+  "notes": [
+   "A1_setup_ok=passed: Consult in hand, >=4 untapped Islands; cast submitted",
+   "A3_dig_choice_pending=passed: mid-resolution keep-choice offered with 13 candidates",
+   "A2_cast_and_kicker=passed: kicker paid once; cast completed through to the mid-resolution keep choice",
+   "A4_spell_zone_during=failed: REPRODUCED BUG: Consult object 31 is in the Graveyard while its mid-resolution keep choice is still pending",
+   "A5_resolution_completes=passed: 2 kept cards in hand, 11 rest in library, Consult in graveyard, no pending prompts",
+   "A6_rest_to_library=passed: 11 non-kept cards in the Library zone; bottom/random-order placement noted but not asserted by position (all Islands, order not distinguished)"
+  ],
+  "game_code": "0EW3NL",
+  "during_zones": [
+   [
+    "Graveyard",
+    "31"
+   ]
+  ],
+  "kept_oids": [
+   "60",
+   "46"
+  ],
+  "looked_oids": [
+   "60",
+   "46",
+   "9",
+   "8",
+   "2",
+   "35",
+   "52",
+   "43",
+   "6",
+   "18",
+   "42",
+   "30",
+   "14"
+  ]
+ },
+ "verdict": "reproduced",
+ "card_data_oracle": {
+  "consult the star charts": "Kicker {1}{U} (You may pay an additional {1}{U} as you cast this spell.)\nLook at the top X cards of your library, where X is the number of lands you control. Put one of those cards into your hand. If this spell was kicked, put two of those cards into your hand instead. Put the rest on the bottom of your library in a random order."
+ }
+}
