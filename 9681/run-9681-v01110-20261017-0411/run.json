@@ -1,0 +1,114 @@
+{
+ "issue": 9681,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9681",
+ "run_id": "run-9681-v01110-20261017-0411",
+ "started_at": "2026-10-17T09:16:35",
+ "finished_at": "2026-10-17T09:19:06",
+ "duration_s": 151.3,
+ "server_identity": {
+  "server_version": "v0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-14; release unchanged since (latest stable still v0.111.0, published 2026-10-16T15:04:47Z); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "observed_at": "2026-10-17",
+  "source": "ServerHello asserted by handshake this run + sha256 re-verified against pinned v0.111.0 release artifacts; reused the live v0.111.0 server on 127.0.0.1:9374 (ServerHello re-verified this run)"
+ },
+ "driver": {
+  "protocol_advertised": 144,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8b35e3125a66447f07257dc8886eea0edebc869c5c2d47c02f063f5f77ec4f7a",
+ "decks": {
+  "P0": [
+   [
+    "Wall of Vapor",
+    8
+   ],
+   [
+    "Island",
+    26
+   ],
+   [
+    "Swamp",
+    26
+   ]
+  ],
+  "P1": [
+   [
+    "Dry Spell",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Swamp",
+    28
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_spell_not_prevented": "passed",
+  "A3_combat_control": "failed",
+  "A4_cleanup": "passed"
+ },
+ "verdict": "not-reproduced",
+ "result": "A1 setup_ok: passed; A2 spell_not_prevented: passed; A3 combat_control: failed; A4 cleanup: passed",
+ "scope": "Wall of Vapor damage-prevention scope on pinned v0.111.0: spell damage (Dry Spell, reported path) and blocked-creature combat damage (control); native engine, two human driver seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prevention effect parses as Effect::Unimplemented {name: prevention_source_scope} on v0.111.0 (parser fails closed per CR 615.1a); no prevention shield exists, so both the reported over-prevention AND rules-correct prevention are absent. States are authoritative exports, restorable only via full game replay (no standalone state-import path)."
+ ],
+ "fixture": {
+  "wov1_oid": "32",
+  "wov2_oid": "44",
+  "bear_oid": "114",
+  "dry_cast": true,
+  "dry_seen_stack": true,
+  "dry_resolved": true,
+  "attacked": true,
+  "blocked": true,
+  "blocker_oid": "44",
+  "combat_done": true,
+  "rejections": [
+   {
+    "who": "P0-9681",
+    "type": "ActionRejected",
+    "data": {
+     "rejection": {
+      "code": "invalid_action",
+      "disposition": "invalid",
+      "message": "That action is not valid in the current game state.",
+      "related_object_ids": []
+     }
+    }
+   }
+  ]
+ },
+ "notes": [
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 34)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#44 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True",
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 34)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#44 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True"
+ ]
+}
