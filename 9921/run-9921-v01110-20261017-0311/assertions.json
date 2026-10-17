@@ -1,0 +1,19 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_search_to_drawer": "failed",
+  "A3_life_loss": "passed",
+  "A4_card_to_hand": "passed",
+  "A5_no_life_gain": "not-run",
+  "A6_cleanup": "not-run"
+ },
+ "notes": [
+  "pre: turn 7 P1 draw step, search offered to P0-9921 (lib~P0), P1 life=17",
+  "mid: turn 7 P1 life=17 picked=mornsong aria in hand; stage=LIFE",
+  "TIMEOUT hit; finishing",
+  "final stage=LIFE search_events=12",
+  "post export failed: export failed: {'message': \"This socket's game session identity is no longer current\"}",
+  "CORRECTION 2026-10-17 (post-hoc, from immutable evidence): the live evaluate() overwrote OBS verdict fields with later non-P1-draw-step search events (search_on_p1_draw and search_picked_oid reflected turn-18/19 P0-draw-step searches, not the turn-7 P1-draw-step one), and A3 expected P1 20->17 although pre.json is exported at search time, after the trigger's lose-3-life link resolved (P1 already 17). Corrected against wire_log.jsonl (first P1-draw-step search, turn 7: offered to P0-9921 with P0's library, 50 candidates), pre.json (Aria oid 18 on P0 BF, P1 at 17), and mid.json (picked Mornsong Aria oid 6 in P0's hand, stack empty, P1 at 17). A1/A3/A4 -> passed; A2 -> failed (the reported bug); verdict -> reproduced. A6 not-run: post.json export failed at TIMEOUT fallback because the game session had ended (P1 lost to the trigger's life loss on turn 19); mid.json already shows an empty stack."
+ ],
+ "verdict": "reproduced"
+}

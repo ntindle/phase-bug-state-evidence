@@ -1,0 +1,157 @@
+{
+  "name": "Mornsong Aria",
+  "oracle_text": "Players can't draw cards or gain life.\nAt the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.",
+  "static_abilities": [
+    {
+      "mode": {
+        "CantDraw": {
+          "who": "AllPlayers"
+        }
+      },
+      "affected": null,
+      "modifications": [],
+      "condition": null,
+      "affected_zone": null,
+      "effect_zone": null,
+      "active_zones": [],
+      "characteristic_defining": false,
+      "description": "Players can't draw cards or gain life."
+    }
+  ],
+  "triggers": [
+    {
+      "mode": "Phase",
+      "execute": {
+        "kind": "Spell",
+        "effect": {
+          "type": "LoseLife",
+          "amount": {
+            "type": "Fixed",
+            "value": 3
+          },
+          "target": {
+            "type": "ScopedPlayer"
+          }
+        },
+        "cost": null,
+        "sub_ability": {
+          "kind": "Spell",
+          "effect": {
+            "type": "SearchLibrary",
+            "filter": {
+              "type": "Typed",
+              "type_filters": [
+                "Card"
+              ],
+              "controller": null,
+              "properties": []
+            },
+            "count": {
+              "type": "Fixed",
+              "value": 1
+            },
+            "reveal": false,
+            "target_player": {
+              "type": "ScopedPlayer"
+            }
+          },
+          "cost": null,
+          "sub_ability": {
+            "kind": "Spell",
+            "effect": {
+              "type": "ChangeZone",
+              "origin": "Library",
+              "destination": "Hand",
+              "target": {
+                "type": "Any"
+              },
+              "owner_library": false,
+              "enter_transformed": false,
+              "enter_tapped": false,
+              "enters_attacking": false
+            },
+            "cost": null,
+            "sub_ability": {
+              "kind": "Spell",
+              "effect": {
+                "type": "ChangeZone",
+                "origin": null,
+                "destination": "Hand",
+                "target": {
+                  "type": "ParentTarget"
+                },
+                "owner_library": false,
+                "enter_transformed": false,
+                "enter_tapped": false,
+                "enters_attacking": false
+              },
+              "cost": null,
+              "sub_ability": {
+                "kind": "Spell",
+                "effect": {
+                  "type": "Shuffle",
+                  "target": {
+                    "type": "ScopedPlayer"
+                  }
+                },
+                "cost": null,
+                "sub_ability": null,
+                "duration": null,
+                "description": null,
+                "target_prompt": null,
+                "condition": null,
+                "optional_targeting": false,
+                "optional": false,
+                "forward_result": false
+              },
+              "duration": null,
+              "description": null,
+              "target_prompt": null,
+              "condition": null,
+              "optional_targeting": false,
+              "optional": false,
+              "forward_result": false
+            },
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+          },
+          "duration": null,
+          "description": null,
+          "target_prompt": null,
+          "condition": null,
+          "optional_targeting": false,
+          "optional": false,
+          "forward_result": false
+        },
+        "duration": null,
+        "description": null,
+        "target_prompt": null,
+        "condition": null,
+        "optional_targeting": false,
+        "optional": false,
+        "forward_result": false
+      },
+      "valid_card": null,
+      "origin": null,
+      "destination": null,
+      "trigger_zones": [
+        "Battlefield"
+      ],
+      "phase": "Draw",
+      "optional": false,
+      "damage_kind": "Any",
+      "secondary": false,
+      "valid_target": null,
+      "valid_source": null,
+      "description": "At the beginning of each player's draw step, that player loses 3 life, searches their library for a card, puts it into their hand, then shuffles.",
+      "constraint": null,
+      "condition": null,
+      "batched": false
+    }
+  ]
+}

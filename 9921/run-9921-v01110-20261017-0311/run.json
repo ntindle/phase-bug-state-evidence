@@ -1,0 +1,263 @@
+{
+ "issue": 9921,
+ "issue_url": "https://github.com/phase-rs/phase/pull/9921",
+ "is_pull_request": true,
+ "run_id": "run-9921-v01110-20261017-0311",
+ "started_at": "2026-10-17T08:17:42",
+ "finished_at": "2026-10-17T08:42:38",
+ "duration_s": 1495.3,
+ "server_identity": {
+  "server_version": "v0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time (2026-10-16); release unchanged since (latest stable still v0.111.0, published 2026-10-16T15:04:47Z); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "observed_at": "2026-10-17",
+  "source": "ServerHello asserted by handshake this run + sha256 re-verified against pinned v0.111.0 release artifacts; reused the live v0.111.0 server on 127.0.0.1:9374 (ServerHello re-verified this run)"
+ },
+ "driver": {
+  "protocol_advertised": 144,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0b548f19f631d5ae05c55d4907280d0884cf0a276650848832f033b5bab8c7a7",
+ "decks": {
+  "P0": [
+   [
+    "Mornsong Aria",
+    8
+   ],
+   [
+    "Swamp",
+    52
+   ]
+  ],
+  "P1": [
+   [
+    "Radiant Fountain",
+    8
+   ],
+   [
+    "Plains",
+    52
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_search_to_drawer": "failed",
+  "A3_life_loss": "passed",
+  "A4_card_to_hand": "passed",
+  "A5_no_life_gain": "not-run",
+  "A6_cleanup": "not-run"
+ },
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2 search_to_drawer: failed (reported bug reproduced); A3 life_loss: passed; A4 card_to_hand: passed; A5 no_life_gain: not-run; A6 cleanup: not-run",
+ "scope": "Mornsong Aria draw-step trigger on the opponent's draw step: who searches whose library; and whether the 'or gain life' clause is enforced (Radiant Fountain ETB probe)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path).",
+  "#9921 is a bug-labeled fix PR (open, unmerged); the scenario reproduces the bug report embedded in its Summary on the pinned v0.111.0 release, which predates the fix."
+ ],
+ "search_events": [
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 7,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 50,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 8,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 49,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 9,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 48,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 10,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 47,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 11,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 46,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 12,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 45,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 13,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 44,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 14,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 43,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 15,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 42,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 16,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 41,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 1,
+   "phase": "Draw",
+   "turn": 17,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 40,
+   "library_inferred": "P0",
+   "on_p1_draw_step": true,
+   "waiting_kind": "select"
+  },
+  {
+   "recipient_tag": "P0-9921",
+   "recipient_pid": 0,
+   "active_player": 0,
+   "phase": "Draw",
+   "turn": 18,
+   "candidate_names": [
+    "mornsong aria",
+    "swamp"
+   ],
+   "candidate_count": 39,
+   "library_inferred": "P0",
+   "on_p1_draw_step": false,
+   "waiting_kind": "select"
+  }
+ ],
+ "search_recipient_tag": "P0-9921",
+ "search_library_inferred": "P0",
+ "p1_life_at_search": 17,
+ "p1_life_after_trigger": 17,
+ "life_before_fountain": null,
+ "life_after_fountain": null,
+ "data_has_cantgainlife": false,
+ "notes": [
+  "pre: turn 7 P1 draw step, search offered to P0-9921 (lib~P0), P1 life=17",
+  "mid: turn 7 P1 life=17 picked=mornsong aria in hand; stage=LIFE",
+  "TIMEOUT hit; finishing",
+  "final stage=LIFE search_events=12",
+  "post export failed: export failed: {'message': \"This socket's game session identity is no longer current\"}",
+  "CORRECTION 2026-10-17 (post-hoc, from immutable evidence): the live evaluate() overwrote OBS verdict fields with later non-P1-draw-step search events (search_on_p1_draw and search_picked_oid reflected turn-18/19 P0-draw-step searches, not the turn-7 P1-draw-step one), and A3 expected P1 20->17 although pre.json is exported at search time, after the trigger's lose-3-life link resolved (P1 already 17). Corrected against wire_log.jsonl (first P1-draw-step search, turn 7: offered to P0-9921 with P0's library, 50 candidates), pre.json (Aria oid 18 on P0 BF, P1 at 17), and mid.json (picked Mornsong Aria oid 6 in P0's hand, stack empty, P1 at 17). A1/A3/A4 -> passed; A2 -> failed (the reported bug); verdict -> reproduced. A6 not-run: post.json export failed at TIMEOUT fallback because the game session had ended (P1 lost to the trigger's life loss on turn 19); mid.json already shows an empty stack."
+ ]
+}
