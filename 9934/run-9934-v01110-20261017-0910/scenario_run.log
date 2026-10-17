@@ -1,0 +1,53 @@
+[08:05:19] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[08:05:22] card-data check: ok=True
+[08:05:23] game 6W9Y2X; P0 seat=0 P1 seat=1
+[08:05:23] [P0] mulligan 7: ['mountain', 'mountain', 'forest', 'forest', 'plains', 'forest', 'plains'] (mulls=0)
+[08:05:23] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'] (mulls=0)
+[08:05:23] [P0] keep 7: ['mountain', 'mountain', 'plains', 'forest', 'plains', 'oasis ritualist', 'oasis ritualist'] (mulls=1)
+[08:05:23] [P0] bottoming ['forest']
+[08:05:40] [P0] cast_rit (oid 3)
+[08:05:40] [P0] cast confirmed (stack): cast_rit
+[08:05:40] Ritualist on BF oid=3
+[08:05:48] DIAG turn=11 active=1 phase=PreCombatMain stage=SETUP rit=3 surv=None exert_act=False trig_seen=False trig_res=False attacked=False P0hand=['mountain', 'mountain', 'plains', 'oasis ritualist', 'forest'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] life=20/20 atypes=['ActivateAbility', 'PassPriority', 'TapLandForMana'] vi_kind=choose vi_ops=1 rdp=False
+[08:06:12] [P1] discarding ['island']
+[08:06:13] DIAG turn=22 active=0 phase=Upkeep stage=SETUP rit=3 surv=None exert_act=False trig_seen=False trig_res=False attacked=False P0hand=['mountain', 'plains', 'oasis ritualist', 'forest', 'plains', 'mountain'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] life=20/20 atypes=[] vi_kind=choose vi_ops=0 rdp=False
+[08:06:15] [P0] discarding ['forest']
+[08:06:17] [P1] discarding ['island']
+[08:06:20] [P0] discarding ['mountain']
+[08:06:22] [P1] discarding ['island']
+[08:06:24] [P0] discarding ['forest']
+[08:06:27] [P1] discarding ['island']
+[08:06:29] [P0] discarding ['mountain']
+[08:06:32] [P1] discarding ['island']
+[08:06:34] [P0] discarding ['mountain']
+[08:06:36] [P1] discarding ['island']
+[08:06:38] DIAG turn=32 active=0 phase=EndCombat stage=SETUP rit=3 surv=None exert_act=False trig_seen=False trig_res=False attacked=False P0hand=['plains', 'oasis ritualist', 'plains', 'oasis ritualist', 'plains', 'mountain'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] life=20/20 atypes=['ActivateAbility', 'PassPriority', 'TapLandForMana'] vi_kind=choose vi_ops=1 rdp=False
+[08:06:39] [P0] discarding ['mountain']
+[08:06:41] [P1] discarding ['island']
+[08:06:44] [P0] discarding ['mountain']
+[08:06:46] [P1] discarding ['island']
+[08:06:47] [P0] cast_surv (oid 18)
+[08:06:47] [P0] cast confirmed (stack): cast_surv
+[08:06:47] Survivors on BF oid=18
+[08:06:47] exported pre.json
+[08:06:47] fixture ready; pre.json exported; -> EXERT
+[08:06:48] [P0] activating ritualist exert ability (src_oid 3)
+[08:06:48] ritualist post-resolution: {'tapped': False, 'counters': {}}; exerted_this_turn=[]
+[08:06:48] [P0] ChooseManaColor options=['White', 'Blue', 'Black', 'Red', 'Green']; picking Green
+[08:06:48] mana ability awaiting color choice (ChooseManaColor)
+[08:06:51] [P1] discarding ['island']
+[08:06:54] [P0] discarding ['forest']
+[08:06:56] [P1] discarding ['island']
+[08:06:56] ritualist untapped on a subsequent untap step -- exertion was not recorded
+[08:06:58] exported post.json
+[08:06:58] no trigger after 60 quiet revisions; post.json exported; -> CONTROL
+[08:06:59] [P0] discarding ['plains']
+[08:07:01] [P1] discarding ['island']
+[08:07:02] [P0] attacks P1 with survivors 18
+[08:07:02] [P0] answering exert prompt affirmatively (iid 6W9Y2X.0.648)
+[08:07:03] DIAG turn=42 active=0 phase=DeclareAttackers stage=CONTROL rit=3 surv=18 exert_act=True trig_seen=False trig_res=False attacked=True P0hand=['oasis ritualist', 'plains', 'oasis ritualist', 'plains', 'plains', 'plains'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card'] life=20/20 atypes=['ChooseExert'] vi_kind=choose vi_ops=1 rdp=True
+[08:07:20] exported post_control.json
+[08:07:20] post_control.json exported; DONE
+[08:07:20] FINAL verdict=reproduced assertions={'A1_setup_ok': 'passed', 'A2_cost_exert_trigger': 'failed', 'A3_own_source_control': 'failed', 'A4_cleanup': 'passed'}
+[08:07:21] wrote /home/hatch/workspace/dev/phase-backfill/evidence/9934/run-9934-v01110-20261017-0910/summary.png
+[08:07:21] VERDICT: reproduced
