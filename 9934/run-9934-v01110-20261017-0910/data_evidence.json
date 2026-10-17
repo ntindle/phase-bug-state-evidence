@@ -1,0 +1,157 @@
+{
+ "ok": true,
+ "notes": [
+  "oasis ritualist exert ability confirmed in oracle",
+  "oasis ritualist parsed abilities: 2",
+  "exert ability_index=1 (descriptions: ['{T}: Add one mana of any color.', '{T}, Exert ~: Add two mana of any one color.'])",
+  "resolute survivors Exerted trigger parsed: valid_card=Typed/['Creature'], valid_target=Controller, valid_source=None"
+ ],
+ "oracle": {
+  "oasis ritualist": "{T}: Add one mana of any color.\n{T}, Exert this creature: Add two mana of any one color. (An exerted creature won't untap during your next untap step.)",
+  "resolute survivors": "You may exert this creature as it attacks. (It won't untap during your next untap step.)\nWhenever you exert a creature, this creature deals 1 damage to each opponent and you gain 1 life."
+ },
+ "rit_abilities": [
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Mana",
+    "produced": {
+     "type": "AnyOneColor",
+     "count": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "color_options": [
+      "White",
+      "Blue",
+      "Black",
+      "Red",
+      "Green"
+     ]
+    }
+   },
+   "cost": {
+    "type": "Tap"
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{T}: Add one mana of any color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "is_mana_ability": true
+  },
+  {
+   "kind": "Activated",
+   "effect": {
+    "type": "Mana",
+    "produced": {
+     "type": "AnyOneColor",
+     "count": {
+      "type": "Fixed",
+      "value": 2
+     },
+     "color_options": [
+      "White",
+      "Blue",
+      "Black",
+      "Red",
+      "Green"
+     ]
+    }
+   },
+   "cost": {
+    "type": "Composite",
+    "costs": [
+     {
+      "type": "Tap"
+     },
+     {
+      "type": "Exert"
+     }
+    ]
+   },
+   "sub_ability": null,
+   "duration": null,
+   "description": "{T}, Exert ~: Add two mana of any one color.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false,
+   "is_mana_ability": true
+  }
+ ],
+ "surv_triggers": [
+  {
+   "mode": "Exerted",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "DamageEachPlayer",
+     "amount": {
+      "type": "Fixed",
+      "value": 1
+     },
+     "player_filter": {
+      "type": "Opponent"
+     }
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "GainLife",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      }
+     },
+     "cost": null,
+     "sub_ability": null,
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false
+   },
+   "valid_card": {
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ],
+    "controller": null,
+    "properties": []
+   },
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": null,
+   "optional": false,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": {
+    "type": "Controller"
+   },
+   "valid_source": null,
+   "description": "Whenever you exert a creature, ~ deals 1 damage to each opponent and you gain 1 life.",
+   "constraint": null,
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
