@@ -1,0 +1,43 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cost_exert_trigger": "failed",
+  "A3_own_source_control": "not-run",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1: ritualist 3 + survivors 18 on P0 BF at pre.json (turn 36); P0 life=20 P1 life=20",
+  "A2: leg closed with NO trigger after full ability resolution + 60 quiet revisions; exert_status_obs={'tapped': False, 'counters': {}}; exerted_this_turn ledger at close=[]; rit_untap_noted=True",
+  "A2: no Survivors trigger from the cost-exert -- REPORTED BUG reproduced",
+  "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+  "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+  "A4: stack_empty=True",
+  "A1: ritualist 3 + survivors 18 on P0 BF at pre.json (turn 36); P0 life=20 P1 life=20",
+  "A2: leg closed with NO trigger after full ability resolution + 60 quiet revisions; exert_status_obs={'tapped': False, 'counters': {}}; exerted_this_turn ledger at close=[]; rit_untap_noted=True",
+  "A2: no Survivors trigger from the cost-exert -- REPORTED BUG reproduced",
+  "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+  "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+  "A4: stack_empty=True",
+  "A3 corrected failed -> not-run post-hoc: the exert-as-attacks decision was never submitted. The driver answered a viewer-interaction exert prompt (iid 6W9Y2X.0.648, no rejection) but the engine's top-level ChooseExert action stayed pending for the full 18s control window (DIAG atypes=['ChooseExert']); the driver has no ChooseExert submitter. Survivors attacked (tapped, in combat.attackers) but whether an own-source exert would fire its trigger was not established. Non-verdict-driving control; verdict unchanged (reproduced via A2)."
+ ],
+ "verdict": "reproduced",
+ "correction": {
+  "corrected_at": "2026-10-17T08:15:00-05:00",
+  "script": "driver/correct_9934_assertions.py",
+  "superseded": {
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_cost_exert_trigger": "failed",
+    "A3_own_source_control": "failed",
+    "A4_cleanup": "passed"
+   },
+   "notes_tail": [
+    "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+    "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+    "A4: stack_empty=True"
+   ]
+  },
+  "reason": "A3 corrected failed -> not-run post-hoc: the exert-as-attacks decision was never submitted. The driver answered a viewer-interaction exert prompt (iid 6W9Y2X.0.648, no rejection) but the engine's top-level ChooseExert action stayed pending for the full 18s control window (DIAG atypes=['ChooseExert']); the driver has no ChooseExert submitter. Survivors attacked (tapped, in combat.attackers) but whether an own-source exert would fire its trigger was not established. Non-verdict-driving control; verdict unchanged (reproduced via A2).",
+  "verdict_unchanged": true
+ }
+}
