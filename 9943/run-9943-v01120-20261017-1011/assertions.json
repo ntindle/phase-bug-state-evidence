@@ -1,0 +1,19 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_unless_prompt_zero": "failed",
+  "A3_unless_prompt_control": "passed",
+  "A4_cleanup": "passed"
+ },
+ "verdict": "reproduced",
+ "notes": [
+  "A1: pre.json has Clash X=0 on stack (turn 4, phase PreCombatMain)",
+  "leg0: prompt_seen=False, bears_zone=Battlefield, bears_countered=False",
+  "A2: Clash X=0 resolved with NO UnlessPayment prompt and the Bears was NOT countered -- auto-pay CONFIRMED (REPORTED BUG reproduced)",
+  "leg1 (control X=2): prompt_seen=True, bears_zone=Battlefield",
+  "A3: UnlessPayment prompt raised at X=2 -- control confirms the prompt machinery works; the X=0 skip is specific",
+  "A4: post.json exported",
+  "A4: post_control.json exported",
+  "leg1 answer detail: P1's best-effort unless-answer (choice SHQ0JC.0.255.c1, driver aimed for decline) was accepted with no rejection; P1 tapped 2 additional Forests between prompt_leg1.json (2 tapped/5 untapped) and post_control.json (4 tapped/4 untapped), and the Bears resolved uncountered -- the pick was the PAY choice, so the control demonstrates the full prompt->pay->{2}-paid path, not the decline path."
+ ]
+}
