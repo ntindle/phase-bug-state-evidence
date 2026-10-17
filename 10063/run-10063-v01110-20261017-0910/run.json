@@ -1,0 +1,35 @@
+{
+ "run_id": "run-10063-v01110-20261017-0910",
+ "issue": 10063,
+ "run_at": "2026-10-17T13:55:19Z",
+ "server_identity": {
+  "server_version": "0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY at pin time 2026-10-14; latest stable still v0.111.0; digests re-verified this run; reused the live backfill v0.111.0 server on 127.0.0.1:9374 (ServerHello re-verified this run)"
+ },
+ "scenario": "driver/scenario_10063.py",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_correct_targeting": "failed",
+  "A3_correct_resolution": "failed",
+  "A4_stickered_control": "passed",
+  "A5_cleanup": "passed"
+ },
+ "verdict": "reproduced",
+ "notes": [
+  "A1: pre.json turn=18 scampire_bf=['25'] corpses_gy=['51', '52'] stickered=['52'] unstickered=['51']",
+  "A2: UNSTICKERED corpse 51 ADVERTISED as a legal target {'52': 'walking corpse', '51': 'walking corpse'} -- REPORTED BUG reproduced (target filter ignores the sticker restriction)",
+  "A3: unstickered corpse 51 RETURNED to the battlefield via Scampire's ability -- REPORTED BUG reproduced end-to-end",
+  "A4: stickered corpse 52 advertised -- target surface works; the filter just ignores the sticker distinction",
+  "A5: stack_empty=True",
+  "verdict=reproduced: unstickered corpse advertised AND returned to the battlefield"
+ ],
+ "rejections": []
+}
