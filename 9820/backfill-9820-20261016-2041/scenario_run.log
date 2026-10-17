@@ -1,0 +1,29 @@
+[01:49:09] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[01:49:09] data-level: cavalcade Attacks triggers=1 target={"type": "Or", "filters": [{"type": "ParentTarget"}, {"type": "Typed", "type_filters": ["Planeswalker"], "controller": null, "properties": []}]}
+[01:49:12] game=NR9ZVO run=backfill-9820-20261016-2041
+[01:49:13] [P0] mulligan -> Keep (hand=['ornithopter', 'ornithopter', 'mountain', 'ornithopter', 'mountain', 'mountain', 'cavalcade of calamity'])
+[01:49:13] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[01:49:13] [P1] playing land mountain
+[01:49:16] [P0] playing land mountain
+[01:49:19] [P1] playing land mountain
+[01:49:23] [P0] playing land mountain
+[01:49:23] [P0] casting Cavalcade of Calamity (oid 35) at turn 4
+[01:49:24] [P0] casting Ornithopter (oid 13) at turn 4
+[01:49:25] [P0] casting Ornithopter (oid 14) at turn 4
+[01:49:25] [P0] casting Ornithopter (oid 40) at turn 4
+[01:49:25] [P0] ARMED with 2 ornithopters at turn 4 (oids ['13', '14'])
+[01:49:25] exported pre_attack.json
+[01:49:34] [P1] playing land mountain
+[01:49:37] [P0] playing land mountain
+[01:49:38] [P0] declaring attack with 2 ornithopters -> P1 at turn 6
+[01:49:38] [P0] attack ACCEPTED: [13, 14] in combat.attackers
+[01:49:38] exported mid_attack_declared.json
+[01:49:45] [P0] attack turn 6 ended (now turn 7); exporting post_attack
+[01:49:45] exported post_attack.json
+[01:49:45] assertion A1_setup_ok: passed
+[01:49:45] assertion A2_attackers_declared: passed
+[01:49:45] assertion A3_trigger_damage: failed
+[01:49:45] assertion A4_cleanup: passed
+[01:49:45] VERDICT: reproduced
+[01:49:46] rendered /home/hatch/workspace/dev/phase-backfill/evidence/9820/backfill-9820-20261016-2041/summary.png
+[01:49:46] closing logs before manifest computation
