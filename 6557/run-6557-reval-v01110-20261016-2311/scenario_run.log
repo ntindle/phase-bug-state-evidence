@@ -1,0 +1,39 @@
+ServerHello: 0.111.0/33aa23a/protocol 144/Full
+data-level check: ok=True notes=[]
+game Q7BHYP; P0 seat=0 P1 seat=1
+[P0] keep 7: ['tamiyo, inquisitive student', 'tamiyo, inquisitive student', 'island', 'island', 'island', 'island', 'tamiyo, inquisitive student'] (mull_count=1)
+[P1] keep 7: ['grizzly bears', 'forest', 'forest', 'grizzly bears', 'forest', 'forest', 'grizzly bears'] (mull_count=1)
+DIAG turn=1 active=1 phase=Untap legal=['MulliganDecision', 'MulliganDecision', 'MulliganDecision', 'MulliganDecision'] vikind=mulligan P0hand=['tamiyo, inquisitive student', 'tamiyo, inquisitive student', 'island', 'island', 'island', 'island'] pw_loyalty=None life=20/20 stack=0 plus2=False atk1=False atk2=False exp={"pre": false, "mid": false, "post": false, "p0next": false, "post2": false}
+P0 casts Tamiyo (turn 2)
+[p0] cast confirmed (stack): tamiyo
+P1 casts Grizzly Bears (turn 3)
+[p1] cast confirmed (stack): bear
+P0 declares no attackers (turn 4)
+P1 casts Grizzly Bears (turn 5)
+[p1] cast confirmed (stack): bear
+P0 casts Divination (turn 6)
+[p0] cast confirmed (stack): divination
+TRIGGER on stack (turn 6 PreCombatMain): {"id": 121, "source_id": 20, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 20, "ability": {"effect": {"type": "ChangeZone", "origin": null, "destination": "Exile", "target": {"type": "SelfRef"}, "owner_library": false, "enter_transformed": false, "enter_tapped": false, "enters_attacking": false}, "targets": [], "source_id": 20, "source_incarnation": 3, "trigger_source": {"identity": {"reference": {"object_id": 20, "incarnation": 3}, "expected_zone": "Battlefield"}, 
+proof: exporting PRE, activating Tamiyo +2 (turn 6 phase PreCombatMain)
+exported pre.json
+P0 activates Tamiyo +2 (turn 6)
+MID: +2 resolved, loyalty 4 (turn 6)
+exported mid.json
+P1 casts Grizzly Bears (turn 7)
+[p1] cast confirmed (stack): bear
+P1 casts Grizzly Bears (turn 7)
+[p1] cast confirmed (stack): bear
+P1 attack1: attacks P0 with Bear oid 63 (turn 7)
+TRIGGER on stack (turn 7 DeclareAttackers): {"id": 123, "source_id": 20, "controller": 0, "kind": {"type": "TriggeredAbility", "data": {"source_id": 20, "ability": {"effect": {"type": "Pump", "power": {"type": "Fixed", "value": -1}, "toughness": {"type": "Fixed", "value": 0}, "target": {"type": "TriggeringSource"}}, "targets": [], "source_id": 20, "source_incarnation": 5, "trigger_source": {"identity": {"reference": {"object_id": 20, "incarnation": 5}, "expected_zone": "Battlefield"}, "lki": {"name": "Tamiyo, Seasoned Scholar", "power": n
+exported post.json
+POST: attack1 turn 7 phase EndCombat; bear oid 63 power=1, P0 life=19
+P0NEXT: P0 turn 8 phase Upkeep; bear powers=[2, 2, 2, 2]
+exported p0next.json
+P1 casts Grizzly Bears (turn 9)
+[p1] cast confirmed (stack): bear
+P1 casts Grizzly Bears (turn 9)
+[p1] cast confirmed (stack): bear
+P1 attack2: attacks P0 with Bear oid 63 (turn 9)
+exported post2.json
+POST2: attack2 turn 9 phase EndCombat; bear oid 63 power=2, P0 life=17
+post2 exported; finishing
