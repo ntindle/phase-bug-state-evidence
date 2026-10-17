@@ -1,0 +1,66 @@
+[00:14:31] starting issue #5654 run run-5654-reval-v01110-20261016-1911
+[00:14:31] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[00:14:31] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[00:14:32] [A] game FSOA4H P0seat=0 P1seat=1
+[00:14:32] [P0] mulligan #2 (7: ['island', 'swamp', 'island', 'swamp', 'island', 'swamp', 'swamp'])
+[00:14:32] [P1] mulligan #2 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[00:14:32] [A] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[00:14:33] [P0] keep 7: ['island', 'notion thief', 'island', 'swamp', 'notion thief', 'island', 'island']
+[00:14:33] [P1] mulligan #3 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[00:14:33] [P1] keep 7: ['divination', 'island', 'island', 'island', 'island', 'island', 'island']
+[00:14:33] [P0] bottoming ['Island'] via vi
+[00:14:33] [P1] bottoming ['Island', 'Island'] via vi
+[00:14:33] [P1] playing land island
+[00:14:36] [P0] playing land island
+[00:14:38] [P1] playing land island
+[00:14:41] [P0] playing land island
+[00:14:44] [P1] playing land island
+[00:14:46] [P0] playing land swamp
+[00:14:48] [P1] playing land island
+[00:14:50] [P0] playing land island
+[00:14:51] [P0] casting notion thief (oid=27)
+[00:14:51] [A] P0 casts Notion Thief (turn 8)
+[00:14:51] [P1] cast confirmed (stack): notion thief oid 27
+[00:14:55] [P1] playing land island
+[00:14:55] [A] P1 main phase: exporting PRE_A, then casting Divination
+[00:14:55] [P1] casting divination (oid=88)
+[00:14:55] [A] P1 casts Divination (turn 9)
+[00:14:55] [P0] cast confirmed (stack): divination oid 88
+[00:14:55] [P1] Divination confirmed on stack
+[00:14:56] [P1] Divination confirmed on stack
+[00:14:56] [P1] Divination confirmed on stack
+[00:14:56] [A] Divination resolved; exporting POST_A
+[00:14:56] [A] exported POST_A
+[00:14:56] [A] done flag set; finishing game
+[00:14:56] [A] game A finished ok=True
+[00:14:56] [B] game HMCVW6 P0seat=0 P1seat=1
+[00:14:56] [P0] mulligan #2 (7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+[00:14:56] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[00:14:56] [B] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[00:14:56] [P0] keep 7: ['island', 'island', 'island', 'plagiarize', 'plagiarize', 'plagiarize', 'island']
+[00:14:56] [P0] bottoming ['Island'] via vi
+[00:14:57] [P0] playing land island
+[00:14:59] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[00:14:59] [P1] discarding to hand size via vi: picks=['HMCVW6.0.23.c1']
+[00:15:04] [P1] playing land island
+[00:15:07] [P0] playing land island
+[00:15:08] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[00:15:09] [P1] discarding to hand size via vi: picks=['HMCVW6.0.53.c1']
+[00:15:14] [P1] playing land island
+[00:15:16] [P0] playing land island
+[00:15:19] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[00:15:20] [P1] discarding to hand size via vi: picks=['HMCVW6.0.83.c1']
+[00:15:25] [P1] playing land island
+[00:15:27] [P0] playing land island
+[00:15:29] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[00:15:29] [P0] casting plagiarize (oid=2)
+[00:15:29] [B] P0 casts Plagiarize (turn 8)
+[00:15:29] [P1] cast confirmed (stack): plagiarize oid 2
+[00:15:30] [B] P1 past draw step; exporting POST_B
+[00:15:30] [B] exported POST_B
+[00:15:30] [P1] discarding to hand size via vi: picks=['HMCVW6.0.117.c1']
+[00:15:30] [B] done flag set; finishing game
+[00:15:30] [B] game B finished ok=True
+[00:15:30] [A] deltas P0 hand 5->7 lib 50->48; P1 hand 4->3 lib 51->51
+[00:15:30] [B] deltas P0 hand 5->4 lib 51->51; P1 hand 7->8 lib 50->49
+[00:15:31] rendered summary.png
