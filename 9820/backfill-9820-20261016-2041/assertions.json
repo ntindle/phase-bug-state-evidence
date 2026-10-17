@@ -1,0 +1,15 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attackers_declared": "passed",
+  "A3_trigger_damage": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1: cavalcade_bf=True ornithopters=2 p1_life=20",
+  "A2: accepted=True n_attackers=2",
+  "A3: P1 life stayed 20 with 2 attacking power<=1 creatures: NO Cavalcade damage -- reported bug reproduced (P0 life 20->20)",
+  "A4: post stack empty=True"
+ ],
+ "verdict": "reproduced"
+}
