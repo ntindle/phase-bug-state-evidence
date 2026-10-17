@@ -1,0 +1,59 @@
+{
+ "issue": 9820,
+ "issue_url": "https://github.com/phase-rs/phase/pull/9820",
+ "run_id": "backfill-9820-20261016-2041",
+ "game_code": "NR9ZVO",
+ "started_at": "2026-10-17T01:49:08",
+ "finished_at": "2026-10-17T01:49:45",
+ "duration_s": 36.1,
+ "server_identity": {
+  "server_version": "v0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "server_binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode when pinned; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-16: latest stable release v0.111.0 (published 2026-10-16T15:04:47Z) == pinned release dir; ServerHello 0.111.0/33aa23a/protocol 144 verified by handshake this run; hashes recomputed against on-disk artifacts this run; existing v0.111.0 server on 127.0.0.1:9374 reused (identity verified by handshake this run); fresh game created by this run; isolated evidence under evidence/9820/backfill-9820-20261016-2041)."
+ },
+ "driver": {
+  "protocol_advertised": 144,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "1c6a33868e161202466778d46075ff957627489e7454ba28f86f261b1690c0f7",
+ "decks": {
+  "P0": "36x Mountain / 4x Cavalcade of Calamity / 20x Ornithopter",
+  "P1": "60x Mountain (passive)"
+ },
+ "setup_line": "P0 ramps Mountains, casts Cavalcade of Calamity ({1}{R}) then Ornithopters ({0}, 0/2); P1 draw-gos with Mountains",
+ "contract_line": "Attack with >=2 Ornithopters (power<=1 triggers Cavalcade; 0 power means combat damage cannot move life totals). The reported bug: the 'player that creature is attacking' parses to Or[ParentTarget, Planeswalker] with no parent target, so the 1 damage per attacker never happens.",
+ "stats": {
+  "max_turn": 7,
+  "n_attackers": 2,
+  "attack_turn": 6,
+  "p1_life_pre": 20,
+  "p0_life_pre": 20,
+  "data_level_ok": true
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_attackers_declared": "passed",
+  "A3_trigger_damage": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1: cavalcade_bf=True ornithopters=2 p1_life=20",
+  "A2: accepted=True n_attackers=2",
+  "A3: P1 life stayed 20 with 2 attacking power<=1 creatures: NO Cavalcade damage -- reported bug reproduced (P0 life 20->20)",
+  "A4: post stack empty=True"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay.",
+  "Only the attacking-a-player branch was exercised; the planeswalker branch ('or planeswalker') was not tested."
+ ]
+}
