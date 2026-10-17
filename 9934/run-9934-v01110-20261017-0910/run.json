@@ -1,0 +1,121 @@
+{
+ "issue": 9934,
+ "issue_url": "https://github.com/phase-rs/phase/pull/9934",
+ "run_id": "run-9934-v01110-20261017-0910",
+ "started_at": "2026-10-17T13:05:19",
+ "finished_at": "2026-10-17T13:07:20",
+ "duration_s": 121.4,
+ "server_identity": {
+  "server_version": "v0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "mode": "Full",
+  "binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "signature_note": "v0.111.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-14; release unchanged since (latest stable still v0.111.0, published 2026-10-16T15:04:47Z, verified this run); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "observed_at": "2026-10-17",
+  "source": "ServerHello asserted by handshake this run + sha256 re-verified against pinned v0.111.0 release artifacts; reused the live v0.111.0 server on 127.0.0.1:9374 (ServerHello re-verified this run)"
+ },
+ "driver": {
+  "protocol_advertised": 144,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "351a81a6d51549c556c4aadce38d7fc428a0414f0954df0c785d0c22fedade0e",
+ "decks": {
+  "P0": [
+   [
+    "Oasis Ritualist",
+    4
+   ],
+   [
+    "Resolute Survivors",
+    4
+   ],
+   [
+    "Forest",
+    18
+   ],
+   [
+    "Mountain",
+    17
+   ],
+   [
+    "Plains",
+    17
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cost_exert_trigger": "failed",
+  "A3_own_source_control": "not-run",
+  "A4_cleanup": "passed"
+ },
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2 cost_exert_trigger: failed; A3 own_source_control: failed; A4 cleanup: passed",
+ "scope": "Cost-exert recording + 'whenever you exert' observers on pinned v0.111.0: Oasis Ritualist {T},Exert mana ability with Resolute Survivors on the battlefield (reported path); Survivors attack-exerting itself (control); native engine, two human driver seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (no standalone state-import path)."
+ ],
+ "fixture": {
+  "rit_oid": "3",
+  "surv_oid": "18",
+  "exert_activated": true,
+  "trigger_seen_stack": false,
+  "trigger_resolved": false,
+  "attacked": true,
+  "control_trigger_seen": false,
+  "control_trigger_resolved": false,
+  "exert_status_obs": {
+   "tapped": false,
+   "counters": {}
+  },
+  "rejections": []
+ },
+ "notes": [
+  "A1: ritualist 3 + survivors 18 on P0 BF at pre.json (turn 36); P0 life=20 P1 life=20",
+  "A2: leg closed with NO trigger after full ability resolution + 60 quiet revisions; exert_status_obs={'tapped': False, 'counters': {}}; exerted_this_turn ledger at close=[]; rit_untap_noted=True",
+  "A2: no Survivors trigger from the cost-exert -- REPORTED BUG reproduced",
+  "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+  "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+  "A4: stack_empty=True",
+  "A1: ritualist 3 + survivors 18 on P0 BF at pre.json (turn 36); P0 life=20 P1 life=20",
+  "A2: leg closed with NO trigger after full ability resolution + 60 quiet revisions; exert_status_obs={'tapped': False, 'counters': {}}; exerted_this_turn ledger at close=[]; rit_untap_noted=True",
+  "A2: no Survivors trigger from the cost-exert -- REPORTED BUG reproduced",
+  "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+  "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+  "A4: stack_empty=True",
+  "A3 corrected failed -> not-run post-hoc: the exert-as-attacks decision was never submitted. The driver answered a viewer-interaction exert prompt (iid 6W9Y2X.0.648, no rejection) but the engine's top-level ChooseExert action stayed pending for the full 18s control window (DIAG atypes=['ChooseExert']); the driver has no ChooseExert submitter. Survivors attacked (tapped, in combat.attackers) but whether an own-source exert would fire its trigger was not established. Non-verdict-driving control; verdict unchanged (reproduced via A2)."
+ ],
+ "corrections": [
+  {
+   "corrected_at": "2026-10-17T08:15:00-05:00",
+   "script": "driver/correct_9934_assertions.py",
+   "superseded": {
+    "assertions": {
+     "A1_setup_ok": "passed",
+     "A2_cost_exert_trigger": "failed",
+     "A3_own_source_control": "failed",
+     "A4_cleanup": "passed"
+    },
+    "notes_tail": [
+     "A3: attacked=True control_trigger_seen=False control_trigger_resolved=False",
+     "A3: own-source attack-exert did NOT fire the trigger -- broader trigger breakage",
+     "A4: stack_empty=True"
+    ]
+   },
+   "reason": "A3 corrected failed -> not-run post-hoc: the exert-as-attacks decision was never submitted. The driver answered a viewer-interaction exert prompt (iid 6W9Y2X.0.648, no rejection) but the engine's top-level ChooseExert action stayed pending for the full 18s control window (DIAG atypes=['ChooseExert']); the driver has no ChooseExert submitter. Survivors attacked (tapped, in combat.attackers) but whether an own-source exert would fire its trigger was not established. Non-verdict-driving control; verdict unchanged (reproduced via A2).",
+   "verdict_unchanged": true
+  }
+ ]
+}
