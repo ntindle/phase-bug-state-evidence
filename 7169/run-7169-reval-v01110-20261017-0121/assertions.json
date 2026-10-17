@@ -1,0 +1,17 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_hand_offer": "passed",
+  "A3_gy_offer_absent": "passed",
+  "A4_gy_cast_completes": "passed",
+  "A5_nonz_unaffected": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre: turn 43 storm_oid=5 ghoul_oid=8 crawler_gy_oid=43",
+  "mid: turn 43 gy_offer_seen=False crawler resolved to BF",
+  "post: turn 45 nonz_offer_seen=False life=20/20",
+  "final stage=DONE offers={'storm': False, 'hand': True, 'gy': False, 'nonz': False} accepted={'storm': False, 'hand': True, 'gy': False, 'nonz': False}"
+ ],
+ "verdict": "reproduced"
+}
