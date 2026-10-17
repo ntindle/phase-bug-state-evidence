@@ -1,0 +1,83 @@
+[04:16:35] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[04:16:37] card-data check: ok=True notes=['wall of vapor prevention = Effect::Unimplemented {name: prevention_source_scope} (fail-closed, no shield) -- matches engine unit test prevention_source_scope_fails_closed_at_the_route']
+[04:16:38] game WDUFYD; P0 seat=0 P1 seat=1
+[04:16:38] [P0] mulligan 7: ['island', 'swamp', 'swamp', 'island', 'swamp', 'island', 'swamp'] (mulls=0)
+[04:16:38] [P1] mulligan 7: ['forest', 'forest', 'forest', 'forest', 'swamp', 'swamp', 'swamp'] (mulls=0)
+[04:16:38] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', 'island', 'island', 'wall of vapor'] (mulls=1)
+[04:16:38] [P1] mulligan 7: ['swamp', 'forest', 'forest', 'swamp', 'swamp', 'forest', 'forest'] (mulls=1)
+[04:16:39] [P0] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', 'island', 'island', 'wall of vapor'] (mulls=1)
+[04:16:39] [P1] keep 7: ['dry spell', 'forest', 'swamp', 'forest', 'forest', 'dry spell', 'forest'] (mulls=2)
+[04:16:39] [P0-9681] ActionRejected: {"rejection": {"code": "invalid_action", "disposition": "invalid", "message": "That action is not valid in the current game state.", "related_object_ids": []}}
+[04:16:39] [P0] bottoming ['wall of vapor']
+[04:16:39] [P1] bottoming ['dry spell', 'dry spell']
+[04:17:03] DIAG turn=11 active=1 phase=PreCombatMain stage=SETUP wov1=None wov2=None bear=None dry_cast=False dry_stack=False resolved=False attacked=False blocked=False P0hand=['swamp', 'swamp', 'island', 'island', 'swamp', 'swamp'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card']
+[04:17:16] [P0] discarding ['swamp']
+[04:17:21] [P0] discarding ['swamp']
+[04:17:23] [P1] discarding ['forest']
+[04:17:25] [P0] discarding ['island']
+[04:17:27] [P1] discarding ['swamp']
+[04:17:28] DIAG turn=22 active=0 phase=PreCombatMain stage=SETUP wov1=None wov2=None bear=None dry_cast=False dry_stack=False resolved=False attacked=False blocked=False P0hand=['island', 'swamp', 'island', 'island', 'swamp', 'swamp'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[04:17:30] [P0] discarding ['island']
+[04:17:32] [P1] discarding ['swamp']
+[04:17:34] [P0] discarding ['swamp']
+[04:17:37] [P1] discarding ['forest']
+[04:17:39] [P0] discarding ['island']
+[04:17:41] [P1] discarding ['swamp']
+[04:17:44] [P0] discarding ['island']
+[04:17:46] [P1] discarding ['swamp']
+[04:17:48] [P0] discarding ['swamp']
+[04:17:51] [P1] discarding ['forest']
+[04:17:53] DIAG turn=32 active=0 phase=PostCombatMain stage=SETUP wov1=None wov2=None bear=None dry_cast=False dry_stack=False resolved=False attacked=False blocked=False P0hand=['swamp', 'island', 'island', 'island', 'swamp', 'island'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[04:17:54] [P0] discarding ['swamp']
+[04:17:56] [P1] discarding ['forest']
+[04:17:57] [P0] cast_wov1 (oid 32)
+[04:17:57] [P0] cast confirmed (stack): cast_wov1
+[04:17:57] WoV#1 on BF oid=32
+[04:17:58] exported pre_dryspell.json
+[04:17:58] WoV#1 resolved; pre_dryspell exported; -> LEG1
+[04:18:00] [P1] casts Dry Spell (oid 73); P0 life=20 P1 life=20
+[04:18:00] [P1] cast confirmed (stack): cast_dryspell
+[04:18:00] Dry Spell observed on stack
+[04:18:00] Dry Spell RESOLVED; P0 life=19 P1 life=19 wov1=Graveyard
+[04:18:00] exported post_dryspell.json
+[04:18:04] [P0] discarding ['island']
+[04:18:06] [P1] discarding ['swamp']
+[04:18:09] [P0] discarding ['island']
+[04:18:11] [P1] discarding ['forest']
+[04:18:13] [P0] discarding ['island']
+[04:18:16] [P1] discarding ['forest']
+[04:18:18] DIAG turn=42 active=0 phase=PostCombatMain stage=COMBAT wov1=32 wov2=None bear=None dry_cast=True dry_stack=True resolved=True attacked=False blocked=False P0hand=['swamp', 'island', 'island', 'island', 'swamp', 'swamp'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[04:18:19] [P0] discarding ['swamp']
+[04:18:21] [P1] discarding ['swamp']
+[04:18:24] [P0] discarding ['island']
+[04:18:26] [P1] discarding ['swamp']
+[04:18:27] [P0] cast_wov2 (oid 44)
+[04:18:27] [P0] cast confirmed (stack): cast_wov2
+[04:18:27] WoV#2 on BF oid=44
+[04:18:31] [P1] discarding ['swamp']
+[04:18:33] [P0] discarding ['island']
+[04:18:35] [P1] discarding ['forest']
+[04:18:38] [P0] discarding ['island']
+[04:18:40] [P1] discarding ['forest']
+[04:18:43] [P0] discarding ['swamp']
+[04:18:44] DIAG turn=53 active=1 phase=PreCombatMain stage=COMBAT wov1=32 wov2=44 bear=None dry_cast=True dry_stack=True resolved=True attacked=False blocked=False P0hand=['swamp', 'swamp', 'island', 'swamp', 'island', 'swamp'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[04:18:45] [P1] discarding ['swamp']
+[04:18:47] [P0] discarding ['swamp']
+[04:18:50] [P1] discarding ['forest']
+[04:18:53] [P0] discarding ['swamp']
+[04:18:56] [P1] discarding ['swamp']
+[04:18:58] [P0] discarding ['island']
+[04:18:59] [P1] casts Bear (oid 114)
+[04:18:59] [P1] cast confirmed (stack): cast_bear
+[04:18:59] Bear on BF oid=114
+[04:19:03] [P0] discarding ['swamp']
+[04:19:04] [P1] attacks P0 with bear 114
+[04:19:05] [P0] DeclareBlockers advertised; data_keys=['assignments']
+[04:19:05] [P0] blocking bear 114 with wov 44
+[04:19:06] exported pre_combat_note.json
+[04:19:06] combat finished; blocker zone=Graveyard
+[04:19:06] exported post.json
+[04:19:06] post exported; DONE
+[04:19:06] FINAL verdict=not-reproduced assertions={'A1_setup_ok': 'passed', 'A2_spell_not_prevented': 'passed', 'A3_combat_control': 'failed', 'A4_cleanup': 'passed'}
+[04:19:06] wrote /home/hatch/workspace/dev/phase-backfill/evidence/9681/run-9681-v01110-20261017-0411/summary.png
+[04:19:06] VERDICT: not-reproduced
