@@ -1,0 +1,71 @@
+{
+  "run_id": "run-6659-reval-v01110-20261017-0241",
+  "issue": 6659,
+  "title": "Deck builder copy-limit affordance: alias spellings counted separately, search-add ungated",
+  "issue_state": "open",
+  "issue_state_checked_at": "2026-10-17T07:44:00Z",
+  "validated_version": "v0.111.0",
+  "server_version": "0.111.0",
+  "build_commit": "33aa23a",
+  "protocol_version": 144,
+  "validated_at": "2026-10-17T07:45:09Z",
+  "verdict": "reproduced",
+  "card_data_sha256": "12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4",
+  "draft_pools_sha256": "787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38",
+  "server_binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f",
+  "server_binary_asset": "phase-server-slim-x86_64-unknown-linux-musl",
+  "signature_verified": true,
+  "client": {
+    "repo": "phase-rs/phase",
+    "checkout": "33aa23a91533a430e124db17d3677a56b0ca28ce (exactly the v0.111.0 release commit; git worktree checkout-6659-20261017, pristine after the run)",
+    "client_head": "33aa23a91533a430e124db17d3677a56b0ca28ce",
+    "client_head_short": "33aa23a",
+    "path": "/home/hatch/workspace/dev/phase-backfill/checkout-6659-20261017/client"
+  },
+  "scope": "Deck-builder copy-limit affordance (client subsystem): real useDeckBuilder hook via vitest/jsdom on client code at the v0.111.0 release commit; engine canonicalization leg replicated against pinned v0.111.0 card data",
+  "result": "Both reported gaps reproduce on v0.111.0. Gap 1: text-imported 5x 'Nazgul' + 4x 'Nazgûl' stay as separate entries; canIncrement true for both at canonical 9/9 (the engine merges them to 'nazgûl', ceiling UpTo(9)); handleIncrementCard('Nazgul') climbs to canonical 10 > 9. Gap 2: with 4x Lightning Bolt at ceiling (canIncrement false), a 5th handleAddCard (the search-result add path) walks 4 -> 5 without consulting canIncrement. Control: handleIncrementCard at 5 Bolts is a no-op (the #6654 gate holds).",
+  "assertions": {
+    "A1_engine_canonicalizes": "passed",
+    "A2_gap1_alias_counted_separately": "passed",
+    "A3_gap2_searchadd_ungated": "passed",
+    "A4_control_plus_gated": "passed"
+  },
+  "limitations": [
+    "UI-subsystem test: real hook via vitest/jsdom, not a full browser session; no game-state pair exists for a deckbuilder report.",
+    "engineRuntime.maxDeckCopies mocked per name to the real engine-resolved values; the WASM engine bundle is not shipped in the checkout, so ceiling resolution itself is not executed. Engine leg corroborates the mock against pinned v0.111.0 card data.",
+    "Engine canonicalization leg replicates the engine's documented algorithm against pinned card data (engine not compiled on this host); deck_validation.rs + card_db.rs byte-identical v0.110.0..v0.111.0.",
+    "Browser UI not exercised; the correct fix shape for gap 2 (disabled tile vs silent no-op) is a design decision, not asserted."
+  ],
+  "driver_notes": [
+    "Temporary vitest contract at client/src/components/deck-builder/__tests__/contract_6659.test.tsx drove the REAL hook (renderHook) on a git worktree at exactly the v0.111.0 release commit 33aa23a91533a430e124db17d3677a56b0ca28ce, then was removed; worktree left pristine. Preserved copy: evidence/6659/run-6659-reval-v01110-20261017-0241/contract_6659.test.tsx.",
+    "2 tests / 2 passed (~180ms, exit 0; --coverage.enabled=false; no coverage gate involved this run). Both runs (02:44 and 02:46 CDT) passed identically.",
+    "maxDeckCopies mock returns the engine-resolved ceiling per spelling (UpTo(9) for both Nazgul and Nazgûl — the real engine canonicalizes the name BEFORE resolving the ceiling: deck_validation.rs canonical_deck_count_key), so the gap-1 bucketing difference is exercised, not the ceiling. Engine leg confirms UpTo(9) from the pinned v0.111.0 card data.",
+    "Limit-scan landing guarded by a Lightning Bolt at-ceiling canary (canIncrement false only after the effect's Promise.all resolves); both gap tests share that guarantee.",
+    "Client code tested IS the v0.111.0 release commit (git worktree HEAD == release tag object peel commit 33aa23a91533a430e124db17d3677a56b0ca28ce). Relevant client paths diffed 9bfd12e (v0.110.0)..33aa23a (v0.111.0): client/src/components/deck-builder/ (+DeckBuilder.tsx, CardGrid.tsx) — zero diffs. Engine crates/engine/src/game/deck_validation.rs and crates/engine/src/database/card_db.rs byte-identical v0.110.0..v0.111.0; the #6659 paths (fold_card_name_key, lookup_key, canonical_deck_count_key, deck_copy_limit_for) untouched.",
+    "Release check: v0.111.0 is the latest PUBLISHED stable release (GitHub releases API, 2026-10-17; draft/prerelease/shell-* excluded) == pinned; binary digest 92e0e1cd… matches the pin; card-data/draft-pools digests match the pin record. ServerHello 0.111.0/33aa23a/protocol 144 asserted by handshake this run (fresh backfill-owned server on 127.0.0.1:9374, started by this run; card-db load takes ~6s).",
+    "Engine leg (driver/engine_leg_6659.py) replicates fold + lookup_key + canonical_deck_count_key + deck_copy_limit_for from the release commit against pinned v0.111.0 card data: 'Nazgul' resolves via accent-insensitive alias to canonical entry 'nazgûl'; 'Nazgûl' hits whole-name; both canonicalize to 'nazgûl' with ceiling UpTo(9) from the parsed deck_copy_limit field. Oracle text: 'A deck can have up to nine cards named Nazgûl.'"
+  ],
+  "release_check": {
+    "latest_stable": "v0.111.0",
+    "matches_pin": true,
+    "build_commit": "33aa23a",
+    "protocol_version": 144,
+    "mode": "Full",
+    "server_binary_sha256": "92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f"
+  },
+  "server": {
+    "port": 9374,
+    "note": "fresh backfill-owned v0.111.0 server started by this run; ServerHello verified by handshake: 0.111.0 / 33aa23a / protocol 144 / Full",
+    "games_db": "~/workspace/dev/phase-backfill/runs/run-6659-reval-v01110-20261017-0241/games.db"
+  },
+  "relevant_path_diff": {
+    "compared": "9bfd12e (v0.110.0 release commit)..33aa23a (v0.111.0 release commit)",
+    "client/src/components/deck-builder/": "byte-identical (empty diff)",
+    "client/src/components/deck-builder/CardGrid.tsx": "byte-identical (empty diff)",
+    "client/src/components/deck-builder/DeckBuilder.tsx": "byte-identical (empty diff)",
+    "crates/engine/src/database/card_db.rs": "byte-identical v0.110.0..v0.111.0",
+    "crates/engine/src/game/deck_validation.rs": "byte-identical v0.110.0..v0.111.0; canonical_deck_count_key / lookup_key / fold_card_name_key / deck_copy_limit_for untouched",
+    "conclusion": "The client code tested is exactly the v0.111.0 release commit; the tested paths are byte-identical to v0.110.0. Both gaps unchanged."
+  },
+  "new_info_since_last_check": false
+}
