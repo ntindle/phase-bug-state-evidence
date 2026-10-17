@@ -1,0 +1,57 @@
+[08:54:29] ServerHello: version=0.111.0 build=33aa23a protocol=144 mode=Full
+[08:54:31] digests this run: {'binary_sha256': '92e0e1cd04342d3429a35c965e2487a66adda730564824b36074e9f4b0305c9f', 'card_data_sha256': '12ac3244d7add0d8d643d3b1466cbff72059c337110ed9863bd34351a2ae04c4', 'draft_pools_sha256': '787c188acdd4a5537bb2c447ec2da618ddad9fbbb215c807b9a575e6985a2f38'}
+[08:54:34] card-data check: ok=True
+[08:54:35] game X0YHSV; P0 seat=0 P1 seat=1
+[08:54:35] [P0] keep 7: ['swamp', 'scampire', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp'] (mulls=0)
+[08:54:35] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'] (mulls=0)
+[08:54:35] waiting_for: MulliganDecision player=None
+[08:54:35] waiting_for: Priority player=1
+[08:54:38] [P0] playing land (bf had 0)
+[08:54:44] [P0] discarding ['walking corpse']
+[08:54:44] waiting_for: DiscardToHandSize player=0
+[08:54:44] waiting_for: Priority player=1
+[08:54:47] [P0] playing land (bf had 1)
+[08:54:52] [P0] playing land (bf had 2)
+[08:54:57] [P0] playing land (bf had 3)
+[08:55:02] [P0] playing land (bf had 4)
+[08:55:08] [P0] discarding ['walking corpse']
+[08:55:08] waiting_for: DiscardToHandSize player=0
+[08:55:08] waiting_for: Priority player=1
+[08:55:10] [P1] discarding ['island']
+[08:55:10] waiting_for: DiscardToHandSize player=1
+[08:55:11] waiting_for: Priority player=0
+[08:55:11] [P0] casting scampire (oid 25)
+[08:55:11] [P0] cast confirmed (stack): cast_scam
+[08:55:12] [P0] TriggerTargetSelection (src 25): choosing target {'Object': 52} from legal=[52, 51]
+[08:55:12] Scampire on BF oid=25; ETB pending
+[08:55:12] waiting_for: TriggerTargetSelection player=0
+[08:55:12] waiting_for: Priority player=0
+[08:55:12] [P0] OptionalEffectChoice (src 25): accepting -- When ~ enters, you get {TK}, then you may put a sticker on a creature card in yo
+[08:55:12] waiting_for: OptionalEffectChoice player=0
+[08:55:12] [P0] ChooseOneOfBranch: picking branch 0 of 12 (Name — Playable at position 1)
+[08:55:12] waiting_for: ChooseOneOfBranch player=0
+[08:55:12] ETB sticker applied: stickered=52 unstickered=51
+[08:55:13] exported etb.json
+[08:55:13] waiting_for: Priority player=0
+[08:55:16] [P1] discarding ['island']
+[08:55:16] waiting_for: DiscardToHandSize player=1
+[08:55:16] waiting_for: Priority player=0
+[08:55:17] exported pre.json
+[08:55:17] fixture ready; pre.json exported; -> ACTIVATE
+[08:55:18] waiting_for: DeclareAttackers player=0
+[08:55:18] waiting_for: Priority player=0
+[08:55:18] [P0] activating scampire (untapped lands=5)
+[08:55:18] [P0] advertised targets latched: {'52': 'walking corpse', '51': 'walking corpse'}; stickered=52 unstickered=51
+[08:55:18] [P0] TargetSelection (src 25): choosing target {'Object': 51} from legal=[52, 51]
+[08:55:18] waiting_for: TargetSelection player=0
+[08:55:18] waiting_for: Priority player=0
+[08:55:19] unstickered corpse 51 is on the BATTLEFIELD (keywords=['Haste']) -- bug confirmed
+[08:55:19] exported post.json
+[08:55:19] verdict: reproduced
+[08:55:19]   A1_setup_ok: passed
+[08:55:19]   A2_correct_targeting: failed
+[08:55:19]   A3_correct_resolution: failed
+[08:55:19]   A4_stickered_control: passed
+[08:55:19]   A5_cleanup: passed
+[08:55:19] wrote /home/hatch/workspace/dev/phase-backfill/evidence/10063/run-10063-v01110-20261017-0910/summary.png
+[08:55:19] evidence complete: /home/hatch/workspace/dev/phase-backfill/evidence/10063/run-10063-v01110-20261017-0910 (10 files)
