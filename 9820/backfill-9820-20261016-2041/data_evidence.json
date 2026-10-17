@@ -1,0 +1,77 @@
+{
+ "card": "Cavalcade of Calamity",
+ "oracle_text": "Whenever a creature you control with power 1 or less attacks, this enchantment deals 1 damage to the player or planeswalker that creature is attacking.",
+ "trigger": {
+  "mode": "Attacks",
+  "execute": {
+   "kind": "Spell",
+   "effect": {
+    "type": "DealDamage",
+    "amount": {
+     "type": "Fixed",
+     "value": 1
+    },
+    "target": {
+     "type": "Or",
+     "filters": [
+      {
+       "type": "ParentTarget"
+      },
+      {
+       "type": "Typed",
+       "type_filters": [
+        "Planeswalker"
+       ],
+       "controller": null,
+       "properties": []
+      }
+     ]
+    }
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  },
+  "valid_card": {
+   "type": "Typed",
+   "type_filters": [
+    "Creature"
+   ],
+   "controller": "You",
+   "properties": [
+    {
+     "type": "PtComparison",
+     "stat": "Power",
+     "scope": "Current",
+     "comparator": "LE",
+     "value": {
+      "type": "Fixed",
+      "value": 1
+     }
+    }
+   ]
+  },
+  "origin": null,
+  "destination": null,
+  "trigger_zones": [
+   "Battlefield"
+  ],
+  "phase": null,
+  "optional": false,
+  "damage_kind": "Any",
+  "secondary": false,
+  "valid_target": null,
+  "valid_source": null,
+  "description": "Whenever a creature you control with power 1 or less attacks, ~ deals 1 damage to the player or planeswalker that creature is attacking.",
+  "constraint": null,
+  "condition": null,
+  "batched": false
+ },
+ "finding": "'deals 1 damage to the player or planeswalker that creature is attacking' parses to DealDamage with target Or[ParentTarget, Typed(Planeswalker)]; an Attacks trigger has no parent target, so the damage resolves to nobody. The issue's proposed fix lowers the target to DefendingPlayer."
+}
