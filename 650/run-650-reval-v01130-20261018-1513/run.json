@@ -1,0 +1,59 @@
+{
+ "issue": 650,
+ "issue_url": "https://github.com/phase-rs/phase/issues/650",
+ "run_id": "run-650-reval-v01130-20261018-1513",
+ "started_at": "2026-10-18T20:15:56",
+ "finished_at": "2026-10-18T20:16:48",
+ "duration_s": 51.0,
+ "server": {
+  "server_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "Full",
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true,
+  "signature_note": "v0.113.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-18: latest stable release v0.113.0 (published 2026-10-18T14:53:26Z) == pinned release dir; ServerHello 0.113.0/0571ee3/protocol 151 verified by handshake this run; hashes recomputed against on-disk artifacts this run; fresh v0.113.0 server on 127.0.0.1:9374 started by this run (pid 4344, games.db runs/run-650-reval-v01130-20261018-1513); fresh game created by this run; isolated evidence under evidence/650/run-650-reval-v01130-20261018-1513),"
+ },
+ "server_run_dir": "fresh v0.113.0 server on 127.0.0.1:9374 started by this run (pid 4344, games.db runs/run-650-reval-v01130-20261018-1513/games.db); fresh game created by this run",
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "658b5aa2f38649d3da5b78e43b22a20e8197afcc0957045af6470dc5615c6efc",
+ "decks": {
+  "P0": "12x Tyvar the Bellicose + 8x Llanowar Elves + 20x Forest + 20x Swamp",
+  "P1": "60x Island"
+ },
+ "setup_line": "P0: 12x Tyvar the Bellicose + 8x Llanowar Elves + 20 Forest + 20 Swamp | P1: 60 Island (draw-go)",
+ "contract_line": "Tap Elves for {G} with Tyvar out: granted trigger must put 1 +1/+1 counter on the tapped creature (once per turn, per creature).",
+ "stats": {
+  "max_turn": 15,
+  "pre_turn": 13,
+  "b_turn": null,
+  "activated": true,
+  "b_activated": false
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_mana_produced": "passed",
+  "A3_counters_added": "failed",
+  "A4_per_creature": "not-run"
+ },
+ "notes": [
+  "mid: Elves A tapped=True pool_g=1 (pre pool_g=0)",
+  "post: Elves A counters raw sample: {\"counters\": {}}",
+  "post: Elves A tapped=False",
+  "BUG: no +1/+1 counters on Elves A after granted trigger window",
+  "A4 not-run: granted trigger never fires (A3 failed), per-creature throttling cannot be evaluated",
+  "parser corroboration: card-data.json v0.113.0 Tyvar entry abilities excerpt: []"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ]
+}
