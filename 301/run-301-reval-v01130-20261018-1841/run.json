@@ -1,0 +1,78 @@
+{
+ "issue": 301,
+ "issue_url": "https://github.com/phase-rs/phase/issues/301",
+ "run_id": "run-301-reval-v01130-20261018-1841",
+ "started_at": "2026-10-18T23:47:47",
+ "finished_at": "2026-10-18T23:51:17",
+ "duration_s": 210.3,
+ "server_identity": {
+  "server_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "Full",
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true,
+  "signature_note": "v0.113.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-18: latest stable release v0.113.0 (published 2026-10-18) == pinned release dir; ServerHello 0.113.0/0571ee3/protocol 151 verified by handshake this run; hashes recomputed against on-disk artifacts this run; server process on 127.0.0.1:9374 owned by run-20261018-184142 (pid 2736, pinned v0.113.0 release binary), started by this run; scenario games created via CreateGameWithSettings in this scenario games created via CreateGameWithSettings in this run evidence dir evidence/301/run-301-reval-v01130-20261018-1841)"
+ },
+ "server_run_dir": "runs/run-20261018-184142 (live v0.113.0 server on 127.0.0.1:9374, pid 2736, started 2026-10-18 18:41 by this run; evidence under evidence/301/run-301-reval-v01130-20261018-1841)",
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "66838bd8f651b15f8c64a4a70b530fea63a5118b0726504be77584fecacc8650",
+ "decks": {
+  "P0": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Chaos Wand",
+    4
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    56
+   ],
+   [
+    "Lightning Bolt",
+    4
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_activation_paid": "passed",
+  "A3_exile_observed": "passed",
+  "A4_accept_target_pending": "passed",
+  "A5_exile_returned_early": "passed",
+  "A6_advertised_target_rejected": "passed",
+  "A7_no_damage_no_cast": "passed",
+  "A8_decline_control_ok": "passed"
+ },
+ "notes": [
+  "[accept] activation ok=True; wand tapped=True untapped islands 12->4",
+  "[accept] P1 library 42->35; tracked exiled bolt id=106",
+  "[accept] pre-target: P1 lib=42 (pre-exile 42); tracked bolt id=106 zone=Library in-library-membership=True",
+  "[accept] rejection={\"type\": \"ActionRejected\", \"data\": {\"rejection\": {\"code\": \"action_not_allowed\", \"disposition\": \"unavailable\", \"message\": \"That action is not allowed right now.\", \"related_object_ids\": []}}}; still_pending=True",
+  "[accept] post: life=20/20 tracked bolt zone=Library no_bolt_in_graveyard=True",
+  "[decline] activation ok=True; wand tapped=True untapped islands 13->8",
+  "[decline] P1 library 35->33; tracked exiled bolt id=91",
+  "[decline] decline: visible bolts=[] life=20/20 dangling=False",
+  "protocol-151 driver (v0.113.0): mechanical port of the verified v0.112.0 (protocol-147) run; MulliganDecision via legacy Action (Keep); bottom/SelectCards via vi schema/select gated on waitingForKind.code=='mulligan' + turn 1/Untap; DiscardToHandSize via vi (hand>7 + hand-card select opportunity); activation via advertised ActivateAbility (source_id/_src_oid) with {4} paid via vi tapLandForMana / PayMana actions; optional-cast accept/decline from vi exactChoices decideOptionalEffect surfaces; target submitted per the advertised schema response type; priority-gated passes; sleep(0) yield before leg evaluation; re-tick backstop for priority-holding clients."
+ ],
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2 activation_paid: passed; A3 exile_observed: passed; A4 accept_target_pending: passed; A5 exile_returned_early: passed; A6 advertised_target_rejected: passed; A7 no_damage_no_cast: passed; A5fx target_accepted: not-run; A6fx cast_resolved: not-run; A8 decline_control_ok: passed",
+ "scope": "Chaos Wand accepted-cast path; native human seats (no AI)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "setup_line": "P0: 56x Island + 4x Chaos Wand; P1: 56x Island + 4x Lightning Bolt (draw-go; 4x so the library still holds a Bolt at activation)",
+ "contract_line": "Accept: free Bolt cast must finish targeting and resolve for 3 dmg; Decline: no cast, cards to bottom"
+}
