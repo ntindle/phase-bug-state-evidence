@@ -1,0 +1,64 @@
+[23:51:11] starting issue #5654 run run-5654-reval-v01120-20261017-2348
+[23:51:11] ServerHello: version=0.112.0 build=9a8e3fa protocol=147 mode=Full
+[23:51:11] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[23:51:12] [A] game NFKZ3T P0seat=0 P1seat=1
+[23:51:12] [P0] keep 7: ['island', 'notion thief', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp']
+[23:51:12] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'divination']
+[23:51:12] [A] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:51:13] [P0] playing land island
+[23:51:15] [P1] discarding to hand size via vi: picks=['NFKZ3T.0.21.c1']
+[23:51:20] [P1] playing land island
+[23:51:23] [P0] playing land swamp
+[23:51:26] [P1] discarding to hand size via vi: picks=['NFKZ3T.0.51.c1']
+[23:51:31] [P1] playing land island
+[23:51:33] [P0] playing land swamp
+[23:51:35] [P1] discarding to hand size via vi: picks=['NFKZ3T.0.81.c1']
+[23:51:40] [P1] playing land island
+[23:51:43] [P0] playing land swamp
+[23:51:43] [P0] casting notion thief (oid=47)
+[23:51:43] [A] P0 casts Notion Thief (turn 7)
+[23:51:43] [P1] cast confirmed (stack): notion thief oid 47
+[23:51:46] [P1] discarding to hand size via vi: picks=['NFKZ3T.0.114.c1']
+[23:51:51] [P1] playing land island
+[23:51:51] [A] P1 main phase: exporting PRE_A, then casting Divination
+[23:51:51] [P1] casting divination (oid=78)
+[23:51:52] [A] P1 casts Divination (turn 8)
+[23:51:52] [P0] cast confirmed (stack): divination oid 78
+[23:51:52] [P1] Divination confirmed on stack
+[23:51:52] [P1] Divination confirmed on stack
+[23:51:52] [P1] Divination confirmed on stack
+[23:51:52] [A] Divination resolved; exporting POST_A
+[23:51:52] [A] exported POST_A
+[23:51:52] [A] done flag set; finishing game
+[23:51:52] [A] game A finished ok=True
+[23:51:53] [B] game 5QYHEY P0seat=0 P1seat=1
+[23:51:53] [P0] keep 7: ['island', 'island', 'plagiarize', 'plagiarize', 'island', 'plagiarize', 'island']
+[23:51:53] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[23:51:53] [B] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:51:54] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:51:54] [P1] playing land island
+[23:51:56] [P0] discarding to hand size via vi: picks=['5QYHEY.0.21.c1']
+[23:52:02] [P0] playing land island
+[23:52:03] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:52:04] [P1] playing land island
+[23:52:06] [P0] discarding to hand size via vi: picks=['5QYHEY.0.51.c1']
+[23:52:11] [P0] playing land island
+[23:52:13] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:52:14] [P1] playing land island
+[23:52:16] [P0] discarding to hand size via vi: picks=['5QYHEY.0.81.c1']
+[23:52:21] [P0] playing land island
+[23:52:24] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:52:24] [P1] playing land island
+[23:52:27] [P0] discarding to hand size via vi: picks=['5QYHEY.0.111.c1']
+[23:52:32] [P0] playing land island
+[23:52:33] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:52:34] [P0] casting plagiarize (oid=44)
+[23:52:34] [B] P0 casts Plagiarize (turn 9)
+[23:52:34] [P1] cast confirmed (stack): plagiarize oid 44
+[23:52:35] [B] P1 past draw step; exporting POST_B
+[23:52:35] [B] exported POST_B
+[23:52:35] [B] done flag set; finishing game
+[23:52:35] [B] game B finished ok=True
+[23:52:35] [A] deltas P0 hand 5->7 lib 50->48; P1 hand 7->6 lib 49->49
+[23:52:35] [B] deltas P0 hand 7->6 lib 49->49; P1 hand 6->7 lib 50->49
+[23:52:35] rendered summary.png
