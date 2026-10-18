@@ -1,0 +1,163 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_modal_offered": "passed",
+    "A3_choice_accepted": "passed",
+    "A4_front_completes": "passed",
+    "A5_back_reachable": "failed",
+    "A6_cleanup": "not-run",
+    "B1_tergrid_setup": "passed",
+    "B2_tergrid_offered": "passed",
+    "B3_tergrid_accepted": "passed",
+    "B4_tergrid_completes": "passed"
+  },
+  "contract_line": "Cast the MDFC at main-phase priority; the ModalFaceChoice must offer an actionable face selection, the selection must be accepted, the cast must resolve, and (per CR 712.8a) the back face must be selectable.",
+  "decks": {
+    "G1P0": "12x tony stark + 24x island + 24x mountain",
+    "G1P1": "60x forest",
+    "G2P0": "12x tergrid, god of fright + 48x swamp",
+    "G2P1": "60x forest"
+  },
+  "driver": {
+    "client": "driver/client.py",
+    "protocol_advertised": 147
+  },
+  "duration_s": 162.5,
+  "issue": 5474,
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "12x MDFC / high land density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "The reporter cast Tony Stark as a commander; the scenario casts it from the main deck. The ModalFaceChoice decision type is identical.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "The back_face=true probe was submitted via the legacy ChooseModalFace action path and is logged as exploratory; on cast 2 the engine advertised that exact action (back_probe_advertised in observations), on cast 1 it did not."
+  ],
+  "notes": [
+    "WEDGE: exploratory ChooseModalFace back_face=true was consumed by the engine (server log: 'interaction applied ... action_type=ChooseModalFace') with no rejection and no new revision for 90s+; no client holds priority. The cast-2 spell object (oid 26) sits at zone 'Hand' with 0 stack entries and nobody prompted - the game is soft-locked. Capturing mid_stall.json (authoritative export) and moving to game 2.",
+    "rejections=0 face1_opps=1 face2_opps=1 g2_opps=1 back_probe_accepted=None",
+    "A1: active=0 phase=PreCombatMain tony_in_hand=True untapped_islands=2",
+    "A2: ModalFaceChoice wait seen; faces=[('front', 'front')]; canSubmit=True; kind=choose; chooseModalFace actions=1; actionable=True",
+    "A3: front-face choice accepted; cast resolved to Tony Stark on the battlefield",
+    "A4: tony on P0 BF=[13]; stack_empty=True; life=20/20; turn=4 phase=PreCombatMain",
+    "A5: exploratory ChooseModalFace back_face=true was consumed by the engine with no rejection (server log: 'interaction applied ... action_type=ChooseModalFace') and the game soft-locked (no new revision 90s+, no client holding priority; mid_stall.json captured). Offered faces at ModalFaceChoice waits=['front']; back_probe advertised as legacy action=False. Per CR 712.8a the caster chooses which face to cast, so Iron Man, Tony Stark ({3}{R}{R}) is not safely selectable",
+    "A6: post.json missing",
+    "B2: Tergrid ModalFaceChoice faces=[('front', 'front'), ('back', 'back')] actionable=True",
+    "B4: tergrid on P0 BF=[13]; turn=10 phase=PreCombatMain",
+    "RELATED FAILURE: the v0.20.0 hard stall is gone, but the back face is not safely selectable on this build - either it is never offered, or (as observed here) selecting the advertised back-face choice soft-locks the game. The 'select which side' decision remains broken."
+  ],
+  "observations": {
+    "back_probe_accepted": null,
+    "back_probe_advertised": false,
+    "back_probe_sent": true,
+    "face1_opps": [
+      {
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          }
+        ],
+        "faces": [
+          {
+            "face": "front",
+            "id": "CQLRN0.0.57.c0",
+            "status": "available",
+            "text": "front"
+          }
+        ],
+        "interaction_ids": [
+          "CQLRN0.0.57"
+        ],
+        "kind_code": "choose",
+        "response_types": [
+          "exactChoices"
+        ],
+        "tag": "g1_cast1"
+      }
+    ],
+    "face2_opps": [
+      {
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          }
+        ],
+        "faces": [
+          {
+            "face": "front",
+            "id": "CQLRN0.0.155.c0",
+            "status": "available",
+            "text": "front"
+          }
+        ],
+        "interaction_ids": [
+          "CQLRN0.0.155"
+        ],
+        "kind_code": "choose",
+        "response_types": [
+          "exactChoices"
+        ],
+        "tag": "g1_cast2"
+      }
+    ],
+    "g2_opps": [
+      {
+        "canSubmit": true,
+        "choose_modal_face_actions": [
+          {
+            "back_face": false
+          },
+          {
+            "back_face": true
+          }
+        ],
+        "faces": [
+          {
+            "face": "front",
+            "id": "57OWFC.0.145.c0",
+            "status": "available",
+            "text": "front"
+          },
+          {
+            "face": "back",
+            "id": "57OWFC.0.145.c1",
+            "status": "available",
+            "text": "back"
+          }
+        ],
+        "interaction_ids": [
+          "57OWFC.0.145"
+        ],
+        "kind_code": "choose",
+        "response_types": [
+          "exactChoices"
+        ],
+        "tag": "g2_cast1"
+      }
+    ],
+    "ironman_on_bf": null,
+    "rejections": [],
+    "tergrid_on_bf": true,
+    "tony1_on_bf": true
+  },
+  "run_id": "run-5474-reval-v01120-20261017-1841",
+  "scenario_sha256": "96539922721d09b22621a452cf12202b4ef0b9a89c50930036bb3429bde2cc2c",
+  "server": {
+    "build_commit": "9a8e3fa",
+    "card_data_sha256": "f5dd690b1ec33da9dd3bb68a5627ef2942306d35166451531aa153f032cb7900",
+    "draft_pools_sha256": "7fda831df504b57a77a2e9853c12f73d2688766a6ef8529176290f5797e356d8",
+    "mode": "Full",
+    "protocol_version": 147,
+    "server_binary_sha256": "a527da8b0c67c21eb492fecef67e1e7efa23ab8898b90965ab7fc7251db4fc15",
+    "server_run_id": "reused live v0.112.0 server on 127.0.0.1:9374 (already listening at run start, started 2026-10-17 20:46 UTC by run-backfill-20261016-1541 (#1234), pid 4869; process identity verified via ServerHello 0.111.0/9a8e3fa/protocol 147; this run's own game + raw Hello handshake verify the identity; no second server started per AGENTS.md 2026-10-08 lesson)",
+    "server_version": "v0.112.0",
+    "signature_note": "v0.112.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+    "signature_verified": true,
+    "source": "2026-10-17: latest stable release v0.112.0 (published 2026-10-17T15:04:47Z) == pinned release dir; ServerHello 0.111.0/9a8e3fa/protocol 147 verified by handshake this run; minisign signatures re-verified via pynacl this run; hashes recomputed against on-disk artifacts this run"
+  },
+  "server_port": 9374,
+  "setup_line": "G1 P0: 12x tony stark + 24x island + 24x mountain; G1 P1: 60x forest. G2 P0: 12x tergrid, god of fright + 48x swamp; G2 P1: 60x forest.",
+  "sibling_issue": 5487,
+  "started_at": "2026-10-17T19:14:31-0500",
+  "verdict": "reproduced"
+}
