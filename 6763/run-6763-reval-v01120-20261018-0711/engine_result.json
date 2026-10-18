@@ -1,0 +1,76 @@
+{
+ "issue": 6763,
+ "run_id": "run-6763-reval-v01120-20261018-0711",
+ "started_at": "2026-10-18T12:15:08",
+ "duration_s": 93.3,
+ "server": {
+  "server_version": "v0.112.0",
+  "build_commit": "9a8e3fa",
+  "protocol_version": 147,
+  "mode": "Full",
+  "binary_sha256": "a527da8b0c67c21eb492fecef67e1e7efa23ab8898b90965ab7fc7251db4fc15",
+  "card_data_sha256": "f5dd690b1ec33da9dd3bb68a5627ef2942306d35166451531aa153f032cb7900",
+  "draft_pools_sha256": "7fda831df504b57a77a2e9853c12f73d2688766a6ef8529176290f5797e356d8",
+  "signature_verified": true,
+  "observed_at": "2026-10-18",
+  "source": "2026-10-18: latest stable release v0.112.0 (published 2026-10-17) == pinned release dir; ServerHello 0.112.0/9a8e3fa/protocol 147 verified by handshake this run; hashes recomputed against on-disk artifacts this run; live backfill-owned v0.112.0 server on 127.0.0.1:9374, started by the 2026-10-18 run-6760-reval-v01120-20261018-0641 run, reused by this run"
+ },
+ "driver": {
+  "protocol_advertised": 147,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "799b8afb8329d7339b96cab8e24ae5bfbb9d40aa5e73017222991bd8e7f1bd48",
+ "decks": {
+  "P0": [
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Emperor of Bones",
+    4
+   ],
+   [
+    "Swamp",
+    56
+   ]
+  ]
+ },
+ "game_A": {
+  "chosen_oid": 3,
+  "trigger_entry_id": 121,
+  "game_code": "JRQNEQ"
+ },
+ "game_B": {
+  "chosen_oid": 8,
+  "trigger_entry_id": 121,
+  "game_code": "MQYMYZ"
+ },
+ "assertions": {
+  "E1_setup_ok": "passed",
+  "E2_trigger_targeted": "passed",
+  "E3_identity_distinct": "passed",
+  "E4_snapshot_captured": "passed",
+  "E5_cleanup": "passed"
+ },
+ "notes": [
+  "E1[A]: gy_ballistas=[7, 3] emperor_bf=['70'] trigger_entry=121",
+  "E2[A]: entry targets=[3] chosen=3",
+  "E1[B]: gy_ballistas=[8, 46] emperor_bf=['105'] trigger_entry=121",
+  "E2[B]: entry targets=[8] chosen=8",
+  "E3: chosen_A=3 chosen_B=8 distinct=True",
+  "E4[A]: viewer refs=[3] export refs match=True",
+  "E4[B]: viewer refs=[8] export refs match=True",
+  "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat"
+ ],
+ "revalidation_of": {
+  "run_id": "run-6763-reval-v01100-20261015-0941",
+  "protocol": 142
+ }
+}
