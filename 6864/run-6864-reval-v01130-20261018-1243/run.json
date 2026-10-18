@@ -1,0 +1,89 @@
+{
+ "issue": 6864,
+ "run_id": "run-6864-reval-v01130-20261018-1243",
+ "game_code": "J0X8WB",
+ "started_at": "2026-10-18T17:43:56",
+ "duration_s": 59.5,
+ "server_identity": {
+  "validated_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "036fb93bad4a9b524107a1ddc49f7e53b53335b99537778f318e9250a8feb87c",
+ "decks": {
+  "P0": [
+   [
+    "Zariel, Archduke of Avernus",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    15
+   ],
+   [
+    "Plains",
+    15
+   ],
+   [
+    "Island",
+    15
+   ],
+   [
+    "Swamp",
+    15
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_loyalty_paid": "passed",
+  "A3_emblem_created": "failed",
+  "A4_target_prompt": "failed",
+  "A5_untap_resolves": "failed",
+  "A6_additional_combat": "failed"
+ },
+ "notes": [
+  "pre_activate.json: turn=13 phase=PreCombatMain",
+  "A2: P0 Zariel zones post-ult: ['Graveyard', 'Library']",
+  "A3: emblem objects post-ult=[]",
+  "A4: emblem target prompt events for P0: 0",
+  "A5: no emblem prompt answered; P0 Bears on BF=['54'], tapped=['54']",
+  "A6: ult_turn=13; BeginCombat phases on ult turn=1; ult-turn phases=['Upkeep', 'Draw', 'PreCombatMain', 'BeginCombat', 'DeclareAttackers', 'DeclareBlockers', 'CombatDamage', 'EndCombat', 'PostCombatMain']",
+  "Zariel loyalty trace: [(7, 4), (9, 5), (11, 6)]",
+  "emblem triggers seen on stack: []",
+  "target answer: None",
+  "protocol-151 driver (v0.113.0, 01130 port): mulligan via legacy MulliganDecision (always Keep); land drops via PlayLand/vi playLand; CastSpell via legacy action with vi castSpell-choice fallback, mana via PayMana/vi tapLandForMana driven by MANA_NEEDS; loyalty abilities via legacy ActivateAbility (ability_index) with vi activateAbility fallback; DeclareAttackers via legacy action; cast-confirmation guard (ST[pending_cast], 30s backstop) after every CastSpell and loyalty activation; sleep(0) yield before leg evaluation; 5s re-tick backstop."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6864_01130.py), not direct load.",
+  "Only the -6 loyalty ability was exercised (+1 used for loyalty setup, 0 untouched).",
+  "Emblem scan is heuristic: is_emblem flag, name/subtype containing 'Emblem'; command zone checked in post-ult export."
+ ],
+ "setup_line": "P0: Zariel, Archduke of Avernus + Grizzly Bears on BF; +1 x2 to loyalty 6, then -6 on the ult turn. P1: passive land-drops.",
+ "contract_line": "-6 must create the emblem; at end of first combat its trigger must offer 'untap target creature you control', then an additional combat follows."
+}
