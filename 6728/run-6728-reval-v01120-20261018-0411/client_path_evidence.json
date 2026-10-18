@@ -1,0 +1,19 @@
+{
+ "file": "client/src/adapter/p2p-draft-host.ts",
+ "file_note": "byte-identical to the 2026-10-11 (49525d9f), 2026-10-12 (d44fbcf4), 2026-10-15 (f672f801) and 2026-10-17 (3adc37af) checks; client-side backup logic unchanged at current mainline tip",
+ "file_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+ "generator_hostDraftCode": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}",
+ "generator_line": "client/src/adapter/p2p-draft-host.ts:333-337",
+ "production_wiring": {
+  "file": "client/src/adapter/draftPodHostAdapter.ts",
+  "line": 324,
+  "sha256": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3",
+  "note": "still passes config.backupEndpoint - blocker #1 stays wired"
+ },
+ "upload_behavior": {
+  "line": "p2p-draft-host.ts:3711-3726",
+  "note": "uploadBackupSnapshot awaits fetch without checking response.ok; HTTP 400 still silent - docstring says 'Failures are silently logged'"
+ },
+ "tip": "c0aa6ac7790ad0b9be5953c941a9bde6cb10d82c (origin/main, 2026-10-18T08:40:34Z)",
+ "note": "mainline tip (post-v0.112.0-release main); source inspection only"
+}
