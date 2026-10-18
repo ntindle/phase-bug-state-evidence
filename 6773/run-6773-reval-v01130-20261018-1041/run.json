@@ -1,0 +1,77 @@
+{
+ "issue": 6773,
+ "run_id": "run-6773-reval-v01130-20261018-1041",
+ "game_code": "MBV58V",
+ "started_at": "2026-10-18T15:44:13",
+ "duration_s": 119.3,
+ "server_identity": {
+  "validated_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "10817961f74712423fecf96e63433eee8a7eba88b6c3d29ab0588a7b93bd4173",
+ "decks": {
+  "P0": [
+   [
+    "Toxrill, the Corrosive",
+    12
+   ],
+   [
+    "The Masamune",
+    8
+   ],
+   [
+    "Island",
+    20
+   ],
+   [
+    "Swamp",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Llanowar Elves",
+    12
+   ],
+   [
+    "Forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_death_observed": "passed",
+  "A3_triggers_doubled": "failed",
+  "A4_slugs_created": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "pre_death: turn=19 phase=PreCombatMain toxrill_bf=True masamune_attached=True elves_bf_slime_free=True DoubleTriggers_grant=True",
+  "post: elves_in_p1_gy=True; mid: toxrill slug triggers on stack=1",
+  "mid: 1 Toxrill slug triggers on stack (expected 2 with doubling); per-tick audit max death-trigger count=1",
+  "post: 1 Slug tokens on P0 battlefield (expected 2 with doubling)",
+  "post: stack_empty=True turn=20 phase=Upkeep",
+  "protocol-151 driver (v0.113.0): mulligan via legacy MulliganDecision action; DiscardToHandSize via vi schema/select; CastSpell via legacy Action with mana via legacy PayMana actions and/or vi tapLandForMana menus driven by MANA_NEEDS; equip via advertised ActivateAbility merged_action (source match), vi exactChoices as fallback; equip target via advertised vi target opportunity; priority-gated passes; per-revision guards; 5s re-tick backstop.",
+  "Death-trigger discrimination is timing-based: once the Elves is in P1's graveyard, any slime-phrase trigger on the stack is Toxrill's death trigger (the end-step counter trigger must have resolved for the death to happen).",
+  "Re-validation run 2026-10-15 (run-6773-reval-v01130-20261018-1041, v0.113.0/protocol 151, 0571ee3): mechanical protocol-151 port of the verified v0.107.0 scenario (scenario_6773_01130.py); cast-confirmation guard unchanged."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Toxrill / 8x Masamune deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "Emblem-trigger doubling half of the clause not tested (no emblems involved).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6773_01130.py), not direct load."
+ ],
+ "setup_line": "P0: 12x Toxrill, the Corrosive + 8x The Masamune + 20x Island + 20x Swamp; P1: 12x Llanowar Elves + 48x Forest (casts one Elves after equip)",
+ "contract_line": "With Masamune equipped to Toxrill, a slime-counter death must put 2 triggers on the stack -> 2 Slug tokens"
+}
