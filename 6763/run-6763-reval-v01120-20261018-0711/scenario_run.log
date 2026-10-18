@@ -1,0 +1,67 @@
+[07:15:07] server identity hashes recomputed against on-disk pinned artifacts
+[07:15:08] ServerHello: version=0.112.0 build=9a8e3fa protocol=147 mode=Full
+[07:15:08] ===== game A =====
+[07:15:08] game JRQNEQ variant=A; P0 seat=0 P1 seat=1
+[07:15:08] [A] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest']
+[07:15:08] [A] keep 7: ['swamp', 'swamp', 'swamp', 'emperor of bones', 'swamp', 'swamp', 'swamp']
+[07:15:09] [A] playing land forest (legacy)
+[07:15:11] [A] playing land swamp (legacy)
+[07:15:13] [A] playing land forest (legacy)
+[07:15:16] [A] playing land swamp (legacy)
+[07:15:18] [A] playing land forest (legacy)
+[07:15:20] [A] playing land swamp (legacy)
+[07:15:23] [A] playing land forest (legacy)
+[07:15:25] [A] playing land swamp (legacy)
+[07:15:27] [A] playing land forest (legacy)
+[07:15:30] [A] playing land swamp (legacy)
+[07:15:32] [A] playing land forest (legacy)
+[07:15:35] [A] playing land swamp (legacy)
+[07:15:37] [A] playing land forest (legacy)
+[07:15:39] [A] playing land swamp (legacy)
+[07:15:41] [A] playing land forest (legacy)
+[07:15:42] [A] casting Walking Ballista (oid 7), X=0; engine auto-pays (payment_mode Auto)
+[07:15:42] [A] Ballista X-choice -> X=0
+[07:15:42] [A] cast confirmed on stack: Walking Ballista (oid 7)
+[07:15:44] [A] playing land swamp (legacy)
+[07:15:47] [A] playing land forest (legacy)
+[07:15:47] [A] casting Walking Ballista (oid 3), X=0; engine auto-pays (payment_mode Auto)
+[07:15:47] [A] Ballista X-choice -> X=0
+[07:15:47] [A] cast confirmed on stack: Walking Ballista (oid 3)
+[07:15:50] [A] playing land swamp (legacy)
+[07:15:50] [A] casting Emperor of Bones (oid 70); engine auto-pays (payment_mode Auto)
+[07:15:51] [A] cast confirmed on stack: Emperor of Bones (oid 70)
+[07:15:51] [A] Emperor trigger targets Ballista oid 3 (choice JRQNEQ.0.275.t1) variant=A
+[07:15:52] [A] CAPTURE: trigger entry 121 targets Ballista 3; P0 holds priority
+[07:15:52] [A] trigger resolved; chosen Ballista 3 exiled; post state exported
+[07:15:52] game A: captured=True chosen=3 entry=121
+[07:15:52] ===== game B =====
+[07:15:52] game MQYMYZ variant=B; P0 seat=0 P1 seat=1
+[07:15:52] [B] keep 7: ['forest', 'forest', 'forest', 'forest', 'forest', 'walking ballista', 'forest']
+[07:15:53] [B] keep 7: ['swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp', 'swamp']
+[07:15:53] [B] playing land forest (legacy)
+[07:15:53] [B] casting Walking Ballista (oid 8), X=0; engine auto-pays (payment_mode Auto)
+[07:15:54] [B] Ballista X-choice -> X=0
+[07:15:54] [B] cast confirmed on stack: Walking Ballista (oid 8)
+[07:15:56] [B] playing land swamp (legacy)
+[07:15:59] [B] playing land forest (legacy)
+[07:16:02] [B] playing land swamp (legacy)
+[07:16:06] [B] playing land forest (legacy)
+[07:16:09] [B] playing land swamp (legacy)
+[07:16:13] [B] playing land forest (legacy)
+[07:16:14] [B] casting Walking Ballista (oid 46), X=0; engine auto-pays (payment_mode Auto)
+[07:16:14] [B] Ballista X-choice -> X=0
+[07:16:14] [B] cast confirmed on stack: Walking Ballista (oid 46)
+[07:16:18] [B] playing land swamp (legacy)
+[07:16:22] [B] playing land forest (legacy)
+[07:16:26] [B] playing land swamp (legacy)
+[07:16:32] [B] playing land forest (legacy)
+[07:16:36] [B] playing land swamp (legacy)
+[07:16:37] [B] casting Emperor of Bones (oid 105); engine auto-pays (payment_mode Auto)
+[07:16:37] [B] cast confirmed on stack: Emperor of Bones (oid 105)
+[07:16:37] [B] DIAG P0-B: rev=183 turn=12 phase=PreCombatMain vikind='choose' real_decision=False my_prio=False stack=0 p0_gy_ballistas=['8', '46'] cast_pending=False captured=False
+[07:16:37] [B] DIAG P1-B: rev=183 turn=12 phase=PreCombatMain vikind='choose' real_decision=False my_prio=True stack=0 p0_gy_ballistas=['8', '46'] cast_pending=False captured=False
+[07:16:38] [B] Emperor trigger targets Ballista oid 8 (choice MQYMYZ.0.185.t0) variant=B
+[07:16:39] [B] CAPTURE: trigger entry 121 targets Ballista 8; P0 holds priority
+[07:16:41] [B] trigger resolved; chosen Ballista 8 exiled; post state exported
+[07:16:41] game B: captured=True chosen=8 entry=121
+[07:16:41] ENGINE DONE assertions={"E1_setup_ok": "passed", "E2_trigger_targeted": "passed", "E3_identity_distinct": "passed", "E4_snapshot_captured": "passed", "E5_cleanup": "passed"}
