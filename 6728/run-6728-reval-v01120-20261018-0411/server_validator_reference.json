@@ -1,0 +1,7 @@
+{
+ "file": "crates/phase-server/src/admin.rs @ v0.112.0 (build commit 9a8e3fae2a0953ea5cb19f62fa7be93592d951f7)",
+ "function": "fn is_valid_draft_code(code: &str) -> bool { code.len() == 6 && code.chars().all(|c| c.is_ascii_uppercase() || c.is_ascii_digit()) }",
+ "note": "Source reference only; the authoritative evidence is the live HTTP behavior in assertions.json/wire_log.json against the pinned v0.112.0 release binary.",
+ "observed_behavior": "POST /p2p-draft-backup with draft_code 'draft-abc12345' -> 400 'Invalid draft code'; with 'Q7KX2P' -> 200; GET/DELETE with client-shaped code -> 400",
+ "unchanged_since": "validator logic identical across v0.102.0..v0.112.0; byte-level spot check at the v0.112.0 release commit (this run)"
+}
