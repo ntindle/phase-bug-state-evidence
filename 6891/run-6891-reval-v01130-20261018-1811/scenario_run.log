@@ -1,0 +1,70 @@
+[18:26:26] server identity hashes verified against on-disk pinned artifacts
+[18:26:29] ServerHello: version=0.113.0 build=0571ee3 protocol=151 mode=Full
+[18:26:29] data-level: counter=P1P1 count={'type': 'UpTo', 'max': {'type': 'Ref', 'qty': {'type': 'LifeGainedThisTurn', 'player': {'type': 'Controller'}}}} multi_target={"min": 0, "max": {"type": "Ref", "qty": {"type": "LifeGainedThisTurn", "player": {"type": "Controller"}}}}
+[18:26:30] P0 creating game...
+[18:26:30] P1 joining...
+[18:26:31] game GIKU71; P0 seat=0 P1 seat=1
+[18:26:31] [P0] mulligan -> Keep (hand=['lathiel, the bounteous dawn', 'grizzly bears', 'forest', 'lathiel, the bounteous dawn', 'forest', 'plains', 'grizzly bears'])
+[18:26:31] [P1] mulligan -> Keep (hand=['forest', 'forest', 'forest', 'grizzly bears', 'forest', 'forest', 'forest'])
+[18:26:32] [P1] playing land forest
+[18:26:35] [P0] playing land forest
+[18:26:39] [P1] playing land forest
+[18:26:39] [P1] casts Grizzly Bears (84)
+[18:26:40] [P0] cast confirmed (stack): Grizzly Bears oid 84
+[18:26:44] [P0] playing land forest
+[18:26:48] [P1] playing land forest
+[18:26:50] [P1] declare no attackers
+[18:26:52] [P0] playing land plains
+[18:26:56] [P1] casts Grizzly Bears (102)
+[18:26:56] [P0] cast confirmed (stack): Grizzly Bears oid 102
+[18:26:57] [P1] playing land forest
+[18:26:58] [P1] declare no attackers
+[18:27:01] [P0] playing land plains
+[18:27:01] [P0] casts Lathiel, the Bounteous Dawn (27)
+[18:27:01] [P0] cast confirmed (stack): Lathiel, the Bounteous Dawn oid 27
+[18:27:05] [P1] playing land forest
+[18:27:07] [P1] declare no attackers
+[18:27:10] [P0] playing land forest
+[18:27:10] [P0] casts Grizzly Bears (41)
+[18:27:10] [P0] cast confirmed (stack): Grizzly Bears oid 41
+[18:27:11] === stage -> ATTACK (turn 10) ===
+[18:27:12] [P0] attacks with Lathiel alone (turn 10)
+[18:27:12] attack resolved: Lathiel attacking (turn 10)
+[18:27:17] [P1] declare no blockers
+[18:27:20] === stage -> ENDSTEP (turn 10) ===
+[18:27:20] Lathiel trigger on stack at End; P0 life=22
+[18:27:20] exported pre_trigger.json
+[18:27:25] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[18:27:25] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=3 nrefs=3
+[18:27:25]     cand id=GIKU71.0.173.t0 ref=84 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[18:27:25]     cand id=GIKU71.0.173.t1 ref=102 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[18:27:25]     cand id=GIKU71.0.173.t2 ref=41 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[18:27:25] [P0] slot 0 targets grizzly bears oid=41 (own=True)
+[18:27:25] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=sequence wf=TriggerTargetSelection
+[18:27:25] [P0] Lathiel slot prompt rtype=schema spec=sequence ncands=2 nrefs=2
+[18:27:25]     cand id=GIKU71.0.174.t0 ref=84 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[18:27:25]     cand id=GIKU71.0.174.t1 ref=102 name=grizzly bears zone=Battlefield text=Grizzly Bears
+[18:27:25] [P0] slot 1: chosen oid=41 NOT among candidates -- distinct targets required
+[18:27:25] [P0] slot 1: trying empty selection (up-to path)
+[18:27:25] [P0] ENDSTEP vi: canSubmit=True n_ops=1 kind=choose wf=Priority
+[18:27:25] [P0] Lathiel slot prompt rtype=exactChoices spec= ncands=4 nrefs=0
+[18:27:25]     cand id=GIKU71.0.175.c0 ref=None name=? zone=? text=
+[18:27:25]     cand id=GIKU71.0.175.c1 ref=11 name=forest zone=Battlefield text=Forest
+[18:27:25]     cand id=GIKU71.0.175.c2 ref=30 name=plains zone=Battlefield text=Plains
+[18:27:25]     cand id=GIKU71.0.175.c3 ref=35 name=plains zone=Battlefield text=Plains
+[18:27:26] [P0] ENDSTEP vi: canSubmit=False n_ops=0 kind=choose wf=Priority
+[18:27:26] exported post.json
+[18:27:26] post.json exported; trigger resolved; stopping
+[18:27:26] loop ended: stage=DONE elapsed=57s
+[18:27:26] A1_setup_ok: passed
+[18:27:26] A2_trigger_fired: passed
+[18:27:26] A3_budget: passed
+[18:27:26] A4_slot0_accepted: passed
+[18:27:26] A5_free_distribution: failed
+[18:27:26] A6_decline_path: passed
+[18:27:26] A7_cleanup: passed
+[18:27:26] verdict=reproduced
+[18:27:27] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_trigger_fired": "passed", "A3_budget": "passed", "A4_slot0_accepted": "passed", "A5_free_distribution": "failed", "A6_decline_path": "passed", "A7_cleanup": "passed"}
+[18:27:27] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6891/run-6891-reval-v01130-20261018-1811/summary.png
+[18:27:27] copied driver into evidence dir
+[18:27:27] manifest written (11 files)

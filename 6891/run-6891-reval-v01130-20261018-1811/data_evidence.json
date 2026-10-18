@@ -1,0 +1,62 @@
+{
+ "name": "Lathiel, the Bounteous Dawn",
+ "oracle_text": "Lifelink\nAt the beginning of each end step, if you gained life this turn, distribute up to that many +1/+1 counters among any number of other target creatures.",
+ "counter_type": "P1P1",
+ "count": {
+  "type": "UpTo",
+  "max": {
+   "type": "Ref",
+   "qty": {
+    "type": "LifeGainedThisTurn",
+    "player": {
+     "type": "Controller"
+    }
+   }
+  }
+ },
+ "distribute": {
+  "type": "Counters",
+  "data": "P1P1"
+ },
+ "multi_target": {
+  "min": 0,
+  "max": {
+   "type": "Ref",
+   "qty": {
+    "type": "LifeGainedThisTurn",
+    "player": {
+     "type": "Controller"
+    }
+   }
+  }
+ },
+ "target": {
+  "type": "Typed",
+  "type_filters": [
+   "Creature"
+  ],
+  "controller": null,
+  "properties": [
+   {
+    "type": "Another"
+   }
+  ]
+ },
+ "condition": {
+  "type": "QuantityComparison",
+  "lhs": {
+   "type": "Ref",
+   "qty": {
+    "type": "LifeGainedThisTurn",
+    "player": {
+     "type": "Controller"
+    }
+   }
+  },
+  "comparator": "GE",
+  "rhs": {
+   "type": "Fixed",
+   "value": 1
+  }
+ }
+}
