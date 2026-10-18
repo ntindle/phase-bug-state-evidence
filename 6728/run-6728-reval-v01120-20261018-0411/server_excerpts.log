@@ -1,0 +1,7 @@
+server_excerpts.log - run-6728-reval-v01120-20261018-0411
+Requests ran against the shared backfill server on 127.0.0.1:9374 (pid 8596),
+started by run-6690-reval-v01120-20261018-0345 from the pinned v0.112.0 release dir.
+ServerHello verified live by this run: 0.112.0/9a8e3fa/protocol 147/Full.
+The /p2p-draft-backup HTTP handler emits no INFO-level log lines for these requests;
+the authoritative request/response record is wire_log.json (10 exchanges, all 200/400 as asserted).
+The probed server's game-db accumulated one created-then-deleted Q7KX2P backup row during the lifecycle check; the rejected draft-abc12345 uploads left no rows.
