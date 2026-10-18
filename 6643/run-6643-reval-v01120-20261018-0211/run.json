@@ -1,0 +1,118 @@
+{
+  "issue": 6643,
+  "run_id": "run-6643-reval-v01120-20261018-0211",
+  "started_at": "2026-10-18T07:25:04Z",
+  "duration_s": 32.0,
+  "server": {
+    "server_version": "v0.112.0",
+    "build_commit": "9a8e3fa",
+    "protocol_version": 147,
+    "mode": "Full",
+    "binary_sha256": "a527da8b0c67c21eb492fecef67e1e7efa23ab8898b90965ab7fc7251db4fc15",
+    "card_data_sha256": "f5dd690b1ec33da9dd3bb68a5627ef2942306d35166451531aa153f032cb7900",
+    "draft_pools_sha256": "7fda831df504b57a77a2e9853c12f73d2688766a6ef8529176290f5797e356d8",
+    "signature_key_id": "436711b6a2d36828",
+    "signature_verified": true,
+    "signature_note": "v0.112.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time (2026-10-17, by the run that pinned the release); release unchanged since (latest stable still v0.112.0, published 2026-10-17T14:38:40Z); data digests match the signed manifest; digests recomputed against on-disk files this run",
+    "observed_at": "2026-10-18",
+    "source": "2026-10-18: latest stable release v0.112.0 (published 2026-10-17T14:38:40Z) == pinned release dir; ServerHello 0.112.0/9a8e3fa/protocol 147 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused the live v0.112.0 server on 127.0.0.1:9374 (started by backfill run-20261018-014138; no games.db churn from this run; backfill-owned pid verified this run); run-6643-reval-v01120-20261018-0211; pinned 2026-10-17"
+  },
+  "server_observed": {
+    "server_version": "0.112.0",
+    "build_commit": "9a8e3fa",
+    "protocol_version": 147,
+    "mode": "Full"
+  },
+  "server_run_dir": "runs/run-6643-reval-v01120-20261018-0211",
+  "driver": {
+    "protocol_advertised": 147,
+    "client": "driver/client.py"
+  },
+  "scenario": {
+    "file": "scenario_6643_v01120.py",
+    "sha256": "067856dd3046938d311008b0edd032b0726f62a066e0da62a76dbae44230c5cb"
+  },
+  "decks": {
+    "P0": [
+      [
+        "party dude",
+        8
+      ],
+      [
+        "grizzly bears",
+        12
+      ],
+      [
+        "forest",
+        40
+      ]
+    ],
+    "P1": [
+      [
+        "island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_trigger_fires": "passed",
+    "A3_target_prompted": "passed",
+    "A4_pump_correct": "passed",
+    "A5_cleanup": "passed"
+  },
+  "notes": [
+    "attacked=True attack_turn=9 trigger_seen=True target_prompted=True target_answered=True hand_at_target=4 rejections=0 stuck_watch=False",
+    "A1: dude_oid=27 expected_lvl=3 field_lvl=3 ready_bears=[41] life=[20, 20]",
+    "A2: Party Dude Attacks trigger observed on stack: {\"id\": 126, \"source_id\": 27, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 27, \"ability\": {\"effect\": {\"type\": \"Pump\", \"power\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"toughness\": {\"type\": \"Quantity\"",
+    "A3: target_prompted=True target_answered=True attacker_oid=41",
+    "A4: P1 life 20->14 (damage 6), expected 6 (2+X, X=hand 4); mid_pump bear P/T=6/6",
+    "A5: stack=0 entries, party-dude leftovers=0, phase=PostCombatMain turn=9",
+    "server log excerpts skipped: shared pinned-server log is not run-attributable; wire_log.jsonl covers the run"
+  ],
+  "observations": {
+    "dude_expected_level": 3,
+    "dude_oid": 27,
+    "level_keys_seen": [
+      "class_level"
+    ],
+    "attack_turn": 9,
+    "attacker_oid": 41,
+    "trigger_seen": true,
+    "trigger_entry": "{\"id\": 126, \"source_id\": 27, \"controller\": 0, \"kind\": {\"type\": \"TriggeredAbility\", \"data\": {\"source_id\": 27, \"ability\": {\"effect\": {\"type\": \"Pump\", \"power\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"toughness\": {\"type\": \"Quantity\", \"value\": {\"type\": \"Ref\", \"qty\": {\"type\": \"HandSize\", \"player\": {\"type\": \"Controller\"}}}}, \"target\": {\"type\": \"Typed\", \"type_filters\": [\"Creature\"], \"controller\": null, \"properties\": [{\"type\": \"Attacking\"}]}}, \"targets\": [], \"source_id\": 27, \"source_incarnation\": 3, \"trigger_source\": {\"identity\": {\"reference\": {\"object_id\": 27, \"incarnation\": 3}, \"expected_zone\": \"Battlefield\"}, \"lki\": {\"name\": \"Party Dude\", \"power\": null, \"toughness\": null, \"base_power\": null, \"base_toughness\": null, \"mana_value\": 1, \"controller\": 0, \"owner\": 0, \"card_types\": [\"Enchantment\"], \"subtypes\": [\"Class\"], \"supertypes\": [], \"keywords\": [], \"colors\": [\"Green\"], \"chosen_attributes\": [], \"counters\": {}, \"tapped\": false, \"is_suspected\": false, \"attachments\": []}, \"card_id\": 27, \"printed_ref\": {\"oracle_id\": \"8df7a58c-053f-4ead-a778-2747718e5f10\", \"face_name\": \"Party Dude\"}, \"is_token\": false, \"face_down\": false, \"mana_cost\": {\"type\": \"Cost\", \"shards\": [\"Green\"], \"generic\": 0}, \"transformed\": false, \"is_renowned\": false, \"is_saddled\": false, \"class_level\": 3, \"trigger_entries\": [{\"occurrence\": {\"type\": \"Printed\", \"data\": {\"base_set\": 1, \"printed_index\": 0}}, \"definition\": {\"mode\": \"ChangesZone\", \"execute\": {\"kind\": \"Spell\", \"effect\": {\"type\": \"Token\", \"name\": \"Food\", \"power\": {\"type\": \"Fixed\", \"value\": 0}, \"toughness\": {\"type\": \"Fixed\", \"value\": 0}, \"types\": [\"Artifact\", \"Food\"], \"colors\": [], \"keywords\": [], \"tapped\": false, \"count\": {\"type\": \"Fixed\", \"value\": 1}, \"owner\": {\"type\": \"Controller\"}, \"enters_attacking\": false}, \"cost\": null, \"sub_ability\": null, \"duration\": null, \"description\": null, \"target_prompt\": null, \"condition\": null, \"optional_targeting\": false, \"optional\": false, \"forward_resul",
+    "target_prompted": true,
+    "target_answered": true,
+    "hand_at_target": 4,
+    "interaction_shapes": [],
+    "rejections": [],
+    "no_trigger_deadline_turn": 15,
+    "answered_ids": [
+      "FJWHEA.0.147"
+    ],
+    "paying": {
+      "p0": null,
+      "p1": null
+    },
+    "attacked": true,
+    "done": false,
+    "pre_exported": true,
+    "mid_trigger_exported": true,
+    "mid_target_exported": true,
+    "mid_pump_exported": true,
+    "post_exported": true,
+    "stuck_watch_fired": false,
+    "final_quiet": true
+  },
+  "escape_decisions": [],
+  "verdict": "not-reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "Dense >4-of card counts are a test-harness convenience (engine accepts >4-of for custom games).",
+    "The Party Dude fixture is reconstructed (cast + level-ups), not the reporter's attached game state.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "waiting_for is null on protocol 144: priority is detected via the advertised PassPriority legal action; the Mulligan decision via the advertised MulliganDecision action.",
+    "Mana is engine-auto-paid on protocol 144 (no driver payment phase); the cast-confirmation guard covers the CastSpell/PassPriority race (2026-10-09 lesson)."
+  ],
+  "setup_line": "P0: 8x Party Dude + 12x Grizzly Bears + 40x Forest; P1: 60x Island",
+  "contract_line": "Cast Party Dude, level to 3 ({1}{G}, {4}{G}), cast a Bear, attack P1: the level-3 Attacks-mode trigger must go on the stack, the up-to-one target-attacking-creature prompt must be offered, and the Bear must get +X/+X with X = P0 hand size"
+}
