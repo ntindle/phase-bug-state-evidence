@@ -1,0 +1,54 @@
+{
+ "issue": 6728,
+ "run_id": "run-6728-reval-v01120-20261018-0411",
+ "date": "2026-10-18",
+ "validated_version": "v0.112.0",
+ "verdict": "reproduced",
+ "prior_validated_verdict": "reproduced",
+ "scope": "P2P draft server-backup HTTP handler (POST/GET/DELETE /p2p-draft-backup) on pinned v0.112.0 binary + client source-path inspection at mainline c0aa6ac7; frontend P2P browser stack not exercised",
+ "result": "On v0.112.0 the server still rejects the client-generated `draft-xxxxxxxx` identifier with 400 Invalid draft code (no row created); a contract-valid 6-char uppercase code completes create/retrieve/update/delete. admin.rs validator logic unchanged at the v0.112.0 release commit. Client at mainline tip c0aa6ac7 (2026-10-18): p2p-draft-host.ts byte-identical to the 2026-10-11/12/15/17 checks; blocker #1 stays wired (production path passes config.backupEndpoint); upload still treats 400 as success.",
+ "limitations": [
+  "End-to-end row creation from the production client is not exercised: the frontend P2P browser stack (PeerJS host + production client) is unavailable in this run's native-engine infra.",
+  "Client claims rest on source inspection at c0aa6ac7 (sha256 recorded above), not on running the client.",
+  "No game-state pair exists for this report; evidence is the wire log of HTTP exchanges against the live handler plus pre/post backup-row reads."
+ ],
+ "server": {
+  "validated_version": "v0.112.0",
+  "build_commit": "9a8e3fa",
+  "protocol_version": 147,
+  "binary_sha256": "a527da8b0c67c21eb492fecef67e1e7efa23ab8898b90965ab7fc7251db4fc15",
+  "endpoint_base": "http://127.0.0.1:9374",
+  "handshake": "ServerHello 0.112.0/9a8e3fa/protocol 147/Full verified by live handshake on 127.0.0.1:9374 (pid 8596, owned by run-6690-reval-v01120-20261018-0345)",
+  "signature_verified": true,
+  "data_manifest": "release-server-v0.112.0.json minisign-verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY; data file digests match the manifest"
+ },
+ "client": {
+  "file": "client/src/adapter/p2p-draft-host.ts",
+  "file_note": "byte-identical to the 2026-10-11 (49525d9f), 2026-10-12 (d44fbcf4), 2026-10-15 (f672f801) and 2026-10-17 (3adc37af) checks; client-side backup logic unchanged at current mainline tip",
+  "file_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+  "generator_hostDraftCode": "function hostDraftCode(): string {\n  const values = new Uint32Array(1);\n  crypto.getRandomValues(values);\n  return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`;\n}",
+  "generator_line": "client/src/adapter/p2p-draft-host.ts:333-337",
+  "production_wiring": {
+   "file": "client/src/adapter/draftPodHostAdapter.ts",
+   "line": 324,
+   "sha256": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3",
+   "note": "still passes config.backupEndpoint - blocker #1 stays wired"
+  },
+  "upload_behavior": {
+   "line": "p2p-draft-host.ts:3711-3726",
+   "note": "uploadBackupSnapshot awaits fetch without checking response.ok; HTTP 400 still silent - docstring says 'Failures are silently logged'"
+  },
+  "tip": "c0aa6ac7790ad0b9be5953c941a9bde6cb10d82c (origin/main, 2026-10-18T08:40:34Z)",
+  "note": "mainline tip (post-v0.112.0-release main); source inspection only"
+ },
+ "scenario": {
+  "file": "driver/scenario_6728.py",
+  "sha256": "2721c922044b686acae50d53313b03b6019945d4b9438e40a746bc391bc47545",
+  "unchanged_from": "run-6728-reval-v01110-20261017-0611"
+ },
+ "assertions": {
+  "passed": 10,
+  "failed": 0,
+  "total": 10
+ }
+}
