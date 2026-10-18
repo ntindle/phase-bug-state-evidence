@@ -1,0 +1,148 @@
+{
+ "issue": 6866,
+ "run_id": "run-6866-reval-v01130-20261018-1311",
+ "game_code": "6H0KT6",
+ "started_at": "2026-10-18T18:15:05",
+ "duration_s": 63.1,
+ "server_identity": {
+  "validated_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "95d0607242600b15a6ac90a93a1650e300bf97fd2d6b492e6073cfd1487d2c49",
+ "decks": {
+  "P0": [
+   [
+    "Delina, Wild Mage",
+    8
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    30
+   ],
+   [
+    "Llanowar Elves",
+    30
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_trigger_fires": "passed",
+  "A3_low_branch": "passed",
+  "A7_exile_ok": "failed",
+  "A4_high_observed": "passed",
+  "A5_reroll_offered": "passed",
+  "A6_reroll_works": "failed"
+ },
+ "notes": [
+  "pre.json: delina_bf=True bear_bf=True life=20/20 phase=PreCombatMain",
+  "target_answers: [(10, '25', 'grizzly bears'), (12, '25', 'grizzly bears')]",
+  "A3 low turn 10 (game 0): token detail {'name': 'Grizzly Bears', 'tapped': True, 'is_token': True, 'in_combat_attackers': False, 'legendary': False, 'abilities': '[{\"condition\": null, \"cost\": null, \"description\": \"at end of combat, exile ~.\", \"duration\": null, \"effect\": {\"condition\": {\"phase\": \"EndCombat\", \"type\": \"AtNextPhase\"}, \"effect\": {\"condition\": null, \"cost\": null, \"description\": null, \"duration\": null, \"effect\": {\"destination\": \"Exile\", \"enter_tapped'}",
+  "A7: low-turn token oids ['122'] still on BF in post_low.json: ['122']",
+  "high_turn=12 deltas={10: 1, 12: 0}",
+  "reroll_prompts: [(12, True)]",
+  "reroll_answers: [(12, True, 'true')]",
+  "A6 detail: accepted_turns=[12] progressed=False",
+  "attack_turns(game 0)=[8, 10, 12]",
+  "games=[{\"gindex\": 0, \"game_code\": \"6H0KT6\", \"result\": \"done\", \"attack_turns\": [8, 10, 12], \"deltas\": {\"10\": [\"122\"], \"12\": []}, \"target_answers\": [[10, \"25\", \"grizzly bears\"], [12, \"25\", \"grizzly bears\"]]}]",
+  "legend_answered=0; final stage=DONE",
+  "data-level: 15-20 branch still parses Unimplemented (create + optional roll again)",
+  "protocol-151 driver (v0.113.0, 01130 port): HELLO advertises protocol 151; CreateGameWithSettings + JoinGameWithPassword + start_when_full; MulliganDecision via legacy Action; DiscardToHandSize via vi schema/select; CastSpell via advertised actions; mana is engine auto-tapped (manual taps are a >90s last-resort fallback only); Delina trigger target via vi schema/exactChoices candidates referencing BF creatures of seat 0; reroll via decideOptionalEffect (first prompt accepted, later declined as control); DeclareAttackers/Blockers via relations-schema vi opportunity; playLand in NON_DECISION_CODES; priority-gated passes; 5s re-tick backstop."
+ ],
+ "target_answers": [
+  [
+   10,
+   "25",
+   "grizzly bears"
+  ],
+  [
+   12,
+   "25",
+   "grizzly bears"
+  ]
+ ],
+ "attack_turns": [
+  8,
+  10,
+  12
+ ],
+ "low_turn": 10,
+ "high_turn": 12,
+ "low_ref": [
+  0,
+  10
+ ],
+ "high_ref": [
+  0,
+  12
+ ],
+ "deltas": {
+  "10": [
+   "122"
+  ],
+  "12": []
+ },
+ "games": [
+  {
+   "gindex": 0,
+   "game_code": "6H0KT6",
+   "result": "done",
+   "attack_turns": [
+    8,
+    10,
+    12
+   ],
+   "deltas": {
+    "10": [
+     "122"
+    ],
+    "12": []
+   },
+   "target_answers": [
+    [
+     10,
+     "25",
+     "grizzly bears"
+    ],
+    [
+     12,
+     "25",
+     "grizzly bears"
+    ]
+   ]
+  }
+ ],
+ "data_finding": "15-20 branch still parses Unimplemented (create + optional roll again)",
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6866_01130.py), not direct load.",
+  "The die-roll value is not exposed to the client; 15-20 is identified by its effect signature (trigger fired, 0 new tokens) while 1-14 provably creates exactly one token."
+ ],
+ "setup_line": "P0: 8x Delina + 12x Grizzly Bears + 20x Mountain + 20x Forest; P1: 30x Forest + 30x Llanowar Elves (chump blockers)",
+ "contract_line": "Per attack turn: Delina attacks alone, trigger targets the Bear; delta 1 => 1-14 (control), delta 0 => 15-20 signature. 15-20 must offer an optional reroll; low-turn tokens must exile at end of combat."
+}
