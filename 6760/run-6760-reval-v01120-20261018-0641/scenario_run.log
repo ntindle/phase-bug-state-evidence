@@ -1,0 +1,45 @@
+[06:45:18] server identity hashes recomputed against on-disk pinned artifacts
+[06:45:18] ServerHello: version=0.112.0 build=9a8e3fa protocol=147 mode=Full
+[06:45:18] ===== attempt 1 =====
+[06:45:18] game Q5KXAU attempt=1; P0 seat=0 P1 seat=1
+[06:45:18] [6760-a1] keep 7: ['llanowar elves', 'llanowar elves', 'forest', 'llanowar elves', 'llanowar elves', 'forest', 'ojer kaslem, deepest growth']
+[06:45:18] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[06:45:19] [P16760-a1] playing land island (legacy)
+[06:45:21] [6760-a1] playing land forest (legacy)
+[06:45:24] [P16760-a1] playing land island (legacy)
+[06:45:26] [6760-a1] playing land forest (legacy)
+[06:45:28] [P16760-a1] playing land island (legacy)
+[06:45:30] [6760-a1] playing land forest (legacy)
+[06:45:33] [P16760-a1] playing land island (legacy)
+[06:45:37] [6760-a1] discarding to hand size via vi (select)
+[06:45:37] [P16760-a1] playing land island (legacy)
+[06:45:40] [6760-a1] playing land forest (legacy)
+[06:45:42] [P16760-a1] playing land island (legacy)
+[06:45:46] [6760-a1] discarding to hand size via vi (select)
+[06:45:47] [P16760-a1] playing land island (legacy)
+[06:45:48] [6760-a1] DIAG P06760-a1: rev=194 turn=13 phase=PostCombatMain prio=['PassPriority'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[06:45:48] [6760-a1] DIAG P16760-a1: rev=194 turn=13 phase=PostCombatMain prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[06:45:51] [6760-a1] discarding to hand size via vi (select)
+[06:45:51] [P16760-a1] playing land island (legacy)
+[06:45:54] [6760-a1] playing land forest (legacy)
+[06:45:54] [6760-a1] casting Ojer Kaslem, Deepest Growth (oid 15); engine auto-pays (payment_mode Auto)
+[06:45:54] [6760-a1] cast confirmed on stack: Ojer Kaslem, Deepest Growth (oid 15)
+[06:45:54] [6760-a1] Ojer Kaslem on battlefield at turn 16
+[06:45:57] [P16760-a1] playing land island (legacy)
+[06:46:01] [6760-a1] playing land forest (legacy)
+[06:46:02] [6760-a1] P0 attacks P1 with Ojer Kaslem (turn 18)
+[06:46:05] [6760-a1] combat damage landed: P1 life=14
+[06:46:06] [6760-a1] select prompt: spec.type=select constraint={"type": "count", "data": {"min": 0, "max": 1}} n_candidates=6
+[06:46:06]   candidate Q5KXAU.0.276.s0: llanowar elves (Creature) zone=Library ref=34
+[06:46:06]   candidate Q5KXAU.0.276.s1: forest (Land) zone=Library ref=10
+[06:46:06]   candidate Q5KXAU.0.276.s2: forest (Land) zone=Library ref=25
+[06:46:06]   candidate Q5KXAU.0.276.s3: llanowar elves (Creature) zone=Library ref=58
+[06:46:06]   candidate Q5KXAU.0.276.s4: forest (Land) zone=Library ref=38
+[06:46:06]   candidate Q5KXAU.0.276.s5: llanowar elves (Creature) zone=Library ref=51
+[06:46:06] [6760-a1] submitting 2-card selection (creature Q5KXAU.0.276.s0 + land Q5KXAU.0.276.s1) via select
+[06:46:06] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[06:46:06] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[06:46:06] [6760-a1] submitting 1-card fallback (creature Q5KXAU.0.276.s0)
+[06:46:09] [6760-a1] select outcome path=one_accepted: entered=['llanowar elves'] bottomed=5/6
+[06:46:09] attempt 1 assertions: {"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+[06:46:09] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
