@@ -1,0 +1,105 @@
+{
+ "issue": 6878,
+ "run_id": "run-6878-reval-v01130-20261018-1441",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A2_keep_offered_detail": {
+   "top3": [
+    [
+     "9",
+     "duskwatch recruiter"
+    ],
+    [
+     "30",
+     "duskwatch recruiter"
+    ],
+    [
+     "32",
+     "duskwatch recruiter"
+    ]
+   ],
+   "keep_offered_refs": [
+    "9",
+    "30",
+    "32"
+   ],
+   "keep_kind": "select",
+   "keep_spec": {
+    "type": "select",
+    "data": {
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  },
+  "A3_order_offered_r1": "failed",
+  "A3_order_offered_r1_detail": {
+   "rest_oids": [
+    "30",
+    "32"
+   ],
+   "order_spec": null
+  },
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "30",
+    "32"
+   ],
+   "positions": {
+    "30": 28,
+    "32": 29
+   },
+   "library_len": 30,
+   "post_bottom_tail": [
+    "6",
+    "39",
+    "35",
+    "31",
+    "30",
+    "32"
+   ]
+  },
+  "A5_no_opponent_leak": "failed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "9": {
+     "name": "Duskwatch Recruiter",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "30": {
+     "name": "Duskwatch Recruiter",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "32": {
+     "name": "Duskwatch Recruiter",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    }
+   },
+   "leaked": [
+    "30",
+    "32"
+   ]
+  },
+  "A6_decline_branch_r2": "not-run",
+  "A6_decline_branch_r2_detail": "round 2 did not complete (see notes)",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "Recruiter transformed before activation (stage R2ARM)"
+ ]
+}
