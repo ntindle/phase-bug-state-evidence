@@ -1,0 +1,58 @@
+{
+ "name": "Moonmist",
+ "oracle_text": "Transform all Humans. Prevent all combat damage that would be dealt this turn by creatures other than Werewolves and Wolves. (Only double-faced cards can be transformed.)",
+ "abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Transform",
+    "target": {
+     "type": "Typed",
+     "type_filters": [
+      {
+       "Subtype": "Human"
+      }
+     ],
+     "controller": null,
+     "properties": []
+    },
+    "scope": {
+     "type": "All"
+    }
+   },
+   "cost": null,
+   "sub_ability": {
+    "kind": "Spell",
+    "effect": {
+     "type": "PreventDamage",
+     "amount": "All",
+     "target": {
+      "type": "Any"
+     },
+     "recipient_scope": {
+      "type": "Single"
+     },
+     "scope": "CombatDamage",
+     "prevention_duration": "UntilEndOfTurn"
+    },
+    "cost": null,
+    "sub_ability": null,
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": false,
+    "forward_result": false,
+    "sub_link": "SequentialSibling"
+   },
+   "duration": null,
+   "description": null,
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}
