@@ -1,0 +1,108 @@
+{
+ "issue": 7173,
+ "run_id": "run-7173-reval-v01130-20261019-0111",
+ "title": "Raphael, Tag Team Tough - Only triggers once, not for each different player he damaged.",
+ "validated_at": "2026-10-19",
+ "server": {
+  "server_version": "0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "single-user",
+  "binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true,
+  "observed_at": "2026-10-19",
+  "source": "pinned v0.113.0 (minisign-verified binary + signed data manifest, ledger server pin 2026-10-18); fresh isolated v0.113.0 server on 127.0.0.1:9374 started under setsid by this run (run dir discovered live from the server process); ServerHello re-checked by this run."
+ },
+ "scope": "Raphael combat-damage trigger across two combats in one turn vs two different players (P1 then P2), plus a next-turn reset control; native engine, three human-client seats; v0.113.0",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_gap": "passed",
+  "A2_setup_ok": "passed",
+  "A3_first_trigger": "passed",
+  "A4_additional_combat_1": "passed",
+  "A5_second_trigger": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse_gap: passed (trigger constraint = {\"type\": \"OncePerTurn\"}; no damaged-player key - the parse collapses the per-player occurrence limit into a global once-per-turn)",
+  "A2: Raphael on P0 BF in pre.json: True",
+  "A3: stack_sighting_c1=True untap_seen=True attack-turn combats=2 -> passed",
+  "A4: P0 DeclareAttackers in attack turn 19 = 2 (targets [1, 2, 1]) -> passed",
+  "A5: stack_sighting_c2=False attack-turn combats=2 -> FAILED (FAILED = reported bug: first damage to a different player does not re-trigger)",
+  "A6: post stack empty=True",
+  "control: next-turn attack on P1 re-triggered = True (turn 22) - the once-per-turn history resets each turn"
+ ],
+ "driver_state": {
+  "raphael_cast_turn": 16,
+  "attack_turn": 19,
+  "combats": 3,
+  "combat_turns": [
+   19,
+   19,
+   22
+  ],
+  "combat_targets": [
+   1,
+   2,
+   1
+  ],
+  "trigger_sightings": [
+   {
+    "turn": 19,
+    "phase": "CombatDamage",
+    "combat": 1,
+    "targets_so_far": [
+     1
+    ],
+    "p1_life": 15,
+    "p2_life": 20
+   },
+   {
+    "turn": 22,
+    "phase": "CombatDamage",
+    "combat": 3,
+    "targets_so_far": [
+     1,
+     2,
+     1
+    ],
+    "p1_life": 10,
+    "p2_life": 15
+   }
+  ],
+  "p1_damaged": true,
+  "p2_damaged": true,
+  "p1_life": 15,
+  "p2_life": 15,
+  "untap_seen": true,
+  "control_sighting": {
+   "key": [
+    22,
+    "CombatDamage",
+    3
+   ],
+   "turn": 22,
+   "phase": "CombatDamage",
+   "combat": 3,
+   "targets_so_far": [
+    1,
+    2,
+    1
+   ],
+   "p1_life": 10,
+   "p2_life": 15
+  }
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-client seats.",
+  "Dense Raphael playset (12x) is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1/P2 fully passive (no lands beyond drops, no casts, no attacks, no blocks).",
+  "The 'second hit to the SAME player does not trigger' acceptance criterion was not separately exercised."
+ ],
+ "evidence_dir": "7173/run-7173-reval-v01130-20261019-0111",
+ "server_run_note": "v0.113.0 server on 127.0.0.1:9374 started fresh under setsid for this run (games.db + server.log in runs/run-7173-reval-v01130-20261019-0111/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 629.4
+}
