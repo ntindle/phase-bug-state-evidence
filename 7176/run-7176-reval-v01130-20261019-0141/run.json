@@ -1,0 +1,98 @@
+{
+ "issue": 7176,
+ "run_id": "run-7176-reval-v01130-20261019-0141",
+ "title": "Circuits Act - does not make the artifact creatures for each different result of the roll.",
+ "validated_at": "2026-10-19",
+ "server": {
+  "server_version": "0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "single-user",
+  "binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true,
+  "observed_at": "2026-10-19",
+  "source": "pinned v0.113.0 (minisign-verified binary + signed data manifest, ledger server pin 2026-10-18); binary + data SHA-256 re-verified by this run; fresh isolated v0.113.0 server started under setsid by this run (VM was replaced mid-run, killing the earlier backfill server); ServerHello re-checked by this run."
+ },
+ "scope": "Circuits Act dice-roll spell: card-data parse check (RollDie typed, token half Unimplemented) + up to 3 native-engine casts; aggregate Clown Robot token count vs Oracle minimum (1 per cast); native engine, two human-client seats; v0.113.0 re-validation of the 2026-09-15 v0.83.0 reproduced run",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse": "passed",
+  "A2_setup": "passed",
+  "A3_cast": "passed",
+  "A4_resolved": "passed",
+  "A5_tokens": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1_parse: passed (abilities[0] = Spell RollDie {count:Fixed 3, sides:6}; sub-ability = Unimplemented name='unparsed_quantity' - the token-creation half is still unparsed on v0.113.0)",
+  "A2: pre_1 Circuits Act in P0 hand=True, untapped Mountains=3 -> passed",
+  "A3: completed casts=3 (legs=[1, 2, 3]) -> passed",
+  "A4: resolved=3/3 (leg1:gy0->1, leg2:gy1->2, leg3:gy2->3) -> passed",
+  "A5: clown tokens final=0 vs Oracle minimum 3 (per-leg post counts: {1: 0, 2: 0, 3: 0}) -> FAILED (reported bug: the 'for each different result' token half never executes)",
+  "A6: post stack empty=True",
+  "roll sightings on stack: 3",
+  "tick errors: 0 []",
+  "unexpected prompts: 0",
+  "stop reason: 3 casts resolved"
+ ],
+ "driver_state": {
+  "casts": [
+   {
+    "i": 1,
+    "pre_gy": 0,
+    "cast": true,
+    "cast_oid": "44",
+    "cast_rev": 82,
+    "resolved": true,
+    "post_gy": 1,
+    "tokens": 0,
+    "started": 1792393188.9194229,
+    "abandoned": false
+   },
+   {
+    "i": 2,
+    "pre_gy": 1,
+    "cast": true,
+    "cast_oid": "46",
+    "cast_rev": 147,
+    "resolved": true,
+    "post_gy": 2,
+    "tokens": 0,
+    "started": 1792393255.305553,
+    "abandoned": false
+   },
+   {
+    "i": 3,
+    "pre_gy": 2,
+    "cast": true,
+    "cast_oid": "54",
+    "cast_rev": 183,
+    "resolved": true,
+    "post_gy": 3,
+    "tokens": 0,
+    "started": 1792393292.4920719,
+    "abandoned": false
+   }
+  ],
+  "roll_sightings": [
+   "{'id': 44, 'source_id': 44, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 44, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 44, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'chosen_target_slots': [], 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white ",
+   "{'id': 46, 'source_id': 46, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 46, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 46, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'chosen_target_slots': [], 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white ",
+   "{'id': 54, 'source_id': 54, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 54, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': []}, 'targets': [], 'source_id': 54, 'cast_occurrence': {'caster': 0, 'turn_journal_index': 0}, 'chosen_target_slots': [], 'controller': 0, 'kind': 'Spell', 'sub_ability': {'effect': {'type': 'Unimplemented', 'name': 'unparsed_quantity', 'description': 'For each different result, create a 1/1 white "
+  ],
+  "stop_reason": "3 casts resolved",
+  "unexpected_prompts": [],
+  "tick_errors": []
+ },
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "20x Circuits Act density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The engine RNG is not controllable from the driver: the exact per-roll acceptance criteria (1 vs 2 vs 3 tokens for 1/2/3 distinct results) cannot be targeted; the asserted outcome is the aggregate Oracle minimum (>=1 token per completed cast).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 fully passive (land drops only, no casts, no attacks, no blocks)."
+ ],
+ "evidence_dir": "7176/run-7176-reval-v01130-20261019-0141",
+ "server_run_note": "v0.113.0 server on 127.0.0.1:9374 started fresh under setsid for this run (games.db + server.log in runs/run-7176-reval-v01130-20261019-0141/); ServerHello re-checked by this run; server.log copied from the server's run dir.",
+ "duration_s": 194.0
+}
