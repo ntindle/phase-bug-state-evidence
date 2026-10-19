@@ -1,0 +1,970 @@
+{
+ "issue": 7194,
+ "run_id": "run-7194-reval-v01140-20261019-1511",
+ "started_at": "2026-10-19T20:16:03",
+ "duration_s": 40.4,
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_key_id": "repo-pinned SERVER_ARTIFACT_PUBLIC_KEY",
+  "signature_verified": true,
+  "observed_at": "2026-10-19",
+  "source": "reused live server on 127.0.0.1:9374 (run run-7185-reval-v01140-20261019-1441, started by the earlier backfill run today; not shared); ServerHello confirms v0.114.0/ac67cbb/protocol 153; hashes recomputed from on-disk release files this run; v0.114.0 confirmed latest stable release (not shell-*) via GitHub releases API 2026-10-19"
+ },
+ "server_run_dir": "runs/run-7194-reval-v01140-20261019-1511",
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario": "driver/scenario_7194.py",
+ "scenario_sha256": "d951762597d36cc3d2918c35ffd22241997d66d52b7d06eaada67d7b14b6521a",
+ "decks": {
+  "P0": [
+   [
+    "Unbound Flourishing",
+    12
+   ],
+   [
+    "Walking Ballista",
+    12
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "game_ok": true,
+ "parse_summary": {
+  "unbound flourishing": {
+   "name": "Unbound Flourishing",
+   "oracle_text": "Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.\nWhenever you cast an instant or sorcery spell or activate an ability, if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "Green"
+    ],
+    "generic": 2
+   }
+  },
+  "walking ballista": {
+   "name": "Walking Ballista",
+   "oracle_text": "This creature enters with X +1/+1 counters on it.\n{4}: Put a +1/+1 counter on this creature.\nRemove a +1/+1 counter from this creature: It deals 1 damage to any target.",
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "X",
+     "X"
+    ],
+    "generic": 0
+   }
+  }
+ },
+ "cast_action": {
+  "type": "CastSpell",
+  "data": {
+   "object_id": 5,
+   "card_id": 5,
+   "targets": [],
+   "payment_mode": {
+    "type": "Auto"
+   }
+  }
+ },
+ "x_decision": {
+  "interaction_id": "7MXGDG.0.178",
+  "value": 3
+ },
+ "trigger": {
+  "seen": true,
+  "turn": 12,
+  "entries": [
+   {
+    "id": 121,
+    "source_id": 20,
+    "controller": 0,
+    "kind": {
+     "type": "TriggeredAbility",
+     "data": {
+      "source_id": 20,
+      "ability": {
+       "effect": {
+        "type": "Unimplemented",
+        "name": "unparsed_quantity",
+        "description": "double the value of X"
+       },
+       "targets": [],
+       "source_id": 20,
+       "source_incarnation": 3,
+       "trigger_source": {
+        "identity": {
+         "reference": {
+          "object_id": 20,
+          "incarnation": 3
+         },
+         "expected_zone": "Battlefield"
+        },
+        "lki": {
+         "name": "Unbound Flourishing",
+         "power": null,
+         "toughness": null,
+         "base_power": null,
+         "base_toughness": null,
+         "mana_value": 3,
+         "controller": 0,
+         "owner": 0,
+         "card_types": [
+          "Enchantment"
+         ],
+         "subtypes": [],
+         "supertypes": [],
+         "keywords": [],
+         "colors": [
+          "Green"
+         ],
+         "chosen_attributes": [],
+         "counters": {},
+         "tapped": false,
+         "is_suspected": false,
+         "attachments": []
+        },
+        "card_id": 20,
+        "printed_ref": {
+         "oracle_id": "4db030f5-d7c4-4aa0-ae2e-12943e2683d7",
+         "face_name": "Unbound Flourishing"
+        },
+        "is_token": false,
+        "face_down": false,
+        "mana_cost": {
+         "type": "Cost",
+         "shards": [
+          "Green"
+         ],
+         "generic": 2
+        },
+        "transformed": false,
+        "is_renowned": false,
+        "is_saddled": false,
+        "trigger_entries": [
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 0
+           }
+          },
+          "definition": {
+           "mode": "SpellCast",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Unimplemented",
+             "name": "unparsed_quantity",
+             "description": "double the value of X"
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "Typed",
+            "type_filters": [
+             "Permanent"
+            ],
+            "controller": null,
+            "properties": []
+           },
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": {
+            "type": "Controller"
+           },
+           "valid_source": null,
+           "description": "Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         },
+         {
+          "occurrence": {
+           "type": "Printed",
+           "data": {
+            "base_set": 1,
+            "printed_index": 1
+           }
+          },
+          "definition": {
+           "mode": "SpellCast",
+           "execute": {
+            "kind": "Spell",
+            "effect": {
+             "type": "Unimplemented",
+             "name": "unparsed_condition",
+             "description": "if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy"
+            },
+            "cost": null,
+            "sub_ability": null,
+            "duration": null,
+            "description": null,
+            "target_prompt": null,
+            "condition": null,
+            "optional_targeting": false,
+            "optional": false,
+            "forward_result": false
+           },
+           "valid_card": {
+            "type": "Or",
+            "filters": [
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Instant"
+              ],
+              "controller": null,
+              "properties": []
+             },
+             {
+              "type": "Typed",
+              "type_filters": [
+               "Sorcery"
+              ],
+              "controller": null,
+              "properties": []
+             }
+            ]
+           },
+           "origin": null,
+           "destination": null,
+           "trigger_zones": [
+            "Battlefield"
+           ],
+           "phase": null,
+           "optional": false,
+           "damage_kind": "Any",
+           "secondary": false,
+           "valid_target": {
+            "type": "Controller"
+           },
+           "valid_source": null,
+           "description": "Whenever you cast an instant or sorcery spell or activate an ability, if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy.",
+           "constraint": null,
+           "condition": null,
+           "batched": false
+          }
+         }
+        ],
+        "timestamp": 7,
+        "entered_battlefield_turn": 6,
+        "combat_status": {
+         "attacking": false,
+         "blocking": false,
+         "blocked": false,
+         "attacking_alone": false,
+         "blocking_alone": false,
+         "defending_player": null
+        },
+        "cast_from_zone": "Hand",
+        "cast_controller": 0,
+        "phase_status": {
+         "status": "PhasedIn"
+        },
+        "mana_spent_to_cast": true,
+        "colors_spent_to_cast": {
+         "green": 3
+        },
+        "mana_spent_to_cast_amount": 3,
+        "mana_spent_source_snapshots": [
+         {
+          "source_id": 12,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 25,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         },
+         {
+          "source_id": 16,
+          "lki": {
+           "name": "Forest",
+           "power": null,
+           "toughness": null,
+           "base_power": null,
+           "base_toughness": null,
+           "mana_value": 0,
+           "controller": 0,
+           "owner": 0,
+           "card_types": [
+            "Land"
+           ],
+           "subtypes": [
+            "Forest"
+           ],
+           "supertypes": [
+            "Basic"
+           ],
+           "keywords": [],
+           "colors": [],
+           "chosen_attributes": [],
+           "counters": {},
+           "tapped": true,
+           "is_suspected": false,
+           "attachments": []
+          }
+         }
+        ]
+       },
+       "trigger_definition_ref": {
+        "source": {
+         "object_id": 20,
+         "incarnation": 3
+        },
+        "occurrence": {
+         "type": "Printed",
+         "data": {
+          "base_set": 1,
+          "printed_index": 0
+         }
+        }
+       },
+       "chosen_target_slots": [],
+       "controller": 0,
+       "original_controller": 0,
+       "kind": "Spell",
+       "sub_ability": null,
+       "duration": null,
+       "condition": null,
+       "context": {
+        "additional_cost_paid": false,
+        "alternative_mana_cost_paid": false,
+        "optional_effect_performed": false,
+        "cast_from_zone": "Hand",
+        "triggering_spell": {
+         "object_id": 5,
+         "incarnation": 4
+        }
+       },
+       "optional_targeting": false,
+       "optional": false,
+       "description": "Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.",
+       "detached_remainder": "NoProducer",
+       "forward_result": false,
+       "ability_index": 0,
+       "may_trigger_origin": {
+        "type": "Definition",
+        "definition_ref": {
+         "source": {
+          "object_id": 20,
+          "incarnation": 3
+         },
+         "occurrence": {
+          "type": "Printed",
+          "data": {
+           "base_set": 1,
+           "printed_index": 0
+          }
+         }
+        }
+       }
+      },
+      "condition": null,
+      "trigger_event": {
+       "type": "SpellCast",
+       "data": {
+        "card_id": 5,
+        "controller": 0,
+        "object_id": 5,
+        "cast_mana_value": 3
+       }
+      },
+      "description": "Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.",
+      "source_name": "Unbound Flourishing"
+     }
+    }
+   }
+  ]
+ },
+ "ballista": {
+  "oid": "5",
+  "p1p1_counters": 3,
+  "object": {
+   "id": 5,
+   "card_id": 5,
+   "owner": 0,
+   "base_controller": 0,
+   "controller": 0,
+   "zone": "Battlefield",
+   "display_visible_to_viewer": true,
+   "tapped": false,
+   "face_down": false,
+   "flipped": false,
+   "transformed": false,
+   "damage_marked": 0,
+   "dealt_deathtouch_damage": false,
+   "attached_to": null,
+   "attachments": [],
+   "counters": {
+    "P1P1": 3
+   },
+   "name": "Walking Ballista",
+   "power": 3,
+   "toughness": 3,
+   "layer_base_power": 0,
+   "layer_base_toughness": 0,
+   "loyalty": null,
+   "card_types": {
+    "supertypes": [],
+    "core_types": [
+     "Artifact",
+     "Creature"
+    ],
+    "subtypes": [
+     "Construct"
+    ]
+   },
+   "mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "X",
+     "X"
+    ],
+    "generic": 0
+   },
+   "keywords": [],
+   "abilities": [
+    {
+     "kind": "Activated",
+     "effect": {
+      "type": "PutCounter",
+      "counter_type": "P1P1",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "SelfRef"
+      }
+     },
+     "cost": {
+      "type": "Mana",
+      "cost": {
+       "type": "Cost",
+       "shards": [],
+       "generic": 4
+      }
+     },
+     "sub_ability": null,
+     "duration": null,
+     "description": "{4}: Put a +1/+1 counter on ~.",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    {
+     "kind": "Activated",
+     "effect": {
+      "type": "DealDamage",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Any"
+      }
+     },
+     "cost": {
+      "type": "RemoveCounter",
+      "count": 1,
+      "counter_type": {
+       "type": "OfType",
+       "data": "P1P1"
+      },
+      "target": null,
+      "selection": "SingleObject"
+     },
+     "sub_ability": null,
+     "duration": null,
+     "description": "Remove a +1/+1 counter from ~: It deals 1 damage to any target.",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    }
+   ],
+   "trigger_definitions": [],
+   "replacement_definitions": [
+    {
+     "event": "Moved",
+     "execute": {
+      "kind": "Spell",
+      "effect": {
+       "type": "PutCounter",
+       "counter_type": "P1P1",
+       "count": {
+        "type": "Ref",
+        "qty": {
+         "type": "CostXPaid"
+        }
+       },
+       "target": {
+        "type": "SelfRef"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "mode": {
+      "type": "Mandatory"
+     },
+     "valid_card": {
+      "type": "SelfRef"
+     },
+     "description": "~ enters with X +1/+1 counters on it.",
+     "condition": null,
+     "destination_zone": "Battlefield"
+    }
+   ],
+   "static_definitions": [],
+   "color": [],
+   "printed_ref": {
+    "oracle_id": "4b515bb0-f275-4400-8032-3173b799ab40",
+    "face_name": "Walking Ballista"
+   },
+   "base_power": 0,
+   "base_toughness": 0,
+   "base_name": "Walking Ballista",
+   "base_card_types": {
+    "supertypes": [],
+    "core_types": [
+     "Artifact",
+     "Creature"
+    ],
+    "subtypes": [
+     "Construct"
+    ]
+   },
+   "base_mana_cost": {
+    "type": "Cost",
+    "shards": [
+     "X",
+     "X"
+    ],
+    "generic": 0
+   },
+   "base_keywords": [],
+   "base_abilities": [
+    {
+     "kind": "Activated",
+     "effect": {
+      "type": "PutCounter",
+      "counter_type": "P1P1",
+      "count": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "SelfRef"
+      }
+     },
+     "cost": {
+      "type": "Mana",
+      "cost": {
+       "type": "Cost",
+       "shards": [],
+       "generic": 4
+      }
+     },
+     "sub_ability": null,
+     "duration": null,
+     "description": "{4}: Put a +1/+1 counter on ~.",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    {
+     "kind": "Activated",
+     "effect": {
+      "type": "DealDamage",
+      "amount": {
+       "type": "Fixed",
+       "value": 1
+      },
+      "target": {
+       "type": "Any"
+      }
+     },
+     "cost": {
+      "type": "RemoveCounter",
+      "count": 1,
+      "counter_type": {
+       "type": "OfType",
+       "data": "P1P1"
+      },
+      "target": null,
+      "selection": "SingleObject"
+     },
+     "sub_ability": null,
+     "duration": null,
+     "description": "Remove a +1/+1 counter from ~: It deals 1 damage to any target.",
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    }
+   ],
+   "base_replacement_definitions": [
+    {
+     "event": "Moved",
+     "execute": {
+      "kind": "Spell",
+      "effect": {
+       "type": "PutCounter",
+       "counter_type": "P1P1",
+       "count": {
+        "type": "Ref",
+        "qty": {
+         "type": "CostXPaid"
+        }
+       },
+       "target": {
+        "type": "SelfRef"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": null,
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false
+     },
+     "mode": {
+      "type": "Mandatory"
+     },
+     "valid_card": {
+      "type": "SelfRef"
+     },
+     "description": "~ enters with X +1/+1 counters on it.",
+     "condition": null,
+     "destination_zone": "Battlefield"
+    }
+   ],
+   "base_color": [],
+   "base_printed_ref": {
+    "oracle_id": "4b515bb0-f275-4400-8032-3173b799ab40",
+    "face_name": "Walking Ballista"
+   },
+   "base_characteristics_initialized": true,
+   "timestamp": 14,
+   "incarnation": 5,
+   "entered_battlefield_turn": 12,
+   "summoning_sick": true,
+   "cost_x_paid": 3,
+   "has_summoning_sickness": true,
+   "cast_from_zone": "Hand",
+   "cast_controller": 0,
+   "mana_spent_to_cast": true,
+   "colors_spent_to_cast": {
+    "green": 6
+   },
+   "mana_spent_to_cast_amount": 6,
+   "mana_spent_source_snapshots": [
+    {
+     "source_id": 12,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    },
+    {
+     "source_id": 44,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    },
+    {
+     "source_id": 36,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    },
+    {
+     "source_id": 26,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    },
+    {
+     "source_id": 25,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    },
+    {
+     "source_id": 16,
+     "lki": {
+      "name": "Forest",
+      "power": null,
+      "toughness": null,
+      "base_power": null,
+      "base_toughness": null,
+      "mana_value": 0,
+      "controller": 0,
+      "owner": 0,
+      "card_types": [
+       "Land"
+      ],
+      "subtypes": [
+       "Forest"
+      ],
+      "supertypes": [
+       "Basic"
+      ],
+      "keywords": [],
+      "colors": [],
+      "chosen_attributes": [],
+      "counters": {},
+      "tapped": true,
+      "is_suspected": false,
+      "attachments": []
+     }
+    }
+   ]
+  }
+ },
+ "resolution": {
+  "turn": 12
+ },
+ "rejections": {},
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_x_announced": "passed",
+  "A3_trigger_seen": "passed",
+  "A4_doubled": "failed",
+  "A5_cleanup": "passed"
+ },
+ "notes": [
+  "parse (pinned v0.114.0 card-data): unbound flourishing oracle=\"Whenever you cast a permanent spell with a mana cost that contains {X}, double the value of X.\\nWhenever you cast an instant or sorcery spell or activate an ability, if that spell's mana cost or that ability's activation cost contains {X}, copy that spell or ability. You may choose new targets for the copy.\"",
+  "A1 passed: pre_cast on P0 turn 12 PreCombatMain; Walking Ballista in hand; Unbound Flourishing on battlefield; 6 untapped Forests (need 6 for X=3)",
+  "A2 passed: ChooseXValue answered X=3 (iid 7MXGDG.0.178, no rejection); engine tapped 6 Forests for the {X}{X} cost (pre-cast untapped: 6)",
+  "A3 passed: Unbound Flourishing triggered ability reached the stack on turn 12 after the cast (matches the report's 'triggers correctly')",
+  "A4 FAILED (THE REPORTED SYMPTOM): Walking Ballista entered with P1P1=3; X=3 was NOT doubled despite the trigger firing",
+  "A5 passed: Walking Ballista on P0's battlefield (oid 5) at turn 12 PreCombatMain; no stuck prompt from the cast/trigger",
+  "verdict: REPRODUCED - the Unbound Flourishing trigger fired on a permanent spell with X=3 but Walking Ballista entered with only 3 counters: the value of X was not doubled, exactly the reported symptom"
+ ],
+ "verdict": "reproduced",
+ "validated_at": "2026-10-19",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "P1 is a passive second seat (lands only, no attacks, no spells) - opponent interaction with the spell/trigger is not exercised.",
+  "Only the 'double the value of X' branch (permanent spells) is exercised (the reported path); the copy branch for instants/sorceries/abilities is not tested.",
+  "States are authoritative exports (restorable only via full game replay)."
+ ],
+ "setup_line": "P0 12x Unbound Flourishing + 12x Walking Ballista + 36x Forest vs P1 60x Forest. P0 casts Unbound Flourishing on its main phase, then casts Walking Ballista with X=3 (6 mana, engine auto-taps) while Flourishing is on the battlefield; the driver answers ChooseXValue with 3 and passes priority to resolve the trigger and the spell.",
+ "contract_line": "A permanent spell cast with X=3 while Unbound Flourishing is on the battlefield must have its X doubled: Walking Ballista must enter with 6 +1/+1 counters."
+}
