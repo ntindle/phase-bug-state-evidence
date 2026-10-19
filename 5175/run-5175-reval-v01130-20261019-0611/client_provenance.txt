@@ -1,0 +1,68 @@
+Client re-validation for phase-rs/phase #5175
+(run run-5175-reval-v01130-20261019-0611, 2026-10-19)
+
+Client identity:
+- Repo: phase-rs/phase (https://github.com/phase-rs/phase)
+- Mainline checkout: existing shallow clone
+  (~/workspace/dev/phase-backfill/checkout-5175-20261009), working tree moved
+  965e2432 ("release: v0.105.0", 2026-10-09) -> 6e686ee710a3bcf819c9953d653d9ac8f7d1c049
+  ("Add Comet, Stellar Pup (#10127)", 2026-10-19T04:49:29Z) via
+  `git fetch --depth=1 origin <sha>` + checkout.
+- Target file: client/src/viewmodel/costLabel.ts — VERIFIED BYTE-IDENTICAL
+  between 965e2432 and 6e686ee (sha256
+  fd78b073fc5852f401c86ab84b9ad0c8be9e8463dd87c0909da6fa4a715be5a3
+  on both). Unguarded `case "Choice"` still at lines 786-793 in current mainline
+  (`{ id: "decline", label: formatAbilityCost(cost.data[1]) }` — indexes
+  data[1] straight, the reported crash site).
+  The vitest runs on the mainline checkout therefore exercise identical code
+  under test to current mainline HEAD.
+- Test file: client/src/viewmodel/__tests__/costLabel.test.ts (repo pins vitest
+  ^4.1.0; ran 4.1.11, node v24.20.0).
+- No npm install needed: pre-existing node_modules from the 2026-10-09 run reused
+  (@esbuild/linux-x64 0.25.12 binary already provisioned).
+
+PR state (checked 2026-10-19 via GitHub API):
+- PR #5175 "fix(client): guard additionalCostChoices Choice branch against a short payload"
+- state: open, merged: false, merged_at: null
+- head: 39b86ba50e28d365a9732e223c7622c5293e269e (jeffrey701:fix/costlabel-choice-guard)
+- base: 05a4c9f6a0d93ac5c0b283a002869db7c00574ea (main)
+- updated: 2026-10-13T08:18:25Z (head SHA unchanged since the 2026-10-13 re-validation)
+
+Guard variant:
+- Fresh export of current mainline tree (git archive 6e686ee | tar -x) into
+  ~/workspace/dev/phase-backfill/checkout-5175-20261019-guarded — no .git identity;
+  client/node_modules symlinked to the main checkout's install (single level,
+  verified before the runs); contract5175.test.ts copied in.
+- The PR's published costLabel.ts patch (fetched from the PR files API this run)
+  compared against the saved 2026-10-13 patch: changed lines identical. The API
+  patch field carries no diff headers, so `--- a/...` / `+++ b/...` headers were
+  added locally and applied with `patch -p1` (one hunk, clean; the Choice branch
+  sits 172 lines below the PR-base position because costLabel.ts grew between the
+  PR base 05a4c9f6a and current mainline — the patched lines themselves are
+  unchanged). Guard verified at costLabel.ts 791-796:
+    const [pay, decline] = cost.data;
+    { id: "pay", label: pay ? formatAbilityCost(pay) : "Pay" },
+    { id: "decline", label: decline ? formatAbilityCost(decline) : "Decline" },
+- NOTE: the PR also ships a new test block in costLabel.test.ts (25 additions);
+  saved here as costlabel-test-5175.patch for reference but NOT applied to the
+  guarded copy — the backfill contract test (contract5175.test.ts) is the
+  independent assertion vehicle, and the existing suite (33/33) is the regression
+  check.
+
+Results (this run):
+- Mainline (unguarded 6e686ee): contract 4/4 — A1 threw TypeError on the short
+  Choice payload (bug reproduced); A2/A4 well-formed two-cost path unchanged.
+  Existing suite: 33/33.
+- Guarded (6e686ee + PR #5175 costLabel patch): contract 4/4 — A3 short payload
+  no longer throws (pay=real mana label, decline="Decline"); A3b empty payload
+  falls back to Pay/Decline. Existing suite: 33/33 (no regressions).
+
+Scope/limitations:
+- Client-subsystem test only: no engine game session; whether the engine can actually
+  emit a short Choice payload was not exercised.
+- Only the Choice branch exercised; other additionalCostChoices branches not re-driven
+  beyond the existing suite.
+- No DOM/browser involved: the crash is in a pure viewmodel function, and the PR's
+  own verification is vitest.
+- The vitest runs used --coverage.enabled=false: the repo's global coverage thresholds
+  fail by design on single-file runs and would mask the test counts.
