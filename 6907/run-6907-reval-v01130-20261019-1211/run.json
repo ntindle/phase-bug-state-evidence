@@ -1,0 +1,85 @@
+{
+ "run_id": "run-6907-reval-v01130-20261019-1211",
+ "issue": 6907,
+ "date": "2026-10-19T17:22:39Z",
+ "started_at": "2026-10-19T12:20:32-05:00",
+ "server": {
+  "server_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "port": 9374
+ },
+ "scenario": "driver/scenario_6907_01130.py",
+ "scenario_sha256": "ebc0563f48b00040f5d4f5f96e0b10a9443b6b100f34ff7c82c8bea8679972ec",
+ "decks": {
+  "P0": [
+   [
+    "sanctuary warden",
+    4
+   ],
+   [
+    "grizzly bears",
+    4
+   ],
+   [
+    "nesting grounds",
+    4
+   ],
+   [
+    "gavony township",
+    4
+   ],
+   [
+    "forest",
+    22
+   ],
+   [
+    "plains",
+    22
+   ]
+  ],
+  "P1": [
+   [
+    "forest",
+    30
+   ],
+   [
+    "plains",
+    30
+   ]
+  ]
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_control_move": "passed",
+  "A3_counter_prompted": "failed",
+  "A4_exact_move": "not-run",
+  "A5_default_documents": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "control-stage counter-like decisions: 0"
+ ],
+ "stats": {
+  "states_seen": 758,
+  "target_sels": 5,
+  "decisions": 0
+ },
+ "setup_line": "P0: 4x Sanctuary Warden + 4x Grizzly Bears + 4x Nesting Grounds + 4x Gavony Township + 44 lands; P1: 60 lands (passive); native human seats",
+ "contract_line": "CONTROL: activate Nesting Grounds with Warden holding only shield counters (Warden -> Bears); assert exactly one shield moves. PROOF_SETUP: activate Gavony Township (Warden gains +1/+1). PROOF: activate Nesting Grounds again; assert a counter-type choice is offered and answering 'shield' moves exactly one shield counter.",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "4x densities are test-harness conveniences (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-151 port of scenario_6907_01100.py (verified 2026-10-16, run run-6907-reval-v01100-20261016-0241, verdict reproduced).",
+  "Merged_actions/vi conventions, NON_DECISION_CODES, vi tapLandForMana payment, PASSED_REV gating, Select-model hand-size discards, schema-select BottomCards, and the never-hold-priority-while-watching-the-stack fall-through rule taken from the proven scenario_6906_01030.py template.",
+  "NG target slots answered per-prompt (source slot -> Warden, destination slot -> Bears); a schema opportunity with no card candidates but counter text is routed to the counter-choice handler. Counter choices prefer 'shield'.",
+  "Pinned v0.113.0 data still parses the {1},{T} ability as MoveCounters with counter_type null -- see data_evidence.json."
+ ]
+}
