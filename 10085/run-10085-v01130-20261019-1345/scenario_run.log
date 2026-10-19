@@ -1,0 +1,53 @@
+ServerHello: version=0.113.0 build=0571ee3 protocol=151 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game 742UJA; P0 seat=0 P1 seat=1
+[P0] mulligans (1) (hand=['forest', 'springheart nantuko', 'springheart nantuko', 'forest', 'forest', 'forest', 'forest'])
+[P1] mulligans (2) (hand=['island', 'island', 'island', 'island', 'island', 'island', 'island'])
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision elves=False bestow_chosen=False bestowed=False copy_cast=False copy_entered=False P0hand=['forest', 'springheart nantuko', 'springheart nantuko', 'forest', 'forest'] P1hand=['hidden card', 'hidden card', 'hidden card', 'hidden card', 'hidden card']
+[P0] keeps (hand=7: ['forest', 'llanowar elves', 'forest', 'forest', 'forest', 'springheart nantuko', 'forest'])
+[P1] keeps (hand=7: ['island', 'island', 'island', 'island', 'copy enchantment', 'island', 'island'])
+[P0] bottoming 1
+[P1] bottoming 1
+[P1] playing land island
+[P0] playing land forest
+[P0] casting Llanowar Elves (oid 57)
+board: Llanowar Elves on P0 BF (oid 57)
+[P1] playing land island
+[P0] tap land for mana used_for=G needs_left={'G': 0}
+[P0] playing land forest
+[P1] playing land island
+[P0] playing land forest
+[P0] casting Springheart Nantuko for bestow (oid 19)
+[SETUP] decision #1: alternative_cast_choice
+[P0] choosing alternative cast cost (alt_pick=True)
+[P0] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+board: Nantuko bestowed as Aura (oid 19), core=['Enchantment'] sub=['Aura'], attach attached_to={'type': 'Object', 'data': 57}
+[P1] playing land island
+exported pre.json (369825 chars)
+[P1] pre.json exported before Copy Enchantment cast
+[P1] casting Copy Enchantment (oid 65)
+[P1] tap land for mana used_for=U needs_left={'U': 0, 'generic': 1}
+[SETUP] decision #2: copy_replacement_branch
+[P1] choosing copy branch (optionIndex 0)
+[SETUP] decision #3: copy_enchantment_choice
+[P1] copy_enchantment_choice: answering springheart nantuko (oid 19)
+[P1] copy detected on BF (oid 65): core=['Enchantment'] sub=['Aura']
+exported post.json (397649 chars)
+A1_setup_ok: passed -- nantuko_aura=True attach=attached_to={'data': 57, 'type': 'Object'} elves_on_bf=True p1_main=True turn=7
+A2_copy_entered: passed -- oid=65 name=Springheart Nantuko
+A3_types_correct: failed -- core=['Enchantment'] sub=['Aura'] aura_leak=True attach=attached_to={'data': 57, 'type': 'Object'}
+A4_bug_documented: passed -- Aura subtype leaked into the copy's live types: core=['Enchantment'] sub=['Aura'] -- matches the reported intrinsic_copiable_values leak
+A5_cleanup: passed -- stack_empty=True
+verdict: reproduced
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'AlternativeCastChoice', 'Priority', 'DeclareAttackers', 'Priority', 'ReplacementChoice', 'CopyTargetChoice', 'Priority']
+render stdout: 
+render stderr: Traceback (most recent call last):
+  File "/home/hatch/workspace/dev/phase-backfill/driver/render_summary.py", line 145, in <module>
+    main()
+  File "/home/hatch/workspace/dev/phase-backfill/driver/render_summary.py", line 90, in main
+    srv = run["server"]
+          ~~~^^^^^^^^^^
+KeyError: 'serv
+manifest written (11 files)
