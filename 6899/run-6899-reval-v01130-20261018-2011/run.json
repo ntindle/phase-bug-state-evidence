@@ -1,0 +1,92 @@
+{
+ "issue": 6899,
+ "run_id": "run-6899-reval-v01130-20261018-2011",
+ "game_code": "X1105I",
+ "started_at": "2026-10-19T01:19:28",
+ "duration_s": 79.6,
+ "server_identity": {
+  "validated_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b48a8e849403dce64186402e21c0ba9031cf56e51d4c9b9c2a39da9a93de6025",
+ "decks": {
+  "P0": [
+   [
+    "Young Wolf",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Moonmist",
+    12
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ],
+  "P1": [
+   [
+    "Young Wolf",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    12
+   ],
+   [
+    "Forest",
+    36
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-151 port of driver/scenario_6899_01100.py (protocol 142 / v0.110.0, run run-6899-reval-v01100-20261016-0045, verdict reproduced: over-prevention) for pinned v0.113.0; behavioral contract A1..A5 and verdict logic unchanged; cast-confirmation guard after every CastSpell (protocol-118/120/130/142/151 necessity).",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action. The v0.113.0 engine auto-taps reliably; manual taps are a >90s fallback only. The protocol-118/120/130/142/151 cast-confirmation guard holds the tick until each cast is confirmed (object left the hand).",
+  "Attacker declares use the relations-schema vi opportunity (sourceId/targetId edges, 106 path from scenario_6866_01020.py); the driver holds until BOTH Wolf and Bear are attackable so the life-total math stays discriminating (expected 19). Empty declares use the advertised action; P1 blockers keep the 25s relations grace window.",
+  "Moonmist is cast by P0 during combat priority (DeclareAttackers / DeclareBlockers / CombatDamage) on each attack turn, once per turn; the 'this turn' prevention then covers combat damage. No Humans on either battlefield, so the Transform clause is a no-op (same scope as the v0.81.1 proof).",
+  "Stage machine on authoritative state: SETUP (both sides cast Wolf+Bear) -> P0_ATTACK (pre_p0_attack.json; P0 declares Wolf+Bear, casts Moonmist, post_p0_attack.json in PostCombatMain) -> P0_DONE -> P1_ATTACK (pre_p1_attack.json; P1 declares Wolf+Bear, P0 casts second Moonmist, post_p1_attack.json) -> DONE (post.json).",
+  "Data-level: v0.113.0 parses Moonmist as Transform(all Humans) chaining PreventDamage(amount=All, target=Any, scope=CombatDamage, duration=UntilEndOfTurn) -- the 'other than Werewolves and Wolves' exception still has no source-type filter at the data level.",
+  "Moonmist is cast at most ONCE PER STAGE (one cast for P0's attack leg, one for P1's); the stage machine tracks the latest declaration turn so a cast landing on a later turn than the first attack still pairs with that turn's declaration. (The 20261006 driver cast once per turn and pinned the first declaration turn, which deadlocked the P1 leg when the cast landed 18 turns later.)"
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_moonmist_resolves": "passed",
+  "A3_p0_attack_damage": "failed",
+  "A4_p1_attack_damage": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok_detail": "P0: Young Wolf(21,tapped=False) Grizzly Bears(39,tapped=False); P1: Young Wolf(65,tapped=False) Grizzly Bears(92,tapped=False); P1 life=20 (pre_p0_attack.json)",
+  "A2_moonmist_resolves_detail": "moonmist_in_p0_gy=True (post_p0_attack.json)",
+  "A3_p0_attack_damage_detail": "P1 life 20 -> 20 over P0's Moonmist-covered Wolf+Bear attack (delta 0, expected 1 = Wolf 1 through + Bear 2 prevented; 0 = over-prevention defect; 3 = no prevention) (pre delta from life_at_cast, post from post_p0_attack.json)",
+  "A4_p1_attack_damage_detail": "P0 life 20 -> 20 over P1's Moonmist-covered Wolf+Bear attack (delta 0, expected 1; 0 = over-prevention defect; 3 = no prevention) (pre delta from life_at_cast, post from post_p1_attack.json)",
+  "A5_cleanup_detail": "stage=DONE stall=False p0_declared_turn=14 p1_declared_turn=17 stages=['SETUP', 'P0_ATTACK', 'P0_DONE', 'P1_ATTACK', 'DONE']"
+ },
+ "notes": [],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5647751969,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x/24x/36x card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "No Humans on either battlefield, so the Transform clause was a no-op; the separate target-prompt defect is tracked in #6403.",
+  "Young Wolf (Wolf) is the wolf-class representative; the Werewolf subtype was not separately tested.",
+  "Not tested on the report's original build; verdict is scoped to v0.113.0, not a fix claim.",
+  "States are authoritative exports, restorable only via full game replay (scenario_6899_01130.py), not direct load."
+ ],
+ "setup_line": "P0: 12x Young Wolf + 12x Grizzly Bears + 12x Moonmist + 24x Forest; P1: 12x Young Wolf + 12x Grizzly Bears + 36x Forest",
+ "contract_line": "Both sides field a Young Wolf and a Grizzly Bear. P0 attacks with Wolf+Bear unblocked and casts Moonmist: over that covered combat P1 must lose exactly 1 (Wolf through, Bear prevented). P1 attacks back with Wolf+Bear unblocked and P0 casts a second Moonmist: over that covered combat P0 must lose exactly 1. Damage is measured as a delta from the Moonmist-cast moment, so an earlier unblocked combat cannot contaminate it. delta 0 = over-prevention defect; delta 3 = no prevention."
+}
