@@ -1,0 +1,77 @@
+ServerHello: version=0.113.0 build=0571ee3 protocol=151 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game M3RZ0H; P0 seat=0 P1 seat=1
+[P0] keeps (hand=7)
+[P1] keeps (hand=7)
+DIAG turn=1 active=1 phase=Untap wf=MulliganDecision stage=SETUP calix=None minus3=False tsels=0 nat=False destroyed=False P0hand=['glorious anthem', 'plains', 'plains', 'plains', 'forest', "calix, destiny's hand"]
+[P1] playing land forest
+[P0] playing land plains
+[P1] playing land forest
+[P1] casting Grizzly Bears (oid 88)
+[P0] playing land plains
+[P1] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+[P1] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+[P1] playing land forest
+[P0] playing land plains
+[P0] casting Glorious Anthem (oid 15)
+[P1] playing land forest
+[P1] casting Grizzly Bears (oid 69)
+[P1] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+[P1] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+[P0] tap land for mana used_for=W needs_left={'W': 1, 'generic': 1}
+[P0] tap land for mana used_for=W needs_left={'W': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 0}
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land plains
+[P0] casting Calix (oid 6)
+[P0] tap land for mana used_for=W needs_left={'G': 1, 'W': 0, 'generic': 2}
+[P1] playing land forest
+[P0] tap land for mana used_for=G needs_left={'G': 0, 'W': 0, 'generic': 2}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'W': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'G': 0, 'W': 0, 'generic': 0}
+[P0] playing land plains
+[P1] playing land forest
+[P0] playing land forest
+[P0] casting Glorious Anthem (oid 46)
+[P0] tap land for mana used_for=W needs_left={'W': 1, 'generic': 1}
+[P0] tap land for mana used_for=W needs_left={'W': 0, 'generic': 1}
+[P0] tap land for mana used_for=generic needs_left={'W': 0, 'generic': 0}
+[P0] Calix + 2 Anthems on BF (turn 14); stage -> PROOF
+[P0] activating Calix -3 (loyalty 4, turn 14); pre_activate exported
+exported pre_activate.json
+target selection #1 (stage PROOF): grizzly bears(Battlefield,p1), grizzly bears(Battlefield,p1)
+[P0] answering target: grizzly bears (oid 88) via sequence
+[P0] -3 ability on stack (turn 14)
+exported post_minus3.json
+[P0] -3 resolved; post_minus3 exported; stage -> DESTROY
+[P0] playing land plains
+[P1] playing land forest
+[P0] playing land plains
+DIAG turn=18 active=0 phase=PostCombatMain wf=Priority stage=DESTROY calix=6 minus3=True tsels=1 nat=False destroyed=False P0hand=["calix, destiny's hand", "calix, destiny's hand", 'forest', 'forest']
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land forest
+[P1] playing land forest
+[P0] playing land plains
+[P1] casting Naturalize (oid 109)
+target selection #2 (stage DESTROY): glorious anthem(Battlefield,p0), glorious anthem(Battlefield,p0)
+[P1/naturalize] answering target: glorious anthem (oid 15) via sequence
+[P1] tap land for mana used_for=G needs_left={'G': 0, 'generic': 1}
+[P1] tap land for mana used_for=generic needs_left={'G': 0, 'generic': 0}
+exported mid_destroyed.json
+[P1] targeted Anthem left battlefield (zone=Graveyard); mid_destroyed exported; watching for return
+exported post_destroy.json
+[P1] destroy leg settled; post_destroy exported; DONE
+A1_setup_ok: passed
+A2_target_prompted: passed
+A3_two_target_slots: failed
+A4_exile_observed: passed
+A5_own_enchant_targeted: not-run
+A6_return_on_destroy: passed
+A7_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'TargetSelection', 'Priority', 'DeclareAttackers', 'Priority']
+DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_target_prompted": "passed", "A3_two_target_slots": "failed", "A4_exile_observed": "passed", "A5_own_enchant_targeted": "not-run", "A6_return_on_destroy": "passed", "A7_cleanup": "passed"}

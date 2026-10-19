@@ -1,0 +1,111 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_target_prompted": "passed",
+    "A3_two_target_slots": "failed",
+    "A4_exile_observed": "passed",
+    "A5_own_enchant_targeted": "not-run",
+    "A6_return_on_destroy": "passed",
+    "A7_cleanup": "passed"
+  },
+  "notes": [
+    "A1: calix_bf=True anthems_bf=True bears_p1_bf=True p0_main=True turn=14 pre={'turn': 14, 'phase': 'PreCombatMain', 'calix_loyalty': 4, 'bears': 2, 'anthems': 2}",
+    "A2: 1 TargetSelection prompt(s) for the -3 activation (2 total recorded)",
+    "A3: 1 -3 target slot(s) offered (expect >=2: exile target + own enchantment); candidates=[[('grizzly bears', 'Battlefield', 1), ('grizzly bears', 'Battlefield', 1)]]",
+    "A4: target Bear oid 88 zone=Exile (expect Exile)",
+    "A5: no second target slot (A3 not passed)",
+    "A6: no link slot offered; Anthem destroyed; target Bear zone=Exile (expect Exile: documents unconditional exile, no return linkage)",
+    "A7: stack empty=True; turn=26"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "target_sels": [
+    {
+      "interactionId": "M3RZ0H.0.237",
+      "turn": 14,
+      "phase": "PreCombatMain",
+      "stage": "PROOF",
+      "candidates": [
+        {
+          "choice_id": "M3RZ0H.0.237.t0",
+          "oid": "88",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "M3RZ0H.0.237.t1",
+          "oid": "69",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Grizzly Bears"
+        }
+      ]
+    },
+    {
+      "interactionId": "M3RZ0H.0.409",
+      "turn": 25,
+      "phase": "PreCombatMain",
+      "stage": "DESTROY",
+      "candidates": [
+        {
+          "choice_id": "M3RZ0H.0.409.t0",
+          "oid": "15",
+          "name": "glorious anthem",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Glorious Anthem"
+        },
+        {
+          "choice_id": "M3RZ0H.0.409.t1",
+          "oid": "46",
+          "name": "glorious anthem",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Glorious Anthem"
+        }
+      ]
+    }
+  ],
+  "pre": {
+    "turn": 14,
+    "phase": "PreCombatMain",
+    "calix_loyalty": 4,
+    "bears": 2,
+    "anthems": 2
+  },
+  "exile_target_oid": "88",
+  "own_enchant_oid": null,
+  "nat_target_oid": "15",
+  "data_level_ok": true
+}
