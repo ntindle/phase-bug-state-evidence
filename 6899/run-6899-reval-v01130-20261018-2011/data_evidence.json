@@ -1,0 +1,23 @@
+{
+ "name": "Moonmist",
+ "oracle_text": "Transform all Humans. Prevent all combat damage that would be dealt this turn by creatures other than Werewolves and Wolves. (Only double-faced cards can be transformed.)",
+ "first_effect": "Transform",
+ "first_target": {
+  "type": "Typed",
+  "type_filters": [
+   {
+    "Subtype": "Human"
+   }
+  ],
+  "controller": null,
+  "properties": []
+ },
+ "prevention_effect": "PreventDamage",
+ "prevention_amount": "All",
+ "prevention_target": {
+  "type": "Any"
+ },
+ "prevention_scope": "CombatDamage",
+ "prevention_duration": "UntilEndOfTurn",
+ "sub_link": null
+}
