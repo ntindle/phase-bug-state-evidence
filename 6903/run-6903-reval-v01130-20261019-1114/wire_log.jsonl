@@ -1,0 +1,256 @@
+{"t": 1792426593.1596587, "event": "server_hello", "data": {"version": "0.113.0", "build": "0571ee3", "protocol": 151}}
+{"t": 1792426593.1637805, "event": "data_level", "data": {"name": "Shadow Kin", "oracle_text": "Flash\nAt the beginning of your upkeep, each player mills three cards. You may exile a creature card from among the cards milled this way. If you do, this creature becomes a copy of that card, except it has this ability.", "mana_cost": {"type": "Cost", "shards": ["Blue"], "generic": 3}, "chain": [{"trigger": "Phase", "phase": "Upkeep", "effect": "Mill", "mill_count": 3, "mill_target": "Controller", "player_scope": "All"}, {"sub": "ChangeZone", "origin": null, "destination": "Exile", "target": {"type": "Typed", "type_filters": ["Creature"], "controller": null, "properties": []}, "optional": true}, {"sub2": "BecomeCopy", "target": "ParentTarget", "mods": [{"type": "RetainPrintedTriggerFromSource", "source_trigger_index": 0}], "condition": {"type": "EffectOutcome", "signal": "OptionalEffectPerformed"}}], "parse_ok": true, "data_notes": ["Mill target is Controller (not EachPlayer) with player_scope=All; on v0.81.3 the each-player mill worked behaviorally (each library -3).", "ChangeZone origin=null: no graveyard zone or event-set provenance in the parse -- the triage's data-level finding persists on v0.113.0; the behavioral question is whether the engine scopes candidates to the milled set anyway."]}}
+{"t": 1792426594.9019694, "event": "game_start", "data": {"game_code": "D5GAXJ"}}
+{"t": 1792426595.0552318, "event": "mulligan", "data": {"who": "6903", "decision": "keep", "hand": ["island", "shadow kin", "storm crow", "island", "storm crow", "island", "island"], "iid": "D5GAXJ.0.2"}}
+{"t": 1792426595.0555384, "event": "mulligan", "data": {"who": "P16903", "decision": "keep", "hand": ["forest", "forest", "grizzly bears", "forest", "forest", "forest", "forest"], "iid": "D5GAXJ.0.3"}}
+{"t": 1792426595.2069092, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426595.3587253, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426595.5100036, "event": "play_land", "data": {"who": "6903", "oid": "11"}}
+{"t": 1792426595.510063, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PlayLand", "data": {"object_id": 11, "card_id": 11}}}}
+{"t": 1792426595.661825, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426595.8131623, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426595.9645543, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.1159544, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.2684672, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.4234157, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.574434, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.7279794, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426596.8796358, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.03359, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.1844757, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.336316, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.4879158, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.6440015, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426597.8092823, "event": "play_land", "data": {"who": "P16903", "oid": "62"}}
+{"t": 1792426597.8093648, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PlayLand", "data": {"object_id": 62, "card_id": 62}}}}
+{"t": 1792426597.9626942, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426597.9628265, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.22", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.22.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426597.96286, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.22", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.22.c1"}}}}
+{"t": 1792426598.1153893, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426598.2680597, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426598.4201274, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426598.5714326, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426598.7227993, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426598.8741047, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.0251746, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.176751, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.3284721, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.4829822, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.6346152, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.786321, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426599.937375, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426600.0894427, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426600.2403274, "event": "play_land", "data": {"who": "6903", "oid": "45"}}
+{"t": 1792426600.2403886, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PlayLand", "data": {"object_id": 45, "card_id": 45}}}}
+{"t": 1792426600.3918247, "event": "cast_crow", "data": {"oid": 33}}
+{"t": 1792426600.3919017, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "CastSpell", "data": {"object_id": 33, "card_id": 33, "targets": [], "payment_mode": {"type": "Auto"}}}}}
+{"t": 1792426600.544703, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426600.698385, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426600.8498795, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426601.0008125, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426601.1517963, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426602.3237593, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426602.475754, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426602.626873, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426602.7781794, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426602.9310308, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.0827997, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.2341616, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.387649, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426603.3877478, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.51", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.51.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426603.387782, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.51", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.51.c1"}}}}
+{"t": 1792426603.5396612, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.690681, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.8415763, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426603.995028, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426604.1465151, "event": "play_land", "data": {"who": "P16903", "oid": "110"}}
+{"t": 1792426604.1465766, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PlayLand", "data": {"object_id": 110, "card_id": 110}}}}
+{"t": 1792426604.2975807, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426604.2977073, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.57", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.57.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426604.2977405, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.57", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.57.c1"}}}}
+{"t": 1792426604.4492488, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426604.6025667, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426604.7555742, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426604.9090111, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.0634484, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.2154572, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.3662841, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.517269, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.6685984, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.8194127, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426605.9710295, "event": "tap_land", "data": {"who": "6903", "used_for": "U"}}
+{"t": 1792426605.9711282, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.68", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.68.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426605.9711607, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.68", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.68.c1"}}}}
+{"t": 1792426606.12279, "event": "tap_land", "data": {"who": "6903", "used_for": "generic"}}
+{"t": 1792426606.1229415, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.69", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.69.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426606.1229758, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.69", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.69.c1"}}}}
+{"t": 1792426606.275984, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426606.4322708, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426606.5851252, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426606.7364779, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426606.8879213, "event": "play_land", "data": {"who": "6903", "oid": "7"}}
+{"t": 1792426606.8879821, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PlayLand", "data": {"object_id": 7, "card_id": 7}}}}
+{"t": 1792426607.04295, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426607.1942673, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426607.3456566, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426607.4986503, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426607.667412, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}}}
+{"t": 1792426607.8185024, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426607.9710348, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426608.1244671, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426608.2759411, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426608.4275627, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426608.579956, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426608.7481422, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426608.7482393, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.86", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.86.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426608.7482722, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.86", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.86.c1"}}}}
+{"t": 1792426608.9005842, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426608.901425, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.87", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.87.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426608.9014664, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.87", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.87.c1"}}}}
+{"t": 1792426609.0527012, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426609.2035437, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426609.3556879, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426609.506825, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426609.6585028, "event": "play_land", "data": {"who": "P16903", "oid": "83"}}
+{"t": 1792426609.6585634, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PlayLand", "data": {"object_id": 83, "card_id": 83}}}}
+{"t": 1792426609.8104763, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426609.8109536, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.93", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.93.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426609.8111367, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.93", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.93.c1"}}}}
+{"t": 1792426609.962435, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.1145892, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.2661512, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.417241, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.5697744, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.7209194, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426610.8719344, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.0234916, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.1750607, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.326751, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.4780853, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.6294143, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.7804346, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426611.9343688, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426612.0858366, "event": "play_land", "data": {"who": "6903", "oid": "42"}}
+{"t": 1792426612.0859241, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PlayLand", "data": {"object_id": 42, "card_id": 42}}}}
+{"t": 1792426612.2387102, "event": "cast_kin", "data": {"oid": 39, "turn": 7}}
+{"t": 1792426612.238771, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "CastSpell", "data": {"object_id": 39, "card_id": 39, "targets": [], "payment_mode": {"type": "Auto"}}}}}
+{"t": 1792426612.3905134, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426612.5419555, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426612.6931908, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426612.8442864, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426612.9959445, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426613.1472147, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426613.2981641, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}}}
+{"t": 1792426613.4490664, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426613.6011288, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426613.7527103, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426613.9038851, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426614.056224, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426615.251414, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426615.4022741, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426615.4023716, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.123", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.123.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426615.4024167, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.123", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.123.c1"}}}}
+{"t": 1792426615.5535731, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426615.553692, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.124", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.124.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426615.5537257, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.124", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.124.c1"}}}}
+{"t": 1792426615.7050407, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426615.7051685, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.125", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.125.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426615.705201, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.125", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.125.c1"}}}}
+{"t": 1792426615.8559718, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426616.009025, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426616.166018, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426616.3192353, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426616.4737527, "event": "play_land", "data": {"who": "P16903", "oid": "109"}}
+{"t": 1792426616.473814, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PlayLand", "data": {"object_id": 109, "card_id": 109}}}}
+{"t": 1792426616.6255388, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426616.6256707, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.131", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.131.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426616.6257043, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.131", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.131.c1"}}}}
+{"t": 1792426616.779988, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426616.9308937, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.0855758, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.2369483, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.3878965, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.5394514, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.690421, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426617.8418024, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426618.0633147, "event": "export", "data": {"file": "pre_upkeep1.json"}}
+{"t": 1792426618.067724, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426618.2208812, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426618.37216, "event": "tap_land", "data": {"who": "6903", "used_for": "U"}}
+{"t": 1792426618.3769445, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.142", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.142.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426618.3771641, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.142", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.142.c1"}}}}
+{"t": 1792426618.528956, "event": "tap_land", "data": {"who": "6903", "used_for": "generic"}}
+{"t": 1792426618.52914, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.143", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.143.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426618.5291748, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.143", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.143.c1"}}}}
+{"t": 1792426618.6803665, "event": "tap_land", "data": {"who": "6903", "used_for": "generic"}}
+{"t": 1792426618.6807973, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.144", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.144.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426618.6808598, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.144", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.144.c1"}}}}
+{"t": 1792426618.831979, "event": "tap_land", "data": {"who": "6903", "used_for": "generic"}}
+{"t": 1792426618.8320782, "event": "interaction_submission", "data": {"who": "6903", "submission": {"interactionId": "D5GAXJ.0.145", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.145.c1"}}}, "choice_text": "Island"}}
+{"t": 1792426618.8321118, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.145", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.145.c1"}}}}
+{"t": 1792426618.9835856, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426619.1358638, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426619.367718, "event": "export", "data": {"file": "mid_mill1.json"}}
+{"t": 1792426619.3979464, "event": "leg1_opt_submit", "data": {"iid": "D5GAXJ.0.148", "cid": "D5GAXJ.0.148.c1", "decision": "accept"}}
+{"t": 1792426619.5506983, "event": "leg1_choice", "data": {"candidates": [{"choice_id": "D5GAXJ.0.149.s0", "ref": "33", "name": "Storm Crow", "zone": "Battlefield", "controller": 0, "is_creature": true, "in_scope": false}, {"choice_id": "D5GAXJ.0.149.s1", "ref": "39", "name": "Shadow Kin", "zone": "Battlefield", "controller": 0, "is_creature": true, "in_scope": false}], "spec": "select", "milled": ["54", "26", "22", "103", "61", "79"]}}
+{"t": 1792426619.5515404, "event": "leg1_choice_submit", "data": {"pick": {"choice_id": "D5GAXJ.0.149.s0", "ref": "33", "name": "Storm Crow", "zone": "Battlefield", "controller": 0, "is_creature": true, "in_scope": false}}}
+{"t": 1792426619.5515969, "event": "interaction_submit", "data": {"who": "6903", "interactionId": "D5GAXJ.0.149", "response": {"type": "select", "data": {"choiceIds": ["D5GAXJ.0.149.s0"]}}}}
+{"t": 1792426619.7047837, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426619.8557515, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.007518, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.158903, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.3537629, "event": "export", "data": {"file": "post1.json"}}
+{"t": 1792426620.3596902, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.5108693, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.6636112, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.8155546, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426620.973131, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "DeclareAttackers", "data": {"attacks": [], "bands": []}}}}
+{"t": 1792426621.129105, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426621.434136, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426621.5870972, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426621.753035, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426621.9052637, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426622.0613415, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426622.2159598, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426622.2163181, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.165", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.165.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426622.21636, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.165", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.165.c1"}}}}
+{"t": 1792426622.3683298, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426622.3684444, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.166", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.166.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426622.3684783, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.166", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.166.c1"}}}}
+{"t": 1792426622.5211244, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426622.5212383, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.167", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.167.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426622.5212717, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.167", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.167.c1"}}}}
+{"t": 1792426622.6729965, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426622.673175, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.168", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.168.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426622.673211, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.168", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.168.c1"}}}}
+{"t": 1792426622.8247526, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426622.9763792, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426623.1272027, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426623.2811224, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426623.4337556, "event": "play_land", "data": {"who": "P16903", "oid": "70"}}
+{"t": 1792426623.4338334, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PlayLand", "data": {"object_id": 70, "card_id": 70}}}}
+{"t": 1792426623.5864167, "event": "tap_land", "data": {"who": "P16903", "used_for": "any"}}
+{"t": 1792426623.5865052, "event": "interaction_submission", "data": {"who": "P16903", "submission": {"interactionId": "D5GAXJ.0.174", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.174.c1"}}}, "choice_text": "Forest"}}
+{"t": 1792426623.586538, "event": "interaction_submit", "data": {"who": "P16903", "interactionId": "D5GAXJ.0.174", "response": {"type": "choose", "data": {"choiceId": "D5GAXJ.0.174.c1"}}}}
+{"t": 1792426623.7387762, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426623.8914332, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.046095, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.1978192, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.3496578, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.501415, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.6525972, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426624.805099, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426625.0648322, "event": "export", "data": {"file": "pre_upkeep2.json"}}
+{"t": 1792426625.0710714, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426625.223056, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426625.3745556, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426625.533228, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426625.727471, "event": "export", "data": {"file": "mid_mill2.json"}}
+{"t": 1792426625.743118, "event": "leg2_opt_submit", "data": {"iid": "D5GAXJ.0.187", "cid": "D5GAXJ.0.187.c0", "decision": "decline"}}
+{"t": 1792426625.895144, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426626.0467439, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426626.2000651, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426626.3549666, "event": "action_submit", "data": {"who": "P16903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426626.5675075, "event": "export", "data": {"file": "post2.json"}}
+{"t": 1792426626.57433, "event": "action_submit", "data": {"who": "P06903-0", "action": {"type": "PassPriority"}}}
+{"t": 1792426626.9900603, "event": "verdict", "data": {"verdict": "blocked", "assertions": {"A1_setup_ok": "failed", "A2_each_milled_3": "passed", "A3_optional_offered": "passed", "A4_candidates_in_scope": "failed", "A5_legal_exile_and_copy": "failed", "A6_ability_retained": "passed", "A7_decline_control": "passed", "A8_cleanup": "passed"}}}
