@@ -1,0 +1,97 @@
+{
+ "issue": 6765,
+ "run_id": "run-6765-reval-v01130-20261019-0812",
+ "started_at": "2026-10-19T13:14:59",
+ "duration_s": 190.0,
+ "server": {
+  "server_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "Full",
+  "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "signature_verified": true,
+  "observed_at": "2026-10-19",
+  "source": "2026-10-19: latest stable release v0.113.0 (published 2026-10-18T14:53:26Z) == pinned release dir (pinned 2026-10-18); ServerHello 0.113.0/0571ee3/protocol 151 verified by handshake this run; hashes recomputed against on-disk artifacts this run; backfill-owned pinned v0.113.0 server process on 127.0.0.1:9374 (PID 8637, started 2026-10-19 06:42 by the completed #6728 run (games.db and log under runs/run-6728-reval-v01130-20261019-0641/) reused per the server-reuse rule (not restarted; release check confirmed still current)"
+ },
+ "driver": {
+  "protocol_advertised": 151,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "848e31e1e00d67ca94a5725c8db8f6345fcd84f96fba59e84693d77b5ca865b6",
+ "decks": {
+  "P0": [
+   [
+    "Forest",
+    20
+   ],
+   [
+    "Mountain",
+    20
+   ],
+   [
+    "Island",
+    20
+   ],
+   [
+    "Swamp",
+    20
+   ],
+   [
+    "Yidris, Maelstrom Wielder",
+    6
+   ],
+   [
+    "Shock",
+    12
+   ],
+   [
+    "Bloodbraid Elf",
+    8
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    200
+   ]
+  ]
+ },
+ "assertions": {
+  "A0_connect": "passed",
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_pre_damage_control": "not-run",
+  "A4_yidris_grant": "failed",
+  "A5_control_cascade": "passed",
+  "A6_cleanup": "failed"
+ },
+ "notes": [
+  "Yidris on BF (oid 51), cast turn 13",
+  "A3 skipped: only 2 Shock(s) in hand; the A4 window takes priority",
+  "A4: post-damage Shock: cascade trigger=None sources=None may=None kind=None exile 0->0",
+  "A2: P1 life 20->15 (expect -5); yidris trigger seen=True",
+  "A5: Bloodbraid cascade trigger=True sources=['Bloodbraid Elf#308'] may=None kind=None exile 0->0",
+  "protocol-151 driver (v0.113.0): Yidris cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands for mana itself (no double-payment artifact). Shock casts via CastSpell with {R:1}; Shock targets via the advertised vi target opportunity (schema select/sequence), seat-1 candidate preferred; attackers declared via the advertised DeclareAttackers action with attacks=[[yidris_oid, {type:Player, data:1}]] (AttackTarget tagged union per engine types/actions.rs); cascade signals detected strictly: a TriggeredAbility stack entry whose ability effect type is exactly 'Cascade', a genuine decide/bool may prompt or an all-exile card choice, or a positive exile-zone delta; a genuine decide/bool may prompt is DECLINED after an observed cascade purely to let the game settle (exile card choices are never answered); Yidris stood down after the A4 window so P1 survives for A5.",
+  "P0 deck 20x Forest/Mountain/Island/Swamp + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1 200x Mountain draw-go, never attacks or blocks (engine accepts >4-of and oversized decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability."
+ ],
+ "rejections": [],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Dense playsets (12x Shock, 8x Bloodbraid, 6x Yidris) and oversized decks (106/200 cards) are test-harness conveniences (engine accepts >4-of and >60-card decks for custom games; the size prevents decking losses during the 4-color ramp).",
+  "Parser signal: pinned card-data.json marks Yidris's damage-trigger execute as Unimplemented ('as you cast spells from your hand'); the AddKeyword(Cascade) grant exists only as its sub_ability.",
+  "A5's cascade free-cast may prompt is declined after the trigger is observed, purely to let the game settle; exile-zone card choices are never auto-answered.",
+  "A6 cleanup stays failed by design: after the A5 control the game parks at the cascade free-cast card choice, which the driver deliberately never auto-answers (exile-zone card choices are not driver decisions); not an engine defect.",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.113.0, not a fix claim."
+ ],
+ "setup_line": "P0: 80 lands + 6x Yidris, Maelstrom Wielder + 12x Shock + 8x Bloodbraid Elf (106 cards); P1: 200x Mountain (draw-go); oversized decks prevent decking during the 4-color ramp",
+ "contract_line": "Yidris attacks unblocked on a fully-staged turn; pre-damage Shock (when a spare is available) must not cascade; post-damage Shock must gain cascade; Bloodbraid Elf control must cascade natively",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
