@@ -1,0 +1,37 @@
+{
+ "run_id": "run-6728-reval-v01130-20261019-0641",
+ "issue": 6728,
+ "date": "2026-10-19",
+ "server": {
+  "validated_version": "v0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "mode": "Full",
+  "bind": "127.0.0.1:9374",
+  "binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "handshake": "ServerHello verified live over ws://127.0.0.1:9374/ws by this run"
+ },
+ "client": {
+  "checkout": "main-2026-10-19",
+  "checkout_date": "2026-10-19T11:43:56Z",
+  "files": {
+   "client/src/adapter/p2p-draft-host.ts": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+   "client/src/adapter/draftPodHostAdapter.ts": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3"
+  }
+ },
+ "scenario": "driver/scenario_6728.py (unchanged)",
+ "assertions": {
+  "total": 10,
+  "passed": 10,
+  "failed": 0
+ },
+ "verdict": "reproduced",
+ "result": "Client-shaped draft-abc12345 rejected with 400 Invalid draft code (no SQLite row); contract-valid Q7KX2P create/retrieve/update/delete lifecycle OK. Server validator contract unchanged at build 0571ee3 (is_valid_draft_code: len==6, uppercase alnum). Client mainline unchanged: hostDraftCode() still emits draft- + 8 lowercase hex; uploadBackupSnapshot still awaits fetch without checking response status (400 treated as success); production constructor still passes config.backupEndpoint (blocker #1 stays wired).",
+ "limitations": [
+  "Browser UI not exercised",
+  "Client-side path verified by source inspection + server-side HTTP integration test"
+ ],
+ "restoration": "HTTP-only evidence; no game state to restore"
+}
