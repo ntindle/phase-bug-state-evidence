@@ -1,0 +1,6 @@
+{
+ "source": "crates/phase-server/src/admin.rs at build commit 0571ee3 (v0.113.0)",
+ "git_blob_sha1": "8ddc49543a91a9a77417a16ddb51f55042ee37e2",
+ "note": "blob sha1 differs from v0.102.0-v0.112.0 check (3ec97d64) because other parts of admin.rs changed; the validator function TEXT is byte-identical",
+ "function": "fn is_valid_draft_code(code: &str) -> bool {\n    code.len() == 6\n        && code\n            .chars()\n            .all(|c| c.is_ascii_uppercase() || c.is_ascii_digit())\n}"
+}
