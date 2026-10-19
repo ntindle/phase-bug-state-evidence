@@ -1,0 +1,132 @@
+{
+ "ok": true,
+ "notes": [],
+ "manabond_oracle": "At the beginning of your end step, you may reveal your hand and put all land cards from it onto the battlefield. If you do, discard your hand.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "Green"
+  ],
+  "generic": 0
+ },
+ "trigger_payload": {
+  "reveal": "RevealHand",
+  "move": {
+   "type": "ChangeZoneAll",
+   "destination": "Battlefield",
+   "target": {
+    "type": "Typed",
+    "type_filters": [
+     "Land"
+    ],
+    "controller": null,
+    "properties": []
+   }
+  },
+  "discard": {
+   "type": "Discard",
+   "condition": null
+  },
+  "optional": true
+ },
+ "raw_triggers": [
+  {
+   "mode": "Phase",
+   "execute": {
+    "kind": "Spell",
+    "effect": {
+     "type": "RevealHand",
+     "target": {
+      "type": "Any"
+     },
+     "card_filter": {
+      "type": "None"
+     },
+     "count": null,
+     "reveal": true
+    },
+    "cost": null,
+    "sub_ability": {
+     "kind": "Spell",
+     "effect": {
+      "type": "ChangeZoneAll",
+      "origin": null,
+      "destination": "Battlefield",
+      "target": {
+       "type": "Typed",
+       "type_filters": [
+        "Land"
+       ],
+       "controller": null,
+       "properties": []
+      }
+     },
+     "cost": null,
+     "sub_ability": {
+      "kind": "Spell",
+      "effect": {
+       "type": "Discard",
+       "count": {
+        "type": "Ref",
+        "qty": {
+         "type": "HandSize",
+         "player": {
+          "type": "Controller"
+         }
+        }
+       },
+       "target": {
+        "type": "Controller"
+       }
+      },
+      "cost": null,
+      "sub_ability": null,
+      "duration": null,
+      "description": null,
+      "target_prompt": null,
+      "condition": {
+       "type": "EffectOutcome",
+       "signal": "OptionalEffectPerformed"
+      },
+      "optional_targeting": false,
+      "optional": false,
+      "forward_result": false,
+      "sub_link": "SequentialSibling"
+     },
+     "duration": null,
+     "description": null,
+     "target_prompt": null,
+     "condition": null,
+     "optional_targeting": false,
+     "optional": false,
+     "forward_result": false
+    },
+    "duration": null,
+    "description": null,
+    "target_prompt": null,
+    "condition": null,
+    "optional_targeting": false,
+    "optional": true,
+    "forward_result": false
+   },
+   "valid_card": null,
+   "origin": null,
+   "destination": null,
+   "trigger_zones": [
+    "Battlefield"
+   ],
+   "phase": "End",
+   "optional": true,
+   "damage_kind": "Any",
+   "secondary": false,
+   "valid_target": null,
+   "valid_source": null,
+   "description": "At the beginning of your end step, you may reveal your hand and put all land cards from it onto the battlefield. If you do, discard your hand.",
+   "constraint": {
+    "type": "OnlyDuringYourTurn"
+   },
+   "condition": null,
+   "batched": false
+  }
+ ]
+}
