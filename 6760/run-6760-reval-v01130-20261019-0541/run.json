@@ -1,0 +1,81 @@
+{
+  "issue": 6760,
+  "run_id": "run-6760-reval-v01130-20261019-0541",
+  "started_at": "2026-10-19T10:44:30",
+  "duration_s": 31.3,
+  "server": {
+    "server_version": "0.113.0",
+    "build_commit": "0571ee3",
+    "protocol_version": 151,
+    "mode": "Full",
+    "server_binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+    "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+    "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+    "signature_verified": true,
+    "observed_at": "2026-10-19",
+    "source": "2026-10-19: latest stable release v0.113.0 (published 2026-10-18) == pinned release dir; ServerHello 0.113.0/0571ee3/protocol 151 verified by handshake this run; hashes recomputed against on-disk artifacts this run; reused the already-listening pinned v0.113.0 server on 127.0.0.1:9374 (started fresh 04:44 CDT 2026-10-19 by the #6729 01130 run, single-user) -- server identity verified via actual WebSocket handshake, not the PID alone"
+  },
+  "driver": {
+    "protocol_advertised": 151,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "f4065bde8759f1d7666c2071f65523ddbd43a7943fdcf9126f7940acfc88f058",
+  "decks": {
+    "P0": [
+      [
+        "Ojer Kaslem, Deepest Growth",
+        4
+      ],
+      [
+        "Forest",
+        24
+      ],
+      [
+        "Llanowar Elves",
+        32
+      ]
+    ],
+    "P1": [
+      [
+        "Island",
+        60
+      ]
+    ]
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_damage_and_reveal": "passed",
+    "A4_both_categories": "passed",
+    "A5_two_cards_enter": "failed",
+    "A6_rest_to_bottom": "passed",
+    "A7_cleanup": "passed",
+    "A3_may_accepted": "passed"
+  },
+  "notes": [
+    "2-card submission rejected ({\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\",); single-card fallback entered=True; the land 'forest' ended in zone Library (never put onto the battlefield)",
+    "protocol-142 driver (v0.110.0): Ojer cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands or submits legacy PayMana actions itself (no double-payment artifact). Attack via DeclareAttackers attacks=[[oid,{type:Player,data:1}]]; P1 declares no blockers via DeclareBlockers assignments=[]; mulligan answered as-is with decision='keep'; discard via DiscardToHandSize viewer_interaction select submission; land plays via legacy PlayLand + vi playLand opportunity (answered before the decision gate); may-choice via exactChoices decideOptionalEffect accept choice; revealed-card selection via schema prompt submitted as {type:<spec.type>, data:{choiceIds:[...]}}.",
+    "P0 deck 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1 60x Island draw-go, never blocks (engine accepts >4-of for custom games).",
+    "Post-run packaging fix: evidence self-copy filename corrected scenario_6760_01120.py -> scenario_6760_01130.py (2 lines, EVDIR self-copy only; no game-logic change; hash recomputed after fix)."
+  ],
+  "rejections": [
+    {
+      "who": "P0",
+      "type": "ActionRejected",
+      "at": 1792406699.7701957,
+      "data": "{\"rejection\": {\"code\": \"interaction_constraint_unsatisfied\", \"disposition\": \"invalid\", \"message\": \"That response does not satisfy the interaction constraints.\", \"related_object_ids\": []}}"
+    }
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "Browser UI not exercised; native engine via two human-client seats.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Not tested on the original 2026-07-29 build; verdict is scoped to v0.113.0, not a fix claim.",
+    "4x/24x/32x deck density is a test-harness convenience (engine accepts >4-of for custom games)."
+  ],
+  "setup_line": "P0: 4x Ojer Kaslem, Deepest Growth + 24x Forest + 32x Llanowar Elves; P1: 60x Island (never blocks)",
+  "contract_line": "Ojer deals 6 combat damage -> reveal 6 -> may put a creature AND a land onto the battlefield",
+  "stats": {
+    "states_seen": "n/a",
+    "trigger_observations": "n/a"
+  }
+}
