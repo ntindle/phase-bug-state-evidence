@@ -1,0 +1,30 @@
+[00:43:31] ServerHello: version=0.113.0 build=0571ee3 protocol=151 mode=Full
+[00:43:33] card-data check: ok=True
+[00:43:34] game 415BGN; P0 seat=0 P1 seat=1
+[00:43:35] [P0] mulligan 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island'] (mulls=0)
+[00:43:35] [P1] keep 7: ['forest', 'grizzly bears', 'grizzly bears', 'forest', 'forest', 'forest', 'forest'] (mulls=0)
+[00:43:35] [P0] keep 7: ['clash of wills', 'clash of wills', 'island', 'island', 'island', 'island', 'island'] (mulls=1)
+[00:43:35] [P0] bottoming ['island']
+[00:43:42] [P1] casting grizzly bears #1 (leg 0)
+[00:43:43] [P0] casting clash of wills X=0 targeting bears 93 (leg 0)
+[00:43:43] [P0] X-choice for clash (leg 0): min=0 max=1; choosing X=0
+[00:43:43] exported pre.json
+[00:43:43] leg 0: clash X=0 on stack (oid 29); pre.json exported
+[00:43:44] leg 0 resolved: prompt_seen=False, bears zone=Battlefield (countered=False)
+[00:43:44] exported post.json
+[00:43:44] leg 0 done; -> LEG1 (control X=2)
+[00:43:48] [P1] casting grizzly bears #2 (leg 1)
+[00:43:48] [P0] casting clash of wills X=2 targeting bears 119 (leg 1)
+[00:43:49] [P0] X-choice for clash (leg 1): min=0 max=2; choosing X=2
+[00:43:49] exported pre_control.json
+[00:43:49] leg 1: clash X=2 on stack (oid 58); pre_control.json exported
+[00:43:49] [P0] UNLESS-PROMPT observed (leg 1, seat 0): waiting_for=UnlessPayment
+[00:43:49] exported prompt_leg1.json
+[00:43:49] [P0] unless prompt has no answerable opportunity; holding
+[00:43:49] [P1] answering unless prompt (leg 1) with decline-ish choice 415BGN.0.97.c1
+[00:43:49] leg 1 resolved: prompt_seen=True, bears zone=Graveyard (countered=True)
+[00:43:49] exported post_control.json
+[00:43:49] control leg done; stopping
+[00:43:50] wrote /home/hatch/workspace/dev/phase-backfill/evidence/9943/run-9943-reval-v01130-20261019-0041/summary.png
+[00:43:50] PNG readable: summary.png
+[00:43:50] done: verdict=reproduced assertions={'A1_setup_ok': 'passed', 'A2_unless_prompt_zero': 'failed', 'A3_unless_prompt_control': 'passed', 'A4_cleanup': 'passed'}
