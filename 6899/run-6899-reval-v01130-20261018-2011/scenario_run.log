@@ -1,0 +1,81 @@
+[20:19:26] server identity hashes verified against on-disk pinned artifacts
+[20:19:29] ServerHello: version=0.113.0 build=0571ee3 protocol=151 mode=Full
+[20:19:29] data-level: Transform(all Humans) -> PreventDamage(amount=All target={"type": "Any"} scope=CombatDamage)
+[20:19:30] P0 creating game...
+[20:19:30] P1 joining...
+[20:19:30] game X1105I; P0 seat=0 P1 seat=1
+[20:19:31] [P0] mulligan -> Keep (hand=['young wolf', 'forest', 'forest', 'young wolf', 'forest', 'grizzly bears', 'forest'])
+[20:19:31] [P1] mulligan -> Keep (hand=['grizzly bears', 'forest', 'young wolf', 'forest', 'forest', 'forest', 'young wolf'])
+[20:19:31] [P1] playing land forest
+[20:19:32] [P1] casts Young Wolf (65)
+[20:19:32] [P0] cast confirmed (stack): Young Wolf oid 65
+[20:19:36] [P0] playing land forest
+[20:19:36] [P0] casts Young Wolf (21)
+[20:19:36] [P0] cast confirmed (stack): Young Wolf oid 21
+[20:19:40] [P1] playing land forest
+[20:19:41] [P1] casts Grizzly Bears (92)
+[20:19:42] [P0] cast confirmed (stack): Grizzly Bears oid 92
+[20:19:43] [P1] declare no attackers
+[20:19:46] [P0] playing land forest
+[20:19:46] [P0] casts Grizzly Bears (39)
+[20:19:46] [P0] cast confirmed (stack): Grizzly Bears oid 39
+[20:19:48] [P0] declare no attackers
+[20:19:51] [P1] playing land forest
+[20:19:52] [P1] declare no attackers
+[20:19:55] [P0] playing land forest
+[20:19:56] [P0] declare no attackers
+[20:19:59] [P1] playing land forest
+[20:20:00] [P1] declare no attackers
+[20:20:03] [P0] playing land forest
+[20:20:04] [P0] declare no attackers
+[20:20:07] [P1] playing land forest
+[20:20:08] [P1] declare no attackers
+[20:20:11] [P0] playing land forest
+[20:20:12] [P0] declare no attackers
+[20:20:15] [P1] playing land forest
+[20:20:16] [P1] declare no attackers
+[20:20:19] [P0] playing land forest
+[20:20:20] [P0] declare no attackers
+[20:20:23] [P1] playing land forest
+[20:20:24] [P1] declare no attackers
+[20:20:27] [P0] playing land forest
+[20:20:27] exported pre_p0_attack.json
+[20:20:27] STAGE -> P0_ATTACK
+[20:20:27] P0 attack turn ready; pre_p0_attack.json exported
+[20:20:28] [P0] declares attackers: ['young wolf', 'grizzly bears'] -> seat 1
+[20:20:29] [P0] casts Moonmist (52)
+[20:20:29] [P0] Moonmist cast on turn 14 (combat prevention, stage P0_ATTACK); life at cast P0=20 P1=20
+[20:20:29] P0 attackers declared on turn 14: [{'object_id': 21, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}, {'object_id': 39, 'defending_player': 1, 'attack_target': {'type': 'Player', 'data': 1}, 'blocked': False, 'band_id': None}]
+[20:20:29] [P0] cast confirmed (stack): Moonmist oid 52
+[20:20:30] [P1] declare no blockers
+[20:20:32] exported post_p0_attack.json
+[20:20:32] post_p0_attack.json exported: P1 life=20
+[20:20:32] STAGE -> P0_DONE
+[20:20:34] [P1] playing land forest
+[20:20:35] [P1] declare no attackers
+[20:20:39] [P0] declare no attackers
+[20:20:43] exported pre_p1_attack.json
+[20:20:43] STAGE -> P1_ATTACK
+[20:20:43] P1 attack turn ready; pre_p1_attack.json exported
+[20:20:44] [P1] declares attackers: ['young wolf', 'grizzly bears'] -> seat 0
+[20:20:44] P1 attackers declared on turn 17: [{'object_id': 65, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}, {'object_id': 92, 'defending_player': 0, 'attack_target': {'type': 'Player', 'data': 0}, 'blocked': False, 'band_id': None}]
+[20:20:44] [P0] casts Moonmist (11)
+[20:20:44] [P0] Moonmist cast on turn 17 (combat prevention, stage P1_ATTACK); life at cast P0=20 P1=20
+[20:20:44] [P0] cast confirmed (stack): Moonmist oid 11
+[20:20:45] [P0] declare no blockers
+[20:20:47] exported post_p1_attack.json
+[20:20:47] post_p1_attack.json exported: P0 life=20
+[20:20:47] exported post.json
+[20:20:47] STAGE -> DONE
+[20:20:47] loop ended: stage=DONE elapsed=80s
+[20:20:47] A1_setup_ok: passed
+[20:20:47] A2_moonmist_resolves: passed
+[20:20:47] A3_p0_attack_damage: failed
+[20:20:47] A4_p1_attack_damage: failed
+[20:20:47] A5_cleanup: passed
+[20:20:47] verdict=reproduced
+[20:20:48] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_moonmist_resolves": "passed", "A3_p0_attack_damage": "failed", "A4_p1_attack_damage": "failed", "A5_cleanup": "passed"}
+[20:20:48] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6899/run-6899-reval-v01130-20261018-2011/summary.png
+[20:20:48] copied driver into evidence dir
+[20:20:48] server excerpts written (300 lines from /home/hatch/workspace/dev/phase-backfill/runs/run-20261018-184142/server.log)
+[20:20:48] manifest written (15 files)
