@@ -1,0 +1,64 @@
+{
+  "run_id": "run-10085-v01130-20261019-1345",
+  "issue": 10085,
+  "started_at": "2026-10-19T18:02:36.284996+00:00",
+  "finished_at": "2026-10-19T18:02:57.531536+00:00",
+  "server_version": "0.113.0",
+  "build_commit": "0571ee3",
+  "protocol_version": 151,
+  "binary_sha256": "f2b09aab4385ff6e6f352d211c2560af42445e11e6b5f2fef0065094c1a8c77d",
+  "card_data_sha256": "eb309108eb0df708b6cb5b3c75858149a9fd2864ee0f4ef81195cc75af058b85",
+  "draft_pools_sha256": "785376ea4dc8fd2fde29e734a1b069de3a12c57b2df1bb1471556b279b306400",
+  "game_code": "742UJA",
+  "decks": {
+    "P0": [
+      [
+        "springheart nantuko",
+        4
+      ],
+      [
+        "llanowar elves",
+        4
+      ],
+      [
+        "forest",
+        52
+      ]
+    ],
+    "P1": [
+      [
+        "copy enchantment",
+        4
+      ],
+      [
+        "island",
+        56
+      ]
+    ]
+  },
+  "scenario": "scenario_10085_01130.py",
+  "scenario_sha256": "e349049f449a58ff5a7734a02eda561debde34d008e8304f4fe3c5927cf5617c",
+  "verdict": "reproduced",
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_copy_entered": "passed",
+    "A3_types_correct": "failed",
+    "A4_bug_documented": "passed",
+    "A5_cleanup": "passed"
+  },
+  "server": {
+    "server_version": "0.113.0",
+    "build_commit": "0571ee3",
+    "protocol_version": 151
+  },
+  "setup_line": "P0 bestows Springheart Nantuko onto Llanowar Elves; P1 casts Copy Enchantment copying that Aura",
+  "contract_line": "Copy must be Enchantment Creature - Insect Monk (CR 707.2/702.103b); Aura subtype must not leak into copiable values",
+  "limitations": [
+    "Native engine only; browser UI not exercised",
+    "Two human seats; no AI involved"
+  ],
+  "stats": {
+    "states_seen": "n/a (see wire_log)",
+    "trigger_observations": 1
+  }
+}
