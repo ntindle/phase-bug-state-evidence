@@ -1,0 +1,10 @@
+{
+ "checked_at_mainline": "2026-10-19 (raw.githubusercontent.com phase-rs/phase main)",
+ "p2p_draft_host_ts_sha256": "50456ed306dca93ed85ab050bd585e96e87b8c8b7089eaaf31f570b07b6671d0",
+ "draftPodHostAdapter_ts_sha256": "bcc6853f355e511ac459d879d882ccda325cec2afabf0fdbee8fd03eeee004a3",
+ "hostDraftCode_333_337": "function hostDraftCode(): string { crypto.getRandomValues(values); return `draft-${values[0]!.toString(16).padStart(8, \"0\")}`; }",
+ "blocker1_production_constructor": "draftPodHostAdapter.ts:324 passes config.backupEndpoint into the sole production new P2PDraftHost(...) call -> wired (unchanged since 2026-09-17)",
+ "uploadBackupSnapshot": "awaits fetch() without checking response status; catch only handles exceptions -> HTTP 400 treated as success (silent)",
+ "cleanupServerBackup": "DELETE awaits fetch without status check; best-effort catch",
+ "findings": "byte-identical to 2026-10-10/11/12/15/17 checks; blockers #2 (identifier mismatch) and #3 (silent 400) still present; blocker #1 still wired"
+}
