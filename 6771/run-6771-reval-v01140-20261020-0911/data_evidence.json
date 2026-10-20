@@ -1,0 +1,33 @@
+{
+ "ok": true,
+ "notes": [],
+ "breakthrough_oracle": "Draw four cards, then choose X cards in your hand and discard the rest.",
+ "mana_cost": {
+  "type": "Cost",
+  "shards": [
+   "X",
+   "Blue"
+  ],
+  "generic": 0
+ },
+ "spell_effect_payload": {
+  "draw": {
+   "type": "Draw",
+   "count": {
+    "type": "Fixed",
+    "value": 4
+   },
+   "target": {
+    "type": "Controller"
+   }
+  },
+  "choose_x": {
+   "type": "Unimplemented",
+   "description": "choose X cards in your hand"
+  },
+  "discard_rest": {
+   "type": "Unimplemented",
+   "description": "discard the rest"
+  }
+ }
+}
