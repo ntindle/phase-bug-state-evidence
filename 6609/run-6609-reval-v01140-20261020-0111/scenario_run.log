@@ -1,0 +1,69 @@
+ServerHello OK: {'server_version': '0.114.0', 'build_commit': 'ac67cbb', 'protocol_version': 153, 'mode': 'Full'}
+game CVZU4V; P0 seat=0 P1 seat=1
+P0 keeps (hand=['shock', 'ornithopter', 'ornithopter', 'island', 'shock', 'island', 'swamp'], mulls=0)
+P1 keeps (hand=['lightning bolt', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'], mulls=0)
+DIAG turn=1 active=0 phase=Untap pp=0 hand=['shock', 'ornithopter', 'ornithopter', 'island', 'shock', 'island'] gy0=[] goyf_gy=False phase_sm=setup escape_live=False
+P0 plays land swamp
+P0 casts Ornithopter
+[p0] cast confirmed (stack): ornithopter
+P1 plays land mountain
+P0 plays land island
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+P0 plays land island
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['CVZU4V.0.172.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Shock', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Divination', 'available'), ('Rancor', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Rancor', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['CVZU4V.0.203.s0'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Ornithopter', 'available'), ('Shock', 'available'), ('Divination', 'available'), ('Rancor', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+[P0] discard_to_hand_size: submit select ids=['CVZU4V.0.234.s1'] (rtype=schema spec=select)
+[vi decision/P0] rtype=schema spec=select kind=None prompt='' choices=[('Shock', 'available'), ('Divination', 'available'), ('Rancor', 'available'), ('Ornithopter', 'available'), ('Shock', 'available'), ('Rancor', 'available'), ('Grizzly Bears', 'available'), ('Grizzly Bears', 'available')]
+P1 plays land mountain
+P0 casts Nethergoyf
+[p0] cast confirmed (stack): goyf_cast
+[vi decision/P0] rtype=schema spec=relations kind=None prompt='' choices=[('Ornithopter', 'available'), ('', 'available')]
+P1 plays land mountain
+P1 bolts nethergoyf (oid 13)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=CVZU4V.0.274.t3 kind=sequence (Nethergoyf)
+P1 bolts nethergoyf (oid 13)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=CVZU4V.0.276.t3 kind=sequence (Nethergoyf)
+P1 bolts nethergoyf (oid 13)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=CVZU4V.0.278.t3 kind=sequence (Nethergoyf)
+P1 bolts nethergoyf (oid 13)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=CVZU4V.0.280.t3 kind=sequence (Nethergoyf)
+P1 bolts nethergoyf (oid 13)
+[p1] cast confirmed (stack): bolt
+[P1] submitting advertised target: id=CVZU4V.0.282.t3 kind=sequence (Nethergoyf)
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: ornithopter zone=Hand data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+[P0] CastSpell offered: nethergoyf zone=Graveyard data_keys=['card_id', 'object_id', 'payment_mode', 'targets']
+exported pre_escape.json
+[P0] initiating ESCAPE of Nethergoyf (gy oid 13)
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available'), ('Nethergoyf', 'available'), ('Nethergoyf', 'available'), ('Ornithopter', 'available'), ('Ornithopter', 'available'), ('Island', 'available'), ('Swamp', 'available'), ('Island', 'available')]
+[p0] cast confirmed (stack): escape
+[P0] EXILE CHOICE PROMPT SEEN (vi): rtype=schema n=3 kind=None
+[P0] exile prompt spec='select' rtype='schema' min=None max=None
+[P0] invalid_subset_1card: submit select ids=['CVZU4V.0.308.s0'] (rtype=schema spec=select)
+[vi esc/P0] rtype=schema spec=select kind=None prompt='' choices=[('Shock', 'available'), ('Ornithopter', 'available'), ('Divination', 'available')]
+[P0] escape cast accepted: Nethergoyf left the graveyard
+[vi esc/P0] rtype=exactChoices spec=None kind=None prompt='' choices=[('', 'available')]
+[P0] INVALID 1-card subset was ACCEPTED (missing 4-type constraint) - related failure
+exported post_escape.json
+[P0] ESCAPE COMPLETE: Nethergoyf on battlefield; exported post_escape.json
+escape complete; finishing
+server excerpts: 0 matching lines
