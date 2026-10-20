@@ -1,0 +1,65 @@
+ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+data-level check: ok=True notes=[]
+P0 creating game...
+P1 joining...
+game Y58YHV; seats 0/1
+[P0] mulligan -> Keep (lands=5)
+[P1] mulligan -> Keep (lands=3)
+waiting_for: MulliganDecision stage=SETUP
+DIAG turn=1 phase=Untap wf=MulliganDecision stack=0 p0hand=7 p0mem=0 p0grudge_hand=1 p1mem=0 untap_sw=0 untap_mo=0 stage=SETUP sac=False opp=False no_offer_n=0
+waiting_for: Priority stage=SETUP
+[P1] cast Memnite (oid=107)
+[P0] cast confirmed on stack: Memnite (oid 107)
+[P1] land drop mountain
+[P0] cast Memnite (oid=15)
+[P0] cast confirmed on stack: Memnite (oid 15)
+[P0] land drop swamp
+[P1] land drop mountain
+[P1] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] land drop swamp
+[P0] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P1] land drop mountain
+[P1] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] land drop swamp
+[P0] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P1] land drop mountain
+[P1] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] land drop mountain
+exported pre.json
+[pre] exported turn 8 phase=PreCombatMain
+[P0] Fatal Grudge NOT offered (oid=17) - BUG CANDIDATE
+[P0] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] Fatal Grudge NOT offered (oid=17) - BUG CANDIDATE
+[P1] land drop mountain
+[P1] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] land drop mountain
+[P0] Fatal Grudge NOT offered (oid=17) - BUG CANDIDATE
+[P0] DeclareAttackers -> none (advertised)
+waiting_for: DeclareAttackers stage=SETUP
+waiting_for: Priority stage=SETUP
+[P0] Fatal Grudge NOT offered (oid=17) - BUG CANDIDATE
+exported post.json
+[P0] 4 main-phase observations, cast never offered; exported post.json, stopping
+A1_setup_ok: passed
+A2_cast_offered: failed
+A3_sac_paid: not-run
+A4_opp_sac: not-run
+A5_draw: not-run
+A6_cleanup: passed
+WF sequence: ['MulliganDecision', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority', 'DeclareAttackers', 'Priority']
+verdict: reproduced
+rendered summary.png
