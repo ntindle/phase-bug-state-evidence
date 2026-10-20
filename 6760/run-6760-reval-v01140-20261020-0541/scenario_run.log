@@ -1,0 +1,43 @@
+[05:44:54] server identity hashes recomputed against on-disk pinned artifacts
+[05:44:54] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[05:44:54] ===== attempt 1 =====
+[05:44:55] game 8NQJ2H attempt=1; P0 seat=0 P1 seat=1
+[05:44:55] [6760-a1] keep 7: ['forest', 'forest', 'llanowar elves', 'ojer kaslem, deepest growth', 'llanowar elves', 'llanowar elves', 'llanowar elves']
+[05:44:55] [P16760-a1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[05:44:55] [P16760-a1] playing land island (legacy)
+[05:44:58] [6760-a1] playing land forest (legacy)
+[05:45:00] [P16760-a1] playing land island (legacy)
+[05:45:02] [6760-a1] playing land forest (legacy)
+[05:45:05] [P16760-a1] playing land island (legacy)
+[05:45:08] [6760-a1] discarding to hand size via vi (select)
+[05:45:09] [P16760-a1] playing land island (legacy)
+[05:45:13] [6760-a1] discarding to hand size via vi (select)
+[05:45:14] [P16760-a1] playing land island (legacy)
+[05:45:16] [6760-a1] playing land forest (legacy)
+[05:45:18] [P16760-a1] playing land island (legacy)
+[05:45:20] [6760-a1] playing land forest (legacy)
+[05:45:23] [P16760-a1] playing land island (legacy)
+[05:45:25] [6760-a1] DIAG P06760-a1: rev=199 turn=14 phase=Draw prio=['PassPriority'] vikind='choose' real_decision=False my_prio=True ojer_cast_turn=None attacked=False
+[05:45:25] [6760-a1] DIAG P16760-a1: rev=199 turn=14 phase=Draw prio=[] vikind='choose' real_decision=False my_prio=False ojer_cast_turn=None attacked=False
+[05:45:25] [6760-a1] playing land forest (legacy)
+[05:45:25] [6760-a1] casting Ojer Kaslem, Deepest Growth (oid 27); engine auto-pays (payment_mode Auto)
+[05:45:25] [6760-a1] cast confirmed on stack: Ojer Kaslem, Deepest Growth (oid 27)
+[05:45:26] [6760-a1] Ojer Kaslem on battlefield at turn 14
+[05:45:28] [P16760-a1] playing land island (legacy)
+[05:45:31] [6760-a1] P0 attacks P1 with Ojer Kaslem (turn 16)
+[05:45:33] [6760-a1] combat damage landed: P1 life=14
+[05:45:34] [6760-a1] select prompt: spec.type=select constraint={"type": "count", "data": {"min": 0, "max": 1}} n_candidates=6
+[05:45:34]   candidate 8NQJ2H.0.245.s0: llanowar elves (Creature) zone=Library ref=43
+[05:45:34]   candidate 8NQJ2H.0.245.s1: ojer kaslem, deepest growth (Creature) zone=Library ref=24
+[05:45:34]   candidate 8NQJ2H.0.245.s2: forest (Land) zone=Library ref=40
+[05:45:34]   candidate 8NQJ2H.0.245.s3: forest (Land) zone=Library ref=33
+[05:45:34]   candidate 8NQJ2H.0.245.s4: llanowar elves (Creature) zone=Library ref=17
+[05:45:34]   candidate 8NQJ2H.0.245.s5: forest (Land) zone=Library ref=1
+[05:45:34] [6760-a1] submitting 2-card selection (creature 8NQJ2H.0.245.s0 + land 8NQJ2H.0.245.s2) via select
+2026-10-20 05:45:34,806 [P06760-a1] ActionRejected: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[05:45:35] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[05:45:35] [6760-a1] 2-card submission REJECTED: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[05:45:35] [6760-a1] submitting 1-card fallback (creature 8NQJ2H.0.245.s0)
+[05:45:37] [6760-a1] select outcome path=one_accepted: entered=['llanowar elves'] bottomed=5/6
+[05:45:37] attempt 1 assertions: {"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
+[05:45:37] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_damage_and_reveal": "passed", "A4_both_categories": "passed", "A5_two_cards_enter": "failed", "A6_rest_to_bottom": "passed", "A7_cleanup": "passed", "A3_may_accepted": "passed"}
