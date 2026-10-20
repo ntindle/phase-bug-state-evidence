@@ -1,0 +1,99 @@
+{
+  "issue": 6763,
+  "run_id": "run-6763-reval-v01140-20261020-0616",
+  "started_at": "2026-10-20T11:17:47",
+  "duration_s": 59.9,
+  "server": {
+    "server_version": "v0.114.0",
+    "build_commit": "ac67cbb",
+    "protocol_version": 153,
+    "mode": "Full",
+    "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+    "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+    "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+    "signature_verified": true,
+    "observed_at": "2026-10-20",
+    "source": "2026-10-20: latest stable release v0.114.0 (published 2026-10-19) == pinned release dir; ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; hashes recomputed against on-disk artifacts this run; live backfill-owned v0.114.0 server on 127.0.0.1:9374, started by this run's backfill-20261020T111138Z server setup (2026-10-20), owned by this run"
+  },
+  "server_run_dir": "backfill-owned v0.114.0 server on 127.0.0.1:9374, started by this run's backfill-20261020T111138Z server setup (2026-10-20), owned by this run; live ServerHello 0.114.0/ac67cbb/protocol 153/Full verified by handshake this run; no second server started",
+  "driver": {
+    "protocol_advertised": 153,
+    "client": "driver/client.py"
+  },
+  "scenario_sha256": "21f28880e90b88e9f7b5517fd755a098df3a4f85965b5639de8627318cfa1654",
+  "decks": {
+    "P0": [
+      [
+        "Walking Ballista",
+        12
+      ],
+      [
+        "Forest",
+        48
+      ]
+    ],
+    "P1": [
+      [
+        "Emperor of Bones",
+        4
+      ],
+      [
+        "Swamp",
+        56
+      ]
+    ]
+  },
+  "assertions": {
+    "E1_setup_ok": "passed",
+    "E2_trigger_targeted": "passed",
+    "E3_identity_distinct": "passed",
+    "E4_snapshot_captured": "passed",
+    "E5_cleanup": "passed",
+    "U1_rendered_setup": "passed",
+    "U2_target_identity_ui": "passed",
+    "U3_label_indistinguishable": "passed",
+    "U4_arc_indistinguishable": "passed",
+    "U5_viewer_indistinguishable": "passed"
+  },
+  "notes": [
+    "E1[A]: gy_ballistas=[3, 32] emperor_bf=['97'] trigger_entry=121",
+    "E2[A]: entry targets=[32] chosen=32",
+    "E1[B]: gy_ballistas=[19, 53] emperor_bf=['113'] trigger_entry=121",
+    "E2[B]: entry targets=[19] chosen=19",
+    "E3: chosen_A=32 chosen_B=19 distinct=True",
+    "E4[A]: viewer refs=[32] export refs match=True",
+    "E4[B]: viewer refs=[19] export refs match=True",
+    "E5: chosen zone post=Exile stack_empty=True phase=BeginCombat",
+    "U2: variant A targets 32, variant B targets 19",
+    "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+    "U4: arc endpoints identical (48.234375, 67.53125); start-point jitter ['M 135.85551738739014 558 Q 170.7981117692633 298.69654856168546 48.234375 67.53125'] vs ['M 136.1057243347168 557.9999694824219 Q 170.9162508830839 298.65760513061946 48.234375 67.53125'] is <0.1px noise",
+    "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '3 32', 'rect': {'x': 0, 'y': 0, 'w': 96.5, 'h': 135.1}} arcs_A=['M 135.85551738739014 558 Q 170.7981117692633 298.69654856168546 48.234375 67.53125']",
+    "LIMITATION: ui_A/B_viewer.png not captured this run -- dedicated viewer-screenshot tabs never reached __READY and in-tab viewer screenshots wedge with the post-mount renderer park (~0.3s after ZoneViewer mounts; main thread parks, low CPU; cause unidentified). U5 rests on the viewer DOM evaluation, which is reliable when run immediately after the cards appear."
+  ],
+  "verdict": "reproduced",
+  "limitations": [
+    "12x Walking Ballista deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+    "UI harness mocks: multiplayerStore, useCardImage, useEngineCardData, useGameDispatch (payload capture), wasmStub. The real StackDisplay + StackTargetArcs + GraveyardPile + ZoneViewer components from the mainline client tree were rendered, driven in headless Chrome via CDP (playwright chrome-headless-shell).",
+    "Not tested on the report's 2026-07-29 build; verdict scoped to v0.114.0 engine + recorded mainline client, not a fix claim.",
+    "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+    "Client drift vs prior tree recorded in ui_result.json (client_commit + drift_check).",
+    "Harness vite config sets server.watch: null (2026-10-18): this VM's kernel inotify is broken (inotify_add_watch fails ENOSPC even on /tmp), so vite's chokidar watcher crashed at startup; the harness never edits files at runtime, so disabling the watcher is behavior-neutral for the test."
+  ],
+  "setup_line": "P0: 12x Walking Ballista + 48x Forest; P1: 4x Emperor of Bones + 56x Swamp. P1's Emperor trigger targets one of >=2 Walking Ballistas in P0's graveyard.",
+  "contract_line": "Every player must be able to identify the exact graveyard object targeted by the trigger before responding: the two Ballista oids are distinct objects with the same name, so a name-only label cannot disambiguate them.",
+  "browser": {
+    "binary": "playwright chrome-headless-shell (Chromium 152)",
+    "mode": "headless, driven via CDP (harness manages vite + chrome)"
+  },
+  "client": {
+    "mainline_commit": "b8fa1d391bf389868876adc4af4d05593fcc4d79",
+    "client_tree": "/home/hatch/workspace/dev/phase-backfill/checkout-6763-20261012",
+    "drift_check": null,
+    "tested_components": [
+      "StackDisplay",
+      "StackTargetArcs",
+      "GraveyardPile",
+      "ZoneViewer"
+    ]
+  }
+}
