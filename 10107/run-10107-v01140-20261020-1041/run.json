@@ -1,0 +1,13 @@
+{
+ "run_id": "run-10107-v01140-20261020-1041",
+ "started_at": "2026-10-20T15:41:47Z",
+ "issue": 10107,
+ "verdict": "reproduced",
+ "scope": "data-pipeline: pinned v0.114.0 official card-data.json (oracle-gen output) + tag-exact coverage/costs source audit",
+ "validated_version": "v0.114.0",
+ "build_commit": "ac67cbb",
+ "limitations": [
+  "coverage-report binary was not re-executed: no Rust toolchain on this host and the reporter's pinned MTGJSON input (SHA256 46FA71...) is not available locally. The coverage row (supported:true, gap_count:0) is established by (a) the exact record shape in the official signed card-data.json and (b) the deterministic tag-exact code path that maps that record shape to the row.",
+  "No live cast attempted; the issue explicitly disclaims a live-cast claim. Runtime behavior documented from source (costs.rs) only."
+ ]
+}
