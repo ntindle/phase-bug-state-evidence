@@ -1,0 +1,181 @@
+{
+ "issue": 6878,
+ "run_id": "run-6878-reval-v01140-20261020-1541",
+ "game_code": "C7IQPX",
+ "started_at": "2026-10-20T20:45:44",
+ "duration_s": 38.7,
+ "server_identity": {
+  "validated_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "365b77649015cd9d478e6351d86b438e9db09ce2d220795de3d11ac0505c39f2",
+ "decks": {
+  "P0": [
+   [
+    "Duskwatch Recruiter",
+    12
+   ],
+   [
+    "Llanowar Elves",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Forest",
+    20
+   ]
+  ],
+  "P1": [
+   [
+    "Llanowar Elves",
+    16
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ]
+ },
+ "driver_notes": [
+  "Protocol-153 port of driver/scenario_6878_01130.py (protocol 151 / v0.113.0) for pinned v0.114.0; behavioral contract A1..A7 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select.",
+  "CastSpell via legacy Action; ActivateAbility via legacy ActivateAbility (ability_index 0) with vi activateAbility choice fallback. The v0.114.0 engine auto-taps reliably; manual taps are a >90s fallback only; cast-confirmation guard after every CastSpell (protocol-118/120/130/142/151/153 necessity).",
+  "Dig keep/order prompts are vi schema opportunities gated on candidates referencing the looked-at/rest oids (recorded from the authoritative pre-activation export); schema prompts not referencing those oids are never misclassified. P1 casts Llanowar Elves each main phase to keep 'a spell was cast last turn' true at every P0 upkeep (transform suppression); empty combat declares via advertised actions.",
+  "P1 holds its Elves until the Recruiter is on the battlefield (armed) -- casting every turn from turn 1 drained P1's hand and let the Recruiter transform on the 20261006-6878 attempt (verdict blocked, fixture spoiled). 16x Elves gives buffer for the two post-arming casts the scenario needs.",
+  "real_decision_pending excludes the 153 priority-menu codes; playLand vi codes answered before the decision gate; land matching via is_land().",
+  "Pre/post states are authoritative exports (data.state parsed once from the export envelope); the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.114.0 parses the Dig effect with rest_destination='Library' but NO rest_order field at all -- the parsed structure carries no ordering mode for the rest, consistent with the runtime offering no order choice (area:engine)."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A2_keep_offered_detail": {
+   "top3": [
+    [
+     "9",
+     "forest"
+    ],
+    [
+     "38",
+     "llanowar elves"
+    ],
+    [
+     "31",
+     "grizzly bears"
+    ]
+   ],
+   "keep_offered_refs": [
+    "38",
+    "31"
+   ],
+   "keep_kind": "select",
+   "keep_spec": {
+    "type": "select",
+    "data": {
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  },
+  "A3_order_offered_r1": "failed",
+  "A3_order_offered_r1_detail": {
+   "rest_oids": [
+    "9",
+    "31"
+   ],
+   "order_spec": null
+  },
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "9",
+    "31"
+   ],
+   "positions": {
+    "9": 28,
+    "31": 29
+   },
+   "library_len": 30,
+   "post_bottom_tail": [
+    "10",
+    "36",
+    "16",
+    "18",
+    "9",
+    "31"
+   ]
+  },
+  "A5_no_opponent_leak": "failed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "9": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "38": {
+     "name": "Llanowar Elves",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "31": {
+     "name": "Grizzly Bears",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    }
+   },
+   "leaked": [
+    "9",
+    "31"
+   ]
+  },
+  "A6_decline_branch_r2": "failed",
+  "A6_decline_branch_r2_detail": {
+   "kept": [],
+   "rest_oids": [
+    "11",
+    "28",
+    "5"
+   ],
+   "rest_positions": {
+    "11": 26,
+    "28": 27,
+    "5": 28
+   },
+   "order_offered": false
+  },
+  "A7_cleanup": "passed"
+ },
+ "notes": [],
+ "verdict": "reproduced",
+ "evidence_comment_id": 5644046591,
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Duskwatch Recruiter density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6878_01140.py), not direct load.",
+  "Fewer-than-three-card library edge not exercised."
+ ],
+ "setup_line": "P0: 12x Duskwatch Recruiter + 4x Llanowar Elves + 4x Grizzly Bears + 20x Forest; P1: 16x Llanowar Elves + 24x Forest (casts one per main phase once the Recruiter is on the battlefield, to suppress the upkeep transform)",
+ "contract_line": "Activate Duskwatch Recruiter's Dig twice: accept-branch keep (r1) and decline-branch keep-none (r2). After the keep, the controller must be offered an ordering choice for the rest going to the bottom of the library; the unrevealed rest must stay hidden from the opponent."
+}
