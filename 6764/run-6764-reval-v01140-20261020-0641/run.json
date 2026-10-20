@@ -1,0 +1,77 @@
+{
+ "issue": 6764,
+ "run_id": "run-6764-reval-v01140-20261020-0641",
+ "started_at": "2026-10-20T11:47:45",
+ "duration_s": 239.9,
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "observed_at": "2026-10-20",
+  "source": "2026-10-20: latest stable release v0.114.0 (published 2026-10-19T18:59:10Z) == pinned release dir (pinned 2026-10-19); ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; hashes recomputed against on-disk artifacts this run; shared pinned v0.114.0 server on 127.0.0.1:9374 (PID 8460) started 2026-10-20 06:13 (games-db under runs/backfill-20261020T111138Z/); reused per 'if not already listening'.",
+  "shared_with": "shared pinned v0.114.0 server on 127.0.0.1:9374 (PID 8460), started 2026-10-20 06:13 (games-db under runs/backfill-20261020T111138Z/); reused per 'if not already listening'"
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "95634288eb40825c4ec305438935e69ecf2fd06ce7715237cd431a87195f0ec2",
+ "decks": {
+  "P0": [
+   [
+    "Knowledge Pool",
+    4
+   ],
+   [
+    "Shock",
+    24
+   ],
+   [
+    "Mountain",
+    32
+   ]
+  ],
+  "P1": [
+   [
+    "Island",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2a_decline_control": "passed",
+  "A2b_accept_may": "passed",
+  "A3_choice_scope": "failed",
+  "A4_free_cast_executes": "not-run",
+  "A5_cleanup": "not-run"
+ },
+ "notes": [
+  "no free-cast card choice appeared within 180s of accepting the may",
+  "protocol-153 driver (v0.114.0): mechanical port of the verified protocol-151 scenario_6764_01130.py. Knowledge Pool cast via bare legacy CastSpell matched by object_id, engine auto-pays (payment_mode Auto); the driver never taps lands for mana itself (no double-payment artifact). Shock casts via CastSpell with {R:1}; Shock targets via the advertised vi target opportunity (schema select/sequence), seat-1 candidate preferred; may-choice via exactChoices decideOptionalEffect accept true/false; the free-cast card choice found by scanning vi opportunities for card-object candidates (hand-zone-only prompts excluded); free cast submitted as {type:<spec.type>, data:{choiceIds:[...]}}; free_cast_window flag marks the card-choice-to-resolution window (driver makes no mana payments at all, so any mana demand by the engine would surface as a stall rather than being silently paid).",
+  "Cast-confirmation guard (AGENTS.md 2026-10-09): after every CastSpell submission the driver withholds priority and starts no new main-phase plays until the cast is confirmed (spell left the hand / on the stack); *_cast flags are set at confirmation, not submission; 30s backstop treats a still-in-hand cast as dropped and re-arms the cast block. The free-cast choice (a viewer interaction, not a legacy CastSpell) gets a progress watcher with no priority hold.",
+  "P0 deck 4x Knowledge Pool + 24x Shock + 32x Mountain; P1 60x Island draw-go, never attacks or blocks (engine accepts >4-of for custom games). Leg 1 (decline) exiles Shock #1, making it part of the legal free-cast set on leg 2 alongside the 6 imprint cards.",
+  "Shared-server reuse: this run did not start its own phase-server; the pinned v0.114.0 server (PID 8460) was already listening on 127.0.0.1:9374, started 2026-10-20 06:13 (games-db under runs/backfill-20261020T111138Z/); reused per 'if not already listening'."
+ ],
+ "rejections": [],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Cards exiled by a *different* Knowledge Pool or another effect were not present; the 'exiled with THIS artifact' boundary was tested against the single Pool's imprint set only.",
+  "Not tested on the original 2026-07-29 build; verdict is scoped to v0.114.0, not a fix claim.",
+  "Dense playsets (24x) are a test-harness convenience (engine accepts >4-of for custom games).",
+  "Shared server: games.db lives under runs/backfill-20261020T111138Z/; this run created only its own game(s) on it."
+ ],
+ "setup_line": "P0: 4x Knowledge Pool + 24x Shock + 32x Mountain; P1: 60x Island (draw-go)",
+ "contract_line": "Pool imprints 3+3; hand-cast Shock exiled by trigger; may-cast choice must offer only other cards exiled with this Pool and the chosen card must cast free",
+ "stats": {
+  "states_seen": "n/a",
+  "trigger_observations": "n/a"
+ }
+}
