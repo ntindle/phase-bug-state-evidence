@@ -1,0 +1,52 @@
+{
+ "run_id": "run-6337-reval-v01140-20261019-2342",
+ "issue": 6337,
+ "title": "Draft color selection is non-deterministic (missing HashMap tie-break)",
+ "release": "v0.114.0",
+ "release_published_at": "2026-10-19T18:59:10Z",
+ "release_pin_note": "latest stable release per GitHub API 2026-10-19T23:41Z; == pinned release dir (pinned 2026-10-19, minisign-verified v0.114.0)",
+ "build_commit": "ac67cbb",
+ "protocol_version": 153,
+ "tag_commit_v0.114.0": "aef14039be4d47a2318ffd7a0c24bcbceb47146d",
+ "source_identity": {
+  "from": "v0.114.0 tag via raw.githubusercontent.com",
+  "byte_identical_to_v0.113.0": true,
+  "byte_identical_to_release_build_commit_ac67cbb": true,
+  "sha256": {
+   "bot_ai.rs": "a3bab1fca230e63ff88413dbddc16ecf9f62b00d6b55774bca69f9a5d2dbcec1",
+   "suggest.rs": "bf54f94c7c1f99aa550ed7e639a9705c1f4570ba1a913ae7a798e176f6dcc43a",
+   "draft_eval.rs": "7283544f82dded24bb2a4f8018fcdd68664769ff313498dc277e413cc5059d8c"
+  }
+ },
+ "server": {
+  "bind": "127.0.0.1:9374",
+  "flags": "--single-user --no-data-download",
+  "serverhello": {
+   "server_version": "0.114.0",
+   "build_commit": "ac67cbb",
+   "protocol_version": 153,
+   "mode": "Full"
+  },
+  "reused_live_server": true,
+  "owned_by_run": "run-20261019-2311",
+  "note": "no game states apply to this subsystem (playbook deckbuilder rule)"
+ },
+ "scenario": "verbatim re-run of the verified v0.113.0 harness: find_best_colors/dominant_colors copied verbatim from release sources; tied pool (one card each W/U/B/R/G, constant score 1.0); 30 separate OS processes",
+ "assertions": {
+  "A1_setup_sources_ok": "passed",
+  "A2_suggest_defect_present": "passed",
+  "A3_dominant_colors_total_order": "passed",
+  "A4_suggest_varies": "passed",
+  "A5_dominant_colors_stable": "passed",
+  "A6_control_stable": "passed"
+ },
+ "result": "find_best_colors: 14 distinct top-2 orderings across 30 processes (score-only sort, no tie-break \u2014 HashMap iteration order leaks). dominant_colors: B,G in all 30 runs. Fixed control: B,G in all 30 runs. Defect persists unchanged since v0.103.0; v0.114.0 sources byte-identical to v0.113.0.",
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser/UI 'Suggest deck' click path not exercised; the helper function it calls is exercised verbatim from the release sources.",
+  "Real score_card gives per-card quality scores; constant score reproduces the reported tie condition only.",
+  "No engine game states apply to a deckbuilder report (per playbook deckbuilder rule).",
+  "Rust HashMap (RandomState) iteration order is per-process; 30 processes is the established sample for this issue."
+ ],
+ "validated_at": "2026-10-20T04:47:14Z"
+}
