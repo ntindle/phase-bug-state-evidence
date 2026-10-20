@@ -1,0 +1,28 @@
+{
+ "esper_oracle": "Exile each opponent's graveyard. When you do, choose up to one target creature card exiled this way. Create a token that's a copy of that card, except it's an artifact and it loses all other card types.",
+ "esper_oracle_ok": true,
+ "esper_main_effect": "ChangeZoneAll",
+ "esper_reflexive_condition": "WhenYouDo",
+ "esper_reflexive_target_filters": [
+  "Creature",
+  "ExiledBySource"
+ ],
+ "esper_creature_filter_present": true,
+ "esper_exiled_by_source_present": true,
+ "esper_multi_target": {
+  "min": 0,
+  "max": {
+   "type": "Fixed",
+   "value": 1
+  }
+ },
+ "esper_copy_effect": "CopyTokenOf",
+ "esper_copy_modifications": [
+  {
+   "type": "SetCardTypes",
+   "core_types": [
+    "Artifact"
+   ]
+  }
+ ]
+}
