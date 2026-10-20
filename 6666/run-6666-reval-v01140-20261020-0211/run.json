@@ -1,0 +1,202 @@
+{
+ "issue": 6666,
+ "run_id": "run-6666-reval-v01140-20261020-0211",
+ "verdict": "reproduced",
+ "started_at": "2026-10-20T07:17:18",
+ "duration_s": 383.8,
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "server_run": "reused live backfill-owned v0.114.0 server on 127.0.0.1:9374 (owned by runs/backfill-20261020-064139; started 2026-10-20 ~01:42 by the 01:41 backfill run; identity verified by ClientHello/ServerHello handshake and recomputed digests this run)",
+  "source": "2026-10-20: latest stable release v0.114.0 (published 2026-10-19T18:59:10Z) == pinned release dir; ServerHello 0.114.0/ac67cbb/protocol 153 verified by this run; hashes recomputed against on-disk artifacts this run"
+ },
+ "server_run_dir": "runs/backfill-20261020-064139",
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py",
+  "scenario": "driver/scenario_6666_01140.py"
+ },
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "island",
+    10
+   ],
+   [
+    "swamp",
+    14
+   ],
+   [
+    "mountain",
+    6
+   ],
+   [
+    "hidetsugu and kairi",
+    6
+   ],
+   [
+    "mystical tutor",
+    6
+   ],
+   [
+    "murder",
+    6
+   ],
+   [
+    "lightning bolt | divination (per leg)",
+    12
+   ]
+  ],
+  "P1": [
+   [
+    "island",
+    60
+   ]
+  ]
+ },
+ "legs": [
+  {
+   "leg": "instant",
+   "staged": "lightning bolt",
+   "mv": 1,
+   "verdict": "reproduced",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "passed",
+    "A4_hk_died": "passed",
+    "A5_exile_and_lifeloss": "passed",
+    "A6_free_cast_offered": "passed",
+    "A7_accept_resolves": "failed",
+    "A8_no_dangling": "passed"
+   },
+   "notes": [
+    "accept-drive expired (120s): accepted cast did not resolve (exile=['lightning bolt'], gy_has_staged=False, p1_life=19)",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=lightning bolt (want lightning bolt)",
+    "A4: H&K in graveyard in pre_trigger=True",
+    "A5: staged exiled=True (exile=['lightning bolt']); P1 life 20->19 (want 19)",
+    "A6: free-cast offer reached P0=True",
+    "A7: Bolt in P0 GY=False; P1 life=19 (want 16); exile=['lightning bolt']; stack_empty=True",
+    "A8: end stack_empty=True"
+   ],
+   "duration_s": 183.3,
+   "stage": "done",
+   "exports": [
+    "post",
+    "post_trigger",
+    "pre_trigger"
+   ],
+   "rejections": [
+    {
+     "type": "ActionRejected",
+     "data": {
+      "rejection": {
+       "code": "interaction_constraint_unsatisfied",
+       "disposition": "invalid",
+       "message": "That response does not satisfy the interaction constraints.",
+       "related_object_ids": []
+      }
+     }
+    }
+   ],
+   "tick_errors": [],
+   "offer_seen": true,
+   "resolved": false
+  },
+  {
+   "leg": "sorcery",
+   "staged": "divination",
+   "mv": 3,
+   "verdict": "reproduced",
+   "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_hk_on_battlefield": "passed",
+    "A3_top_staged": "passed",
+    "A4_hk_died": "passed",
+    "A5_exile_and_lifeloss": "passed",
+    "A6_free_cast_offered": "passed",
+    "A7_accept_resolves": "failed",
+    "A8_no_dangling": "passed"
+   },
+   "notes": [
+    "accept-drive expired (120s): accepted cast did not resolve (exile=['divination'], gy_has_staged=True, p1_life=17)",
+    "A2: H&K reached battlefield=True",
+    "A3: pre_trigger library top=divination (want divination)",
+    "A4: H&K in graveyard in pre_trigger=True",
+    "A5: staged exiled=True (exile=['divination']); P1 life 20->17 (want 17)",
+    "A6: free-cast offer reached P0=True",
+    "A7: Divination in P0 GY=True; P1 life=17 (want 17); exile=['divination']; stack_empty=True",
+    "A8: end stack_empty=True"
+   ],
+   "duration_s": 198.8,
+   "stage": "done",
+   "exports": [
+    "post",
+    "post_trigger",
+    "pre_trigger"
+   ],
+   "rejections": [],
+   "tick_errors": [],
+   "offer_seen": true,
+   "resolved": false
+  }
+ ],
+ "verdicts": {
+  "instant": "reproduced",
+  "sorcery": "reproduced"
+ },
+ "assertions": {
+  "instant": {
+   "A1_setup_ok": "passed",
+   "A2_hk_on_battlefield": "passed",
+   "A3_top_staged": "passed",
+   "A4_hk_died": "passed",
+   "A5_exile_and_lifeloss": "passed",
+   "A6_free_cast_offered": "passed",
+   "A7_accept_resolves": "failed",
+   "A8_no_dangling": "passed"
+  },
+  "sorcery": {
+   "A1_setup_ok": "passed",
+   "A2_hk_on_battlefield": "passed",
+   "A3_top_staged": "passed",
+   "A4_hk_died": "passed",
+   "A5_exile_and_lifeloss": "passed",
+   "A6_free_cast_offered": "passed",
+   "A7_accept_resolves": "failed",
+   "A8_no_dangling": "passed"
+  }
+ },
+ "notes": [
+  "[instant] accept-drive expired (120s): accepted cast did not resolve (exile=['lightning bolt'], gy_has_staged=False, p1_life=19)",
+  "[instant] A2: H&K reached battlefield=True",
+  "[instant] A3: pre_trigger library top=lightning bolt (want lightning bolt)",
+  "[instant] A4: H&K in graveyard in pre_trigger=True",
+  "[instant] A5: staged exiled=True (exile=['lightning bolt']); P1 life 20->19 (want 19)",
+  "[instant] A6: free-cast offer reached P0=True",
+  "[instant] A7: Bolt in P0 GY=False; P1 life=19 (want 16); exile=['lightning bolt']; stack_empty=True",
+  "[instant] A8: end stack_empty=True",
+  "[sorcery] accept-drive expired (120s): accepted cast did not resolve (exile=['divination'], gy_has_staged=True, p1_life=17)",
+  "[sorcery] A2: H&K reached battlefield=True",
+  "[sorcery] A3: pre_trigger library top=divination (want divination)",
+  "[sorcery] A4: H&K in graveyard in pre_trigger=True",
+  "[sorcery] A5: staged exiled=True (exile=['divination']); P1 life 20->17 (want 17)",
+  "[sorcery] A6: free-cast offer reached P0=True",
+  "[sorcery] A7: Divination in P0 GY=True; P1 life=17 (want 17); exile=['divination']; stack_empty=True",
+  "[sorcery] A8: end stack_empty=True"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense 12x/6x playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore facility; pre_trigger/post_trigger/post exports are authoritative states restorable only via full game replay, not direct load."
+ ]
+}
