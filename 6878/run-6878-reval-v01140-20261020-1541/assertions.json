@@ -1,0 +1,115 @@
+{
+ "issue": 6878,
+ "run_id": "run-6878-reval-v01140-20261020-1541",
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_keep_offered": "passed",
+  "A2_keep_offered_detail": {
+   "top3": [
+    [
+     "9",
+     "forest"
+    ],
+    [
+     "38",
+     "llanowar elves"
+    ],
+    [
+     "31",
+     "grizzly bears"
+    ]
+   ],
+   "keep_offered_refs": [
+    "38",
+    "31"
+   ],
+   "keep_kind": "select",
+   "keep_spec": {
+    "type": "select",
+    "data": {
+     "constraint": {
+      "type": "count",
+      "data": {
+       "min": 0,
+       "max": 1
+      }
+     },
+     "confirm": "explicit"
+    }
+   }
+  },
+  "A3_order_offered_r1": "failed",
+  "A3_order_offered_r1_detail": {
+   "rest_oids": [
+    "9",
+    "31"
+   ],
+   "order_spec": null
+  },
+  "A4_rest_preserved_r1": "passed",
+  "A4_rest_preserved_r1_detail": {
+   "rest_oids": [
+    "9",
+    "31"
+   ],
+   "positions": {
+    "9": 28,
+    "31": 29
+   },
+   "library_len": 30,
+   "post_bottom_tail": [
+    "10",
+    "36",
+    "16",
+    "18",
+    "9",
+    "31"
+   ]
+  },
+  "A5_no_opponent_leak": "failed",
+  "A5_no_opponent_leak_detail": {
+   "view": {
+    "9": {
+     "name": "Forest",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "38": {
+     "name": "Llanowar Elves",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    },
+    "31": {
+     "name": "Grizzly Bears",
+     "zone": "Library",
+     "face_down": false,
+     "revealed": null
+    }
+   },
+   "leaked": [
+    "9",
+    "31"
+   ]
+  },
+  "A6_decline_branch_r2": "failed",
+  "A6_decline_branch_r2_detail": {
+   "kept": [],
+   "rest_oids": [
+    "11",
+    "28",
+    "5"
+   ],
+   "rest_positions": {
+    "11": 26,
+    "28": 27,
+    "5": 28
+   },
+   "order_offered": false
+  },
+  "A7_cleanup": "passed"
+ },
+ "notes": []
+}
