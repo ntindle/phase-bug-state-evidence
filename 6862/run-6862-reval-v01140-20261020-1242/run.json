@@ -1,0 +1,82 @@
+{
+ "issue": 6862,
+ "run_id": "run-6862-reval-v01140-20261020-1242",
+ "game_code": "819129",
+ "started_at": "2026-10-20T17:45:00",
+ "duration_s": 72.0,
+ "server_identity": {
+  "validated_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "24aab48adf18d3ffebbef9a1bc7c50c62ba02cce30be6959cad50b7ae013d396",
+ "decks": {
+  "P0": [
+   [
+    "Espers to Magicite",
+    12
+   ],
+   [
+    "Swamp",
+    48
+   ]
+  ],
+  "P1": [
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Grizzly Bears",
+    8
+   ],
+   [
+    "Sylvan Reclamation",
+    8
+   ],
+   [
+    "Mountain",
+    16
+   ],
+   [
+    "Forest",
+    16
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_exile_observed": "passed",
+  "A3_trigger_prompted": "failed",
+  "A4_noncreature_excluded": "not-run",
+  "A5_illegal_branch": "not-run",
+  "A6_control_token": "not-run",
+  "A7_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: turn=7 phase=PostCombatMain p1_gy bear=3 recl=2",
+  "post_exile.json: P1 gy bear=0 recl=0; exile bear=3 recl=2",
+  "post.json: stack_empty=True turn=17 phase=Upkeep",
+  "candidates offered: []",
+  "illegal branch: tried=False accepted=None",
+  "control token obj: None",
+  "protocol-153 driver (v0.114.0): mulligan via legacy MulliganDecision action (always keep; deep mulligans starve the bottom prompt); P1 loads its graveyard with Faithless Looting (cast via legacy Action, {R} via legacy PayMana/vi tapLandForMana, discard-2 via vi schema/select ranked Bear/Reclamation > lands); DiscardToHandSize via vi schema/select; CastSpell via legacy Action with vi castSpell-choice fallback; the test Esper's cast keeps MANA_NEEDS empty (engine auto-pay is the single payer; 2026-10-07 double-pay gate); cast-confirmation guard holds priority/no-new-plays until each cast is confirmed on the stack (2026-10-09 protocol-118 race fix); reflexive trigger prompt detected by vi opportunity candidates referencing Exile-zone objects; 5s re-tick backstop."
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "8x playset densities are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay (scenario_6862_01070.py), not direct load.",
+  "Native AI seats not used; the reflexive trigger is engine-level and seat-independent."
+ ],
+ "setup_line": "P0: 12x Espers to Magicite + 48x Swamp (land-drop, pass); P1: 12x Faithless Looting + 8x Grizzly Bears + 8x Sylvan Reclamation + 16x Mountain + 16x Forest (land-drop; Looting discards Bears/Reclamations; ranked cleanup discards backstop)",
+ "contract_line": "Esper's to Magicite exiles P1's graveyard; the reflexive trigger offers exiled creature cards only (Sylvan Reclamation excluded); choosing a Bear creates an artifact-only Bear token."
+}
