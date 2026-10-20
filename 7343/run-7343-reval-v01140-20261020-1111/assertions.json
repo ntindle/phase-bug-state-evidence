@@ -1,0 +1,42 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_cast_offered": "failed",
+    "A3_sac_paid": "not-run",
+    "A4_opp_sac": "not-run",
+    "A5_draw": "not-run",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "pre: main_phase=True grudge_in_hand=True p0_memnite_bf=True p1_memnite_bf=True untapped_swamp=3 untapped_mountain=1 turn=8 library_pre=49",
+    "Fatal Grudge CastSpell advertised: False (4 no-offer main-phase observations)",
+    "A3 not-run: cast never offered/submitted",
+    "A4 not-run: cast never offered/submitted",
+    "A5 not-run: library_pre=49 library_post=None",
+    "A6: stack_empty=True rejections=0 phase=PostCombatMain wf=Priority (cast never offered; judged on game state alone)"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority"
+  ],
+  "no_offer_observations": 4,
+  "grudge_oid": 17,
+  "memnite_oid": 15,
+  "p1_memnite_oid": 107
+}
