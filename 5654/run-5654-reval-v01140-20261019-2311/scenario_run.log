@@ -1,0 +1,61 @@
+[23:19:17] starting issue #5654 run run-5654-reval-v01140-20261019-2311
+[23:19:17] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[23:19:17] parse summary: {"notion thief": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Draw", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}, "plagiarize": {"event": "Draw", "condition": null, "execute_effect": "Unimplemented", "execute_desc": "if target player would draw a card, instead that player skips that draw", "sub_effect": "Draw", "sub_count": 1, "sub_target": "Controller"}, "hullbreacher": {"event": "Draw", "condition": "ExceptFirstDrawInDrawStep", "execute_effect": "Token", "execute_desc": null, "sub_effect": null, "sub_count": null, "sub_target": null}}
+[23:19:18] [A] game V6MY0E P0seat=0 P1seat=1
+[23:19:18] [P0] mulligan #2 (7: ['island', 'swamp', 'island', 'swamp', 'swamp', 'island', 'island'])
+[23:19:18] [P1] keep 7: ['island', 'island', 'divination', 'island', 'island', 'island', 'island']
+[23:19:18] [A] DIAG turn=1 active=1 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:19:18] [P0] keep 7: ['island', 'notion thief', 'swamp', 'swamp', 'island', 'notion thief', 'island']
+[23:19:19] [P0] bottoming ['Island'] via vi
+[23:19:19] [P1] playing land island
+[23:19:21] [P0] playing land island
+[23:19:24] [P1] playing land island
+[23:19:27] [P0] playing land swamp
+[23:19:29] [P1] playing land island
+[23:19:31] [P0] playing land swamp
+[23:19:33] [P1] playing land island
+[23:19:36] [P0] playing land island
+[23:19:36] [P0] casting notion thief (oid=33)
+[23:19:36] [A] P0 casts Notion Thief (turn 8)
+[23:19:36] [P1] cast confirmed (stack): notion thief oid 33
+[23:19:40] [P1] playing land island
+[23:19:40] [A] P1 main phase: exporting PRE_A, then casting Divination
+[23:19:40] [P1] casting divination (oid=107)
+[23:19:41] [A] P1 casts Divination (turn 9)
+[23:19:41] [P0] cast confirmed (stack): divination oid 107
+[23:19:41] [P1] Divination confirmed on stack
+[23:19:41] [P1] Divination confirmed on stack
+[23:19:41] [P1] Divination confirmed on stack
+[23:19:41] [A] Divination resolved; exporting POST_A
+[23:19:41] [A] exported POST_A
+[23:19:41] [A] done flag set; finishing game
+[23:19:41] [A] game A finished ok=True
+[23:19:41] [B] game AXGC47 P0seat=0 P1seat=1
+[23:19:41] [P0] keep 7: ['island', 'island', 'plagiarize', 'island', 'island', 'plagiarize', 'island']
+[23:19:41] [P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[23:19:41] [B] DIAG turn=1 active=0 phase=Untap P0hand=7 P1hand=7 stack=0 key_cast=False
+[23:19:42] [P0] playing land island
+[23:19:44] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:19:44] [P1] discarding to hand size via vi: picks=['AXGC47.0.21.c1']
+[23:19:49] [P1] playing land island
+[23:19:52] [P0] playing land island
+[23:19:53] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:19:54] [P1] discarding to hand size via vi: picks=['AXGC47.0.51.c1']
+[23:19:59] [P1] playing land island
+[23:20:01] [P0] playing land island
+[23:20:03] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:20:04] [P1] discarding to hand size via vi: picks=['AXGC47.0.81.c1']
+[23:20:09] [P1] playing land island
+[23:20:12] [P0] playing land island
+[23:20:14] [B] P1 Upkeep: exporting PRE_B, then casting Plagiarize @P1
+[23:20:14] [P0] casting plagiarize (oid=38)
+[23:20:14] [B] P0 casts Plagiarize (turn 8)
+[23:20:14] [P1] cast confirmed (stack): plagiarize oid 38
+[23:20:15] [B] P1 past draw step; exporting POST_B
+[23:20:15] [B] exported POST_B
+[23:20:15] [P1] discarding to hand size via vi: picks=['AXGC47.0.115.c1']
+[23:20:15] [B] done flag set; finishing game
+[23:20:15] [B] game B finished ok=True
+[23:20:15] [A] deltas P0 hand 5->7 lib 50->48; P1 hand 6->5 lib 49->49
+[23:20:15] [B] deltas P0 hand 6->5 lib 50->50; P1 hand 7->8 lib 50->49
+[23:20:16] rendered summary.png
