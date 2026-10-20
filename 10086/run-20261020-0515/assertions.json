@@ -1,0 +1,19 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_olivia_applied": "passed",
+  "A3_devotion_dropped": "passed",
+  "A4_no_stray_olivia": "failed",
+  "A5_amoeboid_applied": "not-run",
+  "A6_no_stray_amoeboid": "not-run"
+ },
+ "verdict": "reproduced",
+ "notes": [
+  "restore timed out; amoeboid leg skipped",
+  "pre_olivia: heliod={'present': True, 'core_types': ['Enchantment', 'Creature'], 'subtypes': ['God', 'Vampire'], 'zone': 'Battlefield', 'devotion_p0': 5}",
+  "post_olivia: heliod={'present': True, 'core_types': ['Enchantment'], 'subtypes': ['Vampire'], 'zone': 'Battlefield', 'devotion_p0': 4}",
+  "A4 FAILED (REPORTED BUG): stray type/subtype remains: core=['Enchantment'] subtypes=['Vampire']",
+  "A5/A6 not-run: pre_amoeboid.json missing",
+  "A6 not-run: post_amoeboid.json missing"
+ ]
+}
