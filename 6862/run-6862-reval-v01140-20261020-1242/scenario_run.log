@@ -1,0 +1,72 @@
+[12:45:00] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[12:45:00] data-level: oracle ok=True creature_filter=True exiled_by_source=True multi_target={'min': 0, 'max': {'type': 'Fixed', 'value': 1}}
+[12:45:00] P0 creating game...
+[12:45:01] P1 joining...
+[12:45:01] game 819129; P0 seat=0 P1 seat=1
+[12:45:01] [P0] mulligan -> Keep (7: ['swamp', 'swamp', 'swamp', 'swamp', 'espers to magicite', 'swamp', 'swamp'])
+[12:45:01] [P1] mulligan -> Keep (7: ['mountain', 'faithless looting', 'faithless looting', 'mountain', 'forest', 'forest', 'sylvan reclamation'])
+[12:45:02] [P0] playing land swamp
+[12:45:06] [P1] playing land mountain
+[12:45:06] [P1] casts Faithless Looting (oid=99)
+[12:45:06] [P0] action confirmed (stack): Faithless Looting oid 99
+[12:45:07] [P1] Looting discards: ['grizzly bears', 'grizzly bears']
+[12:45:07] Looting resolved (discard done)
+[12:45:11] [P0] playing land swamp
+[12:45:14] [P1] tap land for mana used_for=R
+[12:45:14] [P1] submitting interaction iid=819129.0.51 choice=819129.0.51.c1 (Mountain)
+[12:45:15] [P1] playing land mountain
+[12:45:16] [P1] casts Faithless Looting (oid=113)
+[12:45:16] [P0] action confirmed (stack): Faithless Looting oid 113
+[12:45:16] [P1] Looting discards: ['sylvan reclamation', 'sylvan reclamation']
+[12:45:17] Looting resolved (discard done)
+[12:45:20] [P0] playing land swamp
+[12:45:23] [P1] tap land for mana used_for=R
+[12:45:23] [P1] submitting interaction iid=819129.0.86 choice=819129.0.86.c1 (Mountain)
+[12:45:24] [P1] playing land forest
+[12:45:24] [P1] casts Faithless Looting (oid=98)
+[12:45:25] [P0] action confirmed (stack): Faithless Looting oid 98
+[12:45:25] [P1] Looting discards: ['grizzly bears', 'forest']
+[12:45:25] Looting resolved (discard done)
+[12:45:29] [P0] playing land swamp
+[12:45:29] === stage -> CAST (bear_gy=3 recl_gy=2 untapped=4) ===
+[12:45:29] [P0] CAST menu: legacy=False vi=False menu=[]
+[12:45:31] exported pre.json
+[12:45:31] [P0] casts Esper's to Magicite (oid=48)
+[12:45:31] [P0] action confirmed (stack): Espers to Magicite oid 48
+[12:45:31] Esper's 48 on stack
+[12:45:32] Esper's resolved: P1 gy bear=0 recl=0; exile bear=3 recl=2
+[12:45:32] exported post_exile.json
+[12:45:33] [P1] tap land for mana used_for=R
+[12:45:33] [P1] submitting interaction iid=819129.0.126 choice=819129.0.126.c2 (Mountain)
+[12:45:34] [P1] playing land mountain
+[12:45:35] [P1] casts Faithless Looting (oid=104)
+[12:45:35] [P0] action confirmed (stack): Faithless Looting oid 104
+[12:45:35] [P1] tap land for mana used_for=R
+[12:45:35] [P1] submitting interaction iid=819129.0.133 choice=819129.0.133.c2 (Mountain)
+[12:45:36] [P1] Looting discards: ['sylvan reclamation', 'forest']
+[12:45:36] Looting resolved (discard done)
+[12:45:43] [P1] playing land mountain
+[12:45:50] [P1] playing land mountain
+[12:45:57] [P0] discards 1: ['swamp']
+[12:45:58] [P1] playing land forest
+[12:45:58] [P1] casts Faithless Looting (oid=116)
+[12:45:59] [P0] action confirmed (stack): Faithless Looting oid 116
+[12:45:59] [P1] tap land for mana used_for=R
+[12:45:59] [P1] submitting interaction iid=819129.0.226 choice=819129.0.226.c3 (Mountain)
+[12:45:59] [P1] Looting discards: ['grizzly bears', 'sylvan reclamation']
+[12:46:00] Looting resolved (discard done)
+[12:46:06] [P0] discards 1: ['swamp']
+[12:46:08] [P1] playing land forest
+[12:46:11] no trigger prompt 10 turns post-resolution (resolved turn 7, now turn 17); stopping gracefully
+[12:46:12] exported post.json
+[12:46:12] A1_setup_ok: passed
+[12:46:12] A2_exile_observed: passed
+[12:46:12] A3_trigger_prompted: failed
+[12:46:12] A4_noncreature_excluded: not-run
+[12:46:12] A5_illegal_branch: not-run
+[12:46:12] A6_control_token: not-run
+[12:46:12] A7_cleanup: passed
+[12:46:13] DONE verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_exile_observed": "passed", "A3_trigger_prompted": "failed", "A4_noncreature_excluded": "not-run", "A5_illegal_branch": "not-run", "A6_control_token": "not-run", "A7_cleanup": "passed"}
+[12:46:13] rendered /home/hatch/workspace/dev/phase-backfill/evidence/6862/run-6862-reval-v01140-20261020-1242/summary.png
+[12:46:13] copied driver into evidence dir
+[12:46:13] wrote manifest.sha256 (10 files)
