@@ -1,0 +1,155 @@
+{
+ "issue": 6763,
+ "run_id": "run-6763-reval-v01140-20261020-0616",
+ "client_commit": "b8fa1d391bf389868876adc4af4d05593fcc4d79",
+ "client_tree": "/home/hatch/workspace/dev/phase-backfill/checkout-6763-20261012",
+ "client_drift_check": {
+  "tree_reused_from_run": "run-6763-reval-v01071-20261012-1441",
+  "head": "b8fa1d391bf389868876adc4af4d05593fcc4d79",
+  "components": "byte-identical to the 2026-10-12 verified tree (sha256-verified against the tree this run; harness-facing props and the objectAnchorSelector contract unchanged)",
+  "component_sha256": {
+   "StackDisplay.tsx": "9449770718ed99bbd2f535e010332767a0e6409562c88398733fe2d427efe3f4",
+   "StackTargetArcs.tsx": "2d4db1f2f6e3816c4638a84c79ace1b9a6faca5fe557335f0562aeab2ca39ab2",
+   "GraveyardPile.tsx": "0c12a6afac68b2719b7cf3093896879bb1b130cd3380c482b458463fcf52b440",
+   "ZoneViewer.tsx": "4f51c750476e8ed623ffa4a5ecb1c05eb775d1b234412fb8d3996b8d4fba24b4"
+  }
+ },
+ "assertions": {
+  "U1_rendered_setup": "passed",
+  "U2_target_identity_ui": "passed",
+  "U3_label_indistinguishable": "passed",
+  "U4_arc_indistinguishable": "passed",
+  "U5_viewer_indistinguishable": "passed"
+ },
+ "notes": [
+  "U2: variant A targets 32, variant B targets 19",
+  "U3: labels A=['\u2192 Walking Ballista'] B=['\u2192 Walking Ballista']",
+  "U4: arc endpoints identical (48.234375, 67.53125); start-point jitter ['M 135.85551738739014 558 Q 170.7981117692633 298.69654856168546 48.234375 67.53125'] vs ['M 136.1057243347168 557.9999694824219 Q 170.9162508830839 298.65760513061946 48.234375 67.53125'] is <0.1px noise",
+  "U4: anchor={'tag': 'BUTTON', 'pile': '0', 'objectId': None, 'grouped': '3 32', 'rect': {'x': 0, 'y': 0, 'w': 96.5, 'h': 135.1}} arcs_A=['M 135.85551738739014 558 Q 170.7981117692633 298.69654856168546 48.234375 67.53125']",
+  "LIMITATION: ui_A/B_viewer.png not captured this run -- dedicated viewer-screenshot tabs never reached __READY and in-tab viewer screenshots wedge with the post-mount renderer park (~0.3s after ZoneViewer mounts; main thread parks, low CPU; cause unidentified). U5 rests on the viewer DOM evaluation, which is reliable when run immediately after the cards appear."
+ ],
+ "observations": {
+  "A": {
+   "variant": "A",
+   "seed": {
+    "variant": "A",
+    "entryId": 121,
+    "targetId": 32,
+    "gyIds": [
+     3,
+     32
+    ]
+   },
+   "pile": {
+    "grouped": "3 32",
+    "count": "sta2"
+   },
+   "anchors": {
+    "3": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "3 32",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    },
+    "32": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "3 32",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    }
+   },
+   "labels": [
+    "\u2192 Walking Ballista"
+   ],
+   "arcs": [
+    "M 135.85551738739014 558 Q 170.7981117692633 298.69654856168546 48.234375 67.53125"
+   ],
+   "viewer": {
+    "cards": {
+     "3": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     },
+     "32": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     }
+    },
+    "highlighted": []
+   }
+  },
+  "B": {
+   "variant": "B",
+   "seed": {
+    "variant": "B",
+    "entryId": 121,
+    "targetId": 19,
+    "gyIds": [
+     19,
+     53
+    ]
+   },
+   "pile": {
+    "grouped": "19 53",
+    "count": "sta2"
+   },
+   "anchors": {
+    "19": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "19 53",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    },
+    "53": {
+     "tag": "BUTTON",
+     "pile": "0",
+     "objectId": null,
+     "grouped": "19 53",
+     "rect": {
+      "x": 0,
+      "y": 0,
+      "w": 96.5,
+      "h": 135.1
+     }
+    }
+   },
+   "labels": [
+    "\u2192 Walking Ballista"
+   ],
+   "arcs": [
+    "M 136.1057243347168 557.9999694824219 Q 170.9162508830839 298.65760513061946 48.234375 67.53125"
+   ],
+   "viewer": {
+    "cards": {
+     "19": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     },
+     "53": {
+      "html": "<div class=\"group relative inline-flex shrink-0 rounded-lg transition-transform hover:ring-1 hover:ring-white/20\" data-object-id=\"#\" data-card-hover=\"true\"><div class=\"relative inline-block w-fit select-none\"><div class=\"w-[var(--card-w)] h-[var(--card-h)] rounded-lg transition-transform duration-200   bg-gray-800 shadow-md overflow-hidden flex flex-col p-2\" role=\"img\" aria-label=\"Walking Ballista\" style=\"border: 1px solid rgb(75, 85, 99);\"><div class=\"text-xs font-semibold text-gray-100 mb-1 truncate\">Walking Ballista</div></div></div></div>",
+      "text": "Walking Ballista"
+     }
+    },
+    "highlighted": []
+   }
+  }
+ }
+}
