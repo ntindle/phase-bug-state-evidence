@@ -1,0 +1,28 @@
+{
+ "issue": 10107,
+ "issue_title": "Infernal Harvest is marked supported while its variable return cost loses X",
+ "release": {
+  "tag": "v0.114.0",
+  "published_at": "2026-10-19T18:59:10Z",
+  "build_commit": "ac67cbb",
+  "latest_stable_confirmed": "2026-10-20 (this run; matches pinned version, no re-pin needed)"
+ },
+ "card_data": {
+  "file": "card-data.json",
+  "sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "sha256_matches_release_manifest": true,
+  "faces_exported": 35925,
+  "manifest": "server/releases/v0.114.0/release-server-v0.114.0.json"
+ },
+ "source_audit_basis": {
+  "repo": "phase-rs/phase",
+  "ref": "v0.114.0",
+  "commit": "ac67cbb",
+  "files": [
+   "crates/engine/src/game/coverage.rs",
+   "crates/engine/src/game/costs.rs"
+  ],
+  "note": "sparse checkout of the exact pinned tag; read-only, no build"
+ },
+ "subsystem": "data pipeline (oracle-gen parser output + coverage-report audit); no live game scenario \u2014 per the issue, the claim is static parser/coverage evidence, not a live cast"
+}
