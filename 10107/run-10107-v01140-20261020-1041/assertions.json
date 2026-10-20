@@ -1,0 +1,22 @@
+{
+ "A1_parser_drops_X_quantity": {
+  "status": "passed",
+  "detail": "additional_cost=Required(EffectCost(Bounce)); Bounce target=Typed/Subtype Swamp, controller You, selection at_resolution; zero quantity-like fields in the cost subtree; oracle_text requires 'return X Swamps you control'. X is bound only in the damage effect (Ref(Variable X)), never in the cost."
+ },
+ "A2_coverage_parse_detail_hardcoded_supported": {
+  "status": "passed",
+  "detail": "coverage.rs:6108 build_additional_cost_items: AdditionalCost::Required(_) -> label 'AdditionalCost:Required' with supported:true hardcoded (line 6150); additional_cost_has_unimplemented only recurses Unimplemented leaves, so EffectCost(Bounce) takes the supported:true path."
+ },
+ "A3_coverage_gap_audit_misses_effect_cost_shape": {
+  "status": "passed",
+  "detail": "collect_ability_cost_missing_parts (8923) flags EffectCost only when the inner effect is Effect::Unimplemented; Effect::Bounce is a recognized variant -> no gap. StructuralFeature::AdditionalCost (9310 emit site) is classified Handled blanket (9496) regardless of inner shape. Combined with A2, the row must be supported:true, gap_count:0."
+ },
+ "A4_runtime_cannot_resolve_bounce_as_cost": {
+  "status": "passed",
+  "detail": "costs.rs:1545 effect-as-cost interpreter implements only Mana / SetTapState(tap granter) / counters arms; every other shape, including Effect::Bounce, falls through to payment_failed('Effect-as-cost not yet resolvable'). Confirms the issue's claim that Bounce is not an implemented effect-cost shape."
+ },
+ "A5_no_live_cast_claim": {
+  "status": "passed",
+  "detail": "No live cast was attempted or is claimed, per the issue's own scope ('static parser/coverage/payment-source evidence, not a newly executed live cast'). The reproduced defect is the false 'supported' signal on a card whose cost semantics the parser dropped and the runtime cannot resolve."
+ }
+}
