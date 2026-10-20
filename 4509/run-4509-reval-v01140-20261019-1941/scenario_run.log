@@ -1,0 +1,87 @@
+[19:48:05] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[19:48:05] data-level check: ok=True notes=['abilities=1 unimplemented=1 static_abilities=[]', "parse: Static pattern matched but line failed static parser: Enchanted creature can't attack or block, and its activated abilities can't be activated. Its controller may exile three cards from their graveyar"]
+[19:48:07] game=3XDIW4 run=run-4509-reval-v01140-20261019-1941
+[19:48:07] [P0] keep 7: ['island', 'thought scour', 'island', 'lost in thought', 'island', 'thought scour', 'lost in thought']
+[19:48:07] [P1] keep 7: ['forest', 'forest', 'forest', 'forest', 'grizzly bears', 'forest', 'forest']
+[19:48:07] [P1] playing land forest
+[19:48:10] [P0] playing land island
+[19:48:11] [P0] casting thought scour (oid 11) needs={'U': 1}
+[19:48:11] [P0] targeting player -> 
+[19:48:11] [P0] cast confirmed (stack): thought scour oid 11
+[19:48:14] [P1] playing land forest
+[19:48:14] [P1] casting grizzly bears (oid 89) needs={'G': 1, 'generic': 1}
+[19:48:15] [P0] cast confirmed (stack): grizzly bears oid 89
+[19:48:18] [P0] tap land for mana used_for=U needs={'U': 0}
+[19:48:18] [P0] submitting interaction iid=3XDIW4.0.54 choice=3XDIW4.0.54.c3 (Island)
+[19:48:19] [P0] playing land island
+[19:48:19] [P0] casting thought scour (oid 53) needs={'U': 1}
+[19:48:20] [P0] targeting player -> 
+[19:48:20] [P0] cast confirmed (stack): thought scour oid 53
+[19:48:22] [P1] tap land for mana used_for=G needs={'G': 0, 'generic': 1}
+[19:48:22] [P1] submitting interaction iid=3XDIW4.0.74 choice=3XDIW4.0.74.c1 (Forest)
+[19:48:22] [P1] tap land for mana used_for=generic needs={'G': 0, 'generic': 0}
+[19:48:22] [P1] submitting interaction iid=3XDIW4.0.75 choice=3XDIW4.0.75.c1 (Forest)
+[19:48:23] [P1] playing land forest
+[19:48:24] [P1] casting llanowar elves (oid 74) needs={'G': 1}
+[19:48:24] [P0] cast confirmed (stack): llanowar elves oid 74
+[19:48:27] [P0] tap land for mana used_for=U needs={'U': 0}
+[19:48:27] [P0] submitting interaction iid=3XDIW4.0.95 choice=3XDIW4.0.95.c1 (Island)
+[19:48:28] [P0] playing land island
+[19:48:28] [P0] casting lost in thought (oid 21) needs={'U': 1, 'generic': 1}
+[19:48:28] [P0] targeting creature -> Llanowar Elves
+[19:48:28] [P0] cast confirmed (stack): lost in thought oid 21
+[19:48:29] aura on BF oid=21 static_definitions=[] unimplemented=['Effect: static_structure']
+[19:48:29] aura attached (oid 21) to Elves 74, P1 gy=4; entering attack_test
+[19:48:29] exported pre.json (turn=6)
+[19:48:29] P1 priority action types at escape scan: ['PassPriority']
+[19:48:29] P1 priority action types at escape scan: ['PassPriority']
+[19:48:30] P1 priority action types at escape scan: ['PassPriority']
+[19:48:30] P1 priority action types at escape scan: ['PassPriority']
+[19:48:30] P1 priority action types at escape scan: ['PassPriority']
+[19:48:31] [P1] tap land for mana used_for=G needs={'G': 0}
+[19:48:31] [P1] submitting interaction iid=3XDIW4.0.115 choice=3XDIW4.0.115.c2 (Forest)
+[19:48:31] P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+[19:48:31] P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+[19:48:32] P1 priority action types at escape scan: ['ActivateAbility', 'CastSpell', 'PassPriority', 'PlayLand', 'TapLandForMana']
+[19:48:32] P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+[19:48:32] [P1] declares attack with enchanted Elves 74
+[19:48:33] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:33] Elves 74 IS in combat.attackers
+[19:48:33] attack1 ACCEPTED (Elves in attackers)
+[19:48:33] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:33] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:34] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:34] P1 priority action types at escape scan: ['CastSpell', 'PassPriority', 'PlayLand', 'TapLandForMana']
+[19:48:35] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:35] [P0] tap land for mana used_for=U needs={'U': 0, 'generic': 1}
+[19:48:35] [P0] submitting interaction iid=3XDIW4.0.137 choice=3XDIW4.0.137.c1 (Island)
+[19:48:35] attack leg concluded (accepted=True rejected=None elves_attacked=True P0 life 20->19); exporting post_attack, entering activation_test
+[19:48:35] exported post_attack.json (turn=8)
+[19:48:35] [P0] tap land for mana used_for=generic needs={'U': 0, 'generic': 0}
+[19:48:35] [P0] submitting interaction iid=3XDIW4.0.138 choice=3XDIW4.0.138.c1 (Island)
+[19:48:36] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:36] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:37] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:38] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:38] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:39] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:39] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:39] P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+[19:48:40] P1 priority action types at escape scan: ['ActivateAbility', 'PassPriority', 'TapLandForMana']
+[19:48:40] P1 priority action types at escape scan: ['ActivateAbility', 'CastSpell', 'PassPriority', 'PlayLand', 'TapLandForMana']
+[19:48:40] [P1] attempts ActivateAbility on enchanted Elves 74 while holding priority
+[19:48:40] P1 priority action types at escape scan: ['CastSpell', 'PassPriority', 'PlayLand', 'TapLandForMana']
+[19:48:40] activation leg concluded; entering control stage
+[19:48:41] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:41] [P1] declares control attack with Bear 89
+[19:48:41] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:41] Bear 89 IS in combat.attackers
+[19:48:42] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:42] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:42] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:43] P1 priority action types at escape scan: ['CastSpell', 'PassPriority', 'PlayLand', 'TapLandForMana']
+[19:48:43] P1 priority action types at escape scan: ['PassPriority', 'TapLandForMana']
+[19:48:44] control leg concluded (bear_attack_accepted=True P0 life 19->17); exporting post_control
+[19:48:44] exported post_control.json (turn=10)
+[19:48:44] verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_attack_restricted": "failed", "A3_activation_restricted": "failed", "A4_escape_offered": "failed", "A5_escape_effective": "not-run", "A6_control_binding": "passed"}
+[19:48:44] closing logs before manifest computation
