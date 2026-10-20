@@ -1,0 +1,135 @@
+[02:17:18] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[02:17:18] data-level check: ok=True notes=["mana_cost={'type': 'Cost', 'shards': ['Blue', 'Blue', 'Black'], 'generic': 2}"]
+[02:17:20] [instant] game BZXIVF; P0 seat=0 P1 seat=1
+[02:17:20] [P0-instant] mulligan (7 cards, hand=['mountain', 'lightning bolt', 'murder', 'swamp', 'swamp', 'mountain', 'island'])
+[02:17:20] [P1-instant] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[02:17:20] [P0-instant] keep 7: ['island', 'hidetsugu and kairi', 'swamp', 'hidetsugu and kairi', 'murder', 'island', 'lightning bolt']
+[02:17:20] [P0-instant] bottoming ['island'] via vi
+[02:17:21] [P1-instant] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand']
+[02:17:21] [P1-instant]   opp iid=BZXIVF.0.8 rtype=exactChoices spec=None n=8 first={"id": "BZXIVF.0.8.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:17:21] [P1-instant] playing land island
+[02:17:24] [P0-instant] playing land island
+[02:17:27] [P1-instant] playing land island
+[02:17:31] [P0-instant] playing land swamp
+[02:17:34] [P1-instant] playing land island
+[02:17:37] [P0-instant] playing land mountain
+[02:17:40] [P1-instant] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:17:40] [P1-instant]   opp iid=BZXIVF.0.98 rtype=exactChoices spec=None n=11 first={"id": "BZXIVF.0.98.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:17:40] [P1-instant] playing land island
+[02:17:43] [P0-instant] playing land island
+[02:17:46] [P1-instant] playing land island
+[02:17:49] [P0-instant] playing land mountain
+[02:17:49] [P0-instant] casting hidetsugu and kairi (oid 48) needs={'U': 2, 'B': 1, 'generic': 2}
+[02:17:49] [P0-instant] cast hidetsugu and kairi confirmed; resuming
+[02:17:50] [P0-instant] H&K resolved on BF; ETB putback pending
+[02:17:50] [P0-instant] discarding to hand size via vi (select): picks=['BZXIVF.0.149.s4']
+[02:18:00] [P0-instant] REJECTION: {"rejection": {"code": "interaction_constraint_unsatisfied", "disposition": "invalid", "message": "That response does not satisfy the interaction constraints.", "related_object_ids": []}}
+[02:18:00] [P0-instant] ETB putback: ['swamp', 'swamp']
+[02:18:03] [P1-instant] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:18:03] [P1-instant]   opp iid=BZXIVF.0.164 rtype=exactChoices spec=None n=13 first={"id": "BZXIVF.0.164.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:18:03] [P1-instant] playing land island
+[02:18:06] [P0-instant] playing land swamp
+[02:18:06] [P0-instant] casting mystical tutor (oid 40) needs={'U': 1}
+[02:18:06] [P0-instant] tap land for mana used_for=U needs={'U': 0}
+[02:18:06] [P0-instant] submitting interaction iid=BZXIVF.0.181 choice=BZXIVF.0.181.c9 (Island)
+[02:18:07] [P0-instant] cast mystical tutor confirmed; resuming
+[02:18:07] [P0-instant] tutor search: staging 'lightning bolt'
+[02:18:07] [P0-instant] tutor resolved (turn 12)
+[02:18:07] [P0-instant] casting murder (oid 33) needs={'B': 2, 'generic': 1}
+[02:18:08] [P0-instant] tap land for mana used_for=generic needs={'B': 2, 'generic': 0}
+[02:18:08] [P0-instant] submitting interaction iid=BZXIVF.0.186 choice=BZXIVF.0.186.c7 (Mountain)
+[02:18:08] [P0-instant] cast murder confirmed; resuming
+[02:18:08] [P0-instant] murder resolved
+[02:18:08] [P0-instant] H&K died; exporting pre_trigger
+[02:18:08] [instant] exported instant_pre_trigger.json (turn=12)
+[02:18:09] [P0-instant] trigger resolved: lightning bolt exiled; P1 life 20->19; exporting post_trigger, watching 90s for the offer
+[02:18:09] [instant] exported instant_post_trigger.json (turn=12)
+[02:18:19] [P0-instant] *** FREE-CAST OFFER OBSERVED ***
+[02:18:19] [P0-instant] submitting interaction iid=BZXIVF.0.191 choice=BZXIVF.0.191.c1 (true)
+[02:18:19] [P0-instant] accepted the free cast; driving to resolution
+[02:18:22] [P1-instant] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:18:22] [P1-instant]   opp iid=BZXIVF.0.206 rtype=exactChoices spec=None n=14 first={"id": "BZXIVF.0.206.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:18:22] [P1-instant] playing land island
+[02:18:28] [P1-instant] playing land island
+[02:18:34] [P1-instant] playing land island
+[02:19:23] [instant] WATCHDOG stale P0-instant: rev 279 turn=18 phase=PreCombatMain stage=accept_drive prio=True real_decision=True
+[02:19:23] [instant] WATCHDOG stale P1-instant: rev 279 turn=18 phase=PreCombatMain stage=accept_drive prio=False real_decision=False
+[02:20:08] [instant] WATCHDOG stale P0-instant: rev 279 turn=18 phase=PreCombatMain stage=accept_drive prio=True real_decision=True
+[02:20:08] [instant] WATCHDOG stale P1-instant: rev 279 turn=18 phase=PreCombatMain stage=accept_drive prio=False real_decision=False
+[02:20:23] [P0-instant] accept-drive expired without resolution
+[02:20:23] [instant] exported instant_post.json (turn=18)
+[02:20:23] [instant] ASSERTIONS: A1_setup_ok:passed; A2_hk_on_battlefield:passed; A3_top_staged:passed; A4_hk_died:passed; A5_exile_and_lifeloss:passed; A6_free_cast_offered:passed; A7_accept_resolves:failed; A8_no_dangling:passed;
+[02:20:23] [instant] VERDICT: reproduced
+[02:20:23] [sorcery] game F6NF1O; P0 seat=0 P1 seat=1
+[02:20:23] [P0-sorcery] keep 7: ['mystical tutor', 'mountain', 'swamp', 'divination', 'hidetsugu and kairi', 'island', 'murder']
+[02:20:23] [P1-sorcery] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[02:20:24] [P1-sorcery] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand']
+[02:20:24] [P1-sorcery]   opp iid=F6NF1O.0.6 rtype=exactChoices spec=None n=8 first={"id": "F6NF1O.0.6.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:20:24] [P1-sorcery] playing land island
+[02:20:27] [P0-sorcery] playing land mountain
+[02:20:30] [P1-sorcery] playing land island
+[02:20:33] [P0-sorcery] playing land swamp
+[02:20:36] [P1-sorcery] playing land island
+[02:20:39] [P0-sorcery] playing land island
+[02:20:42] [P1-sorcery] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:20:42] [P1-sorcery]   opp iid=F6NF1O.0.96 rtype=exactChoices spec=None n=11 first={"id": "F6NF1O.0.96.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:20:42] [P1-sorcery] playing land island
+[02:20:45] [P0-sorcery] playing land swamp
+[02:20:48] [P1-sorcery] playing land island
+[02:20:51] [P0-sorcery] playing land mountain
+[02:20:54] [P1-sorcery] playing land island
+[02:20:57] [P0-sorcery] playing land mountain
+[02:21:01] [P1-sorcery] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:21:01] [P1-sorcery]   opp iid=F6NF1O.0.186 rtype=exactChoices spec=None n=14 first={"id": "F6NF1O.0.186.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:21:01] [P1-sorcery] playing land island
+[02:21:04] [P0-sorcery] playing land swamp
+[02:21:07] [P1-sorcery] playing land island
+[02:21:12] [P0-sorcery] discarding to hand size via vi (select): picks=['F6NF1O.0.241.s1']
+[02:21:13] [P1-sorcery] playing land island
+[02:21:16] [P0-sorcery] playing land island
+[02:21:17] [P0-sorcery] casting hidetsugu and kairi (oid 32) needs={'U': 2, 'B': 1, 'generic': 2}
+[02:21:17] [P0-sorcery] tap land for mana used_for=B needs={'U': 2, 'B': 0, 'generic': 2}
+[02:21:17] [P0-sorcery] submitting interaction iid=F6NF1O.0.263 choice=F6NF1O.0.263.c3 (Swamp)
+[02:21:17] [P0-sorcery] tap land for mana used_for=generic needs={'U': 2, 'B': 0, 'generic': 1}
+[02:21:17] [P0-sorcery] submitting interaction iid=F6NF1O.0.264 choice=F6NF1O.0.264.c1 (Mountain)
+[02:21:17] [P0-sorcery] tap land for mana used_for=generic needs={'U': 2, 'B': 0, 'generic': 0}
+[02:21:17] [P0-sorcery] submitting interaction iid=F6NF1O.0.265 choice=F6NF1O.0.265.c1 (Mountain)
+[02:21:18] [P0-sorcery] cast hidetsugu and kairi confirmed; resuming
+[02:21:18] [P0-sorcery] H&K resolved on BF; ETB putback pending
+[02:21:18] [P0-sorcery] PENDING-DUMP (etb_pending): canSubmit=False kind=choose n_ops=0 atypes=[]
+[02:21:18] [P0-sorcery] discarding to hand size via vi (select): picks=['F6NF1O.0.270.s8', 'F6NF1O.0.270.s4']
+[02:21:21] [P1-sorcery] playing land island
+[02:21:24] [P0-sorcery] playing land island
+[02:21:25] [P0-sorcery] casting mystical tutor (oid 5) needs={'U': 1}
+[02:21:25] [P0-sorcery] tap land for mana used_for=U needs={'U': 0}
+[02:21:25] [P0-sorcery] submitting interaction iid=F6NF1O.0.302 choice=F6NF1O.0.302.c10 (Island)
+[02:21:25] [P0-sorcery] cast mystical tutor confirmed; resuming
+[02:21:25] [P0-sorcery] tutor search: staging 'divination'
+[02:21:26] [P0-sorcery] tutor resolved (turn 20)
+[02:21:26] [P0-sorcery] casting murder (oid 18) needs={'B': 2, 'generic': 1}
+[02:21:26] [P0-sorcery] tap land for mana used_for=B needs={'B': 1, 'generic': 1}
+[02:21:26] [P0-sorcery] submitting interaction iid=F6NF1O.0.307 choice=F6NF1O.0.307.c6 (Swamp)
+[02:21:26] [P0-sorcery] tap land for mana used_for=generic needs={'B': 1, 'generic': 0}
+[02:21:26] [P0-sorcery] submitting interaction iid=F6NF1O.0.308 choice=F6NF1O.0.308.c3 (Mountain)
+[02:21:26] [P0-sorcery] cast murder confirmed; resuming
+[02:21:27] [P0-sorcery] murder resolved
+[02:21:27] [P0-sorcery] H&K died; exporting pre_trigger
+[02:21:27] [sorcery] exported sorcery_pre_trigger.json (turn=20)
+[02:21:27] [P0-sorcery] trigger resolved: divination exiled; P1 life 20->17; exporting post_trigger, watching 90s for the offer
+[02:21:27] [sorcery] exported sorcery_post_trigger.json (turn=20)
+[02:21:37] [P0-sorcery] *** FREE-CAST OFFER OBSERVED ***
+[02:21:37] [P0-sorcery] submitting interaction iid=F6NF1O.0.313 choice=F6NF1O.0.313.c1 (true)
+[02:21:37] [P0-sorcery] accepted the free cast; driving to resolution
+[02:21:40] [P1-sorcery] PENDING-DUMP (p1_real_decision): canSubmit=True kind=choose n_ops=1 atypes=['PassPriority', 'PlayLand', 'TapLandForMana']
+[02:21:40] [P1-sorcery]   opp iid=F6NF1O.0.328 rtype=exactChoices spec=None n=18 first={"id": "F6NF1O.0.328.c0", "surfaces": [{"type": "summary", "data": {"code": "candidate"}}, {"type": "action", "data": {"code": "passPriority", "actionId": "aa9063230e9a1e8880abc47051b715da0ce68724929194424f44c81e1695ecca0"}}], "status": {"type": "available"}}
+[02:21:40] [P1-sorcery] playing land island
+[02:21:46] [P1-sorcery] playing land island
+[02:22:34] [sorcery] WATCHDOG stale P0-sorcery: rev 372 turn=24 phase=PreCombatMain stage=accept_drive prio=True real_decision=True
+[02:22:34] [sorcery] WATCHDOG stale P1-sorcery: rev 372 turn=24 phase=PreCombatMain stage=accept_drive prio=False real_decision=False
+[02:23:19] [sorcery] WATCHDOG stale P0-sorcery: rev 372 turn=24 phase=PreCombatMain stage=accept_drive prio=True real_decision=True
+[02:23:19] [sorcery] WATCHDOG stale P1-sorcery: rev 372 turn=24 phase=PreCombatMain stage=accept_drive prio=False real_decision=False
+[02:23:40] [P0-sorcery] accept-drive expired without resolution
+[02:23:42] [sorcery] exported sorcery_post.json (turn=24)
+[02:23:42] [sorcery] ASSERTIONS: A1_setup_ok:passed; A2_hk_on_battlefield:passed; A3_top_staged:passed; A4_hk_died:passed; A5_exile_and_lifeloss:passed; A6_free_cast_offered:passed; A7_accept_resolves:failed; A8_no_dangling:passed;
+[02:23:42] [sorcery] VERDICT: reproduced
+[02:23:43] closing logs before manifest computation
