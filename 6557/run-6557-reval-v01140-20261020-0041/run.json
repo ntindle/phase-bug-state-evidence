@@ -1,0 +1,107 @@
+{
+ "issue": 6557,
+ "run_id": "run-6557-reval-v01140-20261020-0041",
+ "started_at": "2026-10-20T05:47:54",
+ "duration_s": 28.1,
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY at pin time (2026-10-19, by the run that pinned the release); data digests match the signed manifest; digests recomputed against on-disk files this run"
+ },
+ "server_run_dir": "runs/run-6557-reval-v01140-20261020-0041",
+ "server_ownership": "reused the live v0.114.0 server on 127.0.0.1:9374 (started by backfill run-20261017-234157; games-db there); games are isolated per game id; ServerHello handshake re-verified this run (0.114.0/ac67cbb/protocol 153/Full)",
+ "server_port": 9374,
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "908c586595e68841c5fba2e510c98d407b3866b9e1295edb3a9d235506b02fc5",
+ "decks": {
+  "P0": [
+   [
+    "tamiyo, inquisitive student",
+    12
+   ],
+   [
+    "divination",
+    12
+   ],
+   [
+    "island",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    20
+   ],
+   [
+    "forest",
+    40
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_plus2": "passed",
+  "A3_weakened": "passed",
+  "A4_wears_off": "passed",
+  "A5_expired": "passed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "pre.json: P0 PreCombatMain turn 6, Tamiyo PW loyalty 2, 2 bear(s) on P1 BF, life 20/20",
+  "mid.json: +2 resolved, Tamiyo loyalty 2->4, stack empty (turn 6), delayed-trigger installed=True",
+  "post.json: attacking Bear oid 89 power == 1 (2/2 -> 1/2; -1/-0 applied), P0 life 20->19",
+  "p0next.json (P0 turn 8): bears back to 2 power [2, 2] (-1/-0 wore off)",
+  "post2.json: second attack (after P0's next turn began) Bear oid 89 power == 2, P0 life 19->17 (full 2 damage; watching effect expired)",
+  "final: stack empty, Tamiyo PW on BF (turn 9, phase EndCombat), game proceeding"
+ ],
+ "observations": {
+  "tamiyo_cast": true,
+  "div_cast": true,
+  "plus2_submitted": true,
+  "plus2_turn": 6,
+  "plus2_phase": "PreCombatMain",
+  "attack1": true,
+  "attack1_turn": 7,
+  "attack1_bear": 89,
+  "attack2": true,
+  "attack2_turn": 9,
+  "attack2_bear": 89,
+  "loyalty_pre": 2,
+  "loyalty_mid": 4,
+  "bear1_power_post": 1,
+  "bear1_life_post": 19,
+  "bear2_power_post2": 2,
+  "bear2_life_post2": 17,
+  "tamiyo_needs": {},
+  "div_needs": {},
+  "bear_needs": {}
+ },
+ "trigger_samples": 2,
+ "verdict": "not-reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "12x Tamiyo / 12x Divination / 20x Grizzly Bears deck density is a test-harness convenience (engine accepts >4-of for custom games); exercised behavior is the shipped card text.",
+  "Transform is produced by the printed Tamiyo, Inquisitive Student trigger (draw 3rd card in a turn via Divination), not a debug fixture.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Not tested on the original 0.35.0 report build; verdict is scoped to v0.114.0, not a fix claim."
+ ],
+ "setup_line": "P0: 12x tamiyo inquisitive student + 12x divination + 36x island (mulligan to Tamiyo + 2 islands; T1 Tamiyo; Divination -> transform; +2 on main phase); P1: 20x grizzly bears + 40x forest (attacks P0 with one bear after +2, control attack after the watching effect expires)",
+ "contract_line": "Tamiyo +2: until P0's next turn, each creature attacking P0 gets -1/-0 until end of turn (incl. on P1's turn)",
+ "prior_validation": {
+  "run": "run-6557-reval-v01130-20261019-0011",
+  "verdict": "not-reproduced",
+  "validated_version": "v0.113.0",
+  "comment_url": "https://github.com/phase-rs/phase/issues/6557#issuecomment-5617016250",
+  "evidence_commit": "d1858724bfa00fa3f09121e67a5f016a30d958aa"
+ }
+}
