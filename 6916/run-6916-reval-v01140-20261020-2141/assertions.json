@@ -1,0 +1,21 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_choice_offered": "passed",
+  "A3_controlled_by_chosen": "passed",
+  "A4_any_player_activate": "passed",
+  "A5_activation_effect": "failed",
+  "A6_cleanup": "passed"
+ },
+ "notes": [
+  "A1: xantcha_oid=181 zone=Battlefield owner=0 controller=2",
+  "A2 passed: opponent-choice prompt offered (iid=GAOSHQ.0.192, candidates=[1, 2], pick=2)",
+  "A3 passed: Xantcha controlled by P2 (intended pick)",
+  "A4 passed: P1 (non-controller) activated Xantcha's {3} ability",
+  "A5: controller=P2 life {0: 40, 1: 40, 2: 40} -> {0: 40, 1: 40, 2: 38}; hands {0: 7, 1: 8, 2: 7} -> {0: 7, 1: 7, 2: 8}",
+  "A5 FAILED: activation effect wrong (life_ok=True others_ok=True draw_ok=False)",
+  "A6: stack_empty=True",
+  "verdict=reproduced"
+ ],
+ "verdict": "reproduced"
+}
