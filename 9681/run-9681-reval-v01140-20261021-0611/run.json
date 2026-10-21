@@ -1,0 +1,101 @@
+{
+ "issue": 9681,
+ "issue_url": "https://github.com/phase-rs/phase/issues/9681",
+ "run_id": "run-9681-reval-v01140-20261021-0611",
+ "started_at": "2026-10-21T11:18:10",
+ "finished_at": "2026-10-21T11:19:35",
+ "duration_s": 85.4,
+ "server_identity": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "signature_key_id": "436711b6a2d36828",
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "observed_at": "2026-10-21",
+  "source": "2026-10-21: latest stable release v0.114.0 (published 2026-10-19T18:59:10Z) == pinned release dir; ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; hashes recomputed against on-disk artifacts this run; existing v0.114.0 server on 127.0.0.1:9374 reused (identity verified by handshake this run); fresh game created by this run; isolated evidence under evidence/9681/run-9681-reval-v01140-20261021-0611)."
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "8a30ed552a8a5b33b54e8362cff5f03de891f3f32e750e240f325b5a7287b314",
+ "decks": {
+  "P0": [
+   [
+    "Wall of Vapor",
+    8
+   ],
+   [
+    "Island",
+    26
+   ],
+   [
+    "Swamp",
+    26
+   ]
+  ],
+  "P1": [
+   [
+    "Dry Spell",
+    4
+   ],
+   [
+    "Grizzly Bears",
+    4
+   ],
+   [
+    "Swamp",
+    28
+   ],
+   [
+    "Forest",
+    24
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_spell_not_prevented": "passed",
+  "A3_combat_control": "failed",
+  "A4_cleanup": "passed"
+ },
+ "verdict": "not-reproduced",
+ "result": "A1 setup_ok: passed; A2 spell_not_prevented: passed; A3 combat_control: failed; A4 cleanup: passed",
+ "scope": "Wall of Vapor damage-prevention scope on pinned v0.114.0: spell damage (Dry Spell, reported path) and blocked-creature combat damage (control); native engine, two human driver seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "The prevention effect parses as Effect::Unimplemented {name: prevention_source_scope} on v0.114.0 (parser fails closed per CR 615.1a); no prevention shield exists, so both the reported over-prevention AND rules-correct prevention are absent. States are authoritative exports, restorable only via full game replay (no standalone state-import path)."
+ ],
+ "fixture": {
+  "wov1_oid": "1",
+  "wov2_oid": "32",
+  "bear_oid": "115",
+  "dry_cast": true,
+  "dry_seen_stack": true,
+  "dry_resolved": true,
+  "attacked": true,
+  "blocked": true,
+  "blocker_oid": "32",
+  "combat_done": true,
+  "rejections": []
+ },
+ "notes": [
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 25)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#32 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True",
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 25)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#32 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True"
+ ]
+}
