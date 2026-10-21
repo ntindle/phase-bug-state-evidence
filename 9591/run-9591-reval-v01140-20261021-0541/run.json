@@ -1,0 +1,81 @@
+{
+ "issue": 9591,
+ "issue_url": "https://github.com/phase-rs/phase/pull/9591",
+ "run_id": "run-9591-reval-v01140-20261021-0541",
+ "game_code": "3DY70K",
+ "started_at": "2026-10-21T10:43:47",
+ "finished_at": "2026-10-21T10:45:10",
+ "duration_s": 82.9,
+ "server_identity": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "source": "2026-10-21: latest stable release v0.114.0 (published 2026-10-19T18:59:10Z) == pinned release dir; ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; hashes recomputed against on-disk artifacts this run; existing v0.114.0 server on 127.0.0.1:9374 reused (identity verified by handshake this run); fresh game created by this run; isolated evidence under evidence/9591/run-9591-reval-v01140-20261021-0541)."
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "0f7f66ba41a16e3b50eb0f9c27f42b76cd6e4d21d63d27eb0231d99374788d01",
+ "decks": {
+  "P0": "34x Mountain / 4x Void Winnower / 2x Lightning Strike",
+  "P1": "24x Mountain / 8x Lightning Bolt / 8x Lightning Strike"
+ },
+ "setup_line": "P0 ramps Mountains, casts Void Winnower ({9}) on its main; P1 draw-gos holding Lightning Bolt (MV 1, odd) and Lightning Strike (MV 2, even)",
+ "contract_line": "Pre-Winnower both P1 spells must be advertised; post-Winnower the even-MV Strike must be blocked (static active) while the odd-MV Bolt must stay castable (CR 601.3a/202.3); the reported bug is that Bolt is blocked too.",
+ "stats": {
+  "max_turn": 19,
+  "winnower_cast_turn": 17,
+  "pre_ad": {
+   "bolt": true,
+   "bolt_via": "legacy",
+   "strike": true,
+   "strike_via": "legacy",
+   "untapped": 2,
+   "turn": 4
+  },
+  "post_ad": {
+   "bolt": false,
+   "bolt_via": null,
+   "strike": false,
+   "strike_via": null,
+   "bolt_in_hand": true,
+   "strike_in_hand": true,
+   "untapped": 8,
+   "turn": 18,
+   "cast_summary": []
+  },
+  "ctrl_ad": true
+ },
+ "assertions": {
+  "A1_pre_advertised": "passed",
+  "A2_winnower_bf": "passed",
+  "A3_even_blocked": "passed",
+  "A4_odd_blocked_bug": "passed",
+  "A5_controller_ok": "passed",
+  "A6_probes_terminal": "passed"
+ },
+ "notes": [
+  "pre check at turn 4: Bolt advertised=True (legacy), Strike advertised=True (legacy)",
+  "post check at turn 18: Winnower on BF; Bolt advertised=False (None), Strike advertised=False (None); in hand bolt=True strike=True",
+  "ctrl check at turn 19: P0 Lightning Strike advertised=True via=legacy (untapped Mountains=9)",
+  "A1: pre turn=4 bolt_adv=True strike_adv=True",
+  "A2: winnower_bf=True (cast turn=17)",
+  "A3: strike_adv=False via=None",
+  "A4: Bolt NOT advertised post-Winnower -- reported overblocking reproduced",
+  "A4: bolt_adv=False via=None",
+  "A5: P0's own Strike advertised with Winnower out (controller unaffected)"
+ ],
+ "verdict": "reproduced",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "States are authoritative exports, restorable only via full game replay."
+ ]
+}
