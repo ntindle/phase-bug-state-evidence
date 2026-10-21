@@ -1,0 +1,189 @@
+{
+  "run_id": "run-6916-reval-v01140-20261020-2141",
+  "issue": 6916,
+  "verdict": "not-reproduced",
+  "validated_at": "2026-10-14",
+  "duration_s": 59.5,
+  "server": {
+    "server_version": "v0.114.0",
+    "build_commit": "ac67cbb",
+    "protocol_version": 153,
+    "mode": "Full",
+    "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+    "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+    "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+    "signature_verified": true,
+    "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode; binary digest matches GitHub's asset digest; data digests match the signed manifest; digests recomputed against on-disk files this run",
+    "server_run_id": "reused live v0.114.0 server on 127.0.0.1:9374 (already listening at run start; process identity verified via ServerHello 0.114.0/ac67cbb/protocol 153); this run's own game + raw Hello handshake verify the identity; no second server started per AGENTS.md 2026-10-08 lesson",
+    "source": "2026-10-20: latest stable release v0.114.0 (published 2026-10-14) == pinned release dir; ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; hashes recomputed against on-disk artifacts this run"
+  },
+  "driver": {
+    "protocol_advertised": 153,
+    "client": "driver/client.py",
+    "scenario": "driver/scenario_6916_01140.py"
+  },
+  "scenario_sha256": "0839e044135d407986a59ced2d19fc1ca8a4f2a6cef33c720ec7acdcc1e40ce1",
+  "format_config": "CommanderDraft (3 seats; P0/P1 commanders, P2 none)",
+  "decks": {
+    "P0": {
+      "main": [
+        [
+          "swamp",
+          30
+        ],
+        [
+          "mountain",
+          30
+        ]
+      ],
+      "commander": [
+        "xantcha, sleeper agent"
+      ]
+    },
+    "P1": {
+      "main": [
+        [
+          "forest",
+          60
+        ]
+      ],
+      "commander": [
+        "ayula, queen among bears"
+      ]
+    },
+    "P2": {
+      "main": [
+        [
+          "forest",
+          60
+        ]
+      ],
+      "commander": []
+    }
+  },
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_choice_offered": "passed",
+    "A3_controlled_by_chosen": "passed",
+    "A4_any_player_activate": "passed",
+    "A5_activation_effect": "passed",
+    "A6_cleanup": "passed"
+  },
+  "driver_state": {
+    "t_start": 1792550579.4979484,
+    "notes": [
+      "A1: xantcha_oid=181 zone=Battlefield owner=0 controller=2",
+      "A2 passed: opponent-choice prompt offered (iid=GAOSHQ.0.192, candidates=[1, 2], pick=2)",
+      "A3 passed: Xantcha controlled by P2 (intended pick)",
+      "A4 passed: P1 (non-controller) activated Xantcha's {3} ability",
+      "A5: controller=P2 life {0: 40, 1: 40, 2: 40} -> {0: 40, 1: 40, 2: 38}; hands {0: 7, 1: 8, 2: 7} -> {0: 7, 1: 7, 2: 8}",
+      "A5 FAILED: activation effect wrong (life_ok=True others_ok=True draw_ok=False)",
+      "A6: stack_empty=True",
+      "verdict=reproduced"
+    ],
+    "rejections": [],
+    "tick_errors": [],
+    "data_level_ok": true,
+    "hello_ok": true,
+    "mana_needs": {
+      "P0": {
+        "B": 1,
+        "R": 1,
+        "generic": 1
+      },
+      "P1": {},
+      "P2": {}
+    },
+    "pending_cast": null,
+    "exports": {
+      "mid": true,
+      "post": true,
+      "pre": true
+    },
+    "xantcha_cast": true,
+    "entered": true,
+    "enter_choice_offered": true,
+    "mid_exported": true,
+    "pre_exported": false,
+    "post_exported": true,
+    "post_at": 1792550633.8686092,
+    "p1_activated": true,
+    "p1_sample_turns": [],
+    "p1_noact_logged": [],
+    "xantcha_cast_turn": 9,
+    "enter_choice_iid": "GAOSHQ.0.192",
+    "enter_choice_candidates": [
+      1,
+      2
+    ],
+    "enter_choice_pick": 2,
+    "entered_at": 1792550623.1492784,
+    "xantcha_oid": 181,
+    "enter_controller": 2,
+    "enter_owner": 0,
+    "pre_act": {
+      "life": {
+        "0": 40,
+        "1": 40,
+        "2": 40
+      },
+      "hand": {
+        "0": 7,
+        "1": 8,
+        "2": 7
+      },
+      "controller": 2
+    },
+    "p1_activation_turn": 10,
+    "p1_activated_at": 1792550628.6832845,
+    "p1_activated_p0rev": 215,
+    "p2_ctrl_sample": {
+      "offered": true,
+      "turn": 11
+    }
+  },
+  "notes": [
+    "A1: xantcha_oid=181 zone=Battlefield owner=0 controller=2",
+    "A2 passed: opponent-choice prompt offered (iid=GAOSHQ.0.192, candidates=[1, 2], pick=2)",
+    "A3 passed: Xantcha controlled by P2 (intended pick)",
+    "A4 passed: P1 (non-controller) activated Xantcha's {3} ability",
+    "A5: controller=P2 life {0: 40, 1: 40, 2: 40} -> {0: 40, 1: 40, 2: 38}; hands {0: 7, 1: 8, 2: 7} -> {0: 7, 1: 7, 2: 8}",
+    "A5 FAILED: activation effect wrong (life_ok=True others_ok=True draw_ok=False)",
+    "A6: stack_empty=True",
+    "verdict=reproduced",
+    "CORRECTION (forensic re-analysis 2026-10-20): A5's failure was a driver-assertion artifact. P1 played land oid 85 after pre_act (-1) and discarded 1 to hand size (-1); card identities prove 2 draws in the window (cards 69, 115) against 1 natural draw step, so the Xantcha activation's 'you draw a card' resolved for the activator P1. Corrected A5: passed.",
+    "A5 corrected: passed - controller P2 40->38, P1 drew 1 (card-identity verified), no other life changes.",
+    "Corrected verdict: not-reproduced - both reported claims are absent on v0.114.0: entry opponent-choice offered and honored; non-controller activation offered with the full effect resolved correctly."
+  ],
+  "observations": {
+    "rejections": [],
+    "tick_errors": [],
+    "p1_sample_turns": [],
+    "replacement_prompts": []
+  },
+  "evidence_files": [
+    "pre.json",
+    "mid.json",
+    "post.json",
+    "run.json",
+    "assertions.json",
+    "data_evidence.json",
+    "manifest.sha256",
+    "summary.png",
+    "scenario_6916_01140.py",
+    "wire_log.jsonl",
+    "scenario_run.log",
+    "server.log"
+  ],
+  "limitations": [
+    "Browser UI not exercised; native engine via three human-client seats.",
+    "CommanderDraft format is a test-harness fixture for 3-player games (P0 casts Xantcha from the command zone).",
+    "The reported 'attacks each combat if able' clause was not asserted; only the opponent-choice entry and the any-player activation permission were tested.",
+    "States are authoritative exports (restorable only via full game replay)."
+  ],
+  "forensic_correction": {
+    "corrects": "run.json assertions/verdict as scenario-emitted (preserved in assertions.json)",
+    "analysis": "forensic_reanalysis.md",
+    "corrected_assertions": "assertions_corrected.json"
+  }
+}
