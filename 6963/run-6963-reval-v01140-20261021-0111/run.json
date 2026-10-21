@@ -1,0 +1,271 @@
+{
+ "issue": 6963,
+ "run_id": "run-6963-reval-v01140-20261021-0111",
+ "date": "2026-10-21T06:18:07",
+ "game_code": "W8P0SW",
+ "server": {
+  "server_version": "0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "e77220639daaf56bcca71bca6c9777081f1699b500c991e44e3c95261888bb99",
+ "decks": {
+  "P0": [
+   [
+    "Elder Brain",
+    12
+   ],
+   [
+    "Dark Ritual",
+    12
+   ],
+   [
+    "Swamp",
+    36
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    30
+   ],
+   [
+    "Island",
+    18
+   ],
+   [
+    "Lightning Bolt",
+    12
+   ]
+  ]
+ },
+ "format_config": "default Bo1 (2 human-client seats)",
+ "setup_line": "P0 12x Elder Brain / 12x Dark Ritual / 36x Swamp; P1 30x Forest / 18x Island / 12x Lightning Bolt (holds everything). P0 ramps with Rituals, casts Elder Brain {5}{B}{B} (engine Auto payment), attacks P1 (Menace vs empty board). Trigger exiles P1's hand; P1 draws that many; P0 ACCEPTS the 'you may play lands and cast spells' optional. On P0's next main the driver scans for PlayLand offers on exiled lands and CastSpell offers on exiled spells, then casts an exiled Bolt at P1 (any-color mana).",
+ "contract_line": "Parse is primary (area:parser): Elder Brain's attack-trigger subtree must still emit NO Play-mode permission (Unimplemented 'play lands' node + typed Cast half -> reproduced). Game leg: exiled lands must NOT be offered as PlayLand (bug at runtime); exiled spells must be offered and the Bolt must resolve for 3.",
+ "driver_notes": [
+  "Protocol-153 re-validation port of driver/scenario_6963_01030.py (v0.103.0 / protocol 106, verified 2026-10-08, verdict reproduced); re-validation for pinned v0.114.0 (protocol 153); behavioral contract A1..A5 and the issue-specific game plan unchanged.",
+  "Parse leg runs before the game: walks the pinned card-data.json AST for permission nodes (GrantCastingPermission / CastFromZone modes + Unimplemented 'play lands').",
+  "CastSpell via legacy Action; the v0.114.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay). Dark Rituals are cast greedily on the Brain turn, then the Brain via the offered cast action.",
+  "DeclareAttackers via legacy Action with attacks=[[int(oid), {type:Player, data:1}]] (153 precedent); post-declare priority is passed, never held.",
+  "The 'you may play lands and cast spells' optional is answered via the proven 153 shape (vi exactChoices + decideOptionalEffect, accept = role accept / value true).",
+  "Offer scan runs on P0's first post-trigger main phase: every merged PlayLand/CastSpell action is checked against the exiled object set; PRE is exported immediately before the scan.",
+  "Pre/mid/post states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt."
+ ],
+ "assertions": {
+  "A1_parse_drops_play": "passed",
+  "A2_parse_cast_correct": "passed",
+  "A3_control_omenkeel": "passed",
+  "A4_class_gix": "passed",
+  "A5_census": "passed",
+  "G1_attack_ok": "passed",
+  "G2_land_withheld": "passed",
+  "G3_cast_offered": "passed",
+  "G4_bolt_resolves": "not-run",
+  "O1_exile_scope": "failed",
+  "O2_draw_count": "not-run"
+ },
+ "assertion_details": {
+  "A1_parse_drops_play": "Elder Brain Play-mode permission nodes: 0 (expected 0; Unimplemented 'play lands' nodes: 1)",
+  "A2_parse_cast_correct": "Cast-mode nodes: 1; any-color mana rider: True",
+  "A3_control_omenkeel": "The Omenkeel emits a Play-mode permission gated on Typed[Land]: True (standalone land-play clauses lower correctly)",
+  "A4_class_gix": "Gix Play-mode permission nodes: 0 expected (same defect as Elder Brain; #6952 duplicate): True",
+  "A5_census": "50 cards with compound 'you may play ... and cast ...' Oracle sentences; 48 emit no Play-mode permission: ['advanced floral invocations', 'all-you-can-eat buffet', 'benjamin sisko, besieged', \"bolas's citadel\", 'brilliant ultimatum', 'case of the locked hothouse', 'case of the lost witness', \"colfenor's plans\", 'coram, the undertaker', 'crystal skull, isu spyglass', 'elder brain', 'experimental frenzy']",
+  "G1_attack_ok": "attack_declared=True (turn 15); P1-owned exiled lands: [(67, 'island'), (80, 'island'), (98, 'island')]",
+  "G2_land_withheld": "PlayLand offers on exiled lands: [] (expected none)",
+  "G3_cast_offered": "CastSpell offers on exiled cards: [{'src_oid': '115', 'name': 'lightning bolt', 'action': 'CastSpell'}, {'src_oid': '57', 'name': 'elder brain', 'action': 'CastSpell'}, {'src_oid': '87', 'name': 'lightning bolt', 'action': 'CastSpell'}, {'src_oid': '95', 'name': 'lightning bolt', 'action': 'CastSpell'}, {'src_oid': '50', 'name': 'elder brain', 'action': 'CastSpell'}, {'src_oid': '65', 'name': 'lightning bolt', 'action': 'CastSpell'}] (expected >=1)",
+  "G4_bolt_resolves": "bolt_cast=False bolt_done=False life None -> None",
+  "O1_exile_scope": "9 exiled cards; non-P1-owned: [('elder brain', '0'), ('elder brain', '0')] (expected none)",
+  "O2_draw_count": "p1_hand_at_attack=7 snapshot=True post=False"
+ },
+ "driver_state": {
+  "brain_cast": true,
+  "brain_cast_turn": 13,
+  "brain_oid": 28,
+  "rituals_cast": 3,
+  "attack_declared": true,
+  "attack_turn": 15,
+  "trigger_resolved": true,
+  "trigger_at": 1792563548.6739824,
+  "optional_accepted": true,
+  "p1_hand_at_attack": 7,
+  "exile_snapshot": [
+   [
+    50,
+    "elder brain",
+    "0"
+   ],
+   [
+    57,
+    "elder brain",
+    "0"
+   ],
+   [
+    65,
+    "lightning bolt",
+    "1"
+   ],
+   [
+    67,
+    "island",
+    "1"
+   ],
+   [
+    80,
+    "island",
+    "1"
+   ],
+   [
+    87,
+    "lightning bolt",
+    "1"
+   ],
+   [
+    95,
+    "lightning bolt",
+    "1"
+   ],
+   [
+    98,
+    "island",
+    "1"
+   ],
+   [
+    115,
+    "lightning bolt",
+    "1"
+   ]
+  ],
+  "mid_exported": true,
+  "pre_exported": true,
+  "scan_done": true,
+  "scan_playland_offers": [],
+  "scan_castspell_offers": [
+   {
+    "src_oid": "115",
+    "name": "lightning bolt",
+    "action": "CastSpell"
+   },
+   {
+    "src_oid": "57",
+    "name": "elder brain",
+    "action": "CastSpell"
+   },
+   {
+    "src_oid": "87",
+    "name": "lightning bolt",
+    "action": "CastSpell"
+   },
+   {
+    "src_oid": "95",
+    "name": "lightning bolt",
+    "action": "CastSpell"
+   },
+   {
+    "src_oid": "50",
+    "name": "elder brain",
+    "action": "CastSpell"
+   },
+   {
+    "src_oid": "65",
+    "name": "lightning bolt",
+    "action": "CastSpell"
+   }
+  ],
+  "bolt_cast": false,
+  "bolt_done": false,
+  "p1_life_before": null,
+  "p1_life_after": null,
+  "post_at": null,
+  "post_exported": false,
+  "target_sels": []
+ },
+ "data_level": {
+  "elder_brain": {
+   "play_modes": 0,
+   "cast_modes": 1,
+   "unimplemented_play": 1,
+   "cast_anycolor": true,
+   "defect_persists": true
+  },
+  "omenkeel_play_ok": true,
+  "gix_defect_persists": true,
+  "census_n": 50,
+  "census_dropped": [
+   "advanced floral invocations",
+   "all-you-can-eat buffet",
+   "benjamin sisko, besieged",
+   "bolas's citadel",
+   "brilliant ultimatum",
+   "case of the locked hothouse",
+   "case of the lost witness",
+   "colfenor's plans",
+   "coram, the undertaker",
+   "crystal skull, isu spyglass",
+   "elder brain",
+   "experimental frenzy",
+   "eye of duskmantle",
+   "future sight",
+   "gaea's will",
+   "gix, yawgmoth praetor",
+   "glarb, calamity's augur",
+   "grolnok, the omnivore",
+   "haldan, avid arcanist",
+   "hauken's insight",
+   "intellect devourer",
+   "isu the abominable",
+   "kagha, shadow archdruid",
+   "kheru mind-eater",
+   "magus of the future",
+   "magus of the mind",
+   "magus of the will",
+   "mikey & don, party planners",
+   "muldrotha, the gravetide",
+   "nightveil specter",
+   "oblivion sower",
+   "one with the multiverse",
+   "sen triplets",
+   "serra paragon",
+   "shaman's trance",
+   "the belligerent",
+   "the eighth doctor",
+   "the fourth doctor",
+   "the matrix of time",
+   "the reality chip",
+   "theater of horrors",
+   "tinybones, the pickpocket",
+   "traveling chocobo",
+   "windriddle palaces",
+   "wrenn and realmbreaker",
+   "yawgmoth's agenda",
+   "yawgmoth's will",
+   "zask, skittering swarmlord"
+  ]
+ },
+ "verdict": "reproduced",
+ "evidence_comment_id": 5652574170,
+ "limitations": [
+  "Browser UI not exercised; this is an area:parser issue - the primary evidence is the emitted AST in the pinned card-data.json.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "P1 deliberately holds lands/spells so the attack exiles a mixed hand; this is a fixture choice, not normal play."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0
+ },
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced: Elder Brain's compound permission still drops the Play half on v0.114.0 (parse-level defect)",
+  "verdict=reproduced"
+ ],
+ "duration_s": 182.1
+}
