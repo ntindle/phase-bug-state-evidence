@@ -1,0 +1,58 @@
+{
+ "goreclaw_static_abilities": [
+  {
+   "mode": {
+    "ModifyCost": {
+     "mode": "Reduce",
+     "amount": {
+      "type": "Cost",
+      "shards": [],
+      "generic": 2
+     },
+     "spell_filter": null
+    }
+   },
+   "affected": {
+    "type": "Typed",
+    "type_filters": [
+     "Card"
+    ],
+    "controller": "You",
+    "properties": []
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Creature spells you cast with power 4 or greater cost {2} less to cast."
+  }
+ ],
+ "thryx_static_abilities": [
+  {
+   "mode": "CantBeCountered",
+   "affected": {
+    "type": "SelfRef"
+   },
+   "modifications": [],
+   "condition": null,
+   "affected_zone": null,
+   "effect_zone": null,
+   "active_zones": [],
+   "characteristic_defining": false,
+   "description": "Spells you cast with mana value 5 or greater cost {1} less to cast and can't be countered."
+  }
+ ],
+ "goreclaw_qualifier_lost": true,
+ "thryx_reduction_absent": true,
+ "notes": [
+  "Goreclaw: ModifyCost reduce={'type': 'Cost', 'shards': [], 'generic': 2}; affected type_filters=['Card'] properties=[] -> qualifier_lost=True",
+  "Thryx: ModifyCost statics=0 -> reduction_absent=True; static modes=[['CantBeCountered']]",
+  "Overrun: cost={'type': 'Cost', 'shards': ['Green', 'Green', 'Green'], 'generic': 2} power=None",
+  "Grizzly Bears: cost={'type': 'Cost', 'shards': ['Green'], 'generic': 1} power={'type': 'Fixed', 'value': 2}",
+  "Colossal Dreadmaw: cost={'type': 'Cost', 'shards': ['Green', 'Green'], 'generic': 4} power={'type': 'Fixed', 'value': 6}",
+  "Goreclaw, Terror of Qal Sisma: cost={'type': 'Cost', 'shards': ['Green'], 'generic': 3} power={'type': 'Fixed', 'value': 4}",
+  "Thryx, the Sudden Storm: cost={'type': 'Cost', 'shards': ['Blue', 'Blue'], 'generic': 3} power={'type': 'Fixed', 'value': 4}"
+ ]
+}
