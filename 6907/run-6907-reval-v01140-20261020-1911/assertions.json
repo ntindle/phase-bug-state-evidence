@@ -1,0 +1,1620 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_control_move": "passed",
+    "A3_counter_prompted": "failed",
+    "A4_exact_move": "not-run",
+    "A5_default_documents": "passed",
+    "A6_cleanup": "passed"
+  },
+  "details": {
+    "A1_setup_ok": "ng=True warden=True township=True bears=True warden_counters={'shield': 2} single_shield_type=True p0_main=True turn=57",
+    "A2_control_move": "warden delta={'shield': -1} {'shield': 2}->{'shield': 1}; bears delta={'shield': 1} {}->{'shield': 1}",
+    "A3_counter_prompted": "no counter-type choice offered during PROOF activation (decisions recorded in PROOF: 0)",
+    "A4_exact_move": "no counter choice was offered (A3 failed)",
+    "A5_default_documents": "engine default moved counter class(es) ['shield']: warden {'P1P1': 1, 'shield': 1}->{'P1P1': 1}, bears {'P1P1': 1, 'shield': 1}->{'P1P1': 1, 'shield': 2}",
+    "A6_cleanup": "post_proof turn=61 phase=PreCombatMain stack_empty=True"
+  },
+  "notes": [
+    "control-stage counter-like decisions: 0"
+  ],
+  "wf_sequence": [
+    "MulliganDecision",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TriggerTargetSelection",
+    "Priority",
+    "OptionalEffectChoice",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "DeclareAttackers",
+    "Priority",
+    "TargetSelection",
+    "Priority"
+  ],
+  "target_sels": [
+    {
+      "interactionId": "QC5FJ0.0.167",
+      "turn": 11,
+      "phase": "PreCombatMain",
+      "stage": "SETUP",
+      "candidates": [
+        {
+          "choice_id": "QC5FJ0.0.167.t0",
+          "oid": "36",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "QC5FJ0.0.167.t1",
+          "oid": "21",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        }
+      ]
+    },
+    {
+      "interactionId": "QC5FJ0.0.891",
+      "turn": 57,
+      "phase": "PreCombatMain",
+      "stage": "CONTROL",
+      "candidates": [
+        {
+          "choice_id": "QC5FJ0.0.891.t0",
+          "oid": "49",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t1",
+          "oid": "15",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t2",
+          "oid": "28",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t3",
+          "oid": "36",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t4",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t5",
+          "oid": "20",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t6",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t7",
+          "oid": "21",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t8",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t9",
+          "oid": "55",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t10",
+          "oid": "14",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t11",
+          "oid": "40",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t12",
+          "oid": "26",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t13",
+          "oid": "54",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t14",
+          "oid": "48",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t15",
+          "oid": "7",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t16",
+          "oid": "46",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t17",
+          "oid": "56",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t18",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t19",
+          "oid": "3",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t20",
+          "oid": "42",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t21",
+          "oid": "34",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t22",
+          "oid": "9",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t23",
+          "oid": "24",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t24",
+          "oid": "33",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t25",
+          "oid": "11",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t26",
+          "oid": "59",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t27",
+          "oid": "31",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t28",
+          "oid": "25",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t29",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.891.t30",
+          "oid": "1",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        }
+      ]
+    },
+    {
+      "interactionId": "QC5FJ0.0.892",
+      "turn": 57,
+      "phase": "PreCombatMain",
+      "stage": "CONTROL",
+      "candidates": [
+        {
+          "choice_id": "QC5FJ0.0.892.t0",
+          "oid": "49",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t1",
+          "oid": "104",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t2",
+          "oid": "15",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t3",
+          "oid": "77",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t4",
+          "oid": "28",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t5",
+          "oid": "36",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t6",
+          "oid": "115",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t7",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t8",
+          "oid": "94",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t9",
+          "oid": "20",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t10",
+          "oid": "74",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t11",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t12",
+          "oid": "21",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t13",
+          "oid": "76",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t14",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t15",
+          "oid": "61",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t16",
+          "oid": "55",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t17",
+          "oid": "88",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t18",
+          "oid": "14",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t19",
+          "oid": "86",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t20",
+          "oid": "40",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t21",
+          "oid": "85",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t22",
+          "oid": "26",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t23",
+          "oid": "112",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t24",
+          "oid": "54",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t25",
+          "oid": "93",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t26",
+          "oid": "48",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t27",
+          "oid": "99",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t28",
+          "oid": "7",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t29",
+          "oid": "106",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t30",
+          "oid": "46",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t31",
+          "oid": "119",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t32",
+          "oid": "56",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t33",
+          "oid": "68",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t34",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t35",
+          "oid": "72",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t36",
+          "oid": "3",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t37",
+          "oid": "89",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t38",
+          "oid": "42",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t39",
+          "oid": "66",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t40",
+          "oid": "34",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t41",
+          "oid": "108",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t42",
+          "oid": "9",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t43",
+          "oid": "82",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t44",
+          "oid": "24",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t45",
+          "oid": "75",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t46",
+          "oid": "33",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t47",
+          "oid": "117",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t48",
+          "oid": "11",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t49",
+          "oid": "69",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t50",
+          "oid": "59",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t51",
+          "oid": "100",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t52",
+          "oid": "31",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t53",
+          "oid": "101",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t54",
+          "oid": "25",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t55",
+          "oid": "114",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t56",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t57",
+          "oid": "87",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.892.t58",
+          "oid": "1",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        }
+      ]
+    },
+    {
+      "interactionId": "QC5FJ0.0.965",
+      "turn": 61,
+      "phase": "PreCombatMain",
+      "stage": "PROOF",
+      "candidates": [
+        {
+          "choice_id": "QC5FJ0.0.965.t0",
+          "oid": "49",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t1",
+          "oid": "15",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t2",
+          "oid": "28",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t3",
+          "oid": "36",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t4",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t5",
+          "oid": "20",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t6",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t7",
+          "oid": "21",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t8",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t9",
+          "oid": "55",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t10",
+          "oid": "14",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t11",
+          "oid": "40",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t12",
+          "oid": "26",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t13",
+          "oid": "54",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t14",
+          "oid": "48",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t15",
+          "oid": "7",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t16",
+          "oid": "46",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t17",
+          "oid": "56",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t18",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t19",
+          "oid": "3",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t20",
+          "oid": "42",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t21",
+          "oid": "34",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t22",
+          "oid": "9",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t23",
+          "oid": "24",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t24",
+          "oid": "33",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t25",
+          "oid": "11",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t26",
+          "oid": "59",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t27",
+          "oid": "31",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t28",
+          "oid": "25",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t29",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t30",
+          "oid": "1",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        },
+        {
+          "choice_id": "QC5FJ0.0.965.t31",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        }
+      ]
+    },
+    {
+      "interactionId": "QC5FJ0.0.966",
+      "turn": 61,
+      "phase": "PreCombatMain",
+      "stage": "PROOF",
+      "candidates": [
+        {
+          "choice_id": "QC5FJ0.0.966.t0",
+          "oid": "49",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t1",
+          "oid": "104",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t2",
+          "oid": "15",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t3",
+          "oid": "77",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t4",
+          "oid": "28",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t5",
+          "oid": "36",
+          "name": "grizzly bears",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Grizzly Bears"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t6",
+          "oid": "115",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t7",
+          "oid": "23",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t8",
+          "oid": "94",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t9",
+          "oid": "20",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t10",
+          "oid": "74",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t11",
+          "oid": "18",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t12",
+          "oid": "21",
+          "name": "sanctuary warden",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Sanctuary Warden"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t13",
+          "oid": "76",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t14",
+          "oid": "19",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t15",
+          "oid": "61",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t16",
+          "oid": "55",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t17",
+          "oid": "88",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t18",
+          "oid": "14",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t19",
+          "oid": "86",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t20",
+          "oid": "40",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t21",
+          "oid": "85",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t22",
+          "oid": "26",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t23",
+          "oid": "112",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t24",
+          "oid": "54",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t25",
+          "oid": "93",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t26",
+          "oid": "48",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t27",
+          "oid": "99",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t28",
+          "oid": "7",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t29",
+          "oid": "106",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t30",
+          "oid": "46",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t31",
+          "oid": "119",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t32",
+          "oid": "56",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t33",
+          "oid": "68",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t34",
+          "oid": "37",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t35",
+          "oid": "72",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t36",
+          "oid": "3",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t37",
+          "oid": "89",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t38",
+          "oid": "42",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t39",
+          "oid": "66",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t40",
+          "oid": "34",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t41",
+          "oid": "108",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t42",
+          "oid": "9",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t43",
+          "oid": "82",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t44",
+          "oid": "24",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t45",
+          "oid": "75",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t46",
+          "oid": "33",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t47",
+          "oid": "117",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t48",
+          "oid": "11",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t49",
+          "oid": "69",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t50",
+          "oid": "59",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t51",
+          "oid": "100",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t52",
+          "oid": "31",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t53",
+          "oid": "101",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t54",
+          "oid": "25",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t55",
+          "oid": "114",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t56",
+          "oid": "57",
+          "name": "nesting grounds",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Nesting Grounds"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t57",
+          "oid": "87",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t58",
+          "oid": "1",
+          "name": "gavony township",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Gavony Township"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t59",
+          "oid": "64",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t60",
+          "oid": "43",
+          "name": "plains",
+          "zone": "Battlefield",
+          "controller": 0,
+          "text": "Plains"
+        },
+        {
+          "choice_id": "QC5FJ0.0.966.t61",
+          "oid": "102",
+          "name": "forest",
+          "zone": "Battlefield",
+          "controller": 1,
+          "text": "Forest"
+        }
+      ]
+    }
+  ],
+  "decisions": [],
+  "counter_choice_pick": null,
+  "data_level_ok": true
+}
