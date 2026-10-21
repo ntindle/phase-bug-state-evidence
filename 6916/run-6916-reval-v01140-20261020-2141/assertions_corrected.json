@@ -1,0 +1,73 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_choice_offered": "passed",
+    "A3_controlled_by_chosen": "passed",
+    "A4_any_player_activate": "passed",
+    "A5_activation_effect": "passed",
+    "A6_cleanup": "passed"
+  },
+  "notes": [
+    "A1: xantcha_oid=181 zone=Battlefield owner=0 controller=2",
+    "A2 passed: opponent-choice prompt offered (iid=GAOSHQ.0.192, candidates=[1, 2], pick=2)",
+    "A3 passed: Xantcha controlled by P2 (intended pick)",
+    "A4 passed: P1 (non-controller) activated Xantcha's {3} ability",
+    "A5: controller=P2 life {0: 40, 1: 40, 2: 40} -> {0: 40, 1: 40, 2: 38}; hands {0: 7, 1: 8, 2: 7} -> {0: 7, 1: 7, 2: 8}",
+    "A5 FAILED: activation effect wrong (life_ok=True others_ok=True draw_ok=False)",
+    "A6: stack_empty=True",
+    "verdict=reproduced",
+    "CORRECTION (forensic re-analysis 2026-10-20): A5's failure was a driver-assertion artifact. P1 played land oid 85 after pre_act (-1) and discarded 1 to hand size (-1); card identities prove 2 draws in the window (cards 69, 115) against 1 natural draw step, so the Xantcha activation's 'you draw a card' resolved for the activator P1. Corrected A5: passed.",
+    "A5 corrected: passed - controller P2 40->38, P1 drew 1 (card-identity verified), no other life changes.",
+    "Corrected verdict: not-reproduced - both reported claims are absent on v0.114.0: entry opponent-choice offered and honored; non-controller activation offered with the full effect resolved correctly."
+  ],
+  "verdict": "not-reproduced",
+  "correction": {
+    "corrects": "assertions.json (scenario-emitted; preserved unchanged)",
+    "method": "card-identity accounting on authoritative mid/post exports + wire-log driver-action timeline",
+    "mid_p1_hand": [
+      67,
+      68,
+      82,
+      85,
+      86,
+      87,
+      114
+    ],
+    "post_p1_hand": [
+      67,
+      68,
+      69,
+      82,
+      87,
+      114,
+      115
+    ],
+    "new_cards_mid_to_post": [
+      69,
+      115
+    ],
+    "removed_cards_mid_to_post": [
+      85,
+      86
+    ],
+    "p1_land_plays_after_activation": [
+      85
+    ],
+    "p1_handsize_discards_after_activation": 1,
+    "p1_natural_draws_in_window": 1,
+    "p1_activation_draws_inferred": 1,
+    "life_pre": {
+      "0": 40,
+      "1": 40,
+      "2": 40
+    },
+    "life_post": {
+      "0": 40,
+      "1": 40,
+      "2": 38
+    },
+    "life_effect_ok": true,
+    "expected_post_hand_p1": 7,
+    "actual_post_hand_p1": 7
+  }
+}
