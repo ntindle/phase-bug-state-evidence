@@ -1,0 +1,28 @@
+2026-10-21 05:14:32,291 INFO ServerHello: {"server_version": "0.114.0", "build_commit": "ac67cbb", "protocol_version": 153, "mode": "Full", "lobby_protocol_version": 16, "wire_formats": ["GzipEnvelopeV1"], "heartbeat": {"ping_interval_ms": 5000, "silence_budget_ms": 45000}, "command_correlation": "CommandIdV1"}
+2026-10-21 05:14:32,383 INFO DraftCreated draft_code=A33DGW seat=0
+2026-10-21 05:14:32,383 INFO saved draft_created.json (47 bytes)
+2026-10-21 05:14:32,384 INFO sent StartDraft
+2026-10-21 05:14:32,408 INFO status -> Deckbuilding
+2026-10-21 05:14:32,408 INFO reached Deckbuilding
+2026-10-21 05:14:32,417 INFO saved deckbuilding_view.json (204459 bytes)
+2026-10-21 05:14:32,417 INFO pool size=90
+2026-10-21 05:14:32,418 INFO Lutri never appeared in the human's packs; A2 not-run
+2026-10-21 05:14:32,420 INFO deckbuilding view keys: ['addable_cards', 'cards_per_pack', 'commanders_required', 'current_pack', 'current_pack_number', 'current_round', 'distribution', 'draft_effects', 'draft_set_codes', 'grantable_commander_fillers', 'kind', 'launch_capability', 'match_config', 'min_deck_size', 'next_pairing_round', 'pack_count', 'pack_pick_steps', 'pack_set_codes', 'pack_sizes', 'pairings', 'pass_direction', 'pick_number', 'pick_selection_mode', 'pick_steps_per_pack', 'pod_policy', 'pool', 'pool_groups', 'required_pick_count', 'sealed_packs', 'seats', 'source', 'standings', 'status', 'timer_remaining_ms', 'tournament_format']
+2026-10-21 05:14:32,420 INFO 'companion' traces in deckbuilding view: []
+2026-10-21 05:14:32,420 INFO saved a3_companion_traces.json (2 bytes)
+2026-10-21 05:14:32,420 INFO A3 failed: no companion control anywhere in the Deckbuilding view (reported gap present)
+2026-10-21 05:14:32,420 INFO sent SubmitDeck WITH 'companions' field (companion=Swiftwater Cliffs)
+2026-10-21 05:14:32,468 INFO probe response: DraftStateUpdate
+2026-10-21 05:14:32,469 INFO saved companion_probe.json (2230 bytes)
+2026-10-21 05:14:32,472 INFO saved a4_post_probe_traces.json (2 bytes)
+2026-10-21 05:14:32,472 INFO post-probe 'companion' traces in view: []
+2026-10-21 05:14:32,472 INFO A4 failed: field silently discarded — no companion designation path
+2026-10-21 05:14:32,472 INFO sent plain valid SubmitDeck (control)
+2026-10-21 05:14:32,508 INFO control response: DraftStateUpdate
+2026-10-21 05:14:32,508 INFO saved valid_submitdeck.json (160 bytes)
+2026-10-21 05:14:32,508 INFO plain SubmitDeck accepted: submission path works
+2026-10-21 05:14:32,508 INFO A6 passed (source control): engine DeckList has a companion slot in deck_loading.rs on v0.114.0; gap (if any) is confined to the draft submission path
+2026-10-21 05:14:32,509 INFO saved wire_transcript.json (3467 bytes)
+2026-10-21 05:14:32,509 INFO saved assertions.json (2270 bytes)
+2026-10-21 05:14:32,510 INFO saved server_hello.json (308 bytes)
+2026-10-21 05:14:32,510 INFO VERDICT: reproduced  assertions={'A1_draft_reaches_deckbuilding': 'passed', 'A2_lutri_drafted': 'not-run', 'A3_companion_control_in_view': 'failed', 'A4_companion_designation_path': 'failed', 'A5_valid_submitdeck_accepted': 'passed', 'A6_engine_companion_capable': 'passed'}
