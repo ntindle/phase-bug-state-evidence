@@ -1,0 +1,215 @@
+{
+ "run_id": "run-6912-reval-v01140-20261020-204253c",
+ "issue": 6912,
+ "cz_choice": "zone",
+ "date": "2026-10-21T01:54:08Z",
+ "started_at": "2026-10-20T20:53:23-05:00",
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "port": 9374,
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time 2026-10-14; data digests match the signed manifest; binary/data digests recomputed against the on-disk pinned release dir this run; ServerHello 0.114.0/ac67cbb/protocol 153 verified by handshake this run; server started by this run on 127.0.0.1:9374 with isolated run dir runs/run-6912-reval-v01140-20261020-204253c"
+ },
+ "scenario": "driver/scenario_6912_01140.py",
+ "scenario_sha256": "a2683c62a34c8bb00de40ddb6b0abb51a43e65ccc4a2df434f14730aab29855f",
+ "format_config": "CommanderDraft (>=60 cards, no singleton; commanders placed in command zone)",
+ "decks": {
+  "P0": {
+   "main": [
+    [
+     "chaos warp",
+     12
+    ],
+    [
+     "mountain",
+     48
+    ]
+   ],
+   "commander": [
+    "zurgo bellstriker"
+   ]
+  },
+  "P1": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": [
+    "ayula, queen among bears"
+   ]
+  },
+  "P2": {
+   "main": [
+    [
+     "forest",
+     60
+    ]
+   ],
+   "commander": []
+  }
+ },
+ "verdict": "not-reproduced",
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_cast_targeted": "passed",
+  "A3_replacement_offered": "passed",
+  "A4_zone_correct": "passed",
+  "A5_owner_routing": "passed",
+  "A6_cleanup": "passed"
+ },
+ "observations": {
+  "repl_seen": {
+   "turn": 7,
+   "revision": 154,
+   "chooser": 1
+  },
+  "repl_chooser": 1,
+  "repl_choices": [
+   {
+    "i": 0,
+    "text": "0",
+    "optionIndex": "0",
+    "mentions_command_zone": false
+   },
+   {
+    "i": 1,
+    "text": "1",
+    "optionIndex": "1",
+    "mentions_command_zone": false
+   }
+  ],
+  "repl_chosen": {
+   "i": 0,
+   "text": "0",
+   "how": "optionIndex mapping from runs 20260912-6912a/b: idx 0 == command zone"
+  },
+  "repl_guess": null,
+  "repl_chooser_wrong": false,
+  "cast_turn": 7,
+  "wf_types_resolution": [
+   "TargetSelection",
+   "Priority",
+   "Priority",
+   "Priority",
+   "ReplacementChoice",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "DiscardToHandSize",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority",
+   "Priority"
+  ],
+  "reveal_prompts": [],
+  "auto_answered": []
+ },
+ "notes": [
+  "post: ayula_zone=Command p1_lib 51->49 p0_lib 50->50 new_on_p1_bf=['forest'] new_on_p0_bf=[]",
+  "A5 accounting: p1 hand 7->7 gy 0->1",
+  "A5 draws=1 draws_sane=True",
+  "A5 p0 accounting: lib 50->50 (expected 50), draws=0",
+  "verdict=not-reproduced cz_choice=zone"
+ ],
+ "stats": {
+  "states_seen": 244
+ },
+ "setup_line": "P0: 12x Chaos Warp + 48x Mountain (commander Zurgo Bellstriker, never cast); P1: 60x Forest (commander Ayula, Queen Among Bears); P2: 60x Forest; native human seats",
+ "contract_line": "P0 casts Chaos Warp targeting P1's commander Ayula; P1 (owner) answers the commander replacement choice with the command zone (zone branch); warp must then shuffle/reveal/put from P1's library and put the revealed Forest onto P1's battlefield.",
+ "limitations": [
+  "Browser UI not exercised; native engine via human-client seats.",
+  "Dense 12x Chaos Warp / 48x Mountain decks are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The revealed top card is random; the assertions verify the routing outcome (owner's library, permanent->BF) rather than a specific revealed card.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "driver_notes": [
+  "Protocol-153 re-validation port of scenario_6912_01100.py (v0.110.0 / protocol 142, verified 2026-10-16, verdict not-reproduced); behavioral contract A1..A6 and verdict logic unchanged.",
+  "Protocol-153 conventions match the proven scenario_301_01140.py run: waiting_for is gone (null); MulliganDecision answered via the advertised legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; bare CastSpell with engine auto-pay (targets via the engine's vi TargetSelection after the cast, never injected); the 2026-10-09 cast-confirmation guard holds priority passes and new main-phase plays until a cast is confirmed (30s backstop re-arms); turn order is randomized so all sequencing keys off active_player.",
+  "CommanderDraft 3-seat setup proven on protocol 153 in scenario_301_01140.py.",
+  "2026-10-20 v0.114.0 fixes vs the first attempt: (1) the post.json export now waits for a quiescent game (waiting_for Priority/None, 60s backstop) so A6 cannot fail on a mid-DiscardToHandSize timing artifact; (2) mana needs are cleared when a cast is confirmed, stopping pointless land taps on later vi mana opportunities.",
+  "2026-10-20 v0.114.0 A5 fix vs attempt-b: P0's library is draw-accounted like P1's (the cast warp resolving to P0's graveyard is absorbed by the hand+graveyard formula) instead of requiring exact equality, since the quiescent post export can land a turn+ after the resolution."
+ ]
+}
