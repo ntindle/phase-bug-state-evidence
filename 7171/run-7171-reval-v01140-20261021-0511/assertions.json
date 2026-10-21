@@ -1,0 +1,34 @@
+{
+  "assertions": {
+    "A1_draft_reaches_deckbuilding": "passed",
+    "A2_lutri_drafted": "not-run",
+    "A3_companion_control_in_view": "failed",
+    "A4_companion_designation_path": "failed",
+    "A5_valid_submitdeck_accepted": "passed",
+    "A6_engine_companion_capable": "passed"
+  },
+  "elapsed_seconds": 0.3,
+  "notes": [
+    "ServerHello: {\"server_version\": \"0.114.0\", \"build_commit\": \"ac67cbb\", \"protocol_version\": 153, \"mode\": \"Full\", \"lobby_protocol_version\": 16, \"wire_formats\": [\"GzipEnvelopeV1\"], \"heartbeat\": {\"ping_interval_ms\": 5000, \"silence_budget_ms\": 45000}, \"command_correlation\": \"CommandIdV1\"}",
+    "DraftCreated draft_code=A33DGW seat=0",
+    "sent StartDraft",
+    "status -> Deckbuilding",
+    "reached Deckbuilding",
+    "pool size=90",
+    "Lutri never appeared in the human's packs; A2 not-run",
+    "deckbuilding view keys: ['addable_cards', 'cards_per_pack', 'commanders_required', 'current_pack', 'current_pack_number', 'current_round', 'distribution', 'draft_effects', 'draft_set_codes', 'grantable_commander_fillers', 'kind', 'launch_capability', 'match_config', 'min_deck_size', 'next_pairing_round', 'pack_count', 'pack_pick_steps', 'pack_set_codes', 'pack_sizes', 'pairings', 'pass_direction', 'pick_number', 'pick_selection_mode', 'pick_steps_per_pack', 'pod_policy', 'pool', 'pool_groups', 'required_pick_count', 'sealed_packs', 'seats', 'source', 'standings', 'status', 'timer_remaining_ms', 'tournament_format']",
+    "'companion' traces in deckbuilding view: []",
+    "A3 failed: no companion control anywhere in the Deckbuilding view (reported gap present)",
+    "sent SubmitDeck WITH 'companions' field (companion=Swiftwater Cliffs)",
+    "probe response: DraftStateUpdate",
+    "post-probe 'companion' traces in view: []",
+    "A4 failed: field silently discarded \u2014 no companion designation path",
+    "sent plain valid SubmitDeck (control)",
+    "control response: DraftStateUpdate",
+    "plain SubmitDeck accepted: submission path works",
+    "A6 passed (source control): engine DeckList has a companion slot in deck_loading.rs on v0.114.0; gap (if any) is confined to the draft submission path"
+  ],
+  "protocol_version": 153,
+  "sealed_no_pick_step": true,
+  "verdict": "reproduced"
+}
