@@ -1,0 +1,66 @@
+[
+  {
+    "dir": "recv",
+    "summary": {
+      "build_commit": "ac67cbb",
+      "command_correlation": "CommandIdV1",
+      "heartbeat": {
+        "ping_interval_ms": 5000,
+        "silence_budget_ms": 45000
+      },
+      "lobby_protocol_version": 16,
+      "mode": "Full",
+      "protocol_version": 153,
+      "server_version": "0.114.0",
+      "wire_formats": [
+        "GzipEnvelopeV1"
+      ]
+    },
+    "type": "ServerHello"
+  },
+  {
+    "dir": "send",
+    "summary": {
+      "protocol_version": 153
+    },
+    "type": "ClientHello"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"display_name\": \"backfill-7171-01140\", \"source\": {\"type\": \"Uniform\", \"data\": {\"set_codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}, \"kind\": \"Sealed\", \"public\": false, \"password\": null, \"timer_seconds\": null, \"tournament_format\": \"Swiss\", \"pod_policy\": \"Casual\", \"pod_size\": 8}",
+    "type": "CreateDraftWithSettings"
+  },
+  {
+    "dir": "recv",
+    "summary": {
+      "draft_code": "A33DGW",
+      "seat_index": 0
+    },
+    "type": "DraftCreated"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"A33DGW\", \"action\": {\"type\": \"StartDraft\"}}",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"A33DGW\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Swiftwater Cliffs\", \"Bristling Boar\", \"Humble Naturalist\", \"Frostveil Ambush\", \"Tentative Connection\", \"Convolute\", \"Cathartic Reunion\", \"Farfinder\", \"Forbidden Friendship\", \"Durable Coilbug\", \"Springjaw Trap\", \"Emergent Ultimatum\", \"Footfall Crater\", \"Ivy Elemental\", \"Lead the Stampede\", \"Swamp\", \"Dead We",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"distribution\": \"AllAtOnce\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\": \"Direct\", \"pool\": [{\"instance_id\": \"IKO-0-0-0\", \"name\": \"Swiftwater Cliffs\", \"set_code\": \"IKO\", \"co",
+    "type": "DraftStateUpdate"
+  },
+  {
+    "dir": "send",
+    "summary": "{\"draft_code\": \"A33DGW\", \"action\": {\"type\": \"SubmitDeck\", \"data\": {\"seat\": 0, \"main_deck\": [\"Swiftwater Cliffs\", \"Bristling Boar\", \"Humble Naturalist\", \"Frostveil Ambush\", \"Tentative Connection\", \"Convolute\", \"Cathartic Reunion\", \"Farfinder\", \"Forbidden Friendship\", \"Durable Coilbug\", \"Springjaw Trap\", \"Emergent Ultimatum\", \"Footfall Crater\", \"Ivy Elemental\", \"Lead the Stampede\", \"Swamp\", \"Springj",
+    "type": "DraftAction"
+  },
+  {
+    "dir": "recv",
+    "summary": "{\"view\": {\"status\": \"Deckbuilding\", \"kind\": \"Sealed\", \"source\": {\"type\": \"Set\", \"data\": {\"layout\": {\"UniformByRound\": {\"codes\": [\"iko\", \"iko\", \"iko\", \"iko\", \"iko\", \"iko\"]}}}}, \"launch_capability\": \"None\", \"distribution\": \"AllAtOnce\", \"commanders_required\": 0, \"current_pack_number\": 0, \"pick_number\": 0, \"pass_direction\": \"Left\", \"current_pack\": null, \"required_pick_count\": 0, \"pick_selection_mode\":",
+    "type": "DraftStateUpdate"
+  }
+]
