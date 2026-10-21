@@ -1,0 +1,18 @@
+{
+  "assertions": {
+    "A1_setup_ok": "passed",
+    "A2_copy_entered": "passed",
+    "A3_types_correct": "failed",
+    "A4_bug_documented": "passed",
+    "A5_cleanup": "passed"
+  },
+  "details": {
+    "A1_setup_ok": "nantuko_aura=True attach=attached_to={'data': 17, 'type': 'Object'} elves_on_bf=True p1_main=True turn=18",
+    "A2_copy_entered": "oid=91 name=Springheart Nantuko",
+    "A3_types_correct": "core=['Enchantment'] sub=['Aura'] aura_leak=True attach=attached_to={'data': 17, 'type': 'Object'}",
+    "A4_bug_documented": "Aura subtype leaked into the copy's live types: core=['Enchantment'] sub=['Aura'] -- matches the reported intrinsic_copiable_values leak",
+    "A5_cleanup": "stack_empty=True"
+  },
+  "verdict": "reproduced",
+  "notes": []
+}
