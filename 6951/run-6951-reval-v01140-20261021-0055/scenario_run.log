@@ -1,0 +1,65 @@
+[00:50:16] server identity hashes verified against the v0.114.0 pin
+[00:50:18] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[00:50:18] data-level: ch2_unimplemented=True ch3_typed=True
+[00:50:19] P0 creating game (default Bo1, 2 seats)...
+[00:50:19] P1 joining...
+[00:50:19] game BMZLMF; P0 seat=0 P1 seat=1
+[00:50:20] [P0] mulligan -> Keep (hand=['forest', 'plains', 'plains', 'plains', 'grizzly bears', 'plains', 'forest'])
+[00:50:20] [P1] mulligan -> Keep (hand=['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain'])
+[00:50:20] DIAG turn=1 active=0 phase=Untap pp=0 P0untapped=0 P1untapped=0 P0life=20 P1life=20 ecd=None lore=- bear_bf=[] bear_yard=[] stack=0 bear_cast=False bolt1=False/False ecd_cast=False@None ch2=False bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[00:50:20] [P0] playing land forest
+[00:50:24] [P1] playing land mountain
+[00:50:28] [P0] playing land plains
+[00:50:28] [P0] casting Grizzly Bears (engine Auto payment) (oid 20)
+[00:50:28] [P0] bear cast confirmed on stack
+[00:50:38] [P1] playing land mountain
+[00:50:42] [P0] playing land plains
+[00:50:43] [P0] declare no attackers
+[00:50:46] [P1] playing land mountain
+[00:50:50] [P0] playing land plains
+[00:50:51] [P0] declare no attackers
+[00:50:54] [P1] playing land mountain
+[00:50:58] [P0] playing land plains
+[00:50:59] [P0] declare no attackers
+[00:51:01] [P1] casting Lightning Bolt #1 at the Bear (engine Auto payment) (oid 61)
+[00:51:01] target selection #1 (stage bolt1): ?(?,pNone,seat=0), ?(?,pNone,seat=1), grizzly bears(Battlefield,p0,seat=None)
+[00:51:01] [P1] answering bolt1 target: grizzly bears (oid 20) via sequence
+[00:51:01] [P1] submitting interaction iid=BMZLMF.0.146 choice=BMZLMF.0.146.t2 (Grizzly Bears)
+[00:51:02] [P0] bolt1 cast confirmed on stack
+[00:51:03] [P1] playing land mountain
+[00:51:06] [P0] casting Elspeth Conquers Death on turn 11 (engine Auto payment) (oid 42)
+[00:51:07] [P0] ecd cast confirmed on stack
+[00:51:12] ECD on BF: oid=42
+[00:51:12] [P0] playing land forest
+[00:51:16] [P1] playing land mountain
+[00:51:19] chapter II reached (turn-arithmetic fallback)
+[00:51:20] DIAG turn=13 active=0 phase=PreCombatMain pp=0 P0untapped=6 P1untapped=6 P0life=20 P1life=20 ecd=42 lore=2 bear_bf=[] bear_yard=['20'] stack=1 bear_cast=True bolt1=True/True ecd_cast=True@11 ch2=True bolt2=False/False/None ch3=False/False/False pre=False mid=False post=False
+[00:51:20] [P0] playing land plains
+[00:51:24] [P1] playing land mountain
+[00:51:25] exported mid.json
+[00:51:25] MID exported: after chapter II
+[00:51:27] chapter III reached (turn-arithmetic fallback)
+[00:51:27] exported pre.json
+[00:51:27] PRE exported: chapter III reached, Bear in P0 yard
+[00:51:28] target selection #2 (stage unexpected-target): 0(?,pNone,seat=None), 1(?,pNone,seat=None)
+[00:51:28] [P0] target prompt is not the ch3 yard-Bear prompt; leaving unanswered
+[00:51:28] [P0] counter choice: picked 'optionIndex 0'
+[00:51:28] [P0] submitting interaction iid=BMZLMF.0.233 choice=BMZLMF.0.233.c0 (0)
+[00:51:29] [P0] playing land forest
+[00:51:32] [P1] playing land mountain
+[00:51:36] [P0] playing land plains
+[00:51:37] exported post.json
+[00:51:37] POST exported: Bear returned with counter; stopping
+[00:51:37] loop ended: stage=DONE elapsed=78s
+[00:51:37] A1_ch2_unimplemented: passed
+[00:51:37] A2_ch3_typed: passed
+[00:51:37] A3_reached_ch3: passed
+[00:51:37] A4_tax_consistent: not-run
+[00:51:37] A5_returned: passed
+[00:51:37] A6_counter: passed
+[00:51:37] A7_cleanup: passed
+[00:51:37] verdict=reproduced
+[00:51:37] wrote run.json verdict=reproduced
+[00:51:37] copied scenario_6951_01140.py into EVDIR
+[00:51:37] server.log copy failed: [Errno 2] No such file or directory: '/home/hatch/workspace/dev/phase-backfill/runs/run-6951-reval-v01140-20261021-0055/server.log' (shared pinned server; run log kept in scenario_run.log)
+[00:51:38] wrote summary.png
