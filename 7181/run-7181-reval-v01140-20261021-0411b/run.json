@@ -1,0 +1,345 @@
+{
+ "run_id": "run-7181-reval-v01140-20261021-0411b",
+ "issue": 7181,
+ "verdict": "reproduced",
+ "validated_at": "2026-10-21",
+ "server": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "single-user",
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "digests_match_pin": true,
+  "signature_verified": true,
+  "signature_note": "minisign global signatures on binary + signed data manifest verified against repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) in prehashed (blake2b-512) mode at pin time 2026-10-19; data digests match the signed manifest; digests recomputed against on-disk files this run; release v0.114.0 confirmed latest stable via GitHub releases API 2026-10-21",
+  "observed_at": "2026-10-21",
+  "handshake": "ServerHello observed pre-run: v0.114.0 / ac67cbb / protocol 153 / mode Full on 127.0.0.1:9374",
+  "source": "pinned v0.114.0 (minisign-verified binary + signed data manifest, ledger server pin 2026-10-19); binary + data SHA-256 re-verified by this run against the pin; backfill-owned phase-server-slim already listening on 127.0.0.1:9374 (started 2026-10-21 01:13 by the #6963 run, runs/run-6963-reval-v01140-20261021-0111/); ServerHello re-checked by this run."
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "84b421bdb2a7b4f87737a52bd3bc205cb5605222e4dbec2bc02b84cef9ca6b39",
+ "format_config": "default Bo1 (2 human-client seats, life 20)",
+ "decks": {
+  "P0": [
+   [
+    "witherbloom, the balancer",
+    8
+   ],
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "beseech the queen",
+    8
+   ],
+   [
+    "forest",
+    16
+   ],
+   [
+    "swamp",
+    16
+   ]
+  ],
+  "P1": [
+   [
+    "grizzly bears",
+    12
+   ],
+   [
+    "forest",
+    48
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup": "passed",
+  "A2_bear_control": "passed",
+  "A3_five_cost": "failed",
+  "A4_six_cost": "failed",
+  "A5_resolution": "passed"
+ },
+ "observations": {
+  "rejections": [],
+  "unexpected_prompts": [
+   {
+    "kind": "choose",
+    "stage": "test5_resolving",
+    "rec": "cast5",
+    "n_ops": 1
+   }
+  ],
+  "tick_errors": []
+ },
+ "driver_state": {
+  "stage": "done",
+  "balancer_oid": 21,
+  "balancer_cast_turn": 11,
+  "bear_casts": [
+   {
+    "purpose": "ramp",
+    "submitted_turn": 3,
+    "untapped_before": [
+     23,
+     58
+    ],
+    "bears_before": 0,
+    "stack_seen": true,
+    "tapped_delta": 2,
+    "entered": true,
+    "untapped_after": []
+   },
+   {
+    "purpose": "ramp",
+    "submitted_turn": 5,
+    "untapped_before": [
+     11,
+     23,
+     58
+    ],
+    "bears_before": 1,
+    "stack_seen": true,
+    "tapped_delta": 2,
+    "entered": true,
+    "untapped_after": [
+     11
+    ]
+   },
+   {
+    "purpose": "ramp",
+    "submitted_turn": 23,
+    "untapped_before": [
+     1,
+     3,
+     11,
+     19,
+     23,
+     33,
+     45,
+     53,
+     58,
+     59,
+     60
+    ],
+    "bears_before": 2,
+    "stack_seen": true,
+    "tapped_delta": 2,
+    "entered": true,
+    "untapped_after": [
+     1,
+     3,
+     11,
+     19,
+     33,
+     45,
+     53,
+     59,
+     60
+    ]
+   },
+   {
+    "purpose": "control",
+    "submitted_turn": 25,
+    "untapped_before": [
+     1,
+     3,
+     11,
+     19,
+     23,
+     33,
+     45,
+     53,
+     58,
+     59,
+     60
+    ],
+    "bears_before": 3,
+    "stack_seen": true,
+    "tapped_delta": 2,
+    "entered": true,
+    "untapped_after": [
+     1,
+     3,
+     11,
+     19,
+     33,
+     45,
+     53,
+     59,
+     60
+    ]
+   },
+   {
+    "purpose": "sixth",
+    "submitted_turn": 27,
+    "untapped_before": [
+     1,
+     3,
+     11,
+     19,
+     23,
+     33,
+     45,
+     53,
+     58,
+     59,
+     60
+    ],
+    "bears_before": 4,
+    "stack_seen": true,
+    "tapped_delta": 2,
+    "entered": true,
+    "untapped_after": [
+     1,
+     3,
+     11,
+     19,
+     33,
+     45,
+     53,
+     59,
+     60
+    ]
+   }
+  ],
+  "cast5": {
+   "submitted": 1792574710.4675448,
+   "untapped_before": [
+    1,
+    3,
+    11,
+    19,
+    33,
+    45,
+    53,
+    59,
+    60
+   ],
+   "creatures_at_cast": 5,
+   "stack_seen": true,
+   "tapped_delta": 3,
+   "search_answered": true,
+   "tutored": "beseech the queen",
+   "resolved": true,
+   "untapped_after": [
+    11,
+    19,
+    33,
+    45,
+    59,
+    60
+   ],
+   "stack_turn": 25,
+   "resolved_turn": 25
+  },
+  "cast6": {
+   "submitted": 1792574717.9318218,
+   "untapped_before": [
+    1,
+    3,
+    11,
+    19,
+    33,
+    45,
+    53,
+    59,
+    60
+   ],
+   "creatures_at_cast": 6,
+   "stack_seen": true,
+   "tapped_delta": 3,
+   "search_answered": true,
+   "tutored": "grizzly bears",
+   "resolved": true,
+   "untapped_after": [
+    11,
+    19,
+    33,
+    45,
+    59,
+    60
+   ],
+   "stack_turn": 27,
+   "resolved_turn": 27
+  },
+  "vi_kinds_seen": [
+   "choose",
+   "relations",
+   "select"
+  ],
+  "answered_iids": 2,
+  "turns_seen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27
+  ],
+  "exports": {
+   "pre_cast5": true,
+   "post_cast5": true,
+   "pre_cast6": true,
+   "post_cast6": true,
+   "final": true
+  }
+ },
+ "notes": [
+  "A0: card-data beseech the queen: shards=['TwoBlack', 'TwoBlack', 'TwoBlack'], oracle=\"({2/B} can be paid with any two mana or with {B}. This card's mana value is 6.)\\nSearch your library for a card with mana\"; witherbloom, the balancer: own_affinity=True, grants_affinity_to_instants_sorceries=True, oracle='Affinity for creatures (This spell costs {1} less to cast for each creature you control.)\\nFlying, deathtouch\\nInstant and sorcery spells you cast have affinity f'",
+  "A1: balancer_oid=21 cast_turn=11 cast5_creatures=5 cast6_creatures=6 stage=done",
+  "A2: control bear tapped_delta=2 (expect 2 = full {1}{G}; untapped 11->9)",
+  "A3: Beseech#1 at 5 creatures tapped_delta=3 (expect 1 = 6 generic - 5 affinity; untapped 9->6, turn=25)",
+  "A4: Beseech#2 at 6 creatures tapped_delta=3 (expect 0 = free; untapped 9->6, turn=27)",
+  "A5: cast5 resolved=True tutored=beseech the queen search_answered=True; cast6 resolved=True tutored=grizzly bears search_answered=True (resolved = search answered AND tutored card in P0 hand)",
+  "verdict=reproduced: granted affinity not applied to Beseech the Queen - at 5 creatures the cast tapped 3 lands (expect 1), at 6 creatures tapped 3 (expect 0/free)",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "cast5_detail.json",
+  "cast6_detail.json",
+  "final.json",
+  "post_cast5.json",
+  "post_cast6.json",
+  "pre_cast5.json",
+  "pre_cast6.json",
+  "manifest.sha256",
+  "scenario_run.log",
+  "wire_log.jsonl"
+ ],
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Card density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "P1 is passive (land drops + up to 2 bears, no attacks) so the cost-measurement windows stay clean.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Mana paid is measured as the untapped-land delta between cast submission and first stack sighting (same turn), corroborated by the pre/post authoritative exports; no other P0 actions are taken while a test cast is in flight.",
+  "The '5 creatures -> pay {B} or {2}' reporter phrasing is tested as 'pay {1} generic' per CR 601.2f (affinity reduces the generic portion of {2/B}{2/B}{2/B})."
+ ],
+ "duration_s": 111.6
+}
