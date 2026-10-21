@@ -1,0 +1,431 @@
+{
+ "abilities": [],
+ "attached_to": {
+  "data": 17,
+  "type": "Object"
+ },
+ "attachments": [],
+ "base_card_types": {
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [],
+  "supertypes": []
+ },
+ "base_characteristics_initialized": true,
+ "base_color": [
+  "Blue"
+ ],
+ "base_controller": 1,
+ "base_keywords": [],
+ "base_mana_cost": {
+  "generic": 2,
+  "shards": [
+   "Blue"
+  ],
+  "type": "Cost"
+ },
+ "base_name": "Copy Enchantment",
+ "base_power": null,
+ "base_printed_ref": {
+  "face_name": "Copy Enchantment",
+  "oracle_id": "87bc0b1f-49ef-4c06-9049-2c148b467882"
+ },
+ "base_replacement_definitions": [
+  {
+   "condition": null,
+   "description": "You may have ~ enter as a copy of any enchantment on the battlefield.",
+   "destination_zone": "Battlefield",
+   "event": "Moved",
+   "execute": {
+    "condition": null,
+    "cost": null,
+    "description": "You may have ~ enter as a copy of any enchantment on the battlefield.",
+    "duration": null,
+    "effect": {
+     "target": {
+      "controller": null,
+      "properties": [],
+      "type": "Typed",
+      "type_filters": [
+       "Enchantment"
+      ]
+     },
+     "type": "BecomeCopy"
+    },
+    "forward_result": false,
+    "kind": "Spell",
+    "optional": false,
+    "optional_targeting": false,
+    "sub_ability": null,
+    "target_prompt": null
+   },
+   "mode": {
+    "decline": null,
+    "type": "Optional"
+   },
+   "valid_card": {
+    "type": "SelfRef"
+   }
+  }
+ ],
+ "base_toughness": null,
+ "card_id": 91,
+ "card_types": {
+  "core_types": [
+   "Enchantment"
+  ],
+  "subtypes": [
+   "Aura"
+  ],
+  "supertypes": []
+ },
+ "cast_controller": 1,
+ "cast_from_zone": "Hand",
+ "color": [
+  "Green"
+ ],
+ "colors_spent_to_cast": {
+  "blue": 3
+ },
+ "controller": 1,
+ "counters": {},
+ "damage_marked": 0,
+ "dealt_deathtouch_damage": false,
+ "entered_battlefield_turn": 18,
+ "face_down": false,
+ "flipped": false,
+ "id": 91,
+ "incarnation": 3,
+ "keywords": [
+  {
+   "Bestow": {
+    "data": {
+     "generic": 1,
+     "shards": [
+      "Green"
+     ],
+     "type": "Cost"
+    },
+    "type": "Mana"
+   }
+  },
+  {
+   "Enchant": {
+    "controller": null,
+    "properties": [],
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ]
+   }
+  }
+ ],
+ "layer1_copy_effect": {
+  "continuous_effect_id": 1,
+  "modification_index": 0
+ },
+ "layer1_name_origin": "Source",
+ "layer_base_power": 1,
+ "layer_base_toughness": 1,
+ "loyalty": null,
+ "mana_cost": {
+  "generic": 1,
+  "shards": [
+   "Green"
+  ],
+  "type": "Cost"
+ },
+ "mana_spent_source_snapshots": [
+  {
+   "lki": {
+    "attachments": [],
+    "base_power": null,
+    "base_toughness": null,
+    "card_types": [
+     "Land"
+    ],
+    "chosen_attributes": [],
+    "colors": [],
+    "controller": 1,
+    "counters": {},
+    "is_suspected": false,
+    "keywords": [],
+    "mana_value": 0,
+    "name": "Island",
+    "owner": 1,
+    "power": null,
+    "subtypes": [
+     "Island"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "tapped": true,
+    "toughness": null
+   },
+   "source_id": 115
+  },
+  {
+   "lki": {
+    "attachments": [],
+    "base_power": null,
+    "base_toughness": null,
+    "card_types": [
+     "Land"
+    ],
+    "chosen_attributes": [],
+    "colors": [],
+    "controller": 1,
+    "counters": {},
+    "is_suspected": false,
+    "keywords": [],
+    "mana_value": 0,
+    "name": "Island",
+    "owner": 1,
+    "power": null,
+    "subtypes": [
+     "Island"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "tapped": true,
+    "toughness": null
+   },
+   "source_id": 95
+  },
+  {
+   "lki": {
+    "attachments": [],
+    "base_power": null,
+    "base_toughness": null,
+    "card_types": [
+     "Land"
+    ],
+    "chosen_attributes": [],
+    "colors": [],
+    "controller": 1,
+    "counters": {},
+    "is_suspected": false,
+    "keywords": [],
+    "mana_value": 0,
+    "name": "Island",
+    "owner": 1,
+    "power": null,
+    "subtypes": [
+     "Island"
+    ],
+    "supertypes": [
+     "Basic"
+    ],
+    "tapped": true,
+    "toughness": null
+   },
+   "source_id": 69
+  }
+ ],
+ "mana_spent_to_cast": true,
+ "mana_spent_to_cast_amount": 3,
+ "name": "Springheart Nantuko",
+ "owner": 1,
+ "power": 1,
+ "printed_ref": {
+  "face_name": "Springheart Nantuko",
+  "oracle_id": "8a3ad2ef-8bcb-40c0-85de-f03328c2b644"
+ },
+ "replacement_definitions": [],
+ "static_definitions": [
+  {
+   "active_zones": [],
+   "affected": {
+    "controller": null,
+    "properties": [
+     {
+      "type": "EnchantedBy"
+     }
+    ],
+    "type": "Typed",
+    "type_filters": [
+     "Creature"
+    ]
+   },
+   "affected_zone": null,
+   "characteristic_defining": false,
+   "condition": null,
+   "description": "Enchanted creature gets +1/+1.",
+   "effect_zone": null,
+   "mode": "Continuous",
+   "modifications": [
+    {
+     "type": "AddPower",
+     "value": 1
+    },
+    {
+     "type": "AddToughness",
+     "value": 1
+    }
+   ]
+  }
+ ],
+ "summoning_sick": true,
+ "tapped": false,
+ "timestamp": 24,
+ "toughness": 1,
+ "transformed": false,
+ "trigger_definitions": [
+  {
+   "definition": {
+    "batched": false,
+    "condition": null,
+    "constraint": null,
+    "damage_kind": "Any",
+    "description": "Whenever a land you control enters, you may pay {1}{G} if ~ is attached to a creature you control. If you do, create a token that's a copy of that creature. If you didn't create a token this way, create a 1/1 green Insect creature token.",
+    "destination": "Battlefield",
+    "execute": {
+     "condition": {
+      "type": "SourceAttachedToCreature"
+     },
+     "cost": null,
+     "description": null,
+     "duration": null,
+     "effect": {
+      "cost": {
+       "cost": {
+        "generic": 1,
+        "shards": [
+         "Green"
+        ],
+        "type": "Cost"
+       },
+       "type": "Mana"
+      },
+      "payer": {
+       "type": "Controller"
+      },
+      "type": "PayCost"
+     },
+     "forward_result": false,
+     "kind": "Spell",
+     "optional": true,
+     "optional_targeting": false,
+     "sub_ability": {
+      "condition": {
+       "signal": "OptionalEffectPerformed",
+       "type": "EffectOutcome"
+      },
+      "cost": null,
+      "description": null,
+      "duration": null,
+      "effect": {
+       "count": {
+        "type": "Fixed",
+        "value": 1
+       },
+       "enters_attacking": false,
+       "owner": {
+        "type": "Controller"
+       },
+       "tapped": false,
+       "target": {
+        "type": "AttachedTo"
+       },
+       "type": "CopyTokenOf"
+      },
+      "forward_result": false,
+      "kind": "Spell",
+      "optional": false,
+      "optional_targeting": false,
+      "sub_ability": {
+       "condition": {
+        "condition": {
+         "signal": "OptionalEffectPerformed",
+         "type": "EffectOutcome"
+        },
+        "type": "Not"
+       },
+       "cost": null,
+       "description": null,
+       "duration": null,
+       "effect": {
+        "colors": [
+         "Green"
+        ],
+        "count": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "enters_attacking": false,
+        "keywords": [],
+        "name": "Insect",
+        "owner": {
+         "type": "Controller"
+        },
+        "power": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "tapped": false,
+        "toughness": {
+         "type": "Fixed",
+         "value": 1
+        },
+        "type": "Token",
+        "types": [
+         "Creature",
+         "Insect"
+        ]
+       },
+       "forward_result": false,
+       "kind": "Spell",
+       "optional": false,
+       "optional_targeting": false,
+       "sub_ability": null,
+       "sub_link": "SequentialSibling",
+       "target_prompt": null
+      },
+      "sub_link": "SequentialSibling",
+      "target_prompt": null
+     },
+     "target_prompt": null
+    },
+    "mode": "ChangesZone",
+    "optional": true,
+    "origin": null,
+    "phase": null,
+    "secondary": false,
+    "trigger_zones": [
+     "Battlefield"
+    ],
+    "valid_card": {
+     "controller": "You",
+     "properties": [],
+     "type": "Typed",
+     "type_filters": [
+      "Land"
+     ]
+    },
+    "valid_source": null,
+    "valid_target": null
+   },
+   "occurrence": {
+    "data": {
+     "copied_slot": 0,
+     "copy_effect": {
+      "continuous_effect_id": 1,
+      "modification_index": 0
+     },
+     "printed_origin": {
+      "printed_occurrence": 0,
+      "printed_ref": {
+       "face_name": "Springheart Nantuko",
+       "oracle_id": "8a3ad2ef-8bcb-40c0-85de-f03328c2b644"
+      }
+     }
+    },
+    "type": "CopiedValue"
+   }
+  }
+ ],
+ "zone": "Battlefield"
+}
