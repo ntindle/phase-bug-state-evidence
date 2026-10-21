@@ -1,0 +1,19 @@
+[2026-10-21T08:11:42Z] Run 20261021-1311-backfill started; lock written.
+[2026-10-21T08:13Z] Release check: latest stable phase-rs/phase = v0.114.0 (published 2026-10-19) == ledger pin; no re-pin needed.
+[2026-10-21T08:13Z] Python deps (websockets/pillow/pynacl) present; phase-server listening on 127.0.0.1:9374 (client defect: no engine session needed).
+[2026-10-21T08:13Z] Queue scan: #301 published/reproduced on v0.114.0; backlog exhausted (all unvalidated entries closed); oldest stale open entry #5187 selected per 07:41 run's "Next" note. #4873 skipped (entry_kind=pull_request, not a bug issue).
+[2026-10-21T08:14Z] GitHub API: #5187 state=open, merged=false, head e318893388f2099a16363b5d41fccbd9e9d88a25 (2 commits, updated 2026-09-16). Proceeding.
+[2026-10-21T08:13-08:17Z] Fresh depth-1 clone -> checkout-5187-20261021 @ 6376b632dc9e7843b89977d169851df677778b64 (2026-10-21 06:10:06 -0700).
+[2026-10-21T08:18Z] A1: useResumables.ts lines 112/117 still read the verbatim defect formula; file byte-identical (sha256 bcfb97cd34df3d37...) to aa1fb24 version. Excerpt saved.
+[2026-10-21T08:19Z] PR patch fetched: https://github.com/phase-rs/phase/pull/5187.patch (5154 bytes). New files extracted; byte-identical to 2026-09-16 copies.
+[2026-10-21T08:19Z] useResumables.pr.ts: fresh 6376b632 file with the patch hunk hand-applied (state.players->publicState.players drift, same as 2026-09-16; no extra blank line this time).
+[2026-10-21T08:19:55Z] vitest old_formula.driver.test.ts in local phase-mainline/client (node_modules present, --coverage.enabled=false): 1 failed (`expected 1 to be 2`, the discriminating repro) / 3 passed (controls). Exit 1 expected.
+[2026-10-21T08:20:04Z] vitest liveOpponents.test.ts (PR's own 5-test suite, byte-identical patch files): 5/5 passed.
+[2026-10-21T08:20:05Z] vitest hook_wiring.driver.test.ts: 3/3 passed.
+[2026-10-21T08:21Z] Harness removed from local tree (client/src/harness-5187 deleted); pr-5187.json saved (open, unmerged).
+[2026-10-21T08:21Z] client_observations.json + run.json written; summary.png rendered from observations.
+[2026-10-21T08:2xZ] Validation: all JSON parse; manifest hashes verified; PNG readable (PIL).
+[2026-10-21T08:2xZ] Upload via driver/upload_run.py to ntindle/phase-bug-state-evidence 5187/run-5187-reval-v01140-20261021-0811/; byte-verify manifest/run.json/PNG against commit-pinned raw URLs.
+[2026-10-21T08:2xZ] Maintained comment updated (id 5704676313), 2026-10-21 section prepended.
+[2026-10-21T08:2xZ] validation-ledger.json updated atomically (top-level + nested byte-identical).
+[2026-10-21T08:2xZ] Verdict reproduced (unchanged). No webhook (already-reproduced re-validation; Cursor webhook disabled server-side anyway). No muse-job spawn.
