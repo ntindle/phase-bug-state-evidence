@@ -1,0 +1,327 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.12 [39m[90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client[39m
+
+ [32m✓[39m src/services/__tests__/scryfall.test.ts [2m([22m[2m92 tests[22m[2m)[22m[33m 3234[2mms[22m[39m
+     [33m[2m✓[22m[39m rejects malformed primary payloads, coalesces a valid retry, and preserves text fallback without URLs [33m 301[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/tournamentClient.test.ts [2m([22m[2m105 tests[22m[2m)[22m[33m 1116[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:275:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:275:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2msubscribes to bundled feeds and seeds decks on first run
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:275:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:295:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:295:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:295:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:299:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:299:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mpicks up new bundled feeds on subsequent calls
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:299:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:311:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:311:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2mdoes not overwrite existing user decks
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:311:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "starter-decks": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-standard": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-modern": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-pioneer": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-commander": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2minitializeFeeds[2m > [22m[2muses stale cached data after an ordinary online refresh failure
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:478:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2ma first-run bundled feed refused by a busy library publishes neither its cache, decks nor subscription
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1260:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2ma first-run bundled feed refused by a busy library publishes neither its cache, decks nor subscription
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1260:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2ma first-run bundled feed refused by a busy library publishes neither its cache, decks nor subscription
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1260:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2mpublishes a first-run feed's decks and subscription without holding the saved-deck lock until its cache write settles
+[22m[39mFailed to initialize feed "mtggoldfish-legacy": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1309:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2mpublishes a first-run feed's decks and subscription without holding the saved-deck lock until its cache write settles
+[22m[39mFailed to initialize feed "mtggoldfish-vintage": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1309:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+[90mstderr[2m | src/services/__tests__/feedService.test.ts[2m > [22m[2mcross-tab saved-deck transactions[2m > [22m[2mpublishes a first-run feed's decks and subscription without holding the saved-deck lock until its cache write settles
+[22m[39mFailed to initialize feed "mtggoldfish-pauper": Error: Failed to fetch feed: 404 Not Found
+    at fetchFeed [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:111:11[90m)[39m
+    at Module.initializeFeeds [90m(/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/feedService.ts:262:20[90m)[39m
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/feedService.test.ts:1309:5
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+ [32m✓[39m src/services/__tests__/feedService.test.ts [2m([22m[2m75 tests[22m[2m)[22m[33m 2737[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/openPhaseSocket.test.ts [2m([22m[2m71 tests[22m[2m)[22m[33m 1116[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckParser.test.ts [2m([22m[2m84 tests[22m[2m)[22m[32m 245[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/draftPersistence.test.ts[2m > [22m[2mdraftPersistence[2m > [22m[2mhost session[2m > [22m[2mrethrows a host write failure so callers cannot continue on a lost receipt
+[22m[39m[saveDraftHostSession] IDB write failed: Error: IndexedDB unavailable
+    at [90m/home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39msrc/services/__tests__/draftPersistence.test.ts:175:37
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:302:11
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:26
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:2326:20
+    at new Promise (<anonymous>)
+    at runWithCancel [90m(file:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:2323:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:2305:20
+    at new Promise (<anonymous>)
+    at runWithTimeout [90m(file:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:2272:10[90m)[39m
+    at [90mfile:///home/hatch/workspace/dev/phase-backfill/checkout-5184-20261021/client/[39mnode_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:2956:64
+
+ [32m✓[39m src/services/__tests__/draftPersistence.test.ts [2m([22m[2m75 tests[22m[2m)[22m[33m 422[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/aiDeckCatalog.test.ts [2m([22m[2m22 tests[22m[2m)[22m[33m 1022[2mms[22m[39m
+     [33m[2m✓[22m[39m rescans the catalog when the deck inventory changes while mounted [33m 797[2mms[22m[39m
+[90mstderr[2m | src/services/__tests__/brokerClient.test.ts[2m > [22m[2mlookupJoinTargetOver[2m > [22m[2mresolves with JoinTargetInfo for the matching code
+[22m[39m[broker] dropping a malformed format_config from a lobby frame; the room's format will be treated as unknown
+
+[90mstderr[2m | src/services/__tests__/brokerClient.test.ts[2m > [22m[2mlookupJoinTargetOver[2m > [22m[2mcarries draft_metadata through ('a malformed format_config')
+[22m[39m[broker] dropping a malformed format_config from a lobby frame; the room's format will be treated as unknown
+
+ [32m✓[39m src/services/__tests__/brokerClient.test.ts [2m([22m[2m31 tests[22m[2m)[22m[32m 136[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/offlinePreparation.test.ts [2m([22m[2m50 tests[22m[2m)[22m[33m 597[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/savedDeckWriters.test.ts [2m([22m[2m24 tests[22m[2m)[22m[33m 889[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/serverDirectory.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/offlineAssets.test.ts [2m([22m[2m30 tests[22m[2m)[22m[33m 849[2mms[22m[39m
+     [33m[2m✓[22m[39m reports ready assets when the Deck Catalog is selected [33m 736[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/aiRandomPool.test.ts [2m([22m[2m39 tests[22m[2m)[22m[32m 84[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/savedDeckTransaction.test.ts [2m([22m[2m16 tests[22m[2m)[22m[33m 376[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/serverMetrics.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 108[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/backup.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 193[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/troubleshooting.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 229[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/gamePersistence.test.ts [2m([22m[2m18 tests[22m[2m)[22m[33m 367[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/fileDownload.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 136[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/randomPoolSelection.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/nativeEngineSocket.test.ts [2m([22m[2m11 tests[22m[2m)[22m[33m 818[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckUrlImport.test.ts [2m([22m[2m42 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckMigrations.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 80[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/nativeEngine.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 163[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/gameStateExport.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 192[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/serverDetection.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 102[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cardImageLookup.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/quickDraftPersistence.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 179[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/externalLinks.test.ts [2m([22m[2m29 tests[22m[2m)[22m[33m 467[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/artSelection.test.ts [2m([22m[2m24 tests[22m[2m)[22m[32m 62[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckCompatibility.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 383[2mms[22m[39m
+     [33m[2m✓[22m[39m forwards a non-Commander request through a rejected adapter and retries it [33m 306[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/canonicalCardNames.test.ts [2m([22m[2m17 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/engineRuntime.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 191[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/feedPersistence.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 105[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/legacyMigration.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 268[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/customFormats.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/backupFeedGeneration.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 320[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/platform.test.ts [2m([22m[2m17 tests[22m[2m)[22m[33m 455[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/lan.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 150[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/telemetryEvents.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/status.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/localAiSeatPlan.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/draftSpectatorSession.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/copyText.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 155[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/manaSymbolCatalog.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/savedDeckWriteFailure.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 62[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/draftDeckAutosave.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 151[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/changelog.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 70[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/multiplayerSession.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cubeCobra.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/audioHealth.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/socketKeepalive.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/intergameCommandLedger.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/socketDiagnostics.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 81[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/fullTerminalResult.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 243[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/p2pSession.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/pileSource.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 134[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/diagnosticHistory.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/openExternal.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 159[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/randomDeckSelection.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 50[2mms[22m[39m
+ [31m❯[39m src/services/__tests__/presets-5184.driver.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 109[2mms[22m[39m
+     [32m✓[39m D1 returns the defaults when storage is empty[32m 19[2mms[22m[39m
+[31m     [31m×[31m D2 falls back to the defaults on corrupt storage instead of throwing[39m[32m 67[2mms[22m[39m
+[31m     [31m×[31m D3 does not let corrupt storage crash savePreset/deletePreset[39m[32m 6[2mms[22m[39m
+     [32m✓[39m D4 returns saved presets when storage holds a valid non-empty array[32m 1[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/p2pTerminalResult.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/channelPreference.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckParser.visualPacks.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/deckCatalog.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/preconDecks.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 56[2mms[22m[39m
+ [32m✓[39m src/services/__tests__/cedhLock.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/presets-5184.driver.test.ts[2m > [22mloadPresets (driver, #5184)[2m > [22mD2 falls back to the defaults on corrupt storage instead of throwing
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'SyntaxError: Expected property name o…' was thrown[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)"
+
+[36m [2m❯[22m src/services/__tests__/presets-5184.driver.test.ts:[2m23:37[22m[39m
+    [90m 21|[39m   it("D2 falls back to the defaults on corrupt storage instead of thro…
+    [90m 22|[39m     localStorage[33m.[39m[34msetItem[39m([33mSTORAGE_KEY[39m[33m,[39m [32m"{oops"[39m)[33m;[39m
+    [90m 23|[39m     [34mexpect[39m(() [33m=>[39m [34mloadPresets[39m())[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   |[39m                                     [31m^[39m
+    [90m 24|[39m     [34mexpect[39m([34mloadPresets[39m())[33m.[39m[34mtoEqual[39m(
+    [90m 25|[39m       expect[33m.[39m[34marrayContaining[39m([
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/services/__tests__/presets-5184.driver.test.ts[2m > [22mloadPresets (driver, #5184)[2m > [22mD3 does not let corrupt storage crash savePreset/deletePreset
+[31m[1mAssertionError[22m: expected [Function] to not throw an error but 'SyntaxError: Unexpected token \'o\', …' was thrown[39m
+
+[32m- Expected:[39m
+undefined
+
+[31m+ Received:[39m
+"SyntaxError: Unexpected token 'o', \"not json\" is not valid JSON"
+
+[36m [2m❯[22m src/services/__tests__/presets-5184.driver.test.ts:[2m43:11[22m[39m
+    [90m 41|[39m         playerCount[33m:[39m [34m2[39m[33m,[39m
+    [90m 42|[39m       })[33m,[39m
+    [90m 43|[39m     )[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m   |[39m           [31m^[39m
+    [90m 44|[39m     [34mexpect[39m(() [33m=>[39m [34mdeletePreset[39m([32m"custom-1"[39m))[33m.[39mnot[33m.[39m[34mtoThrow[39m()[33m;[39m
+    [90m 45|[39m   })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m66 passed[39m[22m[90m (67)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1296 passed[39m[22m[90m (1298)[39m
+[2m   Start at [22m 07:28:39
+[2m   Duration [22m 257.98s[2m (transform 14.86s, setup 39.37s, import 41.43s, tests 19.97s, environment 98.88s)[22m
+
+EXIT=1

@@ -1,0 +1,31 @@
+=== run run-5184-reval-v01140-20261021-0711 ===
+started: 2026-10-21T12:18:11Z
+issue: phase-rs/phase#5184 (open fix PR, unmerged) - loadPresets must fall back to defaults on corrupt storage
+queue: oldest stale candidate; validated_version client-mainline@9b6f354f -> re-validate on client mainline 7b1504a
+
+1. release check: latest stable phase-rs/phase = v0.114.0 (published 2026-10-19T18:59:10Z) - matches ledger pin; no advance
+2. server: client-subsystem scenario; no engine session involved (phase-server on :9374 left running for engine runs)
+3. git clone --depth 1 --branch main https://github.com/phase-rs/phase.git checkout-5184-20261021
+   HEAD=7b1504a61f7970edd0f562444f16d7c750c0df2c (2026-10-20T20:42:08Z, 'fix(engine): a {0} unless-cost of a counter is asked, not auto-paid (#9943)')
+4. client/src/services/presets.ts sha256=4985b05e9c3c388f7be2704ec4c2ebed60ea208732238180a5435f1a61738dd0
+   -> byte-identical to the 9b6f354f version (2026-10-12 run); JSON.parse still unguarded at line 39
+5. PR head: d059c301951e910370a2a2ba0f43ddbfbff37888 (unchanged since 2026-10-12); literal PR-head bytes reused from prior evidence
+   PR-head-presets.ts sha256=bdd8b608295fe2cff84e684789a54612bf3a14e1da199b436fbbafbc069230ee
+   PR-head-presets.test.ts sha256=5f4cc2a6c51016aeb6776c8021d0639003a0bad623677ebc4a4764125f4c5a97
+6. npm install --legacy-peer-deps --ignore-scripts in client/ (background)
+
+7. npm install finished: EXIT=0, 853 packages in 3m (log: npm_install.log)
+8. driver test (presets-5184.driver.test.ts) on mainline: 4 tests, D1 PASS, D4 PASS (controls);
+   D2 FAIL: loadPresets() on storage '{oops' throws SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)
+   D3 FAIL: savePreset()/deletePreset() on storage 'not json' throw SyntaxError: Unexpected token 'o', "not json" is not valid JSON
+   -> bug REPRODUCED on client mainline 7b1504a. EXIT=1 (log: vitest_mainline_driver.log)
+9. PR-variant tree: checkout-5184-20261021-pr (client/ + scripts/ + lobby-worker/ copied; node_modules symlinked;
+   presets.ts and presets.test.ts replaced with literal PR-head bytes d059c301)
+10. PR's own presets.test.ts on PR variant: 4/4 PASS, EXIT=0 with --coverage.enabled=false
+    (first attempt EXIT=1: only the global coverage threshold failed at 0.02% lines < 10% when running one file - no test failures; rerun without coverage EXIT=0)
+11. full services/__tests__ suite on PR tree: 67 files, 1298 tests, ALL PASS, EXIT=0 -> zero regressions (log: vitest_pr_suite.log)
+12. full services/__tests__ suite on mainline tree: 67 files, 1298 tests, 2 failed - exactly D2/D3 (the bug cases); 1296 passed, EXIT=1 (log: vitest_mainline_suite.log)
+    (suite grew from 64/1191 on 2026-10-11 to 67/1298 at 7b1504a)
+
+verdict: reproduced (bug still present on client mainline 7b1504a61f7970edd0f562444f16d7c750c0df2c)
+finished: 2026-10-21T12:33:19Z
