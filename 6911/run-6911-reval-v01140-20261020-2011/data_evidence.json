@@ -1,0 +1,69 @@
+{
+ "name": "Entish Restoration",
+ "oracle_text": "Sacrifice a land. Search your library for up to two basic land cards, put them onto the battlefield tapped, then shuffle. If you control a creature with power 4 or greater, instead search your library for up to three basic land cards, put them onto the battlefield tapped, then shuffle.",
+ "ability_count": 1,
+ "sacrifice_effect": {
+  "type": "Sacrifice",
+  "target": {
+   "type": "Typed",
+   "type_filters": [
+    "Land"
+   ],
+   "controller": null,
+   "properties": []
+  },
+  "count": {
+   "type": "Fixed",
+   "value": 1
+  }
+ },
+ "instead_condition_type": "ConditionInstead",
+ "search_effect": {
+  "type": "SearchLibrary",
+  "filter": {
+   "type": "Typed",
+   "type_filters": [
+    "Land"
+   ],
+   "controller": null,
+   "properties": [
+    {
+     "type": "HasSupertype",
+     "value": "Basic"
+    }
+   ]
+  },
+  "count": {
+   "type": "UpTo",
+   "max": {
+    "type": "Fixed",
+    "value": 3
+   }
+  },
+  "reveal": false
+ },
+ "else_search_effect": {
+  "type": "SearchLibrary",
+  "filter": {
+   "type": "Typed",
+   "type_filters": [
+    "Land"
+   ],
+   "controller": null,
+   "properties": [
+    {
+     "type": "HasSupertype",
+     "value": "Basic"
+    }
+   ]
+  },
+  "count": {
+   "type": "UpTo",
+   "max": {
+    "type": "Fixed",
+    "value": 2
+   }
+  },
+  "reveal": false
+ }
+}
