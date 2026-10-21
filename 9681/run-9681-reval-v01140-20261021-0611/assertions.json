@@ -1,0 +1,23 @@
+{
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_spell_not_prevented": "passed",
+  "A3_combat_control": "failed",
+  "A4_cleanup": "passed"
+ },
+ "notes": [
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 25)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#32 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True",
+  "A1: 1 WoV on P0 BF at pre_dryspell (turn 25)",
+  "A2: dry resolved; P0 20->19, P1 20->19 (spell-resolution control OK); WoV#1 zone=Graveyard",
+  "A2: WoV took the 1 damage and left the BF -- no prevention; reported symptom absent",
+  "A3: blocker WoV#32 zone=Graveyard after blocked Bear combat",
+  "A3: WoV died to blocked Bear damage -- consistent with prevention_source_scope being Unimplemented (no shield exists); separate from the reported bug",
+  "A4: stack_empty=True"
+ ],
+ "verdict": "not-reproduced"
+}
