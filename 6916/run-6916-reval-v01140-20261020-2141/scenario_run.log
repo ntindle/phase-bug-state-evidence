@@ -1,0 +1,38 @@
+[21:42:59] ServerHello: version=0.114.0 build=ac67cbb protocol=153 mode=Full
+[21:42:59] data-level check: ok=True notes=['is_commander=True', 'replacements=1', 'replacement: ~ enters under the control of an opponent of your choice.', 'abilities=1']
+[21:43:00] game GAOSHQ; seats P0=0 P1=1 P2=2 RUN_ID=run-6916-reval-v01140-20261020-2141
+[21:43:01] [P0] mulligan -> Keep (lands=7 hand=['swamp', 'mountain', 'mountain', 'swamp', 'mountain', 'swamp', 'swamp'])
+[21:43:01] [P1] mulligan -> Keep (lands=7 hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[21:43:01] [P2] mulligan -> Keep (lands=7 hand=['forest', 'forest', 'forest', 'forest', 'forest', 'forest', 'forest'])
+[21:43:01] DIAG turn=1 active=1 phase=Untap P0lands=0 P1lands=0 xcast=False entered=False ctrl=None choice=False p1act=False pre=False mid=False post=False stack=0
+[21:43:02] [P1] playing land forest
+[21:43:07] [P2] playing land forest
+[21:43:12] [P0] playing land swamp
+[21:43:16] [P1] playing land forest
+[21:43:21] [P2] playing land forest
+[21:43:26] [P0] playing land mountain
+[21:43:31] [P1] playing land forest
+[21:43:36] [P2] playing land forest
+[21:43:40] [P0] playing land mountain
+[21:43:41] [P0] casting xantcha, sleeper agent (oid 181) needs={'B': 1, 'R': 1, 'generic': 1}
+[21:43:42] [P1] cast confirmed (stack): xantcha, sleeper agent oid 181
+[21:43:42] [P0] ENTER-CHOICE prompt: seats=[1, 2] codes=['candidate', 'chooseEntryController']
+[21:43:42] [P0] ENTER-CHOICE pick: seat=2 text=''
+[21:43:42] [P0] submitting interaction iid=GAOSHQ.0.192 choice=GAOSHQ.0.192.c1 ()
+[21:43:43] Xantcha entered: oid=181 owner=0 controller=2 choice_offered=True
+[21:43:43] exported mid.json (turn=9)
+[21:43:48] [P1] activating Xantcha's ability pre_life={0: 40, 1: 40, 2: 40} pre_hand={0: 7, 1: 8, 2: 7}
+[21:43:49] [P1] playing land forest
+[21:43:52] [P1] discarding to hand size via vi (select): picks=['GAOSHQ.0.234.s0']
+[21:43:53] exported post.json (turn=11)
+[21:43:53] exported POST (act_done=True no_offer_done=False)
+[21:43:54] [P2-controller] Xantcha activation offered: True
+[21:43:54] [P2] playing land forest
+[21:43:55] [P2] declaring Xantcha 181 attacking P1
+[21:43:58] post exported; finishing
+[21:43:58] loaded mid.json
+[21:43:58] loaded post.json
+[21:43:58] verdict=reproduced assertions={"A1_setup_ok": "passed", "A2_choice_offered": "passed", "A3_controlled_by_chosen": "passed", "A4_any_player_activate": "passed", "A5_activation_effect": "failed", "A6_cleanup": "passed"}
+[21:43:59] exported pre.json (turn=11)
+[21:43:59] copied scenario_6916_01140.py into EVDIR
+[21:43:59] closing logs before manifest computation
