@@ -1,0 +1,185 @@
+{
+ "issue": 6987,
+ "title": "Textual Madness cost \"Pay six {C}\" is unsupported",
+ "run_id": "run-6987-reval-v01140-20261021-0311",
+ "validated_at": "2026-10-21",
+ "validated_version": "v0.114.0",
+ "server_version": "0.114.0",
+ "build_commit": "ac67cbb",
+ "protocol_version": 153,
+ "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+ "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+ "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+ "signature_verified": true,
+ "server_identity": {
+  "server_version": "0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "observed_at": "2026-10-21",
+  "hello": {
+   "server_version": "0.114.0",
+   "build_commit": "ac67cbb",
+   "protocol_version": 153,
+   "mode": "Full"
+  }
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "49b47fe69da5ec3ab79fbdf9fa5b0ff8a031d77ff023a48bf9e00de573854cc8",
+ "format_config": "default Bo1 (2 human-client seats)",
+ "decks": {
+  "P0": [
+   [
+    "Faithless Looting",
+    12
+   ],
+   [
+    "Fiery Temper",
+    8
+   ],
+   [
+    "Emrakul, the World Anew",
+    14
+   ],
+   [
+    "Mountain",
+    16
+   ],
+   [
+    "Wastes",
+    10
+   ]
+  ],
+  "P1": [
+   [
+    "Mountain",
+    60
+   ]
+  ]
+ },
+ "verdict": "reproduced",
+ "assertions": {
+  "A1_parse_emrakul_madness": "failed",
+  "A2_setup_ok": "passed",
+  "A3_control_exile": "passed",
+  "A4_control_offer": "passed",
+  "A5_control_resolves": "passed",
+  "A6_emrakul_exile": "failed",
+  "A7_emrakul_offer": "failed",
+  "A8_cleanup": "passed"
+ },
+ "result": "A1 parse_emrakul_madness: failed (no Madness keyword). A2 setup_ok: passed. A3 control_exile: passed; A4 control_offer: passed; A5 control_resolves: passed (Fiery Temper Madness {R} control). A6 emrakul_exile: failed; A7 emrakul_offer: failed. A8 cleanup: passed.",
+ "scope": "Emrakul, the World Anew madness permission: card-data parse check + runtime discard via Faithless Looting with Fiery Temper (Madness {R}) as the working-madness control; native engine, two human-client seats",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "Dense playsets are a test-harness convenience (engine accepts >4-of for custom games).",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay).",
+  "Six-{C} payment was not attempted: the offer itself is the asserted outcome."
+ ],
+ "observations": {
+  "unexpected_prompts": [],
+  "auto_answered": [],
+  "rejections": [],
+  "tick_errors": [],
+  "notes": [
+   "A1: keywords=['Flying', {'Protection': {'CardType': 'spells'}}, {'Protection': {'CardType': 'permanents that were cast this turn'}}]; Unimplemented abilities=[('Spell', 'unknown')] -> failed; control Fiery Temper keywords=[{'Madness': {'type': 'Cost', 'shards': ['Red'], 'generic': 0}}]",
+   "A2: pre.json P0 main=True, Looting in hand=True, Temper in hand=True, untapped Mountains=4 -> passed",
+   "A3: discarded Fiery Temper entered Exile: True -> passed",
+   "A4: madness cast offered for Fiery Temper: True (source=CastOffer (castSpellAsMadness)) -> passed",
+   "A5: control resolved=True, P1 life 20->17 (delta=3, expected 3) -> passed",
+   "A6: discarded Emrakul zone=Graveyard (expected Exile via madness replacement) -> failed",
+   "A7: madness cast offered at six {C}: False (source=None) -> failed",
+   "A8: post.json stack empty=True, turn=30, phase=PreCombatMain -> passed",
+   "verdict=reproduced: Emrakul's madness permission did not offer the printed six-{C} alternative cost after discard (control: Fiery Temper Madness {R} worked)",
+   "verdict=reproduced"
+  ],
+  "madness_offers": [
+   {
+    "who": "P0",
+    "iid": "BPWYYA.0.240",
+    "card": "Fiery Temper",
+    "in_watch": true,
+    "modes": [
+     "auto",
+     "manual"
+    ]
+   }
+  ],
+  "discard_choices": [
+   {
+    "proof": "control",
+    "iid": "BPWYYA.0.237",
+    "n": 2,
+    "discarded": [
+     "fiery temper",
+     "mountain"
+    ]
+   },
+   {
+    "proof": "primary",
+    "iid": "BPWYYA.0.425",
+    "n": 2,
+    "discarded": [
+     "emrakul, the world anew",
+     "faithless looting"
+    ]
+   }
+  ],
+  "wf_sequence": []
+ },
+ "driver_state": {
+  "stage": "DONE",
+  "stop": true,
+  "game_code": "BPWYYA",
+  "mulls": {
+   "P0": 2,
+   "P1": 0
+  },
+  "pre_exported": true,
+  "mid_exported": true,
+  "post_exported": true,
+  "control_exiled": true,
+  "control_offered": true,
+  "control_offer_source": "CastOffer (castSpellAsMadness)",
+  "control_resolved": true,
+  "control_p1_before": 20,
+  "control_p1_after": 17,
+  "primary_zone": "Graveyard",
+  "primary_offered": false,
+  "primary_offer_source": null,
+  "p0_turn_cap_abort": false
+ },
+ "notes": [
+  "A1: keywords=['Flying', {'Protection': {'CardType': 'spells'}}, {'Protection': {'CardType': 'permanents that were cast this turn'}}]; Unimplemented abilities=[('Spell', 'unknown')] -> failed; control Fiery Temper keywords=[{'Madness': {'type': 'Cost', 'shards': ['Red'], 'generic': 0}}]",
+  "A2: pre.json P0 main=True, Looting in hand=True, Temper in hand=True, untapped Mountains=4 -> passed",
+  "A3: discarded Fiery Temper entered Exile: True -> passed",
+  "A4: madness cast offered for Fiery Temper: True (source=CastOffer (castSpellAsMadness)) -> passed",
+  "A5: control resolved=True, P1 life 20->17 (delta=3, expected 3) -> passed",
+  "A6: discarded Emrakul zone=Graveyard (expected Exile via madness replacement) -> failed",
+  "A7: madness cast offered at six {C}: False (source=None) -> failed",
+  "A8: post.json stack empty=True, turn=30, phase=PreCombatMain -> passed",
+  "verdict=reproduced: Emrakul's madness permission did not offer the printed six-{C} alternative cost after discard (control: Fiery Temper Madness {R} worked)",
+  "verdict=reproduced"
+ ],
+ "evidence_files": [
+  "pre.json",
+  "mid.json",
+  "post.json",
+  "parse_emrakul.json",
+  "assertions.json",
+  "run.json",
+  "manifest.sha256",
+  "summary.png",
+  "scenario_6987_01140.py",
+  "wire_log.jsonl",
+  "scenario_run.log",
+  "server.log"
+ ],
+ "duration_s": 133.3
+}
