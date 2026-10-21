@@ -1,0 +1,74 @@
+ServerHello: {'server_version': '0.114.0', 'build_commit': 'ac67cbb', 'protocol_version': 153, 'mode': 'Full'}
+oracle: Roll three six-sided dice. For each different result, create a 1/1 white Clown Robot artifact creature token.
+A1_parse: passed (abilities[0] = Spell RollDie {count:Fixed 3, sides:6}; sub-ability = Unimplemented name='unparsed_quantity' - the token-creation half is still unparsed on v0.114.0)
+game OA7KVU; seats P0=0 P1=1 RUN_ID=run-7176-reval-v01140-20261020-2341
+[P1] keep 7: ['island', 'island', 'island', 'island', 'island', 'island', 'island']
+[P0] keep 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'circuits act', 'mountain']
+[P1] playing land island
+[P0] playing land mountain
+[P1] playing land island
+[P0] playing land mountain
+[P1] playing land island
+[P0] playing land mountain
+exported PRE_1
+[P0] leg 1: pre_1 exported (gy=0), casting circuits act (oid 34)
+[P0] casting circuits act (oid 34) needs={'R': 1, 'generic': 2}
+[P0] leg 1: cast confirmed on stack
+[P0] roll sighting: {'id': 34, 'source_id': 34, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 34, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': 
+exported POST_1
+[P0] leg 1 RESOLVED: gy 0->1, clown tokens now 0
+[P1] playing land island
+[P0] tap land for mana used_for=R
+[P0] tap land for mana used_for=generic
+[P0] tap land for mana used_for=generic
+[P0] playing land mountain
+[P1] playing land island
+exported PRE_2
+[P0] leg 2: pre_2 exported (gy=1), casting circuits act (oid 45)
+[P0] casting circuits act (oid 45) needs={'R': 1, 'generic': 2}
+[P0] leg 2: cast confirmed on stack
+[P0] roll sighting: {'id': 45, 'source_id': 45, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 45, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': 
+[P0] tap land for mana used_for=R
+exported POST_2
+[P0] leg 2 RESOLVED: gy 1->2, clown tokens now 0
+[P0] playing land mountain
+[P0] tap land for mana used_for=generic
+[P1] playing land island
+[P0] tap land for mana used_for=generic
+exported PRE_3
+[P0] leg 3: pre_3 exported (gy=2), casting circuits act (oid 55)
+[P0] casting circuits act (oid 55) needs={'R': 1, 'generic': 2}
+[P0] leg 3: cast confirmed on stack
+[P0] roll sighting: {'id': 55, 'source_id': 55, 'controller': 0, 'kind': {'type': 'Spell', 'data': {'card_id': 55, 'ability': {'effect': {'type': 'RollDie', 'count': {'type': 'Fixed', 'value': 3}, 'sides': 6, 'results': 
+[P0] tap land for mana used_for=R
+exported POST_3
+[P0] leg 3 RESOLVED: gy 2->3, clown tokens now 0
+all casts resolved; exporting post and finishing
+exported POST
+loaded pre_1.json
+loaded post_1.json
+loaded pre_2.json
+loaded post_2.json
+loaded pre_3.json
+loaded post_3.json
+loaded post.json
+A1_parse: passed
+A2_setup: passed
+A3_cast: passed
+A4_resolved: passed
+A5_tokens: failed
+A6_cleanup: passed
+note: A1_parse: passed (abilities[0] = Spell RollDie {count:Fixed 3, sides:6}; sub-ability = Unimplemented name='unparsed_quantity' - the token-creation half is still unparsed on v0.114.0)
+note: A2: pre_1 Circuits Act in P0 hand=True, untapped Mountains=3 -> passed
+note: A3: completed casts=3 (legs=[1, 2, 3]) -> passed
+note: A4: resolved=3/3 (leg1:gy0->1, leg2:gy1->2, leg3:gy2->3) -> passed
+note: A5: clown tokens final=0 vs Oracle minimum 3 (per-leg post counts: {1: 0, 2: 0, 3: 0}) -> FAILED (reported bug: the 'for each different result' token half never executes)
+note: A6: post stack empty=True
+note: roll sightings on stack: 3
+note: tick errors: 0 []
+note: unexpected prompts: 0
+note: stop reason: 3 casts resolved
+VERDICT: reproduced
+wrote run.json
+copied server.log from runs/20261020-2341/
+wrote summary.png
