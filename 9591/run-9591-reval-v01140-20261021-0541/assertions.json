@@ -1,0 +1,22 @@
+{
+ "assertions": {
+  "A1_pre_advertised": "passed",
+  "A2_winnower_bf": "passed",
+  "A3_even_blocked": "passed",
+  "A4_odd_blocked_bug": "passed",
+  "A5_controller_ok": "passed",
+  "A6_probes_terminal": "passed"
+ },
+ "notes": [
+  "pre check at turn 4: Bolt advertised=True (legacy), Strike advertised=True (legacy)",
+  "post check at turn 18: Winnower on BF; Bolt advertised=False (None), Strike advertised=False (None); in hand bolt=True strike=True",
+  "ctrl check at turn 19: P0 Lightning Strike advertised=True via=legacy (untapped Mountains=9)",
+  "A1: pre turn=4 bolt_adv=True strike_adv=True",
+  "A2: winnower_bf=True (cast turn=17)",
+  "A3: strike_adv=False via=None",
+  "A4: Bolt NOT advertised post-Winnower -- reported overblocking reproduced",
+  "A4: bolt_adv=False via=None",
+  "A5: P0's own Strike advertised with Winnower out (controller unaffected)"
+ ],
+ "verdict": "reproduced"
+}
