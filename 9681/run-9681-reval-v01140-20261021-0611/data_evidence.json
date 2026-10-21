@@ -1,0 +1,29 @@
+{
+ "ok": true,
+ "notes": [
+  "wall of vapor prevention = Effect::Unimplemented {name: prevention_source_scope} (fail-closed, no shield) -- matches engine unit test prevention_source_scope_fails_closed_at_the_route"
+ ],
+ "oracle": {
+  "wall of vapor": "Defender (This creature can't attack.)\nPrevent all damage that would be dealt to this creature by creatures it's blocking.",
+  "dry spell": "Dry Spell deals 1 damage to each creature and each player."
+ },
+ "wov_abilities": [
+  {
+   "kind": "Spell",
+   "effect": {
+    "type": "Unimplemented",
+    "name": "prevention_source_scope",
+    "description": "Prevent all damage that would be dealt to ~ by creatures it's blocking."
+   },
+   "cost": null,
+   "sub_ability": null,
+   "duration": null,
+   "description": "Prevent all damage that would be dealt to ~ by creatures it's blocking.",
+   "target_prompt": null,
+   "condition": null,
+   "optional_targeting": false,
+   "optional": false,
+   "forward_result": false
+  }
+ ]
+}
