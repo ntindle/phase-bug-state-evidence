@@ -1,0 +1,25 @@
+{
+ "ok": true,
+ "notes": [],
+ "ng_oracle": "{T}: Add {C}.\n{1}, {T}: Move a counter from target permanent you control onto a second target permanent. Activate only as a sorcery.",
+ "ability1_payload": {
+  "effect_type": "MoveCounters",
+  "counter_type": null,
+  "count": {
+   "type": "Fixed",
+   "value": 1
+  },
+  "source": {
+   "type": "Typed",
+   "controller": "You"
+  },
+  "target": {
+   "type": "Typed",
+   "controller": null
+  },
+  "cost": "Composite",
+  "restrictions": [
+   "AsSorcery"
+  ]
+ }
+}
