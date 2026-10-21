@@ -1,0 +1,106 @@
+{
+ "issue": 7169,
+ "issue_url": "https://github.com/phase-rs/phase/issues/7169",
+ "run_id": "run-7169-reval-v01140-20261021-0441",
+ "started_at": "2026-10-21T09:45:24",
+ "finished_at": "2026-10-21T09:47:09",
+ "duration_s": 105.1,
+ "server_identity": {
+  "server_version": "v0.114.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "mode": "Full",
+  "binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "signature_note": "v0.114.0 binary + release manifest minisign-verified against the repo-pinned SERVER_ARTIFACT_PUBLIC_KEY (key id 436711b6a2d36828) at pin time (2026-10-19); release unchanged since (latest stable still v0.114.0, published 2026-10-19T18:59:10Z); data digests match the signed manifest; digests recomputed against on-disk files this run",
+  "observed_at": "2026-10-21",
+  "source": "ServerHello asserted by handshake this run + sha256 re-verified against pinned v0.114.0 release artifacts; backfill-owned v0.114.0 server already listening on 127.0.0.1:9374 (started 2026-10-21 01:13 by the #6963 run, runs/run-6963-reval-v01140-20261021-0111/, pid 5260; ServerHello re-verified this run)"
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "50aaebdea8b539c0369a7ad72d4918cbb9c76983855e4c56fceb5a60b383702e",
+ "decks": {
+  "P0": [
+   [
+    "Rooftop Storm",
+    8
+   ],
+   [
+    "Gravecrawler",
+    8
+   ],
+   [
+    "Diregraf Ghoul",
+    8
+   ],
+   [
+    "Augur of Bolas",
+    8
+   ],
+   [
+    "Island",
+    14
+   ],
+   [
+    "Swamp",
+    14
+   ]
+  ],
+  "P1": [
+   [
+    "Forest",
+    60
+   ]
+  ]
+ },
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_hand_offer": "passed",
+  "A3_gy_offer_absent": "passed",
+  "A4_gy_cast_completes": "passed",
+  "A5_nonz_unaffected": "passed",
+  "A6_cleanup": "passed"
+ },
+ "verdict": "reproduced",
+ "result": "A1 setup_ok: passed; A2 hand_offer: passed; A3 gy_offer_absent: passed; A4 gy_cast_completes: passed; A5 nonz_unaffected: passed; A6 cleanup: passed",
+ "scope": "Rooftop Storm {0} alternative-cost offer across cast origin zones; P0 hand-cast Diregraf Ghoul (control), graveyard-cast Gravecrawler (reported leg), hand-cast Augur of Bolas (non-Zombie control)",
+ "limitations": [
+  "Browser UI not exercised; native engine via two human-client seats.",
+  "States are authoritative exports, restorable only via full game replay (the phase-server has no standalone state-import path)."
+ ],
+ "fixture": {
+  "storm_oid": "35",
+  "ghoul_oid": "54",
+  "crawler_gy_oid": "10",
+  "augur_oid": "2",
+  "offer_seen": {
+   "storm": false,
+   "hand": true,
+   "gy": false,
+   "nonz": false
+  },
+  "offer_accepted": {
+   "storm": false,
+   "hand": true,
+   "gy": false,
+   "nonz": false
+  },
+  "submitted_choice": {
+   "storm": null,
+   "hand": "C9R6QZ.0.212.c1",
+   "gy": null,
+   "nonz": null
+  }
+ },
+ "notes": [
+  "pre: turn 32 storm_oid=35 ghoul_oid=54 crawler_gy_oid=10",
+  "mid: turn 32 gy_offer_seen=False crawler resolved to BF",
+  "post: turn 32 nonz_offer_seen=False life=20/20",
+  "final stage=DONE offers={'storm': False, 'hand': True, 'gy': False, 'nonz': False} accepted={'storm': False, 'hand': True, 'gy': False, 'nonz': False}"
+ ]
+}
