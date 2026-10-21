@@ -1,0 +1,110 @@
+{
+ "issue": 6914,
+ "run_id": "run-6914-reval-v01140-20261020-2112",
+ "date": "2026-10-21T02:13:05",
+ "game_code": "5M30DO",
+ "server": {
+  "server_version": "0.110.0",
+  "build_commit": "ac67cbb",
+  "protocol_version": 153,
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "signature_verified": true,
+  "mode": "Full"
+ },
+ "driver": {
+  "protocol_advertised": 153,
+  "client": "driver/client.py"
+ },
+ "scenario_sha256": "b5435356f110417e55db6e9601309dfaa2bf42d4d3e3d170c7980cd2dff6fe82",
+ "decks": {
+  "P0": {
+   "commander": [
+    "Malcolm, Keen-Eyed Navigator",
+    "Kediss, Emberclaw Familiar"
+   ],
+   "main": [
+    [
+     "Island",
+     48
+    ],
+    [
+     "Mountain",
+     12
+    ]
+   ]
+  },
+  "P1": {
+   "commander": [
+    "Ayula, Queen Among Bears"
+   ],
+   "main": [
+    [
+     "Forest",
+     60
+    ]
+   ]
+  },
+  "P2": {
+   "commander": [],
+   "main": [
+    [
+     "Forest",
+     60
+    ]
+   ]
+  }
+ },
+ "setup_line": "P0 commanders Malcolm, Keen-Eyed Navigator + Kediss, Emberclaw Familiar (Partner), 48x Island / 12x Mountain; P1 commander Ayula (never cast), 60x Forest, inert; P2 60x Forest, no commander, inert",
+ "contract_line": "Malcolm attacks P1 unblocked; Malcolm's trigger fires for the combat damage (1 treasure); Kediss's trigger deals 2 to P2. If the commander (Malcolm, a Pirate) is the damage source, Malcolm's trigger fires again (2nd treasure); if Kediss is the source, it does not (1 treasure).",
+ "driver_notes": [
+  "Protocol-153 re-validation port of driver/scenario_6914_01100.py (v0.110.0 / protocol 142, verified 2026-10-16, verdict reproduced); behavioral contract A1..A5 and verdict logic unchanged.",
+  "waiting_for is gone (null); priority = top-level PassPriority; all decisions via viewer_interaction; MulliganDecision via legacy Action; bottom via vi schema/select gated on waitingForKind.code=='mulligan'; DiscardToHandSize via vi schema/select (the ONLY accepted shape for a select schema).",
+  "CastSpell via legacy Action (commanders cast from the command zone); the v0.114.0 engine auto-taps reliably, so no driver mana taps (driver taps on top of engine auto-taps double-pay).",
+  "DeclareAttackers via relations-schema vi opportunity (Malcolm -> P1); empty declares only ever answer relations-schema.",
+  "OrderTriggers answered deterministically (Malcolm first) via vi schema/sequence; legacy OrderTriggers action as fallback (order recorded). Answered before the priority-pass gate; the pass gate always runs at the end of the tick (never hold priority while watching the stack).",
+  "Pre/post/mid states are authoritative exports (data.state parsed once from the export envelope) via the host client only; the reported OUTCOME is asserted on the saved states, not the prompt.",
+  "Data-level: v0.114.0 card-data parses Kediss correctly (trigger present, 'each other opponent'); the defect is damage-source attribution at resolution time."
+ ],
+ "assertions": {
+  "A1_setup_ok": "passed",
+  "A2_combat_damage": "passed",
+  "A3_kediss_trigger": "passed",
+  "A4_source_attribution": "failed",
+  "A5_cleanup": "passed"
+ },
+ "assertion_details": {
+  "A1_setup_ok": "malcolm_bf=181 is_commander=True untapped=True kediss_bf=182 life=[40, 40, 40] attack_turn=10",
+  "A2_combat_damage": "P1 life=38 (expect 38 = Malcolm's 2 unblocked combat damage)",
+  "A3_kediss_trigger": "P2 life=38 (expect 38 = Kediss trigger dealing 2)",
+  "A4_source_attribution": "P0 treasure tokens=1 (expect 2 if the commander is the damage source; 1 = engine sourced it from Kediss) -> only 1 treasure despite P2 taking 2: the engine attributed the extra damage to Kediss (not a Pirate), so Malcolm's trigger did not fire. BUG REPRODUCED.",
+  "A5_cleanup": "stack_empty=True turn=11"
+ },
+ "trigger_order": [
+  "5M30DO.0.231.q0",
+  "5M30DO.0.231.q1"
+ ],
+ "trigger_order_via": "vi-sequence",
+ "trigger_order_texts": [
+  "Malcolm, Keen-Eyed Navigator",
+  "Kediss, Emberclaw Familiar"
+ ],
+ "attack_turn": 10,
+ "verdict": "reproduced",
+ "evidence_comment_id": 5651440803,
+ "limitations": [
+  "Browser UI not exercised; native engine via three human-driver seats.",
+  "48x/12x deck density is a test-harness convenience (engine accepts >4-of for custom games).",
+  "The observable is Malcolm's own source-sensitive trigger (Pirate damage -> Treasure): the acceptance criterion the issue's triage comments named, not a direct wire read of the damage source field.",
+  "The prebuilt server has no standalone state-restore; states are authoritative exports (restorable only via full game replay)."
+ ],
+ "mulligans": {
+  "P0": 0,
+  "P1": 0,
+  "P2": 0
+ },
+ "rejections": [],
+ "stall_observed": false,
+ "notes": []
+}
