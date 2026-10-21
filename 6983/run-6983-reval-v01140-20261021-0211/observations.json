@@ -1,0 +1,136 @@
+{
+ "issue": 6983,
+ "run_id": "run-6983-reval-v01140-20261021-0211",
+ "target_selections": [
+  {
+   "interactionId": "C81ECE.0.437",
+   "turn": 29,
+   "phase": "PreCombatMain",
+   "stage": "bolt-target",
+   "rtype": "schema",
+   "spec_type": "sequence",
+   "candidates": [
+    {
+     "choice_id": "C81ECE.0.437.t0",
+     "oid": null,
+     "seat": 0,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "C81ECE.0.437.t1",
+     "oid": null,
+     "seat": 1,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "C81ECE.0.437.t2",
+     "oid": "18",
+     "seat": null,
+     "name": "leatherback baloth",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Leatherback Baloth"
+    },
+    {
+     "choice_id": "C81ECE.0.437.t3",
+     "oid": "39",
+     "seat": null,
+     "name": "grizzly bears",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Grizzly Bears"
+    }
+   ]
+  },
+  {
+   "interactionId": "C81ECE.0.439",
+   "turn": 29,
+   "phase": "PreCombatMain",
+   "stage": "bolt-target",
+   "rtype": "schema",
+   "spec_type": "sequence",
+   "candidates": [
+    {
+     "choice_id": "C81ECE.0.439.t0",
+     "oid": null,
+     "seat": 0,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "C81ECE.0.439.t1",
+     "oid": null,
+     "seat": 1,
+     "name": "",
+     "zone": null,
+     "controller": null,
+     "text": ""
+    },
+    {
+     "choice_id": "C81ECE.0.439.t2",
+     "oid": "18",
+     "seat": null,
+     "name": "leatherback baloth",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Leatherback Baloth"
+    },
+    {
+     "choice_id": "C81ECE.0.439.t3",
+     "oid": "39",
+     "seat": null,
+     "name": "grizzly bears",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Grizzly Bears"
+    }
+   ]
+  },
+  {
+   "interactionId": "C81ECE.0.442",
+   "turn": 29,
+   "phase": "PreCombatMain",
+   "stage": "mutation-creature",
+   "rtype": "schema",
+   "spec_type": "sequence",
+   "candidates": [
+    {
+     "choice_id": "C81ECE.0.442.t0",
+     "oid": "18",
+     "seat": null,
+     "name": "leatherback baloth",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Leatherback Baloth"
+    },
+    {
+     "choice_id": "C81ECE.0.442.t1",
+     "oid": "39",
+     "seat": null,
+     "name": "grizzly bears",
+     "zone": "Battlefield",
+     "controller": 0,
+     "text": "Grizzly Bears"
+    }
+   ]
+  }
+ ],
+ "payment_scan": [],
+ "unexpected_prompts": [],
+ "auto_answered": [],
+ "tick_errors": [],
+ "rejections": [],
+ "notes": [
+  "verdict=reproduced: the parser still cannot represent the board-state-derived unless-payment (A1 Unimplemented/unless_payment on v0.114.0); the Mutation resolved (A3) with no payment prompt offered (A4) and both Bolts resolved uncountered, P0 20->14 (A5)",
+  "limitation: the engine never offered the optional 'up to one target spell' target (no spell-slot target was answered); the runtime shows the clause skipped, not a targeted spell going uncountered",
+  "verdict=reproduced"
+ ]
+}
