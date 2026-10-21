@@ -1,0 +1,76 @@
+both clients connected
+game created: CRY9WF
+P1 joined
+[P0] mulligan: keep 7
+[P1] mulligan: keep 7
+[diag] t=1s stage=setup turn=1 phase=PreCombatMain vi_kind=choose balancer=None p0creatures=0
+[P0] casting bear (ramp) untapped_before=2
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 2->0)
+[P0] bear (ramp) ENTERED
+[P1] casting Grizzly Bears
+[P0] casting bear (ramp) untapped_before=3
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 3->1)
+[P0] bear (ramp) ENTERED
+[P0] declare no attackers
+[P1] casting Grizzly Bears
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] casting Witherbloom, the Balancer (creatures=2)
+[P0] Balancer ENTERED oid=21 turn=11
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[diag] t=61s stage=setup turn=15 phase=BeginCombat vi_kind= balancer=21 p0creatures=3
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] casting bear (ramp) untapped_before=11
+[P0] bear (ramp) on stack: tapped_delta=2 (untapped 11->9)
+[P0] bear (ramp) ENTERED
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] casting bear (control) untapped_before=11
+[P0] bear (control) on stack: tapped_delta=2 (untapped 11->9)
+[P0] bear (control) ENTERED
+[P0] stage -> test5 (5 creatures)
+exported pre_cast5.json (turn=25)
+saved cast5_detail.json
+[P0] TEST5: casting Beseech the Queen at 5 creatures, untapped_before=9 (expect 1 land tapped)
+[P0] cast5: Beseech ON STACK tapped_delta=3 (expect 1; untapped 9->6)
+exported post_cast5.json (turn=25)
+[P0] no search-shaped vi while cast5 awaits resolution (kind='choose'); leaving it alone
+[P0] search prompt answered (kind=select): tutored 'beseech the queen' (41 candidates)
+[P0] cast5: Beseech RESOLVED, tutored 'beseech the queen' now in hand
+[P0] declare no attackers
+[P1] declare no attackers
+[P0] casting bear (sixth) untapped_before=11
+[P0] bear (sixth) on stack: tapped_delta=2 (untapped 11->9)
+[P0] bear (sixth) ENTERED
+[P0] stage -> test6 (6 creatures)
+exported pre_cast6.json (turn=27)
+saved cast6_detail.json
+[P0] TEST6: casting Beseech the Queen at 6 creatures, untapped_before=9 (expect 0 lands tapped - free)
+[P0] cast6: Beseech ON STACK tapped_delta=3 (expect 0; untapped 9->6)
+exported post_cast6.json (turn=27)
+[P0] search prompt answered (kind=select): tutored 'grizzly bears' (39 candidates)
+[P0] cast6: Beseech RESOLVED, tutored 'grizzly bears' now in hand
+exported final.json (turn=27)
+[P0] final exported; stage -> done
+loaded pre_cast5.json
+loaded post_cast5.json
+loaded pre_cast6.json
+loaded post_cast6.json
+loaded final.json
+server run dir from ps discovery: /home/hatch/workspace/dev/phase-backfill/runs/run-6963-reval-v01140-20261021-0111
+server run dir: /home/hatch/workspace/dev/phase-backfill/runs/run-6963-reval-v01140-20261021-0111
+wrote server.log excerpts (897 lines)
+wrote summary.png
