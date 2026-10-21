@@ -1,0 +1,77 @@
+ServerHello: {'server_version': '0.114.0', 'build_commit': 'ac67cbb', 'protocol_version': 153, 'mode': 'Full'}
+oracle: Menace (This creature can't be blocked except by two or more creatures.) | Whenever Raphael deals combat damage to a player for the first time each turn, untap all attacking creatures. After this comb
+A1_parse_gap: passed (trigger constraint = {"type": "OncePerTurn"}; no damaged-player key - the parse collapses the per-player occurrence limit into a global once-per-turn)
+game YKK2M5; seats P0=0 P1=1 P2=2 RUN_ID=run-7173-reval-v01140-20261020-2241
+[P0] keep 7: ['raphael, tag team tough', 'mountain', 'raphael, tag team tough', 'mountain', 'raphael, tag team tough', 'mountain', 'mountain']
+[P1] keep 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain']
+[P2] keep 7: ['mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain', 'mountain']
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] playing land mountain
+[P0] casting raphael, tag team tough (oid 4) needs={'R': 2, 'generic': 4}
+[P0] cast Raphael (turn 18)
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] tap land for mana used_for=R
+[P0] tap land for mana used_for=R
+[P0] tap land for mana used_for=generic
+[P0] tap land for mana used_for=generic
+[P0] tap land for mana used_for=generic
+[P0] tap land for mana used_for=generic
+exported PRE
+[P0] attack armed (turn 21); pre.json exported
+[P0] playing land mountain
+[P0] combat #1 declares: Raphael -> P1 (turn 21)
+TRIGGER SIGHTING: Raphael TriggeredAbility on stack (turn 21, phase CombatDamage, combat #1)
+P1 damaged: life=15 (turn 21, phase CombatDamage)
+untap_seen: Raphael untapped after combat-1 damage
+[P0] combat #2 declares: Raphael -> P2 (turn 21)
+P2 damaged: life=15 (turn 21, phase CombatDamage)
+exported MID
+[P1] playing land mountain
+[P2] playing land mountain
+[P0] control leg armed (turn 24): attack P1 next combat to check the trigger resets next turn
+[P0] playing land mountain
+[P0] combat #3 declares: Raphael -> P1 (turn 24)
+TRIGGER SIGHTING: Raphael TriggeredAbility on stack (turn 24, phase CombatDamage, combat #3)
+control: next-turn trigger sighting: {'key': (24, 'CombatDamage', 3), 'turn': 24, 'phase': 'CombatDamage', 'combat': 3, 'targets_so_far': [1, 2, 1], 'p1_life': 10, 'p2_life': 15}
+[P1] playing land mountain
+[P2] playing land mountain
+cleanup window closed; finishing
+exported POST
+loaded pre.json
+loaded mid.json
+loaded post.json
+control: next-turn re-trigger sighting: True
+A1_parse_gap: passed
+A2_setup_ok: passed
+A3_first_trigger: passed
+A4_additional_combat_1: passed
+A5_second_trigger: failed
+A6_cleanup: passed
+note: A1_parse_gap: passed (trigger constraint = {"type": "OncePerTurn"}; no damaged-player key - the parse collapses the per-player occurrence limit into a global once-per-turn)
+note: A2: Raphael on P0 BF in pre.json: True
+note: A3: stack_sighting_c1=True untap_seen=True attack-turn combats=2 -> passed
+note: A4: P0 DeclareAttackers in attack turn 21 = 2 (targets [1, 2, 1]) -> passed
+note: A5: stack_sighting_c2=False attack-turn combats=2 -> FAILED (FAILED = reported bug: first damage to a different player does not re-trigger)
+note: A6: post stack empty=True
+note: control: next-turn attack on P1 re-triggered = True (turn 24) - the once-per-turn history resets each turn
+VERDICT: reproduced
+wrote run.json
+copied server.log from runs/run-20261020-204253/
+wrote summary.png
