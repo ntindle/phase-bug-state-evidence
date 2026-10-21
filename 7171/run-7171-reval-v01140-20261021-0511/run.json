@@ -1,0 +1,46 @@
+{
+  "assertions": {
+    "A1_draft_reaches_deckbuilding": "passed",
+    "A2_lutri_drafted": "not-run",
+    "A3_companion_control_in_view": "failed",
+    "A4_companion_designation_path": "failed",
+    "A5_valid_submitdeck_accepted": "passed",
+    "A6_engine_companion_capable": "passed"
+  },
+  "build_commit": "ac67cbb",
+  "card_data_sha256": "7fe886cc031d9bd6532317572f84f65da66941ebdf6a43d337b625fbc369548e",
+  "data_manifest": "release-server-v0.114.0.json (signed, SHA-256 verified against manifest)",
+  "draft_pools_sha256": "4a0b44a9af0881f924b4120a43fe04947dd673aa867e796917b696d7ea26ba59",
+  "evidence_commit": null,
+  "issue": 7171,
+  "limitations": [
+    "Browser UI not exercised; native server draft WebSocket API only.",
+    "Lutri, the Spellchaser did not appear in this seat's packs (A2 not-run); the probe used another pool card as the companion designation target. The protocol path - not the specific card - is what the issue reports missing.",
+    "Sealed used instead of pick-and-pass: the bug lives in the kind-independent Build Deck/SubmitDeck path.",
+    "Verdict is scoped to v0.114.0; this re-validation does not claim the bug is fixed or unfixed in any other build."
+  ],
+  "protocol_version": 153,
+  "publication": {
+    "prior_comment_url": "https://github.com/phase-rs/phase/issues/7171#issuecomment-5677333775",
+    "status": "pending"
+  },
+  "result": "Deckbuilding view carries no 'companion' key (no companion control advertised); SubmitDeck with an extra 'companions' field is accepted as DraftStateUpdate but the field is silently discarded - no companion designation is stored or visible post-probe; plain SubmitDeck accepted (control). Same failure shape as the v0.83.0 and v0.111.0 runs.",
+  "run_id": "run-7171-reval-v01140-20261021-0511",
+  "scenario": "driver/scenario_7171_01140.py",
+  "scenario_sha256": "e2f88e2ce8ae959c104fcd036708e7fb911f69e3feceb0c72f332a9b07eb4726",
+  "scope": "Sealed iko event (6 packs/seat, 8 seats) driven to Deckbuilding over WS protocol 153; Deckbuilding DraftPlayerView + DraftAction::SubmitDeck probed for a companion designation path; engine DeckList companion slot verified in the v0.114.0 source (crates/engine/src/game/deck_loading.rs, PlayerDeckList.companion line 75).",
+  "server_binary_sha256": "025c26c78762d8fc0bed47a7774749465c3e40751df73310cd7dee6ed5d506ef",
+  "server_process": {
+    "owner_run": "run-6963-reval-v01140-20261021-0111",
+    "pid": 5260,
+    "reused_by_this_run": true,
+    "serverhello_verified": true
+  },
+  "server_version": "0.114.0",
+  "signature_key_id": "436711b6a2d36828",
+  "signature_verified": true,
+  "title": "No way to add/set Companion in Build Deck after Draft",
+  "validated_at": "2026-10-21",
+  "validated_version": "v0.114.0",
+  "verdict": "reproduced"
+}
